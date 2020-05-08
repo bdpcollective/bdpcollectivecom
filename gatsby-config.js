@@ -6,6 +6,18 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
+      resolve: `gatsby-plugin-manifest`,
+        options: {
+          name: `GatsbyJS`,
+          short_name: `GatsbyJS`,
+          start_url: `static/`,
+          background_color: `#f7f0eb`,
+          theme_color: `#a2466c`,
+          display: `standalone`,
+    }
+  },
+
+    {
       resolve: `gatsby-source-contentful`,
       options: {
           spaceId: process.env.CONTENTFUL_SPACE_ID,
