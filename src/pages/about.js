@@ -4,6 +4,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import Layout from "../components/layout"
 import aboutStyles from './about.module.scss'
 import heroStyles from '../components/hero.module.scss'
+import Head from '../components/head'
     
 
 const AboutPage = () => {
@@ -21,6 +22,7 @@ const AboutPage = () => {
 
     return (
         <Layout className={aboutStyles.text}>
+            <Head title="About" />
             <BackgroundImage className={heroStyles.masthead}
             fluid={data.aboutImage.childImageSharp.fluid}>
             </BackgroundImage>

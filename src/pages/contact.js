@@ -5,6 +5,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import Layout from '../components/layout'
 import contactStyles from './contact.module.scss'
 import heroStyles from '../components/hero.module.scss'
+import Head from '../components/head'
 
 const ContactPage =() => {
     const data = useStaticQuery(graphql`
@@ -21,6 +22,7 @@ const ContactPage =() => {
 
     return(
         <Layout>
+          <Head title="Contact" />
             <BackgroundImage className={heroStyles.masthead}
             fluid={data.contactImage.childImageSharp.fluid}>
             </BackgroundImage>

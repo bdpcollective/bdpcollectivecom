@@ -3,6 +3,7 @@ import { Link, graphql, useStaticQuery } from "gatsby"
 import Img from "gatsby-image"
 import Layout from "../components/layout"
 import portfolioStyles from "./portfolio.module.scss"
+import Head from '../components/head'
 
 const PortfolioPage = () => {
   const data = useStaticQuery(graphql`
@@ -28,6 +29,7 @@ const PortfolioPage = () => {
   `)
   return (
     <Layout>
+      <Head title="Portfolio" />
       <ol className={portfolioStyles.posts}>
         {data.allContentfulPortfolioPage.edges.map(edge => {
           return (
