@@ -2,20 +2,21 @@
     list-style-type: none;
     margin: 0 auto;
     max-width: 750px;
-    padding-bottom: 2rem;
-
+    padding-bottom: 2rem; 
     display: flex;
     flex-wrap: wrap;
-    flex-flow: flex-direction;
-    justify-content: space-between;
-    align-items: stretch;
+    align-content: flex-start;
 }
 h2 {
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
 }
 
 .post {
+    margin: 0 auto;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
     width: 19rem;
+    
     h3 {
         margin-bottom: 0;
     }
@@ -26,7 +27,6 @@ h2 {
         display: block;
         padding: .5rem;
         text-decoration: none;
-        margin-bottom: 0;
     }
     a:hover {
         background: #e4e4e4;
@@ -40,7 +40,6 @@ h2 {
 }
 
 .page {
-
     a {
         background: #f4f4f4;
         color: #000000;
