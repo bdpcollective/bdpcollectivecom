@@ -31,7 +31,7 @@ const PortfolioPage = props => {
   }
 
   return (
-    <Layout className={portfolioStyles.container}>
+    <Layout>
       <Head title={props.data.contentfulPortfolioPage.title} />
       <h1>{props.data.contentfulPortfolioPage.title}</h1>
       <p>{props.data.contentfulPortfolioPage.publishedDate}</p>
