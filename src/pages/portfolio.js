@@ -30,23 +30,25 @@ const PortfolioPage = () => {
   return (
     <Layout>
       <Head title="Portfolio" />
-      <ol className={portfolioStyles.posts}>
-        {data.allContentfulPortfolioPage.edges.map(edge => {
-          return (
-            <li className={portfolioStyles.post} key={edge.node.slug}>
-              <Link to={`/portfolio/${edge.node.slug}`}>
-                <h3>{edge.node.title}</h3>
-                <p>{edge.node.publishedDate}</p>
-                <div>
-                  {edge.node.postImage && (
-                    <Img fluid={edge.node.postImage.fluid} />
-                  )}
-                </div>
-              </Link>
-            </li>
-          )
-        })}
-      </ol>
+      <div className={portfolioStyles.container}>
+        <ol className={portfolioStyles.posts}>
+          {data.allContentfulPortfolioPage.edges.map(edge => {
+            return (
+              <li className={portfolioStyles.post} key={edge.node.slug}>
+                <Link to={`/portfolio/${edge.node.slug}`}>
+                  <h3>{edge.node.title}</h3>
+                  <p>{edge.node.publishedDate}</p>
+                  <div>
+                    {edge.node.postImage && (
+                      <Img fluid={edge.node.postImage.fluid} />
+                    )}
+                  </div>
+                </Link>
+              </li>
+            )
+          })}
+        </ol>
+      </div>
     </Layout>
   )
 }

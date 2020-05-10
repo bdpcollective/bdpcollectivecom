@@ -4,6 +4,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 import Layout from '../components/layout'
 import Head from '../components/head'
+import portfolioStyles from "../pages/portfolio.module.scss"
 
 
 export const query = graphql`
@@ -30,7 +31,7 @@ const PortfolioPage = props => {
   }
 
   return (
-    <Layout>
+    <Layout className={portfolioStyles.container}>
       <Head title={props.data.contentfulPortfolioPage.title} />
       <h1>{props.data.contentfulPortfolioPage.title}</h1>
       <p>{props.data.contentfulPortfolioPage.publishedDate}</p>

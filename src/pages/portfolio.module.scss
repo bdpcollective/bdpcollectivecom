@@ -6,15 +6,16 @@
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
+    img {
+        border: 2px solid #eaeaea;
+    }
 }
 h2 {
     margin-bottom: .5rem;
 }
 
 .post {
-    margin: 0 auto;
-    justify-content: flex-start;
-    margin-bottom: 1rem;
+    margin: 0rem .5rem .5rem 0rem;
     width: 19rem;
     
     h3 {
@@ -61,10 +62,8 @@ h2 {
 .container {
     margin: 0 auto;
     max-width: 750px;
-    padding: 1rem;
-
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    min-width: 100vw;
+      
+    img {
+        border: 2px solid #eaeaea;
+    }
 }
