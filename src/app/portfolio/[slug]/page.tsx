@@ -230,6 +230,12 @@ const portfolioItems: PortfolioItem[] = [
   }
 ];
 
+export async function generateStaticParams() {
+  return portfolioItems.map((item) => ({
+    slug: item.slug,
+  }));
+}
+
 export default function PortfolioItem({ params }: { params: { slug: string } }) {
   const currentIndex = portfolioItems.findIndex(item => item.slug === params.slug);
   const item = portfolioItems[currentIndex];
