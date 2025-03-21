@@ -45,6 +45,12 @@ const eventData: Record<string, EventData> = {
   }
 };
 
+export async function generateStaticParams() {
+  return Object.keys(eventData).map((event) => ({
+    event,
+  }));
+}
+
 export default function EventGallery({ params }: { params: { event: string } }) {
   const event = eventData[params.event];
 
