@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002Fimages\u002Flacrosse\u002F[event]","\u002Fportfolio\u002F[slug]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()
