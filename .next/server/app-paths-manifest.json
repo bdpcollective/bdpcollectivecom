@@ -1,9 +1,7 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/contact/page": "app/contact/page.js",
-  "/page": "app/page.js",
+  "/images/page": "app/images/page.js",
   "/images/events/20100616_NationalSpecialOlympics/page": "app/images/events/20100616_NationalSpecialOlympics/page.js",
   "/portfolio/page": "app/portfolio/page.js",
-  "/data-visualization/page": "app/data-visualization/page.js",
-  "/images/page": "app/images/page.js"
+  "/data-visualization/nebraska-football/page": "app/data-visualization/nebraska-football/page.js",
+  "/data-visualization/page": "app/data-visualization/page.js"
 }

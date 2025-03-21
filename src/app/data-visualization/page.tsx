@@ -63,12 +63,11 @@ export default function DataVisualization() {
           {/* Nebraska Football */}
           <Link href="/data-visualization/nebraska-football" className="group h-full">
             <div className="relative overflow-hidden rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md h-full flex flex-col">
-              <div className="aspect-w-16 aspect-h-9 mb-4 overflow-hidden rounded-lg">
+              <div className="relative h-[300px] mb-4 overflow-hidden rounded-lg">
                 <Image
-                  src="/images/nu/football.jpg"
+                  src="/images/nu/football.png"
                   alt="Nebraska Football"
-                  width={800}
-                  height={450}
+                  fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
@@ -80,12 +79,11 @@ export default function DataVisualization() {
           {/* Poverty Levels */}
           <Link href="/data-visualization/poverty-levels" className="group h-full">
             <div className="relative overflow-hidden rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md h-full flex flex-col">
-              <div className="aspect-w-16 aspect-h-9 mb-4 overflow-hidden rounded-lg">
+              <div className="relative h-[300px] mb-4 overflow-hidden rounded-lg">
                 <Image
                   src="/images/poverty/poverty-map.png"
                   alt="Poverty Levels by County"
-                  width={800}
-                  height={450}
+                  fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
@@ -96,12 +94,11 @@ export default function DataVisualization() {
 
           <Link href="/data-visualization/basketball-cluster" className="group h-full">
             <div className="relative overflow-hidden rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md h-full flex flex-col">
-              <div className="aspect-w-16 aspect-h-9 mb-4 overflow-hidden rounded-lg">
+              <div className="relative h-[300px] mb-4 overflow-hidden rounded-lg">
                 <Image
                   src="/images/ncaa/ncaa-tree.png"
                   alt="Basketball Collapsible Tree"
-                  width={800}
-                  height={450}
+                  fill
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
