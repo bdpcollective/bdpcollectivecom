@@ -1,0 +1,296 @@
+Chart,Sport,League,Division,Conference,School
+Sports,Basketball,NCAA,Division II,CACC,Bloomfield
+Sports,Basketball,NCAA,Division II,CACC,Bridgeport
+Sports,Basketball,NCAA,Division II,CACC,Caldwell
+Sports,Basketball,NCAA,Division II,CACC,Chestnut Hill
+Sports,Basketball,NCAA,Division II,CACC,Dominican (NY)
+Sports,Basketball,NCAA,Division II,CACC,Felician
+Sports,Basketball,NCAA,Division II,CACC,Georgian Court
+Sports,Basketball,NCAA,Division II,CACC,Goldey–Beacom
+Sports,Basketball,NCAA,Division II,CACC,Holy Family
+Sports,Basketball,NCAA,Division II,CACC,Jefferson (Thomas Jefferson)
+Sports,Basketball,NCAA,Division II,CACC,Post
+Sports,Basketball,NCAA,Division II,CACC,Wilmington
+Sports,Basketball,NCAA,Division II,Carolinas,Barton
+Sports,Basketball,NCAA,Division II,Carolinas,Belmont Abbey
+Sports,Basketball,NCAA,Division II,Carolinas,Chowan
+Sports,Basketball,NCAA,Division II,Carolinas,Converse
+Sports,Basketball,NCAA,Division II,Carolinas,Emmanuel
+Sports,Basketball,NCAA,Division II,Carolinas,Erskine
+Sports,Basketball,NCAA,Division II,Carolinas,Francis Marion
+Sports,Basketball,NCAA,Division II,Carolinas,King
+Sports,Basketball,NCAA,Division II,Carolinas,Lees–McRae
+Sports,Basketball,NCAA,Division II,Carolinas,Mount Olive
+Sports,Basketball,NCAA,Division II,Carolinas,North Greenville
+Sports,Basketball,NCAA,Division II,Carolinas,Shorter
+Sports,Basketball,NCAA,Division II,Carolinas,Southern Wesleyan
+Sports,Basketball,NCAA,Division II,Carolinas,UNC Pembroke
+Sports,Basketball,NCAA,Division II,Carolinas,Young Harris
+Sports,Basketball,NCAA,Division II,CCAA,Cal Poly Humboldt
+Sports,Basketball,NCAA,Division II,CCAA,Cal Poly Pomona
+Sports,Basketball,NCAA,Division II,CCAA,Cal State Dominguez Hills
+Sports,Basketball,NCAA,Division II,CCAA,Cal State East Bay
+Sports,Basketball,NCAA,Division II,CCAA,Cal State Los Angeles
+Sports,Basketball,NCAA,Division II,CCAA,Cal State Monterey Bay
+Sports,Basketball,NCAA,Division II,CCAA,Cal State San Bernardino
+Sports,Basketball,NCAA,Division II,CCAA,Cal State San Marcos
+Sports,Basketball,NCAA,Division II,CCAA,Cal State Stanislaus
+Sports,Basketball,NCAA,Division II,CCAA,Chico State
+Sports,Basketball,NCAA,Division II,CCAA,San Francisco State
+Sports,Basketball,NCAA,Division II,CCAA,Sonoma State
+Sports,Basketball,NCAA,Division II,CIAA,Bluefield State
+Sports,Basketball,NCAA,Division II,CIAA,Bowie State
+Sports,Basketball,NCAA,Division II,CIAA,Claflin
+Sports,Basketball,NCAA,Division II,CIAA,Elizabeth City State
+Sports,Basketball,NCAA,Division II,CIAA,Fayetteville State
+Sports,Basketball,NCAA,Division II,CIAA,Johnson C. Smith
+Sports,Basketball,NCAA,Division II,CIAA,Lincoln (PA)
+Sports,Basketball,NCAA,Division II,CIAA,Livingstone
+Sports,Basketball,NCAA,Division II,CIAA,Saint Augustine's
+Sports,Basketball,NCAA,Division II,CIAA,Shaw
+Sports,Basketball,NCAA,Division II,CIAA,Virginia State
+Sports,Basketball,NCAA,Division II,CIAA,Virginia Union
+Sports,Basketball,NCAA,Division II,CIAA,Winston-Salem State
+Sports,Basketball,NCAA,Division II,ECC,D'Youville
+Sports,Basketball,NCAA,Division II,ECC,Daemen
+Sports,Basketball,NCAA,Division II,ECC,Mercy
+Sports,Basketball,NCAA,Division II,ECC,Molloy
+Sports,Basketball,NCAA,Division II,ECC,Queens (NY)
+Sports,Basketball,NCAA,Division II,ECC,Roberts Wesleyan
+Sports,Basketball,NCAA,Division II,ECC,St. Thomas Aquinas
+Sports,Basketball,NCAA,Division II,ECC,Staten Island
+Sports,Basketball,NCAA,Division II,ECC,UDC
+Sports,Basketball,NCAA,Division II,G-MAC,Ashland
+Sports,Basketball,NCAA,Division II,G-MAC,Cedarville
+Sports,Basketball,NCAA,Division II,G-MAC,Findlay
+Sports,Basketball,NCAA,Division II,G-MAC,Hillsdale
+Sports,Basketball,NCAA,Division II,G-MAC,Kentucky Wesleyan
+Sports,Basketball,NCAA,Division II,G-MAC,Lake Erie
+Sports,Basketball,NCAA,Division II,G-MAC,Malone
+Sports,Basketball,NCAA,Division II,G-MAC,Northwood
+Sports,Basketball,NCAA,Division II,G-MAC,Ohio Dominican
+Sports,Basketball,NCAA,Division II,G-MAC,Thomas More
+Sports,Basketball,NCAA,Division II,G-MAC,Tiffin
+Sports,Basketball,NCAA,Division II,G-MAC,Walsh
+Sports,Basketball,NCAA,Division II,GAC,Arkansas–Monticello
+Sports,Basketball,NCAA,Division II,GAC,Arkansas Tech
+Sports,Basketball,NCAA,Division II,GAC,East Central
+Sports,Basketball,NCAA,Division II,GAC,Harding
+Sports,Basketball,NCAA,Division II,GAC,Henderson State
+Sports,Basketball,NCAA,Division II,GAC,Northwestern Oklahoma State
+Sports,Basketball,NCAA,Division II,GAC,Oklahoma Baptist
+Sports,Basketball,NCAA,Division II,GAC,Ouachita Baptist
+Sports,Basketball,NCAA,Division II,GAC,Southeastern Oklahoma State
+Sports,Basketball,NCAA,Division II,GAC,Southern Arkansas
+Sports,Basketball,NCAA,Division II,GAC,Southern Nazarene
+Sports,Basketball,NCAA,Division II,GAC,Southwestern Oklahoma State
+Sports,Basketball,NCAA,Division II,GLIAC,Davenport
+Sports,Basketball,NCAA,Division II,GLIAC,Ferris State
+Sports,Basketball,NCAA,Division II,GLIAC,Grand Valley State
+Sports,Basketball,NCAA,Division II,GLIAC,Lake Superior State
+Sports,Basketball,NCAA,Division II,GLIAC,Michigan Tech
+Sports,Basketball,NCAA,Division II,GLIAC,Northern Michigan
+Sports,Basketball,NCAA,Division II,GLIAC,Parkside (Wisconsin–Parkside)
+Sports,Basketball,NCAA,Division II,GLIAC,Purdue Northwest
+Sports,Basketball,NCAA,Division II,GLIAC,Roosevelt
+Sports,Basketball,NCAA,Division II,GLIAC,Saginaw Valley State
+Sports,Basketball,NCAA,Division II,GLIAC,Wayne State (MI)
+Sports,Basketball,NCAA,Division II,GLVC,Drury
+Sports,Basketball,NCAA,Division II,GLVC,Illinois–Springfield
+Sports,Basketball,NCAA,Division II,GLVC,Indianapolis
+Sports,Basketball,NCAA,Division II,GLVC,Lewis
+Sports,Basketball,NCAA,Division II,GLVC,Lincoln (MO)
+Sports,Basketball,NCAA,Division II,GLVC,Maryville
+Sports,Basketball,NCAA,Division II,GLVC,McKendree
+Sports,Basketball,NCAA,Division II,GLVC,Missouri S&T
+Sports,Basketball,NCAA,Division II,GLVC,Quincy
+Sports,Basketball,NCAA,Division II,GLVC,Rockhurst
+Sports,Basketball,NCAA,Division II,GLVC,Southwest Baptist
+Sports,Basketball,NCAA,Division II,GLVC,Truman State
+Sports,Basketball,NCAA,Division II,GLVC,UMSL (Missouri–St. Louis)
+Sports,Basketball,NCAA,Division II,GLVC,Upper Iowa
+Sports,Basketball,NCAA,Division II,GLVC,William Jewell
+Sports,Basketball,NCAA,Division II,GNAC,Alaska Anchorage
+Sports,Basketball,NCAA,Division II,GNAC,Alaska Fairbanks
+Sports,Basketball,NCAA,Division II,GNAC,Central Washington
+Sports,Basketball,NCAA,Division II,GNAC,Montana State–Billings
+Sports,Basketball,NCAA,Division II,GNAC,Northwest Nazarene
+Sports,Basketball,NCAA,Division II,GNAC,Saint Martin's
+Sports,Basketball,NCAA,Division II,GNAC,Seattle Pacific
+Sports,Basketball,NCAA,Division II,GNAC,Simon Fraser University
+Sports,Basketball,NCAA,Division II,GNAC,Western Oregon
+Sports,Basketball,NCAA,Division II,GNAC,Western Washington
+Sports,Basketball,NCAA,Division II,GSC,Alabama–Huntsville
+Sports,Basketball,NCAA,Division II,GSC,Auburn Montgomery
+Sports,Basketball,NCAA,Division II,GSC,Christian Brothers
+Sports,Basketball,NCAA,Division II,GSC,Delta State
+Sports,Basketball,NCAA,Division II,GSC,Lee
+Sports,Basketball,NCAA,Division II,GSC,Mississippi College
+Sports,Basketball,NCAA,Division II,GSC,Montevallo
+Sports,Basketball,NCAA,Division II,GSC,Trevecca Nazarene
+Sports,Basketball,NCAA,Division II,GSC,Union
+Sports,Basketball,NCAA,Division II,GSC,Valdosta State
+Sports,Basketball,NCAA,Division II,GSC,West Alabama
+Sports,Basketball,NCAA,Division II,GSC,West Florida
+Sports,Basketball,NCAA,Division II,Independent,Salem
+Sports,Basketball,NCAA,Division II,LSC,Angelo State
+Sports,Basketball,NCAA,Division II,LSC,Cameron
+Sports,Basketball,NCAA,Division II,LSC,Dallas Baptist
+Sports,Basketball,NCAA,Division II,LSC,Eastern New Mexico
+Sports,Basketball,NCAA,Division II,LSC,Lubbock Christian
+Sports,Basketball,NCAA,Division II,LSC,Midwestern State
+Sports,Basketball,NCAA,Division II,LSC,Oklahoma Christian
+Sports,Basketball,NCAA,Division II,LSC,St. Edward's
+Sports,Basketball,NCAA,Division II,LSC,St. Mary's (TX)
+Sports,Basketball,NCAA,Division II,LSC,Sul Ross State
+Sports,Basketball,NCAA,Division II,LSC,Texas A&M International
+Sports,Basketball,NCAA,Division II,LSC,Texas A&M–Kingsville
+Sports,Basketball,NCAA,Division II,LSC,UT Permian Basin
+Sports,Basketball,NCAA,Division II,LSC,West Texas A&M
+Sports,Basketball,NCAA,Division II,LSC,Western New Mexico
+Sports,Basketball,NCAA,Division II,MEC,Charleston
+Sports,Basketball,NCAA,Division II,MEC,Concord
+Sports,Basketball,NCAA,Division II,MEC,Davis & Elkins
+Sports,Basketball,NCAA,Division II,MEC,Fairmont State
+Sports,Basketball,NCAA,Division II,MEC,Frostburg State
+Sports,Basketball,NCAA,Division II,MEC,Glenville State
+Sports,Basketball,NCAA,Division II,MEC,Point Park
+Sports,Basketball,NCAA,Division II,MEC,West Liberty
+Sports,Basketball,NCAA,Division II,MEC,West Virginia State
+Sports,Basketball,NCAA,Division II,MEC,West Virginia Wesleyan
+Sports,Basketball,NCAA,Division II,MEC,Wheeling
+Sports,Basketball,NCAA,Division II,MIAA,Arkansas–Fort Smith
+Sports,Basketball,NCAA,Division II,MIAA,Central Missouri
+Sports,Basketball,NCAA,Division II,MIAA,Central Oklahoma
+Sports,Basketball,NCAA,Division II,MIAA,Emporia State
+Sports,Basketball,NCAA,Division II,MIAA,Fort Hays State
+Sports,Basketball,NCAA,Division II,MIAA,Missouri Southern
+Sports,Basketball,NCAA,Division II,MIAA,Missouri Western
+Sports,Basketball,NCAA,Division II,MIAA,Nebraska–Kearney
+Sports,Basketball,NCAA,Division II,MIAA,Newman
+Sports,Basketball,NCAA,Division II,MIAA,Northeastern State
+Sports,Basketball,NCAA,Division II,MIAA,Northwest Missouri State
+Sports,Basketball,NCAA,Division II,MIAA,Pittsburg State
+Sports,Basketball,NCAA,Division II,MIAA,Rogers State
+Sports,Basketball,NCAA,Division II,MIAA,Washburn
+Sports,Basketball,NCAA,Division II,NE-10,Adelphi
+Sports,Basketball,NCAA,Division II,NE-10,American International
+Sports,Basketball,NCAA,Division II,NE-10,Assumption
+Sports,Basketball,NCAA,Division II,NE-10,Bentley
+Sports,Basketball,NCAA,Division II,NE-10,Franklin Pierce
+Sports,Basketball,NCAA,Division II,NE-10,New Haven
+Sports,Basketball,NCAA,Division II,NE-10,Pace
+Sports,Basketball,NCAA,Division II,NE-10,Saint Anselm
+Sports,Basketball,NCAA,Division II,NE-10,Saint Michael's
+Sports,Basketball,NCAA,Division II,NE-10,Southern Connecticut
+Sports,Basketball,NCAA,Division II,NE-10,Southern New Hampshire
+Sports,Basketball,NCAA,Division II,NSIC,Augustana
+Sports,Basketball,NCAA,Division II,NSIC,Bemidji State
+Sports,Basketball,NCAA,Division II,NSIC,Concordia–St. Paul
+Sports,Basketball,NCAA,Division II,NSIC,Mary
+Sports,Basketball,NCAA,Division II,NSIC,Minnesota–Crookston
+Sports,Basketball,NCAA,Division II,NSIC,Minnesota–Duluth
+Sports,Basketball,NCAA,Division II,NSIC,Minnesota State
+Sports,Basketball,NCAA,Division II,NSIC,Minnesota State–Moorhead
+Sports,Basketball,NCAA,Division II,NSIC,Minot State
+Sports,Basketball,NCAA,Division II,NSIC,Northern State
+Sports,Basketball,NCAA,Division II,NSIC,Sioux Falls
+Sports,Basketball,NCAA,Division II,NSIC,Southwest Minnesota State
+Sports,Basketball,NCAA,Division II,NSIC,St. Cloud State
+Sports,Basketball,NCAA,Division II,NSIC,Wayne State (NE)
+Sports,Basketball,NCAA,Division II,NSIC,Winona State
+Sports,Basketball,NCAA,Division II,PacWest,Academy of Art
+Sports,Basketball,NCAA,Division II,PacWest,Azusa Pacific
+Sports,Basketball,NCAA,Division II,PacWest,Biola
+Sports,Basketball,NCAA,Division II,PacWest,Chaminade
+Sports,Basketball,NCAA,Division II,PacWest,Concordia–Irvine
+Sports,Basketball,NCAA,Division II,PacWest,Dominican (CA)
+Sports,Basketball,NCAA,Division II,PacWest,Fresno Pacific
+Sports,Basketball,NCAA,Division II,PacWest,Hawaiʻi–Hilo
+Sports,Basketball,NCAA,Division II,PacWest,Hawaii Pacific
+Sports,Basketball,NCAA,Division II,PacWest,Jessup
+Sports,Basketball,NCAA,Division II,PacWest,Menlo
+Sports,Basketball,NCAA,Division II,PacWest,Point Loma Nazarene
+Sports,Basketball,NCAA,Division II,PacWest,Vanguard
+Sports,Basketball,NCAA,Division II,PacWest,Westmont
+Sports,Basketball,NCAA,Division II,PBC,Augusta
+Sports,Basketball,NCAA,Division II,PBC,Clayton State
+Sports,Basketball,NCAA,Division II,PBC,Columbus State
+Sports,Basketball,NCAA,Division II,PBC,Flagler
+Sports,Basketball,NCAA,Division II,PBC,Georgia College
+Sports,Basketball,NCAA,Division II,PBC,Georgia Southwestern State
+Sports,Basketball,NCAA,Division II,PBC,Lander
+Sports,Basketball,NCAA,Division II,PBC,North Georgia
+Sports,Basketball,NCAA,Division II,PBC,USC Aiken
+Sports,Basketball,NCAA,Division II,PBC,USC Beaufort
+Sports,Basketball,NCAA,Division II,PSAC,Bloomsburg
+Sports,Basketball,NCAA,Division II,PSAC,California (PA)
+Sports,Basketball,NCAA,Division II,PSAC,Clarion
+Sports,Basketball,NCAA,Division II,PSAC,East Stroudsburg
+Sports,Basketball,NCAA,Division II,PSAC,Edinboro
+Sports,Basketball,NCAA,Division II,PSAC,Gannon
+Sports,Basketball,NCAA,Division II,PSAC,Indiana (PA)
+Sports,Basketball,NCAA,Division II,PSAC,Kutztown
+Sports,Basketball,NCAA,Division II,PSAC,Lock Haven
+Sports,Basketball,NCAA,Division II,PSAC,Mansfield
+Sports,Basketball,NCAA,Division II,PSAC,Millersville
+Sports,Basketball,NCAA,Division II,PSAC,Pittsburgh–Johnstown
+Sports,Basketball,NCAA,Division II,PSAC,Seton Hill
+Sports,Basketball,NCAA,Division II,PSAC,Shepherd
+Sports,Basketball,NCAA,Division II,PSAC,Shippensburg
+Sports,Basketball,NCAA,Division II,PSAC,Slippery Rock
+Sports,Basketball,NCAA,Division II,PSAC,West Chester
+Sports,Basketball,NCAA,Division II,RMAC,Adams State
+Sports,Basketball,NCAA,Division II,RMAC,Black Hills State
+Sports,Basketball,NCAA,Division II,RMAC,Chadron State
+Sports,Basketball,NCAA,Division II,RMAC,Colorado Christian
+Sports,Basketball,NCAA,Division II,RMAC,Colorado Mesa
+Sports,Basketball,NCAA,Division II,RMAC,Colorado Mines
+Sports,Basketball,NCAA,Division II,RMAC,CSU Pueblo
+Sports,Basketball,NCAA,Division II,RMAC,Fort Lewis
+Sports,Basketball,NCAA,Division II,RMAC,Metropolitan State
+Sports,Basketball,NCAA,Division II,RMAC,New Mexico Highlands
+Sports,Basketball,NCAA,Division II,RMAC,Regis
+Sports,Basketball,NCAA,Division II,RMAC,South Dakota Mines
+Sports,Basketball,NCAA,Division II,RMAC,UCCS (UC Colorado Springs)
+Sports,Basketball,NCAA,Division II,RMAC,Western Colorado
+Sports,Basketball,NCAA,Division II,RMAC,Westminster
+Sports,Basketball,NCAA,Division II,SAC,Anderson
+Sports,Basketball,NCAA,Division II,SAC,Carson–Newman
+Sports,Basketball,NCAA,Division II,SAC,Catawba
+Sports,Basketball,NCAA,Division II,SAC,Coker
+Sports,Basketball,NCAA,Division II,SAC,Emory & Henry
+Sports,Basketball,NCAA,Division II,SAC,Lenoir–Rhyne
+Sports,Basketball,NCAA,Division II,SAC,Limestone
+Sports,Basketball,NCAA,Division II,SAC,Lincoln Memorial
+Sports,Basketball,NCAA,Division II,SAC,Mars Hill
+Sports,Basketball,NCAA,Division II,SAC,Newberry
+Sports,Basketball,NCAA,Division II,SAC,Tusculum
+Sports,Basketball,NCAA,Division II,SAC,UVA Wise
+Sports,Basketball,NCAA,Division II,SAC,Wingate
+Sports,Basketball,NCAA,Division II,SIAC,Albany State
+Sports,Basketball,NCAA,Division II,SIAC,Allen
+Sports,Basketball,NCAA,Division II,SIAC,Benedict
+Sports,Basketball,NCAA,Division II,SIAC,Central State
+Sports,Basketball,NCAA,Division II,SIAC,Clark Atlanta
+Sports,Basketball,NCAA,Division II,SIAC,Edward Waters
+Sports,Basketball,NCAA,Division II,SIAC,Fort Valley State
+Sports,Basketball,NCAA,Division II,SIAC,Kentucky State
+Sports,Basketball,NCAA,Division II,SIAC,Lane
+Sports,Basketball,NCAA,Division II,SIAC,LeMoyne–Owen
+Sports,Basketball,NCAA,Division II,SIAC,Miles
+Sports,Basketball,NCAA,Division II,SIAC,Morehouse
+Sports,Basketball,NCAA,Division II,SIAC,Savannah State
+Sports,Basketball,NCAA,Division II,SIAC,Spring Hill
+Sports,Basketball,NCAA,Division II,SIAC,Tuskegee
+Sports,Basketball,NCAA,Division II,Sunshine State,Barry
+Sports,Basketball,NCAA,Division II,Sunshine State,Eckerd
+Sports,Basketball,NCAA,Division II,Sunshine State,Embry–Riddle
+Sports,Basketball,NCAA,Division II,Sunshine State,Florida Southern
+Sports,Basketball,NCAA,Division II,Sunshine State,Florida Tech
+Sports,Basketball,NCAA,Division II,Sunshine State,Lynn
+Sports,Basketball,NCAA,Division II,Sunshine State,Nova Southeastern
+Sports,Basketball,NCAA,Division II,Sunshine State,Palm Beach Atlantic
+Sports,Basketball,NCAA,Division II,Sunshine State,Rollins
+Sports,Basketball,NCAA,Division II,Sunshine State,Saint Leo
+Sports,Basketball,NCAA,Division II,Sunshine State,Tampa

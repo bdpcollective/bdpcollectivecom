@@ -1,0 +1,345 @@
+{
+  "name": "Teams",
+  "children": [
+    {
+      "name": "Eastern Conference",
+      "children": [
+        {
+          "name": "Atlantic",
+          "children": [
+            {
+              "name": "Boston Celtics",
+              "metrics": {
+                "points": 118.2,
+                "rebounds": 46.3,
+                "assists": 26.8,
+                "steals": 7.2,
+                "blocks": 5.8
+              }
+            },
+            {
+              "name": "Brooklyn Nets",
+              "metrics": {
+                "points": 114.5,
+                "rebounds": 44.2,
+                "assists": 24.5,
+                "steals": 6.8,
+                "blocks": 4.9
+              }
+            },
+            {
+              "name": "New York Knicks",
+              "metrics": {
+                "points": 113.8,
+                "rebounds": 45.7,
+                "assists": 23.9,
+                "steals": 7.1,
+                "blocks": 4.7
+              }
+            },
+            {
+              "name": "Philadelphia 76ers",
+              "metrics": {
+                "points": 116.4,
+                "rebounds": 43.8,
+                "assists": 25.2,
+                "steals": 7.5,
+                "blocks": 5.2
+              }
+            },
+            {
+              "name": "Toronto Raptors",
+              "metrics": {
+                "points": 112.9,
+                "rebounds": 42.9,
+                "assists": 24.8,
+                "steals": 7.3,
+                "blocks": 4.5
+              }
+            }
+          ]
+        },
+        {
+          "name": "Central",
+          "children": [
+            {
+              "name": "Chicago Bulls",
+              "metrics": {
+                "points": 113.2,
+                "rebounds": 44.5,
+                "assists": 24.1,
+                "steals": 7.0,
+                "blocks": 4.8
+              }
+            },
+            {
+              "name": "Cleveland Cavaliers",
+              "metrics": {
+                "points": 115.7,
+                "rebounds": 45.1,
+                "assists": 25.5,
+                "steals": 7.4,
+                "blocks": 5.1
+              }
+            },
+            {
+              "name": "Detroit Pistons",
+              "metrics": {
+                "points": 111.8,
+                "rebounds": 43.2,
+                "assists": 23.7,
+                "steals": 6.9,
+                "blocks": 4.3
+              }
+            },
+            {
+              "name": "Indiana Pacers",
+              "metrics": {
+                "points": 117.5,
+                "rebounds": 44.8,
+                "assists": 26.9,
+                "steals": 7.6,
+                "blocks": 4.6
+              }
+            },
+            {
+              "name": "Milwaukee Bucks",
+              "metrics": {
+                "points": 119.3,
+                "rebounds": 46.8,
+                "assists": 27.2,
+                "steals": 7.8,
+                "blocks": 5.9
+              }
+            }
+          ]
+        },
+        {
+          "name": "Southeast",
+          "children": [
+            {
+              "name": "Atlanta Hawks",
+              "metrics": {
+                "points": 114.8,
+                "rebounds": 44.3,
+                "assists": 25.1,
+                "steals": 7.2,
+                "blocks": 4.7
+              }
+            },
+            {
+              "name": "Charlotte Hornets",
+              "metrics": {
+                "points": 112.5,
+                "rebounds": 43.5,
+                "assists": 24.3,
+                "steals": 6.7,
+                "blocks": 4.4
+              }
+            },
+            {
+              "name": "Miami Heat",
+              "metrics": {
+                "points": 115.2,
+                "rebounds": 44.6,
+                "assists": 25.4,
+                "steals": 7.3,
+                "blocks": 5.0
+              }
+            },
+            {
+              "name": "Orlando Magic",
+              "metrics": {
+                "points": 113.5,
+                "rebounds": 44.0,
+                "assists": 24.6,
+                "steals": 7.1,
+                "blocks": 4.8
+              }
+            },
+            {
+              "name": "Washington Wizards",
+              "metrics": {
+                "points": 112.7,
+                "rebounds": 43.8,
+                "assists": 24.2,
+                "steals": 6.8,
+                "blocks": 4.5
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Western Conference",
+      "children": [
+        {
+          "name": "Northwest",
+          "children": [
+            {
+              "name": "Denver Nuggets",
+              "metrics": {
+                "points": 118.5,
+                "rebounds": 46.2,
+                "assists": 26.7,
+                "steals": 7.3,
+                "blocks": 5.7
+              }
+            },
+            {
+              "name": "Minnesota Timberwolves",
+              "metrics": {
+                "points": 115.8,
+                "rebounds": 45.3,
+                "assists": 25.3,
+                "steals": 7.2,
+                "blocks": 5.2
+              }
+            },
+            {
+              "name": "Oklahoma City Thunder",
+              "metrics": {
+                "points": 117.2,
+                "rebounds": 45.6,
+                "assists": 26.1,
+                "steals": 7.5,
+                "blocks": 5.4
+              }
+            },
+            {
+              "name": "Portland Trail Blazers",
+              "metrics": {
+                "points": 113.9,
+                "rebounds": 44.1,
+                "assists": 24.7,
+                "steals": 7.0,
+                "blocks": 4.6
+              }
+            },
+            {
+              "name": "Utah Jazz",
+              "metrics": {
+                "points": 114.7,
+                "rebounds": 44.4,
+                "assists": 25.0,
+                "steals": 7.1,
+                "blocks": 4.9
+              }
+            }
+          ]
+        },
+        {
+          "name": "Pacific",
+          "children": [
+            {
+              "name": "Golden State Warriors",
+              "metrics": {
+                "points": 118.8,
+                "rebounds": 46.5,
+                "assists": 27.0,
+                "steals": 7.6,
+                "blocks": 5.8
+              }
+            },
+            {
+              "name": "LA Clippers",
+              "metrics": {
+                "points": 116.9,
+                "rebounds": 45.4,
+                "assists": 25.8,
+                "steals": 7.4,
+                "blocks": 5.3
+              }
+            },
+            {
+              "name": "Los Angeles Lakers",
+              "metrics": {
+                "points": 117.5,
+                "rebounds": 45.7,
+                "assists": 26.2,
+                "steals": 7.5,
+                "blocks": 5.5
+              }
+            },
+            {
+              "name": "Phoenix Suns",
+              "metrics": {
+                "points": 116.2,
+                "rebounds": 45.2,
+                "assists": 25.6,
+                "steals": 7.3,
+                "blocks": 5.1
+              }
+            },
+            {
+              "name": "Sacramento Kings",
+              "metrics": {
+                "points": 115.9,
+                "rebounds": 45.0,
+                "assists": 25.4,
+                "steals": 7.2,
+                "blocks": 5.0
+              }
+            }
+          ]
+        },
+        {
+          "name": "Southwest",
+          "children": [
+            {
+              "name": "Dallas Mavericks",
+              "metrics": {
+                "points": 117.8,
+                "rebounds": 45.8,
+                "assists": 26.4,
+                "steals": 7.6,
+                "blocks": 5.6
+              }
+            },
+            {
+              "name": "Houston Rockets",
+              "metrics": {
+                "points": 113.6,
+                "rebounds": 44.0,
+                "assists": 24.5,
+                "steals": 7.0,
+                "blocks": 4.7
+              }
+            },
+            {
+              "name": "Memphis Grizzlies",
+              "metrics": {
+                "points": 115.5,
+                "rebounds": 45.1,
+                "assists": 25.2,
+                "steals": 7.3,
+                "blocks": 5.1
+              }
+            },
+            {
+              "name": "New Orleans Pelicans",
+              "metrics": {
+                "points": 114.9,
+                "rebounds": 44.7,
+                "assists": 25.0,
+                "steals": 7.2,
+                "blocks": 4.9
+              }
+            },
+            {
+              "name": "San Antonio Spurs",
+              "metrics": {
+                "points": 112.8,
+                "rebounds": 43.7,
+                "assists": 24.1,
+                "steals": 6.8,
+                "blocks": 4.4
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+} 

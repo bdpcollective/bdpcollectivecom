@@ -1,0 +1,365 @@
+Chart,Sport,League,Division,Conference,School
+Sports,Basketball,NCAA,Division I,A-10,Davidson College
+Sports,Basketball,NCAA,Division I,A-10,University of Dayton
+Sports,Basketball,NCAA,Division I,A-10,Duquesne University
+Sports,Basketball,NCAA,Division I,A-10,Fordham University
+Sports,Basketball,NCAA,Division I,A-10,George Mason University
+Sports,Basketball,NCAA,Division I,A-10,George Washington University (GW)
+Sports,Basketball,NCAA,Division I,A-10,La Salle University
+Sports,Basketball,NCAA,Division I,A-10,Loyola University Chicago (Loyola Chicago)
+Sports,Basketball,NCAA,Division I,A-10,University of Massachusetts Amherst (UMass)
+Sports,Basketball,NCAA,Division I,A-10,University of Rhode Island
+Sports,Basketball,NCAA,Division I,A-10,University of Richmond
+Sports,Basketball,NCAA,Division I,A-10,St. Bonaventure University
+Sports,Basketball,NCAA,Division I,A-10,Saint Joseph's University (Saint Joe's)
+Sports,Basketball,NCAA,Division I,A-10,Saint Louis University (SLU)
+Sports,Basketball,NCAA,Division I,A-10,Virginia Commonwealth University (VCU)
+Sports,Basketball,NCAA,Division I,ACC,Boston College (BC)
+Sports,Basketball,NCAA,Division I,ACC,"University of California, Berkeley (California, Cal)"
+Sports,Basketball,NCAA,Division I,ACC,Clemson University
+Sports,Basketball,NCAA,Division I,ACC,Duke University
+Sports,Basketball,NCAA,Division I,ACC,Florida State University (FSU)
+Sports,Basketball,NCAA,Division I,ACC,Georgia Institute of Technology (Georgia Tech)
+Sports,Basketball,NCAA,Division I,ACC,University of Louisville
+Sports,Basketball,NCAA,Division I,ACC,University of Miami (often Miami (FL) or UM)
+Sports,Basketball,NCAA,Division I,ACC,"University of North Carolina at Chapel Hill (North Carolina, UNC)"
+Sports,Basketball,NCAA,Division I,ACC,North Carolina State University (NC State)
+Sports,Basketball,NCAA,Division I,ACC,University of Notre Dame
+Sports,Basketball,NCAA,Division I,ACC,University of Pittsburgh (Pitt)
+Sports,Basketball,NCAA,Division I,ACC,Southern Methodist University (SMU)
+Sports,Basketball,NCAA,Division I,ACC,Stanford University
+Sports,Basketball,NCAA,Division I,ACC,Syracuse University
+Sports,Basketball,NCAA,Division I,ACC,University of Virginia (UVA)
+Sports,Basketball,NCAA,Division I,ACC,Virginia Polytechnic Institute and State University (Virginia Tech)
+Sports,Basketball,NCAA,Division I,ACC,Wake Forest University
+Sports,Basketball,NCAA,Division I,America East,"University at Albany, SUNY (Albany or UAlbany)"
+Sports,Basketball,NCAA,Division I,America East,Binghamton University
+Sports,Basketball,NCAA,Division I,America East,Bryant University
+Sports,Basketball,NCAA,Division I,America East,University of Maine (UMaine)
+Sports,Basketball,NCAA,Division I,America East,"University of Maryland, Baltimore County (UMBC)"
+Sports,Basketball,NCAA,Division I,America East,University of Massachusetts Lowell (UMass Lowell)
+Sports,Basketball,NCAA,Division I,America East,University of New Hampshire
+Sports,Basketball,NCAA,Division I,America East,New Jersey Institute of Technology (NJIT)
+Sports,Basketball,NCAA,Division I,America East,University of Vermont
+Sports,Basketball,NCAA,Division I,The American,University of North Carolina at Charlotte (Charlotte)
+Sports,Basketball,NCAA,Division I,The American,East Carolina University (ECU)
+Sports,Basketball,NCAA,Division I,The American,Florida Atlantic University (FAU)
+Sports,Basketball,NCAA,Division I,The American,University of Memphis (U of M)
+Sports,Basketball,NCAA,Division I,The American,University of North Texas (UNT)
+Sports,Basketball,NCAA,Division I,The American,Rice University
+Sports,Basketball,NCAA,Division I,The American,University of South Florida (USF)
+Sports,Basketball,NCAA,Division I,The American,Temple University
+Sports,Basketball,NCAA,Division I,The American,University of Alabama at Birmingham (UAB)
+Sports,Basketball,NCAA,Division I,The American,University of Texas at San Antonio (UTSA)
+Sports,Basketball,NCAA,Division I,The American,Tulane University
+Sports,Basketball,NCAA,Division I,The American,University of Tulsa
+Sports,Basketball,NCAA,Division I,The American,Wichita State University
+Sports,Basketball,NCAA,Division I,ASUN,Austin Peay State University (Austin Peay)
+Sports,Basketball,NCAA,Division I,ASUN,Bellarmine University
+Sports,Basketball,NCAA,Division I,ASUN,University of Central Arkansas
+Sports,Basketball,NCAA,Division I,ASUN,Eastern Kentucky University
+Sports,Basketball,NCAA,Division I,ASUN,Florida Gulf Coast University (FGCU)
+Sports,Basketball,NCAA,Division I,ASUN,Jacksonville University
+Sports,Basketball,NCAA,Division I,ASUN,Lipscomb University
+Sports,Basketball,NCAA,Division I,ASUN,University of North Alabama
+Sports,Basketball,NCAA,Division I,ASUN,University of North Florida
+Sports,Basketball,NCAA,Division I,ASUN,Queens University of Charlotte[a]
+Sports,Basketball,NCAA,Division I,ASUN,Stetson University
+Sports,Basketball,NCAA,Division I,ASUN,University of West Georgia[b]
+Sports,Basketball,NCAA,Division I,Big 12,University of Arizona
+Sports,Basketball,NCAA,Division I,Big 12,Arizona State University
+Sports,Basketball,NCAA,Division I,Big 12,Baylor University
+Sports,Basketball,NCAA,Division I,Big 12,Brigham Young University (BYU)
+Sports,Basketball,NCAA,Division I,Big 12,University of Central Florida (UCF)
+Sports,Basketball,NCAA,Division I,Big 12,University of Cincinnati (UC)
+Sports,Basketball,NCAA,Division I,Big 12,University of Colorado Boulder (Colorado)
+Sports,Basketball,NCAA,Division I,Big 12,University of Houston
+Sports,Basketball,NCAA,Division I,Big 12,Iowa State University
+Sports,Basketball,NCAA,Division I,Big 12,University of Kansas
+Sports,Basketball,NCAA,Division I,Big 12,Kansas State University
+Sports,Basketball,NCAA,Division I,Big 12,Oklahoma State University–Stillwater (Oklahoma State)
+Sports,Basketball,NCAA,Division I,Big 12,Texas Christian University (TCU)
+Sports,Basketball,NCAA,Division I,Big 12,Texas Tech University
+Sports,Basketball,NCAA,Division I,Big 12,University of Utah
+Sports,Basketball,NCAA,Division I,Big 12,West Virginia University (WVU)
+Sports,Basketball,NCAA,Division I,Big East,Butler University
+Sports,Basketball,NCAA,Division I,Big East,Creighton University
+Sports,Basketball,NCAA,Division I,Big East,DePaul University
+Sports,Basketball,NCAA,Division I,Big East,Georgetown University
+Sports,Basketball,NCAA,Division I,Big East,Marquette University
+Sports,Basketball,NCAA,Division I,Big East,Providence College
+Sports,Basketball,NCAA,Division I,Big East,St. John's University
+Sports,Basketball,NCAA,Division I,Big East,Seton Hall University
+Sports,Basketball,NCAA,Division I,Big East,University of Connecticut (UConn)
+Sports,Basketball,NCAA,Division I,Big East,Villanova University
+Sports,Basketball,NCAA,Division I,Big East,Xavier University
+Sports,Basketball,NCAA,Division I,Big Sky,Eastern Washington University
+Sports,Basketball,NCAA,Division I,Big Sky,University of Idaho
+Sports,Basketball,NCAA,Division I,Big Sky,Idaho State University
+Sports,Basketball,NCAA,Division I,Big Sky,University of Montana
+Sports,Basketball,NCAA,Division I,Big Sky,Montana State University
+Sports,Basketball,NCAA,Division I,Big Sky,Northern Arizona University
+Sports,Basketball,NCAA,Division I,Big Sky,University of Northern Colorado
+Sports,Basketball,NCAA,Division I,Big Sky,Portland State University
+Sports,Basketball,NCAA,Division I,Big Sky,"California State University, Sacramento (Sacramento State)"
+Sports,Basketball,NCAA,Division I,Big Sky,Weber State University
+Sports,Basketball,NCAA,Division I,Big South,Charleston Southern University
+Sports,Basketball,NCAA,Division I,Big South,Gardner–Webb University
+Sports,Basketball,NCAA,Division I,Big South,High Point University
+Sports,Basketball,NCAA,Division I,Big South,Longwood University
+Sports,Basketball,NCAA,Division I,Big South,Presbyterian College
+Sports,Basketball,NCAA,Division I,Big South,Radford University
+Sports,Basketball,NCAA,Division I,Big South,University of North Carolina at Asheville (UNC Asheville)
+Sports,Basketball,NCAA,Division I,Big South,University of South Carolina Upstate (USC Upstate)
+Sports,Basketball,NCAA,Division I,Big South,Winthrop University
+Sports,Basketball,NCAA,Division I,Big Ten,"University of California, Los Angeles (UCLA)"
+Sports,Basketball,NCAA,Division I,Big Ten,"University of Illinois Urbana–Champaign (Illinois, U of I)"
+Sports,Basketball,NCAA,Division I,Big Ten,"Indiana University Bloomington (Indiana, IU)"
+Sports,Basketball,NCAA,Division I,Big Ten,University of Iowa
+Sports,Basketball,NCAA,Division I,Big Ten,"University of Maryland, College Park (Maryland)"
+Sports,Basketball,NCAA,Division I,Big Ten,University of Michigan
+Sports,Basketball,NCAA,Division I,Big Ten,Michigan State University
+Sports,Basketball,NCAA,Division I,Big Ten,University of Minnesota
+Sports,Basketball,NCAA,Division I,Big Ten,University of Nebraska–Lincoln (Nebraska)
+Sports,Basketball,NCAA,Division I,Big Ten,Northwestern University
+Sports,Basketball,NCAA,Division I,Big Ten,Ohio State University
+Sports,Basketball,NCAA,Division I,Big Ten,University of Oregon
+Sports,Basketball,NCAA,Division I,Big Ten,Pennsylvania State University (Penn State)
+Sports,Basketball,NCAA,Division I,Big Ten,Purdue University
+Sports,Basketball,NCAA,Division I,Big Ten,Rutgers University–New Brunswick (Rutgers)
+Sports,Basketball,NCAA,Division I,Big Ten,University of Southern California (USC)
+Sports,Basketball,NCAA,Division I,Big Ten,University of Wisconsin–Madison (Wisconsin)
+Sports,Basketball,NCAA,Division I,Big Ten,"University of Washington (UW, U-Dub)"
+Sports,Basketball,NCAA,Division I,Big West,California Polytechnic State University (Cal Poly)
+Sports,Basketball,NCAA,Division I,Big West,"California State University, Bakersfield (CSU Bakersfield or Cal State Bakersfield)"
+Sports,Basketball,NCAA,Division I,Big West,"California State University, Fullerton (Cal State Fullerton)"
+Sports,Basketball,NCAA,Division I,Big West,"California State University, Northridge (Cal State Northridge or CSUN)"
+Sports,Basketball,NCAA,Division I,Big West,University of Hawaiʻi at Mānoa (Hawaii)
+Sports,Basketball,NCAA,Division I,Big West,"California State University, Long Beach (Long Beach State)"
+Sports,Basketball,NCAA,Division I,Big West,"University of California, Davis (UC Davis)"
+Sports,Basketball,NCAA,Division I,Big West,"University of California, Irvine (UC Irvine)"
+Sports,Basketball,NCAA,Division I,Big West,"University of California, Riverside (UC Riverside)"
+Sports,Basketball,NCAA,Division I,Big West,"University of California, San Diego (UC San Diego, UCSD)"
+Sports,Basketball,NCAA,Division I,Big West,"University of California, Santa Barbara (UC Santa Barbara, UCSB)"
+Sports,Basketball,NCAA,Division I,CAA,Campbell University
+Sports,Basketball,NCAA,Division I,CAA,College of Charleston (Charleston)
+Sports,Basketball,NCAA,Division I,CAA,University of Delaware
+Sports,Basketball,NCAA,Division I,CAA,Drexel University
+Sports,Basketball,NCAA,Division I,CAA,Elon University
+Sports,Basketball,NCAA,Division I,CAA,Hampton University
+Sports,Basketball,NCAA,Division I,CAA,Hofstra University
+Sports,Basketball,NCAA,Division I,CAA,Monmouth University
+Sports,Basketball,NCAA,Division I,CAA,North Carolina Agricultural and Technical State University (North Carolina A&T)
+Sports,Basketball,NCAA,Division I,CAA,Northeastern University
+Sports,Basketball,NCAA,Division I,CAA,Stony Brook University
+Sports,Basketball,NCAA,Division I,CAA,Towson University
+Sports,Basketball,NCAA,Division I,CAA,University of North Carolina at Wilmington (UNCW or UNC Wilmington)
+Sports,Basketball,NCAA,Division I,CAA,College of William & Mary
+Sports,Basketball,NCAA,Division I,Conference USA,Florida International University (FIU)
+Sports,Basketball,NCAA,Division I,Conference USA,Jacksonville State University
+Sports,Basketball,NCAA,Division I,Conference USA,Kennesaw State University
+Sports,Basketball,NCAA,Division I,Conference USA,Liberty University
+Sports,Basketball,NCAA,Division I,Conference USA,Louisiana Tech University
+Sports,Basketball,NCAA,Division I,Conference USA,"Middle Tennessee State University (Middle Tennessee, MTSU)"
+Sports,Basketball,NCAA,Division I,Conference USA,New Mexico State University
+Sports,Basketball,NCAA,Division I,Conference USA,Sam Houston State University (Sam Houston)
+Sports,Basketball,NCAA,Division I,Conference USA,University of Texas at El Paso (UTEP)
+Sports,Basketball,NCAA,Division I,Conference USA,Western Kentucky University (WKU)
+Sports,Basketball,NCAA,Division I,Horizon League,Cleveland State University
+Sports,Basketball,NCAA,Division I,Horizon League,University of Detroit Mercy
+Sports,Basketball,NCAA,Division I,Horizon League,Indiana University Indianapolis (IU Indy)
+Sports,Basketball,NCAA,Division I,Horizon League,University of Wisconsin-Milwaukee (Milwaukee)
+Sports,Basketball,NCAA,Division I,Horizon League,Northern Kentucky University (NKU)
+Sports,Basketball,NCAA,Division I,Horizon League,Oakland University
+Sports,Basketball,NCAA,Division I,Horizon League,Purdue University Fort Wayne (Purdue Fort Wayne)
+Sports,Basketball,NCAA,Division I,Horizon League,Robert Morris University
+Sports,Basketball,NCAA,Division I,Horizon League,University of Wisconsin–Green Bay (Green Bay)
+Sports,Basketball,NCAA,Division I,Horizon League,Wright State University
+Sports,Basketball,NCAA,Division I,Horizon League,Youngstown State University
+Sports,Basketball,NCAA,Division I,Ivy League,Brown University
+Sports,Basketball,NCAA,Division I,Ivy League,Columbia University
+Sports,Basketball,NCAA,Division I,Ivy League,Cornell University
+Sports,Basketball,NCAA,Division I,Ivy League,Dartmouth College
+Sports,Basketball,NCAA,Division I,Ivy League,Harvard University
+Sports,Basketball,NCAA,Division I,Ivy League,University of Pennsylvania (Penn)
+Sports,Basketball,NCAA,Division I,Ivy League,Princeton University
+Sports,Basketball,NCAA,Division I,Ivy League,Yale University
+Sports,Basketball,NCAA,Division I,MAAC,Canisius University
+Sports,Basketball,NCAA,Division I,MAAC,Fairfield University
+Sports,Basketball,NCAA,Division I,MAAC,Iona University
+Sports,Basketball,NCAA,Division I,MAAC,Manhattan University
+Sports,Basketball,NCAA,Division I,MAAC,Marist College
+Sports,Basketball,NCAA,Division I,MAAC,Merrimack College
+Sports,Basketball,NCAA,Division I,MAAC,Mount St. Mary's University
+Sports,Basketball,NCAA,Division I,MAAC,Niagara University
+Sports,Basketball,NCAA,Division I,MAAC,Quinnipiac University
+Sports,Basketball,NCAA,Division I,MAAC,Rider University
+Sports,Basketball,NCAA,Division I,MAAC,Sacred Heart University
+Sports,Basketball,NCAA,Division I,MAAC,Saint Peter's University
+Sports,Basketball,NCAA,Division I,MAAC,Siena College
+Sports,Basketball,NCAA,Division I,MAC,University of Akron
+Sports,Basketball,NCAA,Division I,MAC,Ball State University
+Sports,Basketball,NCAA,Division I,MAC,Bowling Green State University (Bowling Green)
+Sports,Basketball,NCAA,Division I,MAC,University at Buffalo
+Sports,Basketball,NCAA,Division I,MAC,Central Michigan University
+Sports,Basketball,NCAA,Division I,MAC,Eastern Michigan University
+Sports,Basketball,NCAA,Division I,MAC,Kent State University
+Sports,Basketball,NCAA,Division I,MAC,Miami University (Miami (OH))
+Sports,Basketball,NCAA,Division I,MAC,Northern Illinois University (NIU)
+Sports,Basketball,NCAA,Division I,MAC,Ohio University
+Sports,Basketball,NCAA,Division I,MAC,University of Toledo
+Sports,Basketball,NCAA,Division I,MAC,Western Michigan University
+Sports,Basketball,NCAA,Division I,MEAC,Coppin State University
+Sports,Basketball,NCAA,Division I,MEAC,Delaware State University
+Sports,Basketball,NCAA,Division I,MEAC,Howard University
+Sports,Basketball,NCAA,Division I,MEAC,University of Maryland Eastern Shore (UMES)
+Sports,Basketball,NCAA,Division I,MEAC,Morgan State University
+Sports,Basketball,NCAA,Division I,MEAC,Norfolk State University
+Sports,Basketball,NCAA,Division I,MEAC,North Carolina Central University (NCCU)
+Sports,Basketball,NCAA,Division I,MEAC,South Carolina State University (SC State)
+Sports,Basketball,NCAA,Division I,Missouri Valley,Belmont University
+Sports,Basketball,NCAA,Division I,Missouri Valley,Bradley University
+Sports,Basketball,NCAA,Division I,Missouri Valley,Drake University
+Sports,Basketball,NCAA,Division I,Missouri Valley,University of Evansville
+Sports,Basketball,NCAA,Division I,Missouri Valley,Illinois State University
+Sports,Basketball,NCAA,Division I,Missouri Valley,Indiana State University
+Sports,Basketball,NCAA,Division I,Missouri Valley,Missouri State University
+Sports,Basketball,NCAA,Division I,Missouri Valley,Murray State University
+Sports,Basketball,NCAA,Division I,Missouri Valley,University of Northern Iowa (UNI)
+Sports,Basketball,NCAA,Division I,Missouri Valley,"Southern Illinois University Carbondale (Southern Illinois, SIU)"
+Sports,Basketball,NCAA,Division I,Missouri Valley,University of Illinois Chicago (UIC)
+Sports,Basketball,NCAA,Division I,Missouri Valley,Valparaiso University (Valpo)
+Sports,Basketball,NCAA,Division I,Mountain West,United States Air Force Academy (Air Force)
+Sports,Basketball,NCAA,Division I,Mountain West,Boise State University
+Sports,Basketball,NCAA,Division I,Mountain West,Colorado State University
+Sports,Basketball,NCAA,Division I,Mountain West,"California State University, Fresno (Fresno State)"
+Sports,Basketball,NCAA,Division I,Mountain West,"University of Nevada, Reno (Nevada, UNR)"
+Sports,Basketball,NCAA,Division I,Mountain West,University of New Mexico (UNM)
+Sports,Basketball,NCAA,Division I,Mountain West,San Diego State University (SDSU)
+Sports,Basketball,NCAA,Division I,Mountain West,San Jose State University
+Sports,Basketball,NCAA,Division I,Mountain West,"University of Nevada, Las Vegas (UNLV)"
+Sports,Basketball,NCAA,Division I,Mountain West,Utah State University
+Sports,Basketball,NCAA,Division I,Mountain West,University of Wyoming
+Sports,Basketball,NCAA,Division I,Northeast,Central Connecticut State University (Central Connecticut)
+Sports,Basketball,NCAA,Division I,Northeast,Chicago State University
+Sports,Basketball,NCAA,Division I,Northeast,Fairleigh Dickinson University
+Sports,Basketball,NCAA,Division I,Northeast,Le Moyne College[e]
+Sports,Basketball,NCAA,Division I,Northeast,Long Island University (LIU)
+Sports,Basketball,NCAA,Division I,Northeast,Mercyhurst University[b]
+Sports,Basketball,NCAA,Division I,Northeast,"Saint Francis University (Saint Francis [PA], SFU)"
+Sports,Basketball,NCAA,Division I,Northeast,Stonehill College[a]
+Sports,Basketball,NCAA,Division I,Northeast,Wagner College
+Sports,Basketball,NCAA,Division I,Ohio Valley,Eastern Illinois University
+Sports,Basketball,NCAA,Division I,Ohio Valley,Lindenwood University[a]
+Sports,Basketball,NCAA,Division I,Ohio Valley,University of Arkansas at Little Rock (Little Rock)
+Sports,Basketball,NCAA,Division I,Ohio Valley,Morehead State University
+Sports,Basketball,NCAA,Division I,Ohio Valley,Southeast Missouri State University (Southeast Missouri or SEMO)
+Sports,Basketball,NCAA,Division I,Ohio Valley,Southern Illinois University Edwardsville (SIU Edwardsville or SIUE)
+Sports,Basketball,NCAA,Division I,Ohio Valley,University of Southern Indiana[a]
+Sports,Basketball,NCAA,Division I,Ohio Valley,University of Tennessee at Martin (UT Martin)
+Sports,Basketball,NCAA,Division I,Ohio Valley,Tennessee State University
+Sports,Basketball,NCAA,Division I,Ohio Valley,Tennessee Technological University (Tennessee Tech)
+Sports,Basketball,NCAA,Division I,Ohio Valley,Western Illinois University
+Sports,Basketball,NCAA,Division I,Patriot League,American University
+Sports,Basketball,NCAA,Division I,Patriot League,United States Military Academy (Army or Army West Point)
+Sports,Basketball,NCAA,Division I,Patriot League,Boston University
+Sports,Basketball,NCAA,Division I,Patriot League,Bucknell University
+Sports,Basketball,NCAA,Division I,Patriot League,Colgate University
+Sports,Basketball,NCAA,Division I,Patriot League,College of the Holy Cross
+Sports,Basketball,NCAA,Division I,Patriot League,Lafayette College
+Sports,Basketball,NCAA,Division I,Patriot League,Lehigh University
+Sports,Basketball,NCAA,Division I,Patriot League,Loyola University Maryland (Loyola Maryland)
+Sports,Basketball,NCAA,Division I,Patriot League,United States Naval Academy (Navy)
+Sports,Basketball,NCAA,Division I,SEC,University of Alabama
+Sports,Basketball,NCAA,Division I,SEC,University of Arkansas
+Sports,Basketball,NCAA,Division I,SEC,Auburn University
+Sports,Basketball,NCAA,Division I,SEC,University of Florida
+Sports,Basketball,NCAA,Division I,SEC,University of Georgia (UGA)
+Sports,Basketball,NCAA,Division I,SEC,University of Kentucky (UK)
+Sports,Basketball,NCAA,Division I,SEC,Louisiana State University (LSU)
+Sports,Basketball,NCAA,Division I,SEC,University of Mississippi (Ole Miss)
+Sports,Basketball,NCAA,Division I,SEC,Mississippi State University
+Sports,Basketball,NCAA,Division I,SEC,University of Missouri (Mizzou)
+Sports,Basketball,NCAA,Division I,SEC,University of Oklahoma
+Sports,Basketball,NCAA,Division I,SEC,University of South Carolina
+Sports,Basketball,NCAA,Division I,SEC,University of Tennessee
+Sports,Basketball,NCAA,Division I,SEC,University of Texas at Austin (Texas)
+Sports,Basketball,NCAA,Division I,SEC,Texas A&M University
+Sports,Basketball,NCAA,Division I,SEC,Vanderbilt University (Vandy)
+Sports,Basketball,NCAA,Division I,Southern,University of Tennessee at Chattanooga (Chattanooga)
+Sports,Basketball,NCAA,Division I,Southern,The Citadel
+Sports,Basketball,NCAA,Division I,Southern,East Tennessee State University (ETSU)
+Sports,Basketball,NCAA,Division I,Southern,Furman University
+Sports,Basketball,NCAA,Division I,Southern,Mercer University
+Sports,Basketball,NCAA,Division I,Southern,Samford University
+Sports,Basketball,NCAA,Division I,Southern,University of North Carolina at Greensboro (UNCG or UNC Greensboro)
+Sports,Basketball,NCAA,Division I,Southern,Virginia Military Institute (VMI)
+Sports,Basketball,NCAA,Division I,Southern,Western Carolina University
+Sports,Basketball,NCAA,Division I,Southern,Wofford College
+Sports,Basketball,NCAA,Division I,Southland,East Texas A&M University[a]
+Sports,Basketball,NCAA,Division I,Southland,Houston Christian University (HCU)
+Sports,Basketball,NCAA,Division I,Southland,University of the Incarnate Word (UIW)
+Sports,Basketball,NCAA,Division I,Southland,Lamar University
+Sports,Basketball,NCAA,Division I,Southland,McNeese State University (McNeese)
+Sports,Basketball,NCAA,Division I,Southland,University of New Orleans
+Sports,Basketball,NCAA,Division I,Southland,Nicholls State University (Nicholls)
+Sports,Basketball,NCAA,Division I,Southland,Northwestern State University
+Sports,Basketball,NCAA,Division I,Southland,Southeastern Louisiana University
+Sports,Basketball,NCAA,Division I,Southland,"Stephen F. Austin State University (Stephen F. Austin, SFA)"
+Sports,Basketball,NCAA,Division I,Southland,Texas A&M University-Corpus Christi
+Sports,Basketball,NCAA,Division I,Southland,University of Texas Rio Grande Valley (UTRGV)
+Sports,Basketball,NCAA,Division I,The Summit,University of Denver
+Sports,Basketball,NCAA,Division I,The Summit,University of Missouri–Kansas City (Kansas City)
+Sports,Basketball,NCAA,Division I,The Summit,University of North Dakota
+Sports,Basketball,NCAA,Division I,The Summit,North Dakota State University (NDSU)
+Sports,Basketball,NCAA,Division I,The Summit,University of Nebraska Omaha (Omaha)
+Sports,Basketball,NCAA,Division I,The Summit,Oral Roberts University
+Sports,Basketball,NCAA,Division I,The Summit,University of St. Thomas[f]
+Sports,Basketball,NCAA,Division I,The Summit,University of South Dakota
+Sports,Basketball,NCAA,Division I,The Summit,South Dakota State University
+Sports,Basketball,NCAA,Division I,Sun Belt,Appalachian State University
+Sports,Basketball,NCAA,Division I,Sun Belt,Arkansas State University
+Sports,Basketball,NCAA,Division I,Sun Belt,Coastal Carolina University
+Sports,Basketball,NCAA,Division I,Sun Belt,Georgia Southern University
+Sports,Basketball,NCAA,Division I,Sun Belt,Georgia State University
+Sports,Basketball,NCAA,Division I,Sun Belt,James Madison University (JMU)
+Sports,Basketball,NCAA,Division I,Sun Belt,University of Louisiana at Lafayette (Louisiana)
+Sports,Basketball,NCAA,Division I,Sun Belt,University of Louisiana at Monroe (Louisiana–Monroe or ULM)
+Sports,Basketball,NCAA,Division I,Sun Belt,Marshall University
+Sports,Basketball,NCAA,Division I,Sun Belt,Old Dominion University
+Sports,Basketball,NCAA,Division I,Sun Belt,University of South Alabama
+Sports,Basketball,NCAA,Division I,Sun Belt,University of Southern Mississippi (Southern Miss)
+Sports,Basketball,NCAA,Division I,Sun Belt,Texas State University
+Sports,Basketball,NCAA,Division I,Sun Belt,Troy University
+Sports,Basketball,NCAA,Division I,SWAC,Alabama Agricultural and Mechanical University (Alabama A&M)
+Sports,Basketball,NCAA,Division I,SWAC,Alabama State University
+Sports,Basketball,NCAA,Division I,SWAC,Alcorn State University
+Sports,Basketball,NCAA,Division I,SWAC,"University of Arkansas at Pine Bluff (Arkansas–Pine Bluff, UAPB)"
+Sports,Basketball,NCAA,Division I,SWAC,Bethune–Cookman University
+Sports,Basketball,NCAA,Division I,SWAC,"Florida Agricultural and Mechanical University (Florida A&M, FAMU)"
+Sports,Basketball,NCAA,Division I,SWAC,Grambling State University
+Sports,Basketball,NCAA,Division I,SWAC,Jackson State University
+Sports,Basketball,NCAA,Division I,SWAC,Mississippi Valley State University
+Sports,Basketball,NCAA,Division I,SWAC,Prairie View A&M University
+Sports,Basketball,NCAA,Division I,SWAC,Southern University
+Sports,Basketball,NCAA,Division I,SWAC,Texas Southern University
+Sports,Basketball,NCAA,Division I,WAC,Abilene Christian University
+Sports,Basketball,NCAA,Division I,WAC,California Baptist University (CBU)
+Sports,Basketball,NCAA,Division I,WAC,Grand Canyon University
+Sports,Basketball,NCAA,Division I,WAC,Seattle University
+Sports,Basketball,NCAA,Division I,WAC,Southern Utah University
+Sports,Basketball,NCAA,Division I,WAC,Tarleton State University (Tarleton)
+Sports,Basketball,NCAA,Division I,WAC,Utah Tech University[h]
+Sports,Basketball,NCAA,Division I,WAC,Utah Valley University
+Sports,Basketball,NCAA,Division I,WAC,University of Texas at Arlington (UT Arlington)
+Sports,Basketball,NCAA,Division I,West Coast,Gonzaga University
+Sports,Basketball,NCAA,Division I,West Coast,Loyola Marymount University
+Sports,Basketball,NCAA,Division I,West Coast,Oregon State University
+Sports,Basketball,NCAA,Division I,West Coast,University of the Pacific
+Sports,Basketball,NCAA,Division I,West Coast,Pepperdine University
+Sports,Basketball,NCAA,Division I,West Coast,University of Portland
+Sports,Basketball,NCAA,Division I,West Coast,Saint Mary's College of California (Saint Mary's)
+Sports,Basketball,NCAA,Division I,West Coast,University of San Diego
+Sports,Basketball,NCAA,Division I,West Coast,University of San Francisco
+Sports,Basketball,NCAA,Division I,West Coast,Santa Clara University
+Sports,Basketball,NCAA,Division I,West Coast,Washington State University
