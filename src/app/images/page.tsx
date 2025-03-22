@@ -28,7 +28,7 @@ export default function Images() {
           <div className="flex-1 flex items-center">
             <div className="text-center px-4">
               <h1 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-                Images Test
+                Images
               </h1>
               <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
                 A collection of my photography and artwork.
