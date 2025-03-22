@@ -13,7 +13,7 @@ const nextConfig = {
       test: /\.(png|jpg|jpeg|gif|svg)$/i,
       type: 'asset/resource',
       generator: {
-        filename: 'images/[path][name][ext]',
+        filename: 'static/images/[path][name][ext]',
       },
     });
     return config;

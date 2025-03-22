@@ -31,7 +31,7 @@ export default function Images() {
                 Images
               </h1>
               <p className="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-                A collection of my photography and artwork.
+                A collection of my photography.
               </p>
             </div>
           </div>
@@ -92,30 +92,30 @@ const images = [
     title: "Lacrosse",
     description: "Bringing the energy and excitement of lacrosse to life through photography.",
     link: "/images/lacrosse",
-    previewImage: "/images/lacrosse/20250308_Varsity_MWHS_vsAkeny/20250309_MWHS_Lacrosse - 1.jpeg"
+    previewImage: "/static/images/lacrosse/20250308_Varsity_MWHS_vsAkeny/20250309_MWHS_Lacrosse - 1.jpeg"
   },
   {
     title: "Zoo",
     description: "Up Close with the Wild: Striking Portraits & Natural Behaviors",
     link: "/images/zoo",
-    previewImage: "/images/zoo/2010-12-11_PenguinBlog1200_3425.jpg"
+    previewImage: "/static/images/zoo/2010-12-11_PenguinBlog1200_3425.jpg"
   },
   {
     title: "University of Nebraska Sports",
     description: "Capturing the excitement and energy of University of Nebraska sports through photography.",
     link: "/images/nu",
-    previewImage: "/images/nu/2011-10-27_BrianandTom843.jpg"
+    previewImage: "/static/images/nu/2011-10-27_BrianandTom843.jpg"
   },
   {
     title: "Omaha",
     description: "Urban life and city scenes.",
     link: "/images/omaha",
-    previewImage: "/images/omaha/20110704_Fireworks_bp-1.jpg"
+    previewImage: "/static/images/omaha/20110704_Fireworks_bp-1.jpg"
   },
   {
     title: "Event Photography",
     description: "Capturing special moments at events.",
     link: "/images/events/20100616_NationalSpecialOlympics",
-    previewImage: "/images/events/20100616_NationalSpecialOlympics/20100618_NationalSpecialOlymics - 9.jpeg"
+    previewImage: "/static/images/events/20100616_NationalSpecialOlympics/20100618_NationalSpecialOlymics - 9.jpeg"
   }
 ]; 
