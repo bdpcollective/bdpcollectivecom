@@ -6,6 +6,7 @@ const nextConfig = {
     remotePatterns: [],
     loader: 'custom',
     loaderFile: './image-loader.js',
+    path: '',
   },
   basePath: '',
   assetPrefix: '',
@@ -15,7 +16,7 @@ const nextConfig = {
       test: /\.(png|jpg|jpeg|gif|svg)$/i,
       type: 'asset/resource',
       generator: {
-        filename: 'static/media/[name][ext]',
+        filename: 'images/[path][name][ext]',
       },
     });
     return config;
