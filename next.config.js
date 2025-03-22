@@ -4,6 +4,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
     remotePatterns: [],
+    loader: 'custom',
+    loaderFile: './image-loader.js',
   },
   basePath: '',
   assetPrefix: '',
@@ -12,8 +14,14 @@ const nextConfig = {
     config.module.rules.push({
       test: /\.(png|jpg|jpeg|gif|svg)$/i,
       type: 'asset/resource',
+      generator: {
+        filename: 'static/media/[name][ext]',
+      },
     });
     return config;
+  },
+  experimental: {
+    appDir: true,
   },
 }
 
