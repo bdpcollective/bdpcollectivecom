@@ -4,9 +4,6 @@ const nextConfig = {
   images: {
     unoptimized: true,
     remotePatterns: [],
-    loader: 'custom',
-    loaderFile: './image-loader.js',
-    path: '',
   },
   basePath: '',
   assetPrefix: '',
@@ -20,9 +17,6 @@ const nextConfig = {
       },
     });
     return config;
-  },
-  experimental: {
-    appDir: true,
   },
 }
 
