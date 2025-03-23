@@ -1,0 +1,190 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+const content = {
+  projectDescription: {
+    text: [
+      "The Messaging Management System project focused on modernizing Best Buy's product marketing message management process.",
+      "We transformed the manual, time-consuming process into a streamlined digital solution that improved efficiency and reduced errors.",
+      "The new system enabled better collaboration between teams and provided a centralized platform for managing product marketing content."
+    ],
+    image: "/portfolio/bestbuy/1a_BestBuy_Promotion.png"
+  },
+  userResearch: {
+    text: [
+      "Our research revealed that the current manual process was causing delays and inconsistencies in product marketing.",
+      "Key findings included the need for better version control, improved collaboration tools, and streamlined approval workflows.",
+      "We identified opportunities to automate repetitive tasks and reduce the risk of errors in message management."
+    ],
+    image: "/portfolio/bestbuy/2a_BestBuy_Interviews.png"
+  },
+  informationArchitecture: {
+    text: [
+      "We developed a clear information architecture that organized messages by product categories and marketing campaigns.",
+      "The structure prioritized easy access to active messages while maintaining clear hierarchies for archived content.",
+      "This organization helped teams quickly find and update relevant marketing messages."
+    ],
+    image: "/portfolio/bestbuy/4a_bestbuy_ia.png"
+  },
+  wireframeMockups: {
+    text: [
+      "Initial wireframes focused on creating an intuitive interface for message management and collaboration.",
+      "We iterated on these designs based on user feedback, ensuring the layout supported team workflows and approval processes."
+    ],
+    images: [
+      "/portfolio/bestbuy/5a_bestbuy_wireframes.png",
+      "/portfolio/bestbuy/5b_bestbuy_wireframes.png"
+    ]
+  },
+  highFidelityMockups: {
+    text: [
+      "The final design incorporated Best Buy's brand guidelines while maintaining a professional and efficient interface.",
+      "We added interactive elements and clear visual hierarchies to improve usability and make the system more engaging."
+    ],
+    image: "/portfolio/bestbuy/6a_BestBuy_HighFidelity.png"
+  }
+};
+---
+
+<Layout title="Messaging Management System - UX Portfolio">
+  <main>
+    {/* Hero Section */}
+    <section class="relative h-[25vh] bg-black pt-16">
+      <div class="relative z-10 flex flex-col justify-center h-full px-4 container mx-auto">
+        <div class="max-w-7xl mx-auto w-full">
+          <div class="w-24 h-24 flex items-center mb-6">
+            <img
+              src="/logos/bestbuy-logo.png"
+              alt="Best Buy logo"
+              width="96"
+              height="96"
+              class="object-contain"
+            />
+          </div>
+          <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">
+            Messaging Management System
+          </h1>
+          <p class="text-lg md:text-xl text-gray-300 mb-4 max-w-2xl">
+            A sleek digital app for managing product marketing messages
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Content Section */}
+    <section class="container mx-auto px-4 py-20">
+      <div class="max-w-3xl mx-auto space-y-16">
+        {/* Back Button */}
+        <a 
+          href="/ux-portfolio" 
+          class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors mb-8"
+        >
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to UX Portfolio
+        </a>
+
+        {/* Project Description */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Project Description</h2>
+          <div class="prose max-w-none mb-8">
+            {content.projectDescription.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <img
+              src={content.projectDescription.image}
+              alt="Project description"
+              width="800"
+              height="600"
+              class="w-full object-contain"
+            />
+          </div>
+        </div>
+
+        {/* User Research */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">User Research</h2>
+          <div class="prose max-w-none mb-8">
+            {content.userResearch.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <img
+              src={content.userResearch.image}
+              alt="User research"
+              width="800"
+              height="600"
+              class="object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Information Architecture */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Information Architecture</h2>
+          <div class="prose max-w-none mb-8">
+            {content.informationArchitecture.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <img
+              src={content.informationArchitecture.image}
+              alt="Information architecture"
+              width="800"
+              height="600"
+              class="object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Wireframe Mockups */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Wireframe Mockups</h2>
+          <div class="prose max-w-none mb-8">
+            {content.wireframeMockups.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="space-y-16">
+            {content.wireframeMockups.images.map((image) => (
+              <div class="rounded-lg overflow-hidden shadow-lg">
+                <img
+                  src={image}
+                  alt="Wireframe mockup"
+                  width="800"
+                  height="600"
+                  class="w-full object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* High-Fidelity Mockups */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">High-Fidelity Mockups</h2>
+          <div class="prose max-w-none mb-8">
+            {content.highFidelityMockups.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <img
+              src={content.highFidelityMockups.image}
+              alt="High-fidelity mockup"
+              width="800"
+              height="600"
+              class="w-full object-contain"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout> 

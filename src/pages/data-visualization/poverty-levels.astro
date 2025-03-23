@@ -1,0 +1,205 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Poverty Levels">
+  <main>
+    {/* Hero Section */}
+    <section class="relative h-[25vh] bg-black pt-16">
+      <div class="relative z-10 flex flex-col justify-center h-full px-4 container mx-auto">
+        <div class="max-w-7xl mx-auto w-full">
+          <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">
+            US Poverty Levels by County
+          </h1>
+          <p class="text-lg md:text-xl text-gray-300 mb-4 max-w-2xl">
+            Interactive map showing poverty rates across US counties
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Content Section */}
+    <section class="container mx-auto px-4 py-20">
+      <div class="max-w-7xl mx-auto">
+        <a 
+          href="/data-visualization" 
+          class="inline-flex items-center text-gray-600 hover:text-blue-600 transition-colors mb-8"
+        >
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to Data Visualization
+        </a>
+
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-2xl font-bold">Poverty Rate by County | 2023</h2>
+            <div class="flex items-center space-x-8">
+              <div class="flex items-center">
+                <div class="w-4 h-4 bg-[#f7fbff] border border-gray-300"></div>
+                <span class="ml-2 text-sm">0-5%</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-4 h-4 bg-[#c6dbef]"></div>
+                <span class="ml-2 text-sm">5-10%</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-4 h-4 bg-[#6baed6]"></div>
+                <span class="ml-2 text-sm">10-15%</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-4 h-4 bg-[#2171b5]"></div>
+                <span class="ml-2 text-sm">15-20%</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-4 h-4 bg-[#08306b]"></div>
+                <span class="ml-2 text-sm">>20%</span>
+              </div>
+            </div>
+          </div>
+          <div id="poverty-map" class="w-full h-[600px]">
+            <!-- Map will be rendered here -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  import * as d3 from 'd3';
+  import * as topojson from 'topojson-client';
+
+  // Initialize the map when the page loads
+  document.addEventListener('DOMContentLoaded', async () => {
+    const width = document.getElementById('poverty-map').clientWidth;
+    const height = 600;
+
+    // Create SVG container
+    const svg = d3.select('#poverty-map')
+      .append('svg')
+      .attr('width', width)
+      .attr('height', height);
+
+    // Define color scale
+    const colorScale = d3.scaleThreshold<number, string>()
+      .domain([5, 10, 15, 20])
+      .range(['#f7fbff', '#c6dbef', '#6baed6', '#2171b5', '#08306b']);
+
+    // Create projection
+    const projection = d3.geoAlbersUsa()
+      .translate([width / 2, height / 2])
+      .scale(width);
+
+    const path = d3.geoPath().projection(projection);
+
+    try {
+      // Load US counties data
+      const us = await d3.json('/data/counties-10m.json');
+      const povertyData = await d3.csv('/data/Poverty2023.csv');
+
+      // Create map of poverty rates by county
+      const povertyById = new Map();
+      povertyData.forEach(d => {
+        // Only process county-level data where Attribute is PCTPOVALL_2023
+        if (d.FIPS_Code && d.FIPS_Code !== '0' && d.Attribute === 'PCTPOVALL_2023') {
+          // Special handling for Connecticut planning regions
+          if (d.FIPS_Code.startsWith('9') && d.Area_Name.includes('Planning Region')) {
+            // Get all counties in this planning region and assign them the same value
+            const rate = +d.Value;
+            const regionCode = d.FIPS_Code;
+            // Map planning region codes to their counties
+            const regionToCounties = {
+              '9130': ['09007', '09011', '09007'],  // Lower CT River Valley
+              '9150': ['09015', '09013'],           // Northeastern
+              '9170': ['09009', '09009'],           // South Central
+              '9180': ['09011', '09011'],           // Southeastern
+              '9190': ['09001', '09003', '09005']   // Western
+            };
+            
+            const counties = regionToCounties[regionCode] || [];
+            counties.forEach(countyFips => {
+              povertyById.set(countyFips, rate);
+            });
+          } else {
+            // Normal county handling
+            const paddedFips = d.FIPS_Code.padStart(5, '0');
+            povertyById.set(paddedFips, +d.Value);
+          }
+        }
+      });
+
+      // Draw counties
+      svg.append('g')
+        .selectAll('path')
+        .data(topojson.feature(us, us.objects.counties).features)
+        .enter()
+        .append('path')
+        .attr('fill', d => {
+          const paddedId = d.id.toString().padStart(5, '0');
+          const rate = povertyById.get(paddedId);
+          return rate ? colorScale(rate) : '#ccc';
+        })
+        .attr('d', path)
+        .attr('stroke', 'white')
+        .attr('stroke-width', 0.2);
+
+      // Add state borders
+      svg.append('path')
+        .datum(topojson.mesh(us, us.objects.states, (a, b) => a !== b))
+        .attr('fill', 'none')
+        .attr('stroke', 'white')
+        .attr('stroke-width', 1)
+        .attr('d', path);
+
+      // Add tooltip
+      const tooltip = d3.select('body')
+        .append('div')
+        .attr('class', 'tooltip')
+        .style('position', 'absolute')
+        .style('visibility', 'hidden')
+        .style('background-color', 'white')
+        .style('padding', '5px')
+        .style('border', '1px solid #ddd')
+        .style('border-radius', '4px');
+
+      svg.selectAll('path')
+        .on('mouseover', function(event, d) {
+          const paddedId = d.id.toString().padStart(5, '0');
+          const rate = povertyById.get(paddedId);
+          const countyName = d.properties.name;
+          let stateName = '';
+          
+          // Special handling for Connecticut tooltips
+          if (paddedId.startsWith('09')) {
+            const planningRegion = povertyData.find(p => 
+              p.FIPS_Code.startsWith('9') && 
+              p.Area_Name.includes('Planning Region') && 
+              p.Attribute === 'PCTPOVALL_2023' &&
+              p.Area_Name.includes(countyName)
+            );
+            stateName = 'CT';
+            tooltip
+              .style('visibility', 'visible')
+              .html(`${countyName}, ${stateName}<br>Planning Region: ${planningRegion?.Area_Name.replace(' Planning Region', '')}<br>Poverty Rate: ${rate?.toFixed(1)}%`);
+          } else {
+            stateName = povertyData.find(p => p.FIPS_Code === paddedId.replace(/^0+/, ''))?.Stabr || '';
+            tooltip
+              .style('visibility', 'visible')
+              .html(`${countyName}, ${stateName}<br>Poverty Rate: ${rate?.toFixed(1)}%`);
+          }
+        })
+        .on('mousemove', function(event) {
+          tooltip
+            .style('top', (event.pageY - 10) + 'px')
+            .style('left', (event.pageX + 10) + 'px');
+        })
+        .on('mouseout', function() {
+          tooltip.style('visibility', 'hidden');
+        });
+
+    } catch (error) {
+      console.error('Error loading data:', error);
+    }
+  });
+</script> 

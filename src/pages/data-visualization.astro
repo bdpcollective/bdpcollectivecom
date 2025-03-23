@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Data Visualization">
+  <main>
+    {/* Hero Section */}
+    <section class="relative h-[50vh]">
+      {/* Background Image */}
+      <div class="absolute inset-0 z-0">
+        <img
+          src="/data-viz-hero.jpg"
+          alt="Data visualization hero background"
+          class="w-full h-full object-cover brightness-50"
+        />
+      </div>
+
+      {/* Hero Content */}
+      <div class="relative z-10 flex flex-col items-center h-full">
+        <div class="flex-1 flex items-center">
+          <div class="text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">
+              Data Visualization
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+              Interactive data visualizations and analytics projects.
+            </p>
+          </div>
+        </div>
+        
+        {/* Chevron */}
+        <button
+          onclick="document.getElementById('data-viz-cards').scrollIntoView({ behavior: 'smooth' })"
+          class="animate-bounce p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors mb-8"
+          aria-label="Scroll to visualization categories"
+        >
+          <svg
+            class="w-8 h-8 text-white"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    {/* Projects Grid */}
+    <section id="data-viz-cards" class="container mx-auto px-4 py-20">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Nebraska Football */}
+        <a href="/data-visualization/nebraska-football" class="group h-full">
+          <div class="relative overflow-hidden rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md h-full flex flex-col">
+            <div class="h-64 mb-4 overflow-hidden rounded-lg">
+              <img
+                src="/images/nu/football.png"
+                alt="Nebraska Football"
+                width="800"
+                height="450"
+                class="object-cover transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+            <h3 class="mb-2 text-xl font-semibold text-gray-900">Nebraska Football</h3>
+            <p class="text-gray-600">Visualizing key statistics and trends from Nebraska football games</p>
+          </div>
+        </a>
+
+        {/* Poverty Levels */}
+        <a href="/data-visualization/poverty-levels" class="group h-full">
+          <div class="relative overflow-hidden rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md h-full flex flex-col">
+            <div class="h-64 mb-4 overflow-hidden rounded-lg">
+              <img
+                src="/images/poverty/poverty-map.png"
+                alt="Poverty Levels by County"
+                width="800"
+                height="450"
+                class="object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+            <h3 class="mb-2 text-xl font-semibold text-gray-900">Poverty Levels</h3>
+            <p class="text-gray-600">Interactive map showing poverty rates across US counties</p>
+          </div>
+        </a>
+
+        {/* NCAA Basketball */}
+        <a href="/data-visualization/basketball-tree" class="group h-full">
+          <div class="relative overflow-hidden rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md h-full flex flex-col">
+            <div class="h-64 mb-4 overflow-hidden rounded-lg">
+              <img
+                src="/images/ncaa/ncaa-tree.png"
+                alt="Basketball Collapsible Tree"
+                width="800"
+                height="450"
+                class="object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </div>
+            <h3 class="mb-2 text-xl font-semibold text-gray-900">NCAA Basketball Collapsible Tree</h3>
+            <p class="text-gray-600">Interactive visualization of NCAA basketball team clustering</p>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+</Layout> 
