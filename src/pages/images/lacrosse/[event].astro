@@ -1,0 +1,28 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  // Define the events that should be pre-rendered
+  const events = [
+    { event: 'event1', title: 'Event 1' },
+    { event: 'event2', title: 'Event 2' },
+    // Add more events as needed
+  ];
+
+  return events.map(event => ({
+    params: { event: event.event },
+    props: { title: event.title },
+  }));
+}
+
+const { event, title } = Astro.props;
+---
+
+<Layout title={title}>
+  <main class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6">{title}</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Add your images here */}
+    </div>
+  </main>
+</Layout> 
