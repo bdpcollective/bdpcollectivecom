@@ -1,5 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <Layout title="Data Visualization">
@@ -9,7 +11,7 @@ import Layout from '../layouts/Layout.astro';
       {/* Background Image */}
       <div class="absolute inset-0 z-0">
         <img
-          src="/data-viz-hero.jpg"
+          src={`${baseUrl}/data-viz-hero.jpg`}
           alt="Data visualization hero background"
           class="w-full h-full object-cover brightness-50"
         />
@@ -53,11 +55,11 @@ import Layout from '../layouts/Layout.astro';
     <section id="data-viz-cards" class="container mx-auto px-4 py-20">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Poverty Levels */}
-        <a href="/data-visualization/poverty-levels" class="group h-full">
+        <a href={`${baseUrl}/data-visualization/poverty-levels`} class="group h-full">
           <div class="relative overflow-hidden rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md h-full flex flex-col">
             <div class="h-64 mb-4 overflow-hidden rounded-lg">
               <img
-                src="/images/poverty/poverty-map.png"
+                src={`${baseUrl}/images/poverty/poverty-map.png`}
                 alt="Poverty Levels by County"
                 width="800"
                 height="450"
@@ -70,11 +72,11 @@ import Layout from '../layouts/Layout.astro';
         </a>
 
         {/* NCAA Basketball */}
-        <a href="/data-visualization/basketball-tree" class="group h-full">
+        <a href={`${baseUrl}/data-visualization/basketball-tree`} class="group h-full">
           <div class="relative overflow-hidden rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md h-full flex flex-col">
             <div class="h-64 mb-4 overflow-hidden rounded-lg">
               <img
-                src="/images/ncaa/ncaa-tree.png"
+                src={`${baseUrl}/images/ncaa/ncaa-tree.png`}
                 alt="Basketball Collapsible Tree"
                 width="800"
                 height="450"
