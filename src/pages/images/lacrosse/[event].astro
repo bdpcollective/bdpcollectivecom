@@ -1,56 +1,49 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
-import { getImage } from 'astro:assets';
+
+const baseUrl = import.meta.env.BASE_URL;
 
 export async function getStaticPaths() {
   const events = [
-    { 
-      event: '20250308-varsity-mwhs-vs-akeny', 
-      title: 'Varsity: MWHS vs Akeny',
-      date: 'March 8, 2025',
-      imageCount: 53,
-      imageDate: '20250309'
-    },
-    { 
-      event: '20250308-jv-mwhs-vs-akeny', 
-      title: 'JV: MWHS vs Akeny',
-      date: 'March 8, 2025',
-      imageCount: 19,
-      imageDate: '20250309'
+    {
+      title: "Varsity vs Akeny",
+      date: "March 8, 2025",
+      images: [
+        `${baseUrl}/images/lacrosse/20250308_Varsity_MWHS_vsAkeny/20250309_MWHS_Lacrosse - 1.jpeg`,
+        `${baseUrl}/images/lacrosse/20250308_Varsity_MWHS_vsAkeny/20250309_MWHS_Lacrosse - 2.jpeg`,
+        `${baseUrl}/images/lacrosse/20250308_Varsity_MWHS_vsAkeny/20250309_MWHS_Lacrosse - 3.jpeg`,
+        `${baseUrl}/images/lacrosse/20250308_Varsity_MWHS_vsAkeny/20250309_MWHS_Lacrosse - 4.jpeg`,
+        `${baseUrl}/images/lacrosse/20250308_Varsity_MWHS_vsAkeny/20250309_MWHS_Lacrosse - 5.jpeg`
+      ]
     }
   ];
 
   return events.map(event => ({
-    params: { event: event.event },
-    props: { 
-      title: event.title,
-      date: event.date,
-      imageCount: event.imageCount,
-      imageDate: event.imageDate
-    },
+    params: { event: event.title.toLowerCase().replace(/\s+/g, '-') },
+    props: { event }
   }));
 }
 
-const { event, title, date, imageCount, imageDate } = Astro.props;
-const baseUrl = import.meta.env.BASE_URL;
+const { event } = Astro.props;
 ---
 
-<Layout title={title}>
-  <main class="container mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold mb-2">{title}</h1>
-    <p class="text-gray-600 mb-6">{date}</p>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {Array.from({ length: imageCount }, (_, i) => i + 1).map((num) => (
-        <div class="relative group overflow-hidden rounded-lg shadow-lg">
-          <img
-            src={`/images/lacrosse/${event}/${imageDate}_MWHS_Lacrosse - ${num}.jpeg`}
-            alt={`Lacrosse game photo ${num}`}
-            class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
-            loading="lazy"
-          />
-          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300"></div>
-        </div>
-      ))}
+<Layout title={event.title}>
+  <div class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <h1 class="text-4xl font-bold text-gray-900 mb-8">{event.title}</h1>
+      <p class="text-gray-600 mb-8">{event.date}</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {event.images.map((image, index) => (
+          <div class="relative overflow-hidden rounded-lg aspect-[4/3]">
+            <img
+              src={image}
+              alt={`${event.title} - Image ${index + 1}`}
+              class="w-full h-full object-cover"
+            />
+          </div>
+        ))}
+      </div>
     </div>
-  </main>
+  </div>
 </Layout> 
