@@ -58,7 +58,7 @@ import { baseUrl } from '../../config';
               </div>
             </div>
           </div>
-          <div id="poverty-map" class="w-full h-[600px]">
+          <div id="poverty-map" class="w-full h-[600px]" data-base-url={baseUrl}>
             <!-- Map will be rendered here -->
           </div>
         </div>
@@ -75,6 +75,7 @@ import { baseUrl } from '../../config';
   document.addEventListener('DOMContentLoaded', async () => {
     const width = document.getElementById('poverty-map').clientWidth;
     const height = 600;
+    const baseUrl = document.getElementById('poverty-map').dataset.baseUrl;
 
     // Create SVG container
     const svg = d3.select('#poverty-map')
