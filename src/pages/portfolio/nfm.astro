@@ -5,7 +5,7 @@ import { Image } from 'astro:assets';
 const content = {
   projectDescription: {
     text: [
-      "NFM's Vendor Portal needed a clearer roadmap for vendors and more control for the internal team to keep everything on track.",
+      "NFM's Vendor Portal needed a modern refresh. They wanted an easier way for vendors to find the information they needed and a way for internal teams to update the content without the use of a developer.",
       "The project focused on improving the user experience for both vendors and internal team members, making it easier to manage resources and maintain project timelines.",
       "Through careful analysis of user needs and pain points, we developed a solution that streamlined the vendor management process while enhancing internal team capabilities."
     ],
@@ -28,7 +28,7 @@ const content = {
       "The structure prioritized quick access to frequently used resources while maintaining clear hierarchies for more detailed information.",
       "This organization helped reduce confusion and improved efficiency in accessing and managing vendor-related information."
     ],
-    image: "/portfolio/nfm/5_VendorPortal-IA.png"
+    image: "/portfolio/nfm/3_IA.png"
   },
   wireframeMockups: {
     text: [
@@ -64,10 +64,10 @@ const content = {
 <Layout title="Vendor Portal - UX Portfolio">
   <main>
     {/* Hero Section */}
-    <section class="relative h-[25vh] bg-black pt-16">
-      <div class="relative z-10 flex flex-col justify-center h-full px-4 container mx-auto">
+    <section class="relative bg-black py-12">
+      <div class="relative z-10 flex flex-col justify-center px-4 container mx-auto">
         <div class="max-w-7xl mx-auto w-full">
-          <div class="w-24 h-24 flex items-center mb-6">
+          <div class="w-24 h-24 flex items-center mb-2">
             <img
               src="/logos/nfm-logo.png"
               alt="NFM logo"
@@ -79,7 +79,7 @@ const content = {
           <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">
             Vendor Portal
           </h1>
-          <p class="text-lg md:text-xl text-gray-300 mb-4 max-w-2xl">
+          <p class="text-lg md:text-xl text-gray-300 mb-4">
             A clearer roadmap for vendors and more control for the internal team
           </p>
         </div>
@@ -108,19 +108,17 @@ const content = {
               <p class="mb-4">{paragraph}</p>
             ))}
           </div>
-          <div class="grid grid-cols-3 gap-4">
-            {content.projectDescription.images.map((image) => (
-              <div class="rounded-lg overflow-hidden shadow-lg">
-                <img
-                  src={image}
-                  alt="Project description"
-                  width="400"
-                  height="300"
-                  class="object-cover"
-                />
-              </div>
-            ))}
-          </div>
+        </div>
+
+        {/* Full Width Image */}
+        <div class="w-full">
+          <img
+            src="/portfolio/nfm/1_vendortools.png"
+            alt="Vendor tools overview"
+            width="1200"
+            height="600"
+            class="w-full object-cover rounded-lg shadow-lg"
+          />
         </div>
 
         {/* User Research */}
@@ -133,8 +131,8 @@ const content = {
           </div>
           <div class="rounded-lg overflow-hidden shadow-lg">
             <img
-              src={content.userResearch.image}
-              alt="User research"
+              src="/portfolio/nfm/2_Interview.png"
+              alt="User research interview"
               width="800"
               height="600"
               class="object-contain"
@@ -152,8 +150,8 @@ const content = {
           </div>
           <div class="rounded-lg overflow-hidden shadow-lg">
             <img
-              src={content.informationArchitecture.image}
-              alt="Information architecture"
+              src="/portfolio/nfm/3_IA.png"
+              alt="Information architecture diagram"
               width="800"
               height="600"
               class="object-contain"
@@ -169,18 +167,34 @@ const content = {
               <p class="mb-4">{paragraph}</p>
             ))}
           </div>
-          <div class="grid grid-cols-3 gap-4">
-            {content.wireframeMockups.images.map((image) => (
-              <div class="rounded-lg overflow-hidden shadow-lg">
-                <img
-                  src={image}
-                  alt="Wireframe mockup"
-                  width="400"
-                  height="300"
-                  class="object-cover"
-                />
-              </div>
-            ))}
+          <div class="space-y-8">
+            <div class="rounded-lg overflow-hidden shadow-lg">
+              <img
+                src="/portfolio/nfm/4a_VendorToolsWF.png"
+                alt="Vendor tools wireframe"
+                width="800"
+                height="600"
+                class="w-full object-contain"
+              />
+            </div>
+            <div class="rounded-lg overflow-hidden shadow-lg">
+              <img
+                src="/portfolio/nfm/4b_GuidesWF.png"
+                alt="Guides wireframe"
+                width="800"
+                height="600"
+                class="w-full object-contain"
+              />
+            </div>
+            <div class="rounded-lg overflow-hidden shadow-lg">
+              <img
+                src="/portfolio/nfm/4c_UpdatesWF.png"
+                alt="Updates wireframe"
+                width="800"
+                height="600"
+                class="w-full object-contain"
+              />
+            </div>
           </div>
         </div>
 
@@ -192,21 +206,61 @@ const content = {
               <p class="mb-4">{paragraph}</p>
             ))}
           </div>
-          <div class="grid grid-cols-3 gap-4">
-            {content.highFidelityMockups.images.map((image) => (
-              <div class="rounded-lg overflow-hidden shadow-lg">
-                <img
-                  src={image}
-                  alt="High-fidelity mockup"
-                  width="400"
-                  height="300"
-                  class="object-cover"
-                />
-              </div>
-            ))}
+          <div class="space-y-8">
+            <div class="rounded-lg overflow-hidden shadow-lg">
+              <img
+                src="/portfolio/nfm/5a_VendorTools.png"
+                alt="Vendor tools high-fidelity design"
+                width="800"
+                height="600"
+                class="w-full object-contain"
+              />
+            </div>
+            <div class="rounded-lg overflow-hidden shadow-lg">
+              <img
+                src="/portfolio/nfm/5b_HiFi_Resources.png"
+                alt="Resources high-fidelity design"
+                width="800"
+                height="600"
+                class="w-full object-contain"
+              />
+            </div>
+            <div class="rounded-lg overflow-hidden shadow-lg">
+              <img
+                src="/portfolio/nfm/5c_HiFi_Updates.png"
+                alt="Updates high-fidelity design"
+                width="800"
+                height="600"
+                class="w-full object-contain"
+              />
+            </div>
           </div>
         </div>
       </div>
     </section>
+
+    {/* Fixed Navigation Arrows */}
+    <div class="fixed left-4 top-1/2 -translate-y-1/2 z-50">
+      <a 
+        href="/portfolio/healthcomms" 
+        class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/80 hover:bg-white shadow-lg text-gray-600 hover:text-gray-900 transition-colors"
+        aria-label="Previous Project"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </a>
+    </div>
+    <div class="fixed right-4 top-1/2 -translate-y-1/2 z-50">
+      <a 
+        href="/portfolio/bestbuy" 
+        class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/80 hover:bg-white shadow-lg text-gray-600 hover:text-gray-900 transition-colors"
+        aria-label="Next Project"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
   </main>
 </Layout> 

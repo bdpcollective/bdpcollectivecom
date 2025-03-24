@@ -1,0 +1,301 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const zooPhotos = [
+  {
+    src: "/images/zoo/4947240354_08470ddf94_o.jpg",
+    alt: "Omaha Zoo",
+    title: "Omaha Henry Doorly Zoo",
+    date: "2010"
+  },
+  {
+    src: "/images/zoo/5964660067_27eb031438_o.jpg",
+    alt: "Omaha Zoo",
+    title: "Omaha Henry Doorly Zoo",
+    date: "2010"
+  },
+  {
+    src: "/images/zoo/6469229697_ebfae32e99_o.jpg",
+    alt: "Omaha Zoo",
+    title: "Omaha Henry Doorly Zoo",
+    date: "2010"
+  },
+  {
+    src: "/images/zoo/52125685559_ecaa290f82_o.jpg",
+    alt: "Omaha Zoo",
+    title: "Omaha Henry Doorly Zoo",
+    date: "2010"
+  },
+  {
+    src: "/images/zoo/43238673422_29f72bde68_o.jpg",
+    alt: "Omaha Zoo",
+    title: "Omaha Henry Doorly Zoo",
+    date: "2010"
+  },
+  {
+    src: "/images/zoo/26728806513_56fd4000e3_o.jpg",
+    alt: "Omaha Zoo",
+    title: "Omaha Henry Doorly Zoo",
+    date: "2010"
+  },
+  {
+    src: "/images/zoo/16502322966_ac94efdabe_o.jpg",
+    alt: "Omaha Zoo",
+    title: "Omaha Henry Doorly Zoo",
+    date: "2010"
+  },
+  {
+    src: "/images/zoo/14238653443_aca967dd20_o.jpg",
+    alt: "Omaha Zoo",
+    title: "Omaha Henry Doorly Zoo",
+    date: "2010"
+  },
+  {
+    src: "/images/zoo/2010-12-11_PenguinBlog1200_3425.jpg",
+    alt: "Penguin at Omaha Zoo",
+    title: "Penguin Exhibit",
+    date: "December 11, 2010"
+  },
+  {
+    src: "/images/zoo/2010-12-09_zoo_1024_3418.jpg",
+    alt: "Omaha Zoo",
+    title: "Omaha Henry Doorly Zoo",
+    date: "December 9, 2010"
+  },
+  {
+    src: "/images/zoo/2010-12-09_zoo_1024_3420.jpg",
+    alt: "Omaha Zoo",
+    title: "Omaha Henry Doorly Zoo",
+    date: "December 9, 2010"
+  },
+  {
+    src: "/images/zoo/2010-12-09_zoo_1024_3417.jpg",
+    alt: "Omaha Zoo",
+    title: "Omaha Henry Doorly Zoo",
+    date: "December 9, 2010"
+  }
+];
+
+// Add lightbox state
+let currentPhotoIndex = 0;
+---
+
+<Layout title="Omaha Henry Doorly Zoo">
+  <main class="min-h-screen bg-gray-50">
+    <section class="relative h-[40vh] bg-black">
+      <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
+        <img
+          src="/images/zoo/2010-12-11_PenguinBlog1200_3425.jpg"
+          alt="Omaha Zoo hero"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="relative z-10 flex items-center h-full">
+        <div class="container mx-auto px-4">
+          <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Omaha Henry Doorly Zoo</h1>
+          <p class="text-lg text-gray-200">
+            Capturing the beauty of wildlife at the Omaha Henry Doorly Zoo
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Photo Grid */}
+    <section class="container mx-auto px-4 py-12">
+      <a 
+        href="/images" 
+        class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors mb-8"
+      >
+        <svg
+          class="w-5 h-5 mr-2"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 19l-7-7m0 0l7-7m-7 7h18"
+          />
+        </svg>
+        Back to All Images
+      </a>
+
+      <div class="flex justify-between items-center mb-8">
+        <div class="flex gap-4">
+          <button class="px-4 py-2 rounded-full bg-gray-900 text-white hover:bg-gray-800 transition-colors">
+            Recent
+          </button>
+          <button class="px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
+            Popular
+          </button>
+        </div>
+        <div class="flex gap-2">
+          <button class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <button class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {zooPhotos.map((photo, index) => (
+          <div 
+            class="group relative overflow-hidden rounded-lg cursor-pointer"
+            on:click={() => {
+              currentPhotoIndex = index;
+              document.getElementById('lightbox').classList.remove('hidden');
+            }}
+          >
+            <div class="aspect-[4/3] overflow-hidden">
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+              />
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/0 to-black/0">
+              <div class="absolute bottom-0 left-0 right-0 p-4">
+                <h3 class="text-white text-lg font-semibold mb-1">{photo.title}</h3>
+                <p class="text-gray-300 text-sm">{photo.date}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* Lightbox */}
+    <div 
+      id="lightbox" 
+      class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden"
+      on:click={(e) => {
+        if (e.target.id === 'lightbox') {
+          document.getElementById('lightbox').classList.add('hidden');
+        }
+      }}
+    >
+      <div class="absolute top-4 right-4">
+        <button 
+          class="text-white hover:text-gray-300 transition-colors"
+          on:click={() => document.getElementById('lightbox').classList.add('hidden')}
+        >
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl px-4">
+        <img
+          src={zooPhotos[currentPhotoIndex].src}
+          alt={zooPhotos[currentPhotoIndex].alt}
+          class="w-full h-auto rounded-lg shadow-xl"
+        />
+        <div class="mt-4 text-center">
+          <h3 class="text-white text-xl font-semibold mb-2">{zooPhotos[currentPhotoIndex].title}</h3>
+          <p class="text-gray-300">{zooPhotos[currentPhotoIndex].date}</p>
+        </div>
+      </div>
+
+      <button 
+        class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors"
+        on:click={() => {
+          currentPhotoIndex = (currentPhotoIndex - 1 + zooPhotos.length) % zooPhotos.length;
+        }}
+      >
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+
+      <button 
+        class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors"
+        on:click={() => {
+          currentPhotoIndex = (currentPhotoIndex + 1) % zooPhotos.length;
+        }}
+      >
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  // Lightbox functionality
+  let currentPhotoIndex = 0;
+  const lightbox = document.getElementById('lightbox');
+  const images = document.querySelectorAll('.group');
+  const lightboxImage = document.querySelector('#lightbox img');
+  const lightboxTitle = document.querySelector('#lightbox h3');
+  const lightboxDate = document.querySelector('#lightbox p');
+
+  // Function to update lightbox content
+  function updateLightboxContent(index) {
+    const photo = zooPhotos[index];
+    lightboxImage.src = photo.src;
+    lightboxImage.alt = photo.alt;
+    lightboxTitle.textContent = photo.title;
+    lightboxDate.textContent = photo.date;
+  }
+
+  // Open lightbox when clicking an image
+  images.forEach((image, index) => {
+    image.addEventListener('click', () => {
+      currentPhotoIndex = index;
+      updateLightboxContent(index);
+      lightbox.classList.remove('hidden');
+    });
+  });
+
+  // Close lightbox when clicking outside
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.add('hidden');
+    }
+  });
+
+  // Close lightbox when clicking close button
+  document.querySelector('.text-white.hover\\:text-gray-300').addEventListener('click', () => {
+    lightbox.classList.add('hidden');
+  });
+
+  // Navigate between photos
+  document.querySelector('.absolute.left-4').addEventListener('click', () => {
+    currentPhotoIndex = (currentPhotoIndex - 1 + zooPhotos.length) % zooPhotos.length;
+    updateLightboxContent(currentPhotoIndex);
+  });
+
+  document.querySelector('.absolute.right-4').addEventListener('click', () => {
+    currentPhotoIndex = (currentPhotoIndex + 1) % zooPhotos.length;
+    updateLightboxContent(currentPhotoIndex);
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('hidden')) {
+      if (e.key === 'ArrowLeft') {
+        currentPhotoIndex = (currentPhotoIndex - 1 + zooPhotos.length) % zooPhotos.length;
+        updateLightboxContent(currentPhotoIndex);
+      } else if (e.key === 'ArrowRight') {
+        currentPhotoIndex = (currentPhotoIndex + 1) % zooPhotos.length;
+        updateLightboxContent(currentPhotoIndex);
+      } else if (e.key === 'Escape') {
+        lightbox.classList.add('hidden');
+      }
+    }
+  });
+
+  // Make zooPhotos available to client-side script
+  window.zooPhotos = {zooPhotos};
+</script> 

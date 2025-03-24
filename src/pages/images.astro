@@ -1,58 +1,90 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const images = [
-  {
-    src: "/images/image1.jpg",
-    alt: "Image 1",
-    title: "Image Title 1",
-    category: "Category 1"
-  },
-  {
-    src: "/images/image2.jpg",
-    alt: "Image 2",
-    title: "Image Title 2",
-    category: "Category 1"
-  },
-  {
-    src: "/images/image3.jpg",
-    alt: "Image 3",
-    title: "Image Title 3",
-    category: "Category 2"
-  },
-  {
-    src: "/images/image4.jpg",
-    alt: "Image 4",
-    title: "Image Title 4",
-    category: "Category 2"
-  },
-  {
-    src: "/images/image5.jpg",
-    alt: "Image 5",
-    title: "Image Title 5",
-    category: "Category 3"
-  },
-  {
-    src: "/images/image6.jpg",
-    alt: "Image 6",
-    title: "Image Title 6",
-    category: "Category 3"
-  }
-];
+const categoryImages = {
+  "Lacrosse": [
+    "/images/lacrosse/20250308_Varsity_MWHS_vsAkeny/20250309_MWHS_Lacrosse - 1.jpeg",
+    "/images/lacrosse/20250308_Varsity_MWHS_vsAkeny/20250309_MWHS_Lacrosse - 2.jpeg",
+    "/images/lacrosse/20250308_Varsity_MWHS_vsAkeny/20250309_MWHS_Lacrosse - 3.jpeg",
+    "/images/lacrosse/20250308_Varsity_MWHS_vsAkeny/20250309_MWHS_Lacrosse - 4.jpeg",
+    "/images/lacrosse/20250308_Varsity_MWHS_vsAkeny/20250309_MWHS_Lacrosse - 5.jpeg"
+  ],
+  "Omaha": [
+    "/images/omaha/5141154917_23bc3d754e_o.jpg",
+    "/images/omaha/5802568882_a0a9d2198b_o.jpg",
+    "/images/omaha/5901454485_251ed2720c_o.jpg",
+    "/images/omaha/6041952246_315f63fc34_o.jpg",
+    "/images/omaha/6042411563_d793f80025_o.jpg",
+    "/images/omaha/6356644937_9df669a179_o.jpg",
+    "/images/omaha/15174543165_4723513722_o.jpg",
+    "/images/omaha/6610507007_c697df8337_o.jpg",
+    "/images/omaha/6638207933_95a84f7e6a_o.jpg",
+    "/images/omaha/6638343245_fd4be4cdb5_o.jpg",
+    "/images/omaha/14984713027_e4cd4413e7_o.jpg",
+    "/images/omaha/34763986992_8a20e46729_o.jpg",
+    "/images/omaha/53785785853_2016d6d6f7_o.jpg",
+    "/images/omaha/20110704_Fireworks_bp-1.jpg",
+    "/images/omaha/2010-12-09_bobkerrybridge_1024_3409.jpg",
+    "/images/omaha/2010-12-09_flowers_1024_3412.jpg"
+  ],
+  "Zoo": [
+    "/images/zoo/4947240354_08470ddf94_o.jpg",
+    "/images/zoo/5964660067_27eb031438_o.jpg",
+    "/images/zoo/6469229697_ebfae32e99_o.jpg",
+    "/images/zoo/52125685559_ecaa290f82_o.jpg",
+    "/images/zoo/43238673422_29f72bde68_o.jpg",
+    "/images/zoo/26728806513_56fd4000e3_o.jpg",
+    "/images/zoo/16502322966_ac94efdabe_o.jpg",
+    "/images/zoo/14238653443_aca967dd20_o.jpg",
+    "/images/zoo/2010-12-11_PenguinBlog1200_3425.jpg",
+    "/images/zoo/2010-12-09_zoo_1024_3418.jpg",
+    "/images/zoo/2010-12-09_zoo_1024_3420.jpg",
+    "/images/zoo/2010-12-09_zoo_1024_3417.jpg"
+  ],
+  "Nebraska Athletics": [
+    "/images/nu/2011-10-27_BrianandTom843.jpg",
+    "/images/nu/2010-12-09_NU_1024_3414.jpg",
+    "/images/nu/2010-10-31_NUvsMU_Pano3272.jpg",
+    "/images/nu/NUvsWKU3_web.jpg",
+    "/images/nu/CowboyStadium2.jpg"
+  ],
+  "Omaha Lacrosse Club": [
+    "/images/coming-soon.jpg"
+  ]
+};
 
-const categories = [...new Set(images.map(img => img.category))];
+const categoryTitles = {
+  "Lacrosse": "Millard West Lacrosse",
+  "Omaha": "Images Around Omaha",
+  "Zoo": "Omaha Henry Doorly Zoo",
+  "Nebraska Athletics": "Husker Related Images",
+  "Omaha Lacrosse Club": "Omaha Lacrosse Club"
+};
+
+const categories = ["All", "Lacrosse", "Omaha", "Zoo", "Nebraska Athletics", "Omaha Lacrosse Club"];
+
+// Function to get a random image from an array
+function getRandomImage(images: string[]): string {
+  return images[Math.floor(Math.random() * images.length)];
+}
+
+// Create the images array with random images from each category
+const images = Object.entries(categoryImages).map(([category, categoryImages]) => ({
+  src: getRandomImage(categoryImages),
+  alt: category,
+  title: categoryTitles[category],
+  category: category,
+  description: category
+}));
 ---
 
 <Layout title="Images">
   <div class="bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <h1 class="text-4xl font-bold text-gray-900 mb-8">Image Gallery</h1>
+      <h1 class="text-4xl font-bold text-gray-900 mb-8">Images</h1>
       
       {/* Category Filter */}
       <div class="flex flex-wrap gap-4 mb-8">
-        <button class="px-4 py-2 rounded-full bg-gray-900 text-white hover:bg-gray-800 transition-colors">
-          All
-        </button>
         {categories.map(category => (
           <button class="px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
             {category}
@@ -60,24 +92,60 @@ const categories = [...new Set(images.map(img => img.category))];
         ))}
       </div>
 
-      {/* Image Grid */}
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {images.map(image => (
-          <div class="group relative overflow-hidden rounded-lg shadow-lg">
-            <img
-              src={image.src}
-              alt={image.alt}
-              class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300"
-            />
-            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
-              <div class="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-center p-4">
-                <h3 class="text-xl font-semibold mb-2">{image.title}</h3>
-                <p class="text-sm">{image.category}</p>
-              </div>
-            </div>
+      {/* Main Content */}
+      <section class="container mx-auto max-w-7xl px-4 py-12">
+        <div class="flex justify-between items-center mb-8">
+          <div class="flex gap-4">
+            <button class="px-4 py-2 rounded-full bg-gray-900 text-white hover:bg-gray-800 transition-colors">
+              Recent
+            </button>
+            <button class="px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
+              Popular
+            </button>
           </div>
-        ))}
-      </div>
+          <div class="flex gap-2">
+            <button class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+            <button class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {images.map((image) => (
+            <a 
+              href={
+                image.category === "Lacrosse" ? "/images/lacrosse" : 
+                image.category === "Omaha" ? "/images/omaha" : 
+                image.category === "Zoo" ? "/images/zoo" : 
+                image.category === "Omaha Lacrosse Club" ? "/images/lacrosse" : 
+                "#"
+              } 
+              class="group relative overflow-hidden rounded-lg"
+            >
+              <div class="aspect-[4/3] overflow-hidden">
+                <img
+                  src={image.src}
+                  alt={image.alt}
+                  class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                />
+              </div>
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/0 to-black/0">
+                <div class="absolute bottom-0 left-0 right-0 p-4">
+                  <h3 class="text-white text-lg font-semibold mb-1">{image.title}</h3>
+                  <p class="text-gray-300 text-sm">{image.description}</p>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
     </div>
   </div>
 </Layout>

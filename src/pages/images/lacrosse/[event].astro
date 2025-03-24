@@ -1,28 +1,54 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import { getImage } from 'astro:assets';
 
 export async function getStaticPaths() {
-  // Define the events that should be pre-rendered
   const events = [
-    { event: 'event1', title: 'Event 1' },
-    { event: 'event2', title: 'Event 2' },
-    // Add more events as needed
+    { 
+      event: '20250308-varsity-mwhs-vs-akeny', 
+      title: 'Varsity: MWHS vs Akeny',
+      date: 'March 8, 2025',
+      imageCount: 53,
+      imageDate: '20250309'
+    },
+    { 
+      event: '20250308-jv-mwhs-vs-akeny', 
+      title: 'JV: MWHS vs Akeny',
+      date: 'March 8, 2025',
+      imageCount: 19,
+      imageDate: '20250309'
+    }
   ];
 
   return events.map(event => ({
     params: { event: event.event },
-    props: { title: event.title },
+    props: { 
+      title: event.title,
+      date: event.date,
+      imageCount: event.imageCount,
+      imageDate: event.imageDate
+    },
   }));
 }
 
-const { event, title } = Astro.props;
+const { event, title, date, imageCount, imageDate } = Astro.props;
 ---
 
 <Layout title={title}>
   <main class="container mx-auto px-4 py-8">
-    <h1 class="text-3xl font-bold mb-6">{title}</h1>
+    <h1 class="text-3xl font-bold mb-2">{title}</h1>
+    <p class="text-gray-600 mb-6">{date}</p>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {/* Add your images here */}
+      {Array.from({ length: imageCount }, (_, i) => i + 1).map((num) => (
+        <div class="relative group overflow-hidden rounded-lg shadow-lg">
+          <img
+            src={`/images/lacrosse/${event}/${imageDate}_MWHS_Lacrosse - ${num}.jpeg`}
+            alt={`Lacrosse game photo ${num}`}
+            class="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+          <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300"></div>
+        </div>
+      ))}
     </div>
   </main>
 </Layout> 

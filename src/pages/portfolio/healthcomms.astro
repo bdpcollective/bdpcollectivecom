@@ -64,10 +64,10 @@ const content = {
 <Layout title="HealthComms - UX Portfolio">
   <main>
     {/* Hero Section */}
-    <section class="relative h-[25vh] bg-black pt-16">
-      <div class="relative z-10 flex flex-col justify-center h-full px-4 container mx-auto">
+    <section class="relative bg-black py-12">
+      <div class="relative z-10 flex flex-col justify-center px-4 container mx-auto">
         <div class="max-w-7xl mx-auto w-full">
-          <div class="w-24 h-24 flex items-center mb-6">
+          <div class="w-24 h-24 flex items-center mb-2">
             <img
               src="/logos/healthcomms-logo.png"
               alt="HealthComms logo"
@@ -79,7 +79,7 @@ const content = {
           <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">
             Health Journaling App
           </h1>
-          <p class="text-lg md:text-xl text-gray-300 mb-4 max-w-2xl">
+          <p class="text-lg md:text-xl text-gray-300 mb-4">
             A mobile app prototype designed to help cancer patients track symptoms during treatment
           </p>
         </div>
@@ -208,5 +208,29 @@ const content = {
         </div>
       </div>
     </section>
+
+    {/* Fixed Navigation Arrows */}
+    <div class="fixed left-4 top-1/2 -translate-y-1/2 z-50">
+      <a 
+        href="/ux-portfolio" 
+        class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/80 hover:bg-white shadow-lg text-gray-600 hover:text-gray-900 transition-colors"
+        aria-label="Back to Portfolio"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </a>
+    </div>
+    <div class="fixed right-4 top-1/2 -translate-y-1/2 z-50">
+      <a 
+        href="/portfolio/nfm" 
+        class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/80 hover:bg-white shadow-lg text-gray-600 hover:text-gray-900 transition-colors"
+        aria-label="Next Project"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
   </main>
 </Layout> 
