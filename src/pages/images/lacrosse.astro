@@ -1,0 +1,155 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const lacrosseGames = [
+  {
+    id: "20250308-varsity-mwhs-vs-akeny",
+    title: "Varsity: MWHS vs Akeny",
+    date: "March 8, 2025",
+    location: "Millard West High School",
+    previewImage: "/images/lacrosse/20250308_Varsity_MWHS_vsAkeny/20250309_MWHS_Lacrosse - 1.jpeg",
+    description: "Varsity lacrosse match between Millard West High School and Akeny.",
+    photoCount: 53
+  },
+  {
+    id: "20250308-jv-mwhs-vs-akeny",
+    title: "JV: MWHS vs Akeny",
+    date: "March 8, 2025",
+    location: "Millard West High School",
+    previewImage: "/images/lacrosse/20250308_JV_MWHS_vsAkeny/20250309_MWHS_Lacrosse - 1.jpeg",
+    description: "Junior Varsity lacrosse match between Millard West High School and Akeny.",
+    photoCount: 19
+  }
+];
+---
+
+<Layout title="Millard West Lacrosse">
+  <main class="min-h-screen bg-gray-50">
+    <section class="relative h-[40vh] bg-black">
+      <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
+        <img
+          src="/images/lacrosse/20250308_Varsity_MWHS_vsAkeny/20250309_MWHS_Lacrosse - 1.jpeg"
+          alt="Lacrosse hero"
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="relative z-10 flex items-center h-full">
+        <div class="container mx-auto px-4">
+          <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Millard West Lacrosse</h1>
+          <p class="text-lg text-gray-200">
+            Capturing the energy and excitement of lacrosse through photography
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Game Grid */}
+    <section class="container mx-auto px-4 py-12">
+      <a 
+        href="/images" 
+        class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors mb-8"
+      >
+        <svg
+          class="w-5 h-5 mr-2"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 19l-7-7m0 0l7-7m-7 7h18"
+          />
+        </svg>
+        Back to All Images
+      </a>
+
+      <div class="flex justify-between items-center mb-8">
+        <div class="flex gap-4">
+          <button class="px-4 py-2 rounded-full bg-gray-900 text-white hover:bg-gray-800 transition-colors">
+            Recent
+          </button>
+          <button class="px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
+            Popular
+          </button>
+        </div>
+        <div class="flex gap-2">
+          <button class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          <button class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {lacrosseGames.map((game) => (
+          <a href={`/images/lacrosse/${game.id}`} class="group">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <div class="relative h-64">
+                <div class="relative group">
+                  <img
+                    src={game.previewImage}
+                    alt={game.title}
+                    class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                  <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center">
+                    <button 
+                      class="download-btn p-3 bg-white/90 rounded-full hover:bg-white transition-colors"
+                      data-src={game.previewImage}
+                    >
+                      <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2">{game.title}</h3>
+                <p class="text-gray-600 mb-4">{game.description}</p>
+                <div class="flex justify-between text-sm text-gray-500">
+                  <span>{game.date}</span>
+                  <span>{game.photoCount} photos</span>
+                </div>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  /* Ensure images maintain aspect ratio */
+  img {
+    aspect-ratio: 3/4;
+  }
+</style>
+
+<script>
+  // Add download functionality
+  document.querySelectorAll('.download-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const imageUrl = button.getAttribute('data-src');
+      const link = document.createElement('a');
+      link.href = imageUrl;
+      link.download = imageUrl.split('/').pop();
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  });
+</script> 
