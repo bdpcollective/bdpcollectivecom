@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { baseUrl } from '../../config';
 ---
 
 <Layout title="Poverty Levels">
@@ -95,8 +96,8 @@ import Layout from '../../layouts/Layout.astro';
 
     try {
       // Load US counties data
-      const us = await d3.json('/data/counties-10m.json');
-      const povertyData = await d3.csv('/data/Poverty2023.csv');
+      const us = await d3.json(`${baseUrl}/data/counties-10m.json`);
+      const povertyData = await d3.csv(`${baseUrl}/data/Poverty2023.csv`);
 
       // Create map of poverty rates by county
       const povertyById = new Map();
