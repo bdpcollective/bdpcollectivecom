@@ -5,6 +5,6 @@ import tailwind from '@astrojs/tailwind';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://bdpcollective.github.io/bdpcollectivecom',
-  base: '/bdpcollectivecom',
+  base: '/bdpcollectivecom/',
   integrations: [tailwind()],
 });
