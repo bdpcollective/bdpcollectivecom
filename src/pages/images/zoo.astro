@@ -1,75 +1,77 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const zooPhotos = [
   {
-    src: "/images/zoo/4947240354_08470ddf94_o.jpg",
+    src: `${baseUrl}images/zoo/4947240354_08470ddf94_o.jpg`,
     alt: "Omaha Zoo",
     title: "Omaha Henry Doorly Zoo",
     date: "2010"
   },
   {
-    src: "/images/zoo/5964660067_27eb031438_o.jpg",
+    src: `${baseUrl}images/zoo/5964660067_27eb031438_o.jpg`,
     alt: "Omaha Zoo",
     title: "Omaha Henry Doorly Zoo",
     date: "2010"
   },
   {
-    src: "/images/zoo/6469229697_ebfae32e99_o.jpg",
+    src: `${baseUrl}images/zoo/6469229697_ebfae32e99_o.jpg`,
     alt: "Omaha Zoo",
     title: "Omaha Henry Doorly Zoo",
     date: "2010"
   },
   {
-    src: "/images/zoo/52125685559_ecaa290f82_o.jpg",
+    src: `${baseUrl}images/zoo/52125685559_ecaa290f82_o.jpg`,
     alt: "Omaha Zoo",
     title: "Omaha Henry Doorly Zoo",
     date: "2010"
   },
   {
-    src: "/images/zoo/43238673422_29f72bde68_o.jpg",
+    src: `${baseUrl}images/zoo/43238673422_29f72bde68_o.jpg`,
     alt: "Omaha Zoo",
     title: "Omaha Henry Doorly Zoo",
     date: "2010"
   },
   {
-    src: "/images/zoo/26728806513_56fd4000e3_o.jpg",
+    src: `${baseUrl}images/zoo/26728806513_56fd4000e3_o.jpg`,
     alt: "Omaha Zoo",
     title: "Omaha Henry Doorly Zoo",
     date: "2010"
   },
   {
-    src: "/images/zoo/16502322966_ac94efdabe_o.jpg",
+    src: `${baseUrl}images/zoo/16502322966_ac94efdabe_o.jpg`,
     alt: "Omaha Zoo",
     title: "Omaha Henry Doorly Zoo",
     date: "2010"
   },
   {
-    src: "/images/zoo/14238653443_aca967dd20_o.jpg",
+    src: `${baseUrl}images/zoo/14238653443_aca967dd20_o.jpg`,
     alt: "Omaha Zoo",
     title: "Omaha Henry Doorly Zoo",
     date: "2010"
   },
   {
-    src: "/images/zoo/2010-12-11_PenguinBlog1200_3425.jpg",
+    src: `${baseUrl}images/zoo/2010-12-11_PenguinBlog1200_3425.jpg`,
     alt: "Penguin at Omaha Zoo",
     title: "Penguin Exhibit",
     date: "December 11, 2010"
   },
   {
-    src: "/images/zoo/2010-12-09_zoo_1024_3418.jpg",
+    src: `${baseUrl}images/zoo/2010-12-09_zoo_1024_3418.jpg`,
     alt: "Omaha Zoo",
     title: "Omaha Henry Doorly Zoo",
     date: "December 9, 2010"
   },
   {
-    src: "/images/zoo/2010-12-09_zoo_1024_3420.jpg",
+    src: `${baseUrl}images/zoo/2010-12-09_zoo_1024_3420.jpg`,
     alt: "Omaha Zoo",
     title: "Omaha Henry Doorly Zoo",
     date: "December 9, 2010"
   },
   {
-    src: "/images/zoo/2010-12-09_zoo_1024_3417.jpg",
+    src: `${baseUrl}images/zoo/2010-12-09_zoo_1024_3417.jpg`,
     alt: "Omaha Zoo",
     title: "Omaha Henry Doorly Zoo",
     date: "December 9, 2010"
@@ -86,7 +88,7 @@ let currentPhotoIndex = 0;
       <div class="absolute inset-0 z-0">
         <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
         <img
-          src="/images/zoo/2010-12-11_PenguinBlog1200_3425.jpg"
+          src={`${baseUrl}images/zoo/2010-12-11_PenguinBlog1200_3425.jpg`}
           alt="Omaha Zoo hero"
           class="w-full h-full object-cover"
         />
@@ -104,7 +106,7 @@ let currentPhotoIndex = 0;
     {/* Photo Grid */}
     <section class="container mx-auto px-4 py-12">
       <a 
-        href="/images" 
+        href={`${baseUrl}images`} 
         class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors mb-8"
       >
         <svg
