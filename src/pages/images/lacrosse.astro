@@ -9,7 +9,7 @@ const lacrosseGames = [
     title: "Varsity: MWHS vs Akeny",
     date: "March 8, 2025",
     location: "Millard West High School",
-    previewImage: `${baseUrl}images/lacrosse/20250308_Varsity_MWHS_vsAkeny/20250309_MWHS_Lacrosse - 1.jpeg`,
+    previewImage: `${baseUrl}/images/lacrosse/20250308_Varsity_MWHS_vsAkeny/20250309_MWHS_Lacrosse - 1.jpeg`,
     description: "Varsity lacrosse match between Millard West High School and Akeny.",
     photoCount: 53
   },
@@ -18,7 +18,7 @@ const lacrosseGames = [
     title: "JV: MWHS vs Akeny",
     date: "March 8, 2025",
     location: "Millard West High School",
-    previewImage: `${baseUrl}images/lacrosse/20250308_JV_MWHS_vsAkeny/20250309_MWHS_Lacrosse - 1.jpeg`,
+    previewImage: `${baseUrl}/images/lacrosse/20250308_JV_MWHS_vsAkeny/20250309_MWHS_Lacrosse - 1.jpeg`,
     description: "Junior Varsity lacrosse match between Millard West High School and Akeny.",
     photoCount: 19
   }
@@ -31,7 +31,7 @@ const lacrosseGames = [
       <div class="absolute inset-0 z-0">
         <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
         <img
-          src={`${baseUrl}images/lacrosse/20250308_Varsity_MWHS_vsAkeny/20250309_MWHS_Lacrosse - 1.jpeg`}
+          src={`${baseUrl}/images/lacrosse/20250308_Varsity_MWHS_vsAkeny/20250309_MWHS_Lacrosse - 1.jpeg`}
           alt="Lacrosse hero"
           class="w-full h-full object-cover"
         />
@@ -49,7 +49,7 @@ const lacrosseGames = [
     {/* Game Grid */}
     <section class="container mx-auto px-4 py-12">
       <a 
-        href={`${baseUrl}images`} 
+        href={`${baseUrl}/images`} 
         class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors mb-8"
       >
         <svg
@@ -93,7 +93,7 @@ const lacrosseGames = [
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {lacrosseGames.map((game) => (
-          <a href={`${baseUrl}images/lacrosse/${game.id}`} class="group">
+          <a href={`${baseUrl}/images/lacrosse/${game.id}`} class="group">
             <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <div class="relative h-64">
                 <div class="relative group">
