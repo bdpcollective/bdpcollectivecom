@@ -61,10 +61,10 @@ import { baseUrl } from '../../config';
   script.onload = async function() {
     // Fetch and process the data
     const divisionData = {
-      'NBA': await d3.csv(`${baseUrl}/data/Sports/Sports - BasketballNBA.csv`),
-      'Division I': await d3.csv(`${baseUrl}/data/Sports/Sports - BasketballNCAA.csv`),
-      'Division II': await d3.csv(`${baseUrl}/data/Sports/Sports - BasketballNCAADivII.csv`),
-      'Division III': await d3.csv(`${baseUrl}/data/Sports/Sports - BasketballNCAADivIII.csv`)
+      'NBA': await d3.csv('/data/Sports/Sports - BasketballNBA.csv'),
+      'Division I': await d3.csv('/data/Sports/Sports - BasketballNCAA.csv'),
+      'Division II': await d3.csv('/data/Sports/Sports - BasketballNCAADivII.csv'),
+      'Division III': await d3.csv('/data/Sports/Sports - BasketballNCAADivIII.csv')
     };
     
     let currentDivision = 'NBA';
