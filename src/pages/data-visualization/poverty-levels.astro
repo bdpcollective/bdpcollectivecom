@@ -4,10 +4,6 @@ import { baseUrl } from '../../config';
 ---
 
 <Layout title="Poverty Levels">
-  <Fragment slot="head">
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="https://unpkg.com/topojson-client@3"></script>
-  </Fragment>
   <main>
     {/* Hero Section */}
     <section class="relative h-[25vh] bg-black pt-16">
@@ -72,11 +68,27 @@ import { baseUrl } from '../../config';
 </Layout>
 
 <script>
-  // Initialize the map when the page loads
-  document.addEventListener('DOMContentLoaded', async () => {
-    const width = document.getElementById('poverty-map').clientWidth;
+  // Load D3 and TopoJSON
+  const d3Script = document.createElement('script');
+  d3Script.src = 'https://d3js.org/d3.v7.min.js';
+  document.head.appendChild(d3Script);
+
+  const topojsonScript = document.createElement('script');
+  topojsonScript.src = 'https://unpkg.com/topojson-client@3';
+  document.head.appendChild(topojsonScript);
+
+  // Wait for scripts to load
+  Promise.all([
+    new Promise(resolve => d3Script.onload = resolve),
+    new Promise(resolve => topojsonScript.onload = resolve)
+  ]).then(() => {
+    // Initialize the map when the page loads
+    const mapElement = document.getElementById('poverty-map');
+    if (!mapElement) return;
+
+    const width = mapElement.clientWidth;
     const height = 600;
-    const baseUrl = document.getElementById('poverty-map').dataset.baseUrl;
+    const baseUrl = mapElement.dataset.baseUrl;
 
     // Create SVG container
     const svg = d3.select('#poverty-map')
@@ -96,11 +108,11 @@ import { baseUrl } from '../../config';
 
     const path = d3.geoPath().projection(projection);
 
-    try {
-      // Load US counties data
-      const us = await d3.json('/data/counties-10m.json');
-      const povertyData = await d3.csv('/data/Poverty2023.csv');
-
+    // Load US counties data
+    Promise.all([
+      d3.json('/data/counties-10m.json'),
+      d3.csv('/data/Poverty2023.csv')
+    ]).then(([us, povertyData]) => {
       // Create map of poverty rates by county
       const povertyById = new Map();
       povertyData.forEach(d => {
@@ -200,9 +212,8 @@ import { baseUrl } from '../../config';
         .on('mouseout', function() {
           tooltip.style('visibility', 'hidden');
         });
-
-    } catch (error) {
+    }).catch(error => {
       console.error('Error loading data:', error);
-    }
+    });
   });
 </script> 
