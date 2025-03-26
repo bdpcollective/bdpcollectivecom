@@ -36,11 +36,6 @@ const omahaPhotos = [
     <section class="relative h-[40vh] bg-black">
       <div class="absolute inset-0 z-0">
         <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
-        <img
-          src="/images/omaha/2010-12-09_bobkerrybridge_1024_3409.jpg"
-          alt="Omaha hero"
-          class="w-full h-full object-cover"
-        />
       </div>
       <div class="relative z-10 flex items-center h-full">
         <div class="container mx-auto px-4">
@@ -112,7 +107,7 @@ const omahaPhotos = [
           id="lightbox-image"
           src=""
           alt=""
-          class="w-full h-auto rounded-lg shadow-xl"
+          class="w-full h-auto max-h-[80vh] object-contain rounded-lg shadow-xl"
         />
       </div>
 
@@ -138,9 +133,10 @@ const omahaPhotos = [
 </Layout>
 
 <style>
-  /* Ensure images maintain aspect ratio */
+  /* Remove the fixed aspect ratio style */
   img {
-    aspect-ratio: 4/3;
+    max-width: 100%;
+    height: auto;
   }
 </style>
 

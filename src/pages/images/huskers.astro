@@ -1,46 +1,46 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 
-const zooPhotos = [
+const huskersPhotos = [
   {
-    id: "zoo-3417",
-    title: "Zoo Exhibit",
-    date: "December 9, 2010",
-    location: "Omaha's Henry Doorly Zoo",
-    previewImage: "/images/zoo/2010-12-09_zoo_1024_3417.jpg",
-    description: "Exhibit at Omaha's Henry Doorly Zoo.",
+    id: "huskers-843",
+    title: "Huskers Game",
+    date: "October 27, 2011",
+    location: "Memorial Stadium",
+    previewImage: "/images/nu/2011-10-27_BrianandTom843.jpg",
+    description: "Nebraska Cornhuskers football game at Memorial Stadium.",
     photoCount: 1
   },
   {
-    id: "zoo-3418",
-    title: "Zoo Exhibit",
+    id: "huskers-3414",
+    title: "Huskers Game",
     date: "December 9, 2010",
-    location: "Omaha's Henry Doorly Zoo",
-    previewImage: "/images/zoo/2010-12-09_zoo_1024_3418.jpg",
-    description: "Exhibit at Omaha's Henry Doorly Zoo.",
+    location: "Memorial Stadium",
+    previewImage: "/images/nu/2010-12-09_NU_1024_3414.jpg",
+    description: "Nebraska Cornhuskers football game at Memorial Stadium.",
     photoCount: 1
   },
   {
-    id: "zoo-3420",
-    title: "Zoo Exhibit",
-    date: "December 9, 2010",
-    location: "Omaha's Henry Doorly Zoo",
-    previewImage: "/images/zoo/2010-12-09_zoo_1024_3420.jpg",
-    description: "Exhibit at Omaha's Henry Doorly Zoo.",
+    id: "huskers-3272",
+    title: "Huskers vs Missouri",
+    date: "October 31, 2010",
+    location: "Memorial Stadium",
+    previewImage: "/images/nu/2010-10-31_NUvsMU_Pano3272.jpg",
+    description: "Nebraska Cornhuskers vs Missouri Tigers football game.",
     photoCount: 1
   },
   {
-    id: "penguin",
-    title: "Penguin Exhibit",
-    date: "December 11, 2010",
-    location: "Omaha's Henry Doorly Zoo",
-    previewImage: "/images/zoo/2010-12-11_PenguinBlog1200_3425.jpg",
-    description: "Penguin exhibit at Omaha's Henry Doorly Zoo.",
+    id: "huskers-wku",
+    title: "Huskers vs WKU",
+    date: "September 4, 2010",
+    location: "Memorial Stadium",
+    previewImage: "/images/nu/NUvsWKU3_web.jpg",
+    description: "Nebraska Cornhuskers vs Western Kentucky Hilltoppers football game.",
     photoCount: 1
   }
 ];
 ---
-<Layout title="Zoo Photography">
+<Layout title="Huskers Photography">
   <main class="min-h-screen bg-gray-50">
     <section class="relative h-[40vh] bg-black">
       <div class="absolute inset-0 z-0">
@@ -48,9 +48,9 @@ const zooPhotos = [
       </div>
       <div class="relative z-10 flex items-center h-full">
         <div class="container mx-auto px-4">
-          <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Zoo Photography</h1>
+          <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Huskers Photography</h1>
           <p class="text-lg text-gray-200">
-            Capturing the beauty of wildlife at Omaha's Henry Doorly Zoo
+            Capturing the excitement of Nebraska Cornhuskers football
           </p>
         </div>
       </div>
@@ -78,14 +78,10 @@ const zooPhotos = [
         Back to All Images
       </a>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {zooPhotos.map((photo, index) => (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {huskersPhotos.map((photo, index) => (
           <div 
-            class={`relative overflow-hidden rounded-lg cursor-pointer group ${
-              index === 0 ? 'md:col-span-2 lg:col-span-2' : 
-              index === 2 ? 'md:col-span-2' : 
-              'aspect-[4/3]'
-            }`}
+            class="relative overflow-hidden rounded-lg aspect-[4/3] cursor-pointer group"
             data-index={index}
           >
             <img
@@ -94,10 +90,6 @@ const zooPhotos = [
               class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
             />
             <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-            <div class="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h3 class="text-white text-lg font-semibold">{photo.title}</h3>
-              <p class="text-gray-200 text-sm">{photo.date}</p>
-            </div>
           </div>
         ))}
       </div>
@@ -150,18 +142,17 @@ const zooPhotos = [
 </Layout>
 
 <style>
-  /* Remove the fixed aspect ratio style */
+  /* Ensure images maintain aspect ratio */
   img {
-    max-width: 100%;
-    height: auto;
+    aspect-ratio: 4/3;
   }
 </style>
 
 <script>
-  // Make zooPhotos available to client-side script
+  // Make huskersPhotos available to client-side script
   declare global {
     interface Window {
-      zooPhotos: { zooPhotos: Array<{
+      huskersPhotos: { huskersPhotos: Array<{
         id: string;
         title: string;
         date: string;
@@ -177,7 +168,7 @@ const zooPhotos = [
   // Get photos data from the data attribute
   const photosData = document.getElementById('photos-data')?.getAttribute('data-photos');
   if (photosData) {
-    window.zooPhotos = {zooPhotos: JSON.parse(photosData)};
+    window.huskersPhotos = {huskersPhotos: JSON.parse(photosData)};
   }
 
   // Lightbox functionality
@@ -189,7 +180,7 @@ const zooPhotos = [
 
   // Function to update lightbox content
   function updateLightboxContent(index: number) {
-    const photo = window.zooPhotos.zooPhotos[index];
+    const photo = window.huskersPhotos.huskersPhotos[index];
     if (lightboxImage) {
       lightboxImage.src = photo.previewImage;
       lightboxImage.alt = photo.title;
@@ -219,12 +210,12 @@ const zooPhotos = [
 
   // Navigate between photos
   prevButton?.addEventListener('click', () => {
-    window.currentPhotoIndex = (window.currentPhotoIndex - 1 + window.zooPhotos.zooPhotos.length) % window.zooPhotos.zooPhotos.length;
+    window.currentPhotoIndex = (window.currentPhotoIndex - 1 + window.huskersPhotos.huskersPhotos.length) % window.huskersPhotos.huskersPhotos.length;
     updateLightboxContent(window.currentPhotoIndex);
   });
 
   nextButton?.addEventListener('click', () => {
-    window.currentPhotoIndex = (window.currentPhotoIndex + 1) % window.zooPhotos.zooPhotos.length;
+    window.currentPhotoIndex = (window.currentPhotoIndex + 1) % window.huskersPhotos.huskersPhotos.length;
     updateLightboxContent(window.currentPhotoIndex);
   });
 
@@ -232,10 +223,10 @@ const zooPhotos = [
   document.addEventListener('keydown', (e) => {
     if (lightbox && !lightbox.classList.contains('hidden')) {
       if (e.key === 'ArrowLeft') {
-        window.currentPhotoIndex = (window.currentPhotoIndex - 1 + window.zooPhotos.zooPhotos.length) % window.zooPhotos.zooPhotos.length;
+        window.currentPhotoIndex = (window.currentPhotoIndex - 1 + window.huskersPhotos.huskersPhotos.length) % window.huskersPhotos.huskersPhotos.length;
         updateLightboxContent(window.currentPhotoIndex);
       } else if (e.key === 'ArrowRight') {
-        window.currentPhotoIndex = (window.currentPhotoIndex + 1) % window.zooPhotos.zooPhotos.length;
+        window.currentPhotoIndex = (window.currentPhotoIndex + 1) % window.huskersPhotos.huskersPhotos.length;
         updateLightboxContent(window.currentPhotoIndex);
       } else if (e.key === 'Escape') {
         lightbox.classList.add('hidden');
@@ -245,4 +236,4 @@ const zooPhotos = [
 </script>
 
 <!-- Hidden element to store photos data -->
-<div id="photos-data" data-photos={JSON.stringify(zooPhotos)}></div> 
+<div id="photos-data" data-photos={JSON.stringify(huskersPhotos)}></div> 
