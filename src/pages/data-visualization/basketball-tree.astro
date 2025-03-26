@@ -43,7 +43,7 @@ import { baseUrl } from '../../config';
         <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
           <div class="w-full">
             <div class="w-full" style="min-height: 800px; overflow: visible;">
-              <div id="visualization" style="overflow: visible;"></div>
+              <div id="visualization" style="overflow: visible;" data-base-url={baseUrl}></div>
             </div>
           </div>
         </div>
@@ -58,12 +58,14 @@ import { baseUrl } from '../../config';
     document.head.appendChild(script);
 
     script.onload = async function() {
+      const baseUrl = document.getElementById('visualization').dataset.baseUrl;
+      
       // Fetch and process the data
       const divisionData = {
-        'NBA': await d3.csv(`${baseUrl}/public/data/Sports/Sports - BasketballNBA.csv`),
-        'Division I': await d3.csv(`${baseUrl}/public/data/Sports/Sports - BasketballNCAA.csv`),
-        'Division II': await d3.csv(`${baseUrl}/public/data/Sports/Sports - BasketballNCAADivII.csv`),
-        'Division III': await d3.csv(`${baseUrl}/public/data/Sports/Sports - BasketballNCAADivIII.csv`)
+        'NBA': await d3.csv(`${baseUrl}/data/Sports/Sports - BasketballNBA.csv`),
+        'Division I': await d3.csv(`${baseUrl}/data/Sports/Sports - BasketballNCAA.csv`),
+        'Division II': await d3.csv(`${baseUrl}/data/Sports/Sports - BasketballNCAADivII.csv`),
+        'Division III': await d3.csv(`${baseUrl}/data/Sports/Sports - BasketballNCAADivIII.csv`)
       };
       
       let currentDivision = 'NBA';
