@@ -97,7 +97,7 @@ const lacrosseGames = [
       </div>
 
       {/* Mobile Menu */}
-      <div id="mobile-menu" class="hidden md:hidden fixed inset-0 bg-white z-50">
+      <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-[100]">
         <div class="flex justify-end p-4">
           <button id="close-menu" class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -179,13 +179,15 @@ const lacrosseGames = [
   const closeMenu = document.getElementById('close-menu');
   const mobileMenu = document.getElementById('mobile-menu');
 
-  menuToggle?.addEventListener('click', () => {
-    mobileMenu?.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-  });
+  if (menuToggle && mobileMenu && closeMenu) {
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
 
-  closeMenu?.addEventListener('click', () => {
-    mobileMenu?.classList.add('hidden');
-    document.body.style.overflow = '';
-  });
+    closeMenu.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      document.body.style.overflow = '';
+    });
+  }
 </script> 
