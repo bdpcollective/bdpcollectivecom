@@ -2,18 +2,17 @@
 import Layout from '../../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
-  const baseUrl = import.meta.env.BASE_URL;
   const events = [
     {
       id: "varsity-vs-akeny",
       title: "Varsity vs Akeny",
       date: "March 8, 2025",
       images: [
-        `${baseUrl}/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 1.jpeg`,
-        `${baseUrl}/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 2.jpeg`,
-        `${baseUrl}/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 3.jpeg`,
-        `${baseUrl}/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 4.jpeg`,
-        `${baseUrl}/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 5.jpeg`
+        '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 1.jpeg',
+        '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 2.jpeg',
+        '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 3.jpeg',
+        '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 4.jpeg',
+        '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 5.jpeg'
       ]
     },
     {
@@ -21,11 +20,11 @@ export async function getStaticPaths() {
       title: "JV vs Akeny",
       date: "March 8, 2025",
       images: [
-        `${baseUrl}/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 1.jpeg`,
-        `${baseUrl}/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 2.jpeg`,
-        `${baseUrl}/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 3.jpeg`,
-        `${baseUrl}/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 4.jpeg`,
-        `${baseUrl}/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 5.jpeg`
+        '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 1.jpeg',
+        '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 2.jpeg',
+        '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 3.jpeg',
+        '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 4.jpeg',
+        '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 5.jpeg'
       ]
     }
   ];
@@ -37,7 +36,6 @@ export async function getStaticPaths() {
 }
 
 const { event } = Astro.props;
-const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <Layout title={event.title}>
