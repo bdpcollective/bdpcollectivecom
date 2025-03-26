@@ -110,8 +110,8 @@ import { baseUrl } from '../../config';
 
     // Load US counties data
     Promise.all([
-      d3.json('/bdpcollectivecom/data/counties-10m.json'),
-      d3.csv('/bdpcollectivecom/data/Poverty2023.csv')
+      d3.json('/data/counties-10m.json'),
+      d3.csv('/data/Poverty2023.csv')
     ]).then(([us, povertyData]) => {
       // Create map of poverty rates by county
       const povertyById = new Map();
