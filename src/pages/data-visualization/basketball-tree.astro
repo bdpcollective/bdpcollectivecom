@@ -61,6 +61,7 @@ import { baseUrl } from '../../config';
   script.onload = async function() {
     // Fetch and process the data
     try {
+      // Force rebuild
       const divisionData = {
         'NBA': await d3.csv('/data/Sports/Sports-BasketballNBA.csv'),
         'Division I': await d3.csv('/data/Sports/Sports-BasketballNCAA.csv'),

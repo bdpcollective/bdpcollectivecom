@@ -81,38 +81,40 @@ import { baseUrl } from '../../config';
   Promise.all([
     new Promise(resolve => d3Script.onload = resolve),
     new Promise(resolve => topojsonScript.onload = resolve)
-  ]).then(() => {
-    // Initialize the map when the page loads
-    const mapElement = document.getElementById('poverty-map');
-    if (!mapElement) return;
+  ]).then(async () => {
+    try {
+      // Initialize the map when the page loads
+      const mapElement = document.getElementById('poverty-map');
+      if (!mapElement) return;
 
-    const width = mapElement.clientWidth;
-    const height = 600;
-    const baseUrl = mapElement.dataset.baseUrl;
+      const width = mapElement.clientWidth;
+      const height = 600;
+      const baseUrl = mapElement.dataset.baseUrl;
 
-    // Create SVG container
-    const svg = d3.select('#poverty-map')
-      .append('svg')
-      .attr('width', width)
-      .attr('height', height);
+      // Create SVG container
+      const svg = d3.select('#poverty-map')
+        .append('svg')
+        .attr('width', width)
+        .attr('height', height);
 
-    // Define color scale
-    const colorScale = d3.scaleThreshold()
-      .domain([5, 10, 15, 20])
-      .range(['#f7fbff', '#c6dbef', '#6baed6', '#2171b5', '#08306b']);
+      // Define color scale
+      const colorScale = d3.scaleThreshold()
+        .domain([0, 5, 10, 15, 20])
+        .range(d3.schemeBlues[5]);
 
-    // Create projection
-    const projection = d3.geoAlbersUsa()
-      .translate([width / 2, height / 2])
-      .scale(width);
+      // Create projection
+      const projection = d3.geoAlbersUsa()
+        .translate([width / 2, height / 2])
+        .scale(width);
 
-    const path = d3.geoPath().projection(projection);
+      const path = d3.geoPath().projection(projection);
 
-    // Load US counties data
-    Promise.all([
-      d3.json('/data/counties-10m.json'),
-      d3.csv('/data/Poverty2023.csv')
-    ]).then(([us, povertyData]) => {
+      // Load the data
+      const [povertyData, us] = await Promise.all([
+        d3.csv('/data/Poverty2023.csv'),
+        d3.json('/data/counties-10m.json')
+      ]);
+
       // Create map of poverty rates by county
       const povertyById = new Map();
       povertyData.forEach(d => {
@@ -212,8 +214,9 @@ import { baseUrl } from '../../config';
         .on('mouseout', function() {
           tooltip.style('visibility', 'hidden');
         });
-    }).catch(error => {
+    } catch (error) {
       console.error('Error loading data:', error);
-    });
+      document.getElementById('poverty-map').innerHTML = '<p class="text-red-500">Error loading data. Please try again later.</p>';
+    }
   });
 </script> 
