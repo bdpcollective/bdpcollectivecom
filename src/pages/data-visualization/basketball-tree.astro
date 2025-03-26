@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { baseUrl } from '../../config';
 ---
 
 <Layout title="Basketball Team Trees by Organization">
@@ -19,7 +20,7 @@ import Layout from '../../layouts/Layout.astro';
 
     <section class="container mx-auto px-4 py-8">
       <div class="max-w-7xl mx-auto">
-        <a href="/data-visualization" class="text-gray-600 hover:text-gray-900 mb-8 inline-block">
+        <a href={`${baseUrl}/data-visualization`} class="text-gray-600 hover:text-gray-900 mb-8 inline-block">
           ← Back to Data Visualization
         </a>
         
@@ -59,10 +60,10 @@ import Layout from '../../layouts/Layout.astro';
     script.onload = async function() {
       // Fetch and process the data
       const divisionData = {
-        'NBA': await d3.csv('/data/Sports/Sports - BasketballNBA.csv'),
-        'Division I': await d3.csv('/data/Sports/Sports - BasketballNCAA.csv'),
-        'Division II': await d3.csv('/data/Sports/Sports - BasketballNCAADivII.csv'),
-        'Division III': await d3.csv('/data/Sports/Sports - BasketballNCAADivIII.csv')
+        'NBA': await d3.csv(`${baseUrl}/public/data/Sports/Sports - BasketballNBA.csv`),
+        'Division I': await d3.csv(`${baseUrl}/public/data/Sports/Sports - BasketballNCAA.csv`),
+        'Division II': await d3.csv(`${baseUrl}/public/data/Sports/Sports - BasketballNCAADivII.csv`),
+        'Division III': await d3.csv(`${baseUrl}/public/data/Sports/Sports - BasketballNCAADivIII.csv`)
       };
       
       let currentDivision = 'NBA';
