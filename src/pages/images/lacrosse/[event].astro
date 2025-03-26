@@ -42,12 +42,9 @@ const { event } = Astro.props;
         {event.images.map((image, index) => (
           <div 
             class="relative overflow-hidden rounded-lg aspect-[4/3] cursor-pointer group"
-            on:click={() => {
-              document.getElementById('lightbox').classList.remove('hidden');
-              document.getElementById('lightbox-image').src = image;
-              document.getElementById('lightbox-image').alt = `${event.title} - Image ${index + 1}`;
-              window.currentPhotoIndex = index;
-            }}
+            data-image-index={index}
+            data-image-src={image}
+            data-image-title={event.title}
           >
             <img
               src={image}
@@ -65,16 +62,11 @@ const { event } = Astro.props;
   <div 
     id="lightbox" 
     class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden"
-    on:click={(e) => {
-      if (e.target.id === 'lightbox') {
-        document.getElementById('lightbox').classList.add('hidden');
-      }
-    }}
   >
     <div class="absolute top-4 right-4">
       <button 
+        id="close-lightbox"
         class="text-white hover:text-gray-300 transition-colors"
-        on:click={() => document.getElementById('lightbox').classList.add('hidden')}
       >
         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -92,12 +84,8 @@ const { event } = Astro.props;
     </div>
 
     <button 
+      id="prev-image"
       class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors"
-      on:click={() => {
-        window.currentPhotoIndex = (window.currentPhotoIndex - 1 + event.images.length) % event.images.length;
-        document.getElementById('lightbox-image').src = event.images[window.currentPhotoIndex];
-        document.getElementById('lightbox-image').alt = `${event.title} - Image ${window.currentPhotoIndex + 1}`;
-      }}
     >
       <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -105,12 +93,8 @@ const { event } = Astro.props;
     </button>
 
     <button 
+      id="next-image"
       class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors"
-      on:click={() => {
-        window.currentPhotoIndex = (window.currentPhotoIndex + 1) % event.images.length;
-        document.getElementById('lightbox-image').src = event.images[window.currentPhotoIndex];
-        document.getElementById('lightbox-image').alt = `${event.title} - Image ${window.currentPhotoIndex + 1}`;
-      }}
     >
       <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -119,27 +103,124 @@ const { event } = Astro.props;
   </div>
 </Layout>
 
-<script>
-  // Make event.images available to client-side script
-  window.eventImages = {images: event.images};
+<script define:vars={{ eventData: event }}>
+  // Make event data available to client-side script
+  window.eventImages = eventData;
+
+  function updateLightboxImage() {
+    const lightboxImage = document.getElementById('lightbox-image');
+    if (lightboxImage) {
+      lightboxImage.src = window.eventImages.images[window.currentPhotoIndex];
+      lightboxImage.alt = `${window.eventImages.title} - Image ${window.currentPhotoIndex + 1}`;
+    }
+  }
+
+  // Image click handlers
+  document.querySelectorAll('[data-image-index]').forEach((element) => {
+    element.addEventListener('click', () => {
+      const index = parseInt(element.getAttribute('data-image-index') || '0');
+      const image = element.getAttribute('data-image-src') || '';
+      const title = element.getAttribute('data-image-title') || '';
+      
+      window.currentPhotoIndex = index;
+      const lightboxImage = document.getElementById('lightbox-image');
+      if (lightboxImage) {
+        lightboxImage.src = image;
+        lightboxImage.alt = `${title} - Image ${index + 1}`;
+      }
+      
+      const lightbox = document.getElementById('lightbox');
+      if (lightbox) {
+        lightbox.classList.remove('hidden');
+      }
+    });
+  });
+
+  // Lightbox close handler
+  const closeButton = document.getElementById('close-lightbox');
+  if (closeButton) {
+    closeButton.addEventListener('click', () => {
+      const lightbox = document.getElementById('lightbox');
+      if (lightbox) {
+        lightbox.classList.add('hidden');
+      }
+    });
+  }
+
+  // Lightbox background click handler
+  const lightbox = document.getElementById('lightbox');
+  if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+      if (e.target instanceof HTMLElement && e.target.id === 'lightbox') {
+        e.target.classList.add('hidden');
+      }
+    });
+  }
+
+  // Navigation handlers
+  const prevButton = document.getElementById('prev-image');
+  if (prevButton) {
+    prevButton.addEventListener('click', () => {
+      window.currentPhotoIndex = (window.currentPhotoIndex - 1 + window.eventImages.images.length) % window.eventImages.images.length;
+      updateLightboxImage();
+    });
+  }
+
+  const nextButton = document.getElementById('next-image');
+  if (nextButton) {
+    nextButton.addEventListener('click', () => {
+      window.currentPhotoIndex = (window.currentPhotoIndex + 1) % window.eventImages.images.length;
+      updateLightboxImage();
+    });
+  }
 
   // Keyboard navigation
   document.addEventListener('keydown', (e) => {
     const lightbox = document.getElementById('lightbox');
-    if (!lightbox.classList.contains('hidden')) {
+    if (lightbox && !lightbox.classList.contains('hidden')) {
       if (e.key === 'ArrowLeft') {
-        window.currentPhotoIndex = (window.currentPhotoIndex - 1 + event.images.length) % event.images.length;
-        document.getElementById('lightbox-image').src = event.images[window.currentPhotoIndex];
-        document.getElementById('lightbox-image').alt = `${event.title} - Image ${window.currentPhotoIndex + 1}`;
+        window.currentPhotoIndex = (window.currentPhotoIndex - 1 + window.eventImages.images.length) % window.eventImages.images.length;
+        updateLightboxImage();
       } else if (e.key === 'ArrowRight') {
-        window.currentPhotoIndex = (window.currentPhotoIndex + 1) % event.images.length;
-        document.getElementById('lightbox-image').src = event.images[window.currentPhotoIndex];
-        document.getElementById('lightbox-image').alt = `${event.title} - Image ${window.currentPhotoIndex + 1}`;
+        window.currentPhotoIndex = (window.currentPhotoIndex + 1) % window.eventImages.images.length;
+        updateLightboxImage();
       } else if (e.key === 'Escape') {
         lightbox.classList.add('hidden');
       }
     }
   });
+
+  // Touch swipe support
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  const lightboxElement = document.getElementById('lightbox');
+  if (lightboxElement) {
+    lightboxElement.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    lightboxElement.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    });
+  }
+
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        // Swipe left - next image
+        window.currentPhotoIndex = (window.currentPhotoIndex + 1) % window.eventImages.images.length;
+      } else {
+        // Swipe right - previous image
+        window.currentPhotoIndex = (window.currentPhotoIndex - 1 + window.eventImages.images.length) % window.eventImages.images.length;
+      }
+      updateLightboxImage();
+    }
+  }
 </script>
 
 <style>
