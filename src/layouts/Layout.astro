@@ -21,19 +21,42 @@ const { title } = Astro.props;
 	</head>
 	<body class="min-h-screen flex flex-col">
 		<nav class="bg-white shadow-sm">
-			<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div class="flex justify-between h-16">
 					<div class="flex">
 						<a href={`${baseUrl}/`} class="flex items-center">
 							<span class="text-xl font-bold">BRIAN POPE</span>
 						</a>
 					</div>
-					<div class="flex items-center space-x-4">
+					<div class="hidden md:flex items-center space-x-4">
 						<a href={`${baseUrl}/`} class="text-gray-700 hover:text-gray-900">Home</a>
 						<a href={`${baseUrl}/ux-portfolio`} class="text-gray-700 hover:text-gray-900">UX Portfolio</a>
 						<a href={`${baseUrl}/data-visualization`} class="text-gray-700 hover:text-gray-900">Data Visualization</a>
 						<a href={`${baseUrl}/images`} class="text-gray-700 hover:text-gray-900">Images</a>
 					</div>
+					<div class="md:hidden flex items-center">
+						<button id="mobile-menu-button" class="text-gray-700 hover:text-gray-900 focus:outline-none">
+							<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+							</svg>
+						</button>
+					</div>
+				</div>
+			</div>
+			<!-- Mobile menu -->
+			<div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-50 bg-white">
+				<div class="flex justify-end p-4">
+					<button id="close-menu-button" class="text-gray-700 hover:text-gray-900 focus:outline-none">
+						<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+						</svg>
+					</button>
+				</div>
+				<div class="flex flex-col items-center space-y-6 py-8">
+					<a href={`${baseUrl}/`} class="text-xl text-gray-700 hover:text-gray-900">Home</a>
+					<a href={`${baseUrl}/ux-portfolio`} class="text-xl text-gray-700 hover:text-gray-900">UX Portfolio</a>
+					<a href={`${baseUrl}/data-visualization`} class="text-xl text-gray-700 hover:text-gray-900">Data Visualization</a>
+					<a href={`${baseUrl}/images`} class="text-xl text-gray-700 hover:text-gray-900">Images</a>
 				</div>
 			</div>
 		</nav>
@@ -68,3 +91,28 @@ const { title } = Astro.props;
 		padding: 0;
 	}
 </style>
+
+<script>
+	// Mobile menu functionality
+	const mobileMenuButton = document.getElementById('mobile-menu-button');
+	const closeMenuButton = document.getElementById('close-menu-button');
+	const mobileMenu = document.getElementById('mobile-menu');
+
+	mobileMenuButton?.addEventListener('click', () => {
+		mobileMenu?.classList.remove('hidden');
+		document.body.style.overflow = 'hidden';
+	});
+
+	closeMenuButton?.addEventListener('click', () => {
+		mobileMenu?.classList.add('hidden');
+		document.body.style.overflow = '';
+	});
+
+	// Close menu when clicking a link
+	mobileMenu?.querySelectorAll('a').forEach(link => {
+		link.addEventListener('click', () => {
+			mobileMenu.classList.add('hidden');
+			document.body.style.overflow = '';
+		});
+	});
+</script>
