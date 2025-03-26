@@ -28,4 +28,5 @@ pnpm-debug.log*
 
 # Large data files
 public/data/*.csv
-public/data/Sports/
+# Allow Sports CSV files
+!public/data/Sports/*.csv
