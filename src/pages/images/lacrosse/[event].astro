@@ -44,15 +44,111 @@ const { event } = Astro.props;
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {event.images.map((image, index) => (
-          <div class="relative overflow-hidden rounded-lg aspect-[4/3]">
+          <div 
+            class="relative overflow-hidden rounded-lg aspect-[4/3] cursor-pointer group"
+            on:click={() => {
+              document.getElementById('lightbox').classList.remove('hidden');
+              document.getElementById('lightbox-image').src = image;
+              document.getElementById('lightbox-image').alt = `${event.title} - Image ${index + 1}`;
+              window.currentPhotoIndex = index;
+            }}
+          >
             <img
               src={image}
               alt={`${event.title} - Image ${index + 1}`}
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
             />
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
           </div>
         ))}
       </div>
     </div>
   </div>
-</Layout> 
+
+  {/* Lightbox */}
+  <div 
+    id="lightbox" 
+    class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden"
+    on:click={(e) => {
+      if (e.target.id === 'lightbox') {
+        document.getElementById('lightbox').classList.add('hidden');
+      }
+    }}
+  >
+    <div class="absolute top-4 right-4">
+      <button 
+        class="text-white hover:text-gray-300 transition-colors"
+        on:click={() => document.getElementById('lightbox').classList.add('hidden')}
+      >
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl px-4">
+      <img
+        id="lightbox-image"
+        src=""
+        alt=""
+        class="w-full h-auto rounded-lg shadow-xl"
+      />
+    </div>
+
+    <button 
+      class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors"
+      on:click={() => {
+        window.currentPhotoIndex = (window.currentPhotoIndex - 1 + event.images.length) % event.images.length;
+        document.getElementById('lightbox-image').src = event.images[window.currentPhotoIndex];
+        document.getElementById('lightbox-image').alt = `${event.title} - Image ${window.currentPhotoIndex + 1}`;
+      }}
+    >
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+
+    <button 
+      class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors"
+      on:click={() => {
+        window.currentPhotoIndex = (window.currentPhotoIndex + 1) % event.images.length;
+        document.getElementById('lightbox-image').src = event.images[window.currentPhotoIndex];
+        document.getElementById('lightbox-image').alt = `${event.title} - Image ${window.currentPhotoIndex + 1}`;
+      }}
+    >
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+</Layout>
+
+<script>
+  // Make event.images available to client-side script
+  window.eventImages = {images: event.images};
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    const lightbox = document.getElementById('lightbox');
+    if (!lightbox.classList.contains('hidden')) {
+      if (e.key === 'ArrowLeft') {
+        window.currentPhotoIndex = (window.currentPhotoIndex - 1 + event.images.length) % event.images.length;
+        document.getElementById('lightbox-image').src = event.images[window.currentPhotoIndex];
+        document.getElementById('lightbox-image').alt = `${event.title} - Image ${window.currentPhotoIndex + 1}`;
+      } else if (e.key === 'ArrowRight') {
+        window.currentPhotoIndex = (window.currentPhotoIndex + 1) % event.images.length;
+        document.getElementById('lightbox-image').src = event.images[window.currentPhotoIndex];
+        document.getElementById('lightbox-image').alt = `${event.title} - Image ${window.currentPhotoIndex + 1}`;
+      } else if (e.key === 'Escape') {
+        lightbox.classList.add('hidden');
+      }
+    }
+  });
+</script>
+
+<style>
+  /* Ensure images maintain aspect ratio */
+  img {
+    aspect-ratio: 4/3;
+  }
+</style> 
