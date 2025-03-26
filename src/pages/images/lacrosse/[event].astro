@@ -5,6 +5,7 @@ export async function getStaticPaths() {
   const baseUrl = import.meta.env.BASE_URL;
   const events = [
     {
+      id: "varsity-vs-akeny",
       title: "Varsity vs Akeny",
       date: "March 8, 2025",
       images: [
@@ -14,11 +15,23 @@ export async function getStaticPaths() {
         `${baseUrl}/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 4.jpeg`,
         `${baseUrl}/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 5.jpeg`
       ]
+    },
+    {
+      id: "jv-vs-akeny",
+      title: "JV vs Akeny",
+      date: "March 8, 2025",
+      images: [
+        `${baseUrl}/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 1.jpeg`,
+        `${baseUrl}/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 2.jpeg`,
+        `${baseUrl}/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 3.jpeg`,
+        `${baseUrl}/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 4.jpeg`,
+        `${baseUrl}/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 5.jpeg`
+      ]
     }
   ];
 
   return events.map(event => ({
-    params: { event: event.title.toLowerCase().replace(/\s+/g, '-') },
+    params: { event: event.id },
     props: { event }
   }));
 }
