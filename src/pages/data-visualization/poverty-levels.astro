@@ -68,6 +68,25 @@ import { baseUrl } from '../../config';
 </Layout>
 
 <script>
+  // Add type declarations for D3
+  declare const d3: any;
+  declare const topojson: any;
+
+  interface PovertyData {
+    FIPS_Code: string;
+    Area_Name: string;
+    Attribute: string;
+    Value: string;
+    Stabr?: string;
+  }
+
+  interface CountyFeature {
+    id: string;
+    properties: {
+      name: string;
+    };
+  }
+
   // Load D3 and TopoJSON
   const d3Script = document.createElement('script');
   d3Script.src = 'https://d3js.org/d3.v7.min.js';
@@ -83,7 +102,6 @@ import { baseUrl } from '../../config';
     new Promise(resolve => topojsonScript.onload = resolve)
   ]).then(async () => {
     try {
-      // Force rebuild
       // Initialize the map when the page loads
       const mapElement = document.getElementById('poverty-map');
       if (!mapElement) return;
@@ -112,13 +130,13 @@ import { baseUrl } from '../../config';
 
       // Load the data
       const [povertyData, us] = await Promise.all([
-        d3.csv('/data/Poverty2023.csv'),
+        d3.csv('/data/Poverty2023.csv') as Promise<PovertyData[]>,
         d3.json('/data/counties-10m.json')
       ]);
 
       // Create map of poverty rates by county
-      const povertyById = new Map();
-      povertyData.forEach(d => {
+      const povertyById = new Map<string, number>();
+      povertyData.forEach((d: PovertyData) => {
         // Only process county-level data where Attribute is PCTPOVALL_2023
         if (d.FIPS_Code && d.FIPS_Code !== '0' && d.Attribute === 'PCTPOVALL_2023') {
           // Special handling for Connecticut planning regions
@@ -127,7 +145,7 @@ import { baseUrl } from '../../config';
             const rate = +d.Value;
             const regionCode = d.FIPS_Code;
             // Map planning region codes to their counties
-            const regionToCounties = {
+            const regionToCounties: Record<string, string[]> = {
               '9130': ['09007', '09011', '09007'],  // Lower CT River Valley
               '9150': ['09015', '09013'],           // Northeastern
               '9170': ['09009', '09009'],           // South Central
@@ -136,7 +154,7 @@ import { baseUrl } from '../../config';
             };
             
             const counties = regionToCounties[regionCode] || [];
-            counties.forEach(countyFips => {
+            counties.forEach((countyFips: string) => {
               povertyById.set(countyFips, rate);
             });
           } else {
@@ -153,7 +171,7 @@ import { baseUrl } from '../../config';
         .data(topojson.feature(us, us.objects.counties).features)
         .enter()
         .append('path')
-        .attr('fill', d => {
+        .attr('fill', (d: CountyFeature) => {
           const paddedId = d.id.toString().padStart(5, '0');
           const rate = povertyById.get(paddedId);
           return rate ? colorScale(rate) : '#ccc';
@@ -164,7 +182,7 @@ import { baseUrl } from '../../config';
 
       // Add state borders
       svg.append('path')
-        .datum(topojson.mesh(us, us.objects.states, (a, b) => a !== b))
+        .datum(topojson.mesh(us, us.objects.states, (a: any, b: any) => a !== b))
         .attr('fill', 'none')
         .attr('stroke', 'white')
         .attr('stroke-width', 1)
@@ -182,7 +200,7 @@ import { baseUrl } from '../../config';
         .style('border-radius', '4px');
 
       svg.selectAll('path')
-        .on('mouseover', function(event, d) {
+        .on('mouseover', function(event: MouseEvent, d: CountyFeature) {
           const paddedId = d.id.toString().padStart(5, '0');
           const rate = povertyById.get(paddedId);
           const countyName = d.properties.name;
@@ -190,7 +208,7 @@ import { baseUrl } from '../../config';
           
           // Special handling for Connecticut tooltips
           if (paddedId.startsWith('09')) {
-            const planningRegion = povertyData.find(p => 
+            const planningRegion = povertyData.find((p: PovertyData) => 
               p.FIPS_Code.startsWith('9') && 
               p.Area_Name.includes('Planning Region') && 
               p.Attribute === 'PCTPOVALL_2023' &&
@@ -201,13 +219,13 @@ import { baseUrl } from '../../config';
               .style('visibility', 'visible')
               .html(`${countyName}, ${stateName}<br>Planning Region: ${planningRegion?.Area_Name.replace(' Planning Region', '')}<br>Poverty Rate: ${rate?.toFixed(1)}%`);
           } else {
-            stateName = povertyData.find(p => p.FIPS_Code === paddedId.replace(/^0+/, ''))?.Stabr || '';
+            stateName = povertyData.find((p: PovertyData) => p.FIPS_Code === paddedId.replace(/^0+/, ''))?.Stabr || '';
             tooltip
               .style('visibility', 'visible')
               .html(`${countyName}, ${stateName}<br>Poverty Rate: ${rate?.toFixed(1)}%`);
           }
         })
-        .on('mousemove', function(event) {
+        .on('mousemove', function(event: MouseEvent) {
           tooltip
             .style('top', (event.pageY - 10) + 'px')
             .style('left', (event.pageX + 10) + 'px');
@@ -217,7 +235,10 @@ import { baseUrl } from '../../config';
         });
     } catch (error) {
       console.error('Error loading data:', error);
-      document.getElementById('poverty-map').innerHTML = '<p class="text-red-500">Error loading data. Please try again later.</p>';
+      const mapElement = document.getElementById('poverty-map');
+      if (mapElement) {
+        mapElement.innerHTML = '<p class="text-red-500">Error loading data. Please try again later.</p>';
+      }
     }
   });
 </script> 
