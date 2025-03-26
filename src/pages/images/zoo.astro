@@ -81,17 +81,16 @@ const zooPhotos = [
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {zooPhotos.map((photo, index) => (
           <div 
-            class={`relative overflow-hidden rounded-lg cursor-pointer group ${
-              index === 0 ? 'md:col-span-2 lg:col-span-2' : 
-              index === 2 ? 'md:col-span-2' : 
-              'aspect-[4/3]'
-            }`}
+            class="relative overflow-hidden rounded-lg cursor-pointer group aspect-[4/3]"
             data-index={index}
+            data-image-src={photo.previewImage}
+            data-image-title={photo.title}
           >
             <img
               src={photo.previewImage}
               alt={photo.title}
-              class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+              class="absolute inset-0 w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-300"
+              style="min-height: 100%; min-width: 100%; object-position: center center;"
             />
             <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
             <div class="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -158,90 +157,131 @@ const zooPhotos = [
 </style>
 
 <script>
-  // Make zooPhotos available to client-side script
+  // TypeScript interface for window
   declare global {
     interface Window {
-      zooPhotos: { zooPhotos: Array<{
-        id: string;
-        title: string;
-        date: string;
-        location: string;
-        previewImage: string;
-        description: string;
-        photoCount: number;
-      }> };
       currentPhotoIndex: number;
+      zooPhotos: {
+        images: number;
+        title: string;
+      };
     }
   }
 
-  // Get photos data from the data attribute
-  const photosData = document.getElementById('photos-data')?.getAttribute('data-photos');
-  if (photosData) {
-    window.zooPhotos = {zooPhotos: JSON.parse(photosData)};
-  }
+  // Make zooPhotos available to client-side script
+  window.zooPhotos = {
+    images: document.querySelectorAll('[data-image-src]').length,
+    title: 'Zoo Photography'
+  };
 
-  // Lightbox functionality
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement;
-  const closeButton = document.getElementById('close-lightbox');
-  const prevButton = document.getElementById('prev-photo');
-  const nextButton = document.getElementById('next-photo');
-
-  // Function to update lightbox content
-  function updateLightboxContent(index: number) {
-    const photo = window.zooPhotos.zooPhotos[index];
+  function updateLightboxImage() {
+    const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement;
     if (lightboxImage) {
-      lightboxImage.src = photo.previewImage;
-      lightboxImage.alt = photo.title;
+      const currentImage = document.querySelector(`[data-index="${window.currentPhotoIndex}"]`);
+      if (currentImage) {
+        lightboxImage.src = currentImage.getAttribute('data-image-src') || '';
+        lightboxImage.alt = currentImage.getAttribute('data-image-title') || '';
+      }
     }
   }
 
-  // Open lightbox when clicking an image
-  document.querySelectorAll('.group').forEach((image, index) => {
-    image.addEventListener('click', () => {
+  // Image click handlers
+  document.querySelectorAll('[data-index]').forEach((element) => {
+    element.addEventListener('click', () => {
+      const index = parseInt(element.getAttribute('data-index') || '0');
       window.currentPhotoIndex = index;
-      updateLightboxContent(index);
-      if (lightbox) lightbox.classList.remove('hidden');
+      updateLightboxImage();
+      
+      const lightbox = document.getElementById('lightbox');
+      if (lightbox) {
+        lightbox.classList.remove('hidden');
+      }
     });
   });
 
-  // Close lightbox when clicking outside
-  lightbox?.addEventListener('click', (e) => {
-    if (e.target === lightbox) {
-      lightbox.classList.add('hidden');
-    }
-  });
+  // Lightbox close handler
+  const closeButton = document.getElementById('close-lightbox');
+  if (closeButton) {
+    closeButton.addEventListener('click', () => {
+      const lightbox = document.getElementById('lightbox');
+      if (lightbox) {
+        lightbox.classList.add('hidden');
+      }
+    });
+  }
 
-  // Close lightbox when clicking close button
-  closeButton?.addEventListener('click', () => {
-    if (lightbox) lightbox.classList.add('hidden');
-  });
+  // Lightbox background click handler
+  const lightbox = document.getElementById('lightbox');
+  if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+      if (e.target instanceof HTMLElement && e.target.id === 'lightbox') {
+        e.target.classList.add('hidden');
+      }
+    });
+  }
 
-  // Navigate between photos
-  prevButton?.addEventListener('click', () => {
-    window.currentPhotoIndex = (window.currentPhotoIndex - 1 + window.zooPhotos.zooPhotos.length) % window.zooPhotos.zooPhotos.length;
-    updateLightboxContent(window.currentPhotoIndex);
-  });
+  // Navigation handlers
+  const prevButton = document.getElementById('prev-photo');
+  if (prevButton) {
+    prevButton.addEventListener('click', () => {
+      window.currentPhotoIndex = (window.currentPhotoIndex - 1 + window.zooPhotos.images) % window.zooPhotos.images;
+      updateLightboxImage();
+    });
+  }
 
-  nextButton?.addEventListener('click', () => {
-    window.currentPhotoIndex = (window.currentPhotoIndex + 1) % window.zooPhotos.zooPhotos.length;
-    updateLightboxContent(window.currentPhotoIndex);
-  });
+  const nextButton = document.getElementById('next-photo');
+  if (nextButton) {
+    nextButton.addEventListener('click', () => {
+      window.currentPhotoIndex = (window.currentPhotoIndex + 1) % window.zooPhotos.images;
+      updateLightboxImage();
+    });
+  }
 
   // Keyboard navigation
   document.addEventListener('keydown', (e) => {
     if (lightbox && !lightbox.classList.contains('hidden')) {
       if (e.key === 'ArrowLeft') {
-        window.currentPhotoIndex = (window.currentPhotoIndex - 1 + window.zooPhotos.zooPhotos.length) % window.zooPhotos.zooPhotos.length;
-        updateLightboxContent(window.currentPhotoIndex);
+        window.currentPhotoIndex = (window.currentPhotoIndex - 1 + window.zooPhotos.images) % window.zooPhotos.images;
+        updateLightboxImage();
       } else if (e.key === 'ArrowRight') {
-        window.currentPhotoIndex = (window.currentPhotoIndex + 1) % window.zooPhotos.zooPhotos.length;
-        updateLightboxContent(window.currentPhotoIndex);
+        window.currentPhotoIndex = (window.currentPhotoIndex + 1) % window.zooPhotos.images;
+        updateLightboxImage();
       } else if (e.key === 'Escape') {
         lightbox.classList.add('hidden');
       }
     }
   });
+
+  // Touch swipe support
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  if (lightbox) {
+    lightbox.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    lightbox.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    });
+  }
+
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        // Swipe left - next image
+        window.currentPhotoIndex = (window.currentPhotoIndex + 1) % window.zooPhotos.images;
+      } else {
+        // Swipe right - previous image
+        window.currentPhotoIndex = (window.currentPhotoIndex - 1 + window.zooPhotos.images) % window.zooPhotos.images;
+      }
+      updateLightboxImage();
+    }
+  }
 </script>
 
 <!-- Hidden element to store photos data -->
