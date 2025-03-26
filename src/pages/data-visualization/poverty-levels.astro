@@ -4,6 +4,10 @@ import { baseUrl } from '../../config';
 ---
 
 <Layout title="Poverty Levels">
+  <Fragment slot="head">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/topojson-client@3"></script>
+  </Fragment>
   <main>
     {/* Hero Section */}
     <section class="relative h-[25vh] bg-black pt-16">
@@ -68,9 +72,6 @@ import { baseUrl } from '../../config';
 </Layout>
 
 <script>
-  import * as d3 from 'd3';
-  import * as topojson from 'topojson-client';
-
   // Initialize the map when the page loads
   document.addEventListener('DOMContentLoaded', async () => {
     const width = document.getElementById('poverty-map').clientWidth;
@@ -84,7 +85,7 @@ import { baseUrl } from '../../config';
       .attr('height', height);
 
     // Define color scale
-    const colorScale = d3.scaleThreshold<number, string>()
+    const colorScale = d3.scaleThreshold()
       .domain([5, 10, 15, 20])
       .range(['#f7fbff', '#c6dbef', '#6baed6', '#2171b5', '#08306b']);
 
