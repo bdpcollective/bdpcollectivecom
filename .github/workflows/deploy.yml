@@ -37,6 +37,8 @@ jobs:
         run: npm ci
       - name: Build with Astro
         run: npm run build --verbose
+      - name: Copy CNAME
+        run: cp CNAME dist/CNAME
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
