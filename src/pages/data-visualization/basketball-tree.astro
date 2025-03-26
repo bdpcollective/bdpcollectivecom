@@ -43,286 +43,284 @@ import { baseUrl } from '../../config';
         <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
           <div class="w-full">
             <div class="w-full" style="min-height: 800px; overflow: visible;">
-              <div id="visualization" style="overflow: visible;" data-base-url={baseUrl}></div>
+              <div id="visualization" style="overflow: visible;"></div>
             </div>
           </div>
         </div>
       </div>
     </section>
   </main>
+</Layout>
 
-  <script>
-    // Load D3.js from CDN
-    const script = document.createElement('script');
-    script.src = 'https://d3js.org/d3.v7.min.js';
-    document.head.appendChild(script);
+<script define:vars={{ baseUrl }}>
+  // Load D3.js from CDN
+  const script = document.createElement('script');
+  script.src = 'https://d3js.org/d3.v7.min.js';
+  document.head.appendChild(script);
 
-    script.onload = async function() {
-      const baseUrl = document.getElementById('visualization').dataset.baseUrl;
-      
-      // Fetch and process the data
-      const divisionData = {
-        'NBA': await d3.csv(`${baseUrl}/data/Sports/Sports - BasketballNBA.csv`),
-        'Division I': await d3.csv(`${baseUrl}/data/Sports/Sports - BasketballNCAA.csv`),
-        'Division II': await d3.csv(`${baseUrl}/data/Sports/Sports - BasketballNCAADivII.csv`),
-        'Division III': await d3.csv(`${baseUrl}/data/Sports/Sports - BasketballNCAADivIII.csv`)
-      };
-      
-      let currentDivision = 'NBA';
-      
-      // Process the data to create a clean hierarchy
-      const processData = (data, selectedDivision) => {
-        if (selectedDivision === 'NBA') {
-          // Get unique conferences and divisions
-          const conferences = [...new Set(data.map(d => d.Conference))];
-          const divisions = [...new Set(data.map(d => d.Division))];
-          
-          // Create hierarchical data array for NBA
-          return [
-            { id: 'NBA', parentId: null },
-            ...conferences.map(conf => ({ 
-              id: conf,
-              parentId: 'NBA',
-              name: conf
-            })),
-            ...divisions.map(div => {
-              const conference = data.find(d => d.Division === div)?.Conference;
-              return { 
-                id: div,
-                parentId: conference,
-                name: div
-              };
-            }),
-            ...data.map(d => ({
-              id: d.Team,
-              parentId: d.Division,
-              name: d.Team
-            }))
-          ];
-        } else {
-          // NCAA data processing (unchanged)
-          const filteredData = data;
-          const conferences = [...new Set(filteredData.map(d => d.Conference))];
-          
-          return [
-            { id: selectedDivision, parentId: null },
-            ...conferences.map(conf => ({ 
-              id: conf,
-              parentId: selectedDivision,
-              name: conf
-            })),
-            ...filteredData.map(d => ({
-              id: d.School,
-              parentId: d.Conference,
-              name: d.School
-            }))
-          ];
-        }
-      };
-
-      function createVisualization(data, selectedDivision) {
-        // Clear previous visualization
-        d3.select('#visualization').selectAll('*').remove();
-
-        // Create the hierarchy
-        const hierarchyData = processData(data, selectedDivision);
-        const root = d3.stratify()(hierarchyData);
-
-        // Set dimensions
-        const width = 928;
-        const dx = 24;
-        const dy = selectedDivision === 'Division III' ? width / 2 : width / 5;
-        const margin = ({ top: 20, right: 200, bottom: 20, left: 200 });  // Increased side margins
-
-        // Create tree layout
-        const tree = d3.tree()
-          .nodeSize([dx, dy]);
-
-        const diagonal = d3.linkHorizontal()
-          .x(d => d.y)
-          .y(d => d.x);
-
-        // Create the svg container
-        const svg = d3.select('#visualization')
-          .append('svg')
-          .attr('viewBox', [-margin.left, -margin.top, width, dx])
-          .style('width', '100%')
-          .style('height', 'auto')
-          .style('min-height', '800px')
-          .style('overflow', 'visible')
-          .style('font', '14px system-ui, sans-serif')
-          .style('user-select', 'none');
-
-        const gLink = svg.append('g')
-          .attr('fill', 'none')
-          .attr('stroke', '#999')
-          .attr('stroke-opacity', 0.4)
-          .attr('stroke-width', 1.5);
-
-        const gNode = svg.append('g')
-          .attr('cursor', 'pointer')
-          .attr('pointer-events', 'all');
-
-        root.x0 = dy / 2;
-        root.y0 = 0;
-
-        // Initialize the display
-        root.descendants().forEach((d, i) => {
-          d.id = i;
-          d._children = d.children;
-          
-          if (selectedDivision === 'NBA') {
-            // Keep all nodes expanded for NBA
-            d.children = d._children;
-          } else if (selectedDivision === 'Division II') {
-            // For Division II, keep Carolinas open and collapse others
-            const isCarolinasPath = d.data.id === 'Division II' || 
-                                  d.data.id === 'Carolinas' ||
-                                  (d.parent && d.parent.data.id === 'Carolinas');
-            if (!isCarolinasPath) {
-              d.children = null;
-            }
-          } else if (selectedDivision === 'Division I') {
-            // For Division I, keep Big Ten open and collapse others
-            const isBigTenPath = d.data.id === 'Division I' || 
-                                d.data.id === 'Big Ten' ||
-                                (d.parent && d.parent.data.id === 'Big Ten');
-            if (!isBigTenPath) {
-              d.children = null;
-            }
-          } else if (selectedDivision === 'Division III') {
-            // For Division III, keep American Southwest Conference open and collapse others
-            const isASCPath = d.data.id === 'Division III' || 
-                            d.data.id === 'American Southwest' ||
-                            (d.parent && d.parent.data.id === 'American Southwest');
-            if (!isASCPath) {
-              d.children = null;
-            }
-          }
-        });
-
-        function update(source) {
-          const duration = 250;
-          const nodes = root.descendants().reverse();
-          const links = root.links();
-
-          // Compute the new tree layout
-          tree(root);
-
-          let left = root;
-          let right = root;
-          root.eachBefore(node => {
-            if (node.x < left.x) left = node;
-            if (node.x > right.x) right = node;
-          });
-
-          const height = right.x - left.x + margin.top + margin.bottom;
-
-          const transition = svg.transition()
-            .duration(duration)
-            .attr('viewBox', [
-              -margin.left,
-              left.x - margin.top,
-              width + margin.left + margin.right,
-              height
-            ])
-            .tween('resize', window.ResizeObserver ? null : () => () => svg.dispatch('toggle'));
-
-          // Update the nodes
-          const node = gNode.selectAll('g')
-            .data(nodes, d => d.id);
-
-          // Enter any new nodes at the parent's previous position
-          const nodeEnter = node.enter().append('g')
-            .attr('transform', d => `translate(${source.y0},${source.x0})`)
-            .attr('fill-opacity', 0)
-            .attr('stroke-opacity', 0)
-            .on('click', function(event, d) {
-              d.children = d.children ? null : d._children;
-              update(d);
-            });
-
-          nodeEnter.append('circle')
-            .attr('r', 4)
-            .attr('fill', d => d._children ? '#555' : '#999')
-            .attr('stroke-width', 10);
-
-          nodeEnter.append('text')
-            .attr('dy', '0.31em')
-            .attr('x', d => d._children ? -8 : 8)
-            .attr('text-anchor', d => d._children ? 'end' : 'start')
-            .text(d => d.data.name || d.data.id)
-            .clone(true).lower()
-            .attr('stroke-linejoin', 'round')
-            .attr('stroke-width', 3)
-            .attr('stroke', 'white');
-
-          // Transition nodes to their new position
-          const nodeUpdate = node.merge(nodeEnter).transition(transition)
-            .attr('transform', d => `translate(${d.y},${d.x})`)
-            .attr('fill-opacity', 1)
-            .attr('stroke-opacity', 1);
-
-          // Transition exiting nodes to the parent's new position
-          const nodeExit = node.exit().transition(transition).remove()
-            .attr('transform', d => `translate(${source.y},${source.x})`)
-            .attr('fill-opacity', 0)
-            .attr('stroke-opacity', 0);
-
-          // Update the links
-          const link = gLink.selectAll('path')
-            .data(links, d => d.target.id);
-
-          // Enter any new links at the parent's previous position
-          const linkEnter = link.enter().append('path')
-            .attr('d', d => {
-              const o = {x: source.x0, y: source.y0};
-              return diagonal({source: o, target: o});
-            });
-
-          // Transition links to their new position
-          link.merge(linkEnter).transition(transition)
-            .attr('d', diagonal);
-
-          // Transition exiting nodes to the parent's new position
-          link.exit().transition(transition).remove()
-            .attr('d', d => {
-              const o = {x: source.x, y: source.y};
-              return diagonal({source: o, target: o});
-            });
-
-          // Stash the old positions for transition
-          root.eachBefore(d => {
-            d.x0 = d.x;
-            d.y0 = d.y;
-          });
-        }
-
-        update(root);
+  script.onload = async function() {
+    // Fetch and process the data
+    const divisionData = {
+      'NBA': await d3.csv(`${baseUrl}/data/Sports/Sports - BasketballNBA.csv`),
+      'Division I': await d3.csv(`${baseUrl}/data/Sports/Sports - BasketballNCAA.csv`),
+      'Division II': await d3.csv(`${baseUrl}/data/Sports/Sports - BasketballNCAADivII.csv`),
+      'Division III': await d3.csv(`${baseUrl}/data/Sports/Sports - BasketballNCAADivIII.csv`)
+    };
+    
+    let currentDivision = 'NBA';
+    
+    // Process the data to create a clean hierarchy
+    const processData = (data, selectedDivision) => {
+      if (selectedDivision === 'NBA') {
+        // Get unique conferences and divisions
+        const conferences = [...new Set(data.map(d => d.Conference))];
+        const divisions = [...new Set(data.map(d => d.Division))];
+        
+        // Create hierarchical data array for NBA
+        return [
+          { id: 'NBA', parentId: null },
+          ...conferences.map(conf => ({ 
+            id: conf,
+            parentId: 'NBA',
+            name: conf
+          })),
+          ...divisions.map(div => {
+            const conference = data.find(d => d.Division === div)?.Conference;
+            return { 
+              id: div,
+              parentId: conference,
+              name: div
+            };
+          }),
+          ...data.map(d => ({
+            id: d.Team,
+            parentId: d.Division,
+            name: d.Team
+          }))
+        ];
+      } else {
+        // NCAA data processing (unchanged)
+        const filteredData = data;
+        const conferences = [...new Set(filteredData.map(d => d.Conference))];
+        
+        return [
+          { id: selectedDivision, parentId: null },
+          ...conferences.map(conf => ({ 
+            id: conf,
+            parentId: selectedDivision,
+            name: conf
+          })),
+          ...filteredData.map(d => ({
+            id: d.School,
+            parentId: d.Conference,
+            name: d.School
+          }))
+        ];
       }
+    };
 
-      // Add click handlers for division buttons
-      document.querySelectorAll('button[data-division]').forEach(button => {
-        button.addEventListener('click', (e) => {
-          // Update active state
-          document.querySelectorAll('button[data-division]').forEach(btn => {
-            btn.classList.remove('bg-blue-500', 'text-white', 'hover:bg-blue-600');
-            btn.classList.add('bg-gray-100', 'hover:bg-gray-200');
-          });
-          e.target.classList.remove('bg-gray-100', 'hover:bg-gray-200');
-          e.target.classList.add('bg-blue-500', 'text-white', 'hover:bg-blue-600');
+    function createVisualization(data, selectedDivision) {
+      // Clear previous visualization
+      d3.select('#visualization').selectAll('*').remove();
 
-          // Update visualization
-          currentDivision = e.target.dataset.division;
-          createVisualization(divisionData[currentDivision], currentDivision);
-        });
+      // Create the hierarchy
+      const hierarchyData = processData(data, selectedDivision);
+      const root = d3.stratify()(hierarchyData);
+
+      // Set dimensions
+      const width = 928;
+      const dx = 24;
+      const dy = selectedDivision === 'Division III' ? width / 2 : width / 5;
+      const margin = ({ top: 20, right: 200, bottom: 20, left: 200 });  // Increased side margins
+
+      // Create tree layout
+      const tree = d3.tree()
+        .nodeSize([dx, dy]);
+
+      const diagonal = d3.linkHorizontal()
+        .x(d => d.y)
+        .y(d => d.x);
+
+      // Create the svg container
+      const svg = d3.select('#visualization')
+        .append('svg')
+        .attr('viewBox', [-margin.left, -margin.top, width, dx])
+        .style('width', '100%')
+        .style('height', 'auto')
+        .style('min-height', '800px')
+        .style('overflow', 'visible')
+        .style('font', '14px system-ui, sans-serif')
+        .style('user-select', 'none');
+
+      const gLink = svg.append('g')
+        .attr('fill', 'none')
+        .attr('stroke', '#999')
+        .attr('stroke-opacity', 0.4)
+        .attr('stroke-width', 1.5);
+
+      const gNode = svg.append('g')
+        .attr('cursor', 'pointer')
+        .attr('pointer-events', 'all');
+
+      root.x0 = dy / 2;
+      root.y0 = 0;
+
+      // Initialize the display
+      root.descendants().forEach((d, i) => {
+        d.id = i;
+        d._children = d.children;
+        
+        if (selectedDivision === 'NBA') {
+          // Keep all nodes expanded for NBA
+          d.children = d._children;
+        } else if (selectedDivision === 'Division II') {
+          // For Division II, keep Carolinas open and collapse others
+          const isCarolinasPath = d.data.id === 'Division II' || 
+                                d.data.id === 'Carolinas' ||
+                                (d.parent && d.parent.data.id === 'Carolinas');
+          if (!isCarolinasPath) {
+            d.children = null;
+          }
+        } else if (selectedDivision === 'Division I') {
+          // For Division I, keep Big Ten open and collapse others
+          const isBigTenPath = d.data.id === 'Division I' || 
+                              d.data.id === 'Big Ten' ||
+                              (d.parent && d.parent.data.id === 'Big Ten');
+          if (!isBigTenPath) {
+            d.children = null;
+          }
+        } else if (selectedDivision === 'Division III') {
+          // For Division III, keep American Southwest Conference open and collapse others
+          const isASCPath = d.data.id === 'Division III' || 
+                          d.data.id === 'American Southwest' ||
+                          (d.parent && d.parent.data.id === 'American Southwest');
+          if (!isASCPath) {
+            d.children = null;
+          }
+        }
       });
 
-      // Set initial active state and create initial visualization
-      const initialButton = document.querySelector('button[data-division="NBA"]');
-      initialButton.classList.remove('bg-gray-100', 'hover:bg-gray-200');
-      initialButton.classList.add('bg-blue-500', 'text-white', 'hover:bg-blue-600');
-      createVisualization(divisionData[currentDivision], currentDivision);
-    };
-  </script>
-</Layout> 
+      function update(source) {
+        const duration = 250;
+        const nodes = root.descendants().reverse();
+        const links = root.links();
+
+        // Compute the new tree layout
+        tree(root);
+
+        let left = root;
+        let right = root;
+        root.eachBefore(node => {
+          if (node.x < left.x) left = node;
+          if (node.x > right.x) right = node;
+        });
+
+        const height = right.x - left.x + margin.top + margin.bottom;
+
+        const transition = svg.transition()
+          .duration(duration)
+          .attr('viewBox', [
+            -margin.left,
+            left.x - margin.top,
+            width + margin.left + margin.right,
+            height
+          ])
+          .tween('resize', window.ResizeObserver ? null : () => () => svg.dispatch('toggle'));
+
+        // Update the nodes
+        const node = gNode.selectAll('g')
+          .data(nodes, d => d.id);
+
+        // Enter any new nodes at the parent's previous position
+        const nodeEnter = node.enter().append('g')
+          .attr('transform', d => `translate(${source.y0},${source.x0})`)
+          .attr('fill-opacity', 0)
+          .attr('stroke-opacity', 0)
+          .on('click', function(event, d) {
+            d.children = d.children ? null : d._children;
+            update(d);
+          });
+
+        nodeEnter.append('circle')
+          .attr('r', 4)
+          .attr('fill', d => d._children ? '#555' : '#999')
+          .attr('stroke-width', 10);
+
+        nodeEnter.append('text')
+          .attr('dy', '0.31em')
+          .attr('x', d => d._children ? -8 : 8)
+          .attr('text-anchor', d => d._children ? 'end' : 'start')
+          .text(d => d.data.name || d.data.id)
+          .clone(true).lower()
+          .attr('stroke-linejoin', 'round')
+          .attr('stroke-width', 3)
+          .attr('stroke', 'white');
+
+        // Transition nodes to their new position
+        const nodeUpdate = node.merge(nodeEnter).transition(transition)
+          .attr('transform', d => `translate(${d.y},${d.x})`)
+          .attr('fill-opacity', 1)
+          .attr('stroke-opacity', 1);
+
+        // Transition exiting nodes to the parent's new position
+        const nodeExit = node.exit().transition(transition).remove()
+          .attr('transform', d => `translate(${source.y},${source.x})`)
+          .attr('fill-opacity', 0)
+          .attr('stroke-opacity', 0);
+
+        // Update the links
+        const link = gLink.selectAll('path')
+          .data(links, d => d.target.id);
+
+        // Enter any new links at the parent's previous position
+        const linkEnter = link.enter().append('path')
+          .attr('d', d => {
+            const o = {x: source.x0, y: source.y0};
+            return diagonal({source: o, target: o});
+          });
+
+        // Transition links to their new position
+        link.merge(linkEnter).transition(transition)
+          .attr('d', diagonal);
+
+        // Transition exiting nodes to the parent's new position
+        link.exit().transition(transition).remove()
+          .attr('d', d => {
+            const o = {x: source.x, y: source.y};
+            return diagonal({source: o, target: o});
+          });
+
+        // Stash the old positions for transition
+        root.eachBefore(d => {
+          d.x0 = d.x;
+          d.y0 = d.y;
+        });
+      }
+
+      update(root);
+    }
+
+    // Add click handlers for division buttons
+    document.querySelectorAll('button[data-division]').forEach(button => {
+      button.addEventListener('click', (e) => {
+        // Update active state
+        document.querySelectorAll('button[data-division]').forEach(btn => {
+          btn.classList.remove('bg-blue-500', 'text-white', 'hover:bg-blue-600');
+          btn.classList.add('bg-gray-100', 'hover:bg-gray-200');
+        });
+        e.target.classList.remove('bg-gray-100', 'hover:bg-gray-200');
+        e.target.classList.add('bg-blue-500', 'text-white', 'hover:bg-blue-600');
+
+        // Update visualization
+        currentDivision = e.target.dataset.division;
+        createVisualization(divisionData[currentDivision], currentDivision);
+      });
+    });
+
+    // Set initial active state and create initial visualization
+    const initialButton = document.querySelector('button[data-division="NBA"]');
+    initialButton.classList.remove('bg-gray-100', 'hover:bg-gray-200');
+    initialButton.classList.add('bg-blue-500', 'text-white', 'hover:bg-blue-600');
+    createVisualization(divisionData[currentDivision], currentDivision);
+  };
+</script> 
