@@ -49,7 +49,7 @@ const lacrosseGames = [
     {/* Game Grid */}
     <section class="container mx-auto px-4 py-12">
       <a 
-        href={`${baseUrl}/images`} 
+        href="/images" 
         class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors mb-8"
       >
         <svg
@@ -93,7 +93,7 @@ const lacrosseGames = [
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {lacrosseGames.map((game) => (
-          <a href={`${baseUrl}/images/lacrosse/${game.id}`} class="group">
+          <a href={`/images/lacrosse/${game.id}`} class="group">
             <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <div class="relative h-64">
                 <div class="relative group">
