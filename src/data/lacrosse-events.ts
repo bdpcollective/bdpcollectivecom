@@ -1,3 +1,5 @@
+import { baseUrl } from '../config';
+
 export const events = {
   "20250308-varsity-mwhs-vs-akeny": {
     title: "Varsity: MWHS vs Akeny",
@@ -5,7 +7,7 @@ export const events = {
     date: "March 8, 2025",
     location: "Millard West High School",
     photos: Array.from({ length: 53 }, (_, i) => 
-      `/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - ${i + 1}.jpeg`
+      `${baseUrl}/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - ${i + 1}.jpeg`
     )
   },
   "20250308-jv-mwhs-vs-akeny": {
@@ -14,7 +16,7 @@ export const events = {
     date: "March 8, 2025",
     location: "Millard West High School",
     photos: Array.from({ length: 19 }, (_, i) => 
-      `/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - ${i + 1}.jpeg`
+      `${baseUrl}/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - ${i + 1}.jpeg`
     )
   }
 }; 
