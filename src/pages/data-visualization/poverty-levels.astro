@@ -83,6 +83,7 @@ import { baseUrl } from '../../config';
     new Promise(resolve => topojsonScript.onload = resolve)
   ]).then(async () => {
     try {
+      // Force rebuild
       // Initialize the map when the page loads
       const mapElement = document.getElementById('poverty-map');
       if (!mapElement) return;
