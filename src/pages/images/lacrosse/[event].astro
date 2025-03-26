@@ -17,13 +17,9 @@ export async function getStaticPaths() {
       title: "JV: MWHS vs Akeny",
       date: "March 8, 2025",
       location: "Millard West High School",
-      images: [
-        '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 1.jpeg',
-        '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 2.jpeg',
-        '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 3.jpeg',
-        '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 4.jpeg',
-        '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 5.jpeg'
-      ]
+      images: Array.from({ length: 19 }, (_, i) => 
+        `/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - ${i + 1}.jpeg`
+      )
     }
   ];
 
