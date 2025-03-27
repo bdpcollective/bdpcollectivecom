@@ -73,10 +73,15 @@ import { baseUrl } from '../../config';
       
       // Process the data to create a clean hierarchy
       const processData = (data, selectedDivision) => {
+        if (!data || !Array.isArray(data)) {
+          console.error(`Invalid data for ${selectedDivision}:`, data);
+          return [];
+        }
+
         if (selectedDivision === 'NBA') {
           // Get unique conferences and divisions
-          const conferences = [...new Set(data.map(d => d.Conference))];
-          const divisions = [...new Set(data.map(d => d.Division))];
+          const conferences = [...new Set(data.map(d => d.Conference))].filter(Boolean);
+          const divisions = [...new Set(data.map(d => d.Division))].filter(Boolean);
           
           // Create hierarchical data array for NBA
           return [
@@ -101,9 +106,8 @@ import { baseUrl } from '../../config';
             }))
           ];
         } else {
-          // NCAA data processing (unchanged)
-          const filteredData = data;
-          const conferences = [...new Set(filteredData.map(d => d.Conference))];
+          // NCAA data processing
+          const conferences = [...new Set(data.map(d => d.Conference))].filter(Boolean);
           
           return [
             { id: selectedDivision, parentId: null },
@@ -112,7 +116,7 @@ import { baseUrl } from '../../config';
               parentId: selectedDivision,
               name: conf
             })),
-            ...filteredData.map(d => ({
+            ...data.map(d => ({
               id: d.School,
               parentId: d.Conference,
               name: d.School
@@ -315,14 +319,21 @@ import { baseUrl } from '../../config';
 
           // Update visualization
           currentDivision = e.target.dataset.division;
-          createVisualization(divisionData[currentDivision], currentDivision);
+          if (divisionData[currentDivision]) {
+            createVisualization(divisionData[currentDivision], currentDivision);
+          } else {
+            console.error(`No data available for ${currentDivision}`);
+          }
         });
       });
 
-      // Set initial selection to NCAA Division I
-      const initialSelection = 'NCAA Division I';
-      createVisualization(divisionData[initialSelection], initialSelection);
-      document.getElementById('league-select').value = initialSelection;
+      // Set initial selection to NBA (since that's the active button)
+      const initialDivision = 'NBA';
+      if (divisionData[initialDivision]) {
+        createVisualization(divisionData[initialDivision], initialDivision);
+      } else {
+        console.error(`No data available for ${initialDivision}`);
+      }
     } catch (error) {
       console.error('Error loading data:', error);
       document.getElementById('visualization').innerHTML = '<p class="text-red-500">Error loading data. Please try again later.</p>';
