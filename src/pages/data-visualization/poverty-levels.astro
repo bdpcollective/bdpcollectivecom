@@ -20,11 +20,11 @@ import { baseUrl } from '../../config';
     </section>
 
     {/* Content Section */}
-    <section class="container mx-auto px-4 py-20">
+    <section class="container mx-auto px-4 py-12">
       <div class="max-w-7xl mx-auto">
         <a 
           href={`${baseUrl}/data-visualization`} 
-          class="inline-flex items-center text-gray-600 hover:text-blue-600 transition-colors mb-8"
+          class="inline-flex items-center text-gray-600 hover:text-blue-600 transition-colors mb-6"
         >
           <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M15 19l-7-7 7-7" />
@@ -32,9 +32,9 @@ import { baseUrl } from '../../config';
           Back to Data Visualization
         </a>
 
-        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-          <div class="mb-6">
-            <h2 class="text-2xl font-bold mb-4">Poverty Rate by County | 2023</h2>
+        <div class="bg-white rounded-lg shadow-lg p-4">
+          <div class="mb-4">
+            <h2 class="text-2xl font-bold mb-6">Poverty Rate by County | 2023</h2>
             <div class="flex flex-wrap items-center gap-4 sm:gap-8">
               <div class="flex items-center">
                 <div class="w-4 h-4 bg-[#f7fbff] border border-gray-300"></div>
@@ -58,7 +58,7 @@ import { baseUrl } from '../../config';
               </div>
             </div>
           </div>
-          <div id="poverty-map" class="w-full h-[600px]" data-base-url={baseUrl}>
+          <div id="poverty-map" class="w-full h-[500px]" data-base-url={baseUrl}>
             <!-- Map will be rendered here -->
           </div>
         </div>
@@ -109,7 +109,7 @@ import { baseUrl } from '../../config';
       // Get container width and set responsive dimensions
       const getDimensions = () => {
         const containerWidth = mapElement.clientWidth;
-        const containerHeight = Math.min(600, window.innerHeight * 0.6); // Responsive height
+        const containerHeight = Math.min(500, window.innerHeight * 0.6); // Responsive height
         return { width: containerWidth, height: containerHeight };
       };
 
@@ -130,7 +130,7 @@ import { baseUrl } from '../../config';
       // Create projection with responsive scale
       const projection = d3.geoAlbersUsa()
         .translate([width / 2, height / 2])
-        .scale(width * 0.8); // Slightly smaller scale for better fit
+        .scale(width * (window.innerWidth < 768 ? 1.2 : 0.8)); // Larger scale on mobile
 
       const path = d3.geoPath().projection(projection);
 
@@ -143,10 +143,10 @@ import { baseUrl } from '../../config';
         // Update SVG viewBox
         svg.attr('viewBox', [0, 0, width, height]);
         
-        // Update projection
+        // Update projection with responsive scale
         projection
           .translate([width / 2, height / 2])
-          .scale(width * 0.8);
+          .scale(width * (window.innerWidth < 768 ? 1.2 : 0.8));
         
         // Update paths
         countiesGroup.selectAll('path')
