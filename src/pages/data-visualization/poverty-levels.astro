@@ -129,10 +129,18 @@ import { baseUrl } from '../../config';
       const path = d3.geoPath().projection(projection);
 
       // Load the data
+      console.log('Loading data...');
       const [povertyData, us] = await Promise.all([
         d3.csv('/data/Poverty2023.csv') as Promise<PovertyData[]>,
         d3.json('/data/counties-10m.json')
       ]);
+
+      console.log('Poverty data loaded:', povertyData?.length, 'records');
+      console.log('US map data loaded:', us ? 'yes' : 'no');
+
+      if (!povertyData || !us) {
+        throw new Error('Failed to load required data');
+      }
 
       // Create map of poverty rates by county
       const povertyById = new Map<string, number>();
@@ -165,13 +173,27 @@ import { baseUrl } from '../../config';
         }
       });
 
+      console.log('Processed poverty data:', povertyById.size, 'counties');
+
       // Draw counties
-      svg.append('g')
-        .selectAll('path')
-        .data(topojson.feature(us, us.objects.counties).features)
+      const features = topojson.feature(us, us.objects.counties).features;
+      console.log('County features:', features?.length, 'features');
+      console.log('Sample feature:', features[0]);
+
+      // Create a group for counties
+      const countiesGroup = svg.append('g')
+        .attr('class', 'counties');
+
+      // Draw counties
+      countiesGroup.selectAll('path')
+        .data(features)
         .enter()
         .append('path')
         .attr('fill', (d: CountyFeature) => {
+          if (!d || !d.id) {
+            console.warn('Invalid county feature:', d);
+            return '#ccc';
+          }
           const paddedId = d.id.toString().padStart(5, '0');
           const rate = povertyById.get(paddedId);
           return rate ? colorScale(rate) : '#ccc';
@@ -180,8 +202,10 @@ import { baseUrl } from '../../config';
         .attr('stroke', 'white')
         .attr('stroke-width', 0.2);
 
-      // Add state borders
-      svg.append('path')
+      // Add state borders in a separate group
+      svg.append('g')
+        .attr('class', 'state-borders')
+        .append('path')
         .datum(topojson.mesh(us, us.objects.states, (a: any, b: any) => a !== b))
         .attr('fill', 'none')
         .attr('stroke', 'white')
@@ -199,11 +223,16 @@ import { baseUrl } from '../../config';
         .style('border', '1px solid #ddd')
         .style('border-radius', '4px');
 
-      svg.selectAll('path')
+      // Add tooltips only to county paths
+      countiesGroup.selectAll('path')
         .on('mouseover', function(event: MouseEvent, d: CountyFeature) {
+          if (!d || !d.id) {
+            console.warn('Invalid county feature in tooltip:', d);
+            return;
+          }
           const paddedId = d.id.toString().padStart(5, '0');
           const rate = povertyById.get(paddedId);
-          const countyName = d.properties.name;
+          const countyName = d.properties?.name || 'Unknown County';
           let stateName = '';
           
           // Special handling for Connecticut tooltips
