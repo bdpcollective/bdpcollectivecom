@@ -35,7 +35,7 @@ import { baseUrl } from '../../config';
         <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
           <div class="flex items-center justify-between mb-4">
             <h2 class="text-2xl font-bold">Poverty Rate by County | 2023</h2>
-            <div class="flex items-center space-x-8">
+            <div class="flex flex-wrap items-center gap-4 sm:gap-8">
               <div class="flex items-center">
                 <div class="w-4 h-4 bg-[#f7fbff] border border-gray-300"></div>
                 <span class="ml-2 text-sm">0-5%</span>
@@ -106,27 +106,55 @@ import { baseUrl } from '../../config';
       const mapElement = document.getElementById('poverty-map');
       if (!mapElement) return;
 
-      const width = mapElement.clientWidth;
-      const height = 600;
-      const baseUrl = mapElement.dataset.baseUrl;
+      // Get container width and set responsive dimensions
+      const getDimensions = () => {
+        const containerWidth = mapElement.clientWidth;
+        const containerHeight = Math.min(600, window.innerHeight * 0.6); // Responsive height
+        return { width: containerWidth, height: containerHeight };
+      };
 
-      // Create SVG container
+      let { width, height } = getDimensions();
+
+      // Create SVG container with viewBox for responsive scaling
       const svg = d3.select('#poverty-map')
         .append('svg')
-        .attr('width', width)
-        .attr('height', height);
+        .attr('viewBox', [0, 0, width, height])
+        .style('width', '100%')
+        .style('height', '100%');
 
       // Define color scale
       const colorScale = d3.scaleThreshold()
         .domain([0, 5, 10, 15, 20])
         .range(d3.schemeBlues[5]);
 
-      // Create projection
+      // Create projection with responsive scale
       const projection = d3.geoAlbersUsa()
         .translate([width / 2, height / 2])
-        .scale(width);
+        .scale(width * 0.8); // Slightly smaller scale for better fit
 
       const path = d3.geoPath().projection(projection);
+
+      // Add resize handler
+      window.addEventListener('resize', () => {
+        const newDimensions = getDimensions();
+        width = newDimensions.width;
+        height = newDimensions.height;
+        
+        // Update SVG viewBox
+        svg.attr('viewBox', [0, 0, width, height]);
+        
+        // Update projection
+        projection
+          .translate([width / 2, height / 2])
+          .scale(width * 0.8);
+        
+        // Update paths
+        countiesGroup.selectAll('path')
+          .attr('d', path);
+        
+        svg.select('.state-borders path')
+          .attr('d', path);
+      });
 
       // Load the data
       console.log('Loading data...');
