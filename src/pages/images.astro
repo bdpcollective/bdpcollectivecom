@@ -31,7 +31,7 @@ const categoryImages = {
   // ]
 };
 
-const categoryTitles = {
+const categoryTitles: Record<string, string> = {
   "Lacrosse": "Millard West Lacrosse",
   "Omaha": "Images Around Omaha",
   "Zoo": "Omaha Henry Doorly Zoo",
@@ -50,9 +50,11 @@ function getRandomImage(images: string[]): string {
 const images = Object.entries(categoryImages).map(([category, categoryImages]) => ({
   src: getRandomImage(categoryImages),
   alt: category,
-  title: categoryTitles[category],
+  title: categoryTitles[category] || category,
   category: category,
-  description: category
+  description: category,
+  date: new Date().toLocaleDateString(),
+  photoCount: categoryImages.length
 }));
 ---
 
@@ -142,7 +144,7 @@ const images = Object.entries(categoryImages).map(([category, categoryImages]) =
 
   filterButtons.forEach(button => {
     button.addEventListener('click', () => {
-      const category = button.textContent.trim();
+      const category = button.textContent?.trim() || '';
       
       // Update active button
       filterButtons.forEach(btn => {
@@ -154,11 +156,12 @@ const images = Object.entries(categoryImages).map(([category, categoryImages]) =
 
       // Filter images
       imageCards.forEach(card => {
-        const cardCategory = card.querySelector('.text-sm').textContent;
+        const categoryElement = card.querySelector('.text-sm');
+        const cardCategory = categoryElement?.textContent || '';
         if (category === 'All' || cardCategory === category) {
-          card.style.display = 'block';
+          (card as HTMLElement).style.display = 'block';
         } else {
-          card.style.display = 'none';
+          (card as HTMLElement).style.display = 'none';
         }
       });
     });
