@@ -31,6 +31,15 @@ const categoryImages = {
   // ]
 };
 
+type CategoryKey = keyof typeof categoryImages;
+
+const categoryPhotoCount: Record<CategoryKey, number> = {
+  "Lacrosse": 72, // 19 JV + 53 Varsity photos
+  "Omaha": 3,
+  "Zoo": 4,
+  "Nebraska Athletics": 4
+};
+
 const categoryTitles: Record<string, string> = {
   "Lacrosse": "Millard West Lacrosse",
   "Omaha": "Images Around Omaha",
@@ -47,14 +56,14 @@ function getRandomImage(images: string[]): string {
 }
 
 // Create the images array with random images from each category
-const images = Object.entries(categoryImages).map(([category, categoryImages]) => ({
-  src: getRandomImage(categoryImages),
+const images = Object.entries(categoryImages).map(([category, images]) => ({
+  src: getRandomImage(images),
   alt: category,
   title: categoryTitles[category] || category,
-  category: category,
+  category: category as CategoryKey,
   description: category,
   date: new Date().toLocaleDateString(),
-  photoCount: categoryImages.length
+  photoCount: categoryPhotoCount[category as CategoryKey]
 }));
 ---
 
