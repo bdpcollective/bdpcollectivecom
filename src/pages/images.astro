@@ -25,10 +25,10 @@ const categoryImages = {
     '/images/nu/2010-12-09_NU_1024_3414.jpg',
     '/images/nu/2010-10-31_NUvsMU_Pano3272.jpg',
     '/images/nu/NUvsWKU3_web.jpg'
+  ],
+  "Omaha Lacrosse Club": [
+    '/images/coming-soon.jpg'
   ]
-  // "Omaha Lacrosse Club": [
-  //   '/images/coming-soon.jpg'
-  // ]
 };
 
 type CategoryKey = keyof typeof categoryImages;
@@ -37,18 +37,19 @@ const categoryPhotoCount: Record<CategoryKey, number> = {
   "Lacrosse": 72, // 19 JV + 53 Varsity photos
   "Omaha": 3,
   "Zoo": 4,
-  "Nebraska Athletics": 4
+  "Nebraska Athletics": 4,
+  "Omaha Lacrosse Club": 1
 };
 
 const categoryTitles: Record<string, string> = {
   "Lacrosse": "Millard West Lacrosse",
   "Omaha": "Images Around Omaha",
   "Zoo": "Omaha Henry Doorly Zoo",
-  "Nebraska Athletics": "Husker Related Images"
-  // "Omaha Lacrosse Club": "Omaha Lacrosse Club"
+  "Nebraska Athletics": "Husker Related Images",
+  "Omaha Lacrosse Club": "Omaha Lacrosse Club"
 };
 
-const categories = ["All", "Lacrosse", "Omaha", "Zoo", "Nebraska Athletics"];
+const categories = ["All", "Lacrosse", "Omaha", "Zoo", "Nebraska Athletics", "Omaha Lacrosse Club"];
 
 // Function to get a random image from an array
 function getRandomImage(images: string[]): string {
@@ -111,7 +112,7 @@ const images = Object.entries(categoryImages).map(([category, images]) => ({
                 image.category === "Omaha" ? '/images/omaha' : 
                 image.category === "Zoo" ? '/images/zoo' : 
                 image.category === "Nebraska Athletics" ? '/images/huskers' :
-                image.category === "Omaha Lacrosse Club" ? '/images/lacrosse' : 
+                image.category === "Omaha Lacrosse Club" ? '/images/omaha-lacrosse' : 
                 "#"
               } 
               class="group relative overflow-hidden rounded-lg"

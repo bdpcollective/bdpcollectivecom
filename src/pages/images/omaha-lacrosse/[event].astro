@@ -1,0 +1,88 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  return [
+    {
+      params: { event: '20250330-blue-vs-rampage' },
+      props: {
+        title: "Blue vs Lincoln Rampage",
+        date: "March 30, 2025",
+        images: [
+          "/images/olc/20250330_1_BluevsRampage/20250330_BluevsLincolnRampage - 1.jpeg",
+          "/images/olc/20250330_1_BluevsRampage/20250330_BluevsLincolnRampage - 2.jpeg",
+          "/images/olc/20250330_1_BluevsRampage/20250330_BluevsLincolnRampage - 3.jpeg",
+          "/images/olc/20250330_1_BluevsRampage/20250330_BluevsLincolnRampage - 4.jpeg",
+          "/images/olc/20250330_1_BluevsRampage/20250330_BluevsLincolnRampage - 5.jpeg",
+          "/images/olc/20250330_1_BluevsRampage/20250330_BluevsLincolnRampage - 6.jpeg",
+          "/images/olc/20250330_1_BluevsRampage/20250330_BluevsLincolnRampage - 7.jpeg",
+          "/images/olc/20250330_1_BluevsRampage/20250330_BluevsLincolnRampage - 8.jpeg",
+          "/images/olc/20250330_1_BluevsRampage/20250330_BluevsLincolnRampage - 9.jpeg",
+          "/images/olc/20250330_1_BluevsRampage/20250330_BluevsLincolnRampage - 10.jpeg",
+          "/images/olc/20250330_1_BluevsRampage/20250330_BluevsLincolnRampage - 11.jpeg",
+          "/images/olc/20250330_1_BluevsRampage/20250330_BluevsLincolnRampage - 12.jpeg",
+          "/images/olc/20250330_1_BluevsRampage/20250330_BluevsLincolnRampage - 13.jpeg",
+          "/images/olc/20250330_1_BluevsRampage/20250330_BluevsLincolnRampage - 14.jpeg",
+          "/images/olc/20250330_1_BluevsRampage/20250330_BluevsLincolnRampage - 15.jpeg"
+        ]
+      }
+    },
+    {
+      params: { event: 'blue-vs-elkhorn' },
+      props: {
+        title: "Blue vs Elkhorn",
+        date: "March 30, 2025",
+        images: [
+          "/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 1.jpeg",
+          "/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 2.jpeg",
+          "/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 3.jpeg",
+          "/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 4.jpeg",
+          "/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 5.jpeg",
+          "/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 6.jpeg",
+          "/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 7.jpeg",
+          "/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 8.jpeg",
+          "/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 9.jpeg",
+          "/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 10.jpeg",
+          "/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 11.jpeg",
+          "/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 12.jpeg",
+          "/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 13.jpeg",
+          "/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 14.jpeg"
+        ]
+      }
+    }
+  ];
+}
+
+const { title, date, images } = Astro.props;
+---
+
+<Layout title={`${title} - Omaha Lacrosse Club`}>
+  <div class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <a href="/images/omaha-lacrosse" class="inline-flex items-center text-gray-600 hover:text-gray-900 mb-4">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back to Omaha Lacrosse Club
+      </a>
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
+      <p class="text-gray-600 mb-8">{date}</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {images.map((image) => (
+          <div class="group relative overflow-hidden rounded-lg">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <div class="relative h-64">
+                <img
+                  src={image}
+                  alt={title}
+                  class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</Layout> 
