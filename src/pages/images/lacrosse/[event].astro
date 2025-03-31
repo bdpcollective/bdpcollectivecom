@@ -46,7 +46,7 @@ const images = Array.from({ length: game.imageCount }, (_, i) => ({
 ---
 
 <Layout title={game.title}>
-  <main class="min-h-screen bg-gray-50">
+  <main class="min-h-screen bg-gray-50" data-images={JSON.stringify(images)}>
     <section class="relative bg-gray-900 text-white py-24">
       <div class="relative z-10 flex items-center h-full">
         <div class="container mx-auto px-4">
@@ -163,9 +163,12 @@ const images = Array.from({ length: game.imageCount }, (_, i) => ({
   }
 
   // Get images data from the data attribute
-  const imagesData = document.getElementById('images-data')?.getAttribute('data-images');
-  if (imagesData) {
-    window.images = JSON.parse(imagesData);
+  const mainElement = document.querySelector('main');
+  if (mainElement) {
+    const imagesData = mainElement.getAttribute('data-images');
+    if (imagesData) {
+      window.images = JSON.parse(imagesData);
+    }
   }
 
   // Lightbox functionality
