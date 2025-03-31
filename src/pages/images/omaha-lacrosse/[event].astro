@@ -113,6 +113,7 @@ const { title, date, images } = Astro.props;
                   src={image}
                   alt={`${title} - Image ${index + 1}`}
                   class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                  data-index={index}
                 />
               </div>
             </div>
@@ -206,8 +207,9 @@ const { title, date, images } = Astro.props;
   }
 
   // Open lightbox when clicking an image
-  document.querySelectorAll('.group').forEach((image, index) => {
+  document.querySelectorAll('img[data-index]').forEach((image) => {
     image.addEventListener('click', () => {
+      const index = parseInt(image.getAttribute('data-index') || '0');
       window.currentPhotoIndex = index;
       updateLightboxContent(index);
       if (lightbox) lightbox.classList.remove('hidden');
