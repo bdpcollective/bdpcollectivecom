@@ -2,12 +2,128 @@
 import Layout from '../layouts/Layout.astro';
 
 const categoryImages = {
+  "Omaha Lacrosse Club": [
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 1.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 2.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 3.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 4.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 5.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 6.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 7.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 8.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 9.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 10.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 11.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 12.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 13.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 14.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 15.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 16.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 17.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 18.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 19.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 20.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 21.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 22.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 23.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 24.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 25.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 26.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 27.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 28.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 29.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 30.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 31.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 32.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 33.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 34.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 35.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 36.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 37.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 38.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 39.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 40.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 41.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 42.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 43.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 44.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 45.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 46.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 47.jpeg'
+  ],
   "Lacrosse": [
     '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 1.jpeg',
     '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 2.jpeg',
     '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 3.jpeg',
     '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 4.jpeg',
-    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 5.jpeg'
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 5.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 6.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 7.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 8.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 9.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 10.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 11.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 12.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 13.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 14.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 15.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 16.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 17.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 18.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 19.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 20.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 21.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 22.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 23.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 24.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 25.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 26.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 27.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 28.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 29.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 30.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 31.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 32.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 33.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 34.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 35.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 36.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 37.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 38.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 39.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 40.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 41.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 42.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 43.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 44.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 45.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 46.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 47.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 48.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 49.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 50.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 51.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 52.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 53.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 1.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 2.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 3.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 4.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 5.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 6.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 7.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 8.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 9.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 10.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 11.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 12.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 13.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 14.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 15.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 16.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 17.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 18.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 19.jpeg'
   ],
   "Omaha": [
     '/images/omaha/2010-12-09_bobkerrybridge_1024_3409.jpg',
@@ -25,31 +141,28 @@ const categoryImages = {
     '/images/nu/2010-12-09_NU_1024_3414.jpg',
     '/images/nu/2010-10-31_NUvsMU_Pano3272.jpg',
     '/images/nu/NUvsWKU3_web.jpg'
-  ],
-  "Omaha Lacrosse Club": [
-    '/images/coming-soon.jpg'
   ]
 };
 
 type CategoryKey = keyof typeof categoryImages;
 
-const categoryPhotoCount: Record<CategoryKey, number> = {
-  "Lacrosse": 72, // 19 JV + 53 Varsity photos
-  "Omaha": 3,
-  "Zoo": 4,
-  "Nebraska Athletics": 4,
-  "Omaha Lacrosse Club": 1
+const categoryPhotoCount = {
+  "Omaha Lacrosse Club": 47,
+  "Lacrosse": 72,
+  "Omaha": 1,
+  "Zoo": 1,
+  "Nebraska Athletics": 1
 };
 
 const categoryTitles: Record<string, string> = {
-  "Lacrosse": "Millard West Lacrosse",
+  "Omaha Lacrosse Club": "2025 Omaha Lacrosse Club",
+  "Lacrosse": "2025 Millard West Lacrosse",
   "Omaha": "Images Around Omaha",
   "Zoo": "Omaha Henry Doorly Zoo",
-  "Nebraska Athletics": "Husker Related Images",
-  "Omaha Lacrosse Club": "Omaha Lacrosse Club"
+  "Nebraska Athletics": "Nebraska Athletics"
 };
 
-const categories = ["All", "Lacrosse", "Omaha", "Zoo", "Nebraska Athletics", "Omaha Lacrosse Club"];
+const categories = ["All", "Omaha Lacrosse Club", "Millard West Lacrosse", "Omaha", "Zoo", "Nebraska Athletics"];
 
 // Function to get a random image from an array
 function getRandomImage(images: string[]): string {
