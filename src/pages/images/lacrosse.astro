@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Lightbox from '../../components/Lightbox.astro';
 
 const lacrosseGames = [
   {
@@ -19,6 +20,8 @@ const lacrosseGames = [
     photoCount: 19
   }
 ];
+
+const previewImages = lacrosseGames.map(game => game.previewImage);
 ---
 
 <Layout title="Millard West Lacrosse">
@@ -80,31 +83,36 @@ const lacrosseGames = [
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {lacrosseGames.map((game) => (
-          <a href={`/images/lacrosse/${game.id}`} class="group">
+        {lacrosseGames.map((game, index) => (
+          <div class="group">
             <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <div class="relative h-64">
                 <img
                   src={game.previewImage}
                   alt={game.title}
-                  class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                  class="gallery-image w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300 cursor-pointer"
+                  data-index={index}
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
                   <div class="absolute bottom-0 left-0 right-0 p-4">
-                    <h3 class="text-white text-xl font-semibold mb-2">{game.title}</h3>
-                    <div class="flex justify-between text-sm text-gray-300">
-                      <span>{game.date}</span>
-                      <span>{game.photoCount} photos</span>
-                    </div>
+                    <a href={`/images/lacrosse/${game.id}`} class="block">
+                      <h3 class="text-white text-xl font-semibold mb-2">{game.title}</h3>
+                      <div class="flex justify-between text-sm text-gray-300">
+                        <span>{game.date}</span>
+                        <span>{game.photoCount} photos</span>
+                      </div>
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
-          </a>
+          </div>
         ))}
       </div>
     </section>
   </main>
+
+  <Lightbox images={previewImages} />
 </Layout>
 
 <style>
