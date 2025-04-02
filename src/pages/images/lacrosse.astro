@@ -84,28 +84,28 @@ const previewImages = lacrosseGames.map(game => game.previewImage);
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {lacrosseGames.map((game, index) => (
-          <div class="group">
-            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <div class="relative h-64">
-                <img
-                  src={game.previewImage}
-                  alt={game.title}
-                  class="gallery-image w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300 cursor-pointer"
-                  data-index={index}
-                />
-                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
-                  <div class="absolute bottom-0 left-0 right-0 p-4">
-                    <a href={`/images/lacrosse/${game.id}`} class="block">
+          <div class="group relative">
+            <a href={`/images/lacrosse/${game.id}`} class="block">
+              <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div class="relative h-64">
+                  <img
+                    src={game.previewImage}
+                    alt={game.title}
+                    class="gallery-image w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                    data-index={index}
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+                    <div class="absolute bottom-0 left-0 right-0 p-4">
                       <h3 class="text-white text-xl font-semibold mb-2">{game.title}</h3>
                       <div class="flex justify-between text-sm text-gray-300">
                         <span>{game.date}</span>
                         <span>{game.photoCount} photos</span>
                       </div>
-                    </a>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
         ))}
       </div>
