@@ -146,12 +146,12 @@ const categoryImages = {
 
 type CategoryKey = keyof typeof categoryImages;
 
-const categoryPhotoCount = {
+const categoryPhotoCount: Record<CategoryKey, number> = {
   "Omaha Lacrosse Club": 47,
   "Lacrosse": 72,
-  "Omaha": 1,
-  "Zoo": 1,
-  "Nebraska Athletics": 1
+  "Omaha": 3,
+  "Zoo": 4,
+  "Nebraska Athletics": 4
 };
 
 const categoryTitles: Record<string, string> = {
@@ -162,7 +162,7 @@ const categoryTitles: Record<string, string> = {
   "Nebraska Athletics": "Nebraska Athletics"
 };
 
-const categories = ["All", "Omaha Lacrosse Club", "Millard West Lacrosse", "Omaha", "Zoo", "Nebraska Athletics"];
+const categories = ["All", "Omaha Lacrosse Club", "Lacrosse", "Omaha", "Zoo", "Nebraska Athletics"];
 
 // Function to get a random image from an array
 function getRandomImage(images: string[]): string {
@@ -186,7 +186,11 @@ const images = Object.entries(categoryImages).map(([category, images]) => ({
       {/* Category Filter */}
       <div class="flex flex-wrap gap-4 mb-8">
         {categories.map(category => (
-          <button class="px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
+          <button 
+            class="px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors data-[active=true]:bg-gray-900 data-[active=true]:text-white"
+            data-category={category}
+            data-active={category === "All" ? "true" : "false"}
+          >
             {category}
           </button>
         ))}
@@ -196,20 +200,36 @@ const images = Object.entries(categoryImages).map(([category, images]) => ({
       <section class="container mx-auto max-w-7xl px-4 py-12">
         <div class="flex justify-between items-center mb-8">
           <div class="flex gap-4">
-            <button class="px-4 py-2 rounded-full bg-gray-900 text-white hover:bg-gray-800 transition-colors">
+            <button 
+              class="px-4 py-2 rounded-full bg-gray-900 text-white hover:bg-gray-800 transition-colors data-[active=true]:bg-gray-900 data-[active=true]:text-white data-[active=false]:bg-gray-100 data-[active=false]:text-gray-700"
+              data-sort="recent"
+              data-active="true"
+            >
               Recent
             </button>
-            <button class="px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
+            <button 
+              class="px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors data-[active=true]:bg-gray-900 data-[active=true]:text-white data-[active=false]:bg-gray-100 data-[active=false]:text-gray-700"
+              data-sort="popular"
+              data-active="false"
+            >
               Popular
             </button>
           </div>
           <div class="flex gap-2">
-            <button class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
+            <button 
+              class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors data-[active=true]:bg-gray-900 data-[active=true]:text-white"
+              data-view="row"
+              data-active="false"
+            >
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
-            <button class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors">
+            <button 
+              class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors data-[active=true]:bg-gray-900 data-[active=true]:text-white"
+              data-view="card"
+              data-active="true"
+            >
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
               </svg>
@@ -217,7 +237,7 @@ const images = Object.entries(categoryImages).map(([category, images]) => ({
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 data-[view=row]:grid-cols-1" data-view="card">
           {images.map((image) => (
             <a 
               href={
@@ -254,25 +274,91 @@ const images = Object.entries(categoryImages).map(([category, images]) => ({
 
 <script>
   // Add category filter functionality
-  const filterButtons = document.querySelectorAll('button');
+  const filterButtons = document.querySelectorAll('[data-category]');
+  const sortButtons = document.querySelectorAll('[data-sort]');
+  const viewButtons = document.querySelectorAll('[data-view]');
   const imageCards = document.querySelectorAll('.group');
+  const gridContainer = document.querySelector('.grid');
 
+  // Make categoryPhotoCount available to client-side
+  const categoryPhotoCount = {
+    "Omaha Lacrosse Club": 47,
+    "Lacrosse": 72,
+    "Omaha": 3,
+    "Zoo": 4,
+    "Nebraska Athletics": 4
+  };
+
+  // Handle view toggle clicks
+  viewButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const viewType = button.getAttribute('data-view') || '';
+      
+      // Update active button
+      viewButtons.forEach(btn => {
+        btn.setAttribute('data-active', 'false');
+      });
+      button.setAttribute('data-active', 'true');
+
+      // Update grid layout
+      if (gridContainer) {
+        gridContainer.setAttribute('data-view', viewType);
+      }
+    });
+  });
+
+  // Sort images by popularity (using photo count as a proxy)
+  const sortImages = (sortType: string) => {
+    const cards = Array.from(imageCards);
+    cards.sort((a, b) => {
+      const categoryA = a.querySelector('img')?.alt || '';
+      const categoryB = b.querySelector('img')?.alt || '';
+      const countA = categoryPhotoCount[categoryA as keyof typeof categoryPhotoCount] || 0;
+      const countB = categoryPhotoCount[categoryB as keyof typeof categoryPhotoCount] || 0;
+      
+      if (sortType === 'popular') {
+        return countB - countA;
+      } else {
+        return 0; // Keep original order for recent
+      }
+    });
+
+    const container = document.querySelector('.grid');
+    if (container) {
+      cards.forEach(card => container.appendChild(card));
+    }
+  };
+
+  // Handle sort button clicks
+  sortButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const sortType = button.getAttribute('data-sort') || '';
+      
+      // Update active button
+      sortButtons.forEach(btn => {
+        btn.setAttribute('data-active', 'false');
+      });
+      button.setAttribute('data-active', 'true');
+
+      // Sort images
+      sortImages(sortType);
+    });
+  });
+
+  // Handle category filter clicks
   filterButtons.forEach(button => {
     button.addEventListener('click', () => {
-      const category = button.textContent?.trim() || '';
+      const category = button.getAttribute('data-category') || '';
       
       // Update active button
       filterButtons.forEach(btn => {
-        btn.classList.remove('bg-gray-900', 'text-white');
-        btn.classList.add('bg-gray-100', 'text-gray-700');
+        btn.setAttribute('data-active', 'false');
       });
-      button.classList.remove('bg-gray-100', 'text-gray-700');
-      button.classList.add('bg-gray-900', 'text-white');
+      button.setAttribute('data-active', 'true');
 
       // Filter images
       imageCards.forEach(card => {
-        const categoryElement = card.querySelector('.text-sm');
-        const cardCategory = categoryElement?.textContent || '';
+        const cardCategory = card.querySelector('img')?.alt || '';
         if (category === 'All' || cardCategory === category) {
           (card as HTMLElement).style.display = 'block';
         } else {
