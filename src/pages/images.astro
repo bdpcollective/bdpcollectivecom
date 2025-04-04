@@ -2,6 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 
 const categoryImages = {
+  "Events": [
+    '/images/events/20100616_NationalSpecialOlympics/20100618_NationalSpecialOlymics - 1.jpeg',
+    '/images/events/20100616_NationalSpecialOlympics/20100618_NationalSpecialOlymics - 2.jpeg',
+    '/images/events/20100616_NationalSpecialOlympics/20100618_NationalSpecialOlymics - 3.jpeg',
+    '/images/events/20100616_NationalSpecialOlympics/20100618_NationalSpecialOlymics - 6.jpeg',
+    '/images/events/20100616_NationalSpecialOlympics/20100618_NationalSpecialOlymics - 7.jpeg',
+    '/images/events/20100616_NationalSpecialOlympics/20100618_NationalSpecialOlymics - 8.jpeg',
+    '/images/events/20100616_NationalSpecialOlympics/20100618_NationalSpecialOlymics - 9.jpeg'
+  ],
   "Omaha Lacrosse Club": [
     '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 1.jpeg',
     '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 2.jpeg',
@@ -147,6 +156,7 @@ const categoryImages = {
 type CategoryKey = keyof typeof categoryImages;
 
 const categoryPhotoCount: Record<CategoryKey, number> = {
+  "Events": 7,
   "Omaha Lacrosse Club": 47,
   "Lacrosse": 72,
   "Omaha": 3,
@@ -155,6 +165,7 @@ const categoryPhotoCount: Record<CategoryKey, number> = {
 };
 
 const categoryTitles: Record<string, string> = {
+  "Events": "Events",
   "Omaha Lacrosse Club": "2025 Omaha Lacrosse Club",
   "Lacrosse": "2025 Millard West Lacrosse",
   "Omaha": "Images Around Omaha",
@@ -162,7 +173,7 @@ const categoryTitles: Record<string, string> = {
   "Nebraska Athletics": "Nebraska Athletics"
 };
 
-const categories = ["All", "Omaha Lacrosse Club", "Lacrosse", "Omaha", "Zoo", "Nebraska Athletics"];
+const categories = ["All", "Omaha Lacrosse Club", "Lacrosse", "Nebraska Athletics", "Zoo", "Omaha", "Events"];
 
 // Function to get a random image from an array
 function getRandomImage(images: string[]): string {
@@ -241,6 +252,7 @@ const images = Object.entries(categoryImages).map(([category, images]) => ({
           {images.map((image) => (
             <a 
               href={
+                image.category === "Events" ? '/images/events' :
                 image.category === "Lacrosse" ? '/images/lacrosse' : 
                 image.category === "Omaha" ? '/images/omaha' : 
                 image.category === "Zoo" ? '/images/zoo' : 

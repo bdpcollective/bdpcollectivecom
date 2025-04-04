@@ -1,0 +1,59 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const events = [
+  {
+    title: "Special Olympics",
+    events: [
+      {
+        name: "National Special Olympics",
+        date: "June 16, 2010",
+        image: "/images/events/20100616_NationalSpecialOlympics/20100618_NationalSpecialOlymics - 1.jpeg",
+        link: "/images/events/national-special-olympics"
+      }
+    ]
+  }
+];
+---
+
+<Layout title="Events">
+  <div class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <h1 class="text-4xl font-bold text-gray-900 mb-8">Events</h1>
+      
+      <a href="/images" class="inline-flex items-center text-gray-600 hover:text-gray-900 mb-8">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back to Images
+      </a>
+      
+      {events.map(group => (
+        <div class="mb-12">
+          <h2 class="text-2xl font-semibold text-gray-900 mb-6">{group.title}</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {group.events.map(event => (
+              <a href={event.link} class="group">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                  <div class="relative h-64">
+                    <img
+                      src={event.image}
+                      alt={event.name}
+                      class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+                      <div class="absolute bottom-0 left-0 right-0 p-4">
+                        <h3 class="text-white text-xl font-semibold">{event.name}</h3>
+                        <p class="text-white/80 text-sm">{event.date}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout> 
