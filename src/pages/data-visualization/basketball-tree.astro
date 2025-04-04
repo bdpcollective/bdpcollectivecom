@@ -27,25 +27,25 @@ import { baseUrl } from '../../config';
         {/* Division selector */}
         <div class="mb-6">
           {/* Mobile dropdown */}
-          <select class="w-full sm:hidden px-4 py-2 rounded-lg bg-gray-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300" data-division="Division I">
+          <select class="w-full sm:hidden px-4 py-2 rounded-lg bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300" data-division="Division I">
             <option value="Division I">NCAA Division I</option>
             <option value="Division II">NCAA Division II</option>
             <option value="Division III">NCAA Division III</option>
             <option value="NBA">NBA</option>
           </select>
 
-          {/* Desktop buttons */}
-          <div class="hidden sm:flex gap-4">
-            <button class="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300" data-division="Division I">
+          {/* Desktop navigation */}
+          <div class="hidden sm:flex gap-8 border-b border-gray-200">
+            <button class="px-2 py-3 text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-300 focus:outline-none transition-colors" data-division="Division I">
               NCAA Division I
             </button>
-            <button class="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300" data-division="Division II">
+            <button class="px-2 py-3 text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-300 focus:outline-none transition-colors" data-division="Division II">
               NCAA Division II
             </button>
-            <button class="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300" data-division="Division III">
+            <button class="px-2 py-3 text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-300 focus:outline-none transition-colors" data-division="Division III">
               NCAA Division III
             </button>
-            <button class="px-4 py-2 rounded-lg bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300" data-division="NBA">
+            <button class="px-2 py-3 text-gray-600 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-300 focus:outline-none transition-colors" data-division="NBA">
               NBA
             </button>
           </div>
@@ -337,11 +337,11 @@ import { baseUrl } from '../../config';
           element.addEventListener('click', (e) => {
             // Update active state
             document.querySelectorAll('button[data-division]').forEach(btn => {
-              btn.classList.remove('bg-blue-500', 'text-white', 'hover:bg-blue-600');
-              btn.classList.add('bg-gray-100', 'hover:bg-gray-200');
+              btn.classList.remove('text-gray-900', 'border-gray-900');
+              btn.classList.add('text-gray-600', 'border-transparent');
             });
-            e.target.classList.remove('bg-gray-100', 'hover:bg-gray-200');
-            e.target.classList.add('bg-blue-500', 'text-white', 'hover:bg-blue-600');
+            e.target.classList.remove('text-gray-600', 'border-transparent');
+            e.target.classList.add('text-gray-900', 'border-gray-900');
 
             // Update visualization
             currentDivision = e.target.dataset.division;
@@ -364,8 +364,8 @@ import { baseUrl } from '../../config';
       if (divisionData[initialDivision]) {
         createVisualization(divisionData[initialDivision], initialDivision);
         // Set initial button state
-        document.querySelector(`button[data-division="${initialDivision}"]`)?.classList.add('bg-blue-500', 'text-white', 'hover:bg-blue-600');
-        document.querySelector(`button[data-division="${initialDivision}"]`)?.classList.remove('bg-gray-100', 'hover:bg-gray-200');
+        document.querySelector(`button[data-division="${initialDivision}"]`)?.classList.add('text-gray-900', 'border-gray-900');
+        document.querySelector(`button[data-division="${initialDivision}"]`)?.classList.remove('text-gray-600', 'border-transparent');
         // Set initial dropdown value
         document.querySelector(`select[data-division]`)?.setAttribute('value', initialDivision);
       } else {
