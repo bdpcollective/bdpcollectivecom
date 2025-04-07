@@ -31,8 +31,11 @@ const { title } = Astro.props;
 			gtag('config', 'G-8B6D7GXRG2');
 		</script>
 		<slot name="head" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 	</head>
-	<body class="min-h-screen flex flex-col">
+	<body class="min-h-screen flex flex-col font-franklin">
 		<nav class="bg-white shadow-sm">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div class="flex justify-between h-16">
@@ -95,13 +98,18 @@ const { title } = Astro.props;
 		);
 	}
 	html {
-		font-family: system-ui, sans-serif;
+		font-family: "Libre Franklin", "Franklin Gothic", "ITC Franklin Gothic", "Franklin Gothic Medium", "Franklin Gothic Book", "Franklin Gothic Demi", "Franklin Gothic Heavy", system-ui, sans-serif;
 		background: #f6f6f6;
 		background-size: 224px;
 	}
 	body {
 		margin: 0;
 		padding: 0;
+		box-sizing: border-box;
+	}
+	code {
+		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+			Bitstream Vera Sans Mono, Courier New, monospace;
 	}
 </style>
 

@@ -17,6 +17,9 @@ export default {
           900: '#0c4a6e',
         },
       },
+      fontFamily: {
+        franklin: ['"Libre Franklin"', '"Franklin Gothic"', '"ITC Franklin Gothic"', '"Franklin Gothic Medium"', '"Franklin Gothic Book"', '"Franklin Gothic Demi"', '"Franklin Gothic Heavy"', 'system-ui', 'sans-serif'],
+      },
     },
   },
   plugins: [],
