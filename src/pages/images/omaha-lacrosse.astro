@@ -1,58 +1,66 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Lightbox from '../../components/Lightbox.astro';
+import { baseUrl } from '../../config';
 
-const images = Array.from({ length: 47 }, (_, i) => `/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - ${i + 1}.jpeg`);
+// Helper function to get random number between min and max (inclusive)
+function getRandomInt(min: number, max: number): number {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+const events = [
+  {
+    title: "2025 Omaha Lacrosse Club",
+    events: [
+      {
+        name: "Blue vs Rampage",
+        date: "March 30, 2025",
+        image: `/images/olc/20250330_1_BluevsRampage/20250330_BluevsLincolnRampage - ${getRandomInt(1, 16)}.jpeg`,
+        link: "/images/olc/20250330_1_BluevsRampage"
+      },
+      {
+        name: "Blue vs Elkhorn",
+        date: "March 30, 2025",
+        image: `/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - ${getRandomInt(1, 47)}.jpeg`,
+        link: "/images/olc/20250330_2_BluevsElkhorn"
+      }
+    ]
+  }
+];
 ---
 
 <Layout title="Omaha Lacrosse Club">
-  <main class="min-h-screen bg-gray-50">
-    <section class="relative h-[40vh] bg-gray-900">
-      <div class="relative z-10 flex items-center h-full">
-        <div class="container mx-auto px-4">
-          <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Omaha Lacrosse Club</h1>
-          <p class="text-lg text-gray-200">
-            Blue vs Elkhorn - March 30, 2025
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="container mx-auto px-4 py-12">
-      <a 
-        href="/images" 
-        class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors mb-8"
-      >
-        <svg
-          class="w-5 h-5 mr-2"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M10 19l-7-7m0 0l7-7m-7 7h18"
-          />
+  <div class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <h1 class="text-4xl font-bold text-gray-900 mb-8">Omaha Lacrosse Club</h1>
+      
+      <a href="/images" class="inline-flex items-center text-gray-600 hover:text-gray-900 mb-8">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
         </svg>
-        Back to All Images
+        Back to Images
       </a>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {images.map((image, index) => (
-          <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
-            <img
-              src={image}
-              alt={`Game photo ${index + 1}`}
-              class="gallery-image w-full h-full object-cover cursor-pointer transform hover:scale-105 transition-transform duration-300"
-              loading={index < 9 ? "eager" : "lazy"}
-            />
-          </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {events.map((category) => (
+          category.events.map((event) => (
+            <a href={event.link} class="group relative overflow-hidden rounded-lg">
+              <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div class="relative h-64">
+                  <img
+                    src={event.image}
+                    alt={event.name}
+                    class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div class="p-4">
+                  <h3 class="text-lg font-semibold text-gray-900">{event.name}</h3>
+                  <p class="text-sm text-gray-500">{event.date}</p>
+                </div>
+              </div>
+            </a>
+          ))
         ))}
       </div>
-    </section>
-  </main>
-
-  <Lightbox images={images} />
+    </div>
+  </div>
 </Layout> 
