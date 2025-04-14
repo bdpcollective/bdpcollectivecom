@@ -12,7 +12,9 @@ const { images } = Astro.props;
     <button id="close-lightbox" class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 p-4">&times;</button>
     <button id="prev-image" class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-gray-300 p-4">&lt;</button>
     <button id="next-image" class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-gray-300 p-4">&gt;</button>
-    <img id="lightbox-image" src="" alt="" class="max-h-[90vh] max-w-[90vw] object-contain opacity-0 transition-opacity duration-300" />
+    <div class="w-full h-full flex items-center justify-center p-4">
+      <img id="lightbox-image" src="" alt="" class="max-h-[98vh] max-w-[98vw] w-auto h-auto object-contain opacity-0 transition-opacity duration-300" />
+    </div>
   </div>
 </div>
 
