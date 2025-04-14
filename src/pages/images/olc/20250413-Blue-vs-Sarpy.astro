@@ -31,7 +31,9 @@ const images = Array.from({ length: 29 }, (_, i) => `/images/olc/20250413-Blue-v
                 <img
                   src={image}
                   alt={`Blue vs Sarpy - Image ${index + 1}`}
-                  class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                  class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300 cursor-pointer"
+                  data-index={index}
+                  data-src={image}
                 />
               </div>
             </div>
@@ -40,4 +42,103 @@ const images = Array.from({ length: 29 }, (_, i) => `/images/olc/20250413-Blue-v
       </div>
     </div>
   </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center p-4">
+    <button id="close-lightbox" class="absolute top-4 right-4 text-white text-4xl font-bold z-10">&times;</button>
+    <button id="prev-image" class="absolute left-4 text-white text-4xl font-bold z-10">&lt;</button>
+    <button id="next-image" class="absolute right-4 text-white text-4xl font-bold z-10">&gt;</button>
+    <div class="w-full h-full flex items-center justify-center">
+      <img id="lightbox-image" src="" alt="Lightbox image" class="max-w-full max-h-full w-auto h-auto object-contain">
+    </div>
+  </div>
+
+  <script>
+    // Wait for the DOM to be fully loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      // Get all gallery images
+      const galleryImages = document.querySelectorAll('.grid img');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement;
+      const closeButton = document.getElementById('close-lightbox');
+      const prevButton = document.getElementById('prev-image');
+      const nextButton = document.getElementById('next-image');
+      
+      if (!lightbox || !lightboxImage || !closeButton || !prevButton || !nextButton) return;
+      
+      let currentIndex = 0;
+      const totalImages = galleryImages.length;
+      
+      // Open lightbox when an image is clicked
+      galleryImages.forEach((img, index) => {
+        img.addEventListener('click', function(this: HTMLImageElement) {
+          currentIndex = index;
+          const imgSrc = this.getAttribute('data-src');
+          if (imgSrc) {
+            lightboxImage.src = imgSrc;
+            lightbox.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+          }
+        });
+      });
+      
+      // Close lightbox
+      closeButton.addEventListener('click', function() {
+        lightbox.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+      });
+      
+      // Previous image
+      prevButton.addEventListener('click', function() {
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+        const prevImg = galleryImages[currentIndex] as HTMLImageElement;
+        const imgSrc = prevImg.getAttribute('data-src');
+        if (imgSrc) {
+          lightboxImage.src = imgSrc;
+        }
+      });
+      
+      // Next image
+      nextButton.addEventListener('click', function() {
+        currentIndex = (currentIndex + 1) % totalImages;
+        const nextImg = galleryImages[currentIndex] as HTMLImageElement;
+        const imgSrc = nextImg.getAttribute('data-src');
+        if (imgSrc) {
+          lightboxImage.src = imgSrc;
+        }
+      });
+      
+      // Close lightbox when clicking outside the image
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+          lightbox.classList.add('hidden');
+          document.body.style.overflow = 'auto';
+        }
+      });
+      
+      // Keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        if (lightbox.classList.contains('hidden')) return;
+        
+        if (e.key === 'Escape') {
+          lightbox.classList.add('hidden');
+          document.body.style.overflow = 'auto';
+        } else if (e.key === 'ArrowLeft') {
+          currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+          const prevImg = galleryImages[currentIndex] as HTMLImageElement;
+          const imgSrc = prevImg.getAttribute('data-src');
+          if (imgSrc) {
+            lightboxImage.src = imgSrc;
+          }
+        } else if (e.key === 'ArrowRight') {
+          currentIndex = (currentIndex + 1) % totalImages;
+          const nextImg = galleryImages[currentIndex] as HTMLImageElement;
+          const imgSrc = nextImg.getAttribute('data-src');
+          if (imgSrc) {
+            lightboxImage.src = imgSrc;
+          }
+        }
+      });
+    });
+  </script>
 </Layout> 
