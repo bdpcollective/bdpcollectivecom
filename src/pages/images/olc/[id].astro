@@ -5,6 +5,12 @@ import Lightbox from '../../../components/Lightbox.astro';
 export async function getStaticPaths() {
   const games = [
     {
+      id: "20250413_1_BluevsSarpy",
+      title: "Blue vs Sarpy",
+      date: "April 13, 2025",
+      images: Array.from({ length: 29 }, (_, i) => `/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - ${i + 1}.jpeg`)
+    },
+    {
       id: "20250330_1_BluevsRampage",
       title: "Blue vs Rampage",
       date: "March 30, 2025",
@@ -117,13 +123,13 @@ const { game } = Astro.props;
       <h1 class="text-4xl font-bold text-gray-900 mb-4">{game.title}</h1>
       <p class="text-gray-600 mb-8">{game.date}</p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {game.images.map((image, index) => (
           <div class="group relative">
             <img
               src={image}
               alt={`${game.title} - Photo ${index + 1}`}
-              class="w-full h-64 object-cover rounded-lg cursor-pointer gallery-image"
+              class="w-full h-80 object-cover rounded-lg cursor-pointer gallery-image hover:opacity-90 transition-opacity"
               data-index={index}
             />
           </div>
