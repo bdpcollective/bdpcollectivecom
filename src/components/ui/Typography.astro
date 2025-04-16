@@ -50,10 +50,12 @@ const alignClasses: Record<string, string> = {
 const classes = `${variantClasses[variant]} ${weightClasses[weight]} ${colorClasses[color]} ${alignClasses[align]} ${className}`;
 ---
 
-{variant.startsWith('h') ? (
-  <Fragment set:html={`<h${variant.slice(1)} class="${classes}"><slot /></h${variant.slice(1)}>`} />
-) : (
-  <p class={classes}>
-    <slot />
-  </p>
+{variant === 'h1' && <h1 class={classes}><slot /></h1>}
+{variant === 'h2' && <h2 class={classes}><slot /></h2>}
+{variant === 'h3' && <h3 class={classes}><slot /></h3>}
+{variant === 'h4' && <h4 class={classes}><slot /></h4>}
+{variant === 'h5' && <h5 class={classes}><slot /></h5>}
+{variant === 'h6' && <h6 class={classes}><slot /></h6>}
+{variant !== 'h1' && variant !== 'h2' && variant !== 'h3' && variant !== 'h4' && variant !== 'h5' && variant !== 'h6' && (
+  <p class={classes}><slot /></p>
 )} 
