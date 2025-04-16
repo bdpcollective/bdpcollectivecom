@@ -1,6 +1,4 @@
 ---
-import '../styles/design-tokens.css';
-import '../styles/base.css';
 import Footer from '../components/Footer.astro';
 import { baseUrl } from '../config';
 
@@ -15,10 +13,10 @@ const { title } = Astro.props;
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href={`${baseUrl}/favicon.svg`} />
 		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
+		<title>Brian Pope | bdpcollective</title>
 		<!-- Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-8B6D7GXRG2"></script>
 		<script is:inline>
@@ -43,7 +41,7 @@ const { title } = Astro.props;
 				<div class="flex justify-between h-16">
 					<div class="flex">
 						<a href={`${baseUrl}/`} class="flex items-center">
-							<span class="text-xl font-bold text-gray-900">BRIAN POPE</span>
+							<span class="text-xl font-bold">BRIAN POPE</span>
 						</a>
 					</div>
 					<div class="hidden md:flex items-center space-x-4">
