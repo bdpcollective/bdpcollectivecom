@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Container, Typography, Card, Grid, Button } from '../components/ui';
 
 const categoryImages = {
   "Omaha Lacrosse Club": [
@@ -122,8 +123,7 @@ const categoryImages = {
     '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 15.jpeg',
     '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 16.jpeg',
     '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 17.jpeg',
-    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 18.jpeg',
-    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 19.jpeg'
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 18.jpeg'
   ],
   "Omaha": [
     '/images/omaha/2010-12-09_bobkerrybridge_1024_3409.jpg',
@@ -190,98 +190,167 @@ const images = Object.entries(categoryImages).map(([category, images]) => ({
 ---
 
 <Layout title="Images">
-  <div class="bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <h1 class="text-4xl font-bold text-gray-900 mb-8">Images</h1>
-      
-      {/* Category Filter */}
-      <div class="flex flex-wrap gap-4 mb-8">
-        {categories.map(category => (
-          <button 
-            class="px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors data-[active=true]:bg-gray-900 data-[active=true]:text-white"
-            data-category={category}
-            data-active={category === "All" ? "true" : "false"}
-          >
-            {category}
-          </button>
-        ))}
+  <main class="min-h-screen bg-gray-50">
+    <section class="relative h-[40vh] bg-gray-900">
+      <div class="relative z-10 flex items-center h-full">
+        <Container size="lg">
+          <Typography variant="h1" weight="bold" color="default" class="text-white mb-4">
+            Photography
+          </Typography>
+          <Typography variant="body" color="muted" class="text-gray-200">
+            Capturing moments and memories through the lens
+          </Typography>
+        </Container>
       </div>
+    </section>
 
-      {/* Main Content */}
-      <section class="container mx-auto max-w-7xl px-4 py-12">
-        <div class="flex justify-between items-center mb-8">
-          <div class="flex gap-4">
-            <button 
-              class="px-4 py-2 rounded-full bg-gray-900 text-white hover:bg-gray-800 transition-colors data-[active=true]:bg-gray-900 data-[active=true]:text-white data-[active=false]:bg-gray-100 data-[active=false]:text-gray-700"
-              data-sort="recent"
-              data-active="true"
-            >
-              Recent
-            </button>
-            <button 
-              class="px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors data-[active=true]:bg-gray-900 data-[active=true]:text-white data-[active=false]:bg-gray-100 data-[active=false]:text-gray-700"
-              data-sort="popular"
-              data-active="false"
-            >
-              Popular
-            </button>
-          </div>
-          <div class="flex gap-2">
-            <button 
-              class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors data-[active=true]:bg-gray-900 data-[active=true]:text-white"
-              data-view="row"
-              data-active="false"
-            >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
-            <button 
-              class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors data-[active=true]:bg-gray-900 data-[active=true]:text-white"
-              data-view="card"
-              data-active="true"
-            >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-              </svg>
-            </button>
-          </div>
-        </div>
+    <section class="py-12">
+      <Container size="lg">
+        <Button 
+          href="/" 
+          variant="text" 
+          class="mb-8"
+        >
+          <svg
+            class="w-5 h-5 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M10 19l-7-7m0 0l7-7m-7 7h18"
+            />
+          </svg>
+          Back to Home
+        </Button>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 data-[view=row]:grid-cols-1" data-view="card">
-          {images.map((image) => (
-            <a 
-              href={
-                image.category === "Events" ? '/images/events' :
-                image.category === "Lacrosse" ? '/images/lacrosse' : 
-                image.category === "Omaha" ? '/images/omaha' : 
-                image.category === "Zoo" ? '/images/zoo' : 
-                image.category === "Nebraska Athletics" ? '/images/huskers' :
-                image.category === "Omaha Lacrosse Club" ? '/images/omaha-lacrosse' : 
-                "#"
-              } 
-              class="group relative overflow-hidden rounded-lg"
-            >
-              <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                <div class="relative h-64">
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
-                    <div class="absolute bottom-0 left-0 right-0 p-4">
-                      <h3 class="text-white text-xl font-semibold">{image.title}</h3>
-                    </div>
-                  </div>
-                </div>
+        <Grid cols={3} gap="lg">
+          <Card variant="elevated" class="overflow-hidden">
+            <a href="/images/lacrosse" class="block">
+              <div class="aspect-w-16 aspect-h-9">
+                <img
+                  src="/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 1.jpeg"
+                  alt="Millard West Lacrosse"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-4">
+                <Typography variant="h5" weight="semibold" class="mb-1">
+                  Millard West Lacrosse
+                </Typography>
+                <Typography variant="small" color="muted">
+                  High school lacrosse games and events
+                </Typography>
               </div>
             </a>
-          ))}
-        </div>
-      </section>
-    </div>
-  </div>
+          </Card>
+
+          <Card variant="elevated" class="overflow-hidden">
+            <a href="/images/omaha-lacrosse" class="block">
+              <div class="aspect-w-16 aspect-h-9">
+                <img
+                  src="/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 1.jpeg"
+                  alt="Omaha Lacrosse Club"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-4">
+                <Typography variant="h5" weight="semibold" class="mb-1">
+                  Omaha Lacrosse Club
+                </Typography>
+                <Typography variant="small" color="muted">
+                  Club lacrosse games and events
+                </Typography>
+              </div>
+            </a>
+          </Card>
+
+          <Card variant="elevated" class="overflow-hidden">
+            <a href="/images/huskers" class="block">
+              <div class="aspect-w-16 aspect-h-9">
+                <img
+                  src="/images/huskers/20250309-nebraska-vs-purdue/20250309_Nebraska_Purdue - 1.jpeg"
+                  alt="Nebraska Huskers"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-4">
+                <Typography variant="h5" weight="semibold" class="mb-1">
+                  Nebraska Huskers
+                </Typography>
+                <Typography variant="small" color="muted">
+                  University of Nebraska athletics
+                </Typography>
+              </div>
+            </a>
+          </Card>
+
+          <Card variant="elevated" class="overflow-hidden">
+            <a href="/images/events" class="block">
+              <div class="aspect-w-16 aspect-h-9">
+                <img
+                  src="/images/events/national-special-olympics/20250309_SpecialOlympics - 1.jpeg"
+                  alt="Events"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-4">
+                <Typography variant="h5" weight="semibold" class="mb-1">
+                  Events
+                </Typography>
+                <Typography variant="small" color="muted">
+                  Special events and gatherings
+                </Typography>
+              </div>
+            </a>
+          </Card>
+
+          <Card variant="elevated" class="overflow-hidden">
+            <a href="/images/hula" class="block">
+              <div class="aspect-w-16 aspect-h-9">
+                <img
+                  src="/images/hula/bbq-showdown/20250309_BBQShowdown - 1.jpeg"
+                  alt="Hula Events"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-4">
+                <Typography variant="h5" weight="semibold" class="mb-1">
+                  Hula Events
+                </Typography>
+                <Typography variant="small" color="muted">
+                  Hula events and competitions
+                </Typography>
+              </div>
+            </a>
+          </Card>
+
+          <Card variant="elevated" class="overflow-hidden">
+            <a href="/images/zoo" class="block">
+              <div class="aspect-w-16 aspect-h-9">
+                <img
+                  src="/images/zoo/20250309_Zoo - 1.jpeg"
+                  alt="Omaha Zoo"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-4">
+                <Typography variant="h5" weight="semibold" class="mb-1">
+                  Omaha Zoo
+                </Typography>
+                <Typography variant="small" color="muted">
+                  Henry Doorly Zoo and Aquarium
+                </Typography>
+              </div>
+            </a>
+          </Card>
+        </Grid>
+      </Container>
+    </section>
+  </main>
 </Layout>
 
 <script>
