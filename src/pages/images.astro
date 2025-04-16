@@ -191,9 +191,16 @@ const images = Object.entries(categoryImages).map(([category, images]) => ({
 
 <Layout title="Images">
   <div class="bg-white">
+    <div class="bg-black text-white py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 class="text-4xl font-bold mb-4">Images</h1>
+        <p class="text-lg text-gray-300 max-w-3xl">
+          A collection of photography from various events and locations
+        </p>
+      </div>
+    </div>
+    
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <h1 class="text-4xl font-bold text-gray-900 mb-8">Images</h1>
-      
       {/* Category Filter */}
       <div class="flex flex-wrap gap-4 mb-8">
         {categories.map(category => (
