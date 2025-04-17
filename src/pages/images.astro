@@ -173,7 +173,7 @@ const categoryTitles: Record<string, string> = {
   "Nebraska Athletics": "Nebraska Athletics"
 };
 
-const categories = ["All", "Omaha Lacrosse Club", "Lacrosse", "Nebraska Athletics", "Zoo", "Omaha", "Events"];
+const categories = ["All", "Omaha Lacrosse Club", "Millard West Lacrosse", "Nebraska Athletics", "Zoo", "Omaha", "Events"];
 
 // Function to get a random image from an array
 function getRandomImage(images: string[]): string {
@@ -378,7 +378,8 @@ const images = Object.entries(categoryImages).map(([category, images]) => ({
       // Filter images
       imageCards.forEach(card => {
         const cardCategory = card.querySelector('img')?.alt || '';
-        if (category === 'All' || cardCategory === category) {
+        if (category === 'All' || cardCategory === category || 
+            (category === 'Millard West Lacrosse' && cardCategory === 'Lacrosse')) {
           (card as HTMLElement).style.display = 'block';
         } else {
           (card as HTMLElement).style.display = 'none';
