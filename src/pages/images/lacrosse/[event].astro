@@ -10,6 +10,7 @@ export function getStaticPaths() {
     description: string;
     imageCount: number;
     imagePath: string;
+    imagePrefix: string;
   }> = {
     "jv-vs-akeny": {
       title: "JV: MWHS vs Akeny",
@@ -17,7 +18,8 @@ export function getStaticPaths() {
       location: "Millard West High School",
       description: "Junior Varsity lacrosse game between Millard West and Akeny.",
       imageCount: 19,
-      imagePath: "/images/lacrosse/20250308-jv-mwhs-vs-akeny"
+      imagePath: "/images/lacrosse/20250308-jv-mwhs-vs-akeny",
+      imagePrefix: "20250309_MWHS_Lacrosse"
     },
     "varsity-vs-akeny": {
       title: "Varsity: MWHS vs Akeny",
@@ -25,7 +27,26 @@ export function getStaticPaths() {
       location: "Millard West High School",
       description: "Varsity lacrosse game between Millard West and Akeny.",
       imageCount: 53,
-      imagePath: "/images/lacrosse/20250308-varsity-mwhs-vs-akeny"
+      imagePath: "/images/lacrosse/20250308-varsity-mwhs-vs-akeny",
+      imagePrefix: "20250309_MWHS_Lacrosse"
+    },
+    "jv-vs-elkhorn": {
+      title: "JV: MWHS vs Elkhorn",
+      date: "April 18, 2025",
+      location: "Millard West High School",
+      description: "Junior Varsity lacrosse game between Millard West and Elkhorn.",
+      imageCount: 24,
+      imagePath: "/images/lacrosse/20250418-jv-mwhs-vs-elkhorn",
+      imagePrefix: "20250418-JV-MWHSvsElkhorn"
+    },
+    "varsity-vs-elkhorn": {
+      title: "Varsity: MWHS vs Elkhorn",
+      date: "April 18, 2025",
+      location: "Millard West High School",
+      description: "Varsity lacrosse game between Millard West and Elkhorn.",
+      imageCount: 85,
+      imagePath: "/images/lacrosse/20250418-varsity-mwhs-vs-elkhorn",
+      imagePrefix: "20250418-Varsity-MWHSvsElkhorn"
     }
   };
 
@@ -40,7 +61,7 @@ const { game } = Astro.props;
 // Generate array of image objects
 const images = Array.from({ length: game.imageCount }, (_, i) => ({
   id: i + 1,
-  src: `${game.imagePath}/20250309_MWHS_Lacrosse - ${i + 1}.jpeg`,
+  src: `${game.imagePath}/${game.imagePrefix} - ${i + 1}.jpeg`,
   alt: `${game.title} - Image ${i + 1}`
 }));
 ---
