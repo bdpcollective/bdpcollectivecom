@@ -191,14 +191,50 @@ const images = Object.entries(categoryImages).map(([category, images]) => ({
 
 <Layout title="Images">
   <div class="bg-white">
-    <div class="bg-black text-white py-16">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 class="text-4xl font-bold mb-4">Images</h1>
-        <p class="text-lg text-gray-300 max-w-3xl">
-          A collection of photography from various events and locations
-        </p>
+    {/* Hero Section */}
+    <section class="relative h-[50vh]">
+      {/* Background Image */}
+      <div class="absolute inset-0 z-0">
+        <img
+          src="/jelly.jpg"
+          alt="Images hero background"
+          class="w-full h-full object-cover brightness-50"
+        />
       </div>
-    </div>
+
+      {/* Hero Content */}
+      <div class="relative z-10 flex flex-col items-center h-full">
+        <div class="flex-1 flex items-center">
+          <div class="text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">
+              Images
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+              A collection of photography from various events and locations
+            </p>
+          </div>
+        </div>
+        
+        {/* Chevron */}
+        <button
+          onclick="document.getElementById('image-cards').scrollIntoView({ behavior: 'smooth' })"
+          class="animate-bounce p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors mb-8"
+          aria-label="Scroll to image categories"
+        >
+          <svg
+            class="w-8 h-8 text-white"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+        </button>
+      </div>
+    </section>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       {/* Category Filter */}
@@ -215,7 +251,7 @@ const images = Object.entries(categoryImages).map(([category, images]) => ({
       </div>
 
       {/* Main Content */}
-      <section class="container mx-auto max-w-7xl px-4 py-12">
+      <section id="image-cards" class="container mx-auto max-w-7xl px-4 py-12">
         <div class="flex justify-between items-center mb-8">
           <div class="flex gap-4">
             <button 
