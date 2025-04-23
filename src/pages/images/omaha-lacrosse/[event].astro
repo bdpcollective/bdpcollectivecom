@@ -23,7 +23,8 @@ export async function getStaticPaths() {
           "/images/olc/20250330_1_BluevsRampage/20250330_BluevsLincolnRampage - 12.jpeg",
           "/images/olc/20250330_1_BluevsRampage/20250330_BluevsLincolnRampage - 13.jpeg",
           "/images/olc/20250330_1_BluevsRampage/20250330_BluevsLincolnRampage - 14.jpeg",
-          "/images/olc/20250330_1_BluevsRampage/20250330_BluevsLincolnRampage - 15.jpeg"
+          "/images/olc/20250330_1_BluevsRampage/20250330_BluevsLincolnRampage - 15.jpeg",
+          "/images/olc/20250330_1_BluevsRampage/20250330_BluevsRampage - 16.jpeg"
         ]
       }
     },
@@ -82,10 +83,49 @@ export async function getStaticPaths() {
           "/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 47.jpeg"
         ]
       }
+    },
+    {
+      params: { event: '20250413-blue-vs-sarpy' },
+      props: {
+        title: "Blue vs Sarpy",
+        date: "April 13, 2025",
+        images: [
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 1.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 2.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 3.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 4.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 5.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 6.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 7.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 8.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 9.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 10.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 11.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 12.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 13.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 14.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 15.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 16.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 17.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 18.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 19.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 20.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 21.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 22.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 23.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 24.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 25.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 26.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 27.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 28.jpeg",
+          "/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 29.jpeg"
+        ]
+      }
     }
   ];
 }
 
+const { event } = Astro.params;
 const { title, date, images } = Astro.props;
 ---
 

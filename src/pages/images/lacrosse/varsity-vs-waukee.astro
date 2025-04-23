@@ -27,7 +27,7 @@ const images = Array.from({ length: imageCount }, (_, i) => `${imagePath}/${imag
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {images.map((image, index) => (
             <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
-              <img 
+          <img 
                 src={image} 
                 alt={`Varsity: MWHS vs Waukee - Image ${index + 1}`} 
                 class="gallery-image w-full h-full object-cover cursor-pointer transform hover:scale-105 transition-transform duration-300"
@@ -41,7 +41,7 @@ const images = Array.from({ length: imageCount }, (_, i) => `${imagePath}/${imag
   </div>
 
   <Lightbox images={images} />
-</Layout>
+</Layout> 
 
 <style>
   /* Remove the fixed aspect ratio style */

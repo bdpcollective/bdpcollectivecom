@@ -98,10 +98,19 @@ const { game } = Astro.props;
 ---
 
 <Layout title={`${game.title} - Omaha Lacrosse Club`}>
-  <main class="min-h-screen bg-gray-50">
+  <main class="min-h-screen bg-white">
+    <section class="bg-black text-white py-16">
+      <div class="container mx-auto px-4">
+        <h1 class="text-4xl font-bold mb-4">{game.title}</h1>
+        <p class="text-lg text-gray-300 max-w-3xl">
+          {game.date}
+        </p>
+      </div>
+    </section>
+
     <section class="container mx-auto px-4 py-12">
       <a 
-        href="/images/omaha-lacrosse" 
+        href="/images/olc" 
         class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors mb-8"
       >
         <svg
@@ -120,18 +129,27 @@ const { game } = Astro.props;
         Back to Omaha Lacrosse Club
       </a>
 
-      <h1 class="text-4xl font-bold text-gray-900 mb-4">{game.title}</h1>
-      <p class="text-gray-600 mb-8">{game.date}</p>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {game.images.map((image, index) => (
           <div class="group relative">
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <div class="relative h-64">
             <img
               src={image}
               alt={`${game.title} - Photo ${index + 1}`}
-              class="w-full h-80 object-cover rounded-lg cursor-pointer gallery-image hover:opacity-90 transition-opacity"
+                  class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300 gallery-image"
               data-index={index}
             />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+                  <div class="absolute bottom-0 left-0 right-0 p-4">
+                    <div class="flex justify-between text-sm text-gray-300">
+                      <span>{game.date}</span>
+                      <span>Photo {index + 1}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         ))}
       </div>
