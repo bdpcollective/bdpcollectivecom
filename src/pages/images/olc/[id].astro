@@ -1,9 +1,16 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 import Lightbox from '../../../components/Lightbox.astro';
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
   const games = [
+    {
+      id: "20250427_1_BluevsWestside",
+      title: "Blue vs Westside",
+      date: "April 27, 2025",
+      images: Array.from({ length: 37 }, (_, i) => `/images/olc/20250427-Blue-vs-Westside/OLC_BluevsWestside - ${i + 1}.jpeg`)
+    },
     {
       id: "20250413_1_BluevsSarpy",
       title: "Blue vs Sarpy",
@@ -110,8 +117,9 @@ const { game } = Astro.props;
 
     <section class="container mx-auto px-4 py-12">
       <a 
-        href="/images/olc" 
+        href="/images/omaha-lacrosse" 
         class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors mb-8"
+        data-astro-prefetch
       >
         <svg
           class="w-5 h-5 mr-2"
@@ -131,15 +139,15 @@ const { game } = Astro.props;
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {game.images.map((image, index) => (
-          <div class="group relative">
+          <button class="group relative w-full text-left" onclick={`window.openLightbox(${index})`}>
             <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <div class="relative h-64">
-            <img
-              src={image}
-              alt={`${game.title} - Photo ${index + 1}`}
-                  class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300 gallery-image"
-              data-index={index}
-            />
+                <img
+                  src={image}
+                  alt={`${game.title} - Photo ${index + 1}`}
+                  class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300 gallery-image cursor-pointer"
+                  data-index={index}
+                />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
                   <div class="absolute bottom-0 left-0 right-0 p-4">
                     <div class="flex justify-between text-sm text-gray-300">
@@ -150,7 +158,7 @@ const { game } = Astro.props;
                 </div>
               </div>
             </div>
-          </div>
+          </button>
         ))}
       </div>
     </section>

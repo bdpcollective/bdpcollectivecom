@@ -33,6 +33,9 @@ const { images } = Astro.props;
     updateLightboxImage();
   }
 
+  // Expose openLightbox globally
+  window.openLightbox = openLightbox;
+
   function closeLightbox() {
     lightbox.classList.add('hidden');
     document.body.style.overflow = '';
@@ -59,8 +62,10 @@ const { images } = Astro.props;
   }
 
   // Add click handlers to all gallery images
-  document.querySelectorAll('.gallery-image').forEach((img, index) => {
-    img.addEventListener('click', () => openLightbox(index));
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.gallery-image').forEach((img, index) => {
+      img.addEventListener('click', () => openLightbox(index));
+    });
   });
 
   closeButton.addEventListener('click', (e) => {
