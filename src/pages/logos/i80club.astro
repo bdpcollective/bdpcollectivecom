@@ -4,44 +4,56 @@ import { Image } from 'astro:assets';
 import { baseUrl } from '../../config';
 
 const content = {
-  projectDescription: {
+  projectOverview: {
     text: [
-      "The I-80 Club logo was designed to represent a social club focused on community engagement and local events.",
-      "The design process began with understanding the club's mission to bring people together and create meaningful connections.",
-      "The final logo combines a modern, friendly aesthetic with elements that suggest community and connectivity."
-    ],
-    images: [
-      "/logos/i80club/1_i80club_overview.png"
+      "I designed the logo for the I-80 Club, a podcast network centered on Nebraska sports and college football. The brand needed a bold, memorable identity that matched its energetic and fan-driven voice."
     ]
   },
-  logoVariations: {
+  objectives: {
     text: [
-      "We created multiple variations of the logo to ensure flexibility across different applications.",
-      "The primary logo works well on both light and dark backgrounds, while the simplified version is ideal for smaller spaces.",
-      "Each variation maintains the core brand identity while adapting to specific use cases."
-    ],
-    images: [
+      "Create a strong, flexible logo for digital platforms",
+      "Capture a local, Midwest feel with a modern edge",
+      "Stand out in a crowded sports media space"
+    ]
+  },
+  designApproach: {
+    text: [
+      "Visual Theme: Inspired by highway signs and retro sports branding",
+      "Typography: Custom bold type to evoke authority and personality",
+      "Color Palette: High-contrast colors for maximum visibility on thumbnails and social media"
+    ]
+  },
+  outcome: {
+    text: [
+      "The I-80 Club logo gives the network a recognizable identity across YouTube, Patreon, and live streams. It holds up well in small sizes and pairs easily with show-specific branding like After Nebrasketball and Volleyball State."
+    ]
+  },
+  deliverables: {
+    items: [
+      {
+        title: "Logo Formats",
+        details: "SVG, PNG, EPS"
+      },
+      {
+        title: "Variations",
+        details: "Horizontal, stacked, and icon-only"
+      },
+      {
+        title: "Usage Examples",
+        details: "YouTube thumbnails, stream overlays, merchandise"
+      }
+    ]
+  },
+  images: {
+    overview: "/logos/i80club/1_i80club_overview.png",
+    variations: [
       "/logos/i80club/2_logo_variations.png",
       "/logos/i80club/3_logo_variations.png"
-    ]
-  },
-  brandGuidelines: {
-    text: [
-      "Comprehensive brand guidelines were developed to ensure consistent application of the logo across all touchpoints.",
-      "The guidelines include color specifications, spacing requirements, and minimum size recommendations.",
-      "These standards help maintain the integrity of the brand identity across all applications."
     ],
-    image: "/logos/i80club/4_brand_guidelines.png"
-  },
-  implementationExamples: {
-    text: [
-      "The logo has been successfully implemented across various platforms and materials.",
-      "From business cards and letterhead to digital platforms and marketing materials, the logo maintains its impact and recognition.",
-      "These examples demonstrate the versatility and effectiveness of the design in real-world applications."
-    ],
-    images: [
-      "/logos/i80club/5_implementation.png",
-      "/logos/i80club/6_implementation.png"
+    guidelines: "/logos/i80club/4_logo_variations.png",
+    implementation: [
+      "/logos/i80club/5_logo_variations.png",
+      "/logos/i80club/6_logo_variations.png"
     ]
   }
 };
@@ -53,20 +65,20 @@ const content = {
     <section class="relative bg-black py-12">
       <div class="relative z-10 flex flex-col justify-center px-4 container mx-auto">
         <div class="max-w-7xl mx-auto w-full">
-          <div class="w-24 h-24 flex items-center mb-2">
+          <div class="w-48 h-auto flex items-center justify-center mb-2 pb-4">
             <img
               src="/logos/I80Club.png"
               alt="I-80 Club logo"
-              width="96"
+              width="192"
               height="96"
-              class="object-contain"
+              class="w-full object-contain"
             />
           </div>
           <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">
             I-80 Club
           </h1>
           <p class="text-lg md:text-xl text-gray-300 mb-4">
-            Logo design for a social club focused on community engagement
+            Logo design for a Nebraska sports podcast network
           </p>
         </div>
       </div>
@@ -86,84 +98,111 @@ const content = {
           Back to Logos
         </a>
 
-        {/* Project Description */}
+        {/* Project Overview */}
         <div>
-          <h2 class="text-3xl font-bold mb-6">Project Description</h2>
+          <h2 class="text-3xl font-bold mb-6">Project Overview</h2>
           <div class="prose max-w-none mb-8">
-            {content.projectDescription.text.map((paragraph) => (
+            {content.projectOverview.text.map((paragraph) => (
               <p class="mb-4">{paragraph}</p>
             ))}
           </div>
           <div class="rounded-lg overflow-hidden shadow-lg">
             <img
-              src={content.projectDescription.images[0]}
+              src={content.images.overview}
               alt="I-80 Club logo overview"
               width="800"
               height="600"
-              class="w-full object-contain"
+              class="w-full h-full object-cover"
             />
           </div>
         </div>
 
-        {/* Logo Variations */}
+        {/* Objectives */}
         <div>
-          <h2 class="text-3xl font-bold mb-6">Logo Variations</h2>
+          <h2 class="text-3xl font-bold mb-6">Objectives</h2>
           <div class="prose max-w-none mb-8">
-            {content.logoVariations.text.map((paragraph) => (
-              <p class="mb-4">{paragraph}</p>
-            ))}
+            <ul class="list-disc pl-5 space-y-2">
+              {content.objectives.text.map((objective) => (
+                <li>{objective}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Design Approach */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Design Approach</h2>
+          <div class="prose max-w-none mb-8">
+            <ul class="list-disc pl-5 space-y-2">
+              {content.designApproach.text.map((approach) => (
+                <li>{approach}</li>
+              ))}
+            </ul>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {content.logoVariations.images.map((image) => (
+            {content.images.variations.map((image) => (
               <div class="rounded-lg overflow-hidden shadow-lg">
                 <img
                   src={image}
                   alt="Logo variation"
                   width="400"
                   height="300"
-                  class="w-full object-contain"
+                  class="w-full h-full object-cover"
                 />
               </div>
             ))}
           </div>
         </div>
 
-        {/* Brand Guidelines */}
+        {/* Outcome */}
         <div>
-          <h2 class="text-3xl font-bold mb-6">Brand Guidelines</h2>
+          <h2 class="text-3xl font-bold mb-6">Outcome</h2>
           <div class="prose max-w-none mb-8">
-            {content.brandGuidelines.text.map((paragraph) => (
+            {content.outcome.text.map((paragraph) => (
               <p class="mb-4">{paragraph}</p>
             ))}
           </div>
           <div class="rounded-lg overflow-hidden shadow-lg">
             <img
-              src={content.brandGuidelines.image}
+              src={content.images.guidelines}
               alt="Brand guidelines"
               width="800"
               height="600"
-              class="w-full object-contain"
+              class="w-full h-full object-cover"
             />
           </div>
         </div>
 
-        {/* Implementation Examples */}
+        {/* Deliverables */}
         <div>
-          <h2 class="text-3xl font-bold mb-6">Implementation Examples</h2>
+          <h2 class="text-3xl font-bold mb-6">Deliverables</h2>
           <div class="prose max-w-none mb-8">
-            {content.implementationExamples.text.map((paragraph) => (
-              <p class="mb-4">{paragraph}</p>
-            ))}
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Deliverable</th>
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Details</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                {content.deliverables.items.map((item) => (
+                  <tr>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{item.title}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.details}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {content.implementationExamples.images.map((image) => (
+            {content.images.implementation.map((image) => (
               <div class="rounded-lg overflow-hidden shadow-lg">
                 <img
                   src={image}
                   alt="Implementation example"
                   width="400"
                   height="300"
-                  class="w-full object-contain"
+                  class="w-full h-full object-cover"
                 />
               </div>
             ))}
