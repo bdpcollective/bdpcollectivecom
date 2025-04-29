@@ -13,7 +13,7 @@ const logoItems = [
   {
     title: "I-80 Club",
     description: "Logo design for a social club focused on community engagement.",
-    logo: "/logos/I80Club.png",
+    logo: "/logos/i80club/3_logo_variations.png",
     slug: "i80club"
   },
   {
@@ -21,6 +21,12 @@ const logoItems = [
     description: "Logo design for a community-focused organization in Omaha.",
     logo: "/logos/connectaha/ConnectahaBugOnly_R.png",
     slug: "connectaha"
+  },
+  {
+    title: "King Creek Woodworks",
+    description: "Logo design for a custom woodworking business.",
+    logo: "/logos/kingcreekwoodworks/Logocard.png",
+    slug: "kingcreekwoodworks"
   }
 ];
 
@@ -73,7 +79,7 @@ console.log('DevObsessed logo URL:', `${baseUrl}/images/logos/devobsessedcard.pn
             href={`${baseUrl}/logos/${item.slug}`}
             class="p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-shadow block"
           >
-            <div class={`relative w-36 h-36 flex items-center justify-center mb-4 mx-auto ${item.slug === 'connectaha' || item.slug === 'devobsessed' ? 'rounded-lg overflow-hidden' : ''}`}>
+            <div class={`relative w-36 h-36 flex items-center justify-center mb-4 mx-auto ${item.slug === 'connectaha' || item.slug === 'devobsessed' || item.slug === 'kingcreekwoodworks' || item.slug === 'i80club' ? 'rounded-lg overflow-hidden' : ''}`}>
               <img
                 src={item.logo}
                 alt={`${item.title} logo`}
