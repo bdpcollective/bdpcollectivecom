@@ -1,0 +1,242 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import { baseUrl } from '../../config';
+
+const content = {
+  projectOverview: {
+    text: [
+      "I designed the logo for Connectaha, a tech conference focused on growing quality connections in the Nebraska technology community. The brand needed a modern, inclusive identity that reflected its mission of bringing together diverse perspectives to exchange ideas, knowledge, and views."
+    ]
+  },
+  objectives: {
+    text: [
+      "Create a versatile logo that works across conference materials and digital platforms",
+      "Capture the spirit of community, inclusivity, and knowledge sharing",
+      "Design a memorable mark that conveys both professionalism and approachability",
+      "Ensure the logo scales well for various applications from badges to banners"
+    ]
+  },
+  designApproach: {
+    text: [
+      "Visual Theme: Modern and adaptable, emphasizing connectivity and community",
+      "Typography: Clean, contemporary type that conveys professionalism while remaining approachable",
+      "Color Palette: Warm, inviting colors that reflect the supportive and inclusive nature of the conference",
+      "Symbolism: Elements that suggest connection, growth, and the exchange of ideas"
+    ]
+  },
+  outcome: {
+    text: [
+      "The Connectaha logo provides a strong foundation for the conference brand across various platforms. It maintains clarity in both digital and print applications while conveying the organization's commitment to quality, sustainability, and inclusivity. The design successfully communicates the conference's focus on bringing together diverse perspectives in the tech community."
+    ]
+  },
+  deliverables: {
+    items: [
+      {
+        title: "Logo Formats",
+        details: "SVG, PNG, EPS"
+      },
+      {
+        title: "Variations",
+        details: "Square, Horizontal"
+      },
+      {
+        title: "Usage Examples",
+        details: "Conference materials, website, social media, badges, banners"
+      }
+    ]
+  },
+  images: {
+    overview: "/logos/connectaha/ConnectahaBaseLogo.png",
+    variations: [
+      "/logos/connectaha/ConnectahaBugOnly.png",
+      "/logos/connectaha/ConnectahaBugOnly_R.png"
+    ],
+    guidelines: "/logos/connectaha/ConnectahaBaseLogo-1.png",
+    implementation: [
+      "/logos/connectaha/ConnectahaBaseLogo_R-1.png",
+      "/logos/connectaha/FBBanner.png"
+    ]
+  }
+};
+---
+
+<Layout title="Connectaha - Logos">
+  <main>
+    {/* Hero Section */}
+    <section class="relative bg-black py-12">
+      <div class="relative z-10 flex flex-col justify-center px-4 container mx-auto">
+        <div class="max-w-7xl mx-auto w-full">
+          <div class="w-48 h-auto flex items-center justify-center mb-2 pb-4">
+            <img
+              src="/logos/connectaha/ConnectahaBugOnly.png"
+              alt="Connectaha logo"
+              width="192"
+              height="96"
+              class="w-full object-contain"
+            />
+          </div>
+          <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">
+            Connectaha
+          </h1>
+          <p class="text-lg md:text-xl text-gray-300 mb-4">
+            Logo design for a tech conference focused on growing quality connections
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Content Section */}
+    <section class="container mx-auto px-4 py-20">
+      <div class="max-w-3xl mx-auto space-y-16">
+        {/* Back Button */}
+        <a 
+          href="/logos" 
+          class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors mb-8"
+        >
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to Logos
+        </a>
+
+        {/* Project Overview */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Project Overview</h2>
+          <div class="prose max-w-none mb-8">
+            {content.projectOverview.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-lg flex items-center justify-center">
+            <img
+              src={content.images.overview}
+              alt="Connectaha logo overview"
+              width="800"
+              height="600"
+              class="w-full h-auto object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Objectives */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Objectives</h2>
+          <div class="prose max-w-none mb-8">
+            <ul class="list-disc pl-5 space-y-2">
+              {content.objectives.text.map((objective) => (
+                <li>{objective}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Design Approach */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Design Approach</h2>
+          <div class="prose max-w-none mb-8">
+            <ul class="list-disc pl-5 space-y-2">
+              {content.designApproach.text.map((approach) => (
+                <li>{approach}</li>
+              ))}
+            </ul>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {content.images.variations.map((image) => (
+              <div class="rounded-lg overflow-hidden shadow-lg flex items-center justify-center">
+                <img
+                  src={image}
+                  alt="Logo variation"
+                  width="400"
+                  height="300"
+                  class="w-full h-auto object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Outcome */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Outcome</h2>
+          <div class="prose max-w-none mb-8">
+            {content.outcome.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-lg flex items-center justify-center">
+            <img
+              src={content.images.guidelines}
+              alt="Brand guidelines"
+              width="800"
+              height="600"
+              class="w-full h-auto object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Implementation Images */}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {content.images.implementation.map((image, index) => (
+            <div class={`rounded-lg overflow-hidden shadow-lg flex items-center justify-center ${index === 0 ? 'bg-[#022432]' : ''}`}>
+              <img
+                src={image}
+                alt="Implementation example"
+                width="400"
+                height="300"
+                class="w-full h-auto object-contain"
+              />
+            </div>
+          ))}
+        </div>
+
+        {/* Deliverables */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Deliverables</h2>
+          <div class="prose max-w-none mb-8">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Deliverable</th>
+                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Details</th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                {content.deliverables.items.map((item) => (
+                  <tr>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{item.title}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{item.details}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Fixed Navigation Arrows */}
+    <div class="fixed left-4 top-1/2 -translate-y-1/2 z-50">
+      <a 
+        href="/logos" 
+        class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/80 hover:bg-white shadow-lg text-gray-600 hover:text-gray-900 transition-colors"
+        aria-label="Back to Logos"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </a>
+    </div>
+    <div class="fixed right-4 top-1/2 -translate-y-1/2 z-50">
+      <a 
+        href="/logos/devobsessed" 
+        class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/80 hover:bg-white shadow-lg text-gray-600 hover:text-gray-900 transition-colors"
+        aria-label="Next Project"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </main>
+</Layout> 
