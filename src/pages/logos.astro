@@ -7,7 +7,7 @@ const logoItems = [
   {
     title: "DevObsessed",
     description: "Logo design for a software development consulting company.",
-    logo: "/logos/devobsessedcard.png",
+    logo: "/logos/devobsessed/3_logo_variations.png",
     slug: "devobsessed"
   },
   {
@@ -19,7 +19,7 @@ const logoItems = [
   {
     title: "Connectaha",
     description: "Logo design for a community-focused organization in Omaha.",
-    logo: "/logos/I80Club.png",
+    logo: "/logos/connectaha/ConnectahaBugOnly_R.png",
     slug: "connectaha"
   }
 ];
@@ -73,7 +73,7 @@ console.log('DevObsessed logo URL:', `${baseUrl}/images/logos/devobsessedcard.pn
             href={`${baseUrl}/logos/${item.slug}`}
             class="p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-shadow block"
           >
-            <div class="relative w-36 h-36 flex items-center justify-center mb-4 mx-auto">
+            <div class={`relative w-36 h-36 flex items-center justify-center mb-4 mx-auto ${item.slug === 'connectaha' || item.slug === 'devobsessed' ? 'rounded-lg overflow-hidden' : ''}`}>
               <img
                 src={item.logo}
                 alt={`${item.title} logo`}
