@@ -180,13 +180,44 @@ function getRandomImage(images: string[]): string {
   return images[Math.floor(Math.random() * images.length)];
 }
 
-// Create the images array with random images from each category
-const images = Object.entries(categoryImages).map(([category, images]) => ({
+type ImageCard = {
+  src: string;
+  alt: string;
+  title: string;
+  category: string;
+};
+
+const images: ImageCard[] = Object.entries(categoryImages).map(([category, images]) => ({
   src: getRandomImage(images),
   alt: category,
   title: categoryTitles[category] || category,
-  category: category as CategoryKey
+  category: category
 }));
+
+// Duplicate 2025 Millard West Lacrosse as 2025 Hula
+images.push({
+  src: getRandomImage(categoryImages["Lacrosse"]),
+  alt: "Hula",
+  title: "2025 Hula",
+  category: "Hula"
+});
+
+// Order cards from newest to oldest
+images.reverse();
+
+// Move '2025 Millard West Lacrosse' (title: '2025 Millard West Lacrosse') to index 1
+const mwIndex = images.findIndex(img => img.title === '2025 Millard West Lacrosse');
+if (mwIndex > 1) {
+  const [mwCard] = images.splice(mwIndex, 1);
+  images.splice(1, 0, mwCard);
+}
+
+// Move '2025 Omaha Lacrosse Club' (title: '2025 Omaha Lacrosse Club') to index 2
+const olcIndex = images.findIndex(img => img.title === '2025 Omaha Lacrosse Club');
+if (olcIndex > 2) {
+  const [olcCard] = images.splice(olcIndex, 1);
+  images.splice(2, 0, olcCard);
+}
 ---
 
 <Layout title="Images">
@@ -300,7 +331,8 @@ const images = Object.entries(categoryImages).map(([category, images]) => ({
                 image.category === "Omaha" ? '/images/omaha' : 
                 image.category === "Zoo" ? '/images/zoo' : 
                 image.category === "Nebraska Athletics" ? '/images/huskers' :
-                image.category === "Omaha Lacrosse Club" ? '/images/omaha-lacrosse' : 
+                image.category === "Omaha Lacrosse Club" ? '/images/omaha-lacrosse' :
+                image.category === "Hula" ? '/images/hula2025' :
                 "#"
               } 
               class="group relative overflow-hidden rounded-lg"

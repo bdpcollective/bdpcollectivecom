@@ -3,29 +3,27 @@ import Layout from '../../layouts/Layout.astro';
 
 const events = [
   {
-    title: "Hula Lacrosse",
-    events: [
-      {
-        name: "BBQ Showdown",
-        date: "June 22, 2024",
-        image: "/images/hula/20240622_BBQShowdown/20240622_BBQShowdown - 1.jpeg",
-        link: "/images/hula/bbq-showdown"
-      },
-      {
-        name: "Goodland",
-        date: "June 30, 2024",
-        image: "/images/hula/20240630_Goodland/20240630_Goodland - 1.jpeg",
-        link: "/images/hula/goodland"
-      }
-    ]
+    name: 'Blue Ox',
+    image: '/images/hula/2025_blueox/mac/Hula_BlueOx-30.jpg',
+    link: '/images/hula/2025/blueox'
+  },
+  {
+    name: 'BBQ Showdown',
+    image: '/images/hula/placeholder1.jpeg',
+    link: '/images/hula/bbq-showdown'
+  },
+  {
+    name: 'Goodland',
+    image: '/images/hula/placeholder2.jpeg',
+    link: '/images/hula/goodland'
   }
 ];
 ---
 
-<Layout title="Hula Lacrosse">
+<Layout title="Hula 2025 Events">
   <div class="bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <h1 class="text-4xl font-bold text-gray-900 mb-8">Hula Lacrosse</h1>
+      <h1 class="text-4xl font-bold text-gray-900 mb-8">Hula 2025 Events</h1>
       
       <a href="/images" class="inline-flex items-center text-gray-600 hover:text-gray-900 mb-8">
         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -34,32 +32,20 @@ const events = [
         Back to Images
       </a>
       
-      {events.map(group => (
-        <div class="mb-12">
-          <h2 class="text-2xl font-semibold text-gray-900 mb-6">{group.title}</h2>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {group.events.map(event => (
-              <a href={event.link} class="group">
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                  <div class="relative h-64">
-                    <img
-                      src={event.image}
-                      alt={event.name}
-                      class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
-                    />
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
-                      <div class="absolute bottom-0 left-0 right-0 p-4">
-                        <h3 class="text-white text-xl font-semibold">{event.name}</h3>
-                        <p class="text-white/80 text-sm">{event.date}</p>
-                      </div>
-                    </div>
-                  </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {events.map(event => (
+          <a href={event.link} class="group block rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+            <div class="relative h-64">
+              <img src={event.image} alt={event.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end">
+                <div class="p-4">
+                  <h2 class="text-white text-xl font-semibold">{event.name}</h2>
                 </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      ))}
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
   </div>
 </Layout> 

@@ -1,0 +1,24 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import Lightbox from '../../../../components/Lightbox.astro';
+
+const images = [
+  "Hula_BlueOx-01.jpg","Hula_BlueOx-02.jpg","Hula_BlueOx-03.jpg","Hula_BlueOx-04.jpg","Hula_BlueOx-05.jpg","Hula_BlueOx-06.jpg","Hula_BlueOx-07.jpg","Hula_BlueOx-08.jpg","Hula_BlueOx-09.jpg","Hula_BlueOx-10.jpg","Hula_BlueOx-11.jpg","Hula_BlueOx-12.jpg","Hula_BlueOx-13.jpg","Hula_BlueOx-14.jpg","Hula_BlueOx-15.jpg","Hula_BlueOx-16.jpg","Hula_BlueOx-17.jpg","Hula_BlueOx-18.jpg","Hula_BlueOx-19.jpg","Hula_BlueOx-20.jpg","Hula_BlueOx-21.jpg","Hula_BlueOx-22.jpg","Hula_BlueOx-23.jpg","Hula_BlueOx-24.jpg","Hula_BlueOx-25.jpg","Hula_BlueOx-26.jpg","Hula_BlueOx-27.jpg","Hula_BlueOx-28.jpg","Hula_BlueOx-29.jpg","Hula_BlueOx-30.jpg"
+];
+
+const basePath = '/images/hula2025/blueox/mac/';
+---
+<Layout title="Hula Gold vs MAC">
+  <div class="max-w-7xl mx-auto px-4 py-16">
+    <h1 class="text-3xl font-bold mb-8">Hula Gold vs MAC</h1>
+    <a href="/images/hula2025/blueox" class="text-blue-600 hover:underline mb-8 inline-block">← Back to Blue Ox</a>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+      {images.map((img, idx) => (
+        <div class="rounded-lg overflow-hidden shadow">
+          <img src={basePath + img} alt={img} class="gallery-image w-full h-64 object-cover cursor-pointer" loading={idx < 9 ? 'eager' : 'lazy'} />
+        </div>
+      ))}
+    </div>
+    <Lightbox images={images.map(img => basePath + img)} />
+  </div>
+</Layout> 
