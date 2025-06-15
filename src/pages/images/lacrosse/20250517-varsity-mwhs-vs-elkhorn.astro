@@ -1,0 +1,45 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Lightbox from '../../../components/Lightbox.astro';
+
+const images = Array.from({ length: 65 }, (_, i) => `/images/lacrosse/20250517-varsity-mwhs-vs-elkhorn/20250517_MWvsElkhorn - ${i + 1}.jpeg`);
+
+const title = "Varsity: MWHS vs Elkhorn - May 17, 2025";
+const description = "Gallery of photos from the Millard West High School Varsity Lacrosse game against Elkhorn on May 17, 2025";
+---
+
+<Layout title={title}>
+  <div class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="mb-8">
+        <a href="/images/lacrosse" class="text-blue-600 hover:text-blue-800">← Back to Lacrosse</a>
+      </div>
+      
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">Varsity: MWHS vs Elkhorn</h1>
+      <p class="text-gray-600 mb-8">May 17, 2025</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {images.map((image, index) => (
+          <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
+            <img
+              src={image}
+              alt={`Game photo ${index + 1}`}
+              class="gallery-image w-full h-full object-cover cursor-pointer transform hover:scale-105 transition-transform duration-300"
+              loading={index < 9 ? "eager" : "lazy"}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <Lightbox images={images} />
+</Layout>
+
+<style>
+  /* Remove the fixed aspect ratio style */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+</style> 

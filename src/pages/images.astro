@@ -1,0 +1,457 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const categoryImages = {
+  "Omaha Lacrosse Club": [
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 1.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 2.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 3.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 4.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 5.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 6.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 7.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 8.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 9.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 10.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 11.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 12.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 13.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 14.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 15.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 16.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 17.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 18.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 19.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 20.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 21.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 22.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 23.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 24.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 25.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 26.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 27.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 28.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 29.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 30.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 31.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 32.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 33.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 34.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 35.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 36.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 37.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 38.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 39.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 40.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 41.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 42.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 43.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 44.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 45.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 46.jpeg',
+    '/images/olc/20250330_2_BluevsElkhorn/20250330_BluevsElkhorn - 47.jpeg'
+  ],
+  "Lacrosse": [
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 1.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 2.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 3.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 4.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 5.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 6.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 7.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 8.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 9.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 10.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 11.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 12.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 13.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 14.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 15.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 16.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 17.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 18.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 19.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 20.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 21.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 22.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 23.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 24.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 25.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 26.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 27.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 28.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 29.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 30.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 31.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 32.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 33.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 34.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 35.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 36.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 37.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 38.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 39.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 40.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 41.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 42.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 43.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 44.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 45.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 46.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 47.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 48.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 49.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 50.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 51.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 52.jpeg',
+    '/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 53.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 1.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 2.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 3.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 4.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 5.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 6.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 7.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 8.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 9.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 10.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 11.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 12.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 13.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 14.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 15.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 16.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 17.jpeg',
+    '/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 18.jpeg'
+  ],
+  "Omaha": [
+    '/images/omaha/2010-12-09_bobkerrybridge_1024_3409.jpg',
+    '/images/omaha/2010-12-09_flowers_1024_3412.jpg',
+    '/images/omaha/20110704_Fireworks_bp-1.jpg'
+  ],
+  "Zoo": [
+    '/images/zoo/2010-12-09_zoo_1024_3418.jpg',
+    '/images/zoo/2010-12-11_PenguinBlog1200_3425.jpg',
+    '/images/zoo/2010-12-09_zoo_1024_3417.jpg',
+    '/images/zoo/2010-12-09_zoo_1024_3420.jpg'
+  ],
+  "Nebraska Athletics": [
+    '/images/nu/2011-10-27_BrianandTom843.jpg',
+    '/images/nu/2010-12-09_NU_1024_3414.jpg',
+    '/images/nu/2010-10-31_NUvsMU_Pano3272.jpg',
+    '/images/nu/NUvsWKU3_web.jpg'
+  ],
+  "Events": [
+    '/images/events/20100616_NationalSpecialOlympics/20100618_NationalSpecialOlymics - 1.jpeg',
+    '/images/events/20100616_NationalSpecialOlympics/20100618_NationalSpecialOlymics - 2.jpeg',
+    '/images/events/20100616_NationalSpecialOlympics/20100618_NationalSpecialOlymics - 3.jpeg',
+    '/images/events/20100616_NationalSpecialOlympics/20100618_NationalSpecialOlymics - 6.jpeg',
+    '/images/events/20100616_NationalSpecialOlympics/20100618_NationalSpecialOlymics - 7.jpeg',
+    '/images/events/20100616_NationalSpecialOlympics/20100618_NationalSpecialOlymics - 8.jpeg',
+    '/images/events/20100616_NationalSpecialOlympics/20100618_NationalSpecialOlymics - 9.jpeg'
+  ]
+};
+
+type CategoryKey = keyof typeof categoryImages;
+
+const categoryPhotoCount: Record<CategoryKey, number> = {
+  "Events": 7,
+  "Omaha Lacrosse Club": 47,
+  "Lacrosse": 72,
+  "Omaha": 3,
+  "Zoo": 4,
+  "Nebraska Athletics": 4
+};
+
+const categoryTitles: Record<string, string> = {
+  "Events": "Events",
+  "Omaha Lacrosse Club": "2025 Omaha Lacrosse Club",
+  "Lacrosse": "2025 Millard West Lacrosse",
+  "Omaha": "Images Around Omaha",
+  "Zoo": "Omaha Henry Doorly Zoo",
+  "Nebraska Athletics": "Nebraska Athletics"
+};
+
+const categories = ["All", "Omaha Lacrosse Club", "Millard West Lacrosse", "Nebraska Athletics", "Zoo", "Omaha", "Events"];
+
+// Function to get a random image from an array
+function getRandomImage(images: string[]): string {
+  return images[Math.floor(Math.random() * images.length)];
+}
+
+type ImageCard = {
+  src: string;
+  alt: string;
+  title: string;
+  category: string;
+};
+
+const images: ImageCard[] = Object.entries(categoryImages).map(([category, images]) => ({
+  src: getRandomImage(images),
+  alt: category,
+  title: categoryTitles[category] || category,
+  category: category
+}));
+
+// Duplicate 2025 Millard West Lacrosse as 2025 Hula
+images.push({
+  src: getRandomImage(categoryImages["Lacrosse"]),
+  alt: "Hula",
+  title: "2025 Hula",
+  category: "Hula"
+});
+
+// Order cards from newest to oldest
+images.reverse();
+
+// Move '2025 Millard West Lacrosse' (title: '2025 Millard West Lacrosse') to index 1
+const mwIndex = images.findIndex(img => img.title === '2025 Millard West Lacrosse');
+if (mwIndex > 1) {
+  const [mwCard] = images.splice(mwIndex, 1);
+  images.splice(1, 0, mwCard);
+}
+
+// Move '2025 Omaha Lacrosse Club' (title: '2025 Omaha Lacrosse Club') to index 2
+const olcIndex = images.findIndex(img => img.title === '2025 Omaha Lacrosse Club');
+if (olcIndex > 2) {
+  const [olcCard] = images.splice(olcIndex, 1);
+  images.splice(2, 0, olcCard);
+}
+---
+
+<Layout title="Images">
+  <div class="bg-white">
+    {/* Hero Section */}
+    <section class="relative h-[50vh]">
+      {/* Background Image */}
+      <div class="absolute inset-0 z-0">
+        <img
+          src="/jelly.jpg"
+          alt="Images hero background"
+          class="w-full h-full object-cover brightness-50"
+        />
+      </div>
+
+      {/* Hero Content */}
+      <div class="relative z-10 flex flex-col items-center h-full">
+        <div class="flex-1 flex items-center">
+          <div class="text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">
+              Images
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+          A collection of photography from various events and locations
+        </p>
+      </div>
+    </div>
+        
+        {/* Chevron */}
+        <button
+          onclick="document.getElementById('image-cards').scrollIntoView({ behavior: 'smooth' })"
+          class="animate-bounce p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors mb-8"
+          aria-label="Scroll to image categories"
+        >
+          <svg
+            class="w-8 h-8 text-white"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+        </button>
+      </div>
+    </section>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      {/* Category Filter */}
+      <div class="flex flex-wrap gap-4 mb-8">
+        {categories.map(category => (
+          <button 
+            class="px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors data-[active=true]:bg-gray-900 data-[active=true]:text-white"
+            data-category={category}
+            data-active={category === "All" ? "true" : "false"}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+
+      {/* Main Content */}
+      <section id="image-cards" class="container mx-auto max-w-7xl px-4 py-12">
+        <div class="flex justify-between items-center mb-8">
+          <div class="flex gap-4">
+            <button 
+              class="px-4 py-2 rounded-full bg-gray-900 text-white hover:bg-gray-800 transition-colors data-[active=true]:bg-gray-900 data-[active=true]:text-white data-[active=false]:bg-gray-100 data-[active=false]:text-gray-700"
+              data-sort="recent"
+              data-active="true"
+            >
+              Recent
+            </button>
+            <button 
+              class="px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors data-[active=true]:bg-gray-900 data-[active=true]:text-white data-[active=false]:bg-gray-100 data-[active=false]:text-gray-700"
+              data-sort="popular"
+              data-active="false"
+            >
+              Popular
+            </button>
+          </div>
+          <div class="flex gap-2">
+            <button 
+              class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors data-[active=true]:bg-gray-900 data-[active=true]:text-white"
+              data-view="row"
+              data-active="false"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+            <button 
+              class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors data-[active=true]:bg-gray-900 data-[active=true]:text-white"
+              data-view="card"
+              data-active="true"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 data-[view=row]:grid-cols-1" data-view="card">
+          {images.map((image) => (
+            <a 
+              href={
+                image.category === "Events" ? '/images/events' :
+                image.category === "Lacrosse" ? '/images/lacrosse' : 
+                image.category === "Omaha" ? '/images/omaha' : 
+                image.category === "Zoo" ? '/images/zoo' : 
+                image.category === "Nebraska Athletics" ? '/images/huskers' :
+                image.category === "Omaha Lacrosse Club" ? '/images/omaha-lacrosse' :
+                image.category === "Hula" ? '/images/hula2025' :
+                "#"
+              } 
+              class="group relative overflow-hidden rounded-lg"
+            >
+              <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div class="relative h-64">
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent">
+                    <div class="absolute bottom-0 left-0 right-0 p-4">
+                      <h3 class="text-white text-xl font-semibold">{image.title}</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    </div>
+  </div>
+</Layout>
+
+<script>
+  // Add category filter functionality
+  const filterButtons = document.querySelectorAll('[data-category]');
+  const sortButtons = document.querySelectorAll('[data-sort]');
+  const viewButtons = document.querySelectorAll('[data-view]');
+  const imageCards = document.querySelectorAll('.group');
+  const gridContainer = document.querySelector('.grid');
+
+  // Make categoryPhotoCount available to client-side
+  const categoryPhotoCount = {
+    "Omaha Lacrosse Club": 47,
+    "Lacrosse": 72,
+    "Omaha": 3,
+    "Zoo": 4,
+    "Nebraska Athletics": 4
+  };
+
+  // Handle view toggle clicks
+  viewButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const viewType = button.getAttribute('data-view') || '';
+      
+      // Update active button
+      viewButtons.forEach(btn => {
+        btn.setAttribute('data-active', 'false');
+      });
+      button.setAttribute('data-active', 'true');
+
+      // Update grid layout
+      if (gridContainer) {
+        gridContainer.setAttribute('data-view', viewType);
+      }
+    });
+  });
+
+  // Sort images by popularity (using photo count as a proxy)
+  const sortImages = (sortType: string) => {
+    const cards = Array.from(imageCards);
+    cards.sort((a, b) => {
+      const categoryA = a.querySelector('img')?.alt || '';
+      const categoryB = b.querySelector('img')?.alt || '';
+      const countA = categoryPhotoCount[categoryA as keyof typeof categoryPhotoCount] || 0;
+      const countB = categoryPhotoCount[categoryB as keyof typeof categoryPhotoCount] || 0;
+      
+      if (sortType === 'popular') {
+        return countB - countA;
+      } else {
+        return 0; // Keep original order for recent
+      }
+    });
+
+    const container = document.querySelector('.grid');
+    if (container) {
+      cards.forEach(card => container.appendChild(card));
+    }
+  };
+
+  // Handle sort button clicks
+  sortButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const sortType = button.getAttribute('data-sort') || '';
+      
+      // Update active button
+      sortButtons.forEach(btn => {
+        btn.setAttribute('data-active', 'false');
+      });
+      button.setAttribute('data-active', 'true');
+
+      // Sort images
+      sortImages(sortType);
+    });
+  });
+
+  // Handle category filter clicks
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const category = button.getAttribute('data-category') || '';
+      
+      // Update active button
+      filterButtons.forEach(btn => {
+        btn.setAttribute('data-active', 'false');
+      });
+      button.setAttribute('data-active', 'true');
+
+      // Filter images
+      imageCards.forEach(card => {
+        const cardCategory = card.querySelector('img')?.alt || '';
+        if (category === 'All' || cardCategory === category || 
+            (category === 'Millard West Lacrosse' && cardCategory === 'Lacrosse')) {
+          (card as HTMLElement).style.display = 'block';
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
+    });
+  });
+</script> 

@@ -1,0 +1,301 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { baseUrl } from '../../config';
+---
+
+<Layout title="Poverty Levels">
+  <main>
+    {/* Hero Section */}
+    <section class="relative h-[20vh] sm:h-[25vh] bg-black">
+      <div class="relative z-10 flex flex-col justify-center h-full px-4 container mx-auto">
+        <div class="max-w-7xl mx-auto w-full">
+          <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-2 sm:mb-4 text-white">
+            US Poverty Levels by County
+          </h1>
+          <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-2 sm:mb-4 max-w-2xl">
+            Interactive map showing poverty rates across US counties
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Content Section */}
+    <section class="container mx-auto px-4 py-12">
+      <div class="max-w-7xl mx-auto">
+        <a 
+          href={`${baseUrl}/data-visualization`} 
+          class="inline-flex items-center text-gray-600 hover:text-blue-600 transition-colors mb-6"
+        >
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to Data Visualization
+        </a>
+
+        <div class="bg-white rounded-lg shadow-lg p-4">
+          <div class="mb-4">
+            <h2 class="text-2xl font-bold mb-6">Poverty Rate by County | 2023</h2>
+            <div class="flex flex-wrap items-center gap-4 sm:gap-8">
+              <div class="flex items-center">
+                <div class="w-4 h-4 bg-[#f7fbff] border border-gray-300"></div>
+                <span class="ml-2 text-base sm:text-sm">0-5%</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-4 h-4 bg-[#c6dbef]"></div>
+                <span class="ml-2 text-base sm:text-sm">5-10%</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-4 h-4 bg-[#6baed6]"></div>
+                <span class="ml-2 text-base sm:text-sm">10-15%</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-4 h-4 bg-[#2171b5]"></div>
+                <span class="ml-2 text-base sm:text-sm">15-20%</span>
+              </div>
+              <div class="flex items-center">
+                <div class="w-4 h-4 bg-[#08306b]"></div>
+                <span class="ml-2 text-base sm:text-sm">>20%</span>
+              </div>
+            </div>
+          </div>
+          <div id="poverty-map" class="w-full h-[500px]" data-base-url={baseUrl}>
+            <!-- Map will be rendered here -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script>
+  // Add type declarations for D3
+  declare const d3: any;
+  declare const topojson: any;
+
+  interface PovertyData {
+    FIPS_Code: string;
+    Area_Name: string;
+    Attribute: string;
+    Value: string;
+    Stabr?: string;
+  }
+
+  interface CountyFeature {
+    id: string;
+    properties: {
+      name: string;
+    };
+  }
+
+  // Load D3 and TopoJSON
+  const d3Script = document.createElement('script');
+  d3Script.src = 'https://d3js.org/d3.v7.min.js';
+  document.head.appendChild(d3Script);
+
+  const topojsonScript = document.createElement('script');
+  topojsonScript.src = 'https://unpkg.com/topojson-client@3';
+  document.head.appendChild(topojsonScript);
+
+  // Wait for scripts to load
+  Promise.all([
+    new Promise(resolve => d3Script.onload = resolve),
+    new Promise(resolve => topojsonScript.onload = resolve)
+  ]).then(async () => {
+    try {
+      // Initialize the map when the page loads
+      const mapElement = document.getElementById('poverty-map');
+      if (!mapElement) return;
+
+      // Get container width and set responsive dimensions
+      const getDimensions = () => {
+        const containerWidth = mapElement.clientWidth;
+        const containerHeight = Math.min(500, window.innerHeight * 0.6); // Responsive height
+        return { width: containerWidth, height: containerHeight };
+      };
+
+      let { width, height } = getDimensions();
+
+      // Create SVG container with viewBox for responsive scaling
+      const svg = d3.select('#poverty-map')
+        .append('svg')
+        .attr('viewBox', [0, 0, width, height])
+        .style('width', '100%')
+        .style('height', '100%');
+
+      // Define color scale
+      const colorScale = d3.scaleThreshold()
+        .domain([0, 5, 10, 15, 20])
+        .range(d3.schemeBlues[5]);
+
+      // Create projection with responsive scale
+      const projection = d3.geoAlbersUsa()
+        .translate([width / 2, height / 2])
+        .scale(width * (window.innerWidth < 768 ? 1.2 : 0.8)); // Larger scale on mobile
+
+      const path = d3.geoPath().projection(projection);
+
+      // Add resize handler
+      window.addEventListener('resize', () => {
+        const newDimensions = getDimensions();
+        width = newDimensions.width;
+        height = newDimensions.height;
+        
+        // Update SVG viewBox
+        svg.attr('viewBox', [0, 0, width, height]);
+        
+        // Update projection with responsive scale
+        projection
+          .translate([width / 2, height / 2])
+          .scale(width * (window.innerWidth < 768 ? 1.2 : 0.8));
+        
+        // Update paths
+        countiesGroup.selectAll('path')
+          .attr('d', path);
+        
+        svg.select('.state-borders path')
+          .attr('d', path);
+      });
+
+      // Load the data
+      console.log('Loading data...');
+      const [povertyData, us] = await Promise.all([
+        d3.csv('/data/Poverty2023.csv') as Promise<PovertyData[]>,
+        d3.json('/data/counties-10m.json')
+      ]);
+
+      console.log('Poverty data loaded:', povertyData?.length, 'records');
+      console.log('US map data loaded:', us ? 'yes' : 'no');
+
+      if (!povertyData || !us) {
+        throw new Error('Failed to load required data');
+      }
+
+      // Create map of poverty rates by county
+      const povertyById = new Map<string, number>();
+      povertyData.forEach((d: PovertyData) => {
+        // Only process county-level data where Attribute is PCTPOVALL_2023
+        if (d.FIPS_Code && d.FIPS_Code !== '0' && d.Attribute === 'PCTPOVALL_2023') {
+          // Special handling for Connecticut planning regions
+          if (d.FIPS_Code.startsWith('9') && d.Area_Name.includes('Planning Region')) {
+            // Get all counties in this planning region and assign them the same value
+            const rate = +d.Value;
+            const regionCode = d.FIPS_Code;
+            // Map planning region codes to their counties
+            const regionToCounties: Record<string, string[]> = {
+              '9130': ['09007', '09011', '09007'],  // Lower CT River Valley
+              '9150': ['09015', '09013'],           // Northeastern
+              '9170': ['09009', '09009'],           // South Central
+              '9180': ['09011', '09011'],           // Southeastern
+              '9190': ['09001', '09003', '09005']   // Western
+            };
+            
+            const counties = regionToCounties[regionCode] || [];
+            counties.forEach((countyFips: string) => {
+              povertyById.set(countyFips, rate);
+            });
+          } else {
+            // Normal county handling
+            const paddedFips = d.FIPS_Code.padStart(5, '0');
+            povertyById.set(paddedFips, +d.Value);
+          }
+        }
+      });
+
+      console.log('Processed poverty data:', povertyById.size, 'counties');
+
+      // Draw counties
+      const features = topojson.feature(us, us.objects.counties).features;
+      console.log('County features:', features?.length, 'features');
+      console.log('Sample feature:', features[0]);
+
+      // Create a group for counties
+      const countiesGroup = svg.append('g')
+        .attr('class', 'counties');
+
+      // Draw counties
+      countiesGroup.selectAll('path')
+        .data(features)
+        .enter()
+        .append('path')
+        .attr('fill', (d: CountyFeature) => {
+          if (!d || !d.id) {
+            console.warn('Invalid county feature:', d);
+            return '#ccc';
+          }
+          const paddedId = d.id.toString().padStart(5, '0');
+          const rate = povertyById.get(paddedId);
+          return rate ? colorScale(rate) : '#ccc';
+        })
+        .attr('d', path)
+        .attr('stroke', 'white')
+        .attr('stroke-width', 0.2);
+
+      // Add state borders in a separate group
+      svg.append('g')
+        .attr('class', 'state-borders')
+        .append('path')
+        .datum(topojson.mesh(us, us.objects.states, (a: any, b: any) => a !== b))
+        .attr('fill', 'none')
+        .attr('stroke', 'white')
+        .attr('stroke-width', 1)
+        .attr('d', path);
+
+      // Add tooltip
+      const tooltip = d3.select('body')
+        .append('div')
+        .attr('class', 'tooltip')
+        .style('position', 'absolute')
+        .style('visibility', 'hidden')
+        .style('background-color', 'white')
+        .style('padding', '5px')
+        .style('border', '1px solid #ddd')
+        .style('border-radius', '4px');
+
+      // Add tooltips only to county paths
+      countiesGroup.selectAll('path')
+        .on('mouseover', function(event: MouseEvent, d: CountyFeature) {
+          if (!d || !d.id) {
+            console.warn('Invalid county feature in tooltip:', d);
+            return;
+          }
+          const paddedId = d.id.toString().padStart(5, '0');
+          const rate = povertyById.get(paddedId);
+          const countyName = d.properties?.name || 'Unknown County';
+          let stateName = '';
+          
+          // Special handling for Connecticut tooltips
+          if (paddedId.startsWith('09')) {
+            const planningRegion = povertyData.find((p: PovertyData) => 
+              p.FIPS_Code.startsWith('9') && 
+              p.Area_Name.includes('Planning Region') && 
+              p.Attribute === 'PCTPOVALL_2023' &&
+              p.Area_Name.includes(countyName)
+            );
+            stateName = 'CT';
+            tooltip
+              .style('visibility', 'visible')
+              .html(`${countyName}, ${stateName}<br>Planning Region: ${planningRegion?.Area_Name.replace(' Planning Region', '')}<br>Poverty Rate: ${rate?.toFixed(1)}%`);
+          } else {
+            stateName = povertyData.find((p: PovertyData) => p.FIPS_Code === paddedId.replace(/^0+/, ''))?.Stabr || '';
+            tooltip
+              .style('visibility', 'visible')
+              .html(`${countyName}, ${stateName}<br>Poverty Rate: ${rate?.toFixed(1)}%`);
+          }
+        })
+        .on('mousemove', function(event: MouseEvent) {
+          tooltip
+            .style('top', (event.pageY - 10) + 'px')
+            .style('left', (event.pageX + 10) + 'px');
+        })
+        .on('mouseout', function() {
+          tooltip.style('visibility', 'hidden');
+        });
+    } catch (error) {
+      console.error('Error loading data:', error);
+      const mapElement = document.getElementById('poverty-map');
+      if (mapElement) {
+        mapElement.innerHTML = '<p class="text-red-500">Error loading data. Please try again later.</p>';
+      }
+    }
+  });
+</script> 

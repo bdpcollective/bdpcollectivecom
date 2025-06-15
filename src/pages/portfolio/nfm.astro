@@ -1,0 +1,266 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+const content = {
+  projectDescription: {
+    text: [
+      "NFM's Vendor Portal needed a modern refresh. They wanted an easier way for vendors to find the information they needed and a way for internal teams to update the content without the use of a developer.",
+      "The project focused on improving the user experience for both vendors and internal team members, making it easier to manage resources and maintain project timelines.",
+      "Through careful analysis of user needs and pain points, we developed a solution that streamlined the vendor management process while enhancing internal team capabilities."
+    ],
+    images: [
+      "/portfolio/nfm/1_VendorPortal-Splash.png",
+      "/portfolio/nfm/2_VendorPortal-Home.png",
+      "/portfolio/nfm/3_VendorPortal-Dashboard.png"
+    ]
+  },
+  userResearch: {
+    text: [
+      "Our research revealed that vendors often struggled to find and access necessary resources, while internal team members needed better tools to manage vendor relationships and track project progress.",
+      "Key findings included the need for improved navigation, better resource organization, and enhanced communication channels between vendors and internal teams."
+    ],
+    image: "/portfolio/nfm/4_VendorPortal-Research.png"
+  },
+  informationArchitecture: {
+    text: [
+      "We developed a clear information architecture that organized resources logically and created intuitive navigation paths for both vendors and internal team members.",
+      "The structure prioritized quick access to frequently used resources while maintaining clear hierarchies for more detailed information.",
+      "This organization helped reduce confusion and improved efficiency in accessing and managing vendor-related information."
+    ],
+    image: "/portfolio/nfm/3_IA.png"
+  },
+  wireframeMockups: {
+    text: [
+      "Initial wireframes focused on creating a clean, organized interface that would make it easy for users to find what they needed.",
+      "We iterated on these designs based on user feedback, ensuring the layout supported both vendor and internal team workflows."
+    ],
+    images: [
+      "/portfolio/nfm/6_1-Wireframes.png",
+      "/portfolio/nfm/6_2-Wireframes.png",
+      "/portfolio/nfm/6_3-Wireframes.png",
+      "/portfolio/nfm/6_4-Wireframes.png",
+      "/portfolio/nfm/6_5-Wireframes.png",
+      "/portfolio/nfm/6_6-Wireframes.png"
+    ]
+  },
+  highFidelityMockups: {
+    text: [
+      "The final design incorporated NFM's brand guidelines while maintaining a professional and efficient interface.",
+      "We added interactive elements and clear visual hierarchies to improve usability and make the portal more engaging."
+    ],
+    images: [
+      "/portfolio/nfm/7_1-HighFidelity.png",
+      "/portfolio/nfm/7_2-HighFidelity.png",
+      "/portfolio/nfm/7_3-HighFidelity.png",
+      "/portfolio/nfm/7_4-HighFidelity.png",
+      "/portfolio/nfm/7_5-HighFidelity.png",
+      "/portfolio/nfm/7_6-HighFidelity.png"
+    ]
+  }
+};
+---
+
+<Layout title="Vendor Portal - UX Portfolio">
+  <main>
+    {/* Hero Section */}
+    <section class="relative bg-black py-12">
+      <div class="relative z-10 flex flex-col justify-center px-4 container mx-auto">
+        <div class="max-w-7xl mx-auto w-full">
+          <div class="w-24 h-24 flex items-center mb-2">
+            <img
+              src="/logos/nfm-logo.png"
+              alt="NFM logo"
+              width="96"
+              height="96"
+              class="object-contain"
+            />
+          </div>
+          <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">
+            Vendor Portal
+          </h1>
+          <p class="text-lg md:text-xl text-gray-300 mb-4">
+            A clearer roadmap for vendors and more control for the internal team
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Content Section */}
+    <section class="container mx-auto px-4 py-20">
+      <div class="max-w-3xl mx-auto space-y-16">
+        {/* Back Button */}
+        <a 
+          href="/ux-portfolio" 
+          class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors mb-8"
+        >
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to UX Portfolio
+        </a>
+
+        {/* Project Description */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Project Description</h2>
+          <div class="prose max-w-none mb-8">
+            {content.projectDescription.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+        </div>
+
+        {/* Full Width Image */}
+        <div class="w-full">
+          <img
+            src="/portfolio/nfm/1_vendortools.png"
+            alt="Vendor tools overview"
+            width="1200"
+            height="600"
+            class="w-full object-cover rounded-lg shadow-lg"
+          />
+        </div>
+
+        {/* User Research */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">User Research</h2>
+          <div class="prose max-w-none mb-8">
+            {content.userResearch.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <img
+              src="/portfolio/nfm/2_Interview.png"
+              alt="User research interview"
+              width="800"
+              height="600"
+              class="object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Information Architecture */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Information Architecture</h2>
+          <div class="prose max-w-none mb-8">
+            {content.informationArchitecture.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <img
+              src="/portfolio/nfm/3_IA.png"
+              alt="Information architecture diagram"
+              width="800"
+              height="600"
+              class="object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Wireframe Mockups */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Wireframe Mockups</h2>
+          <div class="prose max-w-none mb-8">
+            {content.wireframeMockups.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="space-y-8">
+            <div class="rounded-lg overflow-hidden shadow-lg">
+              <img
+                src="/portfolio/nfm/4a_VendorToolsWF.png"
+                alt="Vendor tools wireframe"
+                width="800"
+                height="600"
+                class="w-full object-contain"
+              />
+            </div>
+            <div class="rounded-lg overflow-hidden shadow-lg">
+              <img
+                src="/portfolio/nfm/4b_GuidesWF.png"
+                alt="Guides wireframe"
+                width="800"
+                height="600"
+                class="w-full object-contain"
+              />
+            </div>
+            <div class="rounded-lg overflow-hidden shadow-lg">
+              <img
+                src="/portfolio/nfm/4c_UpdatesWF.png"
+                alt="Updates wireframe"
+                width="800"
+                height="600"
+                class="w-full object-contain"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* High-Fidelity Mockups */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">High-Fidelity Mockups</h2>
+          <div class="prose max-w-none mb-8">
+            {content.highFidelityMockups.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="space-y-8">
+            <div class="rounded-lg overflow-hidden shadow-lg">
+              <img
+                src="/portfolio/nfm/5a_VendorTools.png"
+                alt="Vendor tools high-fidelity design"
+                width="800"
+                height="600"
+                class="w-full object-contain"
+              />
+            </div>
+            <div class="rounded-lg overflow-hidden shadow-lg">
+              <img
+                src="/portfolio/nfm/5b_HiFi_Resources.png"
+                alt="Resources high-fidelity design"
+                width="800"
+                height="600"
+                class="w-full object-contain"
+              />
+            </div>
+            <div class="rounded-lg overflow-hidden shadow-lg">
+              <img
+                src="/portfolio/nfm/5c_HiFi_Updates.png"
+                alt="Updates high-fidelity design"
+                width="800"
+                height="600"
+                class="w-full object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Fixed Navigation Arrows */}
+    <div class="fixed left-4 top-1/2 -translate-y-1/2 z-50">
+      <a 
+        href="/portfolio/healthcomms" 
+        class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/80 hover:bg-white shadow-lg text-gray-600 hover:text-gray-900 transition-colors"
+        aria-label="Previous Project"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </a>
+    </div>
+    <div class="fixed right-4 top-1/2 -translate-y-1/2 z-50">
+      <a 
+        href="/portfolio/bestbuy" 
+        class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/80 hover:bg-white shadow-lg text-gray-600 hover:text-gray-900 transition-colors"
+        aria-label="Next Project"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </main>
+</Layout> 

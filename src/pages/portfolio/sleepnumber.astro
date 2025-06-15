@@ -1,0 +1,218 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+const content = {
+  projectDescription: {
+    text: [
+      "Designed and prototyped a tablet app to enhance in-store sales support, improving efficiency and customer interactions.",
+      "The project focused on creating an intuitive interface for sales associates to manage customer orders and exchanges while providing a seamless experience for customers.",
+      "Through careful analysis of user needs and pain points, we developed a solution that streamlined the sales and exchange process while maintaining high customer satisfaction."
+    ],
+    images: [
+      "/portfolio/sleepnumber/1a_Sleepnumber.png",
+      "/portfolio/sleepnumber/2a_sleepnumber_Workflow.png",
+      "/portfolio/sleepnumber/3a_Sleepnumber_wireframes.png"
+    ]
+  },
+  userResearch: {
+    text: [
+      "Our research revealed that sales associates needed a more efficient way to handle customer orders and exchanges, while customers wanted a smoother experience during these transactions.",
+      "Key findings included the need for quick access to order history, simplified exchange workflows, and improved communication between sales associates and customers."
+    ],
+    image: "/portfolio/sleepnumber/4a_Sleepnumber_wireframes.png"
+  },
+  workflows: {
+    text: [
+      "Based on our research findings, we developed a streamlined workflow for handling bed exchanges.",
+      "The process now includes clear eligibility checks, automated communication with customers, and visual guides for sales associates.",
+      "This structured approach helps reduce confusion and ensures a consistent experience for both customers and staff."
+    ],
+    image: "/portfolio/sleepnumber/2a_sleepnumber_Workflow.png"
+  },
+  wireframeMockups: {
+    text: [
+      "Initial wireframes focused on creating a clean, organized interface that would make it easy for sales associates to find and use the tools they needed.",
+      "We iterated on these designs based on user feedback, ensuring the layout supported efficient sales and exchange workflows."
+    ],
+    image: "/portfolio/sleepnumber/3a_Sleepnumber_wireframes.png"
+  },
+  highFidelityMockups: {
+    text: [
+      "The final design incorporated Sleep Number's brand guidelines while maintaining a professional and efficient interface.",
+      "We added interactive elements and clear visual hierarchies to improve usability and make the app more engaging for both sales associates and customers."
+    ],
+    image: "/portfolio/sleepnumber/4a_Sleepnumber_wireframes.png"
+  }
+};
+---
+
+<Layout title="Tablet App for Sales and Exchange - UX Portfolio">
+  <main>
+    {/* Hero Section */}
+    <section class="relative bg-black py-12">
+      <div class="relative z-10 flex flex-col justify-center px-4 container mx-auto">
+        <div class="max-w-7xl mx-auto w-full">
+          <div class="w-24 h-24 flex items-center mb-2">
+            <img
+              src="/logos/logo-white_sleepnumber.svg"
+              alt="Sleep Number logo"
+              width="96"
+              height="96"
+              class="object-contain"
+            />
+          </div>
+          <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">
+            Tablet App for Sales and Exchange
+          </h1>
+          <p class="text-lg md:text-xl text-gray-300 mb-4">
+            Enhancing in-store sales support and customer interactions
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Content Section */}
+    <section class="container mx-auto px-4 py-20">
+      <div class="max-w-3xl mx-auto space-y-16">
+        {/* Back Button */}
+        <a 
+          href="/ux-portfolio" 
+          class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors mb-12"
+        >
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to UX Portfolio
+        </a>
+
+        {/* Project Description */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Project Description</h2>
+          <div class="prose max-w-none mb-8">
+            {content.projectDescription.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <img
+              src="/portfolio/sleepnumber/1a_Sleepnumber.png"
+              alt="Sleep Number bed exchange interface"
+              width="800"
+              height="600"
+              class="w-full object-contain"
+            />
+          </div>
+        </div>
+
+        {/* User Research */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">User Research</h2>
+          <div class="prose max-w-none mb-8">
+            <h4 class="text-lg font-medium mb-2">Listened to Exchange Calls</h4>
+            <ul class="list-disc pl-6 mb-4">
+              <li>Observed real customer interactions to understand common concerns, frustrations, and areas of confusion.</li>
+              <li>Noted frequent questions and process bottlenecks that slowed down exchanges.</li>
+            </ul>
+
+            <h4 class="text-lg font-medium mb-2">Interviewed Sales Associates</h4>
+            <ul class="list-disc pl-6 mb-6">
+              <li>Conducted one-on-one conversations with salespeople to learn about their workflow.</li>
+              <li>Gathered insights on the tools they currently use and what improvements they would find most valuable.</li>
+              <li>Identified gaps where additional support or automation could enhance their efficiency.</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold mb-4">Key Findings</h3>
+            <ul class="list-disc pl-6 mb-6">
+              <li>Customers were often sold beds that were too soft.</li>
+              <li>Sales associates had use the phone to coordinate the exchange.</li>
+              <li>A lack of transparency led to frustration with the customer.</li>
+              <li>Sales associates wanted a quick-reference tool with exchange eligibility, product recommendations, and a way to visually show the customer the exchange.</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Workflows */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Workflows</h2>
+          <div class="prose max-w-none mb-8">
+            {content.workflows.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <img
+              src={content.workflows.image}
+              alt="Workflow diagram"
+              width="800"
+              height="600"
+              class="object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Wireframe Mockups */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Wireframe Mockups</h2>
+          <div class="prose max-w-none mb-8">
+            {content.wireframeMockups.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <img
+              src={content.wireframeMockups.image}
+              alt="Wireframe mockups"
+              width="800"
+              height="600"
+              class="w-full object-contain"
+            />
+          </div>
+        </div>
+
+        {/* High-Fidelity Mockups */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">High-Fidelity Mockups</h2>
+          <div class="prose max-w-none mb-8">
+            {content.highFidelityMockups.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <img
+              src={content.highFidelityMockups.image}
+              alt="High-fidelity mockups"
+              width="800"
+              height="600"
+              class="w-full object-contain"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Fixed Navigation Arrows */}
+    <div class="fixed left-4 top-1/2 -translate-y-1/2 z-50">
+      <a 
+        href="/portfolio/gap" 
+        class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/80 hover:bg-white shadow-lg text-gray-600 hover:text-gray-900 transition-colors"
+        aria-label="Previous Project"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </a>
+    </div>
+    <div class="fixed right-4 top-1/2 -translate-y-1/2 z-50">
+      <a 
+        href="/portfolio/dakota-medical-foundation" 
+        class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/80 hover:bg-white shadow-lg text-gray-600 hover:text-gray-900 transition-colors"
+        aria-label="Next Project"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </main>
+</Layout> 

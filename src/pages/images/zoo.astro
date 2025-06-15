@@ -1,0 +1,416 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const zooPhotos = [
+  {
+    id: "zoo-3417",
+    title: "Zoo Exhibit",
+    date: "December 9, 2010",
+    location: "Omaha's Henry Doorly Zoo",
+    previewImage: "/images/zoo/2010-12-09_zoo_1024_3417.jpg",
+    description: "Exhibit at Omaha's Henry Doorly Zoo.",
+    photoCount: 1
+  },
+  {
+    id: "zoo-3418",
+    title: "Zoo Exhibit",
+    date: "December 9, 2010",
+    location: "Omaha's Henry Doorly Zoo",
+    previewImage: "/images/zoo/2010-12-09_zoo_1024_3418.jpg",
+    description: "Exhibit at Omaha's Henry Doorly Zoo.",
+    photoCount: 1
+  },
+  {
+    id: "zoo-3420",
+    title: "Zoo Exhibit",
+    date: "December 9, 2010",
+    location: "Omaha's Henry Doorly Zoo",
+    previewImage: "/images/zoo/2010-12-09_zoo_1024_3420.jpg",
+    description: "Exhibit at Omaha's Henry Doorly Zoo.",
+    photoCount: 1
+  },
+  {
+    id: "penguin",
+    title: "Penguin Exhibit",
+    date: "December 11, 2010",
+    location: "Omaha's Henry Doorly Zoo",
+    previewImage: "/images/zoo/2010-12-11_PenguinBlog1200_3425.jpg",
+    description: "Penguin exhibit at Omaha's Henry Doorly Zoo.",
+    photoCount: 1
+  },
+  {
+    id: "zoo-6469229697",
+    title: "Zoo Exhibit",
+    date: "March 27, 2024",
+    location: "Omaha's Henry Doorly Zoo",
+    previewImage: "/images/zoo/6469229697_8171c1fee7_c.jpg",
+    description: "Exhibit at Omaha's Henry Doorly Zoo.",
+    photoCount: 1
+  },
+  {
+    id: "zoo-7162093612",
+    title: "Zoo Exhibit",
+    date: "March 27, 2024",
+    location: "Omaha's Henry Doorly Zoo",
+    previewImage: "/images/zoo/7162093612_211987a89f_c.jpg",
+    description: "Exhibit at Omaha's Henry Doorly Zoo.",
+    photoCount: 1
+  },
+  {
+    id: "zoo-14238653443",
+    title: "Zoo Exhibit",
+    date: "March 27, 2024",
+    location: "Omaha's Henry Doorly Zoo",
+    previewImage: "/images/zoo/14238653443_496a36c235_c.jpg",
+    description: "Exhibit at Omaha's Henry Doorly Zoo.",
+    photoCount: 1
+  },
+  {
+    id: "zoo-26728806513",
+    title: "Zoo Exhibit",
+    date: "March 27, 2024",
+    location: "Omaha's Henry Doorly Zoo",
+    previewImage: "/images/zoo/26728806513_cf556b34c6_k.jpg",
+    description: "Exhibit at Omaha's Henry Doorly Zoo.",
+    photoCount: 1
+  },
+  {
+    id: "zoo-35715403765",
+    title: "Zoo Exhibit",
+    date: "March 27, 2024",
+    location: "Omaha's Henry Doorly Zoo",
+    previewImage: "/images/zoo/35715403765_48d978787a_k.jpg",
+    description: "Exhibit at Omaha's Henry Doorly Zoo.",
+    photoCount: 1
+  },
+  {
+    id: "zoo-35584539391",
+    title: "Zoo Exhibit",
+    date: "March 27, 2024",
+    location: "Omaha's Henry Doorly Zoo",
+    previewImage: "/images/zoo/35584539391_dd127afb86_k.jpg",
+    description: "Exhibit at Omaha's Henry Doorly Zoo.",
+    photoCount: 1
+  },
+  {
+    id: "zoo-39362148281",
+    title: "Zoo Exhibit",
+    date: "March 27, 2024",
+    location: "Omaha's Henry Doorly Zoo",
+    previewImage: "/images/zoo/39362148281_08a8d44d79_k.jpg",
+    description: "Exhibit at Omaha's Henry Doorly Zoo.",
+    photoCount: 1
+  },
+  {
+    id: "zoo-43238673422",
+    title: "Zoo Exhibit",
+    date: "March 27, 2024",
+    location: "Omaha's Henry Doorly Zoo",
+    previewImage: "/images/zoo/43238673422_ac577803ed_k.jpg",
+    description: "Exhibit at Omaha's Henry Doorly Zoo.",
+    photoCount: 1
+  },
+  {
+    id: "zoo-20250412-7",
+    title: "Zoo Exhibit",
+    date: "April 12, 2024",
+    location: "Omaha's Henry Doorly Zoo",
+    previewImage: "/images/zoo/20250412_OHDZ - 7.jpeg",
+    description: "Exhibit at Omaha's Henry Doorly Zoo.",
+    photoCount: 1
+  },
+  {
+    id: "zoo-20250412-6",
+    title: "Zoo Exhibit",
+    date: "April 12, 2024",
+    location: "Omaha's Henry Doorly Zoo",
+    previewImage: "/images/zoo/20250412_OHDZ - 6.jpeg",
+    description: "Exhibit at Omaha's Henry Doorly Zoo.",
+    photoCount: 1
+  },
+  {
+    id: "zoo-20250412-5",
+    title: "Zoo Exhibit",
+    date: "April 12, 2024",
+    location: "Omaha's Henry Doorly Zoo",
+    previewImage: "/images/zoo/20250412_OHDZ - 5.jpeg",
+    description: "Exhibit at Omaha's Henry Doorly Zoo.",
+    photoCount: 1
+  },
+  {
+    id: "zoo-20250412-4",
+    title: "Zoo Exhibit",
+    date: "April 12, 2024",
+    location: "Omaha's Henry Doorly Zoo",
+    previewImage: "/images/zoo/20250412_OHDZ - 4.jpeg",
+    description: "Exhibit at Omaha's Henry Doorly Zoo.",
+    photoCount: 1
+  },
+  {
+    id: "zoo-20250412-3",
+    title: "Zoo Exhibit",
+    date: "April 12, 2024",
+    location: "Omaha's Henry Doorly Zoo",
+    previewImage: "/images/zoo/20250412_OHDZ - 3.jpeg",
+    description: "Exhibit at Omaha's Henry Doorly Zoo.",
+    photoCount: 1
+  },
+  {
+    id: "zoo-20250412-2",
+    title: "Zoo Exhibit",
+    date: "April 12, 2024",
+    location: "Omaha's Henry Doorly Zoo",
+    previewImage: "/images/zoo/20250412_OHDZ - 2.jpeg",
+    description: "Exhibit at Omaha's Henry Doorly Zoo.",
+    photoCount: 1
+  }
+];
+---
+<Layout title="Zoo Photography">
+  <main class="min-h-screen bg-gray-50">
+    <section class="relative h-[40vh] bg-black">
+      <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
+      </div>
+      <div class="relative z-10 flex items-center h-full">
+        <div class="container mx-auto px-4">
+          <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Zoo Photography</h1>
+          <p class="text-lg text-gray-200">
+            Capturing the beauty of wildlife at Omaha's Henry Doorly Zoo
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Photo Grid */}
+    <section class="container mx-auto px-4 py-12">
+      <a 
+        href="/images" 
+        class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors mb-8"
+      >
+        <svg
+          class="w-5 h-5 mr-2"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 19l-7-7m0 0l7-7m-7 7h18"
+          />
+        </svg>
+        Back to All Images
+      </a>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {zooPhotos
+          .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+          .map((photo, index) => (
+          <div 
+            class="relative overflow-hidden rounded-lg cursor-pointer group aspect-[4/3]"
+            data-index={index}
+            data-image-src={photo.previewImage}
+            data-image-title={photo.title}
+          >
+            <img
+              src={photo.previewImage}
+              alt={photo.title}
+              class="absolute inset-0 w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-300"
+              style="min-height: 100%; min-width: 100%; object-position: center center;"
+            />
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+            <div class="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h3 class="text-white text-lg font-semibold">{photo.title}</h3>
+              <p class="text-gray-200 text-sm">{photo.date}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* Lightbox */}
+    <div 
+      id="lightbox" 
+      class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden"
+    >
+      <div class="absolute top-4 right-4">
+        <button 
+          class="text-white hover:text-gray-300 transition-colors"
+          id="close-lightbox"
+        >
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl px-4">
+        <img
+          id="lightbox-image"
+          src=""
+          alt=""
+          class="w-full h-auto max-h-[80vh] object-contain rounded-lg shadow-xl"
+        />
+      </div>
+
+      <button 
+        class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors"
+        id="prev-photo"
+      >
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+
+      <button 
+        class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors"
+        id="next-photo"
+      >
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  /* Remove the fixed aspect ratio style */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
+
+<script>
+  // TypeScript interface for window
+  declare global {
+    interface Window {
+      currentPhotoIndex: number;
+      zooPhotos: {
+        images: number;
+        title: string;
+      };
+    }
+  }
+
+  // Make zooPhotos available to client-side script
+  window.zooPhotos = {
+    images: document.querySelectorAll('[data-image-src]').length,
+    title: 'Zoo Photography'
+  };
+
+  function updateLightboxImage() {
+    const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement;
+    if (lightboxImage) {
+      const currentImage = document.querySelector(`[data-index="${window.currentPhotoIndex}"]`);
+      if (currentImage) {
+        lightboxImage.src = currentImage.getAttribute('data-image-src') || '';
+        lightboxImage.alt = currentImage.getAttribute('data-image-title') || '';
+      }
+    }
+  }
+
+  // Image click handlers
+  document.querySelectorAll('[data-index]').forEach((element) => {
+    element.addEventListener('click', () => {
+      const index = parseInt(element.getAttribute('data-index') || '0');
+      window.currentPhotoIndex = index;
+      updateLightboxImage();
+      
+      const lightbox = document.getElementById('lightbox');
+      if (lightbox) {
+        lightbox.classList.remove('hidden');
+      }
+    });
+  });
+
+  // Lightbox close handler
+  const closeButton = document.getElementById('close-lightbox');
+  if (closeButton) {
+    closeButton.addEventListener('click', () => {
+      const lightbox = document.getElementById('lightbox');
+      if (lightbox) {
+        lightbox.classList.add('hidden');
+      }
+    });
+  }
+
+  // Lightbox background click handler
+  const lightbox = document.getElementById('lightbox');
+  if (lightbox) {
+    lightbox.addEventListener('click', (e) => {
+      if (e.target instanceof HTMLElement && e.target.id === 'lightbox') {
+        e.target.classList.add('hidden');
+      }
+    });
+  }
+
+  // Navigation handlers
+  const prevButton = document.getElementById('prev-photo');
+  if (prevButton) {
+    prevButton.addEventListener('click', () => {
+      window.currentPhotoIndex = (window.currentPhotoIndex - 1 + window.zooPhotos.images) % window.zooPhotos.images;
+      updateLightboxImage();
+    });
+  }
+
+  const nextButton = document.getElementById('next-photo');
+  if (nextButton) {
+    nextButton.addEventListener('click', () => {
+      window.currentPhotoIndex = (window.currentPhotoIndex + 1) % window.zooPhotos.images;
+      updateLightboxImage();
+    });
+  }
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (lightbox && !lightbox.classList.contains('hidden')) {
+      if (e.key === 'ArrowLeft') {
+        window.currentPhotoIndex = (window.currentPhotoIndex - 1 + window.zooPhotos.images) % window.zooPhotos.images;
+        updateLightboxImage();
+      } else if (e.key === 'ArrowRight') {
+        window.currentPhotoIndex = (window.currentPhotoIndex + 1) % window.zooPhotos.images;
+        updateLightboxImage();
+      } else if (e.key === 'Escape') {
+        lightbox.classList.add('hidden');
+      }
+    }
+  });
+
+  // Touch swipe support
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  if (lightbox) {
+    lightbox.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    lightbox.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    });
+  }
+
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        // Swipe left - next image
+        window.currentPhotoIndex = (window.currentPhotoIndex + 1) % window.zooPhotos.images;
+      } else {
+        // Swipe right - previous image
+        window.currentPhotoIndex = (window.currentPhotoIndex - 1 + window.zooPhotos.images) % window.zooPhotos.images;
+      }
+      updateLightboxImage();
+    }
+  }
+</script>
+
+<!-- Hidden element to store photos data -->
+<div id="photos-data" data-photos={JSON.stringify(zooPhotos)}></div> 

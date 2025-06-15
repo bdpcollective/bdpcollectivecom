@@ -1,0 +1,236 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+const content = {
+  projectDescription: {
+    text: [
+      "The HealthComms mobile app prototype was designed to support cancer patients in tracking symptoms throughout treatment, based on the idea that detailed symptom tracking could improve patient care.",
+      "To achieve this, I began by defining the project scope and gathering insights through interviews with doctors, patients, and stakeholders, which helped shape a patient-centered journey map and information architecture.",
+      "Using wireframes and high-fidelity mockups, I created a clear and intuitive interface to guide patients in documenting symptoms easily. The result was a prototype that enhanced communication, offering doctors accurate, timely insights to improve the quality of patient care."
+    ],
+    images: [
+      "/portfolio/healthcomms/1_HealthComms-Splash.png",
+      "/portfolio/healthcomms/2_HealthComms-Home.png",
+      "/portfolio/healthcomms/3_HealthComms-JournalEntries.png"
+    ]
+  },
+  userResearch: {
+    text: [
+      "Our research involved interviews with cancer patients, caregivers, and healthcare providers. Key findings revealed that patients often struggle to accurately recall and communicate their symptoms during medical appointments, leading to potential gaps in care.",
+      "We identified several key pain points in the current symptom tracking process, including difficulty in remembering symptoms between appointments, lack of standardized tracking methods, and limited communication channels with healthcare providers."
+    ],
+    image: "/portfolio/healthcomms/4_HealthCommsProjectBrief.png"
+  },
+  informationArchitecture: {
+    text: [
+      "We diagramed a simple information architecture diagram to create a smooth, intuitive experience in the HealthComms app.",
+      "Organizing content logically helped patients quickly log symptoms and communicate with their care team, minimizing frustration and ensuring easy navigation.",
+      "This clear hierarchy made the app an effective, user-friendly tool that supported patients throughout their treatment journey."
+    ],
+    image: "/portfolio/healthcomms/4_Information Architecture - Doctor Patient.png"
+  },
+  wireframeMockups: {
+    text: [
+      "Initial wireframes focused on creating a simple, clear interface for daily symptom logging. We prioritized quick entry and easy navigation between different tracking categories.",
+      "The wireframes helped us validate the information architecture and user flows before moving to high-fidelity designs."
+    ],
+    images: [
+      "/portfolio/healthcomms/8_1-Wireframes.png",
+      "/portfolio/healthcomms/8_2-Wireframes.png",
+      "/portfolio/healthcomms/8_3-Wireframes.png",
+      "/portfolio/healthcomms/8_4-Wireframes.png",
+      "/portfolio/healthcomms/8_5-Wireframes.png",
+      "/portfolio/healthcomms/8_6-Wireframes.png"
+    ]
+  },
+  highFidelityMockups: {
+    text: [
+      "The final design incorporates a clean, medical-appropriate color scheme and clear typography hierarchy. We added micro-interactions to make the tracking experience more engaging while maintaining professionalism.",
+      "The high-fidelity mockups were refined through multiple iterations of user testing and feedback."
+    ],
+    images: [
+      "/portfolio/healthcomms/9_1highfidelity.png",
+      "/portfolio/healthcomms/9_2highfidelity.png",
+      "/portfolio/healthcomms/9_3highfidelity.png",
+      "/portfolio/healthcomms/9_4highfidelity.png",
+      "/portfolio/healthcomms/9_5highfidelity.png",
+      "/portfolio/healthcomms/9_6highfidelity.png"
+    ]
+  }
+};
+---
+
+<Layout title="HealthComms - UX Portfolio">
+  <main>
+    {/* Hero Section */}
+    <section class="relative bg-black py-12">
+      <div class="relative z-10 flex flex-col justify-center px-4 container mx-auto">
+        <div class="max-w-7xl mx-auto w-full">
+          <div class="w-24 h-24 flex items-center mb-2">
+            <img
+              src="/logos/healthcomms-logo.png"
+              alt="HealthComms logo"
+              width="96"
+              height="96"
+              class="object-contain"
+            />
+          </div>
+          <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">
+            Health Journaling App
+          </h1>
+          <p class="text-lg md:text-xl text-gray-300 mb-4">
+            A mobile app prototype designed to help cancer patients track symptoms during treatment
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Content Section */}
+    <section class="container mx-auto px-4 py-20">
+      <div class="max-w-3xl mx-auto space-y-16">
+        {/* Back Button */}
+        <a 
+          href="/ux-portfolio" 
+          class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors mb-8"
+        >
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to UX Portfolio
+        </a>
+
+        {/* Project Description */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Project Description</h2>
+          <div class="prose max-w-none mb-8">
+            {content.projectDescription.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="grid grid-cols-3 gap-4">
+            {content.projectDescription.images.map((image) => (
+              <div class="rounded-lg overflow-hidden shadow-lg">
+                <img
+                  src={image}
+                  alt="Project description"
+                  width="400"
+                  height="300"
+                  class="object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* User Research */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">User Research</h2>
+          <div class="prose max-w-none mb-8">
+            {content.userResearch.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <img
+              src={content.userResearch.image}
+              alt="User research"
+              width="800"
+              height="600"
+              class="object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Information Architecture */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Information Architecture</h2>
+          <div class="prose max-w-none mb-8">
+            {content.informationArchitecture.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <img
+              src={content.informationArchitecture.image}
+              alt="Information architecture"
+              width="800"
+              height="600"
+              class="object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Wireframe Mockups */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Wireframe Mockups</h2>
+          <div class="prose max-w-none mb-8">
+            {content.wireframeMockups.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="grid grid-cols-3 gap-4">
+            {content.wireframeMockups.images.map((image) => (
+              <div class="rounded-lg overflow-hidden shadow-lg">
+                <img
+                  src={image}
+                  alt="Wireframe mockup"
+                  width="400"
+                  height="300"
+                  class="object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* High-Fidelity Mockups */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">High-Fidelity Mockups</h2>
+          <div class="prose max-w-none mb-8">
+            {content.highFidelityMockups.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="grid grid-cols-3 gap-4">
+            {content.highFidelityMockups.images.map((image) => (
+              <div class="rounded-lg overflow-hidden shadow-lg">
+                <img
+                  src={image}
+                  alt="High-fidelity mockup"
+                  width="400"
+                  height="300"
+                  class="object-cover"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Fixed Navigation Arrows */}
+    <div class="fixed left-4 top-1/2 -translate-y-1/2 z-50">
+      <a 
+        href="/ux-portfolio" 
+        class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/80 hover:bg-white shadow-lg text-gray-600 hover:text-gray-900 transition-colors"
+        aria-label="Back to Portfolio"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </a>
+    </div>
+    <div class="fixed right-4 top-1/2 -translate-y-1/2 z-50">
+      <a 
+        href="/portfolio/nfm" 
+        class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/80 hover:bg-white shadow-lg text-gray-600 hover:text-gray-900 transition-colors"
+        aria-label="Next Project"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </main>
+</Layout> 

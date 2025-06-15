@@ -1,0 +1,268 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+
+export function getStaticPaths() {
+  // Define the game data
+  const gameData: Record<string, {
+    title: string;
+    date: string;
+    location: string;
+    description: string;
+    imageCount: number;
+    imagePath: string;
+    imagePrefix: string;
+  }> = {
+    "jv-vs-akeny": {
+      title: "JV: MWHS vs Akeny",
+      date: "March 8, 2025",
+      location: "Millard West High School",
+      description: "Junior Varsity lacrosse game between Millard West and Akeny.",
+      imageCount: 19,
+      imagePath: "/images/lacrosse/20250308-jv-mwhs-vs-akeny",
+      imagePrefix: "20250309_MWHS_Lacrosse"
+    },
+    "varsity-vs-akeny": {
+      title: "Varsity: MWHS vs Akeny",
+      date: "March 8, 2025",
+      location: "Millard West High School",
+      description: "Varsity lacrosse game between Millard West and Akeny.",
+      imageCount: 53,
+      imagePath: "/images/lacrosse/20250308-varsity-mwhs-vs-akeny",
+      imagePrefix: "20250309_MWHS_Lacrosse"
+    },
+    "jv-vs-elkhorn": {
+      title: "JV: MWHS vs Elkhorn",
+      date: "April 18, 2025",
+      location: "Millard West High School",
+      description: "Junior Varsity lacrosse game between Millard West and Elkhorn.",
+      imageCount: 24,
+      imagePath: "/images/lacrosse/20250418-jv-mwhs-vs-elkhorn",
+      imagePrefix: "20250418-JV-MWHSvsElkhorn"
+    },
+    "varsity-vs-elkhorn": {
+      title: "Varsity: MWHS vs Elkhorn",
+      date: "April 18, 2025",
+      location: "Millard West High School",
+      description: "Varsity lacrosse game between Millard West and Elkhorn.",
+      imageCount: 85,
+      imagePath: "/images/lacrosse/20250418-varsity-mwhs-vs-elkhorn",
+      imagePrefix: "20250418-Varsity-MWHSvsElkhorn"
+    }
+  };
+
+  return Object.keys(gameData).map(event => ({
+    params: { event },
+    props: { game: gameData[event] }
+  }));
+}
+
+const { game } = Astro.props;
+
+// Generate array of image objects
+const images = Array.from({ length: game.imageCount }, (_, i) => ({
+  id: i + 1,
+  src: `${game.imagePath}/${game.imagePrefix} - ${i + 1}.jpeg`,
+  alt: `${game.title} - Image ${i + 1}`
+}));
+---
+
+<Layout title={game.title}>
+  <main class="min-h-screen bg-gray-50" data-images={JSON.stringify(images)}>
+    <section class="relative bg-gray-900 text-white py-24">
+      <div class="relative z-10 flex items-center h-full">
+        <div class="container mx-auto px-4">
+          <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">{game.title}</h1>
+          <p class="text-lg text-gray-200">
+            {game.date} at {game.location}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Photo Grid */}
+    <section class="container mx-auto px-4 py-12">
+      <a 
+        href="/images/lacrosse" 
+        class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors mb-8"
+      >
+        <svg
+          class="w-5 h-5 mr-2"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 19l-7-7m0 0l7-7m-7 7h18"
+          />
+        </svg>
+        Back to Lacrosse
+      </a>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {images.map((image) => (
+          <div 
+            class="relative overflow-hidden rounded-lg cursor-pointer group aspect-[4/3]"
+            data-index={image.id - 1}
+            data-image-src={image.src}
+            data-image-title={game.title}
+          >
+            <img
+              src={image.src}
+              alt={image.alt}
+              class="absolute inset-0 w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-300"
+            />
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+            <div class="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h3 class="text-white text-lg font-semibold">{game.title}</h3>
+              <p class="text-gray-200 text-sm">{game.date}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* Lightbox */}
+    <div 
+      id="lightbox" 
+      class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden"
+    >
+      <div class="absolute top-4 right-4">
+        <button 
+          class="text-white hover:text-gray-300 transition-colors"
+          id="close-lightbox"
+        >
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl px-4">
+        <img
+          id="lightbox-image"
+          src=""
+          alt=""
+          class="w-full h-auto max-h-[80vh] object-contain rounded-lg shadow-xl"
+        />
+      </div>
+
+      <button 
+        class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors"
+        id="prev-photo"
+      >
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+
+      <button 
+        class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors"
+        id="next-photo"
+      >
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  // Make images data available to client-side script
+  declare global {
+    interface Window {
+      images: Array<{
+        id: number;
+        src: string;
+        alt: string;
+      }>;
+      currentPhotoIndex: number;
+    }
+  }
+
+  // Get images data from the data attribute
+  const mainElement = document.querySelector('main');
+  if (mainElement) {
+    const imagesData = mainElement.getAttribute('data-images');
+    if (imagesData) {
+      window.images = JSON.parse(imagesData);
+    }
+  }
+
+  // Lightbox functionality
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement;
+  const closeButton = document.getElementById('close-lightbox');
+  const prevButton = document.getElementById('prev-photo');
+  const nextButton = document.getElementById('next-photo');
+
+  // Function to update lightbox content
+  function updateLightboxContent(index: number) {
+    const image = window.images[index];
+    if (lightboxImage) {
+      lightboxImage.src = image.src;
+      lightboxImage.alt = image.alt;
+    }
+  }
+
+  // Open lightbox when clicking an image
+  document.querySelectorAll('.group').forEach((image, index) => {
+    image.addEventListener('click', () => {
+      window.currentPhotoIndex = index;
+      updateLightboxContent(index);
+      if (lightbox) lightbox.classList.remove('hidden');
+    });
+  });
+
+  // Close lightbox when clicking outside
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.add('hidden');
+    }
+  });
+
+  // Close lightbox when clicking close button
+  closeButton?.addEventListener('click', () => {
+    if (lightbox) lightbox.classList.add('hidden');
+  });
+
+  // Navigate between photos
+  prevButton?.addEventListener('click', () => {
+    window.currentPhotoIndex = (window.currentPhotoIndex - 1 + window.images.length) % window.images.length;
+    updateLightboxContent(window.currentPhotoIndex);
+  });
+
+  nextButton?.addEventListener('click', () => {
+    window.currentPhotoIndex = (window.currentPhotoIndex + 1) % window.images.length;
+    updateLightboxContent(window.currentPhotoIndex);
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (lightbox && !lightbox.classList.contains('hidden')) {
+      if (e.key === 'ArrowLeft') {
+        window.currentPhotoIndex = (window.currentPhotoIndex - 1 + window.images.length) % window.images.length;
+        updateLightboxContent(window.currentPhotoIndex);
+      } else if (e.key === 'ArrowRight') {
+        window.currentPhotoIndex = (window.currentPhotoIndex + 1) % window.images.length;
+        updateLightboxContent(window.currentPhotoIndex);
+      } else if (e.key === 'Escape') {
+        lightbox.classList.add('hidden');
+      }
+    }
+  });
+</script>
+
+<!-- Hidden element to store images data -->
+<div id="images-data" data-images={JSON.stringify(images)}></div>
+
+<style>
+  /* Remove the fixed aspect ratio style */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+</style> 

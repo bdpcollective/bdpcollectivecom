@@ -1,0 +1,267 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const omahaPhotos = [
+  {
+    id: "bobkerrybridge",
+    title: "Bob Kerry Bridge",
+    date: "December 9, 2010",
+    location: "Omaha, Nebraska",
+    previewImage: "/images/omaha/2010-12-09_bobkerrybridge_1024_3409.jpg",
+    description: "The Bob Kerry Bridge spanning the Missouri River at sunset.",
+    photoCount: 1
+  },
+  {
+    id: "flowers",
+    title: "City Flowers",
+    date: "December 9, 2010",
+    location: "Omaha, Nebraska",
+    previewImage: "/images/omaha/2010-12-09_flowers_1024_3412.jpg",
+    description: "Colorful flowers in the heart of Omaha.",
+    photoCount: 1
+  },
+  {
+    id: "fireworks",
+    title: "Fourth of July Fireworks",
+    date: "July 4, 2011",
+    location: "Omaha, Nebraska",
+    previewImage: "/images/omaha/20110704_Fireworks_bp-1.jpg",
+    description: "Fireworks display celebrating Independence Day.",
+    photoCount: 1
+  },
+  {
+    id: "omaha-6042411563",
+    title: "Omaha Cityscape",
+    date: "March 27, 2024",
+    location: "Omaha, Nebraska",
+    previewImage: "/images/omaha/6042411563_f195041c59_c.jpg",
+    description: "Cityscape of Omaha.",
+    photoCount: 1
+  },
+  {
+    id: "omaha-8429170823",
+    title: "Omaha Street Scene",
+    date: "March 27, 2024",
+    location: "Omaha, Nebraska",
+    previewImage: "/images/omaha/8429170823_d08f298b22_c.jpg",
+    description: "Street scene in Omaha.",
+    photoCount: 1
+  },
+  {
+    id: "omaha-14984713027",
+    title: "Omaha Architecture",
+    date: "March 27, 2024",
+    location: "Omaha, Nebraska",
+    previewImage: "/images/omaha/14984713027_cd8c19c55f_k.jpg",
+    description: "Architectural details in Omaha.",
+    photoCount: 1
+  },
+  {
+    id: "omaha-53785785853",
+    title: "Omaha City View",
+    date: "March 27, 2024",
+    location: "Omaha, Nebraska",
+    previewImage: "/images/omaha/53785785853_8191f02c34_k.jpg",
+    description: "City view of Omaha.",
+    photoCount: 1
+  }
+];
+---
+<Layout title="Omaha Photography">
+  <main class="min-h-screen bg-gray-50">
+    <section class="relative h-[40vh] bg-black">
+      <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
+      </div>
+      <div class="relative z-10 flex items-center h-full">
+        <div class="container mx-auto px-4">
+          <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Omaha Photography</h1>
+          <p class="text-lg text-gray-200">
+            Capturing the beauty and character of Omaha through photography
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Photo Grid */}
+    <section class="container mx-auto px-4 py-12">
+      <a 
+        href="/images" 
+        class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors mb-8"
+      >
+        <svg
+          class="w-5 h-5 mr-2"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 19l-7-7m0 0l7-7m-7 7h18"
+          />
+        </svg>
+        Back to All Images
+      </a>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {omahaPhotos.map((photo, index) => (
+          <div 
+            class="relative overflow-hidden rounded-lg aspect-[4/3] cursor-pointer group"
+            data-index={index}
+          >
+            <img
+              src={photo.previewImage}
+              alt={photo.title}
+              class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+            />
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {/* Lightbox */}
+    <div 
+      id="lightbox" 
+      class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden"
+    >
+      <div class="absolute top-4 right-4">
+        <button 
+          class="text-white hover:text-gray-300 transition-colors"
+          id="close-lightbox"
+        >
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl px-4">
+        <img
+          id="lightbox-image"
+          src=""
+          alt=""
+          class="w-full h-auto max-h-[80vh] object-contain rounded-lg shadow-xl"
+        />
+      </div>
+
+      <button 
+        class="absolute left-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors"
+        id="prev-photo"
+      >
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+
+      <button 
+        class="absolute right-4 top-1/2 transform -translate-y-1/2 text-white hover:text-gray-300 transition-colors"
+        id="next-photo"
+      >
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  /* Remove the fixed aspect ratio style */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
+
+<script>
+  // Make omahaPhotos available to client-side script
+  declare global {
+    interface Window {
+      omahaPhotos: { omahaPhotos: Array<{
+        id: string;
+        title: string;
+        date: string;
+        location: string;
+        previewImage: string;
+        description: string;
+        photoCount: number;
+      }> };
+      currentPhotoIndex: number;
+    }
+  }
+
+  // Get photos data from the data attribute
+  const photosData = document.getElementById('photos-data')?.getAttribute('data-photos');
+  if (photosData) {
+    window.omahaPhotos = {omahaPhotos: JSON.parse(photosData)};
+  }
+
+  // Lightbox functionality
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightbox-image') as HTMLImageElement;
+  const closeButton = document.getElementById('close-lightbox');
+  const prevButton = document.getElementById('prev-photo');
+  const nextButton = document.getElementById('next-photo');
+
+  // Function to update lightbox content
+  function updateLightboxContent(index: number) {
+    const photo = window.omahaPhotos.omahaPhotos[index];
+    if (lightboxImage) {
+      lightboxImage.src = photo.previewImage;
+      lightboxImage.alt = photo.title;
+    }
+  }
+
+  // Open lightbox when clicking an image
+  document.querySelectorAll('.group').forEach((image, index) => {
+    image.addEventListener('click', () => {
+      window.currentPhotoIndex = index;
+      updateLightboxContent(index);
+      if (lightbox) lightbox.classList.remove('hidden');
+    });
+  });
+
+  // Close lightbox when clicking outside
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      lightbox.classList.add('hidden');
+    }
+  });
+
+  // Close lightbox when clicking close button
+  closeButton?.addEventListener('click', () => {
+    if (lightbox) lightbox.classList.add('hidden');
+  });
+
+  // Navigate between photos
+  prevButton?.addEventListener('click', () => {
+    window.currentPhotoIndex = (window.currentPhotoIndex - 1 + window.omahaPhotos.omahaPhotos.length) % window.omahaPhotos.omahaPhotos.length;
+    updateLightboxContent(window.currentPhotoIndex);
+  });
+
+  nextButton?.addEventListener('click', () => {
+    window.currentPhotoIndex = (window.currentPhotoIndex + 1) % window.omahaPhotos.omahaPhotos.length;
+    updateLightboxContent(window.currentPhotoIndex);
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (lightbox && !lightbox.classList.contains('hidden')) {
+      if (e.key === 'ArrowLeft') {
+        window.currentPhotoIndex = (window.currentPhotoIndex - 1 + window.omahaPhotos.omahaPhotos.length) % window.omahaPhotos.omahaPhotos.length;
+        updateLightboxContent(window.currentPhotoIndex);
+      } else if (e.key === 'ArrowRight') {
+        window.currentPhotoIndex = (window.currentPhotoIndex + 1) % window.omahaPhotos.omahaPhotos.length;
+        updateLightboxContent(window.currentPhotoIndex);
+      } else if (e.key === 'Escape') {
+        lightbox.classList.add('hidden');
+      }
+    }
+  });
+</script>
+
+<!-- Hidden element to store photos data -->
+<div id="photos-data" data-photos={JSON.stringify(omahaPhotos)}></div> 

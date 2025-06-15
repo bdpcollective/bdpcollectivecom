@@ -1,0 +1,192 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+const content = {
+  projectDescription: {
+    text: [
+      "The Inventory Management System project focused on improving Gap's inventory control and sales processes.",
+      "We redesigned the system to include a pause feature that prevented SKUs from going live until they reached every store, reducing expensive shipping costs.",
+      "The new interface provided better visibility into inventory status and streamlined the sales activation process."
+    ],
+    image: "/portfolio/gap/1a_gap_inventorymanagement.png"
+  },
+  userResearch: {
+    text: [
+      "User research had been done before we started the project. We went over the research with the Project Manager before we started the project.",
+      "Key findings revealed that users needed better control over when products became available for sale across stores.",
+      "We identified opportunities to optimize shipping costs by ensuring full inventory delivery before sales activation."
+    ],
+    image: "/portfolio/gap/2a_gap_workflow.png"
+  },
+  wireframeMockups: {
+    text: [
+      "Designed wireframes showing hold dates and hold expirations, the product hold and release flows, and focusing on reducing complexity for users managing inventory across stores.",
+      "The wireframes helped validate the new workflow and ensure it met user needs while maintaining system efficiency."
+    ],
+    images: [
+      "/portfolio/gap/3a_gap_wireframes.png"
+    ]
+  },
+  highFidelityMockups: {
+    text: [
+      "Delivered a high-fidelity prototype with clear hold dates and hold expirations, actionable filters, and with a intuitive table they were familiar with.",
+      "Improved product inventory delivery when needed and reduced shipping costs."
+    ],
+    images: [
+      "/portfolio/gap/4a_gap_high-fidelity.png"
+    ]
+  }
+};
+---
+
+<Layout title="Inventory Management System - UX Portfolio">
+  <main>
+    {/* Hero Section */}
+    <section class="relative bg-black py-12">
+      <div class="relative z-10 flex flex-col justify-center px-4 container mx-auto">
+        <div class="max-w-7xl mx-auto w-full">
+          <div class="w-24 h-24 flex items-center mb-2">
+            <img
+              src="/logos/gap-logo.png"
+              alt="Gap logo"
+              width="96"
+              height="96"
+              class="object-contain"
+            />
+          </div>
+          <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">
+            Inventory Management System
+          </h1>
+          <p class="text-lg md:text-xl text-gray-300 mb-4">
+            Preventing Premature Sales
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Content Section */}
+    <section class="container mx-auto px-4 py-20">
+      <div class="max-w-3xl mx-auto space-y-16">
+        {/* Back Button */}
+        <a 
+          href="/ux-portfolio" 
+          class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors mb-8"
+        >
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to UX Portfolio
+        </a>
+
+        {/* Project Description */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Project Description</h2>
+          <div class="prose max-w-none mb-8">
+            {content.projectDescription.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <img
+              src={content.projectDescription.image}
+              alt="Project description"
+              width="800"
+              height="600"
+              class="w-full object-contain"
+            />
+          </div>
+        </div>
+
+        {/* User Research */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">User Research</h2>
+          <div class="prose max-w-none mb-8">
+            {content.userResearch.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <img
+              src={content.userResearch.image}
+              alt="User research"
+              width="800"
+              height="600"
+              class="object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Wireframe Mockups */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Wireframe Mockups</h2>
+          <div class="prose max-w-none mb-8">
+            {content.wireframeMockups.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="space-y-8">
+            {content.wireframeMockups.images.map((image) => (
+              <div class="rounded-lg overflow-hidden shadow-lg">
+                <img
+                  src={image}
+                  alt="Wireframe mockup"
+                  width="800"
+                  height="600"
+                  class="w-full object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* High-Fidelity Mockups */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">High-Fidelity Mockups</h2>
+          <div class="prose max-w-none mb-8">
+            {content.highFidelityMockups.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="space-y-8">
+            {content.highFidelityMockups.images.map((image) => (
+              <div class="rounded-lg overflow-hidden shadow-lg">
+                <img
+                  src={image}
+                  alt="High-fidelity mockup"
+                  width="800"
+                  height="600"
+                  class="w-full object-contain"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Fixed Navigation Arrows */}
+    <div class="fixed left-4 top-1/2 -translate-y-1/2 z-50">
+      <a 
+        href="/portfolio/bestbuy" 
+        class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/80 hover:bg-white shadow-lg text-gray-600 hover:text-gray-900 transition-colors"
+        aria-label="Previous Project"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </a>
+    </div>
+    <div class="fixed right-4 top-1/2 -translate-y-1/2 z-50">
+      <a 
+        href="/portfolio/sleepnumber" 
+        class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/80 hover:bg-white shadow-lg text-gray-600 hover:text-gray-900 transition-colors"
+        aria-label="Next Project"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </main>
+</Layout> 

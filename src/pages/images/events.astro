@@ -1,0 +1,54 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const events = [
+  {
+    title: "Events",
+    events: [
+      {
+        name: "National Special Olympics",
+        date: "June 16, 2010",
+        image: "/images/events/20100616_NationalSpecialOlympics/20100618_NationalSpecialOlymics - 1.jpeg",
+        link: "/images/events/national-special-olympics"
+      }
+    ]
+  }
+];
+---
+
+<Layout title="Events">
+  <div class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <h1 class="text-4xl font-bold text-gray-900 mb-8">Events</h1>
+      
+      <a href="/images" class="inline-flex items-center text-gray-600 hover:text-gray-900 mb-8">
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back to Images
+      </a>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {events.map((category) => (
+          category.events.map((event) => (
+            <a href={event.link} class="group relative overflow-hidden rounded-lg">
+              <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div class="relative h-64">
+                  <img
+                    src={event.image}
+                    alt={event.name}
+                    class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div class="p-4">
+                  <h3 class="text-lg font-semibold text-gray-900">{event.name}</h3>
+                  <p class="text-sm text-gray-500">{event.date}</p>
+                </div>
+              </div>
+            </a>
+          ))
+        ))}
+      </div>
+    </div>
+  </div>
+</Layout> 

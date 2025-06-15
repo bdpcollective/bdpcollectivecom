@@ -1,0 +1,236 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+
+const content = {
+  projectDescription: {
+    text: [
+      "Teamed up with DMF to revamp their Giving Hearts search and donation workflow making it easier, friendlier, and more powerful for donors and fundraisers alike!",
+      "The project focused on creating an intuitive interface for donors to find and support causes they care about, while providing powerful tools for fundraisers to manage their campaigns.",
+      "Through careful analysis of user needs and pain points, we developed a solution that streamlined the donation process while maintaining high donor satisfaction."
+    ],
+    images: [
+      "/portfolio/dmf/1a_dmf.png",
+      "/portfolio/dmf/2a_dmf_Workflow.png",
+      "/portfolio/dmf/3a_dmf_wireframes.png"
+    ]
+  },
+  userResearch: {
+    text: [
+      "Our research revealed that donors needed a more efficient way to find and support causes, while fundraisers wanted better tools to manage their campaigns.",
+      "Key findings included the need for improved search functionality, simplified donation workflows, and better communication between donors and fundraisers."
+    ],
+    image: "/portfolio/dmf/4a_dmf_wireframes.png"
+  },
+  workflows: {
+    text: [
+      "Based on our research findings, we developed a streamlined workflow for handling donations.",
+      "The process now includes clear search functionality, automated communication with donors, and visual guides for fundraisers.",
+      "This structured approach helps reduce confusion and ensures a consistent experience for both donors and fundraisers."
+    ],
+    image: "/portfolio/dmf/2a_dmf_Workflow.png"
+  },
+  wireframeMockups: {
+    text: [
+      "Initial wireframes focused on creating a clean, organized interface that would make it easy for donors to find and support causes they care about.",
+      "We iterated on these designs based on user feedback, ensuring the layout supported efficient donation workflows."
+    ],
+    image: "/portfolio/dmf/3a_dmf_wireframes.png"
+  },
+  highFidelityMockups: {
+    text: [
+      "The final design incorporated DMF's brand guidelines while maintaining a professional and efficient interface.",
+      "We added interactive elements and clear visual hierarchies to improve usability and make the app more engaging for both donors and fundraisers."
+    ],
+    image: "/portfolio/dmf/4a_dmf_wireframes.png"
+  }
+};
+---
+
+<Layout title="Improved Checkout Workflow - UX Portfolio">
+  <main>
+    {/* Hero Section */}
+    <section class="relative bg-black py-12">
+      <div class="relative z-10 flex flex-col justify-center px-4 container mx-auto">
+        <div class="max-w-7xl mx-auto w-full">
+          <div class="w-24 h-24 flex items-center mb-2">
+            <img
+              src="/logos/dmf-logo2.png"
+              alt="Dakota Medical Foundation logo"
+              width="96"
+              height="96"
+              class="object-contain"
+            />
+          </div>
+          <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">
+            Improved Checkout Workflow
+          </h1>
+          <p class="text-lg md:text-xl text-gray-300 mb-4">
+            Dakota Medical Foundation - Giving Hearts Day
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Content Section */}
+    <section class="container mx-auto px-4 py-20">
+      <div class="max-w-3xl mx-auto space-y-16">
+        {/* Back Button */}
+        <a 
+          href="/ux-portfolio" 
+          class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors mb-12"
+        >
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to UX Portfolio
+        </a>
+
+        {/* Project Description */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Project Description</h2>
+          <div class="prose max-w-none mb-8">
+            {content.projectDescription.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <img
+              src="/portfolio/dmf/1a_dmf_Charity.png"
+              alt="DMF donation interface"
+              width="800"
+              height="600"
+              class="w-full object-contain"
+            />
+          </div>
+        </div>
+
+        {/* User Research */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">User Research</h2>
+          <div class="prose max-w-none mb-8">
+            <h4 class="text-lg font-medium mb-2">Listened to Donor Feedback</h4>
+            <ul class="list-disc pl-6 mb-4">
+              <li>Observed real donor interactions to understand common concerns and areas of confusion.</li>
+              <li>Noted frequent questions and process bottlenecks that slowed down donations.</li>
+            </ul>
+
+            <h4 class="text-lg font-medium mb-2">Interviewed Fundraisers</h4>
+            <ul class="list-disc pl-6 mb-6">
+              <li>Conducted one-on-one conversations with fundraisers to learn about their workflow.</li>
+              <li>Gathered insights on the tools they currently use and what improvements they would find most valuable.</li>
+              <li>Identified gaps where additional support or automation could enhance their efficiency.</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold mb-4">Key Findings</h3>
+            <ul class="list-disc pl-6 mb-6">
+              <li>Donors struggled to find specific causes they wanted to support.</li>
+              <li>Fundraisers needed better tools to manage their campaigns.</li>
+              <li>A lack of transparency led to donor confusion.</li>
+              <li>Both donors and fundraisers wanted a more streamlined donation process.</li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Workflows */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Workflows</h2>
+          <div class="prose max-w-none mb-8">
+            {content.workflows.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <img
+              src="/portfolio/dmf/3a_dmf_workflow.png"
+              alt="Workflow diagram"
+              width="800"
+              height="600"
+              class="object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Wireframe Mockups */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">Wireframe Mockups</h2>
+          <div class="prose max-w-none mb-8">
+            {content.wireframeMockups.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <img
+              src="/portfolio/dmf/5a_dmf_wireframe.png"
+              alt="Wireframe mockup 1"
+              width="800"
+              height="600"
+              class="w-full object-contain"
+            />
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-lg mt-8">
+            <img
+              src="/portfolio/dmf/5b_dmf_wireframe.png"
+              alt="Wireframe mockup 2"
+              width="800"
+              height="600"
+              class="w-full object-contain"
+            />
+          </div>
+        </div>
+
+        {/* High-Fidelity Mockups */}
+        <div>
+          <h2 class="text-3xl font-bold mb-6">High-Fidelity Mockups</h2>
+          <div class="prose max-w-none mb-8">
+            {content.highFidelityMockups.text.map((paragraph) => (
+              <p class="mb-4">{paragraph}</p>
+            ))}
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-lg">
+            <img
+              src="/portfolio/dmf/6a_dmf_high-fidelity.png"
+              alt="High-fidelity mockup 1"
+              width="800"
+              height="600"
+              class="w-full object-contain"
+            />
+          </div>
+          <div class="rounded-lg overflow-hidden shadow-lg mt-8">
+            <img
+              src="/portfolio/dmf/6b_dmf_high-fidelity.png"
+              alt="High-fidelity mockup 2"
+              width="800"
+              height="600"
+              class="w-full object-contain"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Fixed Navigation Arrows */}
+    <div class="fixed left-4 top-1/2 -translate-y-1/2 z-50">
+      <a 
+        href="/portfolio/sleepnumber" 
+        class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/80 hover:bg-white shadow-lg text-gray-600 hover:text-gray-900 transition-colors"
+        aria-label="Previous Project"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </a>
+    </div>
+    <div class="fixed right-4 top-1/2 -translate-y-1/2 z-50">
+      <a 
+        href="/portfolio/healthcomms" 
+        class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/80 hover:bg-white shadow-lg text-gray-600 hover:text-gray-900 transition-colors"
+        aria-label="Next Project"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  </main>
+</Layout> 

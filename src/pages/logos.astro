@@ -1,0 +1,99 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import { baseUrl } from '../config';
+
+const logoItems = [
+  {
+    title: "DevObsessed",
+    description: "Logo design for a software development consulting company.",
+    logo: "/logos/devobsessed/3_logo_variations.png",
+    slug: "devobsessed"
+  },
+  {
+    title: "I-80 Club",
+    description: "Logo design for a social club focused on community engagement.",
+    logo: "/logos/i80club/3_logo_variations.png",
+    slug: "i80club"
+  },
+  {
+    title: "Connectaha",
+    description: "Logo design for a community-focused organization in Omaha.",
+    logo: "/logos/connectaha/ConnectahaBugOnly_R.png",
+    slug: "connectaha"
+  },
+  {
+    title: "King Creek Woodworks",
+    description: "Logo design for a custom woodworking business.",
+    logo: "/logos/kingcreekwoodworks/Logocard.png",
+    slug: "kingcreekwoodworks"
+  }
+];
+
+console.log('DevObsessed logo URL:', `${baseUrl}/images/logos/devobsessedcard.png`);
+---
+
+<Layout title="Logos">
+  <main>
+    {/* Hero Section */}
+    <section class="relative h-[50vh] bg-black">
+      {/* Hero Content */}
+      <div class="relative z-10 flex flex-col items-center h-full">
+        <div class="flex-1 flex items-center">
+          <div class="text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">
+              Logos
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+              Logo designs and branding work.
+            </p>
+          </div>
+        </div>
+        
+        {/* Chevron */}
+        <button
+          onclick="document.getElementById('logo-cards').scrollIntoView({ behavior: 'smooth' })"
+          class="animate-bounce p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors mb-8"
+          aria-label="Scroll to logo categories"
+        >
+          <svg
+            class="w-8 h-8 text-white"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    {/* Logo Grid */}
+    <section id="logo-cards" class="container mx-auto px-4 py-20">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {logoItems.map((item) => (
+          <a 
+            href={`${baseUrl}/logos/${item.slug}`}
+            class="p-6 rounded-xl bg-white shadow-lg hover:shadow-xl transition-shadow block"
+          >
+            <div class={`relative w-36 h-36 flex items-center justify-center mb-4 mx-auto ${item.slug === 'connectaha' || item.slug === 'devobsessed' || item.slug === 'kingcreekwoodworks' || item.slug === 'i80club' ? 'rounded-lg overflow-hidden' : ''}`}>
+              <img
+                src={item.logo}
+                alt={`${item.title} logo`}
+                width="144"
+                height="144"
+                class="object-contain mx-auto"
+                loading="lazy"
+              />
+            </div>
+            <h3 class="text-xl font-semibold mb-2">{item.title}</h3>
+            <p class="text-gray-600">{item.description}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout> 
