@@ -1,55 +1,42 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
+import Lightbox from '../../../components/Lightbox.astro';
 
-function getRandomImage(images: string[]) {
-  return images[Math.floor(Math.random() * images.length)];
-}
+// List all Blue Ox images
+const images = Array.from({ length: 57 }, (_, i) => `/images/hula2025/blueox/Hula_BlueOx-${String(i + 1).padStart(2, '0')}.jpg`);
 
-const macImages = [
-  "Hula_BlueOx-01.jpg","Hula_BlueOx-02.jpg","Hula_BlueOx-03.jpg","Hula_BlueOx-04.jpg","Hula_BlueOx-05.jpg","Hula_BlueOx-06.jpg","Hula_BlueOx-07.jpg","Hula_BlueOx-08.jpg","Hula_BlueOx-09.jpg","Hula_BlueOx-10.jpg","Hula_BlueOx-11.jpg","Hula_BlueOx-12.jpg","Hula_BlueOx-13.jpg","Hula_BlueOx-14.jpg","Hula_BlueOx-15.jpg","Hula_BlueOx-16.jpg","Hula_BlueOx-17.jpg","Hula_BlueOx-18.jpg","Hula_BlueOx-19.jpg","Hula_BlueOx-20.jpg","Hula_BlueOx-21.jpg","Hula_BlueOx-22.jpg","Hula_BlueOx-23.jpg","Hula_BlueOx-24.jpg","Hula_BlueOx-25.jpg","Hula_BlueOx-26.jpg","Hula_BlueOx-27.jpg","Hula_BlueOx-28.jpg","Hula_BlueOx-29.jpg","Hula_BlueOx-30.jpg"
-];
-const greyduckImages = [
-  "Hula_BlueOx-31.jpg","Hula_BlueOx-32.jpg","Hula_BlueOx-33.jpg","Hula_BlueOx-34.jpg","Hula_BlueOx-35.jpg","Hula_BlueOx-36.jpg","Hula_BlueOx-37.jpg","Hula_BlueOx-38.jpg","Hula_BlueOx-39.jpg","Hula_BlueOx-40.jpg","Hula_BlueOx-41.jpg","Hula_BlueOx-42.jpg"
-];
-const mnchillImages = [
-  "Hula_BlueOx-43.jpg","Hula_BlueOx-44.jpg","Hula_BlueOx-45.jpg","Hula_BlueOx-46.jpg","Hula_BlueOx-47.jpg","Hula_BlueOx-48.jpg","Hula_BlueOx-49.jpg","Hula_BlueOx-50.jpg","Hula_BlueOx-51.jpg","Hula_BlueOx-52.jpg","Hula_BlueOx-53.jpg","Hula_BlueOx-54.jpg","Hula_BlueOx-55.jpg","Hula_BlueOx-56.jpg","Hula_BlueOx-57.jpg"
-];
-
-const games = [
-  {
-    name: 'Hula Gold vs MAC',
-    image: '/images/hula2025/blueox/mac/' + getRandomImage(macImages),
-    link: '/images/hula2025/blueox/mac'
-  },
-  {
-    name: 'Hula Gold vs Grey Duck',
-    image: '/images/hula2025/blueox/greyduck/' + getRandomImage(greyduckImages),
-    link: '/images/hula2025/blueox/greyduck'
-  },
-  {
-    name: 'Hula Gold vs Minnesota Chill',
-    image: '/images/hula2025/blueox/mnchill/' + getRandomImage(mnchillImages),
-    link: '/images/hula2025/blueox/mnchill'
-  }
-];
+const title = "Blue Ox Invitational - June 14-15, 2025";
+const description = "Gallery of photos from the Blue Ox Invitational, June 14-15, 2025";
 ---
-<Layout title="Blue Ox Games">
-  <div class="max-w-7xl mx-auto px-4 py-16">
-    <h1 class="text-3xl font-bold mb-8">Blue Ox Games</h1>
-    <a href="/images/hula2025" class="text-blue-600 hover:underline mb-8 inline-block">← Back to Hula 2025 Events</a>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-      {games.map(game => (
-        <a href={game.link} class="group block rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-          <div class="relative h-64">
-            <img src={game.image} alt={game.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end">
-              <div class="p-4">
-                <h2 class="text-white text-xl font-semibold">{game.name}</h2>
-              </div>
-            </div>
+
+<Layout title={title}>
+  <div class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="mb-8">
+        <a href="/images/hula2025" class="text-blue-600 hover:text-blue-800">← Back to 2025 Hula</a>
+      </div>
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">Blue Ox Invitational</h1>
+      <p class="text-gray-600 mb-8">June 14-15, 2025</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {images.map((image, index) => (
+          <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
+            <img
+              src={image}
+              alt={`Blue Ox Invitational photo ${index + 1}`}
+              class="gallery-image w-full h-full object-cover cursor-pointer transform hover:scale-105 transition-transform duration-300"
+              loading={index < 9 ? "eager" : "lazy"}
+            />
           </div>
-        </a>
-      ))}
+        ))}
+      </div>
     </div>
   </div>
-</Layout> 
+  <Lightbox images={images} />
+</Layout>
+
+<style>
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+</style> 
