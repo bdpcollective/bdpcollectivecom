@@ -6,8 +6,8 @@ import Lightbox from '../../../components/Lightbox.astro';
 const images = [
   ...Array.from({length: 100}, (_, i) => {
     const imageNum = i + 1;
-    // Use zero-padded format for 1-97, non-zero-padded for 98-100
-    const num = imageNum <= 97 ? String(imageNum).padStart(2, '0') : String(imageNum);
+    // Use zero-padded format for 1-99, non-zero-padded for 100
+    const num = imageNum < 100 ? String(imageNum).padStart(2, '0') : String(imageNum);
     return `/images/hula2025/bbqshowdowngold/HulaGoldBBQShowdown-${num}.jpg`;
   })
 ];
