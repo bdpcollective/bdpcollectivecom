@@ -2,9 +2,9 @@
 import Layout from '../../../layouts/Layout.astro';
 import Lightbox from '../../../components/Lightbox.astro';
 
-// Generate image array for all 97 images
+// Generate image array for all 100 images
 const images = [
-  ...Array.from({length: 97}, (_, i) => {
+  ...Array.from({length: 100}, (_, i) => {
     const num = String(i + 1).padStart(2, '0');
     return `/images/hula2025/bbqshowdowngold/HulaGoldBBQShowdown-${num}.jpg`;
   })
