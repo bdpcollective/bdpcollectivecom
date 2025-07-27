@@ -128,43 +128,38 @@ src/pages/images/[category]/gallery-name.astro
 src/components/Lightbox.astro
 ```
 
-### Implementation
+### Clean Modern Implementation (Recommended)
 ```astro
 ---
 import Layout from '../../../layouts/Layout.astro';
 import Lightbox from '../../../components/Lightbox.astro';
 
-// Generate image array
-const images = [
-  ...Array.from({length: 85}, (_, i) => {
-    const num = String(i + 1).padStart(2, '0');
-    return `/images/category/subfolder/Image_Prefix-${num}.jpg`;
-  })
-];
+// Generate sequential image array
+const images = Array.from({ length: 57 }, (_, i) => `/images/lacrosse/2025MWLAXcamp/2025MWLAXcamp - ${i + 1}.jpeg`);
 
-const title = "Gallery Title";
-const description = "Gallery description";
+const title = "2025 MW Lacrosse Camp";
+const description = "Gallery of photos from the Millard West High School Lacrosse Summer Camp 2025";
 ---
 
 <Layout title={title}>
   <div class="bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      {/* Back Navigation */}
+      {/* Clean Back Navigation */}
       <div class="mb-8">
-        <a href="/images/category" class="text-blue-600 hover:text-blue-800">← Back to Category</a>
+        <a href="/images/lacrosse" class="text-blue-600 hover:text-blue-800">← Back to Lacrosse</a>
       </div>
       
-      {/* Header */}
+      {/* Simple Header */}
       <h1 class="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
-      <p class="text-gray-600 mb-8">{description}</p>
+      <p class="text-gray-600 mb-8">Summer 2025</p>
 
-      {/* Photo Grid */}
+      {/* Responsive Photo Grid */}
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {images.map((image, index) => (
           <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
             <img
               src={image}
-              alt={`Gallery photo ${index + 1}`}
+              alt={`Camp photo ${index + 1}`}
               class="gallery-image w-full h-full object-cover cursor-pointer transform hover:scale-105 transition-transform duration-300"
               loading={index < 9 ? "eager" : "lazy"}
             />
@@ -177,6 +172,25 @@ const description = "Gallery description";
   {/* Reusable Lightbox Component */}
   <Lightbox images={images} />
 </Layout>
+
+<style>
+  /* Remove the fixed aspect ratio style */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
+```
+
+### Alternative: Legacy Padding Format
+```astro
+// For galleries with zero-padded numbering (01, 02, 03...)
+const images = [
+  ...Array.from({length: 85}, (_, i) => {
+    const num = String(i + 1).padStart(2, '0');
+    return `/images/category/subfolder/Image_Prefix-${num}.jpg`;
+  })
+];
 ```
 
 ## Lightbox Component (`src/components/Lightbox.astro`)
@@ -202,27 +216,58 @@ import Lightbox from '../../../components/Lightbox.astro';
 
 ## Styling Patterns
 
+### Visual Style Comparison
+
+#### Dynamic Gallery Style (Dark/Dramatic)
+- **Background**: Dark gray (`bg-gray-50` with `bg-gray-900` hero)
+- **Header**: Large hero section with white text on dark background
+- **Images**: Overlay effects with hover information
+- **Use for**: Structured events, formal presentations, rich metadata
+
+#### Simple Gallery Style (Clean/Modern) - RECOMMENDED
+- **Background**: Pure white (`bg-white`)
+- **Header**: Simple title and subtitle on white background
+- **Images**: Clean grid with subtle hover effects
+- **Use for**: Most galleries, camps, casual events, modern aesthetic
+
 ### Grid Layout
 ```css
-/* Responsive grid */
+/* Responsive grid - all galleries */
 .grid {
   @apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4;
 }
 
-/* Fixed aspect ratio for consistency */
-.aspect-[4/3] {
-  aspect-ratio: 4/3;
+/* Image container with rounded corners */
+.aspect-w-3.aspect-h-2 {
+  aspect-ratio: 3/2;
+  overflow: hidden;
+  border-radius: 0.5rem; /* rounded-lg */
 }
 ```
 
 ### Hover Effects
+
+#### Simple Gallery Hover (Clean)
 ```css
-/* Image scale on hover */
+/* Subtle image scale on hover */
+.transform.hover:scale-105 {
+  transition: transform 0.3s ease;
+}
+
+/* Clean cursor indication */
+.cursor-pointer {
+  cursor: pointer;
+}
+```
+
+#### Dynamic Gallery Hover (Dramatic)
+```css
+/* Image scale with overlay on hover */
 .transform.group-hover:scale-105 {
   transition: transform 0.3s ease;
 }
 
-/* Overlay on hover */
+/* Dark overlay on hover */
 .group-hover:bg-black/20 {
   transition: background-color 0.3s ease;
 }
@@ -232,6 +277,36 @@ import Lightbox from '../../../components/Lightbox.astro';
 ```astro
 {/* Lazy load images after the first 9 for performance */}
 loading={index < 9 ? "eager" : "lazy"}
+```
+
+### Color Schemes & Typography
+
+#### Simple Gallery (Clean/Modern)
+```css
+/* Background */
+.bg-white { background-color: white; }
+
+/* Typography */
+.text-4xl { font-size: 2.25rem; }  /* Main title */
+.font-bold { font-weight: 700; }
+.text-gray-900 { color: #111827; }  /* Main title color */
+.text-gray-600 { color: #4b5563; }  /* Subtitle color */
+
+/* Navigation */
+.text-blue-600 { color: #2563eb; }  /* Back link */
+.hover:text-blue-800:hover { color: #1e40af; }
+```
+
+#### Dynamic Gallery (Dark/Dramatic)
+```css
+/* Backgrounds */
+.bg-gray-50 { background-color: #f9fafb; }   /* Main background */
+.bg-gray-900 { background-color: #111827; }  /* Hero section */
+
+/* Typography */
+.text-6xl { font-size: 3.75rem; }  /* Hero title */
+.text-white { color: white; }      /* Hero text */
+.text-gray-200 { color: #e5e7eb; } /* Hero subtitle */
 ```
 
 ## File Naming Conventions
@@ -279,12 +354,15 @@ public/images/
 - Multiple similar events in the same category
 - Need consistent URL structure (`/category/[event]`)
 - Want rich metadata and SEO benefits
+- Formal presentation style desired
 
-### Use Simple Gallery Pattern When:
-- Single gallery or fewer structured requirements
+### Use Simple Gallery Pattern When (RECOMMENDED):
+- Want clean, modern aesthetic
+- Single gallery or standalone event
 - Quick setup needed
-- Consistent with existing simple galleries
-- Less dynamic content
+- Consistent with modern web design trends
+- Camp events, casual galleries, or personal collections
+- Prioritizing user experience over dramatic presentation
 
 ## Creating a New Gallery
 
@@ -294,4 +372,69 @@ public/images/
 4. **Create the .astro file** using the appropriate pattern
 5. **Update navigation** in parent category pages
 6. **Test the lightbox functionality**
-7. **Verify responsive behavior** on different screen sizes 
+7. **Verify responsive behavior** on different screen sizes
+
+## Troubleshooting
+
+### Images Not Displaying
+
+#### File Extension Mismatch
+**Problem**: Images don't show up in gallery even though files exist
+**Cause**: File extension mismatch between code and actual files
+
+**Solution**:
+1. Check what extension your gallery code expects:
+   - Dynamic galleries use `.jpeg` (hardcoded in `[event].astro`)
+   - Simple galleries may use `.jpg` or `.jpeg`
+2. Check actual file extensions in your directory:
+   ```bash
+   ls public/images/category/event-name/ | head -5
+   ```
+3. **For Lacrosse galleries**: Must use `.jpeg` extension
+   ```bash
+   # Rename .jpg files to .jpeg if needed
+   cd public/images/lacrosse/your-event/
+   for file in *.jpg; do mv "$file" "${file%.jpg}.jpeg"; done
+   ```
+4. Update preview image paths in main gallery pages to match
+
+#### Sequential Numbering Issues
+**Problem**: Some images show, others don't
+**Cause**: Non-sequential or missing numbered files
+
+**Solution**:
+1. Rename files to follow sequential pattern:
+   ```bash
+   ls *.jpg | sort | awk '{print "mv \"" $0 "\" \"EventPrefix - " NR ".jpg\""}' | sh
+   ```
+2. Update `imageCount` in gallery data to match actual number of files
+3. Ensure no gaps in numbering (1, 2, 3... not 1, 3, 5)
+
+#### Path Issues
+**Problem**: 404 errors or broken image links
+**Cause**: Incorrect `imagePath` or `imagePrefix` in gallery data
+
+**Solution**:
+1. Verify directory structure matches `imagePath`
+2. Check that `imagePrefix` matches actual file names
+3. Test image URLs manually in browser
+4. Ensure no spaces or special characters cause URL encoding issues
+
+### Common Mistakes to Avoid
+
+1. **Extension Inconsistency**: Always check existing galleries in the same category for extension patterns
+2. **Case Sensitivity**: File names are case-sensitive on production servers
+3. **Special Characters**: Avoid spaces, special characters in file names when possible
+4. **Missing Updates**: Remember to update both dynamic gallery data AND main category page
+5. **Count Mismatch**: Ensure `imageCount` matches actual number of files
+
+### Testing Checklist
+
+Before considering a gallery complete:
+- [ ] Images display on main category page
+- [ ] Individual gallery page loads correctly
+- [ ] All images show (no broken image icons)
+- [ ] Lightbox opens and navigates properly
+- [ ] Preview images load (random selection works)
+- [ ] Mobile responsiveness works
+- [ ] Back navigation functions correctly 
