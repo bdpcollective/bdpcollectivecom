@@ -1,90 +1,39 @@
 ---
-import Layout from '../layouts/Layout.astro';
+// No layout import - we need the exact original structure
 ---
 
-<Layout title="KCDC 2025 - Brian Pope">
-  <div class="min-h-screen bg-black">
-    <div id="stageArea">
-      <div id="stage" class="stage"></div>
-      <div id="hyperlinkPlane" class="stage"></div>
-    </div>
-    <div id="slideshowNavigator"></div>
-    <div id="slideNumberControl"></div>
-    <div id="slideNumberDisplay"></div>
-    <div id="helpPlacard"></div>
-    <div id="waitingIndicator">
-      <div id="waitingSpinner"></div>
-    </div>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>KCDC 2025 - Brian Pope</title>
+  <meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,width=device-width"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8B6D7GXRG2"></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      // @ts-ignore
+      dataLayer.push(arguments);
+    }
+    // @ts-ignore
+    gtag('js', new Date());
+    // @ts-ignore
+    gtag('config', 'G-8B6D7GXRG2');
+  </script>
+</head>
+<body id="body" bgcolor="black">
+  <div id="stageArea">
+    <div id="stage" class="stage"></div>
+    <div id="hyperlinkPlane" class="stage"></div>
   </div>
-</Layout>
-
-<script is:inline src="/kcdc2025-assets/player/main.js"></script>
-
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-  }
-  
-  #stageArea {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-  }
-  
-  .stage {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  
-  #slideshowNavigator {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-  }
-  
-  #slideNumberControl {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-  }
-  
-  #slideNumberDisplay {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-  }
-  
-  #helpPlacard {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-  }
-  
-  #waitingIndicator {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  #waitingSpinner {
-    width: 50px;
-    height: 50px;
-    background-image: url('/kcdc2025-assets/player/spinner.png');
-    background-size: contain;
-    animation: spin 1s linear infinite;
-  }
-  
-  @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-</style>
+  <div id="slideshowNavigator"></div>
+  <div id="slideNumberControl"></div>
+  <div id="slideNumberDisplay"></div>
+  <div id="helpPlacard"></div>
+  <div id="waitingIndicator">
+    <div id="waitingSpinner"></div>
+  </div>
+  <script is:inline src="/kcdc2025-assets/player/main.js"></script>
+</body>
+</html>
