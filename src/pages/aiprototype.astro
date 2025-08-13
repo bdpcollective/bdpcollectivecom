@@ -1,0 +1,34 @@
+---
+import { baseUrl } from '../config';
+---
+
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href={`${baseUrl}/favicon.svg`} />
+		<title>AI Prototype | Brian Pope</title>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				height: 100vh;
+				overflow: hidden;
+			}
+			iframe {
+				width: 100%;
+				height: 100vh;
+				border: none;
+			}
+		</style>
+	</head>
+	<body>
+		<iframe 
+			src="/aiprototype/index.html"
+			title="AI Prototype Presentation"
+			allowfullscreen>
+		</iframe>
+	</body>
+</html>
+
+
