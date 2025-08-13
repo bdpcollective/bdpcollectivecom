@@ -1,0 +1,45 @@
+name: Backup Site Data
+
+on:
+  schedule:
+    # Run daily at 3 AM UTC
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Create backup
+        run: |
+          mkdir -p backup
+          cp -r public backup/
+          cp -r src backup/
+          cp package*.json backup/
+          cp astro.config.mjs backup/
+          cp CNAME backup/ 2>/dev/null || true
+          
+          # Create timestamp
+          echo "$(date -u +'%Y-%m-%d_%H-%M-%S')" > backup/timestamp.txt
+          
+          # Create archive
+          tar -czf site-backup-$(date -u +'%Y-%m-%d_%H-%M-%S').tar.gz backup/
+      
+      - name: Upload backup artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-backup-${{ github.run_number }}
+          path: site-backup-*.tar.gz
+          retention-days: 30

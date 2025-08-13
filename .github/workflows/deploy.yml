@@ -26,19 +26,41 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: 'npm'
+      
       - name: Setup Pages
         uses: actions/configure-pages@v4
+      
       - name: Install dependencies
         run: npm ci
+      
+      - name: Run linting
+        run: npm run lint
+      
       - name: Build with Astro
-        run: npm run build --verbose
-      - name: Copy CNAME
-        run: cp CNAME dist/CNAME
+        run: npm run build
+      
+      - name: Copy CNAME (if exists)
+        run: |
+          if [ -f CNAME ]; then
+            cp CNAME dist/CNAME
+            echo "CNAME file copied successfully"
+          else
+            echo "No CNAME file found, skipping"
+          fi
+      
+      - name: Copy public assets
+        run: |
+          if [ -d public ]; then
+            cp -r public/* dist/ 2>/dev/null || true
+            echo "Public assets copied"
+          fi
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
