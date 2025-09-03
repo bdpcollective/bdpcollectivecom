@@ -241,7 +241,7 @@ if (olcIndex > 2) {
         
         {/* Chevron */}
         <button
-          onclick="document.getElementById('image-cards').scrollIntoView({ behavior: 'smooth' })"
+          id="scroll-button"
           class="animate-bounce p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors mb-8"
           aria-label="Scroll to image categories"
         >
@@ -293,4 +293,21 @@ if (olcIndex > 2) {
       </div>
     </section>
   </main>
-</Layout> 
+</Layout>
+
+<script>
+  // Handle smooth scrolling for the chevron button
+  document.addEventListener('DOMContentLoaded', function() {
+    const scrollButton = document.getElementById('scroll-button');
+    const imageCards = document.getElementById('image-cards');
+    
+    if (scrollButton && imageCards) {
+      scrollButton.addEventListener('click', function() {
+        imageCards.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      });
+    }
+  });
+</script> 
