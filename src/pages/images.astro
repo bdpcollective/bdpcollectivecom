@@ -296,17 +296,26 @@ if (olcIndex > 2) {
 </Layout>
 
 <script>
-  // Handle smooth scrolling for the chevron button
+  // Handle scrolling for the chevron button
   document.addEventListener('DOMContentLoaded', function() {
     const scrollButton = document.getElementById('scroll-button');
     const imageCards = document.getElementById('image-cards');
     
     if (scrollButton && imageCards) {
       scrollButton.addEventListener('click', function() {
-        imageCards.scrollIntoView({ 
-          behavior: 'smooth',
-          block: 'start'
-        });
+        // Use a more reliable scrolling method that works everywhere
+        const targetPosition = imageCards.offsetTop - 100; // Offset by 100px for better positioning
+        
+        // Try smooth scrolling first, fall back to instant scrolling
+        if ('scrollBehavior' in document.documentElement.style) {
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        } else {
+          // Fallback for browsers that don't support smooth scrolling
+          window.scrollTo(0, targetPosition);
+        }
       });
     }
   });
