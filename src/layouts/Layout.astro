@@ -109,6 +109,13 @@ const { title } = Astro.props;
 		padding: 0;
 		box-sizing: border-box;
 		overflow-x: hidden;
+		overflow-y: auto !important;
+	}
+	
+	/* Override any global overflow:hidden that might be preventing scrolling */
+	html, body {
+		overflow: auto !important;
+		height: auto !important;
 	}
 	code {
 		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,

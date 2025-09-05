@@ -28,5 +28,18 @@ import { baseUrl } from '../config';
 				</p>
 			</div>
 		</div>
+
+		{/* Scroll down arrow */}
+		<div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
+			<button 
+				onclick="document.querySelector('main').scrollIntoView({ behavior: 'smooth' })"
+				class="text-white hover:text-gray-300 transition-colors duration-300 animate-bounce"
+				aria-label="Scroll down"
+			>
+				<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+				</svg>
+			</button>
+		</div>
 	</main>
 </Layout>
