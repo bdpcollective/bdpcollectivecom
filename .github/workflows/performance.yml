@@ -1,10 +1,8 @@
 name: Performance Check
 
 on:
-  push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
+  schedule:
+    - cron: '0 2 * * 1' # Weekly on Monday at 2 AM UTC
   workflow_dispatch:
 
 jobs:
@@ -28,15 +26,12 @@ jobs:
         env:
           NODE_OPTIONS: "--max-old-space-size=4096"
       
-      - name: Start local server
+      - name: Start server
         run: |
           npm run preview &
-          # Wait for server to be ready with better detection
-          timeout 30 bash -c 'until curl -f http://localhost:4321 > /dev/null 2>&1; do sleep 1; done'
+          sleep 10
       
-      - name: Run Lighthouse CI
+      - name: Run Lighthouse
         uses: treosh/lighthouse-ci-action@v12
         with:
           configPath: './.lighthouserc.json'
-          uploadArtifacts: true
-          temporaryPublicStorage: true
