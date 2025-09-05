@@ -13,8 +13,14 @@ export default defineConfig({
       devSourcemap: true,
     },
     build: {
-      // Disable CSS code splitting to avoid bundling issues
-      cssCodeSplit: false,
+      // Enable CSS code splitting for better performance
+      cssCodeSplit: true,
+      // Optimize chunk size
+      chunkSizeWarningLimit: 1000,
+    },
+    // Optimize dependencies
+    optimizeDeps: {
+      include: ['d3', 'topojson-client'],
     },
   },
 });
