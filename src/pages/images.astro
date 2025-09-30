@@ -198,18 +198,18 @@ images.push({
 // Order cards from newest to oldest
 images.reverse();
 
-// Move '2025 Millard West Lacrosse' (title: '2025 Millard West Lacrosse') to index 1
+// Move '2025 Millard West Lacrosse' (title: '2025 Millard West Lacrosse') to index 0 (first position)
 const mwIndex = images.findIndex(img => img.title === '2025 Millard West Lacrosse');
-if (mwIndex > 1) {
+if (mwIndex > 0) {
   const [mwCard] = images.splice(mwIndex, 1);
-  images.splice(1, 0, mwCard);
+  images.splice(0, 0, mwCard);
 }
 
-// Move '2025 Omaha Lacrosse Club' (title: '2025 Omaha Lacrosse Club') to index 2
+// Move '2025 Omaha Lacrosse Club' (title: '2025 Omaha Lacrosse Club') to index 1 (second position)
 const olcIndex = images.findIndex(img => img.title === '2025 Omaha Lacrosse Club');
-if (olcIndex > 2) {
+if (olcIndex > 1) {
   const [olcCard] = images.splice(olcIndex, 1);
-  images.splice(2, 0, olcCard);
+  images.splice(1, 0, olcCard);
 }
 ---
 
