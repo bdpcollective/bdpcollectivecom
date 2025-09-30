@@ -2,11 +2,11 @@
 import Layout from '../../../layouts/Layout.astro';
 import Lightbox from '../../../components/Lightbox.astro';
 
-// Generate image array for all 40 images in subdirectory
+// Generate image array for all 40 images
 const images = [
-  '/images/lacrosse/20250928_MWHS_WhitevsRampage/20250928_MWHS_WhitevsRampage/MWHS_vsRampage.jpg',
+  '/images/lacrosse/20250928_MWHS_WhitevsRampage/MWHS_vsRampage.jpg',
   ...Array.from({ length: 39 }, (_, i) => 
-    `/images/lacrosse/20250928_MWHS_WhitevsRampage/20250928_MWHS_WhitevsRampage/MWHS_vsRampage-${i + 2}.jpg`
+    `/images/lacrosse/20250928_MWHS_WhitevsRampage/MWHS_vsRampage-${i + 2}.jpg`
   )
 ];
 
