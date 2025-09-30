@@ -1,0 +1,56 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Lightbox from '../../../components/Lightbox.astro';
+
+// Generate image array for all 40 images in subdirectory
+const images = [
+  '/images/lacrosse/20250928_MWHS_WhitevsRampage/20250928_MWHS_WhitevsRampage/MWHS_vsRampage.jpg',
+  ...Array.from({ length: 39 }, (_, i) => 
+    `/images/lacrosse/20250928_MWHS_WhitevsRampage/20250928_MWHS_WhitevsRampage/MWHS_vsRampage-${i + 2}.jpg`
+  )
+];
+
+const title = "MWHS White vs Rampage";
+const description = "Gallery from the Millard West High School lacrosse game - White team vs Rampage";
+const date = "September 28, 2025";
+---
+
+<Layout title={title}>
+  <div class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      {/* Clean Back Navigation */}
+      <div class="mb-8">
+        <a href="/images/lacrosse" class="text-blue-600 hover:text-blue-800">← Back to Lacrosse</a>
+      </div>
+      
+      {/* Simple Header */}
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
+      <p class="text-gray-600 mb-8">{date}</p>
+
+      {/* Responsive Photo Grid */}
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {images.map((image, index) => (
+          <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
+            <img
+              src={image}
+              alt={`${title} - Image ${index + 1}`}
+              class="gallery-image w-full h-full object-cover cursor-pointer transform hover:scale-105 transition-transform duration-300"
+              loading={index < 9 ? "eager" : "lazy"}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  {/* Reusable Lightbox Component */}
+  <Lightbox images={images} />
+</Layout>
+
+<style>
+  /* Remove the fixed aspect ratio style */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
