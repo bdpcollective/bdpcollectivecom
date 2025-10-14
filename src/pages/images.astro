@@ -150,6 +150,20 @@ const categoryImages = {
     '/images/events/20100616_NationalSpecialOlympics/20100618_NationalSpecialOlymics - 7.jpeg',
     '/images/events/20100616_NationalSpecialOlympics/20100618_NationalSpecialOlymics - 8.jpeg',
     '/images/events/20100616_NationalSpecialOlympics/20100618_NationalSpecialOlymics - 9.jpeg'
+  ],
+  "Colorado": [
+    '/images/colorado2025/20251011_Colorado.jpg',
+    '/images/colorado2025/20251012_Colorado.jpg',
+    '/images/colorado2025/20251012_Colorado-2.jpg',
+    '/images/colorado2025/20251012_Colorado-3.jpg',
+    '/images/colorado2025/20251012_Colorado-4.jpg',
+    '/images/colorado2025/20251012_Colorado-5.jpg',
+    '/images/colorado2025/20251012_Colorado-6.jpg',
+    '/images/colorado2025/20251012_Colorado-7.jpg',
+    '/images/colorado2025/20251012_Colorado-8.jpg',
+    '/images/colorado2025/20251012_Colorado-9.jpg',
+    '/images/colorado2025/20251012_Colorado-10.jpg',
+    '/images/colorado2025/20251012_Colorado-11.jpg'
   ]
 };
 
@@ -159,7 +173,8 @@ const categoryTitles: Record<string, string> = {
   "Lacrosse": "2025 Millard West Lacrosse",
   "Omaha": "Images Around Omaha",
   "Zoo": "Omaha Henry Doorly Zoo",
-  "Nebraska Athletics": "Nebraska Athletics"
+  "Nebraska Athletics": "Nebraska Athletics",
+  "Colorado": "Colorado 2025"
 };
 
 // Function to get a random image from an array
@@ -198,18 +213,25 @@ images.push({
 // Order cards from newest to oldest
 images.reverse();
 
-// Move '2025 Millard West Lacrosse' (title: '2025 Millard West Lacrosse') to index 0 (first position)
-const mwIndex = images.findIndex(img => img.title === '2025 Millard West Lacrosse');
-if (mwIndex > 0) {
-  const [mwCard] = images.splice(mwIndex, 1);
-  images.splice(0, 0, mwCard);
+// Move 'Colorado 2025' to index 0 (first position - newest gallery)
+const coloradoIndex = images.findIndex(img => img.title === 'Colorado 2025');
+if (coloradoIndex > 0) {
+  const [coloradoCard] = images.splice(coloradoIndex, 1);
+  images.splice(0, 0, coloradoCard);
 }
 
-// Move '2025 Omaha Lacrosse Club' (title: '2025 Omaha Lacrosse Club') to index 1 (second position)
+// Move '2025 Millard West Lacrosse' to index 1 (second position)
+const mwIndex = images.findIndex(img => img.title === '2025 Millard West Lacrosse');
+if (mwIndex > 1) {
+  const [mwCard] = images.splice(mwIndex, 1);
+  images.splice(1, 0, mwCard);
+}
+
+// Move '2025 Omaha Lacrosse Club' to index 2 (third position)
 const olcIndex = images.findIndex(img => img.title === '2025 Omaha Lacrosse Club');
-if (olcIndex > 1) {
+if (olcIndex > 2) {
   const [olcCard] = images.splice(olcIndex, 1);
-  images.splice(1, 0, olcCard);
+  images.splice(2, 0, olcCard);
 }
 ---
 
@@ -267,12 +289,13 @@ if (olcIndex > 1) {
           <a 
             href={
               image.category === "Events" ? '/images/events' :
-              image.category === "Lacrosse" ? '/images/lacrosse' : 
-              image.category === "Omaha" ? '/images/omaha' : 
-              image.category === "Zoo" ? '/images/zoo' : 
+              image.category === "Lacrosse" ? '/images/lacrosse' :
+              image.category === "Omaha" ? '/images/omaha' :
+              image.category === "Zoo" ? '/images/zoo' :
               image.category === "Nebraska Athletics" ? '/images/huskers' :
               image.category === "Omaha Lacrosse Club" ? '/images/omaha-lacrosse' :
               image.category === "Hula" ? '/images/hula2025' :
+              image.category === "Colorado" ? '/images/travel/colorado2025' :
               "#"
             } 
             class="group h-full"

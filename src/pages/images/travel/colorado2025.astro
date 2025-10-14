@@ -1,0 +1,59 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Lightbox from '../../../components/Lightbox.astro';
+
+// List all images from colorado2025 folder
+const images = [
+  '/images/colorado2025/20251011_Colorado.jpg',
+  '/images/colorado2025/20251012_Colorado.jpg',
+  '/images/colorado2025/20251012_Colorado-2.jpg',
+  '/images/colorado2025/20251012_Colorado-3.jpg',
+  '/images/colorado2025/20251012_Colorado-4.jpg',
+  '/images/colorado2025/20251012_Colorado-5.jpg',
+  '/images/colorado2025/20251012_Colorado-6.jpg',
+  '/images/colorado2025/20251012_Colorado-7.jpg',
+  '/images/colorado2025/20251012_Colorado-8.jpg',
+  '/images/colorado2025/20251012_Colorado-9.jpg',
+  '/images/colorado2025/20251012_Colorado-10.jpg',
+  '/images/colorado2025/20251012_Colorado-11.jpg'
+];
+
+const title = "Colorado 2025";
+const description = "Gallery of photos from Colorado, October 2025";
+---
+
+<Layout title={title}>
+  <div class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="mb-8">
+        <a href="/images" class="text-blue-600 hover:text-blue-800">← Back to Images</a>
+      </div>
+
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
+      <p class="text-gray-600 mb-8">October 2025</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {images.map((image, index) => (
+          <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
+            <img
+              src={image}
+              alt={`Colorado photo ${index + 1}`}
+              class="gallery-image w-full h-full object-cover cursor-pointer transform hover:scale-105 transition-transform duration-300"
+              loading={index < 9 ? "eager" : "lazy"}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <Lightbox images={images} />
+</Layout>
+
+<style>
+  /* Remove the fixed aspect ratio style */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
