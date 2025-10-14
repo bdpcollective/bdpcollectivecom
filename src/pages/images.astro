@@ -151,7 +151,7 @@ const categoryImages = {
     '/images/events/20100616_NationalSpecialOlympics/20100618_NationalSpecialOlymics - 8.jpeg',
     '/images/events/20100616_NationalSpecialOlympics/20100618_NationalSpecialOlymics - 9.jpeg'
   ],
-  "Colorado": [
+  "Landscape": [
     '/images/colorado2025/20251011_Colorado.jpg',
     '/images/colorado2025/20251012_Colorado.jpg',
     '/images/colorado2025/20251012_Colorado-2.jpg',
@@ -174,7 +174,7 @@ const categoryTitles: Record<string, string> = {
   "Omaha": "Images Around Omaha",
   "Zoo": "Omaha Henry Doorly Zoo",
   "Nebraska Athletics": "Nebraska Athletics",
-  "Colorado": "Colorado 2025"
+  "Landscape": "Landscape"
 };
 
 // Function to get a random image from an array
@@ -213,11 +213,11 @@ images.push({
 // Order cards from newest to oldest
 images.reverse();
 
-// Move 'Colorado 2025' to index 0 (first position - newest gallery)
-const coloradoIndex = images.findIndex(img => img.title === 'Colorado 2025');
-if (coloradoIndex > 0) {
-  const [coloradoCard] = images.splice(coloradoIndex, 1);
-  images.splice(0, 0, coloradoCard);
+// Move 'Landscape' to index 0 (first position - newest gallery)
+const landscapeIndex = images.findIndex(img => img.title === 'Landscape');
+if (landscapeIndex > 0) {
+  const [landscapeCard] = images.splice(landscapeIndex, 1);
+  images.splice(0, 0, landscapeCard);
 }
 
 // Move '2025 Millard West Lacrosse' to index 1 (second position)
@@ -295,7 +295,7 @@ if (olcIndex > 2) {
               image.category === "Nebraska Athletics" ? '/images/huskers' :
               image.category === "Omaha Lacrosse Club" ? '/images/omaha-lacrosse' :
               image.category === "Hula" ? '/images/hula2025' :
-              image.category === "Colorado" ? '/images/travel/colorado2025' :
+              image.category === "Landscape" ? '/images/travel/colorado2025' :
               "#"
             } 
             class="group h-full"

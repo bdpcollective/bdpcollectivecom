@@ -18,8 +18,8 @@ const images = [
   '/images/colorado2025/20251012_Colorado-11.jpg'
 ];
 
-const title = "Colorado 2025";
-const description = "Gallery of photos from Colorado, October 2025";
+const title = "Landscape";
+const description = "Gallery of landscape photos";
 ---
 
 <Layout title={title}>
@@ -30,14 +30,14 @@ const description = "Gallery of photos from Colorado, October 2025";
       </div>
 
       <h1 class="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
-      <p class="text-gray-600 mb-8">October 2025</p>
+      <p class="text-gray-600 mb-8">Landscape photography collection</p>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {images.map((image, index) => (
           <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
             <img
               src={image}
-              alt={`Colorado photo ${index + 1}`}
+              alt={`Landscape photo ${index + 1}`}
               class="gallery-image w-full h-full object-cover cursor-pointer transform hover:scale-105 transition-transform duration-300"
               loading={index < 9 ? "eager" : "lazy"}
             />
