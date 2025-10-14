@@ -147,11 +147,11 @@ const previewImages = lacrosseGames.map(game => game.previewImage);
 
       <div class="flex justify-between items-center mb-8">
         <div class="flex gap-4">
-          <button class="px-4 py-2 rounded-full bg-gray-900 text-white hover:bg-gray-800 transition-colors">
-            Recent
+          <button id="filter-2025" class="filter-btn px-4 py-2 rounded-full bg-gray-900 text-white hover:bg-gray-800 transition-colors" data-year="2025">
+            2025
           </button>
-          <button class="px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors">
-            Popular
+          <button id="filter-2026" class="filter-btn px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors" data-year="2026">
+            2026
           </button>
         </div>
         <div class="flex gap-2">
@@ -168,9 +168,9 @@ const previewImages = lacrosseGames.map(game => game.previewImage);
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="games-grid">
         {lacrosseGames.map((game, index) => (
-          <div class="group relative">
+          <div class="group relative game-card" data-year={game.date.includes('2025') ? '2025' : '2026'}>
             <a href={`/images/lacrosse/${game.id}`} class="block">
               <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                 <div class="relative h-64">
@@ -214,16 +214,47 @@ const previewImages = lacrosseGames.map(game => game.previewImage);
     button.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
-      
+
       const imageUrl = button.getAttribute('data-src');
       if (!imageUrl) return; // Exit if no image URL is found
-      
+
       const link = document.createElement('a');
       link.href = imageUrl;
       link.download = imageUrl.split('/').pop() || 'image.jpg'; // Provide fallback filename
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
+    });
+  });
+
+  // Year filter functionality
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const gameCards = document.querySelectorAll('.game-card');
+
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const selectedYear = button.getAttribute('data-year');
+
+      // Update button styles
+      filterButtons.forEach(btn => {
+        if (btn === button) {
+          btn.classList.remove('bg-gray-100', 'text-gray-700');
+          btn.classList.add('bg-gray-900', 'text-white');
+        } else {
+          btn.classList.remove('bg-gray-900', 'text-white');
+          btn.classList.add('bg-gray-100', 'text-gray-700');
+        }
+      });
+
+      // Filter cards
+      gameCards.forEach(card => {
+        const cardYear = card.getAttribute('data-year');
+        if (cardYear === selectedYear) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
     });
   });
 </script> 
