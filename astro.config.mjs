@@ -7,6 +7,12 @@ export default defineConfig({
   site: 'https://bdpcollective.com',
   base: '/',
   integrations: [tailwind()],
+  image: {
+    // Enable optimized image processing
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+    },
+  },
   vite: {
     css: {
       // Ensure each page generates its own CSS

@@ -5,8 +5,6 @@ import { baseUrl } from '../config';
 interface Props {
 	title: string;
 }
-
-const { title } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -17,23 +15,27 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href={`${baseUrl}/favicon.svg`} />
 		<meta name="generator" content={Astro.generator} />
 		<title>Brian Pope | bdpcollective</title>
-		<!-- Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-8B6D7GXRG2"></script>
-		<script is:inline>
-			window.dataLayer = window.dataLayer || [];
-			function gtag() {
-				// @ts-ignore
-				dataLayer.push(arguments);
-			}
-			// @ts-ignore
-			gtag('js', new Date());
-			// @ts-ignore
-			gtag('config', 'G-8B6D7GXRG2');
-		</script>
-		<slot name="head" />
+
+		<!-- Preconnect to external domains -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="preconnect" href="https://www.googletagmanager.com">
+
+		<!-- Optimized Google Fonts with font-display swap -->
 		<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+		<!-- Google Analytics - Deferred for better performance -->
+		<script is:inline defer src="https://www.googletagmanager.com/gtag/js?id=G-8B6D7GXRG2"></script>
+		<script is:inline defer>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+			gtag('config', 'G-8B6D7GXRG2');
+		</script>
+
+		<slot name="head" />
 	</head>
 	<body class="min-h-screen flex flex-col font-franklin">
 		<nav class="bg-white shadow-sm">
