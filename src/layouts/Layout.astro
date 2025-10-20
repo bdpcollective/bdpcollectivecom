@@ -16,23 +16,33 @@ interface Props {
 		<meta name="generator" content={Astro.generator} />
 		<title>Brian Pope | bdpcollective</title>
 
-		<!-- Preconnect to external domains -->
+		<!-- Preconnect to external domains for faster resource loading -->
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link rel="preconnect" href="https://www.googletagmanager.com">
 
-		<!-- Optimized Google Fonts with font-display swap -->
-		<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<!-- Optimized Google Fonts with font-display swap and preload -->
+		<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&display=swap">
+		<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+		<noscript>
+			<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		</noscript>
 
-		<!-- Google Analytics - Deferred for better performance -->
-		<script is:inline defer src="https://www.googletagmanager.com/gtag/js?id=G-8B6D7GXRG2"></script>
-		<script is:inline defer>
-			window.dataLayer = window.dataLayer || [];
-			function gtag() {
-				dataLayer.push(arguments);
-			}
-			gtag('js', new Date());
-			gtag('config', 'G-8B6D7GXRG2');
+		<!-- Google Analytics - Loaded after page load for better performance -->
+		<script is:inline>
+			// Load Google Analytics asynchronously after page load
+			window.addEventListener('load', function() {
+				// Load the gtag script
+				var script = document.createElement('script');
+				script.async = true;
+				script.src = 'https://www.googletagmanager.com/gtag/js?id=G-8B6D7GXRG2';
+				document.head.appendChild(script);
+
+				// Initialize dataLayer
+				window.dataLayer = window.dataLayer || [];
+				function gtag(){dataLayer.push(arguments);}
+				gtag('js', new Date());
+				gtag('config', 'G-8B6D7GXRG2');
+			});
 		</script>
 
 		<slot name="head" />

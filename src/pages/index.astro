@@ -17,8 +17,10 @@ import heroImage from '../../public/hero-bg.jpg';
 				alt=""
 				loading="eager"
 				fetchpriority="high"
-				quality={80}
+				quality={70}
 				format="webp"
+				widths={[640, 750, 828, 1080, 1200, 1920, 2048]}
+				sizes="100vw"
 				class="w-full h-full object-cover brightness-75"
 			/>
 		</div>
@@ -40,10 +42,10 @@ import heroImage from '../../public/hero-bg.jpg';
 			<button
 				id="scroll-down-button"
 				class="text-white hover:text-gray-300 transition-colors duration-300 animate-bounce"
-				aria-label="Scroll down to content"
+				aria-label="Scroll down to see more content"
 			>
-				<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" role="img">
-					<title>Down arrow</title>
+				<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+					<title>Scroll down</title>
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
 				</svg>
 			</button>
