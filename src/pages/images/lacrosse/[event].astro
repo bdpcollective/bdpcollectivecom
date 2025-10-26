@@ -112,7 +112,7 @@ const images = Array.from({ length: game.imageCount }, (_, i) => ({
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {images.map((image) => (
-          <div 
+          <div
             class="relative overflow-hidden rounded-lg cursor-pointer group aspect-[4/3]"
             data-index={image.id - 1}
             data-image-src={image.src}
@@ -123,11 +123,6 @@ const images = Array.from({ length: game.imageCount }, (_, i) => ({
               alt={image.alt}
               class="absolute inset-0 w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-300"
             />
-            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-            <div class="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <h3 class="text-white text-lg font-semibold">{game.title}</h3>
-              <p class="text-gray-200 text-sm">{game.date}</p>
-            </div>
           </div>
         ))}
       </div>
