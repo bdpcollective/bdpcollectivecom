@@ -217,13 +217,6 @@ const previewImages = lacrosseGames.map(game => game.previewImage);
   <Lightbox images={previewImages} />
 </Layout>
 
-<style>
-  /* Ensure images maintain aspect ratio */
-  img {
-    aspect-ratio: 3/4;
-  }
-</style>
-
 <script>
   // Add download functionality
   document.querySelectorAll('.download-btn').forEach(button => {
