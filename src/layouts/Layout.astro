@@ -27,6 +27,32 @@ interface Props {
 			<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 		</noscript>
 
+		<!-- Inline Critical CSS for faster initial render -->
+		<style>
+			:root {
+				--accent: 136, 58, 234;
+				--accent-light: 224, 204, 250;
+				--accent-dark: 49, 10, 101;
+				--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60%);
+			}
+			html {
+				font-family: "Libre Franklin", "Franklin Gothic", "ITC Franklin Gothic", "Franklin Gothic Medium", "Franklin Gothic Book", "Franklin Gothic Demi", "Franklin Gothic Heavy", system-ui, sans-serif;
+				background: #f6f6f6;
+				background-size: 224px;
+			}
+			body {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+				overflow-x: hidden;
+				overflow-y: auto !important;
+			}
+			html, body {
+				overflow: auto !important;
+				height: auto !important;
+			}
+		</style>
+
 		<!-- Google Analytics - Loaded after page load for better performance -->
 		<script is:inline>
 			// Load Google Analytics asynchronously after page load
@@ -100,35 +126,7 @@ interface Props {
 </html>
 
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: "Libre Franklin", "Franklin Gothic", "ITC Franklin Gothic", "Franklin Gothic Medium", "Franklin Gothic Book", "Franklin Gothic Demi", "Franklin Gothic Heavy", system-ui, sans-serif;
-		background: #f6f6f6;
-		background-size: 224px;
-	}
-	body {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-		overflow-x: hidden;
-		overflow-y: auto !important;
-	}
-	
-	/* Override any global overflow:hidden that might be preventing scrolling */
-	html, body {
-		overflow: auto !important;
-		height: auto !important;
-	}
+	/* Non-critical styles loaded after initial render */
 	code {
 		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
 			Bitstream Vera Sans Mono, Courier New, monospace;

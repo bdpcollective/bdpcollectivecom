@@ -7,6 +7,10 @@ export default defineConfig({
   site: 'https://bdpcollective.com',
   base: '/',
   integrations: [tailwind()],
+  build: {
+    // Automatically inline small stylesheets to reduce critical request chains
+    inlineStylesheets: 'auto',
+  },
   image: {
     // Enable optimized image processing
     service: {
