@@ -16,12 +16,15 @@ interface Props {
 		<meta name="generator" content={Astro.generator} />
 		<title>Brian Pope | bdpcollective</title>
 
-		<!-- Preconnect to external domains for faster resource loading -->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<!-- DNS prefetch for external domains -->
+		<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+		<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+		<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
+		<!-- Preconnect only to critical font domain -->
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-		<!-- Optimized Google Fonts with font-display swap and preload -->
-		<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&display=swap">
+		<!-- Async Google Fonts with font-display: swap for performance -->
 		<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 		<noscript>
 			<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -53,22 +56,29 @@ interface Props {
 			}
 		</style>
 
-		<!-- Google Analytics - Loaded after page load for better performance -->
+		<!-- Google Analytics - Loaded with requestIdleCallback for better performance -->
 		<script is:inline>
-			// Load Google Analytics asynchronously after page load
-			window.addEventListener('load', function() {
-				// Load the gtag script
-				var script = document.createElement('script');
-				script.async = true;
-				script.src = 'https://www.googletagmanager.com/gtag/js?id=G-8B6D7GXRG2';
-				document.head.appendChild(script);
+			// Load Google Analytics during browser idle time to avoid blocking main thread
+			(function() {
+				var loadGA = function() {
+					var script = document.createElement('script');
+					script.async = true;
+					script.src = 'https://www.googletagmanager.com/gtag/js?id=G-8B6D7GXRG2';
+					document.head.appendChild(script);
 
-				// Initialize dataLayer
-				window.dataLayer = window.dataLayer || [];
-				function gtag(){dataLayer.push(arguments);}
-				gtag('js', new Date());
-				gtag('config', 'G-8B6D7GXRG2');
-			});
+					window.dataLayer = window.dataLayer || [];
+					function gtag(){dataLayer.push(arguments);}
+					gtag('js', new Date());
+					gtag('config', 'G-8B6D7GXRG2');
+				};
+
+				// Use requestIdleCallback if available, otherwise fallback to setTimeout
+				if ('requestIdleCallback' in window) {
+					requestIdleCallback(loadGA, { timeout: 2000 });
+				} else {
+					setTimeout(loadGA, 2000);
+				}
+			})();
 		</script>
 
 		<slot name="head" />

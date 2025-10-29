@@ -12,6 +12,10 @@ import { baseUrl } from '../config';
         <img
           src={`${baseUrl}/data-viz-hero.jpg`}
           alt="Data visualization hero background"
+          width="1920"
+          height="1080"
+          loading="eager"
+          fetchpriority="high"
           class="w-full h-full object-cover brightness-50"
         />
       </div>
@@ -62,6 +66,7 @@ import { baseUrl } from '../config';
                 alt="Poverty Levels by County"
                 width="800"
                 height="450"
+                loading="lazy"
                 class="object-cover transition-transform duration-300 group-hover:scale-105"
               />
             </div>
@@ -79,6 +84,7 @@ import { baseUrl } from '../config';
                 alt="Basketball Collapsible Tree"
                 width="800"
                 height="450"
+                loading="lazy"
                 class="object-cover transition-transform duration-300 group-hover:scale-105"
               />
             </div>
