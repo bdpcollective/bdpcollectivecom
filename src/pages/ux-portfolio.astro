@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import { baseUrl } from '../config';
+import portfolioHero from '../../public/portfolio-hero.jpg';
 
 const portfolioItems = [
   {
@@ -56,14 +57,24 @@ const portfolioItems = [
 ---
 
 <Layout title="UX Portfolio">
+  <Fragment slot="head">
+    <link rel="preload" as="image" href={portfolioHero.src} fetchpriority="high" />
+  </Fragment>
+
   <main>
     {/* Hero Section */}
     <section class="relative h-[50vh]">
       {/* Background Image */}
       <div class="absolute inset-0 z-0">
-        <img
-          src={`${baseUrl}/portfolio-hero.jpg`}
+        <Image
+          src={portfolioHero}
           alt="UX Portfolio hero background"
+          loading="eager"
+          fetchpriority="high"
+          quality={75}
+          format="webp"
+          widths={[640, 750, 828, 1080, 1200, 1920, 2048]}
+          sizes="100vw"
           class="w-full h-full object-cover brightness-50"
         />
       </div>
