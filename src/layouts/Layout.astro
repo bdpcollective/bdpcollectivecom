@@ -134,49 +134,30 @@ interface Props {
 </style>
 
 <script>
-	// Mobile menu functionality
-	const mobileMenuButton = document.getElementById('mobile-menu-button');
-	const closeMenuButton = document.getElementById('close-menu-button');
-	const mobileMenu = document.getElementById('mobile-menu');
+	// Mobile menu functionality - optimized with event delegation
+	const menu = document.getElementById('mobile-menu');
 
-	function openMobileMenu() {
-		if (mobileMenu) {
-			mobileMenu.classList.remove('hidden');
-			document.body.style.overflow = 'hidden';
-		}
+	if (menu) {
+		const toggle = (show: boolean) => {
+			menu.classList.toggle('hidden', !show);
+			document.body.style.overflow = show ? 'hidden' : '';
+		};
+
+		// Use event delegation for better performance (single listener instead of multiple)
+		document.addEventListener('click', (e: MouseEvent) => {
+			const target = e.target as HTMLElement;
+			if (target.closest('#mobile-menu-button')) {
+				toggle(true);
+			} else if (target.closest('#close-menu-button') || target === menu || target.closest('#mobile-menu a')) {
+				toggle(false);
+			}
+		});
+
+		// Handle escape key to close menu
+		document.addEventListener('keydown', (e: KeyboardEvent) => {
+			if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+				toggle(false);
+			}
+		});
 	}
-
-	function closeMobileMenu() {
-		if (mobileMenu) {
-			mobileMenu.classList.add('hidden');
-			document.body.style.overflow = '';
-		}
-	}
-
-	mobileMenuButton?.addEventListener('click', openMobileMenu);
-	closeMenuButton?.addEventListener('click', closeMobileMenu);
-
-	// Close menu when clicking a link
-	mobileMenu?.querySelectorAll('a').forEach(link => {
-		link.addEventListener('click', closeMobileMenu);
-	});
-
-	// Close menu when clicking outside
-	mobileMenu?.addEventListener('click', (e) => {
-		if (e.target === mobileMenu) {
-			closeMobileMenu();
-		}
-	});
-
-	// Ensure scrolling is restored on page load/refresh
-	document.addEventListener('DOMContentLoaded', () => {
-		document.body.style.overflow = '';
-	});
-
-	// Handle escape key
-	document.addEventListener('keydown', (e) => {
-		if (e.key === 'Escape' && mobileMenu && !mobileMenu.classList.contains('hidden')) {
-			closeMobileMenu();
-		}
-	});
 </script>

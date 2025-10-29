@@ -31,7 +31,7 @@ import { baseUrl } from '../config';
         
         {/* Chevron */}
         <button
-          onclick="document.getElementById('data-viz-cards').scrollIntoView({ behavior: 'smooth' })"
+          id="scroll-to-cards"
           class="animate-bounce p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors mb-8"
           aria-label="Scroll to visualization categories"
         >
@@ -89,4 +89,15 @@ import { baseUrl } from '../config';
       </div>
     </section>
   </main>
+
+  <script>
+    // Scroll to cards button - optimized
+    const scrollBtn = document.getElementById('scroll-to-cards');
+    const target = document.getElementById('data-viz-cards');
+    if (scrollBtn && target) {
+      scrollBtn.addEventListener('click', () => {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }, { passive: true });
+    }
+  </script>
 </Layout> 

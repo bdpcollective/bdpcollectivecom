@@ -139,7 +139,7 @@ const { game } = Astro.props;
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {game.images.map((image, index) => (
-          <button class="group relative w-full text-left" onclick={`window.openLightbox(${index})`}>
+          <div class="group relative w-full">
             <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
               <div class="relative h-64">
                 <img
@@ -158,7 +158,7 @@ const { game } = Astro.props;
                 </div>
               </div>
             </div>
-          </button>
+          </div>
         ))}
       </div>
     </section>

@@ -53,13 +53,12 @@ import heroImage from '../../public/hero-bg.jpg';
 	</main>
 
 	<script>
-		// Scroll down button functionality
-		const scrollButton = document.getElementById('scroll-down-button');
-		scrollButton?.addEventListener('click', () => {
-			window.scrollTo({
-				top: window.innerHeight,
-				behavior: 'smooth'
-			});
-		});
+		// Scroll down button - optimized
+		const btn = document.getElementById('scroll-down-button');
+		if (btn) {
+			btn.addEventListener('click', () => {
+				window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+			}, { passive: true });
+		}
 	</script>
 </Layout>

@@ -52,7 +52,7 @@ console.log('DevObsessed logo URL:', `${baseUrl}/images/logos/devobsessedcard.pn
         
         {/* Chevron */}
         <button
-          onclick="document.getElementById('logo-cards').scrollIntoView({ behavior: 'smooth' })"
+          id="scroll-to-logos"
           class="animate-bounce p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors mb-8"
           aria-label="Scroll to logo categories"
         >
@@ -96,4 +96,15 @@ console.log('DevObsessed logo URL:', `${baseUrl}/images/logos/devobsessedcard.pn
       </div>
     </section>
   </main>
+
+  <script>
+    // Scroll to logos button - optimized
+    const scrollBtn = document.getElementById('scroll-to-logos');
+    const target = document.getElementById('logo-cards');
+    if (scrollBtn && target) {
+      scrollBtn.addEventListener('click', () => {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }, { passive: true });
+    }
+  </script>
 </Layout> 

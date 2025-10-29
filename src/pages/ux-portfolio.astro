@@ -83,7 +83,7 @@ const portfolioItems = [
         
         {/* Chevron */}
         <button
-          onclick="document.getElementById('portfolio-cards').scrollIntoView({ behavior: 'smooth' })"
+          id="scroll-to-portfolio"
           class="animate-bounce p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors mb-8"
           aria-label="Scroll to portfolio categories"
         >
@@ -127,4 +127,15 @@ const portfolioItems = [
       </div>
     </section>
   </main>
+
+  <script>
+    // Scroll to portfolio button - optimized
+    const scrollBtn = document.getElementById('scroll-to-portfolio');
+    const target = document.getElementById('portfolio-cards');
+    if (scrollBtn && target) {
+      scrollBtn.addEventListener('click', () => {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }, { passive: true });
+    }
+  </script>
 </Layout> 
