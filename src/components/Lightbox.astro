@@ -9,9 +9,9 @@ const { images } = Astro.props;
 <div id="lightbox" class="fixed inset-0 z-[9999] hidden">
   <div class="absolute inset-0 bg-black opacity-95"></div>
   <div class="relative z-[10000] w-full h-full flex items-center justify-center">
-    <button id="close-lightbox" class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 p-4">&times;</button>
-    <button id="prev-image" class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-gray-300 p-4">&lt;</button>
-    <button id="next-image" class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-gray-300 p-4">&gt;</button>
+    <button id="close-lightbox" class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 p-4" aria-label="Close lightbox">&times;</button>
+    <button id="prev-image" class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-gray-300 p-4" aria-label="Previous image">&lt;</button>
+    <button id="next-image" class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-gray-300 p-4" aria-label="Next image">&gt;</button>
     <div class="w-full h-full flex items-center justify-center p-4">
       <img id="lightbox-image" src="" alt="" class="h-[90vh] w-auto object-contain opacity-0 transition-opacity duration-300" />
     </div>
