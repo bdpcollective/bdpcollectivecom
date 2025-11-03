@@ -21,16 +21,18 @@ interface Props {
 		<link rel="dns-prefetch" href="https://fonts.gstatic.com">
 		<link rel="dns-prefetch" href="https://www.googletagmanager.com">
 
-		<!-- Preconnect only to critical font domain -->
+		<!-- Preconnect to critical domains ASAP -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-		<!-- Preconnect to Google Analytics for faster third-party loading -->
 		<link rel="preconnect" href="https://www.googletagmanager.com">
 
-		<!-- Async Google Fonts with font-display: swap for performance -->
-		<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+		<!-- Preload critical font file for faster rendering -->
+		<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/librefranklin/v14/jizDREVItHgc8qDIbSTKq4XkRg8T88bjFuXOnduhLsSUB9rIb-JH1g.woff2" crossorigin>
+
+		<!-- Async Google Fonts with font-display: swap for non-blocking load -->
+		<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'; this.onload=null;">
 		<noscript>
-			<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+			<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;700&display=swap" rel="stylesheet">
 		</noscript>
 
 		<!-- Inline Critical CSS for faster initial render -->
@@ -56,6 +58,22 @@ interface Props {
 			html, body {
 				overflow: auto !important;
 				height: auto !important;
+			}
+			/* Prevent layout shift for images */
+			img {
+				max-width: 100%;
+				height: auto;
+			}
+			/* Critical above-fold styles for mobile */
+			@media (max-width: 768px) {
+				h1 {
+					font-size: 2.25rem;
+					line-height: 2.5rem;
+				}
+				.container {
+					padding-left: 1rem;
+					padding-right: 1rem;
+				}
 			}
 		</style>
 

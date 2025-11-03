@@ -58,7 +58,7 @@ const portfolioItems = [
 
 <Layout title="UX Portfolio">
   <Fragment slot="head">
-    <link rel="preload" as="image" href={portfolioHero.src} fetchpriority="high" />
+    <link rel="preload" as="image" href={portfolioHero.src} fetchpriority="high" type="image/jpeg" />
   </Fragment>
 
   <main>
@@ -74,7 +74,7 @@ const portfolioItems = [
           quality={75}
           format="webp"
           widths={[640, 750, 828, 1080, 1200, 1920, 2048]}
-          sizes="100vw"
+          sizes="(max-width: 640px) 640px, (max-width: 750px) 750px, (max-width: 828px) 828px, (max-width: 1080px) 1080px, (max-width: 1200px) 1200px, (max-width: 1920px) 1920px, 2048px"
           class="w-full h-full object-cover brightness-50"
         />
       </div>
