@@ -10,6 +10,8 @@ export default defineConfig({
   build: {
     // Automatically inline small stylesheets to reduce critical request chains
     inlineStylesheets: 'auto',
+    // Optimize asset handling
+    assets: '_astro',
   },
   image: {
     // Enable optimized image processing
@@ -27,6 +29,26 @@ export default defineConfig({
       cssCodeSplit: true,
       // Optimize chunk size
       chunkSizeWarningLimit: 1000,
+      // Enable minification with esbuild (faster than terser)
+      minify: 'esbuild',
+      // Optimize module preloading
+      modulePreload: {
+        polyfill: false, // Modern browsers support this
+      },
+      // Better code splitting
+      rollupOptions: {
+        output: {
+          manualChunks: (id) => {
+            // Split vendor code from node_modules
+            if (id.includes('node_modules')) {
+              if (id.includes('d3') || id.includes('topojson')) {
+                return 'vendor-viz';
+              }
+              return 'vendor';
+            }
+          },
+        },
+      },
     },
     // Optimize dependencies
     optimizeDeps: {
