@@ -64,6 +64,34 @@ interface Props {
 				max-width: 100%;
 				height: auto;
 			}
+			/* Critical navigation styles */
+			nav {
+				background-color: white;
+				box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+			}
+			/* Critical button and link styles */
+			button {
+				cursor: pointer;
+				border: none;
+				background: transparent;
+			}
+			a {
+				text-decoration: none;
+				color: inherit;
+			}
+			/* Utility classes used frequently */
+			.flex {
+				display: flex;
+			}
+			.items-center {
+				align-items: center;
+			}
+			.justify-between {
+				justify-content: space-between;
+			}
+			.hidden {
+				display: none;
+			}
 			/* Critical above-fold styles for mobile */
 			@media (max-width: 768px) {
 				h1 {
@@ -95,9 +123,9 @@ interface Props {
 
 				// Use requestIdleCallback if available, otherwise fallback to setTimeout
 				if ('requestIdleCallback' in window) {
-					requestIdleCallback(loadGA, { timeout: 2000 });
+					requestIdleCallback(loadGA, { timeout: 3000 });
 				} else {
-					setTimeout(loadGA, 2000);
+					setTimeout(loadGA, 3000);
 				}
 			})();
 		</script>
@@ -178,11 +206,15 @@ interface Props {
 		document.addEventListener('click', (e: MouseEvent) => {
 			const target = e.target as HTMLElement;
 			if (target.closest('#mobile-menu-button')) {
+				e.preventDefault();
 				toggle(true);
 			} else if (target.closest('#close-menu-button') || target === menu || target.closest('#mobile-menu a')) {
+				if (target.closest('#close-menu-button') || target === menu) {
+					e.preventDefault();
+				}
 				toggle(false);
 			}
-		});
+		}, { passive: false });
 
 		// Handle escape key to close menu
 		document.addEventListener('keydown', (e: KeyboardEvent) => {

@@ -1,6 +1,13 @@
 # Cache headers for static assets
 # These headers improve performance by enabling browser caching
 
+# Global compression and security headers
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+
 # Images - cache for 1 year (immutable)
 /images/*
   Cache-Control: public, max-age=31536000, immutable
