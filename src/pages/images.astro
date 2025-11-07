@@ -163,6 +163,16 @@ const categoryImages = {
     '/images/landscape/20251012_Colorado-9.jpg',
     '/images/landscape/20251012_Colorado-10.jpg',
     '/images/landscape/20251012_Colorado-11.jpg'
+  ],
+  "Box Lacrosse": [
+    '/images/lacrosse/2025_boxlax/20251105_Week1/20251105_Box_Week1.jpg',
+    '/images/lacrosse/2025_boxlax/20251105_Week1/20251105_Box_Week1-2.jpg',
+    '/images/lacrosse/2025_boxlax/20251105_Week1/20251105_Box_Week1-3.jpg',
+    '/images/lacrosse/2025_boxlax/20251105_Week1/20251105_Box_Week1-4.jpg',
+    '/images/lacrosse/2025_boxlax/20251105_Week1/20251105_Box_Week1-5.jpg',
+    '/images/lacrosse/2025_boxlax/20251105_Week1/20251105_Box_Week1-6.jpg',
+    '/images/lacrosse/2025_boxlax/20251105_Week1/20251105_Box_Week1-7.jpg',
+    '/images/lacrosse/2025_boxlax/20251105_Week1/20251105_Box_Week1-8.jpg'
   ]
 };
 
@@ -173,7 +183,8 @@ const categoryTitles: Record<string, string> = {
   "Omaha": "Images Around Omaha",
   "Zoo": "Omaha Henry Doorly Zoo",
   "Nebraska Athletics": "Nebraska Athletics",
-  "Landscape": "Landscape"
+  "Landscape": "Landscape",
+  "Box Lacrosse": "2025 Box Lacrosse"
 };
 
 // Function to get a random image from an array
@@ -212,25 +223,32 @@ images.push({
 // Order cards from newest to oldest
 images.reverse();
 
-// Move 'Landscape' to index 0 (first position - newest gallery)
+// Move '2025 Box Lacrosse' to index 0 (first position - newest gallery)
+const boxIndex = images.findIndex(img => img.title === '2025 Box Lacrosse');
+if (boxIndex > 0) {
+  const [boxCard] = images.splice(boxIndex, 1);
+  images.splice(0, 0, boxCard);
+}
+
+// Move 'Landscape' to index 1 (second position)
 const landscapeIndex = images.findIndex(img => img.title === 'Landscape');
-if (landscapeIndex > 0) {
+if (landscapeIndex > 1) {
   const [landscapeCard] = images.splice(landscapeIndex, 1);
-  images.splice(0, 0, landscapeCard);
+  images.splice(1, 0, landscapeCard);
 }
 
-// Move '2025 Millard West Lacrosse' to index 1 (second position)
+// Move '2025 Millard West Lacrosse' to index 2 (third position)
 const mwIndex = images.findIndex(img => img.title === '2025 Millard West Lacrosse');
-if (mwIndex > 1) {
+if (mwIndex > 2) {
   const [mwCard] = images.splice(mwIndex, 1);
-  images.splice(1, 0, mwCard);
+  images.splice(2, 0, mwCard);
 }
 
-// Move '2025 Omaha Lacrosse Club' to index 2 (third position)
+// Move '2025 Omaha Lacrosse Club' to index 3 (fourth position)
 const olcIndex = images.findIndex(img => img.title === '2025 Omaha Lacrosse Club');
-if (olcIndex > 2) {
+if (olcIndex > 3) {
   const [olcCard] = images.splice(olcIndex, 1);
-  images.splice(2, 0, olcCard);
+  images.splice(3, 0, olcCard);
 }
 ---
 
@@ -295,6 +313,7 @@ if (olcIndex > 2) {
               image.category === "Omaha Lacrosse Club" ? '/images/omaha-lacrosse' :
               image.category === "Hula" ? '/images/hula2025' :
               image.category === "Landscape" ? '/images/landscape' :
+              image.category === "Box Lacrosse" ? '/images/boxlacrosse' :
               "#"
             } 
             class="group h-full"

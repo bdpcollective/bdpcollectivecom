@@ -1,0 +1,49 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Lightbox from '../../../components/Lightbox.astro';
+
+// Generate image array - first image has no dash, rest are numbered 2-72
+const images = [
+  `/images/lacrosse/2025_boxlax/20251105_Week1/20251105_Box_Week1.jpg`,
+  ...Array.from({ length: 71 }, (_, i) => `/images/lacrosse/2025_boxlax/20251105_Week1/20251105_Box_Week1-${i + 2}.jpg`)
+];
+
+const title = "2025 Box Lacrosse - Week 1";
+const description = "Gallery of photos from Week 1 of the 2025 Box Lacrosse at Millard West High School on November 5, 2025";
+---
+
+<Layout title={title}>
+  <div class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="mb-8">
+        <a href="/images/boxlacrosse" class="text-blue-600 hover:text-blue-800">← Back to Box Lacrosse</a>
+      </div>
+
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
+      <p class="text-gray-600 mb-8">November 5, 2025</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {images.map((image, index) => (
+          <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
+            <img
+              src={image}
+              alt={`Box Lacrosse Week 1 photo ${index + 1}`}
+              class="gallery-image w-full h-full object-cover cursor-pointer transform hover:scale-105 transition-transform duration-300"
+              loading={index < 9 ? "eager" : "lazy"}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <Lightbox images={images} />
+</Layout>
+
+<style>
+  /* Remove the fixed aspect ratio style */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
