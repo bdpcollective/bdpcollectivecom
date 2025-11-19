@@ -15,7 +15,7 @@
     "@types/node": "^22.13.13",
     "@types/nodemailer": "^6.4.17",
     "@types/topojson-client": "^3.1.5",
-    "astro": "^5.15.8",
+    "astro": "^5.15.9",
     "d3": "^7.9.0",
     "nodemailer": "^7.0.9",
     "resend": "^4.2.0",
