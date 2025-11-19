@@ -127,7 +127,7 @@ const categoryTitles: Record<string, string> = {
   "Lacrosse": "2025 Millard West Lacrosse",
   "Zoo": "Omaha Henry Doorly Zoo",
   "Nebraska Athletics": "Nebraska Athletics",
-  "Landscape": "Landscape",
+  "Landscape": "Landscapes",
   "Box Lacrosse": "2025 Box Lacrosse"
 };
 
@@ -174,8 +174,8 @@ if (boxIndex > 0) {
   images.splice(0, 0, boxCard);
 }
 
-// Move 'Landscape' to index 1 (second position)
-const landscapeIndex = images.findIndex(img => img.title === 'Landscape');
+// Move 'Landscapes' to index 1 (second position)
+const landscapeIndex = images.findIndex(img => img.title === 'Landscapes');
 if (landscapeIndex > 1) {
   const [landscapeCard] = images.splice(landscapeIndex, 1);
   images.splice(1, 0, landscapeCard);
