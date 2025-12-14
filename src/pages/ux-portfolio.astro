@@ -209,167 +209,164 @@ const portfolioItems = [
   </style>
 
   <script>
-    // Parallax scrolling effect - optimized with requestAnimationFrame
-    let ticking = false;
-    const parallaxBg = document.querySelector('.parallax-image') as HTMLElement;
-    const parallaxContent = document.querySelector('.parallax-content') as HTMLElement;
-
-    function updateParallax() {
-      const scrolled = window.pageYOffset;
-      const heroHeight = window.innerHeight * 0.5; // 50vh
-      
-      // Only apply parallax within hero section
-      if (scrolled < heroHeight) {
-        // Background moves slower (0.5x speed)
-        if (parallaxBg) {
-          parallaxBg.style.transform = `translateY(${scrolled * 0.5}px)`;
-        }
-        // Content moves faster (0.3x speed) for depth effect
-        if (parallaxContent) {
-          parallaxContent.style.transform = `translateY(${scrolled * 0.3}px)`;
-          parallaxContent.style.opacity = `${1 - scrolled / heroHeight * 0.3}`;
-        }
-      }
-      
-      ticking = false;
-    }
-
-    function requestTick() {
-      if (!ticking) {
-        requestAnimationFrame(updateParallax);
-        ticking = true;
-      }
-    }
-
-    // Use passive listener for better performance
-    window.addEventListener('scroll', requestTick, { passive: true });
-
-    // Scroll to portfolio button - optimized
-    const scrollBtn = document.getElementById('scroll-to-portfolio');
-    const target = document.getElementById('portfolio-cards');
-    if (scrollBtn && target) {
-      scrollBtn.addEventListener('click', () => {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }, { passive: true });
-    }
-
-    // Scroll-triggered animations using Intersection Observer
-    const animatedCards = document.querySelectorAll('.scroll-fade-in');
-    
-    if (animatedCards.length > 0 && 'IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const element = entry.target as HTMLElement;
-            const index = parseInt(element.dataset.index || '0');
-            // Stagger animation based on index
-            setTimeout(() => {
-              element.style.opacity = '1';
-              element.style.transform = 'translateY(0)';
-            }, index * 100);
-            observer.unobserve(element);
-          }
-        });
-      }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      });
-
-      animatedCards.forEach((card) => {
-        observer.observe(card);
-      });
-    } else {
-      // Fallback: show all cards immediately if IntersectionObserver not supported
-      animatedCards.forEach((card) => {
-        (card as HTMLElement).style.opacity = '1';
-        (card as HTMLElement).style.transform = 'translateY(0)';
-      });
-    }
-
-    // Magnetic hover effects
-    const magneticCards = document.querySelectorAll('.magnetic-card');
-    const magneticStrength = 0.15; // How much the card follows the cursor (0-1)
-
-    magneticCards.forEach((card) => {
-      const cardElement = card as HTMLElement;
-      let currentX = 0;
-      let currentY = 0;
-      let targetX = 0;
-      let targetY = 0;
-      let rafId: number | null = null;
-
-      function animate() {
-        // Smooth interpolation
-        currentX += (targetX - currentX) * 0.1;
-        currentY += (targetY - currentY) * 0.1;
-
-        cardElement.style.transform = `translate(${currentX}px, ${currentY}px)`;
-
-        if (Math.abs(targetX - currentX) > 0.1 || Math.abs(targetY - currentY) > 0.1) {
-          rafId = requestAnimationFrame(animate);
-        } else {
-          rafId = null;
-        }
-      }
-
-      cardElement.addEventListener('mouseenter', () => {
-        cardElement.style.transition = 'none';
-      });
-
-      cardElement.addEventListener('mouseleave', () => {
-        targetX = 0;
-        targetY = 0;
-        cardElement.style.transition = 'transform 0.3s ease-out';
-        if (rafId) {
-          cancelAnimationFrame(rafId);
-        }
-        animate();
-      });
-
-      cardElement.addEventListener('mousemove', (e) => {
-        const rect = cardElement.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-
-        const deltaX = (e.clientX - centerX) * magneticStrength;
-        const deltaY = (e.clientY - centerY) * magneticStrength;
-
-        targetX = deltaX;
-        targetY = deltaY;
-
-        if (!rafId) {
-          rafId = requestAnimationFrame(animate);
-        }
-      });
-    });
-
-    // Color transitions on scroll
-    const colorContainer = document.querySelector('.color-transition-container') as HTMLElement;
-    if (colorContainer) {
+    document.addEventListener('astro:page-load', () => {
+      // Parallax scrolling effect - optimized with requestAnimationFrame
       let ticking = false;
-      
-      function updateColorTransition() {
+      const parallaxBg = document.querySelector('.parallax-image') as HTMLElement;
+      const parallaxContent = document.querySelector('.parallax-content') as HTMLElement;
+
+      function updateParallax() {
         const scrolled = window.pageYOffset;
-        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-        const scrollPercent = Math.min(scrolled / maxScroll, 1);
-        
-        // Move background gradient based on scroll
-        const bgPosition = scrollPercent * 200; // 0-200% range
-        colorContainer.style.backgroundPosition = `0% ${bgPosition}%`;
-        
+        const heroHeight = window.innerHeight * 0.5; // 50vh
+
+        // Only apply parallax within hero section
+        if (scrolled < heroHeight) {
+          // Background moves slower (0.5x speed)
+          if (parallaxBg) {
+            parallaxBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+          }
+          // Content moves faster (0.3x speed) for depth effect
+          if (parallaxContent) {
+            parallaxContent.style.transform = `translateY(${scrolled * 0.3}px)`;
+            parallaxContent.style.opacity = `${1 - scrolled / heroHeight * 0.3}`;
+          }
+        }
+
         ticking = false;
       }
 
-      function requestColorTick() {
+      function requestTick() {
         if (!ticking) {
-          requestAnimationFrame(updateColorTransition);
+          requestAnimationFrame(updateParallax);
           ticking = true;
         }
       }
 
-      window.addEventListener('scroll', requestColorTick, { passive: true });
-      updateColorTransition(); // Initial call
-    }
+      // Use passive listener for better performance
+      window.addEventListener('scroll', requestTick, { passive: true });
 
+      // Scroll to portfolio button - optimized
+      const scrollBtn = document.getElementById('scroll-to-portfolio');
+      const target = document.getElementById('portfolio-cards');
+      if (scrollBtn && target) {
+        scrollBtn.addEventListener('click', () => {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }, { passive: true });
+      }
+
+      // Scroll-triggered animations using Intersection Observer
+      const animatedCards = document.querySelectorAll('.scroll-fade-in');
+
+      if (animatedCards.length > 0 && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const element = entry.target as HTMLElement;
+              const index = parseInt(element.dataset.index || '0');
+              setTimeout(() => {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+              }, index * 100);
+              observer.unobserve(element);
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        });
+
+        animatedCards.forEach((card) => {
+          observer.observe(card);
+        });
+      } else {
+        animatedCards.forEach((card) => {
+          (card as HTMLElement).style.opacity = '1';
+          (card as HTMLElement).style.transform = 'translateY(0)';
+        });
+      }
+
+      // Magnetic hover effects
+      const magneticCards = document.querySelectorAll('.magnetic-card');
+      const magneticStrength = 0.15;
+
+      magneticCards.forEach((card) => {
+        const cardElement = card as HTMLElement;
+        let currentX = 0;
+        let currentY = 0;
+        let targetX = 0;
+        let targetY = 0;
+        let rafId: number | null = null;
+
+        function animate() {
+          currentX += (targetX - currentX) * 0.1;
+          currentY += (targetY - currentY) * 0.1;
+
+          cardElement.style.transform = `translate(${currentX}px, ${currentY}px)`;
+
+          if (Math.abs(targetX - currentX) > 0.1 || Math.abs(targetY - currentY) > 0.1) {
+            rafId = requestAnimationFrame(animate);
+          } else {
+            rafId = null;
+          }
+        }
+
+        cardElement.addEventListener('mouseenter', () => {
+          cardElement.style.transition = 'none';
+        });
+
+        cardElement.addEventListener('mouseleave', () => {
+          targetX = 0;
+          targetY = 0;
+          cardElement.style.transition = 'transform 0.3s ease-out';
+          if (rafId) {
+            cancelAnimationFrame(rafId);
+          }
+          animate();
+        });
+
+        cardElement.addEventListener('mousemove', (e) => {
+          const rect = cardElement.getBoundingClientRect();
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+
+          const deltaX = (e.clientX - centerX) * magneticStrength;
+          const deltaY = (e.clientY - centerY) * magneticStrength;
+
+          targetX = deltaX;
+          targetY = deltaY;
+
+          if (!rafId) {
+            rafId = requestAnimationFrame(animate);
+          }
+        });
+      });
+
+      // Color transitions on scroll
+      const colorContainer = document.querySelector('.color-transition-container') as HTMLElement;
+      if (colorContainer) {
+        let colorTicking = false;
+
+        function updateColorTransition() {
+          const scrolled = window.pageYOffset;
+          const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+          const scrollPercent = Math.min(scrolled / maxScroll, 1);
+
+          const bgPosition = scrollPercent * 200;
+          colorContainer.style.backgroundPosition = `0% ${bgPosition}%`;
+
+          colorTicking = false;
+        }
+
+        function requestColorTick() {
+          if (!colorTicking) {
+            requestAnimationFrame(updateColorTransition);
+            colorTicking = true;
+          }
+        }
+
+        window.addEventListener('scroll', requestColorTick, { passive: true });
+        updateColorTransition();
+      }
+    });
   </script>
 </Layout> 

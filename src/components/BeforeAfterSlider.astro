@@ -1,0 +1,127 @@
+---
+interface Props {
+  beforeImage: string;
+  afterImage: string;
+  beforeLabel?: string;
+  afterLabel?: string;
+}
+
+const { beforeImage, afterImage, beforeLabel = "Before", afterLabel = "After" } = Astro.props;
+---
+
+<div class="before-after-slider relative w-full h-[500px] rounded-lg overflow-hidden shadow-xl">
+  <div class="absolute inset-0">
+    <img 
+      src={afterImage} 
+      alt="After" 
+      class="absolute inset-0 w-full h-full object-cover"
+      id="after-image"
+    />
+    <div 
+      class="absolute inset-0 overflow-hidden before-after-clip"
+      id="before-container"
+      style="clip-path: inset(0 50% 0 0);"
+    >
+      <img 
+        src={beforeImage} 
+        alt="Before" 
+        class="absolute inset-0 w-full h-full object-cover"
+        id="before-image"
+      />
+    </div>
+  </div>
+  
+  {/* Slider Handle */}
+  <div 
+    class="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize z-10 slider-handle"
+    id="slider-handle"
+    style="left: 50%;"
+  >
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center">
+      <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
+      </svg>
+    </div>
+  </div>
+  
+  {/* Labels */}
+  <div class="absolute top-4 left-4 bg-black/70 text-white px-4 py-2 rounded-lg z-20">
+    <span class="font-semibold">{beforeLabel}</span>
+  </div>
+  <div class="absolute top-4 right-4 bg-black/70 text-white px-4 py-2 rounded-lg z-20">
+    <span class="font-semibold">{afterLabel}</span>
+  </div>
+</div>
+
+<style>
+  .before-after-slider {
+    user-select: none;
+  }
+  .slider-handle {
+    transition: left 0.1s ease-out;
+  }
+  .slider-handle:hover {
+    background: rgba(255, 255, 255, 0.9);
+  }
+  .before-after-clip {
+    transition: clip-path 0.1s ease-out;
+  }
+</style>
+
+<script>
+  const slider = document.querySelector('.before-after-slider');
+  const handle = document.getElementById('slider-handle');
+  const beforeContainer = document.getElementById('before-container');
+  
+  if (slider && handle && beforeContainer) {
+    let isDragging = false;
+    
+    function updateSlider(clientX: number) {
+      const rect = slider.getBoundingClientRect();
+      const x = clientX - rect.left;
+      const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+      
+      handle.style.left = `${percentage}%`;
+      beforeContainer.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+    }
+    
+    handle.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      e.preventDefault();
+    });
+    
+    document.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        updateSlider(e.clientX);
+      }
+    });
+    
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+    
+    // Touch support
+    handle.addEventListener('touchstart', (e) => {
+      isDragging = true;
+      e.preventDefault();
+    });
+    
+    document.addEventListener('touchmove', (e) => {
+      if (isDragging && e.touches[0]) {
+        updateSlider(e.touches[0].clientX);
+      }
+    });
+    
+    document.addEventListener('touchend', () => {
+      isDragging = false;
+    });
+    
+    // Click to move
+    slider.addEventListener('click', (e) => {
+      if (!isDragging) {
+        updateSlider(e.clientX);
+      }
+    });
+  }
+</script>
+

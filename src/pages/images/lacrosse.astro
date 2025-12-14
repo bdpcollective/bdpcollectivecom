@@ -238,136 +238,138 @@ const previewImages = lacrosseGames.map(game => game.previewImage);
 </Layout>
 
 <script>
-  // Scroll-triggered animations using Intersection Observer
-  const animatedCards = document.querySelectorAll('.scroll-fade-in');
+  document.addEventListener('astro:page-load', () => {
+    // Scroll-triggered animations using Intersection Observer
+    const animatedCards = document.querySelectorAll('.scroll-fade-in');
 
-  if (animatedCards.length > 0 && 'IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const element = entry.target as HTMLElement;
-          const index = parseInt(element.dataset.index || '0');
-          setTimeout(() => {
-            element.style.opacity = '1';
-            element.style.transform = 'translateY(0)';
-          }, index * 100);
-          observer.unobserve(element);
-        }
+    if (animatedCards.length > 0 && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const element = entry.target as HTMLElement;
+            const index = parseInt(element.dataset.index || '0');
+            setTimeout(() => {
+              element.style.opacity = '1';
+              element.style.transform = 'translateY(0)';
+            }, index * 100);
+            observer.unobserve(element);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
       });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    });
 
-    animatedCards.forEach((card) => {
-      observer.observe(card);
-    });
-  } else {
-    animatedCards.forEach((card) => {
-      (card as HTMLElement).style.opacity = '1';
-      (card as HTMLElement).style.transform = 'translateY(0)';
-    });
-  }
-
-  // Magnetic hover effects
-  const magneticCards = document.querySelectorAll('.magnetic-card');
-  const magneticStrength = 0.15;
-
-  magneticCards.forEach((card) => {
-    const cardElement = card as HTMLElement;
-    let currentX = 0;
-    let currentY = 0;
-    let targetX = 0;
-    let targetY = 0;
-    let rafId: number | null = null;
-
-    function animate() {
-      currentX += (targetX - currentX) * 0.1;
-      currentY += (targetY - currentY) * 0.1;
-
-      cardElement.style.transform = `translate(${currentX}px, ${currentY}px)`;
-
-      if (Math.abs(targetX - currentX) > 0.1 || Math.abs(targetY - currentY) > 0.1) {
-        rafId = requestAnimationFrame(animate);
-      } else {
-        rafId = null;
-      }
+      animatedCards.forEach((card) => {
+        observer.observe(card);
+      });
+    } else {
+      animatedCards.forEach((card) => {
+        (card as HTMLElement).style.opacity = '1';
+        (card as HTMLElement).style.transform = 'translateY(0)';
+      });
     }
 
-    cardElement.addEventListener('mouseenter', () => {
-      cardElement.style.transition = 'none';
-    });
+    // Magnetic hover effects
+    const magneticCards = document.querySelectorAll('.magnetic-card');
+    const magneticStrength = 0.15;
 
-    cardElement.addEventListener('mouseleave', () => {
-      targetX = 0;
-      targetY = 0;
-      cardElement.style.transition = 'transform 0.3s ease-out';
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-      }
-      animate();
-    });
+    magneticCards.forEach((card) => {
+      const cardElement = card as HTMLElement;
+      let currentX = 0;
+      let currentY = 0;
+      let targetX = 0;
+      let targetY = 0;
+      let rafId: number | null = null;
 
-    cardElement.addEventListener('mousemove', (e) => {
-      const rect = cardElement.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
+      function animate() {
+        currentX += (targetX - currentX) * 0.1;
+        currentY += (targetY - currentY) * 0.1;
 
-      const deltaX = (e.clientX - centerX) * magneticStrength;
-      const deltaY = (e.clientY - centerY) * magneticStrength;
+        cardElement.style.transform = `translate(${currentX}px, ${currentY}px)`;
 
-      targetX = deltaX;
-      targetY = deltaY;
-
-      if (!rafId) {
-        rafId = requestAnimationFrame(animate);
-      }
-    });
-  });
-
-  // Year filter functionality
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  const gameCards = document.querySelectorAll('.game-card');
-
-  filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      const selectedYear = button.getAttribute('data-year');
-
-      // Update button styles
-      filterButtons.forEach(btn => {
-        if (btn === button) {
-          btn.classList.remove('bg-gray-100', 'text-gray-700');
-          btn.classList.add('bg-gray-900', 'text-white');
+        if (Math.abs(targetX - currentX) > 0.1 || Math.abs(targetY - currentY) > 0.1) {
+          rafId = requestAnimationFrame(animate);
         } else {
-          btn.classList.remove('bg-gray-900', 'text-white');
-          btn.classList.add('bg-gray-100', 'text-gray-700');
+          rafId = null;
         }
+      }
+
+      cardElement.addEventListener('mouseenter', () => {
+        cardElement.style.transition = 'none';
       });
 
-      // Filter cards with smooth animations
-      gameCards.forEach((card, index) => {
-        const cardElement = card as HTMLElement;
-        const cardYear = card.getAttribute('data-year');
-
-        if (cardYear === selectedYear) {
-          cardElement.style.display = '';
-          cardElement.style.opacity = '0';
-          cardElement.style.transform = 'translateY(20px)';
-
-          setTimeout(() => {
-            cardElement.style.transition = 'opacity 0.4s ease-out, transform 0.4s ease-out';
-            cardElement.style.opacity = '1';
-            cardElement.style.transform = 'translateY(0)';
-          }, index * 30);
-        } else {
-          cardElement.style.transition = 'opacity 0.3s ease-out, transform 0.3s ease-out';
-          cardElement.style.opacity = '0';
-          cardElement.style.transform = 'translateY(-10px)';
-
-          setTimeout(() => {
-            cardElement.style.display = 'none';
-          }, 300);
+      cardElement.addEventListener('mouseleave', () => {
+        targetX = 0;
+        targetY = 0;
+        cardElement.style.transition = 'transform 0.3s ease-out';
+        if (rafId) {
+          cancelAnimationFrame(rafId);
         }
+        animate();
+      });
+
+      cardElement.addEventListener('mousemove', (e) => {
+        const rect = cardElement.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        const deltaX = (e.clientX - centerX) * magneticStrength;
+        const deltaY = (e.clientY - centerY) * magneticStrength;
+
+        targetX = deltaX;
+        targetY = deltaY;
+
+        if (!rafId) {
+          rafId = requestAnimationFrame(animate);
+        }
+      });
+    });
+
+    // Year filter functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const gameCards = document.querySelectorAll('.game-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const selectedYear = button.getAttribute('data-year');
+
+        // Update button styles
+        filterButtons.forEach(btn => {
+          if (btn === button) {
+            btn.classList.remove('bg-gray-100', 'text-gray-700');
+            btn.classList.add('bg-gray-900', 'text-white');
+          } else {
+            btn.classList.remove('bg-gray-900', 'text-white');
+            btn.classList.add('bg-gray-100', 'text-gray-700');
+          }
+        });
+
+        // Filter cards with smooth animations
+        gameCards.forEach((card, index) => {
+          const cardElement = card as HTMLElement;
+          const cardYear = card.getAttribute('data-year');
+
+          if (cardYear === selectedYear) {
+            cardElement.style.display = '';
+            cardElement.style.opacity = '0';
+            cardElement.style.transform = 'translateY(20px)';
+
+            setTimeout(() => {
+              cardElement.style.transition = 'opacity 0.4s ease-out, transform 0.4s ease-out';
+              cardElement.style.opacity = '1';
+              cardElement.style.transform = 'translateY(0)';
+            }, index * 30);
+          } else {
+            cardElement.style.transition = 'opacity 0.3s ease-out, transform 0.3s ease-out';
+            cardElement.style.opacity = '0';
+            cardElement.style.transform = 'translateY(-10px)';
+
+            setTimeout(() => {
+              cardElement.style.display = 'none';
+            }, 300);
+          }
+        });
       });
     });
   });

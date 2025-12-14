@@ -6,17 +6,55 @@ interface Props {
 const { images } = Astro.props;
 ---
 
-<div id="lightbox" class="fixed inset-0 z-[9999] hidden">
-  <div class="absolute inset-0 bg-black opacity-95"></div>
+<div id="lightbox" class="fixed inset-0 z-[9999] hidden lightbox-container">
+  <div class="absolute inset-0 bg-black lightbox-backdrop opacity-0 transition-opacity duration-500"></div>
   <div class="relative z-[10000] w-full h-full flex items-center justify-center">
-    <button id="close-lightbox" class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 p-4" aria-label="Close lightbox">&times;</button>
-    <button id="prev-image" class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-gray-300 p-4" aria-label="Previous image">&lt;</button>
-    <button id="next-image" class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-gray-300 p-4" aria-label="Next image">&gt;</button>
+    <button id="close-lightbox" class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 p-4 z-[10001] lightbox-button opacity-0 transition-all duration-300 transform translate-y-4" aria-label="Close lightbox">&times;</button>
+    <button id="prev-image" class="absolute left-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-gray-300 p-4 z-[10001] lightbox-button opacity-0 transition-all duration-300 transform -translate-x-4" aria-label="Previous image">&lt;</button>
+    <button id="next-image" class="absolute right-4 top-1/2 -translate-y-1/2 text-white text-4xl hover:text-gray-300 p-4 z-[10001] lightbox-button opacity-0 transition-all duration-300 transform translate-x-4" aria-label="Next image">&gt;</button>
     <div class="w-full h-full flex items-center justify-center p-4">
-      <img id="lightbox-image" src="" alt="" class="h-[90vh] w-auto object-contain opacity-0 transition-opacity duration-300" />
+      <div class="lightbox-image-wrapper relative">
+        <img id="lightbox-image" src="" alt="" class="h-[90vh] w-auto object-contain lightbox-image" />
+        <div class="lightbox-image-overlay absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
+      </div>
+    </div>
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white text-sm opacity-0 lightbox-counter transition-opacity duration-300">
+      <span id="current-index">1</span> / <span id="total-images">1</span>
     </div>
   </div>
 </div>
+
+<style>
+  .lightbox-container.visible .lightbox-backdrop {
+    opacity: 0.95;
+  }
+  .lightbox-container.visible .lightbox-button {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  .lightbox-container.visible .lightbox-counter {
+    opacity: 1;
+  }
+  .lightbox-image {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  }
+  .lightbox-image.loaded {
+    opacity: 1;
+    transform: scale(1);
+  }
+  .lightbox-image-wrapper {
+    position: relative;
+  }
+  .lightbox-image-overlay {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .lightbox-container.visible .lightbox-image-overlay {
+    opacity: 1;
+  }
+</style>
 
 <script define:vars={{ images }}>
   let currentImageIndex = 0;
@@ -30,23 +68,43 @@ const { images } = Astro.props;
     currentImageIndex = index;
     lightbox.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
+    
+    // Trigger animations
+    setTimeout(() => {
+      lightbox.classList.add('visible');
+    }, 10);
+    
     updateLightboxImage();
+    updateCounter();
   }
 
   // Expose openLightbox globally
   window.openLightbox = openLightbox;
 
   function closeLightbox() {
-    lightbox.classList.add('hidden');
-    document.body.style.overflow = '';
+    lightbox.classList.remove('visible');
+    setTimeout(() => {
+      lightbox.classList.add('hidden');
+      document.body.style.overflow = '';
+    }, 300);
   }
 
   function updateLightboxImage() {
-    lightboxImage.classList.add('opacity-0');
+    lightboxImage.classList.remove('loaded');
     setTimeout(() => {
       lightboxImage.src = images[currentImageIndex];
-      lightboxImage.onload = () => lightboxImage.classList.remove('opacity-0');
+      lightboxImage.onload = () => {
+        lightboxImage.classList.add('loaded');
+        updateCounter();
+      };
     }, 200);
+  }
+  
+  function updateCounter() {
+    const currentIndexEl = document.getElementById('current-index');
+    const totalImagesEl = document.getElementById('total-images');
+    if (currentIndexEl) currentIndexEl.textContent = (currentImageIndex + 1).toString();
+    if (totalImagesEl) totalImagesEl.textContent = images.length.toString();
   }
 
   function showPrevImage(e) {
@@ -59,6 +117,34 @@ const { images } = Astro.props;
     e.stopPropagation();
     currentImageIndex = (currentImageIndex + 1) % images.length;
     updateLightboxImage();
+  }
+  
+  // Swipe support for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+  
+  lightbox.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+  
+  lightbox.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+  
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        // Swipe left - next image
+        showNextImage(new Event('click'));
+      } else {
+        // Swipe right - previous image
+        showPrevImage(new Event('click'));
+      }
+    }
   }
 
   // Add click handlers to all gallery images

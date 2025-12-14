@@ -3,18 +3,15 @@ import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import { baseUrl } from '../config';
 import heroImage from '../../public/hero-bg.jpg';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout title="Home">
 	<Fragment slot="head">
 		<link rel="preload" as="image" href={heroImage.src} fetchpriority="high" type="image/jpeg" />
 	</Fragment>
-	<main class="relative min-h-screen">
-		{/* Background Image */}
-		<div class="absolute inset-0 z-0">
+	<main class="relative min-h-screen overflow-hidden w-full max-w-full">
+		{/* Background Image with Parallax */}
+		<div class="absolute inset-0 z-0 parallax-bg">
 			<Image
 				src={heroImage}
 				alt=""
@@ -24,17 +21,34 @@ import heroImage from '../../public/hero-bg.jpg';
 				format="webp"
 				widths={[640, 750, 828, 1080, 1200, 1920, 2048]}
 				sizes="(max-width: 640px) 640px, (max-width: 750px) 750px, (max-width: 828px) 828px, (max-width: 1080px) 1080px, (max-width: 1200px) 1200px, (max-width: 1920px) 1920px, 2048px"
-				class="w-full h-full object-cover brightness-75"
+				class="w-full h-full object-cover brightness-75 parallax-image"
 			/>
+			{/* Video Background (optional - uncomment and add video file) */}
+			{/* <video 
+				class="absolute inset-0 w-full h-full object-cover brightness-75 parallax-image"
+				autoplay
+				muted
+				loop
+				playsinline
+				poster={heroImage.src}
+			>
+				<source src="/videos/hero-background.mp4" type="video/mp4" />
+				<source src="/videos/hero-background.webm" type="video/webm" />
+			</video> */}
+			{/* Gradient Overlay */}
+			<div class="gradient-overlay absolute inset-0"></div>
 		</div>
 
-		{/* Content */}
-		<div class="relative z-10 flex items-center justify-center min-h-screen">
+		{/* Particle Background */}
+		<canvas id="particle-canvas" class="absolute inset-0 z-[1] opacity-30 pointer-events-none"></canvas>
+
+		{/* Content with Parallax */}
+		<div class="relative z-10 flex items-center justify-center min-h-screen parallax-content">
 			<div class="text-center px-4 py-20 md:py-32">
-				<h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">
-					Hello friendos.
+				<h1 class="text-4xl md:text-6xl font-bold mb-6 text-white creative-typography">
+					<span class="gradient-text animate-reveal draggable-element" draggable="true">Hello friendos.</span>
 				</h1>
-				<p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+				<p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto animate-reveal-delay">
 					I'm Brian, a Principal User Experience Design Consultant and photographer based in Omaha, Nebraska.
 				</p>
 			</div>
@@ -55,7 +69,281 @@ import heroImage from '../../public/hero-bg.jpg';
 		</div>
 	</main>
 
+	<style>
+		.parallax-bg {
+			will-change: transform;
+		}
+		.parallax-image {
+			transform: translateY(0);
+			will-change: transform;
+		}
+		.parallax-content {
+			will-change: transform;
+		}
+
+		/* Creative Typography Styles */
+		.gradient-text {
+			background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 50%, #c7d2fe 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			background-size: 200% 200%;
+			animation: gradient-shift 3s ease infinite;
+		}
+
+		@keyframes gradient-shift {
+			0%, 100% {
+				background-position: 0% 50%;
+			}
+			50% {
+				background-position: 100% 50%;
+			}
+		}
+
+		.animate-reveal {
+			opacity: 0;
+			transform: translateY(30px);
+			animation: reveal-text 1s ease-out 0.3s forwards;
+		}
+
+		.animate-reveal-delay {
+			opacity: 0;
+			transform: translateY(20px);
+			animation: reveal-text 1s ease-out 0.8s forwards;
+		}
+
+		@keyframes reveal-text {
+			to {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.creative-typography {
+			letter-spacing: -0.02em;
+		}
+
+		/* Interactive Hero Elements */
+		.draggable-element {
+			cursor: grab;
+			user-select: none;
+		}
+		.draggable-element:active {
+			cursor: grabbing;
+		}
+
+		/* Gradient Overlays */
+		.gradient-overlay {
+			background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 50%, rgba(236, 72, 153, 0.1) 100%);
+			background-size: 200% 200%;
+			background-position: 0% 0%;
+			transition: background-position 0.3s ease-out;
+		}
+
+		/* Glassmorphism */
+		.glass-effect {
+			background: rgba(255, 255, 255, 0.1);
+			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(10px);
+			border: 1px solid rgba(255, 255, 255, 0.2);
+		}
+
+		/* Video Background Styles */
+		video {
+			object-fit: cover;
+			width: 100%;
+			height: 100%;
+		}
+	</style>
+
 	<script>
+		// Particle Background System
+		class Particle {
+			x: number;
+			y: number;
+			vx: number;
+			vy: number;
+			radius: number;
+			private width: number;
+			private height: number;
+
+			constructor(x: number, y: number, width: number, height: number) {
+				this.x = x;
+				this.y = y;
+				this.vx = (Math.random() - 0.5) * 0.5;
+				this.vy = (Math.random() - 0.5) * 0.5;
+				this.radius = Math.random() * 1.5 + 0.5;
+				this.width = width;
+				this.height = height;
+			}
+
+			update(mouseX: number, mouseY: number) {
+				const dx = mouseX - this.x;
+				const dy = mouseY - this.y;
+				const distance = Math.sqrt(dx * dx + dy * dy);
+				
+				if (distance < 100) {
+					const force = (100 - distance) / 100;
+					this.vx -= (dx / distance) * force * 0.01;
+					this.vy -= (dy / distance) * force * 0.01;
+				}
+				
+				this.x += this.vx;
+				this.y += this.vy;
+				
+				if (this.x < 0 || this.x > this.width) this.vx *= -1;
+				if (this.y < 0 || this.y > this.height) this.vy *= -1;
+				
+				this.x = Math.max(0, Math.min(this.width, this.x));
+				this.y = Math.max(0, Math.min(this.height, this.y));
+				
+				this.vx *= 0.99;
+				this.vy *= 0.99;
+			}
+
+			draw(ctx: CanvasRenderingContext2D) {
+				ctx.beginPath();
+				ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+				ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+				ctx.fill();
+			}
+		}
+
+		class ParticleSystem {
+			private canvas: HTMLCanvasElement;
+			private ctx: CanvasRenderingContext2D;
+			private particles: Particle[] = [];
+			private animationId: number | null = null;
+			private mouseX = 0;
+			private mouseY = 0;
+
+			constructor(canvas: HTMLCanvasElement) {
+				this.canvas = canvas;
+				const context = canvas.getContext('2d');
+				if (!context) throw new Error('Could not get 2d context');
+				this.ctx = context;
+				this.init();
+			}
+
+			private init() {
+				this.resize();
+				this.createParticles();
+				this.animate();
+				this.setupEventListeners();
+			}
+
+			private resize() {
+				this.canvas.width = this.canvas.offsetWidth;
+				this.canvas.height = this.canvas.offsetHeight;
+			}
+
+			private createParticles() {
+				const particleCount = Math.floor((this.canvas.width * this.canvas.height) / 15000);
+				this.particles = [];
+				
+				for (let i = 0; i < particleCount; i++) {
+					this.particles.push(new Particle(
+						Math.random() * this.canvas.width,
+						Math.random() * this.canvas.height,
+						this.canvas.width,
+						this.canvas.height
+					));
+				}
+			}
+
+			private setupEventListeners() {
+				window.addEventListener('resize', () => {
+					this.resize();
+					this.createParticles();
+				});
+
+				this.canvas.addEventListener('mousemove', (e) => {
+					const rect = this.canvas.getBoundingClientRect();
+					this.mouseX = e.clientX - rect.left;
+					this.mouseY = e.clientY - rect.top;
+				});
+			}
+
+			private animate() {
+				this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+				
+				this.particles.forEach((particle, i) => {
+					particle.update(this.mouseX, this.mouseY);
+					particle.draw(this.ctx);
+					
+					this.particles.slice(i + 1).forEach((otherParticle) => {
+						const dx = particle.x - otherParticle.x;
+						const dy = particle.y - otherParticle.y;
+						const distance = Math.sqrt(dx * dx + dy * dy);
+						
+						if (distance < 120) {
+							this.ctx.beginPath();
+							this.ctx.strokeStyle = `rgba(255, 255, 255, ${0.2 * (1 - distance / 120)})`;
+							this.ctx.lineWidth = 0.5;
+							this.ctx.moveTo(particle.x, particle.y);
+							this.ctx.lineTo(otherParticle.x, otherParticle.y);
+							this.ctx.stroke();
+						}
+					});
+				});
+				
+				this.animationId = requestAnimationFrame(() => this.animate());
+			}
+
+			public destroy() {
+				if (this.animationId) {
+					cancelAnimationFrame(this.animationId);
+				}
+			}
+		}
+
+		// Initialize particle background
+		const canvas = document.getElementById('particle-canvas') as HTMLCanvasElement;
+		let particleSystem: ParticleSystem | null = null;
+		
+		if (canvas) {
+			try {
+				particleSystem = new ParticleSystem(canvas);
+			} catch (e) {
+				console.warn('Could not initialize particle background:', e);
+			}
+		}
+
+		// Parallax scrolling effect - optimized with requestAnimationFrame
+		let ticking = false;
+		const parallaxBg = document.querySelector('.parallax-image') as HTMLElement;
+		const parallaxContent = document.querySelector('.parallax-content') as HTMLElement;
+
+		function updateParallax() {
+			const scrolled = window.pageYOffset;
+			const heroHeight = window.innerHeight;
+			
+			// Only apply parallax within hero section
+			if (scrolled < heroHeight) {
+				// Background moves slower (0.5x speed)
+				if (parallaxBg) {
+					parallaxBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+				}
+				// Content moves faster (0.3x speed) for depth effect
+				if (parallaxContent) {
+					parallaxContent.style.transform = `translateY(${scrolled * 0.3}px)`;
+					parallaxContent.style.opacity = `${1 - scrolled / heroHeight * 0.5}`;
+				}
+			}
+			
+			ticking = false;
+		}
+
+		function requestTick() {
+			if (!ticking) {
+				requestAnimationFrame(updateParallax);
+				ticking = true;
+			}
+		}
+
+		// Use passive listener for better performance
+		window.addEventListener('scroll', requestTick, { passive: true });
+
 		// Scroll down button - optimized
 		const btn = document.getElementById('scroll-down-button');
 		if (btn) {
@@ -63,5 +351,88 @@ import heroImage from '../../public/hero-bg.jpg';
 				window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
 			}, { passive: true });
 		}
+
+		// Cleanup on page unload
+		window.addEventListener('beforeunload', () => {
+			if (particleSystem) {
+				particleSystem.destroy();
+			}
+		});
+
+		// Interactive Hero - Draggable Elements
+		const draggableElement = document.querySelector('.draggable-element') as HTMLElement;
+		if (draggableElement) {
+			let isDragging = false;
+			let currentX = 0;
+			let currentY = 0;
+			let initialX = 0;
+			let initialY = 0;
+			let xOffset = 0;
+			let yOffset = 0;
+
+			draggableElement.addEventListener('mousedown', (e) => {
+				initialX = e.clientX - xOffset;
+				initialY = e.clientY - yOffset;
+
+				if (e.target === draggableElement) {
+					isDragging = true;
+				}
+			});
+
+			document.addEventListener('mousemove', (e) => {
+				if (isDragging) {
+					e.preventDefault();
+					currentX = e.clientX - initialX;
+					currentY = e.clientY - initialY;
+					xOffset = currentX;
+					yOffset = currentY;
+					draggableElement.style.transform = `translate(${currentX}px, ${currentY}px)`;
+				}
+			});
+
+			document.addEventListener('mouseup', () => {
+				initialX = currentX;
+				initialY = currentY;
+				isDragging = false;
+			});
+		}
+
+
+		// Gradient Overlay Animation on Scroll
+		const gradientOverlay = document.querySelector('.gradient-overlay') as HTMLElement;
+		if (gradientOverlay) {
+			let ticking = false;
+			function updateGradient() {
+				const scrolled = window.pageYOffset;
+				const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+				const scrollPercent = Math.min(scrolled / maxScroll, 1);
+				const bgX = scrollPercent * 100;
+				const bgY = scrollPercent * 100;
+				gradientOverlay.style.backgroundPosition = `${bgX}% ${bgY}%`;
+				ticking = false;
+			}
+			function requestGradientTick() {
+				if (!ticking) {
+					requestAnimationFrame(updateGradient);
+					ticking = true;
+				}
+			}
+			window.addEventListener('scroll', requestGradientTick, { passive: true });
+		}
+
+		// Micro-interactions - Enhanced button/link effects
+		const buttons = document.querySelectorAll('button, a');
+		buttons.forEach((btn) => {
+			const btnElement = btn as HTMLElement;
+			btnElement.addEventListener('mousedown', () => {
+				btnElement.style.transform = 'scale(0.95)';
+			});
+			btnElement.addEventListener('mouseup', () => {
+				btnElement.style.transform = 'scale(1)';
+			});
+			btnElement.addEventListener('mouseleave', () => {
+				btnElement.style.transform = 'scale(1)';
+			});
+		});
 	</script>
 </Layout>

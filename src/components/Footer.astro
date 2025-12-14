@@ -7,7 +7,7 @@ import { baseUrl } from '../config';
     <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
       <div>
         <h2 class="text-lg font-semibold mb-4">About</h2>
-        <p class="text-gray-300">Brian Pope is a Principal UX Designer at DevObsessed, an IT services and consulting company based in Omaha, Nebraska. With over 18+ years of experience, he specializes in delivering user-centered solutions across industries such as retail, finance, government, and healthcare.</p>
+        <p class="text-gray-300">Brian Pope is a Principal UX Designer at DevObsessed, an IT services and consulting company based in Omaha, Nebraska. With over <span class="animated-stat" data-target="18">0</span>+ years of experience, he specializes in delivering user-centered solutions across industries such as retail, finance, government, and healthcare.</p>
       </div>
       <div>
         <h2 class="text-lg font-semibold mb-4">Quick Links</h2>
@@ -37,4 +37,52 @@ import { baseUrl } from '../config';
       <p>&copy; 2025 Brian Pope. All rights reserved.</p>
     </div>
   </div>
-</footer> 
+</footer>
+
+<script>
+  // Animated Stats - Count up when scrolled into view
+  const animatedStats = document.querySelectorAll('.animated-stat');
+  
+  if (animatedStats.length > 0 && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const element = entry.target as HTMLElement;
+          const target = parseInt(element.dataset.target || '0');
+          animateNumber(element, 0, target, 2000);
+          observer.unobserve(element);
+        }
+      });
+    }, {
+      threshold: 0.5
+    });
+
+    animatedStats.forEach((stat) => {
+      observer.observe(stat);
+    });
+  }
+
+  function animateNumber(element: HTMLElement, start: number, end: number, duration: number) {
+    const startTime = performance.now();
+    
+    function update(currentTime: number) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const current = Math.floor(start + (end - start) * easeOutCubic(progress));
+      
+      element.textContent = current.toString();
+      
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        element.textContent = end.toString();
+      }
+    }
+    
+    requestAnimationFrame(update);
+  }
+
+  function easeOutCubic(t: number): number {
+    return 1 - Math.pow(1 - t, 3);
+  }
+</script> 

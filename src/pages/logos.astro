@@ -102,99 +102,101 @@ console.log('DevObsessed logo URL:', `${baseUrl}/images/logos/devobsessedcard.pn
   </main>
 
   <script>
-    // Scroll to logos button
-    const scrollBtn = document.getElementById('scroll-to-logos');
-    const target = document.getElementById('logo-cards');
-    if (scrollBtn && target) {
-      scrollBtn.addEventListener('click', () => {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }, { passive: true });
-    }
-
-    // Scroll-triggered animations using Intersection Observer
-    const animatedCards = document.querySelectorAll('.scroll-fade-in');
-
-    if (animatedCards.length > 0 && 'IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const element = entry.target as HTMLElement;
-            const index = parseInt(element.dataset.index || '0');
-            setTimeout(() => {
-              element.style.opacity = '1';
-              element.style.transform = 'translateY(0)';
-            }, index * 100);
-            observer.unobserve(element);
-          }
-        });
-      }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      });
-
-      animatedCards.forEach((card) => {
-        observer.observe(card);
-      });
-    } else {
-      animatedCards.forEach((card) => {
-        (card as HTMLElement).style.opacity = '1';
-        (card as HTMLElement).style.transform = 'translateY(0)';
-      });
-    }
-
-    // Magnetic hover effects
-    const magneticCards = document.querySelectorAll('.magnetic-card');
-    const magneticStrength = 0.15;
-
-    magneticCards.forEach((card) => {
-      const cardElement = card as HTMLElement;
-      let currentX = 0;
-      let currentY = 0;
-      let targetX = 0;
-      let targetY = 0;
-      let rafId: number | null = null;
-
-      function animate() {
-        currentX += (targetX - currentX) * 0.1;
-        currentY += (targetY - currentY) * 0.1;
-
-        cardElement.style.transform = `translate(${currentX}px, ${currentY}px)`;
-
-        if (Math.abs(targetX - currentX) > 0.1 || Math.abs(targetY - currentY) > 0.1) {
-          rafId = requestAnimationFrame(animate);
-        } else {
-          rafId = null;
-        }
+    document.addEventListener('astro:page-load', () => {
+      // Scroll to logos button
+      const scrollBtn = document.getElementById('scroll-to-logos');
+      const target = document.getElementById('logo-cards');
+      if (scrollBtn && target) {
+        scrollBtn.addEventListener('click', () => {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }, { passive: true });
       }
 
-      cardElement.addEventListener('mouseenter', () => {
-        cardElement.style.transition = 'none';
-      });
+      // Scroll-triggered animations using Intersection Observer
+      const animatedCards = document.querySelectorAll('.scroll-fade-in');
 
-      cardElement.addEventListener('mouseleave', () => {
-        targetX = 0;
-        targetY = 0;
-        cardElement.style.transition = 'transform 0.3s ease-out';
-        if (rafId) {
-          cancelAnimationFrame(rafId);
+      if (animatedCards.length > 0 && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const element = entry.target as HTMLElement;
+              const index = parseInt(element.dataset.index || '0');
+              setTimeout(() => {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+              }, index * 100);
+              observer.unobserve(element);
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        });
+
+        animatedCards.forEach((card) => {
+          observer.observe(card);
+        });
+      } else {
+        animatedCards.forEach((card) => {
+          (card as HTMLElement).style.opacity = '1';
+          (card as HTMLElement).style.transform = 'translateY(0)';
+        });
+      }
+
+      // Magnetic hover effects
+      const magneticCards = document.querySelectorAll('.magnetic-card');
+      const magneticStrength = 0.15;
+
+      magneticCards.forEach((card) => {
+        const cardElement = card as HTMLElement;
+        let currentX = 0;
+        let currentY = 0;
+        let targetX = 0;
+        let targetY = 0;
+        let rafId: number | null = null;
+
+        function animate() {
+          currentX += (targetX - currentX) * 0.1;
+          currentY += (targetY - currentY) * 0.1;
+
+          cardElement.style.transform = `translate(${currentX}px, ${currentY}px)`;
+
+          if (Math.abs(targetX - currentX) > 0.1 || Math.abs(targetY - currentY) > 0.1) {
+            rafId = requestAnimationFrame(animate);
+          } else {
+            rafId = null;
+          }
         }
-        animate();
-      });
 
-      cardElement.addEventListener('mousemove', (e) => {
-        const rect = cardElement.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
+        cardElement.addEventListener('mouseenter', () => {
+          cardElement.style.transition = 'none';
+        });
 
-        const deltaX = (e.clientX - centerX) * magneticStrength;
-        const deltaY = (e.clientY - centerY) * magneticStrength;
+        cardElement.addEventListener('mouseleave', () => {
+          targetX = 0;
+          targetY = 0;
+          cardElement.style.transition = 'transform 0.3s ease-out';
+          if (rafId) {
+            cancelAnimationFrame(rafId);
+          }
+          animate();
+        });
 
-        targetX = deltaX;
-        targetY = deltaY;
+        cardElement.addEventListener('mousemove', (e) => {
+          const rect = cardElement.getBoundingClientRect();
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
 
-        if (!rafId) {
-          rafId = requestAnimationFrame(animate);
-        }
+          const deltaX = (e.clientX - centerX) * magneticStrength;
+          const deltaY = (e.clientY - centerY) * magneticStrength;
+
+          targetX = deltaX;
+          targetY = deltaY;
+
+          if (!rafId) {
+            rafId = requestAnimationFrame(animate);
+          }
+        });
       });
     });
   </script>
