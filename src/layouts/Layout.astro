@@ -334,76 +334,131 @@ interface Props {
 </style>
 
 <script>
-	// Creative Navigation - Animated Underline
-	const navLinks = document.querySelectorAll('.nav-link');
-	const navUnderline = document.getElementById('nav-underline');
-	const currentPath = window.location.pathname;
+	document.addEventListener('astro:page-load', () => {
+		// Creative Navigation - Animated Underline
+		const navLinks = document.querySelectorAll('.nav-link');
+		const navUnderline = document.getElementById('nav-underline');
+		const currentPath = window.location.pathname;
 
-	// Set active link based on current path
-	navLinks.forEach((link) => {
-		const linkElement = link as HTMLElement;
-		const linkPath = linkElement.dataset.path || '';
-		
-		if (currentPath === linkPath || (linkPath !== '/' && currentPath.startsWith(linkPath))) {
-			linkElement.classList.add('active');
-			updateUnderline(linkElement);
+		function updateUnderline(link: HTMLElement) {
+			if (!navUnderline) return;
+			const rect = link.getBoundingClientRect();
+			const nav = link.closest('nav')?.querySelector('.max-w-7xl');
+			if (!nav) return;
+			const navRect = nav.getBoundingClientRect();
+
+			navUnderline.style.left = `${rect.left - navRect.left}px`;
+			navUnderline.style.width = `${rect.width}px`;
 		}
 
-		// Animate underline on hover
-		linkElement.addEventListener('mouseenter', () => {
-			updateUnderline(linkElement);
+		// Set active link based on current path
+		navLinks.forEach((link) => {
+			const linkElement = link as HTMLElement;
+			const linkPath = linkElement.dataset.path || '';
+
+			if (currentPath === linkPath || (linkPath !== '/' && currentPath.startsWith(linkPath))) {
+				linkElement.classList.add('active');
+				updateUnderline(linkElement);
+			}
+
+			// Animate underline on hover
+			linkElement.addEventListener('mouseenter', () => {
+				updateUnderline(linkElement);
+			});
 		});
+
+		// Mobile menu functionality with morphing icon
+		const menu = document.getElementById('mobile-menu');
+		const menuButton = document.getElementById('mobile-menu-button');
+
+		if (menu && menuButton) {
+			const toggle = (show: boolean) => {
+				menu.classList.toggle('hidden', !show);
+				menuButton.classList.toggle('active', show);
+				document.body.style.overflow = show ? 'hidden' : '';
+			};
+
+			// Use event delegation for better performance
+			document.addEventListener('click', (e: MouseEvent) => {
+				const target = e.target as HTMLElement;
+				if (target.closest('#mobile-menu-button')) {
+					e.preventDefault();
+					toggle(true);
+				} else if (target.closest('#close-menu-button') || target === menu || target.closest('#mobile-menu a')) {
+					if (target.closest('#close-menu-button') || target === menu) {
+						e.preventDefault();
+					}
+					toggle(false);
+				}
+			}, { passive: false });
+
+			// Handle escape key to close menu
+			document.addEventListener('keydown', (e: KeyboardEvent) => {
+				if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
+					toggle(false);
+				}
+			});
+		}
+
+		// Custom Cursor Effects
+		const customCursor = document.getElementById('custom-cursor');
+		const cursorDot = document.getElementById('cursor-dot');
+
+		if (customCursor && cursorDot) {
+			// Only enable on non-touch devices
+			if (window.matchMedia('(pointer: fine)').matches) {
+				// Re-bind hover effects on interactive elements for new page content
+				const interactiveElements = document.querySelectorAll('a, button, .magnetic-card, .nav-link, .gallery-image');
+				interactiveElements.forEach((el) => {
+					el.addEventListener('mouseenter', () => {
+						customCursor.classList.add('hover');
+					});
+					el.addEventListener('mouseleave', () => {
+						customCursor.classList.remove('hover');
+					});
+				});
+			}
+		}
+
+		// Scroll Progress Indicator
+		const scrollProgress = document.getElementById('scroll-progress');
+		if (scrollProgress) {
+			let ticking = false;
+
+			function updateScrollProgress() {
+				const windowHeight = window.innerHeight;
+				const documentHeight = document.documentElement.scrollHeight;
+				const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+				const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
+
+				scrollProgress.style.width = `${Math.min(scrollPercent, 100)}%`;
+				ticking = false;
+			}
+
+			function requestProgressTick() {
+				if (!ticking) {
+					requestAnimationFrame(updateScrollProgress);
+					ticking = true;
+				}
+			}
+
+			window.addEventListener('scroll', requestProgressTick, { passive: true });
+			updateScrollProgress();
+		}
 	});
 
-	function updateUnderline(link: HTMLElement) {
-		if (!navUnderline) return;
-		const rect = link.getBoundingClientRect();
-		const nav = link.closest('nav')?.querySelector('.max-w-7xl');
-		if (!nav) return;
-		const navRect = nav.getBoundingClientRect();
-		
-		navUnderline.style.left = `${rect.left - navRect.left}px`;
-		navUnderline.style.width = `${rect.width}px`;
-	}
+	// Cursor animation runs outside page-load to persist across navigations
+	(function initCursor() {
+		const customCursor = document.getElementById('custom-cursor');
+		const cursorDot = document.getElementById('cursor-dot');
 
-	// Mobile menu functionality with morphing icon
-	const menu = document.getElementById('mobile-menu');
-	const menuButton = document.getElementById('mobile-menu-button');
+		if (!customCursor || !cursorDot) return;
+		if (!window.matchMedia('(pointer: fine)').matches) {
+			customCursor.style.display = 'none';
+			cursorDot.style.display = 'none';
+			return;
+		}
 
-	if (menu && menuButton) {
-		const toggle = (show: boolean) => {
-			menu.classList.toggle('hidden', !show);
-			menuButton.classList.toggle('active', show);
-			document.body.style.overflow = show ? 'hidden' : '';
-		};
-
-		// Use event delegation for better performance (single listener instead of multiple)
-		document.addEventListener('click', (e: MouseEvent) => {
-			const target = e.target as HTMLElement;
-			if (target.closest('#mobile-menu-button')) {
-				e.preventDefault();
-				toggle(true);
-			} else if (target.closest('#close-menu-button') || target === menu || target.closest('#mobile-menu a')) {
-				if (target.closest('#close-menu-button') || target === menu) {
-					e.preventDefault();
-				}
-				toggle(false);
-			}
-		}, { passive: false });
-
-		// Handle escape key to close menu
-		document.addEventListener('keydown', (e: KeyboardEvent) => {
-			if (e.key === 'Escape' && !menu.classList.contains('hidden')) {
-				toggle(false);
-			}
-		});
-	}
-
-	// Custom Cursor Effects
-	const customCursor = document.getElementById('custom-cursor');
-	const cursorDot = document.getElementById('cursor-dot');
-	
-	if (customCursor && cursorDot) {
 		let mouseX = 0;
 		let mouseY = 0;
 		let cursorX = 0;
@@ -412,105 +467,47 @@ interface Props {
 		let dotY = 0;
 		let isInitialized = false;
 
-		// Only enable on non-touch devices
-		if (window.matchMedia('(pointer: fine)').matches) {
-			// Initialize cursor position on first mouse move
-			document.addEventListener('mousemove', (e) => {
-				if (!isInitialized) {
-					mouseX = e.clientX;
-					mouseY = e.clientY;
-					cursorX = e.clientX;
-					cursorY = e.clientY;
-					dotX = e.clientX;
-					dotY = e.clientY;
-					
-					// Show cursor and hide default cursor only after initialization
-					customCursor.classList.add('visible');
-					cursorDot.classList.add('visible');
-					document.body.classList.add('custom-cursor-enabled');
-					isInitialized = true;
-				}
-				
+		document.addEventListener('mousemove', (e) => {
+			if (!isInitialized) {
 				mouseX = e.clientX;
 				mouseY = e.clientY;
-			}, { once: false });
+				cursorX = e.clientX;
+				cursorY = e.clientY;
+				dotX = e.clientX;
+				dotY = e.clientY;
 
-			// Smooth cursor animation
-			function animateCursor() {
-				if (isInitialized) {
-					cursorX += (mouseX - cursorX) * 0.1;
-					cursorY += (mouseY - cursorY) * 0.1;
-					dotX += (mouseX - dotX) * 0.3;
-					dotY += (mouseY - dotY) * 0.3;
-
-					customCursor.style.left = `${cursorX}px`;
-					customCursor.style.top = `${cursorY}px`;
-					cursorDot.style.left = `${dotX}px`;
-					cursorDot.style.top = `${dotY}px`;
-				}
-
-				requestAnimationFrame(animateCursor);
+				customCursor.classList.add('visible');
+				cursorDot.classList.add('visible');
+				document.body.classList.add('custom-cursor-enabled');
+				isInitialized = true;
 			}
-			animateCursor();
 
-			// Hover effects on interactive elements
-			const interactiveElements = document.querySelectorAll('a, button, .magnetic-card, .nav-link');
-			interactiveElements.forEach((el) => {
-				el.addEventListener('mouseenter', () => {
-					if (isInitialized) {
-						customCursor.classList.add('hover');
-					}
-				});
-				el.addEventListener('mouseleave', () => {
-					if (isInitialized) {
-						customCursor.classList.remove('hover');
-					}
-				});
-			});
+			mouseX = e.clientX;
+			mouseY = e.clientY;
+		});
 
-			// Click effect
-			document.addEventListener('mousedown', () => {
-				if (isInitialized) {
-					customCursor.classList.add('click');
-				}
-			});
-			document.addEventListener('mouseup', () => {
-				if (isInitialized) {
-					customCursor.classList.remove('click');
-				}
-			});
-		} else {
-			// Hide custom cursor on touch devices
-			customCursor.style.display = 'none';
-			cursorDot.style.display = 'none';
-			document.body.classList.remove('custom-cursor-enabled');
-		}
-	}
+		function animateCursor() {
+			if (isInitialized) {
+				cursorX += (mouseX - cursorX) * 0.1;
+				cursorY += (mouseY - cursorY) * 0.1;
+				dotX += (mouseX - dotX) * 0.3;
+				dotY += (mouseY - dotY) * 0.3;
 
-	// Scroll Progress Indicator
-	const scrollProgress = document.getElementById('scroll-progress');
-	if (scrollProgress) {
-		let ticking = false;
-		
-		function updateScrollProgress() {
-			const windowHeight = window.innerHeight;
-			const documentHeight = document.documentElement.scrollHeight;
-			const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-			const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
-			
-			scrollProgress.style.width = `${Math.min(scrollPercent, 100)}%`;
-			ticking = false;
-		}
-
-		function requestProgressTick() {
-			if (!ticking) {
-				requestAnimationFrame(updateScrollProgress);
-				ticking = true;
+				customCursor.style.left = `${cursorX}px`;
+				customCursor.style.top = `${cursorY}px`;
+				cursorDot.style.left = `${dotX}px`;
+				cursorDot.style.top = `${dotY}px`;
 			}
+
+			requestAnimationFrame(animateCursor);
 		}
+		animateCursor();
 
-		window.addEventListener('scroll', requestProgressTick, { passive: true });
-		updateScrollProgress(); // Initial call
-	}
-
+		document.addEventListener('mousedown', () => {
+			customCursor.classList.add('click');
+		});
+		document.addEventListener('mouseup', () => {
+			customCursor.classList.remove('click');
+		});
+	})();
 </script>
