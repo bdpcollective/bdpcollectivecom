@@ -447,8 +447,24 @@ interface Props {
 		}
 	});
 
-	// Cursor animation runs outside page-load to persist across navigations
-	(function initCursor() {
+	// Cursor state stored globally to persist across View Transitions
+	declare global {
+		interface Window {
+			cursorState?: {
+				mouseX: number;
+				mouseY: number;
+				cursorX: number;
+				cursorY: number;
+				dotX: number;
+				dotY: number;
+				initialized: boolean;
+				animating: boolean;
+			};
+		}
+	}
+
+	// Initialize cursor on page load and after View Transitions
+	function initCursor() {
 		const customCursor = document.getElementById('custom-cursor');
 		const cursorDot = document.getElementById('cursor-dot');
 
@@ -459,55 +475,92 @@ interface Props {
 			return;
 		}
 
-		let mouseX = 0;
-		let mouseY = 0;
-		let cursorX = 0;
-		let cursorY = 0;
-		let dotX = 0;
-		let dotY = 0;
-		let isInitialized = false;
-
-		document.addEventListener('mousemove', (e) => {
-			if (!isInitialized) {
-				mouseX = e.clientX;
-				mouseY = e.clientY;
-				cursorX = e.clientX;
-				cursorY = e.clientY;
-				dotX = e.clientX;
-				dotY = e.clientY;
-
-				customCursor.classList.add('visible');
-				cursorDot.classList.add('visible');
-				document.body.classList.add('custom-cursor-enabled');
-				isInitialized = true;
-			}
-
-			mouseX = e.clientX;
-			mouseY = e.clientY;
-		});
-
-		function animateCursor() {
-			if (isInitialized) {
-				cursorX += (mouseX - cursorX) * 0.1;
-				cursorY += (mouseY - cursorY) * 0.1;
-				dotX += (mouseX - dotX) * 0.3;
-				dotY += (mouseY - dotY) * 0.3;
-
-				customCursor.style.left = `${cursorX}px`;
-				customCursor.style.top = `${cursorY}px`;
-				cursorDot.style.left = `${dotX}px`;
-				cursorDot.style.top = `${dotY}px`;
-			}
-
-			requestAnimationFrame(animateCursor);
+		// Initialize state if not exists
+		if (!window.cursorState) {
+			window.cursorState = {
+				mouseX: 0,
+				mouseY: 0,
+				cursorX: 0,
+				cursorY: 0,
+				dotX: 0,
+				dotY: 0,
+				initialized: false,
+				animating: false
+			};
 		}
-		animateCursor();
 
-		document.addEventListener('mousedown', () => {
-			customCursor.classList.add('click');
-		});
-		document.addEventListener('mouseup', () => {
-			customCursor.classList.remove('click');
-		});
-	})();
+		const state = window.cursorState;
+
+		// Only add mousemove listener once
+		if (!state.initialized) {
+			document.addEventListener('mousemove', (e) => {
+				if (!state.initialized) {
+					state.mouseX = e.clientX;
+					state.mouseY = e.clientY;
+					state.cursorX = e.clientX;
+					state.cursorY = e.clientY;
+					state.dotX = e.clientX;
+					state.dotY = e.clientY;
+					state.initialized = true;
+				}
+
+				state.mouseX = e.clientX;
+				state.mouseY = e.clientY;
+
+				// Make cursor visible
+				const cursor = document.getElementById('custom-cursor');
+				const dot = document.getElementById('cursor-dot');
+				if (cursor) cursor.classList.add('visible');
+				if (dot) dot.classList.add('visible');
+			});
+
+			document.addEventListener('mousedown', () => {
+				const cursor = document.getElementById('custom-cursor');
+				if (cursor) cursor.classList.add('click');
+			});
+
+			document.addEventListener('mouseup', () => {
+				const cursor = document.getElementById('custom-cursor');
+				if (cursor) cursor.classList.remove('click');
+			});
+		}
+
+		// Start animation loop if not already running
+		if (!state.animating) {
+			state.animating = true;
+
+			function animateCursor() {
+				const cursor = document.getElementById('custom-cursor');
+				const dot = document.getElementById('cursor-dot');
+				const s = window.cursorState;
+
+				if (s && s.initialized && cursor && dot) {
+					s.cursorX += (s.mouseX - s.cursorX) * 0.1;
+					s.cursorY += (s.mouseY - s.cursorY) * 0.1;
+					s.dotX += (s.mouseX - s.dotX) * 0.3;
+					s.dotY += (s.mouseY - s.dotY) * 0.3;
+
+					cursor.style.left = `${s.cursorX}px`;
+					cursor.style.top = `${s.cursorY}px`;
+					dot.style.left = `${s.dotX}px`;
+					dot.style.top = `${s.dotY}px`;
+				}
+
+				requestAnimationFrame(animateCursor);
+			}
+			animateCursor();
+		}
+
+		// If cursor was already visible, make sure new elements are too
+		if (state.initialized) {
+			customCursor.classList.add('visible');
+			cursorDot.classList.add('visible');
+		}
+	}
+
+	// Run on initial load
+	initCursor();
+
+	// Also run after View Transitions
+	document.addEventListener('astro:page-load', initCursor);
 </script>
