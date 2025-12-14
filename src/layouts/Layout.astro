@@ -1,6 +1,7 @@
 ---
 import Footer from '../components/Footer.astro';
 import { baseUrl } from '../config';
+import { ViewTransitions } from 'astro:transitions';
 
 interface Props {
 	title: string;
@@ -47,6 +48,9 @@ interface Props {
 				font-family: "Libre Franklin", "Franklin Gothic", "ITC Franklin Gothic", "Franklin Gothic Medium", "Franklin Gothic Book", "Franklin Gothic Demi", "Franklin Gothic Heavy", system-ui, sans-serif;
 				background: #f6f6f6;
 				background-size: 224px;
+				overflow-x: hidden;
+				width: 100%;
+				max-width: 100%;
 			}
 			body {
 				margin: 0;
@@ -54,10 +58,45 @@ interface Props {
 				box-sizing: border-box;
 				overflow-x: hidden;
 				overflow-y: auto !important;
+				width: 100%;
+				max-width: 100%;
 			}
 			html, body {
-				overflow: auto !important;
+				overflow-x: hidden !important;
 				height: auto !important;
+				position: relative;
+			}
+			* {
+				box-sizing: border-box;
+			}
+			main {
+				overflow-x: hidden;
+				width: 100%;
+				max-width: 100%;
+			}
+			/* Page Transitions */
+			::view-transition-old(root),
+			::view-transition-new(root) {
+				animation-duration: 0.5s;
+				animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+			}
+			::view-transition-old(root) {
+				animation-name: slide-out;
+			}
+			::view-transition-new(root) {
+				animation-name: slide-in;
+			}
+			@keyframes slide-out {
+				to {
+					opacity: 0;
+					transform: translateX(-20px);
+				}
+			}
+			@keyframes slide-in {
+				from {
+					opacity: 0;
+					transform: translateX(20px);
+				}
 			}
 			/* Prevent layout shift for images */
 			img {
@@ -78,6 +117,116 @@ interface Props {
 			a {
 				text-decoration: none;
 				color: inherit;
+			}
+			/* Creative Navigation Styles */
+			.nav-link {
+				position: relative;
+				display: inline-block;
+			}
+			.nav-link::before {
+				content: attr(data-text);
+				font-weight: 600;
+				height: 0;
+				visibility: hidden;
+				overflow: hidden;
+				user-select: none;
+				pointer-events: none;
+				display: block;
+			}
+			.nav-link::after {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 50%;
+				width: 0;
+				height: 2px;
+				background: currentColor;
+				transition: all 0.3s ease-out;
+				transform: translateX(-50%);
+			}
+			.nav-link span {
+				display: block;
+			}
+			.nav-link:hover::after {
+				width: 100%;
+			}
+			.nav-link.active::after {
+				width: 100%;
+			}
+			/* Morphing Menu Icon */
+			#mobile-menu-button.active .hamburger-line:nth-child(1) {
+				transform: rotate(45deg) translate(5px, 5px);
+			}
+			#mobile-menu-button.active .hamburger-line:nth-child(2) {
+				opacity: 0;
+			}
+			#mobile-menu-button.active .hamburger-line:nth-child(3) {
+				transform: rotate(-45deg) translate(5px, -5px);
+			}
+			/* Custom Cursor */
+			.custom-cursor-enabled {
+				cursor: none;
+			}
+			.custom-cursor {
+				position: fixed;
+				width: 20px;
+				height: 20px;
+				border: 2px solid rgba(255, 255, 255, 0.8);
+				border-radius: 50%;
+				pointer-events: none;
+				transform: translate(-50%, -50%);
+				transition: width 0.2s, height 0.2s, border-color 0.2s, opacity 0.2s;
+				z-index: 9999;
+				opacity: 0;
+				will-change: transform;
+				mix-blend-mode: difference;
+			}
+			.custom-cursor.visible {
+				opacity: 1;
+			}
+			.cursor-dot {
+				position: fixed;
+				width: 4px;
+				height: 4px;
+				background: rgba(255, 255, 255, 0.95);
+				border-radius: 50%;
+				pointer-events: none;
+				transform: translate(-50%, -50%);
+				z-index: 10000;
+				opacity: 0;
+				will-change: transform;
+				mix-blend-mode: difference;
+			}
+			.cursor-dot.visible {
+				opacity: 1;
+			}
+			.custom-cursor.hover {
+				width: 40px;
+				height: 40px;
+				border-color: rgba(59, 130, 246, 0.9);
+			}
+			.custom-cursor.click {
+				width: 15px;
+				height: 15px;
+			}
+			/* Scroll Progress Indicator */
+			.scroll-progress-bar {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 0%;
+				height: 3px;
+				background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+				z-index: 10001;
+				transition: width 0.1s ease-out;
+				box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+			}
+			/* Ensure link hover is visible */
+			a.nav-link:hover {
+				color: rgb(0, 0, 0) !important;
+			}
+			a.nav-link:hover span {
+				font-weight: 600;
 			}
 			/* Critical above-fold styles for mobile */
 			@media (max-width: 768px) {
@@ -118,28 +267,33 @@ interface Props {
 		</script>
 
 		<slot name="head" />
+		<ViewTransitions />
 	</head>
-	<body class="min-h-screen flex flex-col font-franklin">
-		<nav class="bg-white shadow-sm">
-			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+	<body class="min-h-screen flex flex-col font-franklin custom-cursor-enabled overflow-x-hidden">
+		<div id="custom-cursor" class="custom-cursor"></div>
+		<div id="cursor-dot" class="cursor-dot"></div>
+		<div id="scroll-progress" class="scroll-progress-bar"></div>
+		<nav class="bg-white/80 backdrop-blur-md shadow-sm glass-nav w-full overflow-x-hidden">
+			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 				<div class="flex justify-between h-16">
 					<div class="flex">
 						<a href={`${baseUrl}/`} class="flex items-center">
 							<span class="text-xl font-bold">BRIAN POPE</span>
 						</a>
 					</div>
-					<div class="hidden md:flex items-center space-x-4">
-						<a href={`${baseUrl}/`} class="text-gray-700 hover:text-gray-900">Home</a>
-						<a href={`${baseUrl}/ux-portfolio`} class="text-gray-700 hover:text-gray-900">UX Portfolio</a>
-						<a href={`${baseUrl}/logos`} class="text-gray-700 hover:text-gray-900">Logos</a>
-						<a href={`${baseUrl}/data-visualization`} class="text-gray-700 hover:text-gray-900">Data Visualization</a>
-						<a href={`${baseUrl}/images`} class="text-gray-700 hover:text-gray-900">Images</a>
+					<div class="hidden md:flex items-center space-x-4 relative">
+						<a href={`${baseUrl}/`} class="nav-link text-gray-700 hover:text-black relative px-2 py-1 font-medium transition-colors" data-path="/" data-text="Home"><span>Home</span></a>
+						<a href={`${baseUrl}/ux-portfolio`} class="nav-link text-gray-700 hover:text-black relative px-2 py-1 font-medium transition-colors" data-path="/ux-portfolio" data-text="UX Portfolio"><span>UX Portfolio</span></a>
+						<a href={`${baseUrl}/logos`} class="nav-link text-gray-700 hover:text-black relative px-2 py-1 font-medium transition-colors" data-path="/logos" data-text="Logos"><span>Logos</span></a>
+						<a href={`${baseUrl}/data-visualization`} class="nav-link text-gray-700 hover:text-black relative px-2 py-1 font-medium transition-colors" data-path="/data-visualization" data-text="Data Visualization"><span>Data Visualization</span></a>
+						<a href={`${baseUrl}/images`} class="nav-link text-gray-700 hover:text-black relative px-2 py-1 font-medium transition-colors" data-path="/images" data-text="Images"><span>Images</span></a>
+						<div id="nav-underline" class="absolute bottom-0 h-0.5 bg-gray-900 transition-all duration-300 ease-out"></div>
 					</div>
 					<div class="md:hidden flex items-center">
-						<button id="mobile-menu-button" class="text-gray-700 hover:text-gray-900 focus:outline-none" aria-label="Open menu">
-							<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-							</svg>
+						<button id="mobile-menu-button" class="text-gray-700 hover:text-black focus:outline-none relative w-6 h-6 transition-colors" aria-label="Open menu">
+							<span class="hamburger-line absolute top-0 left-0 w-full h-0.5 bg-current transition-all duration-300"></span>
+							<span class="hamburger-line absolute top-1/2 left-0 w-full h-0.5 bg-current -translate-y-1/2 transition-all duration-300"></span>
+							<span class="hamburger-line absolute bottom-0 left-0 w-full h-0.5 bg-current transition-all duration-300"></span>
 						</button>
 					</div>
 				</div>
@@ -147,23 +301,23 @@ interface Props {
 			<!-- Mobile menu -->
 			<div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-50 bg-white overflow-y-auto">
 				<div class="flex justify-end p-4">
-					<button id="close-menu-button" class="text-gray-700 hover:text-gray-900 focus:outline-none" aria-label="Close menu">
+					<button id="close-menu-button" class="text-gray-700 hover:text-black focus:outline-none transition-colors" aria-label="Close menu">
 						<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
 						</svg>
 					</button>
 				</div>
 				<div class="flex flex-col items-center space-y-6 py-8">
-					<a href={`${baseUrl}/`} class="text-xl text-gray-700 hover:text-gray-900">Home</a>
-					<a href={`${baseUrl}/ux-portfolio`} class="text-xl text-gray-700 hover:text-gray-900">UX Portfolio</a>
-					<a href={`${baseUrl}/logos`} class="text-xl text-gray-700 hover:text-gray-900">Logos</a>
-					<a href={`${baseUrl}/data-visualization`} class="text-xl text-gray-700 hover:text-gray-900">Data Visualization</a>
-					<a href={`${baseUrl}/images`} class="text-xl text-gray-700 hover:text-gray-900">Images</a>
+					<a href={`${baseUrl}/`} class="text-xl text-gray-700 hover:text-black hover:font-bold font-medium transition-all">Home</a>
+					<a href={`${baseUrl}/ux-portfolio`} class="text-xl text-gray-700 hover:text-black hover:font-bold font-medium transition-all">UX Portfolio</a>
+					<a href={`${baseUrl}/logos`} class="text-xl text-gray-700 hover:text-black hover:font-bold font-medium transition-all">Logos</a>
+					<a href={`${baseUrl}/data-visualization`} class="text-xl text-gray-700 hover:text-black hover:font-bold font-medium transition-all">Data Visualization</a>
+					<a href={`${baseUrl}/images`} class="text-xl text-gray-700 hover:text-black hover:font-bold font-medium transition-all">Images</a>
 				</div>
 			</div>
 		</nav>
 
-		<main class="flex-grow">
+		<main class="flex-grow overflow-x-hidden w-full max-w-full">
 			<slot />
 		</main>
 
@@ -180,12 +334,46 @@ interface Props {
 </style>
 
 <script>
-	// Mobile menu functionality - optimized with event delegation
-	const menu = document.getElementById('mobile-menu');
+	// Creative Navigation - Animated Underline
+	const navLinks = document.querySelectorAll('.nav-link');
+	const navUnderline = document.getElementById('nav-underline');
+	const currentPath = window.location.pathname;
 
-	if (menu) {
+	// Set active link based on current path
+	navLinks.forEach((link) => {
+		const linkElement = link as HTMLElement;
+		const linkPath = linkElement.dataset.path || '';
+		
+		if (currentPath === linkPath || (linkPath !== '/' && currentPath.startsWith(linkPath))) {
+			linkElement.classList.add('active');
+			updateUnderline(linkElement);
+		}
+
+		// Animate underline on hover
+		linkElement.addEventListener('mouseenter', () => {
+			updateUnderline(linkElement);
+		});
+	});
+
+	function updateUnderline(link: HTMLElement) {
+		if (!navUnderline) return;
+		const rect = link.getBoundingClientRect();
+		const nav = link.closest('nav')?.querySelector('.max-w-7xl');
+		if (!nav) return;
+		const navRect = nav.getBoundingClientRect();
+		
+		navUnderline.style.left = `${rect.left - navRect.left}px`;
+		navUnderline.style.width = `${rect.width}px`;
+	}
+
+	// Mobile menu functionality with morphing icon
+	const menu = document.getElementById('mobile-menu');
+	const menuButton = document.getElementById('mobile-menu-button');
+
+	if (menu && menuButton) {
 		const toggle = (show: boolean) => {
 			menu.classList.toggle('hidden', !show);
+			menuButton.classList.toggle('active', show);
 			document.body.style.overflow = show ? 'hidden' : '';
 		};
 
@@ -210,4 +398,119 @@ interface Props {
 			}
 		});
 	}
+
+	// Custom Cursor Effects
+	const customCursor = document.getElementById('custom-cursor');
+	const cursorDot = document.getElementById('cursor-dot');
+	
+	if (customCursor && cursorDot) {
+		let mouseX = 0;
+		let mouseY = 0;
+		let cursorX = 0;
+		let cursorY = 0;
+		let dotX = 0;
+		let dotY = 0;
+		let isInitialized = false;
+
+		// Only enable on non-touch devices
+		if (window.matchMedia('(pointer: fine)').matches) {
+			// Initialize cursor position on first mouse move
+			document.addEventListener('mousemove', (e) => {
+				if (!isInitialized) {
+					mouseX = e.clientX;
+					mouseY = e.clientY;
+					cursorX = e.clientX;
+					cursorY = e.clientY;
+					dotX = e.clientX;
+					dotY = e.clientY;
+					
+					// Show cursor and hide default cursor only after initialization
+					customCursor.classList.add('visible');
+					cursorDot.classList.add('visible');
+					document.body.classList.add('custom-cursor-enabled');
+					isInitialized = true;
+				}
+				
+				mouseX = e.clientX;
+				mouseY = e.clientY;
+			}, { once: false });
+
+			// Smooth cursor animation
+			function animateCursor() {
+				if (isInitialized) {
+					cursorX += (mouseX - cursorX) * 0.1;
+					cursorY += (mouseY - cursorY) * 0.1;
+					dotX += (mouseX - dotX) * 0.3;
+					dotY += (mouseY - dotY) * 0.3;
+
+					customCursor.style.left = `${cursorX}px`;
+					customCursor.style.top = `${cursorY}px`;
+					cursorDot.style.left = `${dotX}px`;
+					cursorDot.style.top = `${dotY}px`;
+				}
+
+				requestAnimationFrame(animateCursor);
+			}
+			animateCursor();
+
+			// Hover effects on interactive elements
+			const interactiveElements = document.querySelectorAll('a, button, .magnetic-card, .nav-link');
+			interactiveElements.forEach((el) => {
+				el.addEventListener('mouseenter', () => {
+					if (isInitialized) {
+						customCursor.classList.add('hover');
+					}
+				});
+				el.addEventListener('mouseleave', () => {
+					if (isInitialized) {
+						customCursor.classList.remove('hover');
+					}
+				});
+			});
+
+			// Click effect
+			document.addEventListener('mousedown', () => {
+				if (isInitialized) {
+					customCursor.classList.add('click');
+				}
+			});
+			document.addEventListener('mouseup', () => {
+				if (isInitialized) {
+					customCursor.classList.remove('click');
+				}
+			});
+		} else {
+			// Hide custom cursor on touch devices
+			customCursor.style.display = 'none';
+			cursorDot.style.display = 'none';
+			document.body.classList.remove('custom-cursor-enabled');
+		}
+	}
+
+	// Scroll Progress Indicator
+	const scrollProgress = document.getElementById('scroll-progress');
+	if (scrollProgress) {
+		let ticking = false;
+		
+		function updateScrollProgress() {
+			const windowHeight = window.innerHeight;
+			const documentHeight = document.documentElement.scrollHeight;
+			const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+			const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
+			
+			scrollProgress.style.width = `${Math.min(scrollPercent, 100)}%`;
+			ticking = false;
+		}
+
+		function requestProgressTick() {
+			if (!ticking) {
+				requestAnimationFrame(updateScrollProgress);
+				ticking = true;
+			}
+		}
+
+		window.addEventListener('scroll', requestProgressTick, { passive: true });
+		updateScrollProgress(); // Initial call
+	}
+
 </script>

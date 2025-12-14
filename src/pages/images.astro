@@ -239,7 +239,7 @@ if (mwIndex > 2) {
     {/* Image Cards Section */}
     <section id="image-cards" class="container mx-auto px-4 py-20">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {images.map((image) => (
+        {images.map((image, index) => (
           <a
             href={
               image.category === "Events" ? '/images/events' :
@@ -250,8 +250,10 @@ if (mwIndex > 2) {
               image.category === "Landscape" ? '/images/landscape' :
               image.category === "Box Lacrosse" ? '/images/boxlacrosse' :
               "#"
-            } 
-            class="group h-full"
+            }
+            class="group h-full scroll-fade-in magnetic-card"
+            data-index={index}
+            style="opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;"
           >
             <div class="relative overflow-hidden rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md h-full flex flex-col">
               <div class="h-64 mb-4 overflow-hidden rounded-lg">
@@ -272,26 +274,99 @@ if (mwIndex > 2) {
 
 <script>
   // Handle scrolling for the chevron button
-  document.addEventListener('DOMContentLoaded', function() {
-    const scrollButton = document.getElementById('scroll-button');
-    const imageCards = document.getElementById('image-cards');
-    
-    if (scrollButton && imageCards) {
-      scrollButton.addEventListener('click', function() {
-        // Use a more reliable scrolling method that works everywhere
-        const targetPosition = imageCards.offsetTop - 100; // Offset by 100px for better positioning
-        
-        // Try smooth scrolling first, fall back to instant scrolling
-        if ('scrollBehavior' in document.documentElement.style) {
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
-        } else {
-          // Fallback for browsers that don't support smooth scrolling
-          window.scrollTo(0, targetPosition);
+  const scrollButton = document.getElementById('scroll-button');
+  const imageCards = document.getElementById('image-cards');
+
+  if (scrollButton && imageCards) {
+    scrollButton.addEventListener('click', () => {
+      imageCards.scrollIntoView({ behavior: 'smooth' });
+    }, { passive: true });
+  }
+
+  // Scroll-triggered animations using Intersection Observer
+  const animatedCards = document.querySelectorAll('.scroll-fade-in');
+
+  if (animatedCards.length > 0 && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const element = entry.target as HTMLElement;
+          const index = parseInt(element.dataset.index || '0');
+          setTimeout(() => {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+          }, index * 100);
+          observer.unobserve(element);
         }
       });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    animatedCards.forEach((card) => {
+      observer.observe(card);
+    });
+  } else {
+    animatedCards.forEach((card) => {
+      (card as HTMLElement).style.opacity = '1';
+      (card as HTMLElement).style.transform = 'translateY(0)';
+    });
+  }
+
+  // Magnetic hover effects
+  const magneticCards = document.querySelectorAll('.magnetic-card');
+  const magneticStrength = 0.15;
+
+  magneticCards.forEach((card) => {
+    const cardElement = card as HTMLElement;
+    let currentX = 0;
+    let currentY = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let rafId: number | null = null;
+
+    function animate() {
+      currentX += (targetX - currentX) * 0.1;
+      currentY += (targetY - currentY) * 0.1;
+
+      cardElement.style.transform = `translate(${currentX}px, ${currentY}px)`;
+
+      if (Math.abs(targetX - currentX) > 0.1 || Math.abs(targetY - currentY) > 0.1) {
+        rafId = requestAnimationFrame(animate);
+      } else {
+        rafId = null;
+      }
     }
+
+    cardElement.addEventListener('mouseenter', () => {
+      cardElement.style.transition = 'none';
+    });
+
+    cardElement.addEventListener('mouseleave', () => {
+      targetX = 0;
+      targetY = 0;
+      cardElement.style.transition = 'transform 0.3s ease-out';
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
+      animate();
+    });
+
+    cardElement.addEventListener('mousemove', (e) => {
+      const rect = cardElement.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      const deltaX = (e.clientX - centerX) * magneticStrength;
+      const deltaY = (e.clientY - centerY) * magneticStrength;
+
+      targetX = deltaX;
+      targetY = deltaY;
+
+      if (!rafId) {
+        rafId = requestAnimationFrame(animate);
+      }
+    });
   });
 </script> 
