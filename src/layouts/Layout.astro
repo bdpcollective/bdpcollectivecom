@@ -298,24 +298,44 @@ interface Props {
 					</div>
 				</div>
 			</div>
-			<!-- Mobile menu -->
-			<div id="mobile-menu" class="hidden md:hidden fixed inset-0 z-50 bg-white overflow-y-auto">
-				<div class="flex justify-end p-4">
-					<button id="close-menu-button" class="text-gray-700 hover:text-black focus:outline-none transition-colors" aria-label="Close menu">
-						<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-						</svg>
-					</button>
-				</div>
-				<div class="flex flex-col items-center space-y-6 py-8">
-					<a href={`${baseUrl}/`} class="text-xl text-gray-700 hover:text-black hover:font-bold font-medium transition-all">Home</a>
-					<a href={`${baseUrl}/ux-portfolio`} class="text-xl text-gray-700 hover:text-black hover:font-bold font-medium transition-all">UX Portfolio</a>
-					<a href={`${baseUrl}/logos`} class="text-xl text-gray-700 hover:text-black hover:font-bold font-medium transition-all">Logos</a>
-					<a href={`${baseUrl}/data-visualization`} class="text-xl text-gray-700 hover:text-black hover:font-bold font-medium transition-all">Data Visualization</a>
-					<a href={`${baseUrl}/images`} class="text-xl text-gray-700 hover:text-black hover:font-bold font-medium transition-all">Images</a>
-				</div>
-			</div>
 		</nav>
+
+		<!-- Mobile menu - outside nav to avoid z-index issues -->
+		<div id="mobile-menu" class="hidden fixed inset-0 z-[9998] bg-white overflow-y-auto md:hidden">
+			<div class="flex justify-end p-4">
+				<button id="close-menu-button" class="text-gray-700 hover:text-black focus:outline-none transition-colors p-2" aria-label="Close menu">
+					<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+					</svg>
+				</button>
+			</div>
+			<div class="flex flex-col items-center space-y-6 py-8">
+				<a href={`${baseUrl}/`} class="text-xl text-gray-700 hover:text-black hover:font-bold font-medium transition-all">Home</a>
+				<a href={`${baseUrl}/ux-portfolio`} class="text-xl text-gray-700 hover:text-black hover:font-bold font-medium transition-all">UX Portfolio</a>
+				<a href={`${baseUrl}/logos`} class="text-xl text-gray-700 hover:text-black hover:font-bold font-medium transition-all">Logos</a>
+				<a href={`${baseUrl}/data-visualization`} class="text-xl text-gray-700 hover:text-black hover:font-bold font-medium transition-all">Data Visualization</a>
+				<a href={`${baseUrl}/images`} class="text-xl text-gray-700 hover:text-black hover:font-bold font-medium transition-all">Images</a>
+			</div>
+		</div>
+
+		<script is:inline>
+			document.getElementById('mobile-menu-button').addEventListener('click', function(e) {
+				e.preventDefault();
+				document.getElementById('mobile-menu').classList.remove('hidden');
+				document.body.style.overflow = 'hidden';
+			});
+			document.getElementById('close-menu-button').addEventListener('click', function(e) {
+				e.preventDefault();
+				document.getElementById('mobile-menu').classList.add('hidden');
+				document.body.style.overflow = '';
+			});
+			document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+				link.addEventListener('click', function() {
+					document.getElementById('mobile-menu').classList.add('hidden');
+					document.body.style.overflow = '';
+				});
+			});
+		</script>
 
 		<main class="flex-grow overflow-x-hidden w-full max-w-full">
 			<slot />
@@ -366,70 +386,6 @@ interface Props {
 				updateUnderline(linkElement);
 			});
 		});
-
-		// Mobile menu functionality
-		const menu = document.getElementById('mobile-menu');
-		const menuButton = document.getElementById('mobile-menu-button');
-		const closeButton = document.getElementById('close-menu-button');
-
-		function openMobileMenu() {
-			const m = document.getElementById('mobile-menu');
-			const btn = document.getElementById('mobile-menu-button');
-			if (m && btn) {
-				m.classList.remove('hidden');
-				btn.classList.add('active');
-				document.body.style.overflow = 'hidden';
-			}
-		}
-
-		function closeMobileMenu() {
-			const m = document.getElementById('mobile-menu');
-			const btn = document.getElementById('mobile-menu-button');
-			if (m && btn) {
-				m.classList.add('hidden');
-				btn.classList.remove('active');
-				document.body.style.overflow = '';
-			}
-		}
-
-		// Direct click handlers on specific elements
-		if (menuButton) {
-			menuButton.onclick = (e) => {
-				e.preventDefault();
-				e.stopPropagation();
-				openMobileMenu();
-			};
-		}
-
-		if (closeButton) {
-			closeButton.onclick = (e) => {
-				e.preventDefault();
-				e.stopPropagation();
-				closeMobileMenu();
-			};
-		}
-
-		// Close menu when clicking on menu links
-		if (menu) {
-			const menuLinks = menu.querySelectorAll('a');
-			menuLinks.forEach(link => {
-				link.onclick = () => closeMobileMenu();
-			});
-
-			// Close when clicking the backdrop
-			menu.onclick = (e) => {
-				if (e.target === menu) {
-					closeMobileMenu();
-				}
-			};
-		}
-
-		// Escape key to close
-		document.onkeydown = (e) => {
-			if (e.key === 'Escape') {
-				closeMobileMenu();
-			}
-		};
 
 		// Custom Cursor Effects
 		const customCursor = document.getElementById('custom-cursor');
