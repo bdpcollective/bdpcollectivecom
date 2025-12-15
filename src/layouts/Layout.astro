@@ -319,22 +319,45 @@ interface Props {
 		</div>
 
 		<script is:inline>
-			document.getElementById('mobile-menu-button').addEventListener('click', function(e) {
-				e.preventDefault();
-				document.getElementById('mobile-menu').classList.remove('hidden');
-				document.body.style.overflow = 'hidden';
-			});
-			document.getElementById('close-menu-button').addEventListener('click', function(e) {
-				e.preventDefault();
-				document.getElementById('mobile-menu').classList.add('hidden');
-				document.body.style.overflow = '';
-			});
-			document.querySelectorAll('#mobile-menu a').forEach(function(link) {
-				link.addEventListener('click', function() {
-					document.getElementById('mobile-menu').classList.add('hidden');
-					document.body.style.overflow = '';
-				});
-			});
+			(function() {
+				function setupMobileMenu() {
+					var menuBtn = document.getElementById('mobile-menu-button');
+					var closeBtn = document.getElementById('close-menu-button');
+					var menu = document.getElementById('mobile-menu');
+
+					if (!menuBtn || !closeBtn || !menu) return;
+
+					menuBtn.onclick = function(e) {
+						e.preventDefault();
+						menu.classList.remove('hidden');
+						document.body.style.overflow = 'hidden';
+					};
+
+					closeBtn.onclick = function(e) {
+						e.preventDefault();
+						menu.classList.add('hidden');
+						document.body.style.overflow = '';
+					};
+
+					var links = menu.querySelectorAll('a');
+					for (var i = 0; i < links.length; i++) {
+						links[i].onclick = function() {
+							menu.classList.add('hidden');
+							document.body.style.overflow = '';
+						};
+					}
+				}
+
+				// Run on initial load
+				if (document.readyState === 'loading') {
+					document.addEventListener('DOMContentLoaded', setupMobileMenu);
+				} else {
+					setupMobileMenu();
+				}
+
+				// Run after View Transitions
+				document.addEventListener('astro:page-load', setupMobileMenu);
+			})();
 		</script>
 
 		<main class="flex-grow overflow-x-hidden w-full max-w-full">
