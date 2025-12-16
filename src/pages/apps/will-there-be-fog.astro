@@ -1,0 +1,265 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { baseUrl } from '../../config';
+---
+
+<Layout title="Will there be fog? - Apps">
+  <main>
+    {/* Hero Section */}
+    <section class="relative h-[40vh] overflow-hidden">
+      <img
+        src="/fog.jpg"
+        alt="Foggy landscape"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-black/50"></div>
+      <div class="relative z-10 flex flex-col justify-center h-full px-4 container mx-auto">
+        <div class="max-w-7xl mx-auto w-full">
+          <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">
+            Will there be fog?
+          </h1>
+          <p class="text-lg md:text-xl text-gray-300 mb-4">
+            Check the fog forecast for your area.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Content Section */}
+    <section class="container mx-auto px-4 py-20">
+      <div class="max-w-3xl mx-auto space-y-12">
+        {/* Back Button */}
+        <a
+          href="/apps"
+          class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+        >
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to Apps
+        </a>
+
+        {/* Zip Code Input */}
+        <div class="bg-white rounded-2xl shadow-xl p-8">
+          <div class="max-w-md mx-auto">
+            <label for="zip-input" class="block text-lg font-semibold text-gray-900 mb-3">
+              Enter your ZIP code
+            </label>
+            <div class="flex gap-3">
+              <input
+                type="text"
+                id="zip-input"
+                placeholder="e.g., 68022"
+                maxlength="5"
+                class="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-gray-800 focus:border-transparent outline-none transition-all"
+              />
+              <button
+                id="check-fog-btn"
+                class="bg-gray-800 hover:bg-gray-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors"
+              >
+                Check
+              </button>
+            </div>
+            <p id="location-name" class="mt-3 text-gray-600 text-center"></p>
+          </div>
+        </div>
+
+        {/* Loading State */}
+        <div id="loading-state" class="hidden text-center py-8">
+          <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-gray-300 border-t-gray-800"></div>
+          <p class="mt-4 text-gray-600">Fetching forecast...</p>
+        </div>
+
+        {/* Error State */}
+        <div id="error-state" class="hidden bg-red-50 border border-red-200 rounded-xl p-6 text-center">
+          <div class="text-4xl mb-3">😕</div>
+          <p id="error-message" class="text-red-700">Could not find that location. Please check the ZIP code.</p>
+        </div>
+
+        {/* 7-Day Forecast */}
+        <div id="forecast-container" class="hidden">
+          <h2 class="text-2xl font-bold text-gray-900 mb-6">7-Day Fog Forecast</h2>
+          <div id="forecast-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4">
+            {/* Forecast cards will be inserted here */}
+          </div>
+        </div>
+
+        {/* About Section */}
+        <div class="pt-8 border-t border-gray-200">
+          <h2 class="text-2xl font-bold mb-4">How It Works</h2>
+          <div class="prose max-w-none text-gray-700">
+            <p class="mb-3">
+              This app analyzes weather conditions to predict fog likelihood. Fog typically forms when:
+            </p>
+            <ul class="list-disc pl-5 space-y-1 mb-3">
+              <li>Temperature is within 2.5°C of the dew point</li>
+              <li>Humidity is above 90%</li>
+              <li>Visibility drops below 1km</li>
+            </ul>
+            <p>
+              Weather data is provided by Open-Meteo's free forecast API.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Fixed Navigation */}
+    <div class="fixed left-4 top-1/2 -translate-y-1/2 z-50">
+      <a
+        href="/apps"
+        class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/80 hover:bg-white shadow-lg text-gray-600 hover:text-gray-900 transition-colors"
+        aria-label="Back to Apps"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </a>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const zipInput = document.getElementById('zip-input') as HTMLInputElement;
+      const checkBtn = document.getElementById('check-fog-btn');
+      const locationName = document.getElementById('location-name');
+      const loadingState = document.getElementById('loading-state');
+      const errorState = document.getElementById('error-state');
+      const errorMessage = document.getElementById('error-message');
+      const forecastContainer = document.getElementById('forecast-container');
+      const forecastGrid = document.getElementById('forecast-grid');
+
+      const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+      function showLoading() {
+        loadingState?.classList.remove('hidden');
+        errorState?.classList.add('hidden');
+        forecastContainer?.classList.add('hidden');
+      }
+
+      function showError(message: string) {
+        loadingState?.classList.add('hidden');
+        errorState?.classList.remove('hidden');
+        forecastContainer?.classList.add('hidden');
+        if (errorMessage) errorMessage.textContent = message;
+      }
+
+      function showForecast() {
+        loadingState?.classList.add('hidden');
+        errorState?.classList.add('hidden');
+        forecastContainer?.classList.remove('hidden');
+      }
+
+      function getFogStatus(weatherCode: number, humidity: number, tempDewDiff: number) {
+        // Weather codes 45 and 48 are fog
+        if (weatherCode === 45 || weatherCode === 48) {
+          return { icon: '🌫️', status: 'Foggy', color: 'bg-gray-200' };
+        }
+        // High likelihood of fog
+        if (tempDewDiff <= 2.5 && humidity >= 90) {
+          return { icon: '🌫️', status: 'Likely', color: 'bg-gray-100' };
+        }
+        // Moderate chance
+        if (tempDewDiff <= 4 && humidity >= 80) {
+          return { icon: '🌥️', status: 'Possible', color: 'bg-blue-50' };
+        }
+        // Low chance
+        return { icon: '☀️', status: 'Clear', color: 'bg-yellow-50' };
+      }
+
+      async function checkFog() {
+        const zip = zipInput?.value.trim();
+        if (!zip || zip.length !== 5 || !/^\d+$/.test(zip)) {
+          showError('Please enter a valid 5-digit ZIP code.');
+          return;
+        }
+
+        showLoading();
+
+        try {
+          // Use Open-Meteo geocoding to convert ZIP to coordinates
+          // We'll use the US postal code search
+          const geoResponse = await fetch(
+            `https://geocoding-api.open-meteo.com/v1/search?name=${zip}&count=1&language=en&format=json&country=US`
+          );
+          const geoData = await geoResponse.json();
+
+          if (!geoData.results || geoData.results.length === 0) {
+            // Try with "USA" appended for better results
+            const geoResponse2 = await fetch(
+              `https://geocoding-api.open-meteo.com/v1/search?name=${zip}%20USA&count=1&language=en&format=json`
+            );
+            const geoData2 = await geoResponse2.json();
+
+            if (!geoData2.results || geoData2.results.length === 0) {
+              showError('Could not find that ZIP code. Please try another.');
+              return;
+            }
+            geoData.results = geoData2.results;
+          }
+
+          const location = geoData.results[0];
+          const { latitude, longitude, name, admin1 } = location;
+
+          if (locationName) {
+            locationName.textContent = `${name}, ${admin1 || ''}`;
+          }
+
+          // Fetch 7-day forecast
+          const forecastResponse = await fetch(
+            `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weather_code,temperature_2m_max,temperature_2m_min,relative_humidity_2m_max,dew_point_2m_max&timezone=auto&forecast_days=7`
+          );
+          const forecastData = await forecastResponse.json();
+          const daily = forecastData.daily;
+
+          // Build forecast cards
+          if (forecastGrid) {
+            forecastGrid.innerHTML = '';
+
+            for (let i = 0; i < daily.time.length; i++) {
+              const date = new Date(daily.time[i] + 'T12:00:00');
+              const dayName = dayNames[date.getDay()];
+              const monthDay = `${monthNames[date.getMonth()]} ${date.getDate()}`;
+
+              const weatherCode = daily.weather_code[i];
+              const humidity = daily.relative_humidity_2m_max[i];
+              const tempMax = daily.temperature_2m_max[i];
+              const dewPoint = daily.dew_point_2m_max[i];
+              const tempDewDiff = tempMax - dewPoint;
+
+              const { icon, status, color } = getFogStatus(weatherCode, humidity, tempDewDiff);
+
+              const card = document.createElement('div');
+              card.className = `${color} rounded-xl p-4 text-center transition-transform hover:scale-105`;
+              card.innerHTML = `
+                <div class="text-sm font-semibold text-gray-900">${dayName}</div>
+                <div class="text-xs text-gray-500 mb-2">${monthDay}</div>
+                <div class="text-3xl mb-2">${icon}</div>
+                <div class="text-sm font-medium text-gray-800">${status}</div>
+                <div class="text-xs text-gray-500 mt-1">${humidity}% humidity</div>
+              `;
+
+              forecastGrid.appendChild(card);
+            }
+          }
+
+          showForecast();
+        } catch (error) {
+          console.error('Error fetching forecast:', error);
+          showError('Unable to fetch weather data. Please try again.');
+        }
+      }
+
+      // Enter key triggers check
+      zipInput?.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          checkFog();
+        }
+      });
+
+      // Button click triggers check
+      checkBtn?.addEventListener('click', checkFog);
+    });
+  </script>
+</Layout>

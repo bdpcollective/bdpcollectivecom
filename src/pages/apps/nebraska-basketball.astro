@@ -1,0 +1,787 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { baseUrl } from '../../config';
+---
+
+<Layout title="Nebraska Basketball - Apps">
+  <main>
+    {/* Hero Section */}
+    <section class="relative h-[40vh] overflow-hidden">
+      <img
+        src="/nebraskabasketball.jpg"
+        alt="Nebraska Basketball"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-black/50"></div>
+      <div class="relative z-10 flex flex-col justify-center h-full px-4 container mx-auto">
+        <div class="max-w-7xl mx-auto w-full">
+          <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">
+            Nebraska Basketball
+          </h1>
+          <p class="text-lg md:text-xl text-gray-200 mb-4">
+            Live stats and schedule for Husker basketball.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Content Section */}
+    <section class="container mx-auto px-4 py-12">
+      <div class="max-w-6xl mx-auto space-y-8">
+        {/* Back Button */}
+        <a
+          href="/apps"
+          class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+        >
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to Apps
+        </a>
+
+        {/* Team Overview Card */}
+        <div id="team-stats" class="bg-white rounded-2xl shadow-xl p-6">
+          <div class="flex items-center gap-4 mb-6">
+            <img id="team-logo" src="" alt="Nebraska" class="w-16 h-16 object-contain" />
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900">Nebraska Cornhuskers</h2>
+              <p id="team-record" class="text-gray-600">Loading...</p>
+            </div>
+            <div id="team-ranking" class="ml-auto text-right">
+              <span class="text-3xl font-bold text-red-700">#--</span>
+              <p class="text-sm text-gray-500">National Rank</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-gray-50 rounded-lg p-4 text-center">
+              <p class="text-2xl font-bold text-gray-900" id="stat-ppg">--</p>
+              <p class="text-sm text-gray-500">Points/Game</p>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-4 text-center">
+              <p class="text-2xl font-bold text-gray-900" id="stat-oppg">--</p>
+              <p class="text-sm text-gray-500">Opp Points/Game</p>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-4 text-center">
+              <p class="text-2xl font-bold text-green-600" id="stat-diff">--</p>
+              <p class="text-sm text-gray-500">Avg Margin</p>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-4 text-center">
+              <p class="text-2xl font-bold text-gray-900" id="stat-streak">--</p>
+              <p class="text-sm text-gray-500">Streak</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Tabs */}
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+          <div class="flex border-b border-gray-200">
+            <button id="tab-team" class="flex-1 py-4 px-6 text-center font-semibold text-red-700 border-b-2 border-red-700 bg-red-50 transition-colors">
+              Team Stats
+            </button>
+            <button id="tab-players" class="flex-1 py-4 px-6 text-center font-semibold text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:bg-gray-50 transition-colors">
+              Players
+            </button>
+          </div>
+
+          {/* Team Tab Content */}
+          <div id="content-team" class="p-6">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
+              <h2 class="text-xl font-bold text-gray-900">Team Statistics</h2>
+              <p class="text-sm text-gray-500"><span class="text-green-600">Green</span> = Nebraska better, <span class="text-red-600">Red</span> = worse</p>
+            </div>
+
+            <div id="comparison-loading" class="text-center py-8">
+              <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-300 border-t-red-700"></div>
+              <p class="mt-2 text-gray-600">Loading stats...</p>
+            </div>
+
+            <div id="comparison-table-container" class="hidden">
+              {/* Summary Section */}
+              <div id="comparison-summary" class="mb-6 p-4 rounded-xl bg-gray-50 border border-gray-200">
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div class="flex items-center gap-4">
+                    <div class="text-center">
+                      <p class="text-2xl font-bold text-red-700" id="summary-nebraska-wins">0</p>
+                      <p class="text-xs text-gray-500">Nebraska</p>
+                    </div>
+                    <div class="text-gray-400 text-lg">-</div>
+                    <div class="text-center">
+                      <p class="text-2xl font-bold text-gray-700" id="summary-opponent-wins">0</p>
+                      <p class="text-xs text-gray-500" id="summary-opponent-name">Opponent</p>
+                    </div>
+                  </div>
+                  <div id="summary-verdict" class="text-center sm:text-right">
+                    <p class="text-lg font-bold text-gray-900">--</p>
+                    <p class="text-xs text-gray-500">Statistical Edge</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="overflow-x-auto">
+                <table id="comparison-table" class="w-full text-sm">
+                  <thead>
+                    <tr class="border-b border-gray-200 bg-gray-50">
+                      <th class="sortable text-left py-3 px-4 font-semibold text-gray-700 cursor-pointer hover:bg-gray-100" data-sort="category">
+                        Stat <span class="sort-icon ml-1 text-gray-400">↕</span>
+                      </th>
+                      <th class="sortable text-center py-3 px-4 font-semibold cursor-pointer hover:bg-gray-100" data-sort="nebraskaValue">
+                        <span class="text-red-700">Nebraska</span> <span class="sort-icon ml-1 text-gray-400">↕</span>
+                      </th>
+                      <th class="text-center py-3 px-2 font-semibold text-gray-700">
+                        <select id="opponent-select" class="w-full px-2 py-1 border border-gray-300 rounded text-sm font-semibold text-gray-700 focus:ring-2 focus:ring-red-700 focus:border-transparent outline-none bg-white cursor-pointer">
+                          <option value="">Loading...</option>
+                        </select>
+                      </th>
+                      <th class="sortable text-center py-3 px-4 font-semibold text-gray-700 cursor-pointer hover:bg-gray-100" data-sort="diff">
+                        +/- <span class="sort-icon ml-1 text-gray-400">↕</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody id="comparison-body">
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          {/* Players Tab Content */}
+          <div id="content-players" class="p-6 hidden">
+            <h2 class="text-xl font-bold text-gray-900 mb-4">Player Statistics</h2>
+            <p class="text-sm text-gray-500 mb-4">Click column headers to sort</p>
+            <div class="overflow-x-auto">
+              <table id="players-table" class="w-full text-sm">
+                <thead>
+                  <tr class="border-b border-gray-200 bg-gray-50">
+                    <th class="sortable text-left py-3 px-3 font-semibold text-gray-700 cursor-pointer hover:bg-gray-100" data-sort="name">
+                      Player <span class="sort-icon ml-1 text-gray-400">↕</span>
+                    </th>
+                    <th class="sortable text-center py-3 px-2 font-semibold text-gray-700 cursor-pointer hover:bg-gray-100" data-sort="ppg">
+                      PPG <span class="sort-icon ml-1 text-gray-400">↕</span>
+                    </th>
+                    <th class="sortable text-center py-3 px-2 font-semibold text-gray-700 cursor-pointer hover:bg-gray-100" data-sort="rpg">
+                      RPG <span class="sort-icon ml-1 text-gray-400">↕</span>
+                    </th>
+                    <th class="sortable text-center py-3 px-2 font-semibold text-gray-700 cursor-pointer hover:bg-gray-100" data-sort="apg">
+                      APG <span class="sort-icon ml-1 text-gray-400">↕</span>
+                    </th>
+                    <th class="sortable text-center py-3 px-2 font-semibold text-gray-700 cursor-pointer hover:bg-gray-100" data-sort="spg">
+                      SPG <span class="sort-icon ml-1 text-gray-400">↕</span>
+                    </th>
+                    <th class="sortable text-center py-3 px-2 font-semibold text-gray-700 cursor-pointer hover:bg-gray-100" data-sort="bpg">
+                      BPG <span class="sort-icon ml-1 text-gray-400">↕</span>
+                    </th>
+                    <th class="sortable text-center py-3 px-2 font-semibold text-gray-700 cursor-pointer hover:bg-gray-100" data-sort="fgPct">
+                      FG% <span class="sort-icon ml-1 text-gray-400">↕</span>
+                    </th>
+                    <th class="sortable text-center py-3 px-2 font-semibold text-gray-700 cursor-pointer hover:bg-gray-100" data-sort="threePM">
+                      3PM <span class="sort-icon ml-1 text-gray-400">↕</span>
+                    </th>
+                    <th class="sortable text-center py-3 px-2 font-semibold text-gray-700 cursor-pointer hover:bg-gray-100" data-sort="mpg">
+                      MPG <span class="sort-icon ml-1 text-gray-400">↕</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="players-body">
+                  <tr><td colspan="9" class="py-8 text-center text-gray-500">Loading player stats...</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        {/* Data Source */}
+        <p class="text-center text-sm text-gray-500">
+          Stats powered by ESPN. Updated in real-time.
+        </p>
+      </div>
+    </section>
+
+    {/* Fixed Navigation */}
+    <div class="fixed left-4 top-1/2 -translate-y-1/2 z-50">
+      <a
+        href="/apps"
+        class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/80 hover:bg-white shadow-lg text-gray-600 hover:text-gray-900 transition-colors"
+        aria-label="Back to Apps"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </a>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const NEBRASKA_TEAM_ID = 158;
+      const ESPN_BASE = 'https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball';
+
+      // DOM elements
+      const teamLogo = document.getElementById('team-logo') as HTMLImageElement;
+      const teamRecord = document.getElementById('team-record');
+      const teamRanking = document.getElementById('team-ranking');
+      const statPpg = document.getElementById('stat-ppg');
+      const statOppg = document.getElementById('stat-oppg');
+      const statDiff = document.getElementById('stat-diff');
+      const statStreak = document.getElementById('stat-streak');
+      const playersBody = document.getElementById('players-body');
+      const opponentSelect = document.getElementById('opponent-select') as HTMLSelectElement;
+      const comparisonLoading = document.getElementById('comparison-loading');
+      const comparisonTableContainer = document.getElementById('comparison-table-container');
+      const comparisonBody = document.getElementById('comparison-body');
+      const summaryNebraskaWins = document.getElementById('summary-nebraska-wins');
+      const summaryOpponentWins = document.getElementById('summary-opponent-wins');
+      const summaryOpponentName = document.getElementById('summary-opponent-name');
+      const summaryVerdict = document.getElementById('summary-verdict');
+      const tabTeam = document.getElementById('tab-team');
+      const tabPlayers = document.getElementById('tab-players');
+      const contentTeam = document.getElementById('content-team');
+      const contentPlayers = document.getElementById('content-players');
+
+      // Data storage for sorting
+      let playersData: any[] = [];
+      let comparisonData: any[] = [];
+      let nebraskaStats: Map<string, any> = new Map();
+      let scheduleOpponents: any[] = []; // Ordered by schedule
+      let currentOpponentName = '';
+      let currentSort = { table: '', column: '', direction: 'asc' };
+
+      // Sorting function
+      function sortData(data: any[], column: string, direction: string) {
+        return [...data].sort((a, b) => {
+          let aVal = a[column];
+          let bVal = b[column];
+
+          // Handle numeric values
+          if (typeof aVal === 'number' && typeof bVal === 'number') {
+            return direction === 'asc' ? aVal - bVal : bVal - aVal;
+          }
+
+          // Handle strings
+          aVal = String(aVal).toLowerCase();
+          bVal = String(bVal).toLowerCase();
+          if (aVal < bVal) return direction === 'asc' ? -1 : 1;
+          if (aVal > bVal) return direction === 'asc' ? 1 : -1;
+          return 0;
+        });
+      }
+
+      // Stats where lower is better
+      const lowerIsBetter = ['turnovers', 'fouls', 'turnoversPerGame', 'foulsPerGame', 'avgTurnovers', 'avgFouls', 'personalFoulsPerGame'];
+
+      // Render comparison table
+      function renderComparison() {
+        if (!comparisonBody) return;
+
+        if (comparisonData.length === 0) {
+          comparisonBody.innerHTML = '<tr><td colspan="4" class="py-8 text-center text-gray-500">No statistics available</td></tr>';
+          return;
+        }
+
+        // Calculate summary
+        let nebraskaWins = 0;
+        let opponentWins = 0;
+
+        comparisonBody.innerHTML = comparisonData.map(stat => {
+          const isLowerBetter = lowerIsBetter.some(s => stat.key?.toLowerCase().includes(s.toLowerCase()));
+          let nebClass = 'text-gray-900';
+          let oppClass = 'text-gray-900';
+          let diffClass = 'text-gray-500';
+
+          if (stat.nebraskaValue !== null && stat.opponentValue !== null) {
+            const diff = stat.nebraskaValue - stat.opponentValue;
+            const isBetter = isLowerBetter ? diff < 0 : diff > 0;
+            const isWorse = isLowerBetter ? diff > 0 : diff < 0;
+
+            if (Math.abs(diff) > 0.1) {
+              if (isBetter) nebraskaWins++;
+              if (isWorse) opponentWins++;
+              nebClass = isBetter ? 'text-green-600 font-semibold' : isWorse ? 'text-red-600' : 'text-gray-900';
+              oppClass = isBetter ? 'text-red-600' : isWorse ? 'text-green-600 font-semibold' : 'text-gray-900';
+              diffClass = isBetter ? 'text-green-600 font-semibold' : 'text-red-600';
+            }
+          }
+
+          const diffDisplay = stat.diff !== null ? (stat.diff > 0 ? '+' : '') + stat.diff.toFixed(1) : '-';
+
+          return `
+            <tr class="border-b border-gray-100 hover:bg-gray-50">
+              <td class="py-3 px-4 text-gray-900">${stat.category}</td>
+              <td class="py-3 px-4 text-center ${nebClass}">${stat.nebraskaDisplay}</td>
+              <td class="py-3 px-4 text-center ${oppClass}">${stat.opponentDisplay}</td>
+              <td class="py-3 px-4 text-center ${diffClass}">${diffDisplay}</td>
+            </tr>
+          `;
+        }).join('');
+
+        // Update summary display
+        if (summaryNebraskaWins) summaryNebraskaWins.textContent = String(nebraskaWins);
+        if (summaryOpponentWins) summaryOpponentWins.textContent = String(opponentWins);
+        if (summaryOpponentName) summaryOpponentName.textContent = currentOpponentName || 'Opponent';
+
+        // Determine verdict
+        if (summaryVerdict) {
+          let verdictText = '';
+          let verdictClass = 'text-gray-900';
+
+          if (nebraskaWins > opponentWins) {
+            const pct = Math.round((nebraskaWins / (nebraskaWins + opponentWins)) * 100);
+            verdictText = `Nebraska (${pct}%)`;
+            verdictClass = 'text-green-600';
+          } else if (opponentWins > nebraskaWins) {
+            const pct = Math.round((opponentWins / (nebraskaWins + opponentWins)) * 100);
+            verdictText = `${currentOpponentName || 'Opponent'} (${pct}%)`;
+            verdictClass = 'text-red-600';
+          } else {
+            verdictText = 'Even';
+            verdictClass = 'text-gray-600';
+          }
+
+          summaryVerdict.innerHTML = `
+            <p class="text-lg font-bold ${verdictClass}">${verdictText}</p>
+            <p class="text-xs text-gray-500">Statistical Edge</p>
+          `;
+        }
+      }
+
+      // Render players stats table
+      function renderPlayers() {
+        if (!playersBody) return;
+
+        if (playersData.length === 0) {
+          playersBody.innerHTML = '<tr><td colspan="9" class="py-8 text-center text-gray-500">No player stats available</td></tr>';
+          return;
+        }
+
+        playersBody.innerHTML = playersData.map(player => `
+          <tr class="border-b border-gray-100 hover:bg-gray-50">
+            <td class="py-3 px-3">
+              <div class="flex items-center gap-2">
+                ${player.headshot ? `<img src="${player.headshot}" alt="${player.name}" class="w-8 h-8 rounded-full object-cover" />` : ''}
+                <div>
+                  <span class="font-medium text-gray-900">${player.name}</span>
+                  <span class="text-xs text-gray-500 ml-1">#${player.jersey}</span>
+                </div>
+              </div>
+            </td>
+            <td class="py-3 px-2 text-center font-semibold text-gray-900">${player.ppg.toFixed(1)}</td>
+            <td class="py-3 px-2 text-center text-gray-700">${player.rpg.toFixed(1)}</td>
+            <td class="py-3 px-2 text-center text-gray-700">${player.apg.toFixed(1)}</td>
+            <td class="py-3 px-2 text-center text-gray-700">${player.spg.toFixed(1)}</td>
+            <td class="py-3 px-2 text-center text-gray-700">${player.bpg.toFixed(1)}</td>
+            <td class="py-3 px-2 text-center text-gray-700">${player.fgPct.toFixed(1)}%</td>
+            <td class="py-3 px-2 text-center text-gray-700">${player.threePM.toFixed(1)}</td>
+            <td class="py-3 px-2 text-center text-gray-700">${player.mpg.toFixed(1)}</td>
+          </tr>
+        `).join('');
+      }
+
+      // Handle table sorting
+      function setupSorting(tableId: string, getData: () => any[], setData: (d: any[]) => void, renderFn: () => void) {
+        const table = document.getElementById(tableId);
+        if (!table) return;
+
+        table.querySelectorAll('.sortable').forEach(header => {
+          header.addEventListener('click', () => {
+            const column = (header as HTMLElement).dataset.sort || '';
+            const isAsc = currentSort.table === tableId && currentSort.column === column && currentSort.direction === 'asc';
+            const direction = isAsc ? 'desc' : 'asc';
+
+            currentSort = { table: tableId, column, direction };
+
+            // Update sort icons
+            table.querySelectorAll('.sort-icon').forEach(icon => {
+              icon.textContent = '↕';
+            });
+            const icon = header.querySelector('.sort-icon');
+            if (icon) icon.textContent = direction === 'asc' ? '↑' : '↓';
+
+            // Sort data
+            const sorted = sortData(getData(), column, direction);
+            setData(sorted);
+            renderFn();
+          });
+        });
+      }
+
+      // Fetch team data
+      async function fetchTeamData() {
+        try {
+          const response = await fetch(`${ESPN_BASE}/teams/${NEBRASKA_TEAM_ID}`);
+          const data = await response.json();
+          const team = data.team;
+
+          // Logo
+          if (teamLogo && team.logos?.[0]?.href) {
+            teamLogo.src = team.logos[0].href;
+          }
+
+          // Record
+          const record = team.record?.items?.[0];
+          if (teamRecord && record) {
+            const overall = record.summary || 'N/A';
+            const standing = team.standingSummary || '';
+            teamRecord.textContent = `${overall} • ${standing}`;
+          }
+
+          // Ranking
+          if (teamRanking && team.rank) {
+            teamRanking.innerHTML = `
+              <span class="text-3xl font-bold text-red-700">#${team.rank}</span>
+              <p class="text-sm text-gray-500">National Rank</p>
+            `;
+          }
+
+          // Stats
+          const stats = record?.stats || [];
+          const pointsFor = stats.find((s: any) => s.name === 'pointsFor')?.value || 0;
+          const pointsAgainst = stats.find((s: any) => s.name === 'pointsAgainst')?.value || 0;
+          const gamesPlayed = stats.find((s: any) => s.name === 'gamesPlayed')?.value || 1;
+
+          const ppg = (pointsFor / gamesPlayed).toFixed(1);
+          const oppg = (pointsAgainst / gamesPlayed).toFixed(1);
+          const diff = ((pointsFor - pointsAgainst) / gamesPlayed).toFixed(1);
+
+          if (statPpg) statPpg.textContent = ppg;
+          if (statOppg) statOppg.textContent = oppg;
+          if (statDiff) statDiff.textContent = `+${diff}`;
+
+          // Streak
+          const streak = team.record?.items?.[0]?.stats?.find((s: any) => s.name === 'streak')?.displayValue;
+          if (statStreak && streak) {
+            statStreak.textContent = streak;
+          }
+
+        } catch (error) {
+          console.error('Error fetching team data:', error);
+        }
+      }
+
+      // Fetch team statistics
+      async function fetchTeamStatistics(teamId: number): Promise<Map<string, any>> {
+        const statsMap = new Map();
+        try {
+          const response = await fetch(`${ESPN_BASE}/teams/${teamId}/statistics`);
+          const data = await response.json();
+
+          const categories = data.results?.stats?.categories || [];
+
+          categories.forEach((category: any) => {
+            category.stats?.forEach((stat: any) => {
+              if (stat.displayValue && stat.displayValue !== '0') {
+                const key = stat.name || stat.displayName;
+                statsMap.set(key, {
+                  key: key,
+                  category: stat.displayName || stat.name,
+                  value: parseFloat(stat.value) || 0,
+                  displayValue: stat.displayValue,
+                  rank: stat.rank || null
+                });
+              }
+            });
+          });
+        } catch (error) {
+          console.error('Error fetching statistics:', error);
+        }
+        return statsMap;
+      }
+
+      // Load Nebraska stats initially
+      async function loadNebraskaStats() {
+        nebraskaStats = await fetchTeamStatistics(NEBRASKA_TEAM_ID);
+      }
+
+      // Compare two teams (or just show Nebraska if no opponent)
+      async function compareTeams(opponentId?: number) {
+        comparisonLoading?.classList.remove('hidden');
+        comparisonTableContainer?.classList.add('hidden');
+
+        try {
+          // Ensure Nebraska stats are loaded
+          if (nebraskaStats.size === 0) {
+            nebraskaStats = await fetchTeamStatistics(NEBRASKA_TEAM_ID);
+          }
+
+          // Get opponent name from schedule list
+          const opponent = scheduleOpponents.find(o => o.id === opponentId);
+          currentOpponentName = opponent?.name || '';
+
+          // Fetch opponent stats if provided
+          let oppStats: Map<string, any> = new Map();
+          if (opponentId) {
+            oppStats = await fetchTeamStatistics(opponentId);
+          }
+
+          // Build comparison data
+          comparisonData = [];
+          const allKeys = new Set([...nebraskaStats.keys(), ...oppStats.keys()]);
+
+          allKeys.forEach(key => {
+            const nebStat = nebraskaStats.get(key);
+            const oppStat = oppStats.get(key);
+
+            if (nebStat || oppStat) {
+              const nebValue = nebStat?.value ?? null;
+              const oppValue = oppStat?.value ?? null;
+              const diff = (nebValue !== null && oppValue !== null) ? nebValue - oppValue : null;
+
+              comparisonData.push({
+                key: key,
+                category: nebStat?.category || oppStat?.category || key,
+                nebraskaValue: nebValue,
+                nebraskaDisplay: nebStat?.displayValue || '-',
+                opponentValue: oppValue,
+                opponentDisplay: oppStat?.displayValue || '-',
+                diff: diff
+              });
+            }
+          });
+
+          // Sort by category initially
+          comparisonData = sortData(comparisonData, 'category', 'asc');
+
+          renderComparison();
+          setupSorting(
+            'comparison-table',
+            () => comparisonData,
+            (d) => { comparisonData = d; },
+            renderComparison
+          );
+
+          comparisonLoading?.classList.add('hidden');
+          comparisonTableContainer?.classList.remove('hidden');
+
+        } catch (error) {
+          console.error('Error comparing teams:', error);
+          comparisonLoading?.classList.add('hidden');
+        }
+      }
+
+      // Fetch player stats
+      async function fetchPlayerStats() {
+        try {
+          // First fetch roster for player names and headshots
+          const rosterResponse = await fetch(`${ESPN_BASE}/teams/${NEBRASKA_TEAM_ID}/roster`);
+          const rosterData = await rosterResponse.json();
+
+          // Build player lookup map from roster
+          const playerMap = new Map<string, any>();
+          const athletes = rosterData.athletes || [];
+          athletes.forEach((player: any) => {
+            playerMap.set(player.id, {
+              name: player.displayName || player.fullName || 'Unknown',
+              jersey: player.jersey || '0',
+              headshot: player.headshot?.href || null
+            });
+          });
+
+          // Fetch player statistics from leaders endpoint (2026 = current 2025-26 season)
+          const statsResponse = await fetch(`https://sports.core.api.espn.com/v2/sports/basketball/leagues/mens-college-basketball/seasons/2026/types/2/teams/${NEBRASKA_TEAM_ID}/leaders`);
+          const statsData = await statsResponse.json();
+
+          // Build stats map by athlete ID
+          const statsMap = new Map<string, any>();
+          const categories = statsData.categories || [];
+
+          categories.forEach((category: any) => {
+            const catName = category.name || category.displayName || '';
+            const leaders = category.leaders || [];
+
+            leaders.forEach((leader: any) => {
+              // Extract athlete ID from the $ref URL
+              const athleteRef = leader.athlete?.$ref || '';
+              const athleteIdMatch = athleteRef.match(/athletes\/(\d+)/);
+              if (!athleteIdMatch) return;
+
+              const athleteId = athleteIdMatch[1];
+              const value = parseFloat(leader.value) || 0;
+
+              if (!statsMap.has(athleteId)) {
+                statsMap.set(athleteId, {
+                  ppg: 0, rpg: 0, apg: 0, spg: 0, bpg: 0,
+                  fgPct: 0, threePM: 0, mpg: 0
+                });
+              }
+
+              const playerStats = statsMap.get(athleteId);
+
+              // Map category names to our stat keys (exact matches from ESPN API)
+              if (catName === 'pointsPerGame') playerStats.ppg = value;
+              else if (catName === 'reboundsPerGame') playerStats.rpg = value;
+              else if (catName === 'assistsPerGame') playerStats.apg = value;
+              else if (catName === 'stealsPerGame') playerStats.spg = value;
+              else if (catName === 'blocksPerGame') playerStats.bpg = value;
+              else if (catName === 'fieldGoalPercentage') playerStats.fgPct = value;
+              else if (catName === '3PointMadePerGame') playerStats.threePM = value;
+              else if (catName === 'minutesPerGame') playerStats.mpg = value;
+            });
+          });
+
+          // Combine roster info with stats
+          playersData = [];
+          statsMap.forEach((stats, athleteId) => {
+            const playerInfo = playerMap.get(athleteId) || { name: `Player ${athleteId}`, jersey: '0', headshot: null };
+
+            // Only include players with meaningful stats (at least some PPG)
+            if (stats.ppg > 0 || stats.mpg > 0) {
+              playersData.push({
+                id: athleteId,
+                name: playerInfo.name,
+                jersey: playerInfo.jersey,
+                headshot: playerInfo.headshot,
+                ...stats
+              });
+            }
+          });
+
+          // Sort by PPG initially (descending)
+          playersData = sortData(playersData, 'ppg', 'desc');
+          renderPlayers();
+          setupSorting(
+            'players-table',
+            () => playersData,
+            (d) => { playersData = d; },
+            renderPlayers
+          );
+
+        } catch (error) {
+          console.error('Error fetching player stats:', error);
+          if (playersBody) {
+            playersBody.innerHTML = '<tr><td colspan="9" class="py-8 text-center text-red-500">Error loading player stats</td></tr>';
+          }
+        }
+      }
+
+      // Fetch schedule
+      async function fetchSchedule() {
+        try {
+          const response = await fetch(`${ESPN_BASE}/teams/${NEBRASKA_TEAM_ID}/schedule`);
+          const data = await response.json();
+          const events = data.events || [];
+
+          const completed: any[] = [];
+          const upcoming: any[] = [];
+          const opponentSet = new Map<number, any>();
+
+          events.forEach((event: any) => {
+            const gameDate = new Date(event.date);
+            const competition = event.competitions?.[0];
+            const isHome = competition?.competitors?.find((c: any) => c.id === String(NEBRASKA_TEAM_ID))?.homeAway === 'home';
+            const opponent = competition?.competitors?.find((c: any) => c.id !== String(NEBRASKA_TEAM_ID));
+            const nebraskaTeam = competition?.competitors?.find((c: any) => c.id === String(NEBRASKA_TEAM_ID));
+
+            // Collect opponents for comparison dropdown
+            if (opponent?.team?.id) {
+              opponentSet.set(parseInt(opponent.team.id), {
+                id: parseInt(opponent.team.id),
+                name: opponent.team.displayName || opponent.team.name,
+                logo: opponent.team.logos?.[0]?.href
+              });
+            }
+
+            const gameData = {
+              date: gameDate,
+              dateStr: gameDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+              opponent: opponent?.team?.displayName || 'TBD',
+              opponentId: opponent?.team?.id ? parseInt(opponent.team.id) : null,
+              opponentLogo: opponent?.team?.logos?.[0]?.href,
+              isHome,
+              completed: event.status?.type?.completed,
+              nebraskaScore: nebraskaTeam?.score?.displayValue,
+              opponentScore: opponent?.score?.displayValue,
+              winner: nebraskaTeam?.winner,
+              broadcast: competition?.broadcasts?.[0]?.names?.[0]
+            };
+
+            if (gameData.completed) {
+              completed.push(gameData);
+            } else {
+              upcoming.push(gameData);
+            }
+          });
+
+          // Build schedule-ordered opponent list (for dropdown)
+          const now = new Date();
+          const allGames = [...completed, ...upcoming].sort((a, b) => a.date.getTime() - b.date.getTime());
+
+          // Create ordered list with schedule info
+          scheduleOpponents = [];
+          const seenIds = new Set<number>();
+
+          allGames.forEach(game => {
+            if (game.opponentId && !seenIds.has(game.opponentId)) {
+              seenIds.add(game.opponentId);
+              const opp = opponentSet.get(game.opponentId);
+              if (opp) {
+                scheduleOpponents.push({
+                  ...opp,
+                  date: game.date,
+                  dateStr: game.dateStr,
+                  isCompleted: game.completed,
+                  isHome: game.isHome
+                });
+              }
+            }
+          });
+
+          // Find the next upcoming opponent
+          const nextOpponent = scheduleOpponents.find(o => !o.isCompleted);
+
+          // Populate opponent dropdown in schedule order
+          if (opponentSelect) {
+            opponentSelect.innerHTML = scheduleOpponents.map(opp => {
+              const prefix = opp.isCompleted ? '✓ ' : '';
+              const location = opp.isHome ? 'vs' : '@';
+              return `<option value="${opp.id}" ${opp.id === nextOpponent?.id ? 'selected' : ''}>${prefix}${opp.dateStr} ${location} ${opp.name}</option>`;
+            }).join('');
+          }
+
+          // Auto-load comparison with next opponent
+          if (nextOpponent) {
+            compareTeams(nextOpponent.id);
+          } else if (scheduleOpponents.length > 0) {
+            compareTeams(scheduleOpponents[0].id);
+          }
+
+        } catch (error) {
+          console.error('Error fetching schedule:', error);
+        }
+      }
+
+      // Initialize
+      fetchTeamData();
+      fetchPlayerStats();
+      fetchSchedule();
+
+      // Event listener for opponent selection
+      opponentSelect?.addEventListener('change', () => {
+        const opponentId = parseInt(opponentSelect.value || '0');
+        if (opponentId) {
+          compareTeams(opponentId);
+        }
+      });
+
+      // Tab switching
+      function switchTab(tab: 'team' | 'players') {
+        if (tab === 'team') {
+          tabTeam?.classList.add('text-red-700', 'border-red-700', 'bg-red-50');
+          tabTeam?.classList.remove('text-gray-500', 'border-transparent');
+          tabPlayers?.classList.remove('text-red-700', 'border-red-700', 'bg-red-50');
+          tabPlayers?.classList.add('text-gray-500', 'border-transparent');
+          contentTeam?.classList.remove('hidden');
+          contentPlayers?.classList.add('hidden');
+        } else {
+          tabPlayers?.classList.add('text-red-700', 'border-red-700', 'bg-red-50');
+          tabPlayers?.classList.remove('text-gray-500', 'border-transparent');
+          tabTeam?.classList.remove('text-red-700', 'border-red-700', 'bg-red-50');
+          tabTeam?.classList.add('text-gray-500', 'border-transparent');
+          contentPlayers?.classList.remove('hidden');
+          contentTeam?.classList.add('hidden');
+        }
+      }
+
+      tabTeam?.addEventListener('click', () => switchTab('team'));
+      tabPlayers?.addEventListener('click', () => switchTab('players'));
+    });
+  </script>
+</Layout>

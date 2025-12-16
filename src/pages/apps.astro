@@ -1,0 +1,194 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { baseUrl } from '../config';
+
+const appItems = [
+  {
+    title: "Will there be fog?",
+    description: "A simple app to check fog conditions.",
+    image: "/fog.jpg",
+    slug: "will-there-be-fog"
+  },
+  {
+    title: "Nebraska Basketball",
+    description: "Live stats and schedule for Husker basketball.",
+    image: "/nebraskabasketball.jpg",
+    slug: "nebraska-basketball"
+  }
+];
+---
+
+<Layout title="Apps">
+  <main>
+    {/* Hero Section */}
+    <section class="relative h-[50vh] overflow-hidden">
+      <img
+        src="/app-hero.png"
+        alt="Apps hero"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-black/50"></div>
+      {/* Hero Content */}
+      <div class="relative z-10 flex flex-col items-center h-full">
+        <div class="flex-1 flex items-center">
+          <div class="text-center px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">
+              Apps
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
+              Web applications and interactive tools.
+            </p>
+          </div>
+        </div>
+
+        {/* Chevron */}
+        <button
+          id="scroll-to-apps"
+          class="animate-bounce p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors mb-8"
+          aria-label="Scroll to apps"
+        >
+          <svg
+            class="w-8 h-8 text-white"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    {/* Apps Grid */}
+    <section id="app-cards" class="container mx-auto px-4 py-20">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {appItems.map((item, index) => (
+          <a
+            href={`${baseUrl}/apps/${item.slug}`}
+            class="group h-full scroll-fade-in magnetic-card"
+            data-index={index}
+            style="opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;"
+          >
+            <div class="relative overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all hover:shadow-md h-full flex flex-col">
+              <div class="h-48 overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
+                />
+              </div>
+              <div class="p-6">
+                <h2 class="text-xl font-semibold mb-2 text-gray-900">{item.title}</h2>
+                <p class="text-gray-700">{item.description}</p>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      // Scroll to apps button
+      const scrollBtn = document.getElementById('scroll-to-apps');
+      const target = document.getElementById('app-cards');
+      if (scrollBtn && target) {
+        scrollBtn.addEventListener('click', () => {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }, { passive: true });
+      }
+
+      // Scroll-triggered animations using Intersection Observer
+      const animatedCards = document.querySelectorAll('.scroll-fade-in');
+
+      if (animatedCards.length > 0 && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const element = entry.target as HTMLElement;
+              const index = parseInt(element.dataset.index || '0');
+              setTimeout(() => {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+              }, index * 100);
+              observer.unobserve(element);
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        });
+
+        animatedCards.forEach((card) => {
+          observer.observe(card);
+        });
+      } else {
+        animatedCards.forEach((card) => {
+          (card as HTMLElement).style.opacity = '1';
+          (card as HTMLElement).style.transform = 'translateY(0)';
+        });
+      }
+
+      // Magnetic hover effects
+      const magneticCards = document.querySelectorAll('.magnetic-card');
+      const magneticStrength = 0.15;
+
+      magneticCards.forEach((card) => {
+        const cardElement = card as HTMLElement;
+        let currentX = 0;
+        let currentY = 0;
+        let targetX = 0;
+        let targetY = 0;
+        let rafId: number | null = null;
+
+        function animate() {
+          currentX += (targetX - currentX) * 0.1;
+          currentY += (targetY - currentY) * 0.1;
+
+          cardElement.style.transform = `translate(${currentX}px, ${currentY}px)`;
+
+          if (Math.abs(targetX - currentX) > 0.1 || Math.abs(targetY - currentY) > 0.1) {
+            rafId = requestAnimationFrame(animate);
+          } else {
+            rafId = null;
+          }
+        }
+
+        cardElement.addEventListener('mouseenter', () => {
+          cardElement.style.transition = 'none';
+        });
+
+        cardElement.addEventListener('mouseleave', () => {
+          targetX = 0;
+          targetY = 0;
+          cardElement.style.transition = 'transform 0.3s ease-out';
+          if (rafId) {
+            cancelAnimationFrame(rafId);
+          }
+          animate();
+        });
+
+        cardElement.addEventListener('mousemove', (e) => {
+          const rect = cardElement.getBoundingClientRect();
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+
+          const deltaX = (e.clientX - centerX) * magneticStrength;
+          const deltaY = (e.clientY - centerY) * magneticStrength;
+
+          targetX = deltaX;
+          targetY = deltaY;
+
+          if (!rafId) {
+            rafId = requestAnimationFrame(animate);
+          }
+        });
+      });
+    });
+  </script>
+</Layout>

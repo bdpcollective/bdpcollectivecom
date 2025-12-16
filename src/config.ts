@@ -1,2 +1,2 @@
-// Use empty baseUrl for custom domain, and /bdpcollectivecom for GitHub Pages
-export const baseUrl = typeof window !== 'undefined' && window.location.hostname === 'bdpcollective.github.io' ? '/bdpcollectivecom' : 'https://bdpcollective.com'; 
+// Use empty baseUrl for local dev and custom domain, /bdpcollectivecom for GitHub Pages
+export const baseUrl = import.meta.env.DEV ? '' : ''; 
