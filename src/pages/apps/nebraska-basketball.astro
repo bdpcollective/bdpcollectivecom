@@ -5,26 +5,6 @@ import { baseUrl } from '../../config';
 
 <Layout title="Nebraska Basketball - Apps">
   <main>
-    {/* Hero Section */}
-    <section class="relative h-[40vh] overflow-hidden">
-      <img
-        src="/nebraskabasketball.jpg"
-        alt="Nebraska Basketball"
-        class="absolute inset-0 w-full h-full object-cover"
-      />
-      <div class="absolute inset-0 bg-black/50"></div>
-      <div class="relative z-10 flex flex-col justify-center h-full px-4 container mx-auto">
-        <div class="max-w-7xl mx-auto w-full">
-          <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">
-            Nebraska Basketball
-          </h1>
-          <p class="text-lg md:text-xl text-gray-200 mb-4">
-            Live stats and schedule for Husker basketball.
-          </p>
-        </div>
-      </div>
-    </section>
-
     {/* Content Section */}
     <section class="container mx-auto px-4 py-12">
       <div class="max-w-6xl mx-auto space-y-8">
@@ -197,18 +177,6 @@ import { baseUrl } from '../../config';
       </div>
     </section>
 
-    {/* Fixed Navigation */}
-    <div class="fixed left-4 top-1/2 -translate-y-1/2 z-50">
-      <a
-        href="/apps"
-        class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/80 hover:bg-white shadow-lg text-gray-600 hover:text-gray-900 transition-colors"
-        aria-label="Back to Apps"
-      >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-        </svg>
-      </a>
-    </div>
   </main>
 
   <script>
