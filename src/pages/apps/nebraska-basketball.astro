@@ -698,9 +698,8 @@ import { baseUrl } from '../../config';
           // Populate opponent dropdown in schedule order
           if (opponentSelect) {
             opponentSelect.innerHTML = scheduleOpponents.map(opp => {
-              const prefix = opp.isCompleted ? '✓ ' : '';
-              const location = opp.isHome ? 'vs' : '@';
-              return `<option value="${opp.id}" ${opp.id === nextOpponent?.id ? 'selected' : ''}>${prefix}${opp.dateStr} ${location} ${opp.name}</option>`;
+              const suffix = opp.isCompleted ? ' ✓' : '';
+              return `<option value="${opp.id}" ${opp.id === nextOpponent?.id ? 'selected' : ''}>${opp.name} (${opp.dateStr})${suffix}</option>`;
             }).join('');
           }
 
