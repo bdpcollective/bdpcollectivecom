@@ -109,14 +109,6 @@ import Layout from '../../layouts/Layout.astro';
           </div>
         </div>
 
-        {/* Games List */}
-        <div id="games-container" class="hidden">
-          <h2 class="text-xl font-bold text-gray-900 mb-4">All Games</h2>
-          <div id="games-list" class="space-y-3">
-            {/* Games will be inserted here */}
-          </div>
-        </div>
-
         {/* Data Source */}
         <p class="text-center text-sm text-gray-500">
           Stats powered by ESPN.
@@ -134,8 +126,6 @@ import Layout from '../../layouts/Layout.astro';
       const teamLogo = document.getElementById('team-logo') as HTMLImageElement;
       const seasonSelect = document.getElementById('season-select') as HTMLSelectElement;
       const seasonSummary = document.getElementById('season-summary');
-      const gamesContainer = document.getElementById('games-container');
-      const gamesList = document.getElementById('games-list');
       const statWins = document.getElementById('stat-wins');
       const statLosses = document.getElementById('stat-losses');
       const statPpg = document.getElementById('stat-ppg');
@@ -348,60 +338,7 @@ import Layout from '../../layouts/Layout.astro';
         if (statBiggestWin) statBiggestWin.textContent = biggestWin.desc;
         if (statWorstLoss) statWorstLoss.textContent = worstLoss.desc;
 
-        // Render games list
-        if (gamesList) {
-          // Sort games by date (most recent first)
-          const sortedGames = [...season.games].sort((a, b) =>
-            new Date(b.date).getTime() - new Date(a.date).getTime()
-          );
-
-          if (sortedGames.length === 0) {
-            gamesList.innerHTML = '<p class="text-center text-gray-500 py-8">No games found for this season.</p>';
-          } else {
-            gamesList.innerHTML = sortedGames.map(game => {
-              const hasScores = game.nebScore > 0 && game.oppScore > 0;
-              const resultClass = hasScores
-                ? (game.isWin ? 'border-l-green-500' : 'border-l-red-500')
-                : 'border-l-gray-300';
-              const resultBadge = hasScores
-                ? (game.isWin
-                    ? '<span class="text-xs font-bold text-green-600 bg-green-100 px-2 py-1 rounded">W</span>'
-                    : '<span class="text-xs font-bold text-red-600 bg-red-100 px-2 py-1 rounded">L</span>')
-                : '<span class="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded">--</span>';
-              const scoreDisplay = hasScores
-                ? `<span class="font-bold ${game.isWin ? 'text-green-600' : 'text-red-600'}">${game.nebScore}</span> - <span class="text-gray-600">${game.oppScore}</span>`
-                : '<span class="text-gray-400">--</span>';
-              const locationIcon = game.isHome ? '' : '@';
-
-              const gameDate = new Date(game.date);
-              const dateStr = gameDate.toLocaleDateString('en-US', {
-                month: 'short',
-                day: 'numeric',
-                year: 'numeric'
-              });
-
-              return `
-                <div class="bg-white rounded-lg border-l-4 ${resultClass} shadow-sm p-4 hover:shadow-md transition-shadow">
-                  <div class="flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                      ${resultBadge}
-                      <div>
-                        <p class="font-medium text-gray-900">${locationIcon} ${game.opponent}</p>
-                        <p class="text-sm text-gray-500">${dateStr}</p>
-                      </div>
-                    </div>
-                    <div class="text-right text-lg">
-                      ${scoreDisplay}
-                    </div>
-                  </div>
-                </div>
-              `;
-            }).join('');
-          }
-        }
-
         seasonSummary?.classList.remove('hidden');
-        gamesContainer?.classList.remove('hidden');
       }
 
       // Initialize
