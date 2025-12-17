@@ -148,11 +148,21 @@ const { images } = Astro.props;
   }
 
   // Add click handlers to all gallery images
-  document.addEventListener('DOMContentLoaded', () => {
+  function attachClickHandlers() {
     document.querySelectorAll('.gallery-image').forEach((img, index) => {
-      img.addEventListener('click', () => openLightbox(index));
+      img.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openLightbox(index);
+      });
     });
-  });
+  }
+
+  // Run on initial load
+  attachClickHandlers();
+
+  // Run on Astro page transitions
+  document.addEventListener('astro:page-load', attachClickHandlers);
 
   closeButton.addEventListener('click', (e) => {
     e.stopPropagation();
