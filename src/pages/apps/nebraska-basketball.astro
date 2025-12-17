@@ -62,6 +62,9 @@ import { baseUrl } from '../../config';
             <button id="tab-players" class="flex-1 py-4 px-6 text-center font-semibold text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:bg-gray-50 transition-colors">
               Players
             </button>
+            <button id="tab-upset" class="flex-1 py-4 px-6 text-center font-semibold text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:bg-gray-50 transition-colors">
+              Upset Radar
+            </button>
           </div>
 
           {/* Team Tab Content */}
@@ -168,6 +171,34 @@ import { baseUrl } from '../../config';
               </table>
             </div>
           </div>
+
+          {/* Upset Radar Tab Content */}
+          <div id="content-upset" class="p-6 hidden">
+            <div class="mb-6">
+              <h2 class="text-xl font-bold text-gray-900 mb-2">Upset Radar</h2>
+              <p class="text-sm text-gray-500">Analyzing upcoming games for potential "trap game" scenarios where upsets are more likely.</p>
+            </div>
+
+            <div id="upset-loading" class="text-center py-8">
+              <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-300 border-t-red-700"></div>
+              <p class="mt-2 text-gray-600">Analyzing schedule...</p>
+            </div>
+
+            <div id="upset-container" class="hidden space-y-4">
+              {/* Upset cards will be inserted here */}
+            </div>
+
+            <div class="mt-8 p-4 bg-gray-50 rounded-xl">
+              <h3 class="font-semibold text-gray-900 mb-2">How Trap Game Score is Calculated</h3>
+              <ul class="text-sm text-gray-600 space-y-1">
+                <li><span class="font-medium">📊 Ranking Gap:</span> Big favorites face more upset pressure</li>
+                <li><span class="font-medium">📅 Schedule Density:</span> Back-to-back or 3 games in 5 days</li>
+                <li><span class="font-medium">👀 Look-Ahead Factor:</span> Major rival in the next game</li>
+                <li><span class="font-medium">🏠 Road Disadvantage:</span> Away games are tougher</li>
+                <li><span class="font-medium">📈 Opponent Momentum:</span> Teams on winning streaks</li>
+              </ul>
+            </div>
+          </div>
         </div>
 
         {/* Data Source */}
@@ -203,8 +234,12 @@ import { baseUrl } from '../../config';
       const summaryVerdict = document.getElementById('summary-verdict');
       const tabTeam = document.getElementById('tab-team');
       const tabPlayers = document.getElementById('tab-players');
+      const tabUpset = document.getElementById('tab-upset');
       const contentTeam = document.getElementById('content-team');
       const contentPlayers = document.getElementById('content-players');
+      const contentUpset = document.getElementById('content-upset');
+      const upsetLoading = document.getElementById('upset-loading');
+      const upsetContainer = document.getElementById('upset-container');
 
       // Data storage for sorting
       let playersData: any[] = [];
@@ -728,27 +763,200 @@ import { baseUrl } from '../../config';
         }
       });
 
+      // Upset Radar Analysis
+      let upsetAnalyzed = false;
+
+      async function analyzeUpsetPotential() {
+        if (upsetAnalyzed) return;
+
+        upsetLoading?.classList.remove('hidden');
+        upsetContainer?.classList.add('hidden');
+
+        try {
+          // Fetch schedule data
+          const schedResponse = await fetch(`${ESPN_BASE}/teams/${NEBRASKA_TEAM_ID}/schedule`);
+          const schedData = await schedResponse.json();
+          const events = schedData.events || [];
+
+          // Fetch Nebraska team data for ranking
+          const teamResponse = await fetch(`${ESPN_BASE}/teams/${NEBRASKA_TEAM_ID}`);
+          const teamData = await teamResponse.json();
+          const nebraskaRank = teamData.team?.rank || 99;
+
+          // Big Ten rivals for "look ahead" factor
+          const bigTenRivals = ['Michigan', 'Michigan State', 'Ohio State', 'Purdue', 'Illinois', 'Iowa', 'Wisconsin', 'Indiana'];
+
+          // Get upcoming games only
+          const now = new Date();
+          const upcomingGames: any[] = [];
+
+          events.forEach((event: any, index: number) => {
+            const gameDate = new Date(event.date);
+            if (gameDate < now) return; // Skip past games
+            if (event.status?.type?.completed) return;
+
+            const competition = event.competitions?.[0];
+            const isHome = competition?.competitors?.find((c: any) => c.id === String(NEBRASKA_TEAM_ID))?.homeAway === 'home';
+            const opponent = competition?.competitors?.find((c: any) => c.id !== String(NEBRASKA_TEAM_ID));
+            const opponentName = opponent?.team?.displayName || opponent?.team?.name || 'TBD';
+            const opponentRank = opponent?.curatedRank?.current || 99;
+            const opponentLogo = opponent?.team?.logos?.[0]?.href;
+
+            // Find next game after this one
+            const nextEvent = events[index + 1];
+            const nextOpponent = nextEvent?.competitions?.[0]?.competitors?.find((c: any) => c.id !== String(NEBRASKA_TEAM_ID))?.team?.displayName;
+
+            upcomingGames.push({
+              date: gameDate,
+              dateStr: gameDate.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }),
+              opponent: opponentName,
+              opponentRank,
+              opponentLogo,
+              isHome,
+              nextOpponent
+            });
+          });
+
+          // Calculate trap game scores
+          const analyzedGames = upcomingGames.slice(0, 10).map((game, index) => {
+            let trapScore = 0;
+            const factors: string[] = [];
+
+            // Factor 1: Ranking gap (big favorite = more pressure)
+            if (nebraskaRank < 25 && game.opponentRank > 50) {
+              trapScore += 20;
+              factors.push('Ranked vs unranked');
+            } else if (nebraskaRank < game.opponentRank - 30) {
+              trapScore += 15;
+              factors.push('Big favorite');
+            }
+
+            // Factor 2: Road game
+            if (!game.isHome) {
+              trapScore += 15;
+              factors.push('Road game');
+            }
+
+            // Factor 3: Schedule density (back-to-back or close games)
+            if (index > 0) {
+              const prevGame = upcomingGames[index - 1];
+              const daysBetween = (game.date.getTime() - prevGame.date.getTime()) / (1000 * 60 * 60 * 24);
+              if (daysBetween <= 2) {
+                trapScore += 20;
+                factors.push('Back-to-back');
+              } else if (daysBetween <= 3) {
+                trapScore += 10;
+                factors.push('Quick turnaround');
+              }
+            }
+
+            // Factor 4: Look-ahead to big rival
+            if (game.nextOpponent && bigTenRivals.some(rival => game.nextOpponent.includes(rival))) {
+              trapScore += 25;
+              factors.push(`Eyes on ${game.nextOpponent}`);
+            }
+
+            // Factor 5: Mid-major or perceived "easy" game
+            const midMajorKeywords = ['State', 'A&M', 'Southern', 'Northern', 'Eastern', 'Western'];
+            if (!game.opponentRank || game.opponentRank > 100) {
+              if (midMajorKeywords.some(kw => game.opponent.includes(kw)) && !bigTenRivals.some(r => game.opponent.includes(r))) {
+                trapScore += 10;
+                factors.push('Overlooked opponent');
+              }
+            }
+
+            return {
+              ...game,
+              trapScore: Math.min(trapScore, 100),
+              factors,
+              riskLevel: trapScore >= 50 ? 'High' : trapScore >= 30 ? 'Medium' : 'Low'
+            };
+          });
+
+          // Sort by trap score descending
+          analyzedGames.sort((a, b) => b.trapScore - a.trapScore);
+
+          // Render cards
+          if (upsetContainer) {
+            if (analyzedGames.length === 0) {
+              upsetContainer.innerHTML = '<p class="text-center text-gray-500 py-8">No upcoming games to analyze.</p>';
+            } else {
+              upsetContainer.innerHTML = analyzedGames.map(game => {
+                const riskColor = game.riskLevel === 'High' ? 'red' : game.riskLevel === 'Medium' ? 'yellow' : 'green';
+                const riskBg = game.riskLevel === 'High' ? 'bg-red-50 border-red-200' : game.riskLevel === 'Medium' ? 'bg-yellow-50 border-yellow-200' : 'bg-green-50 border-green-200';
+                const riskTextColor = game.riskLevel === 'High' ? 'text-red-700' : game.riskLevel === 'Medium' ? 'text-yellow-700' : 'text-green-700';
+
+                return `
+                  <div class="p-4 rounded-xl border ${riskBg}">
+                    <div class="flex items-center justify-between mb-3">
+                      <div class="flex items-center gap-3">
+                        ${game.opponentLogo ? `<img src="${game.opponentLogo}" alt="${game.opponent}" class="w-10 h-10 object-contain" />` : ''}
+                        <div>
+                          <p class="font-semibold text-gray-900">${game.isHome ? 'vs' : '@'} ${game.opponent}</p>
+                          <p class="text-sm text-gray-500">${game.dateStr}</p>
+                        </div>
+                      </div>
+                      <div class="text-right">
+                        <p class="text-2xl font-bold ${riskTextColor}">${game.trapScore}</p>
+                        <p class="text-xs ${riskTextColor} font-medium">${game.riskLevel} Risk</p>
+                      </div>
+                    </div>
+                    ${game.factors.length > 0 ? `
+                      <div class="flex flex-wrap gap-2">
+                        ${game.factors.map(f => `<span class="text-xs px-2 py-1 rounded-full bg-white/50 text-gray-600">${f}</span>`).join('')}
+                      </div>
+                    ` : '<p class="text-sm text-gray-500">No significant trap factors</p>'}
+                  </div>
+                `;
+              }).join('');
+            }
+          }
+
+          upsetAnalyzed = true;
+          upsetLoading?.classList.add('hidden');
+          upsetContainer?.classList.remove('hidden');
+
+        } catch (error) {
+          console.error('Error analyzing upset potential:', error);
+          upsetLoading?.classList.add('hidden');
+          if (upsetContainer) {
+            upsetContainer.innerHTML = '<p class="text-center text-red-500 py-8">Error analyzing schedule.</p>';
+            upsetContainer.classList.remove('hidden');
+          }
+        }
+      }
+
       // Tab switching
-      function switchTab(tab: 'team' | 'players') {
+      function switchTab(tab: 'team' | 'players' | 'upset') {
+        // Reset all tabs
+        [tabTeam, tabPlayers, tabUpset].forEach(t => {
+          t?.classList.remove('text-red-700', 'border-red-700', 'bg-red-50');
+          t?.classList.add('text-gray-500', 'border-transparent');
+        });
+        [contentTeam, contentPlayers, contentUpset].forEach(c => {
+          c?.classList.add('hidden');
+        });
+
+        // Activate selected tab
         if (tab === 'team') {
           tabTeam?.classList.add('text-red-700', 'border-red-700', 'bg-red-50');
           tabTeam?.classList.remove('text-gray-500', 'border-transparent');
-          tabPlayers?.classList.remove('text-red-700', 'border-red-700', 'bg-red-50');
-          tabPlayers?.classList.add('text-gray-500', 'border-transparent');
           contentTeam?.classList.remove('hidden');
-          contentPlayers?.classList.add('hidden');
-        } else {
+        } else if (tab === 'players') {
           tabPlayers?.classList.add('text-red-700', 'border-red-700', 'bg-red-50');
           tabPlayers?.classList.remove('text-gray-500', 'border-transparent');
-          tabTeam?.classList.remove('text-red-700', 'border-red-700', 'bg-red-50');
-          tabTeam?.classList.add('text-gray-500', 'border-transparent');
           contentPlayers?.classList.remove('hidden');
-          contentTeam?.classList.add('hidden');
+        } else if (tab === 'upset') {
+          tabUpset?.classList.add('text-red-700', 'border-red-700', 'bg-red-50');
+          tabUpset?.classList.remove('text-gray-500', 'border-transparent');
+          contentUpset?.classList.remove('hidden');
+          analyzeUpsetPotential();
         }
       }
 
       tabTeam?.addEventListener('click', () => switchTab('team'));
       tabPlayers?.addEventListener('click', () => switchTab('players'));
+      tabUpset?.addEventListener('click', () => switchTab('upset'));
     });
   </script>
 </Layout>
