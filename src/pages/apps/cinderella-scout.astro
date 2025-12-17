@@ -61,6 +61,87 @@ import Layout from '../../layouts/Layout.astro';
       const loadingEl = document.getElementById('loading');
       const resultsEl = document.getElementById('results');
 
+      // Known mid-major conference teams (sample of teams from smaller conferences)
+      // These are teams that typically aren't in power conferences but can upset
+      const MID_MAJOR_TEAM_IDS = [
+        2250, // Gonzaga (WCC)
+        2084, // Drake (MVC)
+        2181, // Furman (SoCon)
+        2429, // New Mexico State (WAC)
+        2393, // Murray State (MVC)
+        2483, // Oral Roberts (Summit)
+        2692, // South Dakota State (Summit)
+        2572, // San Diego State (MWC)
+        2567, // Saint Mary's (WCC)
+        2013, // Charleston (CAA)
+        2029, // Chattanooga (SoCon)
+        2229, // George Mason (A-10)
+        2306, // Kent State (MAC)
+        2309, // Kennesaw State (ASUN)
+        2390, // Merrimack (NEC)
+        2349, // Loyola Chicago (A-10)
+        2739, // Toledo (MAC)
+        2636, // Stephen F. Austin (WAC)
+        2752, // UAB (AAC)
+        2752, // UTEP (CUSA)
+        2277, // Iona (MAAC)
+        2415, // Nevada (MWC)
+        2344, // Louisiana (Sun Belt)
+        2114, // East Tennessee State (SoCon)
+        2682, // Southern Illinois (MVC)
+        2687, // Siena (MAAC)
+        2603, // Southeast Missouri State (OVC)
+        2770, // Vermont (AE)
+        2866, // Yale (Ivy)
+        2097, // Davidson (A-10)
+        2046, // Colgate (Patriot)
+        2194, // Grand Canyon (WAC)
+        2296, // James Madison (Sun Belt)
+        2330, // Liberty (ASUN)
+        2550, // Rider (MAAC)
+        70,   // Akron (MAC)
+        2116, // Eastern Washington (Big Sky)
+        2210, // Hartford (AE)
+        2747, // UNC Wilmington (CAA)
+        2184, // Gardner-Webb (Big South)
+        2803, // Western Kentucky (CUSA)
+        2934, // CSU Fullerton (Big West)
+        2239, // Hawaii (Big West)
+        2755, // UC Irvine (Big West)
+        2648, // Texas A&M-CC (Southland)
+        2591, // Samford (SoCon)
+        92,   // Belmont (MVC)
+        2168, // Florida Gulf Coast (ASUN)
+        2608, // Southern Utah (WAC)
+        2732, // Towson (CAA)
+      ];
+
+      async function fetchTeamDetails(teamId: number): Promise<any> {
+        try {
+          const response = await fetch(`${ESPN_BASE}/teams/${teamId}`);
+          const data = await response.json();
+          const team = data.team;
+
+          if (!team) return null;
+
+          const recordItem = team.record?.items?.[0];
+          const record = recordItem?.summary || '';
+          const [wins, losses] = record.split('-').map(Number);
+
+          return {
+            id: teamId,
+            name: team.displayName || team.name,
+            logo: team.logos?.[0]?.href,
+            record,
+            wins: wins || 0,
+            losses: losses || 0,
+            winPct: wins && losses ? wins / (wins + losses) : 0
+          };
+        } catch {
+          return null;
+        }
+      }
+
       async function fetchTeamStats(teamId: number): Promise<any> {
         try {
           const response = await fetch(`${ESPN_BASE}/teams/${teamId}/statistics`);
@@ -82,11 +163,10 @@ import Layout from '../../layouts/Layout.astro';
 
       async function analyzeCinderellas() {
         try {
-          // Fetch rankings to find mid-majors with good records
+          // Fetch rankings to identify top 25 teams to exclude
           const rankingsResponse = await fetch(`${ESPN_BASE}/rankings`);
           const rankingsData = await rankingsResponse.json();
 
-          // Get teams from AP Top 25 and others receiving votes
           const rankedTeams = new Set<number>();
           rankingsData.rankings?.forEach((ranking: any) => {
             ranking.ranks?.forEach((team: any) => {
@@ -94,48 +174,33 @@ import Layout from '../../layouts/Layout.astro';
             });
           });
 
-          // Fetch scoreboard for recent games to find hot mid-majors
-          const scoreboardResponse = await fetch(`${ESPN_BASE}/scoreboard`);
-          const scoreboardData = await scoreboardResponse.json();
-
-          // Collect potential Cinderellas from various sources
+          // Fetch details for mid-major teams
           const potentialCinderellas: any[] = [];
-          const processedTeams = new Set<number>();
 
-          // Process teams from scoreboard
-          for (const event of (scoreboardData.events || []).slice(0, 30)) {
-            for (const competitor of event.competitions?.[0]?.competitors || []) {
-              const team = competitor.team;
-              const teamId = parseInt(team?.id);
+          // Fetch team details in batches to avoid overwhelming the API
+          const batchSize = 10;
+          for (let i = 0; i < MID_MAJOR_TEAM_IDS.length; i += batchSize) {
+            const batch = MID_MAJOR_TEAM_IDS.slice(i, i + batchSize);
+            const teamPromises = batch.map(id => fetchTeamDetails(id));
+            const teams = await Promise.all(teamPromises);
 
-              if (processedTeams.has(teamId)) continue;
-              processedTeams.add(teamId);
+            for (const team of teams) {
+              if (!team) continue;
 
-              // Skip if ranked in top 25
-              if (rankedTeams.has(teamId)) continue;
+              // Skip if ranked
+              if (rankedTeams.has(team.id)) continue;
 
-              const record = competitor.records?.[0]?.summary || '';
-              const [wins, losses] = record.split('-').map(Number);
+              // Only consider teams with winning records and at least 6 wins
+              if (team.wins <= team.losses || team.wins < 6) continue;
 
-              // Only consider teams with winning records
-              if (!wins || !losses || wins <= losses || wins < 8) continue;
-
-              potentialCinderellas.push({
-                id: teamId,
-                name: team?.displayName || team?.name,
-                logo: team?.logos?.[0]?.href,
-                record,
-                wins,
-                losses,
-                winPct: wins / (wins + losses)
-              });
+              potentialCinderellas.push(team);
             }
           }
 
           // Analyze each potential Cinderella
           const analyzedTeams: any[] = [];
 
-          for (const team of potentialCinderellas.slice(0, 15)) {
+          for (const team of potentialCinderellas.slice(0, 20)) {
             const stats = await fetchTeamStats(team.id);
 
             let cinderellaScore = 0;
