@@ -65,6 +65,9 @@ import { baseUrl } from '../../config';
             <button id="tab-cinderella" class="flex-1 py-4 px-6 text-center font-semibold text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:bg-gray-50 transition-colors">
               Cinderella Scout
             </button>
+            <button id="tab-conference" class="flex-1 py-4 px-6 text-center font-semibold text-gray-500 hover:text-gray-700 border-b-2 border-transparent hover:bg-gray-50 transition-colors">
+              Conference Strength
+            </button>
           </div>
 
           {/* Team Tab Content */}
@@ -199,6 +202,34 @@ import { baseUrl } from '../../config';
               </ul>
             </div>
           </div>
+
+          {/* Conference Strength Tab Content */}
+          <div id="content-conference" class="p-6 hidden">
+            <div class="mb-6">
+              <h2 class="text-xl font-bold text-gray-900 mb-2">Conference Strength Re-Ranker</h2>
+              <p class="text-sm text-gray-500">Ranking conferences by non-conference head-to-head performance using Elo ratings.</p>
+            </div>
+
+            <div id="conference-loading" class="text-center py-8">
+              <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-300 border-t-red-700"></div>
+              <p class="mt-2 text-gray-600">Analyzing non-conference matchups...</p>
+            </div>
+
+            <div id="conference-container" class="hidden">
+              {/* Conference rankings will be inserted here */}
+            </div>
+
+            <div class="mt-8 p-4 bg-gray-50 rounded-xl">
+              <h3 class="font-semibold text-gray-900 mb-2">How Elo Ratings Work</h3>
+              <ul class="text-sm text-gray-600 space-y-1">
+                <li><span class="font-medium">📊 Starting Point:</span> All conferences begin at 1500 Elo</li>
+                <li><span class="font-medium">⚔️ Head-to-Head:</span> When Big Ten beats ACC, Big Ten gains points & ACC loses</li>
+                <li><span class="font-medium">📈 Upset Bonus:</span> Beating a higher-rated conference earns more points</li>
+                <li><span class="font-medium">🗓️ Non-Conference Only:</span> Only Nov/Dec cross-conference games count</li>
+                <li><span class="font-medium">🏆 Margin Matters:</span> Blowouts earn slightly more than close wins</li>
+              </ul>
+            </div>
+          </div>
         </div>
 
         {/* Data Source */}
@@ -235,11 +266,15 @@ import { baseUrl } from '../../config';
       const tabTeam = document.getElementById('tab-team');
       const tabPlayers = document.getElementById('tab-players');
       const tabCinderella = document.getElementById('tab-cinderella');
+      const tabConference = document.getElementById('tab-conference');
       const contentTeam = document.getElementById('content-team');
       const contentPlayers = document.getElementById('content-players');
       const contentCinderella = document.getElementById('content-cinderella');
+      const contentConference = document.getElementById('content-conference');
       const cinderellaLoading = document.getElementById('cinderella-loading');
       const cinderellaContainer = document.getElementById('cinderella-container');
+      const conferenceLoading = document.getElementById('conference-loading');
+      const conferenceContainer = document.getElementById('conference-container');
 
       // Data storage for sorting
       let playersData: any[] = [];
@@ -987,14 +1022,201 @@ import { baseUrl } from '../../config';
         }
       }
 
+      // Conference Strength Analysis
+      let conferenceAnalyzed = false;
+
+      // Major conferences with their ESPN IDs
+      const majorConferences: Record<string, { name: string, shortName: string }> = {
+        '4': { name: 'Big Ten', shortName: 'B10' },
+        '8': { name: 'Big 12', shortName: 'B12' },
+        '2': { name: 'ACC', shortName: 'ACC' },
+        '23': { name: 'SEC', shortName: 'SEC' },
+        '21': { name: 'Pac-12', shortName: 'P12' },
+        '7': { name: 'Big East', shortName: 'BE' },
+        '44': { name: 'Mountain West', shortName: 'MWC' },
+        '49': { name: 'American Athletic', shortName: 'AAC' },
+        '20': { name: 'Atlantic 10', shortName: 'A10' },
+        '18': { name: 'West Coast', shortName: 'WCC' },
+        '45': { name: 'Missouri Valley', shortName: 'MVC' },
+        '46': { name: 'Conference USA', shortName: 'CUSA' },
+        '43': { name: 'Mid-American', shortName: 'MAC' },
+        '30': { name: 'Sun Belt', shortName: 'SBC' },
+        '27': { name: 'Colonial', shortName: 'CAA' }
+      };
+
+      async function analyzeConferenceStrength() {
+        if (conferenceAnalyzed) return;
+
+        conferenceLoading?.classList.remove('hidden');
+        conferenceContainer?.classList.add('hidden');
+
+        try {
+          // Initialize Elo ratings for each conference
+          const conferenceElo: Record<string, number> = {};
+          const conferenceStats: Record<string, { wins: number, losses: number, pointDiff: number, games: string[] }> = {};
+
+          Object.keys(majorConferences).forEach(id => {
+            conferenceElo[id] = 1500;
+            conferenceStats[id] = { wins: 0, losses: 0, pointDiff: 0, games: [] };
+          });
+
+          // Fetch recent scoreboard data (multiple days)
+          const scoreboardResponse = await fetch(`${ESPN_BASE}/scoreboard?dates=20241101-20241231&limit=500`);
+          const scoreboardData = await scoreboardResponse.json();
+
+          // Process each game
+          const processedGames = new Set<string>();
+
+          for (const event of (scoreboardData.events || [])) {
+            // Skip if game not completed
+            if (!event.status?.type?.completed) continue;
+
+            const gameId = event.id;
+            if (processedGames.has(gameId)) continue;
+            processedGames.add(gameId);
+
+            const competition = event.competitions?.[0];
+            if (!competition?.competitors || competition.competitors.length !== 2) continue;
+
+            const team1 = competition.competitors[0];
+            const team2 = competition.competitors[1];
+
+            const conf1 = team1.team?.conferenceId?.toString();
+            const conf2 = team2.team?.conferenceId?.toString();
+
+            // Skip if same conference or unknown conferences
+            if (!conf1 || !conf2 || conf1 === conf2) continue;
+            if (!majorConferences[conf1] || !majorConferences[conf2]) continue;
+
+            const score1 = parseInt(team1.score) || 0;
+            const score2 = parseInt(team2.score) || 0;
+            const winner1 = team1.winner;
+
+            // Calculate Elo change
+            const elo1 = conferenceElo[conf1];
+            const elo2 = conferenceElo[conf2];
+            const expected1 = 1 / (1 + Math.pow(10, (elo2 - elo1) / 400));
+            const expected2 = 1 - expected1;
+
+            const K = 32; // K-factor
+            const marginMultiplier = Math.min(1.5, 1 + Math.abs(score1 - score2) / 20);
+
+            if (winner1) {
+              // Team 1's conference wins
+              const change = K * marginMultiplier * (1 - expected1);
+              conferenceElo[conf1] += change;
+              conferenceElo[conf2] -= change;
+              conferenceStats[conf1].wins++;
+              conferenceStats[conf2].losses++;
+              conferenceStats[conf1].pointDiff += (score1 - score2);
+              conferenceStats[conf2].pointDiff += (score2 - score1);
+              conferenceStats[conf1].games.push(`W vs ${majorConferences[conf2].shortName}`);
+              conferenceStats[conf2].games.push(`L vs ${majorConferences[conf1].shortName}`);
+            } else {
+              // Team 2's conference wins
+              const change = K * marginMultiplier * (1 - expected2);
+              conferenceElo[conf2] += change;
+              conferenceElo[conf1] -= change;
+              conferenceStats[conf2].wins++;
+              conferenceStats[conf1].losses++;
+              conferenceStats[conf2].pointDiff += (score2 - score1);
+              conferenceStats[conf1].pointDiff += (score1 - score2);
+              conferenceStats[conf2].games.push(`W vs ${majorConferences[conf1].shortName}`);
+              conferenceStats[conf1].games.push(`L vs ${majorConferences[conf2].shortName}`);
+            }
+          }
+
+          // Build rankings array
+          const rankings = Object.entries(conferenceElo)
+            .map(([id, elo]) => ({
+              id,
+              name: majorConferences[id].name,
+              shortName: majorConferences[id].shortName,
+              elo: Math.round(elo),
+              wins: conferenceStats[id].wins,
+              losses: conferenceStats[id].losses,
+              pointDiff: conferenceStats[id].pointDiff,
+              winPct: conferenceStats[id].wins + conferenceStats[id].losses > 0
+                ? (conferenceStats[id].wins / (conferenceStats[id].wins + conferenceStats[id].losses) * 100).toFixed(1)
+                : '0.0'
+            }))
+            .filter(c => c.wins + c.losses > 0)
+            .sort((a, b) => b.elo - a.elo);
+
+          // Render conference rankings
+          if (conferenceContainer) {
+            if (rankings.length === 0) {
+              conferenceContainer.innerHTML = '<p class="text-center text-gray-500 py-8">No non-conference games found. Check back during the season!</p>';
+            } else {
+              const totalGames = rankings.reduce((sum, c) => sum + c.wins, 0);
+
+              conferenceContainer.innerHTML = `
+                <div class="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
+                  <p class="text-sm text-blue-800"><strong>📊 ${totalGames} non-conference matchups analyzed.</strong> Rankings based on head-to-head Elo performance.</p>
+                </div>
+
+                <div class="space-y-3">
+                  ${rankings.map((conf, index) => {
+                    const eloChange = conf.elo - 1500;
+                    const eloColor = eloChange > 0 ? 'text-green-600' : eloChange < 0 ? 'text-red-600' : 'text-gray-600';
+                    const bgColor = index === 0 ? 'bg-yellow-50 border-yellow-300' : index === 1 ? 'bg-gray-100 border-gray-300' : index === 2 ? 'bg-orange-50 border-orange-200' : 'bg-white border-gray-200';
+
+                    return `
+                      <div class="p-4 rounded-xl border ${bgColor}">
+                        <div class="flex items-center justify-between">
+                          <div class="flex items-center gap-3">
+                            <span class="text-2xl font-bold ${index < 3 ? 'text-gray-900' : 'text-gray-400'}">#${index + 1}</span>
+                            <div>
+                              <p class="font-semibold text-gray-900">${conf.name}</p>
+                              <p class="text-sm text-gray-500">${conf.wins}-${conf.losses} (${conf.winPct}%) · ${conf.pointDiff > 0 ? '+' : ''}${conf.pointDiff} pts</p>
+                            </div>
+                          </div>
+                          <div class="text-right">
+                            <p class="text-2xl font-bold text-gray-900">${conf.elo}</p>
+                            <p class="text-sm ${eloColor}">${eloChange >= 0 ? '+' : ''}${eloChange} Elo</p>
+                          </div>
+                        </div>
+                      </div>
+                    `;
+                  }).join('')}
+                </div>
+
+                <div class="mt-6 p-4 bg-gray-100 rounded-xl">
+                  <h4 class="font-semibold text-gray-900 mb-2">Elo Rating Scale</h4>
+                  <div class="flex flex-wrap gap-4 text-sm">
+                    <span class="text-gray-600"><strong>1600+</strong> Elite</span>
+                    <span class="text-gray-600"><strong>1550-1599</strong> Strong</span>
+                    <span class="text-gray-600"><strong>1500-1549</strong> Average</span>
+                    <span class="text-gray-600"><strong>1450-1499</strong> Below Avg</span>
+                    <span class="text-gray-600"><strong>&lt;1450</strong> Weak</span>
+                  </div>
+                </div>
+              `;
+            }
+          }
+
+          conferenceAnalyzed = true;
+          conferenceLoading?.classList.add('hidden');
+          conferenceContainer?.classList.remove('hidden');
+
+        } catch (error) {
+          console.error('Error analyzing conference strength:', error);
+          conferenceLoading?.classList.add('hidden');
+          if (conferenceContainer) {
+            conferenceContainer.innerHTML = '<p class="text-center text-red-500 py-8">Error analyzing conferences.</p>';
+            conferenceContainer.classList.remove('hidden');
+          }
+        }
+      }
+
       // Tab switching
-      function switchTab(tab: 'team' | 'players' | 'cinderella') {
+      function switchTab(tab: 'team' | 'players' | 'cinderella' | 'conference') {
         // Reset all tabs
-        [tabTeam, tabPlayers, tabCinderella].forEach(t => {
+        [tabTeam, tabPlayers, tabCinderella, tabConference].forEach(t => {
           t?.classList.remove('text-red-700', 'border-red-700', 'bg-red-50');
           t?.classList.add('text-gray-500', 'border-transparent');
         });
-        [contentTeam, contentPlayers, contentCinderella].forEach(c => {
+        [contentTeam, contentPlayers, contentCinderella, contentConference].forEach(c => {
           c?.classList.add('hidden');
         });
 
@@ -1012,12 +1234,18 @@ import { baseUrl } from '../../config';
           tabCinderella?.classList.remove('text-gray-500', 'border-transparent');
           contentCinderella?.classList.remove('hidden');
           analyzeCinderellas();
+        } else if (tab === 'conference') {
+          tabConference?.classList.add('text-red-700', 'border-red-700', 'bg-red-50');
+          tabConference?.classList.remove('text-gray-500', 'border-transparent');
+          contentConference?.classList.remove('hidden');
+          analyzeConferenceStrength();
         }
       }
 
       tabTeam?.addEventListener('click', () => switchTab('team'));
       tabPlayers?.addEventListener('click', () => switchTab('players'));
       tabCinderella?.addEventListener('click', () => switchTab('cinderella'));
+      tabConference?.addEventListener('click', () => switchTab('conference'));
     });
   </script>
 </Layout>
