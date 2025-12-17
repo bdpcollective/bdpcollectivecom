@@ -1,0 +1,7313 @@
+{
+  "lastUpdated": "2025-12-17T16:02:27.717Z",
+  "teamId": 158,
+  "teamName": "Nebraska Cornhuskers",
+  "seasons": [
+    {
+      "season": "2001-02",
+      "seasonYear": 2002,
+      "wins": 13,
+      "losses": 14,
+      "avgPoints": 69.7,
+      "avgOppPoints": 70.1,
+      "games": [
+        {
+          "date": "2001-11-21T01:05Z",
+          "opponent": "North Carolina A&T Aggies",
+          "opponentId": "2448",
+          "isHome": true,
+          "nebScore": 69,
+          "oppScore": 57,
+          "isWin": true
+        },
+        {
+          "date": "2001-11-25T01:05Z",
+          "opponent": "Winthrop Eagles",
+          "opponentId": "2737",
+          "isHome": true,
+          "nebScore": 73,
+          "oppScore": 65,
+          "isWin": true
+        },
+        {
+          "date": "2001-11-29T01:05Z",
+          "opponent": "UTSA Roadrunners",
+          "opponentId": "2636",
+          "isHome": true,
+          "nebScore": 81,
+          "oppScore": 63,
+          "isWin": true
+        },
+        {
+          "date": "2001-12-02T20:05Z",
+          "opponent": "Wofford Terriers",
+          "opponentId": "2747",
+          "isHome": true,
+          "nebScore": 65,
+          "oppScore": 46,
+          "isWin": true
+        },
+        {
+          "date": "2001-12-06T01:05Z",
+          "opponent": "Western Illinois Leathernecks",
+          "opponentId": "2710",
+          "isHome": true,
+          "nebScore": 72,
+          "oppScore": 53,
+          "isWin": true
+        },
+        {
+          "date": "2001-12-08T20:05Z",
+          "opponent": "Oral Roberts Golden Eagles",
+          "opponentId": "198",
+          "isHome": true,
+          "nebScore": 61,
+          "oppScore": 55,
+          "isWin": true
+        },
+        {
+          "date": "2001-12-13T01:05Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": false,
+          "nebScore": 70,
+          "oppScore": 76,
+          "isWin": false
+        },
+        {
+          "date": "2001-12-15T20:05Z",
+          "opponent": "Sam Houston Bearkats",
+          "opponentId": "2534",
+          "isHome": true,
+          "nebScore": 70,
+          "oppScore": 74,
+          "isWin": false
+        },
+        {
+          "date": "2001-12-23T01:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": false,
+          "nebScore": 72,
+          "oppScore": 81,
+          "isWin": false
+        },
+        {
+          "date": "2001-12-30T03:00Z",
+          "opponent": "Pacific Tigers",
+          "opponentId": "279",
+          "isHome": false,
+          "nebScore": 52,
+          "oppScore": 75,
+          "isWin": false
+        },
+        {
+          "date": "2002-01-03T02:05Z",
+          "opponent": "Savannah State Tigers",
+          "opponentId": "2542",
+          "isHome": true,
+          "nebScore": 66,
+          "oppScore": 47,
+          "isWin": true
+        },
+        {
+          "date": "2002-01-05T18:45Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": false,
+          "nebScore": 53,
+          "oppScore": 60,
+          "isWin": false
+        },
+        {
+          "date": "2002-01-10T01:00Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": false,
+          "nebScore": 57,
+          "oppScore": 96,
+          "isWin": false
+        },
+        {
+          "date": "2002-01-12T20:05Z",
+          "opponent": "Colorado Buffaloes",
+          "opponentId": "38",
+          "isHome": true,
+          "nebScore": 75,
+          "oppScore": 67,
+          "isWin": true
+        },
+        {
+          "date": "2002-01-17T01:05Z",
+          "opponent": "Oklahoma Sooners",
+          "opponentId": "201",
+          "isHome": true,
+          "nebScore": 51,
+          "oppScore": 78,
+          "isWin": false
+        },
+        {
+          "date": "2002-01-19T21:00Z",
+          "opponent": "Texas Longhorns",
+          "opponentId": "251",
+          "isHome": false,
+          "nebScore": 66,
+          "oppScore": 77,
+          "isWin": false
+        },
+        {
+          "date": "2002-01-24T01:00Z",
+          "opponent": "Oklahoma State Cowboys",
+          "opponentId": "197",
+          "isHome": false,
+          "nebScore": 63,
+          "oppScore": 70,
+          "isWin": false
+        },
+        {
+          "date": "2002-01-27T02:00Z",
+          "opponent": "Iowa State Cyclones",
+          "opponentId": "66",
+          "isHome": true,
+          "nebScore": 86,
+          "oppScore": 84,
+          "isWin": true
+        },
+        {
+          "date": "2002-01-31T01:05Z",
+          "opponent": "Texas Tech Red Raiders",
+          "opponentId": "2641",
+          "isHome": true,
+          "nebScore": 80,
+          "oppScore": 69,
+          "isWin": true
+        },
+        {
+          "date": "2002-02-06T02:00Z",
+          "opponent": "Colorado Buffaloes",
+          "opponentId": "38",
+          "isHome": false,
+          "nebScore": 61,
+          "oppScore": 84,
+          "isWin": false
+        },
+        {
+          "date": "2002-02-09T18:45Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": true,
+          "nebScore": 99,
+          "oppScore": 82,
+          "isWin": true
+        },
+        {
+          "date": "2002-02-16T18:45Z",
+          "opponent": "Iowa State Cyclones",
+          "opponentId": "66",
+          "isHome": false,
+          "nebScore": 79,
+          "oppScore": 85,
+          "isWin": false
+        },
+        {
+          "date": "2002-02-21T01:00Z",
+          "opponent": "Texas A&M Aggies",
+          "opponentId": "245",
+          "isHome": false,
+          "nebScore": 82,
+          "oppScore": 72,
+          "isWin": true
+        },
+        {
+          "date": "2002-02-24T21:00Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": true,
+          "nebScore": 87,
+          "oppScore": 88,
+          "isWin": false
+        },
+        {
+          "date": "2002-02-28T01:05Z",
+          "opponent": "Baylor Bears",
+          "opponentId": "239",
+          "isHome": true,
+          "nebScore": 75,
+          "oppScore": 55,
+          "isWin": true
+        },
+        {
+          "date": "2002-03-03T01:00Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": false,
+          "nebScore": 58,
+          "oppScore": 67,
+          "isWin": false
+        },
+        {
+          "date": "2002-03-07T18:00Z",
+          "opponent": "Colorado Buffaloes",
+          "opponentId": "38",
+          "isHome": true,
+          "nebScore": 60,
+          "oppScore": 67,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2002-03",
+      "seasonYear": 2003,
+      "wins": 11,
+      "losses": 19,
+      "avgPoints": 63.3,
+      "avgOppPoints": 68.5,
+      "games": [
+        {
+          "date": "2002-11-22T06:00Z",
+          "opponent": "Centenary (LA) Gentlemen",
+          "opponentId": "2113",
+          "isHome": false,
+          "nebScore": 68,
+          "oppScore": 45,
+          "isWin": true
+        },
+        {
+          "date": "2002-11-24T03:00Z",
+          "opponent": "Alaska Nanooks",
+          "opponentId": "298",
+          "isHome": false,
+          "nebScore": 61,
+          "oppScore": 64,
+          "isWin": false
+        },
+        {
+          "date": "2002-11-24T22:00Z",
+          "opponent": "Ball State Cardinals",
+          "opponentId": "2050",
+          "isHome": true,
+          "nebScore": 65,
+          "oppScore": 73,
+          "isWin": false
+        },
+        {
+          "date": "2002-12-01T20:05Z",
+          "opponent": "UTSA Roadrunners",
+          "opponentId": "2636",
+          "isHome": true,
+          "nebScore": 69,
+          "oppScore": 53,
+          "isWin": true
+        },
+        {
+          "date": "2002-12-06T00:00Z",
+          "opponent": "South Florida Bulls",
+          "opponentId": "58",
+          "isHome": false,
+          "nebScore": 60,
+          "oppScore": 65,
+          "isWin": false
+        },
+        {
+          "date": "2002-12-08T20:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": true,
+          "nebScore": 80,
+          "oppScore": 60,
+          "isWin": true
+        },
+        {
+          "date": "2002-12-15T01:05Z",
+          "opponent": "Purdue Fort Wayne Mastodons",
+          "opponentId": "2870",
+          "isHome": true,
+          "nebScore": 63,
+          "oppScore": 46,
+          "isWin": true
+        },
+        {
+          "date": "2002-12-22T01:05Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": true,
+          "nebScore": 73,
+          "oppScore": 81,
+          "isWin": false
+        },
+        {
+          "date": "2002-12-28T00:00Z",
+          "opponent": "UC Santa Barbara Gauchos",
+          "opponentId": "2540",
+          "isHome": true,
+          "nebScore": 60,
+          "oppScore": 57,
+          "isWin": true
+        },
+        {
+          "date": "2002-12-29T02:30Z",
+          "opponent": "Arizona State Sun Devils",
+          "opponentId": "9",
+          "isHome": false,
+          "nebScore": 63,
+          "oppScore": 75,
+          "isWin": false
+        },
+        {
+          "date": "2002-12-31T20:05Z",
+          "opponent": "Eastern Washington Eagles",
+          "opponentId": "331",
+          "isHome": true,
+          "nebScore": 63,
+          "oppScore": 60,
+          "isWin": true
+        },
+        {
+          "date": "2003-01-04T20:05Z",
+          "opponent": "Denver Pioneers",
+          "opponentId": "2172",
+          "isHome": true,
+          "nebScore": 79,
+          "oppScore": 75,
+          "isWin": true
+        },
+        {
+          "date": "2003-01-08T01:05Z",
+          "opponent": "Lipscomb Bisons",
+          "opponentId": "288",
+          "isHome": true,
+          "nebScore": 70,
+          "oppScore": 60,
+          "isWin": true
+        },
+        {
+          "date": "2003-01-11T18:45Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": false,
+          "nebScore": 59,
+          "oppScore": 92,
+          "isWin": false
+        },
+        {
+          "date": "2003-01-16T01:05Z",
+          "opponent": "Texas A&M Aggies",
+          "opponentId": "245",
+          "isHome": true,
+          "nebScore": 52,
+          "oppScore": 53,
+          "isWin": false
+        },
+        {
+          "date": "2003-01-19T01:05Z",
+          "opponent": "Colorado Buffaloes",
+          "opponentId": "38",
+          "isHome": true,
+          "nebScore": 80,
+          "oppScore": 77,
+          "isWin": true
+        },
+        {
+          "date": "2003-01-23T01:00Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": false,
+          "nebScore": 53,
+          "oppScore": 77,
+          "isWin": false
+        },
+        {
+          "date": "2003-01-25T18:45Z",
+          "opponent": "Iowa State Cyclones",
+          "opponentId": "66",
+          "isHome": false,
+          "nebScore": 61,
+          "oppScore": 71,
+          "isWin": false
+        },
+        {
+          "date": "2003-01-30T01:05Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": true,
+          "nebScore": 56,
+          "oppScore": 63,
+          "isWin": false
+        },
+        {
+          "date": "2003-02-01T19:00Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": true,
+          "nebScore": 51,
+          "oppScore": 81,
+          "isWin": false
+        },
+        {
+          "date": "2003-02-06T02:15Z",
+          "opponent": "Texas Tech Red Raiders",
+          "opponentId": "2641",
+          "isHome": false,
+          "nebScore": 49,
+          "oppScore": 75,
+          "isWin": false
+        },
+        {
+          "date": "2003-02-13T01:05Z",
+          "opponent": "Oklahoma State Cowboys",
+          "opponentId": "197",
+          "isHome": true,
+          "nebScore": 70,
+          "oppScore": 77,
+          "isWin": false
+        },
+        {
+          "date": "2003-02-15T18:45Z",
+          "opponent": "Texas Longhorns",
+          "opponentId": "251",
+          "isHome": true,
+          "nebScore": 63,
+          "oppScore": 75,
+          "isWin": false
+        },
+        {
+          "date": "2003-02-19T01:00Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": false,
+          "nebScore": 50,
+          "oppScore": 67,
+          "isWin": false
+        },
+        {
+          "date": "2003-02-22T20:00Z",
+          "opponent": "Baylor Bears",
+          "opponentId": "239",
+          "isHome": false,
+          "nebScore": 64,
+          "oppScore": 78,
+          "isWin": false
+        },
+        {
+          "date": "2003-02-26T01:05Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": true,
+          "nebScore": 68,
+          "oppScore": 61,
+          "isWin": true
+        },
+        {
+          "date": "2003-03-02T01:05Z",
+          "opponent": "Iowa State Cyclones",
+          "opponentId": "66",
+          "isHome": true,
+          "nebScore": 69,
+          "oppScore": 63,
+          "isWin": true
+        },
+        {
+          "date": "2003-03-05T01:00Z",
+          "opponent": "Oklahoma Sooners",
+          "opponentId": "201",
+          "isHome": false,
+          "nebScore": 51,
+          "oppScore": 76,
+          "isWin": false
+        },
+        {
+          "date": "2003-03-09T02:00Z",
+          "opponent": "Colorado Buffaloes",
+          "opponentId": "38",
+          "isHome": false,
+          "nebScore": 69,
+          "oppScore": 84,
+          "isWin": false
+        },
+        {
+          "date": "2003-03-13T20:20Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": false,
+          "nebScore": 61,
+          "oppScore": 70,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2003-04",
+      "seasonYear": 2004,
+      "wins": 16,
+      "losses": 12,
+      "avgPoints": 69.7,
+      "avgOppPoints": 61.6,
+      "games": [
+        {
+          "date": "2003-11-23T01:05Z",
+          "opponent": "Fairleigh Dickinson Knights",
+          "opponentId": "161",
+          "isHome": true,
+          "nebScore": 80,
+          "oppScore": 64,
+          "isWin": true
+        },
+        {
+          "date": "2003-11-30T01:05Z",
+          "opponent": "Eastern Michigan Eagles",
+          "opponentId": "2199",
+          "isHome": true,
+          "nebScore": 67,
+          "oppScore": 59,
+          "isWin": true
+        },
+        {
+          "date": "2003-12-04T01:05Z",
+          "opponent": "Arizona State Sun Devils",
+          "opponentId": "9",
+          "isHome": true,
+          "nebScore": 66,
+          "oppScore": 60,
+          "isWin": true
+        },
+        {
+          "date": "2003-12-06T20:05Z",
+          "opponent": "South Florida Bulls",
+          "opponentId": "58",
+          "isHome": true,
+          "nebScore": 75,
+          "oppScore": 52,
+          "isWin": true
+        },
+        {
+          "date": "2003-12-09T01:05Z",
+          "opponent": "Delaware State Hornets",
+          "opponentId": "2169",
+          "isHome": true,
+          "nebScore": 68,
+          "oppScore": 39,
+          "isWin": true
+        },
+        {
+          "date": "2003-12-11T01:05Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": false,
+          "nebScore": 54,
+          "oppScore": 61,
+          "isWin": false
+        },
+        {
+          "date": "2003-12-13T20:05Z",
+          "opponent": "Tennessee Volunteers",
+          "opponentId": "2633",
+          "isHome": true,
+          "nebScore": 77,
+          "oppScore": 62,
+          "isWin": true
+        },
+        {
+          "date": "2003-12-21T01:05Z",
+          "opponent": "Bethune-Cookman Wildcats",
+          "opponentId": "2065",
+          "isHome": true,
+          "nebScore": 70,
+          "oppScore": 26,
+          "isWin": true
+        },
+        {
+          "date": "2003-12-23T01:05Z",
+          "opponent": "Lipscomb Bisons",
+          "opponentId": "288",
+          "isHome": true,
+          "nebScore": 75,
+          "oppScore": 52,
+          "isWin": true
+        },
+        {
+          "date": "2003-12-30T01:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": false,
+          "nebScore": 77,
+          "oppScore": 60,
+          "isWin": true
+        },
+        {
+          "date": "2004-01-07T01:05Z",
+          "opponent": "Saint Francis Red Flash",
+          "opponentId": "2598",
+          "isHome": true,
+          "nebScore": 93,
+          "oppScore": 49,
+          "isWin": true
+        },
+        {
+          "date": "2004-01-11T01:00Z",
+          "opponent": "Iowa State Cyclones",
+          "opponentId": "66",
+          "isHome": false,
+          "nebScore": 74,
+          "oppScore": 89,
+          "isWin": false
+        },
+        {
+          "date": "2004-01-15T01:05Z",
+          "opponent": "Colorado Buffaloes",
+          "opponentId": "38",
+          "isHome": true,
+          "nebScore": 60,
+          "oppScore": 68,
+          "isWin": false
+        },
+        {
+          "date": "2004-01-17T18:30Z",
+          "opponent": "Texas Longhorns",
+          "opponentId": "251",
+          "isHome": false,
+          "nebScore": 61,
+          "oppScore": 63,
+          "isWin": false
+        },
+        {
+          "date": "2004-01-22T01:05Z",
+          "opponent": "Baylor Bears",
+          "opponentId": "239",
+          "isHome": true,
+          "nebScore": 76,
+          "oppScore": 47,
+          "isWin": true
+        },
+        {
+          "date": "2004-01-24T23:00Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": false,
+          "nebScore": 51,
+          "oppScore": 72,
+          "isWin": false
+        },
+        {
+          "date": "2004-02-01T18:00Z",
+          "opponent": "Oklahoma Sooners",
+          "opponentId": "201",
+          "isHome": true,
+          "nebScore": 50,
+          "oppScore": 52,
+          "isWin": false
+        },
+        {
+          "date": "2004-02-05T01:00Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": false,
+          "nebScore": 61,
+          "oppScore": 78,
+          "isWin": false
+        },
+        {
+          "date": "2004-02-07T18:30Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": true,
+          "nebScore": 78,
+          "oppScore": 62,
+          "isWin": true
+        },
+        {
+          "date": "2004-02-12T01:00Z",
+          "opponent": "Texas A&M Aggies",
+          "opponentId": "245",
+          "isHome": false,
+          "nebScore": 83,
+          "oppScore": 77,
+          "isWin": true
+        },
+        {
+          "date": "2004-02-15T18:30Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": true,
+          "nebScore": 74,
+          "oppScore": 55,
+          "isWin": true
+        },
+        {
+          "date": "2004-02-19T01:05Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": true,
+          "nebScore": 58,
+          "oppScore": 63,
+          "isWin": false
+        },
+        {
+          "date": "2004-02-22T01:00Z",
+          "opponent": "Oklahoma State Cowboys",
+          "opponentId": "197",
+          "isHome": false,
+          "nebScore": 83,
+          "oppScore": 87,
+          "isWin": false
+        },
+        {
+          "date": "2004-02-25T01:05Z",
+          "opponent": "Texas Tech Red Raiders",
+          "opponentId": "2641",
+          "isHome": true,
+          "nebScore": 72,
+          "oppScore": 44,
+          "isWin": true
+        },
+        {
+          "date": "2004-02-28T21:00Z",
+          "opponent": "Iowa State Cyclones",
+          "opponentId": "66",
+          "isHome": true,
+          "nebScore": 68,
+          "oppScore": 65,
+          "isWin": true
+        },
+        {
+          "date": "2004-03-04T00:30Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": false,
+          "nebScore": 67,
+          "oppScore": 78,
+          "isWin": false
+        },
+        {
+          "date": "2004-03-06T21:00Z",
+          "opponent": "Colorado Buffaloes",
+          "opponentId": "38",
+          "isHome": false,
+          "nebScore": 75,
+          "oppScore": 78,
+          "isWin": false
+        },
+        {
+          "date": "2004-03-12T00:00Z",
+          "opponent": "Oklahoma Sooners",
+          "opponentId": "201",
+          "isHome": false,
+          "nebScore": 59,
+          "oppScore": 63,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2004-05",
+      "seasonYear": 2005,
+      "wins": 14,
+      "losses": 14,
+      "avgPoints": 68,
+      "avgOppPoints": 63.9,
+      "games": [
+        {
+          "date": "2004-11-24T01:05Z",
+          "opponent": "Arkansas-Pine Bluff Golden Lions",
+          "opponentId": "2029",
+          "isHome": true,
+          "nebScore": 97,
+          "oppScore": 40,
+          "isWin": true
+        },
+        {
+          "date": "2004-11-27T19:05Z",
+          "opponent": "Texas Southern Tigers",
+          "opponentId": "2640",
+          "isHome": true,
+          "nebScore": 78,
+          "oppScore": 58,
+          "isWin": true
+        },
+        {
+          "date": "2004-12-03T02:30Z",
+          "opponent": "UAB Blazers",
+          "opponentId": "5",
+          "isHome": false,
+          "nebScore": 66,
+          "oppScore": 80,
+          "isWin": false
+        },
+        {
+          "date": "2004-12-07T01:05Z",
+          "opponent": "Morgan State Bears",
+          "opponentId": "2415",
+          "isHome": true,
+          "nebScore": 64,
+          "oppScore": 34,
+          "isWin": true
+        },
+        {
+          "date": "2004-12-09T02:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": true,
+          "nebScore": 48,
+          "oppScore": 57,
+          "isWin": false
+        },
+        {
+          "date": "2004-12-11T19:05Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": true,
+          "nebScore": 48,
+          "oppScore": 50,
+          "isWin": false
+        },
+        {
+          "date": "2004-12-19T01:05Z",
+          "opponent": "North Carolina A&T Aggies",
+          "opponentId": "2448",
+          "isHome": true,
+          "nebScore": 71,
+          "oppScore": 49,
+          "isWin": true
+        },
+        {
+          "date": "2004-12-22T02:00Z",
+          "opponent": "Marquette Golden Eagles",
+          "opponentId": "269",
+          "isHome": false,
+          "nebScore": 62,
+          "oppScore": 81,
+          "isWin": false
+        },
+        {
+          "date": "2004-12-31T00:00Z",
+          "opponent": "Tennessee Volunteers",
+          "opponentId": "2633",
+          "isHome": false,
+          "nebScore": 62,
+          "oppScore": 61,
+          "isWin": true
+        },
+        {
+          "date": "2005-01-02T19:05Z",
+          "opponent": "Montana State Bobcats",
+          "opponentId": "147",
+          "isHome": true,
+          "nebScore": 78,
+          "oppScore": 45,
+          "isWin": true
+        },
+        {
+          "date": "2005-01-09T01:05Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": true,
+          "nebScore": 95,
+          "oppScore": 85,
+          "isWin": true
+        },
+        {
+          "date": "2005-01-13T02:00Z",
+          "opponent": "Colorado Buffaloes",
+          "opponentId": "38",
+          "isHome": false,
+          "nebScore": 68,
+          "oppScore": 61,
+          "isWin": true
+        },
+        {
+          "date": "2005-01-15T18:30Z",
+          "opponent": "Texas Longhorns",
+          "opponentId": "251",
+          "isHome": true,
+          "nebScore": 53,
+          "oppScore": 63,
+          "isWin": false
+        },
+        {
+          "date": "2005-01-20T01:00Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": false,
+          "nebScore": 57,
+          "oppScore": 59,
+          "isWin": false
+        },
+        {
+          "date": "2005-01-22T18:30Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": false,
+          "nebScore": 70,
+          "oppScore": 80,
+          "isWin": false
+        },
+        {
+          "date": "2005-01-27T01:05Z",
+          "opponent": "Texas A&M Aggies",
+          "opponentId": "245",
+          "isHome": true,
+          "nebScore": 77,
+          "oppScore": 67,
+          "isWin": true
+        },
+        {
+          "date": "2005-01-29T18:45Z",
+          "opponent": "Texas Tech Red Raiders",
+          "opponentId": "2641",
+          "isHome": false,
+          "nebScore": 68,
+          "oppScore": 84,
+          "isWin": false
+        },
+        {
+          "date": "2005-02-02T01:05Z",
+          "opponent": "Utah Valley Wolverines",
+          "opponentId": "3084",
+          "isHome": true,
+          "nebScore": 91,
+          "oppScore": 57,
+          "isWin": true
+        },
+        {
+          "date": "2005-02-05T17:00Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": true,
+          "nebScore": 65,
+          "oppScore": 78,
+          "isWin": false
+        },
+        {
+          "date": "2005-02-09T01:05Z",
+          "opponent": "Iowa State Cyclones",
+          "opponentId": "66",
+          "isHome": true,
+          "nebScore": 60,
+          "oppScore": 65,
+          "isWin": false
+        },
+        {
+          "date": "2005-02-13T01:00Z",
+          "opponent": "Baylor Bears",
+          "opponentId": "239",
+          "isHome": false,
+          "nebScore": 74,
+          "oppScore": 63,
+          "isWin": true
+        },
+        {
+          "date": "2005-02-17T02:00Z",
+          "opponent": "Oklahoma Sooners",
+          "opponentId": "201",
+          "isHome": false,
+          "nebScore": 60,
+          "oppScore": 83,
+          "isWin": false
+        },
+        {
+          "date": "2005-02-20T02:05Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": true,
+          "nebScore": 53,
+          "oppScore": 56,
+          "isWin": false
+        },
+        {
+          "date": "2005-02-23T01:05Z",
+          "opponent": "Oklahoma State Cowboys",
+          "opponentId": "197",
+          "isHome": true,
+          "nebScore": 74,
+          "oppScore": 67,
+          "isWin": true
+        },
+        {
+          "date": "2005-02-27T19:00Z",
+          "opponent": "Iowa State Cyclones",
+          "opponentId": "66",
+          "isHome": false,
+          "nebScore": 76,
+          "oppScore": 69,
+          "isWin": true
+        },
+        {
+          "date": "2005-03-03T01:05Z",
+          "opponent": "Colorado Buffaloes",
+          "opponentId": "38",
+          "isHome": true,
+          "nebScore": 70,
+          "oppScore": 55,
+          "isWin": true
+        },
+        {
+          "date": "2005-03-05T18:30Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": false,
+          "nebScore": 53,
+          "oppScore": 73,
+          "isWin": false
+        },
+        {
+          "date": "2005-03-10T17:30Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": false,
+          "nebScore": 67,
+          "oppScore": 70,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2005-06",
+      "seasonYear": 2006,
+      "wins": 19,
+      "losses": 13,
+      "avgPoints": 66.8,
+      "avgOppPoints": 65.8,
+      "games": [
+        {
+          "date": "2005-11-19T01:00Z",
+          "opponent": "Longwood Lancers",
+          "opponentId": "2344",
+          "isHome": true,
+          "nebScore": 80,
+          "oppScore": 65,
+          "isWin": true
+        },
+        {
+          "date": "2005-11-19T21:30Z",
+          "opponent": "Yale Bulldogs",
+          "opponentId": "43",
+          "isHome": true,
+          "nebScore": 73,
+          "oppScore": 64,
+          "isWin": true
+        },
+        {
+          "date": "2005-11-20T21:30Z",
+          "opponent": "Louisiana Tech Bulldogs",
+          "opponentId": "2348",
+          "isHome": true,
+          "nebScore": 59,
+          "oppScore": 56,
+          "isWin": true
+        },
+        {
+          "date": "2005-11-27T20:00Z",
+          "opponent": "Southeast Missouri State Redhawks",
+          "opponentId": "2546",
+          "isHome": true,
+          "nebScore": 69,
+          "oppScore": 54,
+          "isWin": true
+        },
+        {
+          "date": "2005-12-01T01:00Z",
+          "opponent": "Marquette Golden Eagles",
+          "opponentId": "269",
+          "isHome": true,
+          "nebScore": 84,
+          "oppScore": 74,
+          "isWin": true
+        },
+        {
+          "date": "2005-12-03T21:00Z",
+          "opponent": "UAB Blazers",
+          "opponentId": "5",
+          "isHome": true,
+          "nebScore": 72,
+          "oppScore": 73,
+          "isWin": false
+        },
+        {
+          "date": "2005-12-09T01:00Z",
+          "opponent": "South Dakota State Jackrabbits",
+          "opponentId": "2571",
+          "isHome": true,
+          "nebScore": 76,
+          "oppScore": 67,
+          "isWin": true
+        },
+        {
+          "date": "2005-12-11T19:05Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": false,
+          "nebScore": 44,
+          "oppScore": 70,
+          "isWin": false
+        },
+        {
+          "date": "2005-12-18T01:00Z",
+          "opponent": "Chicago State Cougars",
+          "opponentId": "2130",
+          "isHome": true,
+          "nebScore": 76,
+          "oppScore": 65,
+          "isWin": true
+        },
+        {
+          "date": "2005-12-20T01:00Z",
+          "opponent": "North Carolina A&T Aggies",
+          "opponentId": "2448",
+          "isHome": true,
+          "nebScore": 107,
+          "oppScore": 57,
+          "isWin": true
+        },
+        {
+          "date": "2005-12-22T01:00Z",
+          "opponent": "Alabama A&M Bulldogs",
+          "opponentId": "2010",
+          "isHome": true,
+          "nebScore": 67,
+          "oppScore": 60,
+          "isWin": true
+        },
+        {
+          "date": "2005-12-31T18:30Z",
+          "opponent": "Florida State Seminoles",
+          "opponentId": "52",
+          "isHome": false,
+          "nebScore": 60,
+          "oppScore": 74,
+          "isWin": false
+        },
+        {
+          "date": "2006-01-04T01:00Z",
+          "opponent": "Northern Colorado Bears",
+          "opponentId": "2458",
+          "isHome": true,
+          "nebScore": 60,
+          "oppScore": 50,
+          "isWin": true
+        },
+        {
+          "date": "2006-01-07T18:30Z",
+          "opponent": "Oklahoma Sooners",
+          "opponentId": "201",
+          "isHome": true,
+          "nebScore": 59,
+          "oppScore": 58,
+          "isWin": true
+        },
+        {
+          "date": "2006-01-12T01:00Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": false,
+          "nebScore": 57,
+          "oppScore": 42,
+          "isWin": true
+        },
+        {
+          "date": "2006-01-18T00:30Z",
+          "opponent": "Iowa State Cyclones",
+          "opponentId": "66",
+          "isHome": true,
+          "nebScore": 75,
+          "oppScore": 88,
+          "isWin": false
+        },
+        {
+          "date": "2006-01-21T21:00Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": false,
+          "nebScore": 54,
+          "oppScore": 96,
+          "isWin": false
+        },
+        {
+          "date": "2006-01-26T02:00Z",
+          "opponent": "Colorado Buffaloes",
+          "opponentId": "38",
+          "isHome": false,
+          "nebScore": 59,
+          "oppScore": 81,
+          "isWin": false
+        },
+        {
+          "date": "2006-01-28T21:00Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": true,
+          "nebScore": 65,
+          "oppScore": 52,
+          "isWin": true
+        },
+        {
+          "date": "2006-02-01T01:00Z",
+          "opponent": "Oklahoma State Cowboys",
+          "opponentId": "197",
+          "isHome": false,
+          "nebScore": 59,
+          "oppScore": 57,
+          "isWin": true
+        },
+        {
+          "date": "2006-02-05T02:00Z",
+          "opponent": "Baylor Bears",
+          "opponentId": "239",
+          "isHome": true,
+          "nebScore": 60,
+          "oppScore": 45,
+          "isWin": true
+        },
+        {
+          "date": "2006-02-09T00:30Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": true,
+          "nebScore": 48,
+          "oppScore": 69,
+          "isWin": false
+        },
+        {
+          "date": "2006-02-11T21:00Z",
+          "opponent": "Texas Longhorns",
+          "opponentId": "251",
+          "isHome": false,
+          "nebScore": 59,
+          "oppScore": 78,
+          "isWin": false
+        },
+        {
+          "date": "2006-02-16T01:00Z",
+          "opponent": "Iowa State Cyclones",
+          "opponentId": "66",
+          "isHome": false,
+          "nebScore": 73,
+          "oppScore": 63,
+          "isWin": true
+        },
+        {
+          "date": "2006-02-18T21:00Z",
+          "opponent": "Texas Tech Red Raiders",
+          "opponentId": "2641",
+          "isHome": true,
+          "nebScore": 64,
+          "oppScore": 70,
+          "isWin": false
+        },
+        {
+          "date": "2006-02-23T01:00Z",
+          "opponent": "Colorado Buffaloes",
+          "opponentId": "38",
+          "isHome": true,
+          "nebScore": 93,
+          "oppScore": 77,
+          "isWin": true
+        },
+        {
+          "date": "2006-02-25T21:00Z",
+          "opponent": "Texas A&M Aggies",
+          "opponentId": "245",
+          "isHome": false,
+          "nebScore": 55,
+          "oppScore": 66,
+          "isWin": false
+        },
+        {
+          "date": "2006-03-02T01:00Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": true,
+          "nebScore": 64,
+          "oppScore": 66,
+          "isWin": false
+        },
+        {
+          "date": "2006-03-05T19:00Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": false,
+          "nebScore": 63,
+          "oppScore": 64,
+          "isWin": false
+        },
+        {
+          "date": "2006-03-10T02:20Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": true,
+          "nebScore": 71,
+          "oppScore": 64,
+          "isWin": true
+        },
+        {
+          "date": "2006-03-11T02:20Z",
+          "opponent": "Oklahoma Sooners",
+          "opponentId": "201",
+          "isHome": false,
+          "nebScore": 69,
+          "oppScore": 63,
+          "isWin": true
+        },
+        {
+          "date": "2006-03-11T21:20Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": false,
+          "nebScore": 65,
+          "oppScore": 79,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2006-07",
+      "seasonYear": 2007,
+      "wins": 17,
+      "losses": 14,
+      "avgPoints": 66.8,
+      "avgOppPoints": 64.2,
+      "games": [
+        {
+          "date": "2006-11-15T01:00Z",
+          "opponent": "Omaha Mavericks",
+          "opponentId": "2437",
+          "isHome": true,
+          "nebScore": 76,
+          "oppScore": 62,
+          "isWin": true
+        },
+        {
+          "date": "2006-11-19T01:05Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": true,
+          "nebScore": 73,
+          "oppScore": 61,
+          "isWin": true
+        },
+        {
+          "date": "2006-11-22T01:00Z",
+          "opponent": "Lubbock Christian Chaparrals",
+          "opponentId": "2878",
+          "isHome": true,
+          "nebScore": 65,
+          "oppScore": 42,
+          "isWin": true
+        },
+        {
+          "date": "2006-11-28T01:00Z",
+          "opponent": "Arkansas-Pine Bluff Golden Lions",
+          "opponentId": "2029",
+          "isHome": true,
+          "nebScore": 71,
+          "oppScore": 42,
+          "isWin": true
+        },
+        {
+          "date": "2006-11-30T01:00Z",
+          "opponent": "North Texas Mean Green",
+          "opponentId": "249",
+          "isHome": true,
+          "nebScore": 76,
+          "oppScore": 57,
+          "isWin": true
+        },
+        {
+          "date": "2006-12-02T21:00Z",
+          "opponent": "Rutgers Scarlet Knights",
+          "opponentId": "164",
+          "isHome": false,
+          "nebScore": 73,
+          "oppScore": 75,
+          "isWin": false
+        },
+        {
+          "date": "2006-12-09T20:00Z",
+          "opponent": "Oregon Ducks",
+          "opponentId": "2483",
+          "isHome": false,
+          "nebScore": 56,
+          "oppScore": 68,
+          "isWin": false
+        },
+        {
+          "date": "2006-12-17T19:00Z",
+          "opponent": "Alabama A&M Bulldogs",
+          "opponentId": "2010",
+          "isHome": true,
+          "nebScore": 82,
+          "oppScore": 55,
+          "isWin": true
+        },
+        {
+          "date": "2006-12-21T03:00Z",
+          "opponent": "Wyoming Cowboys",
+          "opponentId": "2751",
+          "isHome": true,
+          "nebScore": 73,
+          "oppScore": 58,
+          "isWin": true
+        },
+        {
+          "date": "2006-12-23T05:30Z",
+          "opponent": "Hawai'i Rainbow Warriors",
+          "opponentId": "62",
+          "isHome": false,
+          "nebScore": 72,
+          "oppScore": 81,
+          "isWin": false
+        },
+        {
+          "date": "2006-12-24T03:00Z",
+          "opponent": "Houston Cougars",
+          "opponentId": "248",
+          "isHome": false,
+          "nebScore": 70,
+          "oppScore": 57,
+          "isWin": true
+        },
+        {
+          "date": "2006-12-30T21:00Z",
+          "opponent": "Miami Hurricanes",
+          "opponentId": "2390",
+          "isHome": false,
+          "nebScore": 82,
+          "oppScore": 67,
+          "isWin": true
+        },
+        {
+          "date": "2007-01-04T01:00Z",
+          "opponent": "Savannah State Tigers",
+          "opponentId": "2542",
+          "isHome": true,
+          "nebScore": 81,
+          "oppScore": 53,
+          "isWin": true
+        },
+        {
+          "date": "2007-01-07T01:00Z",
+          "opponent": "Western Kentucky Hilltoppers",
+          "opponentId": "98",
+          "isHome": true,
+          "nebScore": 82,
+          "oppScore": 71,
+          "isWin": true
+        },
+        {
+          "date": "2007-01-11T01:00Z",
+          "opponent": "Iowa State Cyclones",
+          "opponentId": "66",
+          "isHome": false,
+          "nebScore": 62,
+          "oppScore": 71,
+          "isWin": false
+        },
+        {
+          "date": "2007-01-14T01:00Z",
+          "opponent": "Oklahoma State Cowboys",
+          "opponentId": "197",
+          "isHome": true,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2007-01-18T01:00Z",
+          "opponent": "Oklahoma Sooners",
+          "opponentId": "201",
+          "isHome": false,
+          "nebScore": 53,
+          "oppScore": 70,
+          "isWin": false
+        },
+        {
+          "date": "2007-01-20T23:00Z",
+          "opponent": "Colorado Buffaloes",
+          "opponentId": "38",
+          "isHome": true,
+          "nebScore": 71,
+          "oppScore": 50,
+          "isWin": true
+        },
+        {
+          "date": "2007-01-25T01:00Z",
+          "opponent": "Texas Longhorns",
+          "opponentId": "251",
+          "isHome": true,
+          "nebScore": 61,
+          "oppScore": 62,
+          "isWin": false
+        },
+        {
+          "date": "2007-01-27T23:00Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": false,
+          "nebScore": 45,
+          "oppScore": 61,
+          "isWin": false
+        },
+        {
+          "date": "2007-01-30T02:00Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": true,
+          "nebScore": 56,
+          "oppScore": 76,
+          "isWin": false
+        },
+        {
+          "date": "2007-02-03T18:30Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": false,
+          "nebScore": 66,
+          "oppScore": 61,
+          "isWin": true
+        },
+        {
+          "date": "2007-02-07T01:00Z",
+          "opponent": "Texas Tech Red Raiders",
+          "opponentId": "2641",
+          "isHome": false,
+          "nebScore": 61,
+          "oppScore": 59,
+          "isWin": true
+        },
+        {
+          "date": "2007-02-11T01:00Z",
+          "opponent": "Texas A&M Aggies",
+          "opponentId": "245",
+          "isHome": true,
+          "nebScore": 55,
+          "oppScore": 66,
+          "isWin": false
+        },
+        {
+          "date": "2007-02-14T01:00Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": true,
+          "nebScore": 74,
+          "oppScore": 63,
+          "isWin": true
+        },
+        {
+          "date": "2007-02-17T21:00Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": false,
+          "nebScore": 39,
+          "oppScore": 92,
+          "isWin": false
+        },
+        {
+          "date": "2007-02-22T00:30Z",
+          "opponent": "Baylor Bears",
+          "opponentId": "239",
+          "isHome": false,
+          "nebScore": 59,
+          "oppScore": 63,
+          "isWin": false
+        },
+        {
+          "date": "2007-02-24T18:30Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": true,
+          "nebScore": 82,
+          "oppScore": 77,
+          "isWin": true
+        },
+        {
+          "date": "2007-03-01T01:00Z",
+          "opponent": "Iowa State Cyclones",
+          "opponentId": "66",
+          "isHome": true,
+          "nebScore": 63,
+          "oppScore": 69,
+          "isWin": false
+        },
+        {
+          "date": "2007-03-03T18:30Z",
+          "opponent": "Colorado Buffaloes",
+          "opponentId": "38",
+          "isHome": false,
+          "nebScore": 69,
+          "oppScore": 73,
+          "isWin": false
+        },
+        {
+          "date": "2007-03-06T01:00Z",
+          "opponent": "Oklahoma State Cowboys",
+          "opponentId": "197",
+          "isHome": true,
+          "nebScore": 85,
+          "oppScore": 73,
+          "isWin": true
+        },
+        {
+          "date": "2007-03-09T00:00Z",
+          "opponent": "Oklahoma State Cowboys",
+          "opponentId": "197",
+          "isHome": false,
+          "nebScore": 39,
+          "oppScore": 54,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2007-08",
+      "seasonYear": 2008,
+      "wins": 19,
+      "losses": 12,
+      "avgPoints": 66.8,
+      "avgOppPoints": 60.3,
+      "games": [
+        {
+          "date": "2007-11-11T01:00Z",
+          "opponent": "Presbyterian Blue Hose",
+          "opponentId": "2506",
+          "isHome": true,
+          "nebScore": 67,
+          "oppScore": 52,
+          "isWin": true
+        },
+        {
+          "date": "2007-11-17T19:00Z",
+          "opponent": "Alabama A&M Bulldogs",
+          "opponentId": "2010",
+          "isHome": true,
+          "nebScore": 59,
+          "oppScore": 45,
+          "isWin": true
+        },
+        {
+          "date": "2007-11-21T01:00Z",
+          "opponent": "Norfolk State Spartans",
+          "opponentId": "2450",
+          "isHome": true,
+          "nebScore": 83,
+          "oppScore": 48,
+          "isWin": true
+        },
+        {
+          "date": "2007-11-24T19:05Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": false,
+          "nebScore": 62,
+          "oppScore": 74,
+          "isWin": false
+        },
+        {
+          "date": "2007-11-27T01:00Z",
+          "opponent": "Purdue Fort Wayne Mastodons",
+          "opponentId": "2870",
+          "isHome": true,
+          "nebScore": 79,
+          "oppScore": 62,
+          "isWin": true
+        },
+        {
+          "date": "2007-12-02T19:00Z",
+          "opponent": "Arizona State Sun Devils",
+          "opponentId": "9",
+          "isHome": true,
+          "nebScore": 62,
+          "oppScore": 47,
+          "isWin": true
+        },
+        {
+          "date": "2007-12-06T01:00Z",
+          "opponent": "Western Kentucky Hilltoppers",
+          "opponentId": "98",
+          "isHome": false,
+          "nebScore": 62,
+          "oppScore": 69,
+          "isWin": false
+        },
+        {
+          "date": "2007-12-09T20:00Z",
+          "opponent": "Rutgers Scarlet Knights",
+          "opponentId": "164",
+          "isHome": true,
+          "nebScore": 63,
+          "oppScore": 51,
+          "isWin": true
+        },
+        {
+          "date": "2007-12-12T01:00Z",
+          "opponent": "Savannah State Tigers",
+          "opponentId": "2542",
+          "isHome": true,
+          "nebScore": 82,
+          "oppScore": 37,
+          "isWin": true
+        },
+        {
+          "date": "2007-12-15T19:00Z",
+          "opponent": "Oregon Ducks",
+          "opponentId": "2483",
+          "isHome": true,
+          "nebScore": 88,
+          "oppScore": 79,
+          "isWin": true
+        },
+        {
+          "date": "2007-12-23T01:00Z",
+          "opponent": "North Carolina Central Eagles",
+          "opponentId": "2428",
+          "isHome": true,
+          "nebScore": 71,
+          "oppScore": 28,
+          "isWin": true
+        },
+        {
+          "date": "2007-12-30T01:00Z",
+          "opponent": "Alcorn State Braves",
+          "opponentId": "2016",
+          "isHome": true,
+          "nebScore": 77,
+          "oppScore": 53,
+          "isWin": true
+        },
+        {
+          "date": "2008-01-05T01:00Z",
+          "opponent": "Maryland Eastern Shore Hawks",
+          "opponentId": "2379",
+          "isHome": true,
+          "nebScore": 86,
+          "oppScore": 50,
+          "isWin": true
+        },
+        {
+          "date": "2008-01-13T02:00Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": true,
+          "nebScore": 58,
+          "oppScore": 79,
+          "isWin": false
+        },
+        {
+          "date": "2008-01-16T02:00Z",
+          "opponent": "Colorado Buffaloes",
+          "opponentId": "38",
+          "isHome": false,
+          "nebScore": 51,
+          "oppScore": 55,
+          "isWin": false
+        },
+        {
+          "date": "2008-01-19T23:00Z",
+          "opponent": "Baylor Bears",
+          "opponentId": "239",
+          "isHome": true,
+          "nebScore": 70,
+          "oppScore": 72,
+          "isWin": false
+        },
+        {
+          "date": "2008-01-26T18:45Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": false,
+          "nebScore": 49,
+          "oppScore": 84,
+          "isWin": false
+        },
+        {
+          "date": "2008-01-31T01:00Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": false,
+          "nebScore": 66,
+          "oppScore": 62,
+          "isWin": true
+        },
+        {
+          "date": "2008-02-02T21:00Z",
+          "opponent": "Iowa State Cyclones",
+          "opponentId": "66",
+          "isHome": true,
+          "nebScore": 64,
+          "oppScore": 56,
+          "isWin": true
+        },
+        {
+          "date": "2008-02-07T01:00Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": false,
+          "nebScore": 59,
+          "oppScore": 74,
+          "isWin": false
+        },
+        {
+          "date": "2008-02-09T21:00Z",
+          "opponent": "Texas Tech Red Raiders",
+          "opponentId": "2641",
+          "isHome": true,
+          "nebScore": 73,
+          "oppScore": 62,
+          "isWin": true
+        },
+        {
+          "date": "2008-02-14T01:00Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": true,
+          "nebScore": 78,
+          "oppScore": 86,
+          "isWin": false
+        },
+        {
+          "date": "2008-02-16T21:00Z",
+          "opponent": "Iowa State Cyclones",
+          "opponentId": "66",
+          "isHome": false,
+          "nebScore": 52,
+          "oppScore": 60,
+          "isWin": false
+        },
+        {
+          "date": "2008-02-21T02:00Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": true,
+          "nebScore": 71,
+          "oppScore": 64,
+          "isWin": true
+        },
+        {
+          "date": "2008-02-23T21:00Z",
+          "opponent": "Texas A&M Aggies",
+          "opponentId": "245",
+          "isHome": false,
+          "nebScore": 65,
+          "oppScore": 59,
+          "isWin": true
+        },
+        {
+          "date": "2008-02-28T01:00Z",
+          "opponent": "Oklahoma Sooners",
+          "opponentId": "201",
+          "isHome": true,
+          "nebScore": 63,
+          "oppScore": 45,
+          "isWin": true
+        },
+        {
+          "date": "2008-03-01T18:45Z",
+          "opponent": "Oklahoma State Cowboys",
+          "opponentId": "197",
+          "isHome": false,
+          "nebScore": 63,
+          "oppScore": 77,
+          "isWin": false
+        },
+        {
+          "date": "2008-03-05T00:30Z",
+          "opponent": "Texas Longhorns",
+          "opponentId": "251",
+          "isHome": false,
+          "nebScore": 66,
+          "oppScore": 70,
+          "isWin": false
+        },
+        {
+          "date": "2008-03-09T19:00Z",
+          "opponent": "Colorado Buffaloes",
+          "opponentId": "38",
+          "isHome": true,
+          "nebScore": 68,
+          "oppScore": 49,
+          "isWin": true
+        },
+        {
+          "date": "2008-03-13T23:00Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": true,
+          "nebScore": 61,
+          "oppScore": 56,
+          "isWin": true
+        },
+        {
+          "date": "2008-03-14T23:00Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": false,
+          "nebScore": 54,
+          "oppScore": 64,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2008-09",
+      "seasonYear": 2009,
+      "wins": 18,
+      "losses": 12,
+      "avgPoints": 64.3,
+      "avgOppPoints": 59.6,
+      "games": [
+        {
+          "date": "2008-11-16T20:00Z",
+          "opponent": "San José State Spartans",
+          "opponentId": "23",
+          "isHome": true,
+          "nebScore": 63,
+          "oppScore": 46,
+          "isWin": true
+        },
+        {
+          "date": "2008-11-20T01:00Z",
+          "opponent": "TCU Horned Frogs",
+          "opponentId": "2628",
+          "isHome": false,
+          "nebScore": 62,
+          "oppScore": 50,
+          "isWin": true
+        },
+        {
+          "date": "2008-11-22T19:00Z",
+          "opponent": "Arkansas-Pine Bluff Golden Lions",
+          "opponentId": "2029",
+          "isHome": true,
+          "nebScore": 67,
+          "oppScore": 53,
+          "isWin": true
+        },
+        {
+          "date": "2008-11-26T01:00Z",
+          "opponent": "Saint Louis Billikens",
+          "opponentId": "139",
+          "isHome": true,
+          "nebScore": 71,
+          "oppScore": 57,
+          "isWin": true
+        },
+        {
+          "date": "2008-11-30T01:00Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": true,
+          "nebScore": 54,
+          "oppScore": 52,
+          "isWin": true
+        },
+        {
+          "date": "2008-12-04T01:00Z",
+          "opponent": "Alabama State Hornets",
+          "opponentId": "2011",
+          "isHome": true,
+          "nebScore": 80,
+          "oppScore": 51,
+          "isWin": true
+        },
+        {
+          "date": "2008-12-07T19:00Z",
+          "opponent": "Arizona State Sun Devils",
+          "opponentId": "9",
+          "isHome": false,
+          "nebScore": 44,
+          "oppScore": 64,
+          "isWin": false
+        },
+        {
+          "date": "2008-12-14T01:00Z",
+          "opponent": "Oregon State Beavers",
+          "opponentId": "204",
+          "isHome": false,
+          "nebScore": 63,
+          "oppScore": 64,
+          "isWin": false
+        },
+        {
+          "date": "2008-12-20T23:00Z",
+          "opponent": "Purdue Fort Wayne Mastodons",
+          "opponentId": "2870",
+          "isHome": true,
+          "nebScore": 75,
+          "oppScore": 48,
+          "isWin": true
+        },
+        {
+          "date": "2008-12-24T01:00Z",
+          "opponent": "UMBC Retrievers",
+          "opponentId": "2378",
+          "isHome": true,
+          "nebScore": 64,
+          "oppScore": 66,
+          "isWin": false
+        },
+        {
+          "date": "2008-12-31T01:00Z",
+          "opponent": "South Carolina State Bulldogs",
+          "opponentId": "2569",
+          "isHome": true,
+          "nebScore": 77,
+          "oppScore": 63,
+          "isWin": true
+        },
+        {
+          "date": "2009-01-03T20:00Z",
+          "opponent": "Maryland Eastern Shore Hawks",
+          "opponentId": "2379",
+          "isHome": true,
+          "nebScore": 88,
+          "oppScore": 56,
+          "isWin": true
+        },
+        {
+          "date": "2009-01-06T01:00Z",
+          "opponent": "Florida A&M Rattlers",
+          "opponentId": "50",
+          "isHome": true,
+          "nebScore": 81,
+          "oppScore": 56,
+          "isWin": true
+        },
+        {
+          "date": "2009-01-10T19:00Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": true,
+          "nebScore": 56,
+          "oppScore": 51,
+          "isWin": true
+        },
+        {
+          "date": "2009-01-15T01:00Z",
+          "opponent": "Iowa State Cyclones",
+          "opponentId": "66",
+          "isHome": false,
+          "nebScore": 53,
+          "oppScore": 65,
+          "isWin": false
+        },
+        {
+          "date": "2009-01-17T23:00Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": true,
+          "nebScore": 73,
+          "oppScore": 51,
+          "isWin": true
+        },
+        {
+          "date": "2009-01-22T02:00Z",
+          "opponent": "Oklahoma Sooners",
+          "opponentId": "201",
+          "isHome": false,
+          "nebScore": 61,
+          "oppScore": 72,
+          "isWin": false
+        },
+        {
+          "date": "2009-01-24T21:00Z",
+          "opponent": "Oklahoma State Cowboys",
+          "opponentId": "197",
+          "isHome": true,
+          "nebScore": 74,
+          "oppScore": 76,
+          "isWin": false
+        },
+        {
+          "date": "2009-01-29T00:30Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": true,
+          "nebScore": 62,
+          "oppScore": 68,
+          "isWin": false
+        },
+        {
+          "date": "2009-02-01T01:00Z",
+          "opponent": "Texas Tech Red Raiders",
+          "opponentId": "2641",
+          "isHome": false,
+          "nebScore": 82,
+          "oppScore": 69,
+          "isWin": true
+        },
+        {
+          "date": "2009-02-05T03:30Z",
+          "opponent": "Colorado Buffaloes",
+          "opponentId": "38",
+          "isHome": false,
+          "nebScore": 55,
+          "oppScore": 53,
+          "isWin": true
+        },
+        {
+          "date": "2009-02-07T19:00Z",
+          "opponent": "Texas Longhorns",
+          "opponentId": "251",
+          "isHome": true,
+          "nebScore": 58,
+          "oppScore": 55,
+          "isWin": true
+        },
+        {
+          "date": "2009-02-14T18:30Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": false,
+          "nebScore": 47,
+          "oppScore": 70,
+          "isWin": false
+        },
+        {
+          "date": "2009-02-19T02:00Z",
+          "opponent": "Colorado Buffaloes",
+          "opponentId": "38",
+          "isHome": true,
+          "nebScore": 46,
+          "oppScore": 41,
+          "isWin": true
+        },
+        {
+          "date": "2009-02-21T21:00Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": false,
+          "nebScore": 53,
+          "oppScore": 70,
+          "isWin": false
+        },
+        {
+          "date": "2009-02-25T02:30Z",
+          "opponent": "Texas A&M Aggies",
+          "opponentId": "245",
+          "isHome": true,
+          "nebScore": 55,
+          "oppScore": 57,
+          "isWin": false
+        },
+        {
+          "date": "2009-03-01T01:00Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": false,
+          "nebScore": 72,
+          "oppScore": 77,
+          "isWin": false
+        },
+        {
+          "date": "2009-03-05T00:30Z",
+          "opponent": "Iowa State Cyclones",
+          "opponentId": "66",
+          "isHome": true,
+          "nebScore": 77,
+          "oppScore": 61,
+          "isWin": true
+        },
+        {
+          "date": "2009-03-07T21:00Z",
+          "opponent": "Baylor Bears",
+          "opponentId": "239",
+          "isHome": false,
+          "nebScore": 66,
+          "oppScore": 62,
+          "isWin": true
+        },
+        {
+          "date": "2009-03-11T16:30Z",
+          "opponent": "Baylor Bears",
+          "opponentId": "239",
+          "isHome": true,
+          "nebScore": 49,
+          "oppScore": 65,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2009-10",
+      "seasonYear": 2010,
+      "wins": 15,
+      "losses": 18,
+      "avgPoints": 66.5,
+      "avgOppPoints": 65.7,
+      "games": [
+        {
+          "date": "2009-11-15T01:00Z",
+          "opponent": "South Carolina Upstate Spartans",
+          "opponentId": "2908",
+          "isHome": true,
+          "nebScore": 76,
+          "oppScore": 49,
+          "isWin": true
+        },
+        {
+          "date": "2009-11-19T01:00Z",
+          "opponent": "Saint Louis Billikens",
+          "opponentId": "139",
+          "isHome": false,
+          "nebScore": 55,
+          "oppScore": 69,
+          "isWin": false
+        },
+        {
+          "date": "2009-11-21T19:00Z",
+          "opponent": "TCU Horned Frogs",
+          "opponentId": "2628",
+          "isHome": true,
+          "nebScore": 90,
+          "oppScore": 77,
+          "isWin": true
+        },
+        {
+          "date": "2009-11-25T01:00Z",
+          "opponent": "Kansas City Roos",
+          "opponentId": "140",
+          "isHome": true,
+          "nebScore": 70,
+          "oppScore": 48,
+          "isWin": true
+        },
+        {
+          "date": "2009-11-29T21:30Z",
+          "opponent": "USC Trojans",
+          "opponentId": "30",
+          "isHome": false,
+          "nebScore": 51,
+          "oppScore": 48,
+          "isWin": true
+        },
+        {
+          "date": "2009-12-03T01:00Z",
+          "opponent": "UT Rio Grande Valley Vaqueros",
+          "opponentId": "292",
+          "isHome": true,
+          "nebScore": 81,
+          "oppScore": 53,
+          "isWin": true
+        },
+        {
+          "date": "2009-12-06T22:00Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": false,
+          "nebScore": 61,
+          "oppScore": 67,
+          "isWin": false
+        },
+        {
+          "date": "2009-12-11T01:00Z",
+          "opponent": "Chicago State Cougars",
+          "opponentId": "2130",
+          "isHome": true,
+          "nebScore": 74,
+          "oppScore": 39,
+          "isWin": true
+        },
+        {
+          "date": "2009-12-13T01:00Z",
+          "opponent": "Oregon State Beavers",
+          "opponentId": "204",
+          "isHome": true,
+          "nebScore": 50,
+          "oppScore": 44,
+          "isWin": true
+        },
+        {
+          "date": "2009-12-20T01:00Z",
+          "opponent": "Jackson State Tigers",
+          "opponentId": "2296",
+          "isHome": true,
+          "nebScore": 57,
+          "oppScore": 41,
+          "isWin": true
+        },
+        {
+          "date": "2009-12-22T22:30Z",
+          "opponent": "Tulsa Golden Hurricane",
+          "opponentId": "202",
+          "isHome": true,
+          "nebScore": 74,
+          "oppScore": 70,
+          "isWin": true
+        },
+        {
+          "date": "2009-12-24T03:30Z",
+          "opponent": "BYU Cougars",
+          "opponentId": "252",
+          "isHome": false,
+          "nebScore": 66,
+          "oppScore": 88,
+          "isWin": false
+        },
+        {
+          "date": "2009-12-30T01:00Z",
+          "opponent": "Southern Utah Thunderbirds",
+          "opponentId": "253",
+          "isHome": true,
+          "nebScore": 94,
+          "oppScore": 61,
+          "isWin": true
+        },
+        {
+          "date": "2010-01-02T21:00Z",
+          "opponent": "Maryland Eastern Shore Hawks",
+          "opponentId": "2379",
+          "isHome": true,
+          "nebScore": 74,
+          "oppScore": 60,
+          "isWin": true
+        },
+        {
+          "date": "2010-01-06T01:00Z",
+          "opponent": "SE Louisiana Lions",
+          "opponentId": "2545",
+          "isHome": true,
+          "nebScore": 77,
+          "oppScore": 59,
+          "isWin": true
+        },
+        {
+          "date": "2010-01-09T21:00Z",
+          "opponent": "Texas A&M Aggies",
+          "opponentId": "245",
+          "isHome": false,
+          "nebScore": 53,
+          "oppScore": 64,
+          "isWin": false
+        },
+        {
+          "date": "2010-01-14T02:00Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": true,
+          "nebScore": 72,
+          "oppScore": 84,
+          "isWin": false
+        },
+        {
+          "date": "2010-01-17T01:00Z",
+          "opponent": "Iowa State Cyclones",
+          "opponentId": "66",
+          "isHome": true,
+          "nebScore": 53,
+          "oppScore": 56,
+          "isWin": false
+        },
+        {
+          "date": "2010-01-23T23:00Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": false,
+          "nebScore": 53,
+          "oppScore": 70,
+          "isWin": false
+        },
+        {
+          "date": "2010-01-28T03:00Z",
+          "opponent": "Colorado Buffaloes",
+          "opponentId": "38",
+          "isHome": false,
+          "nebScore": 60,
+          "oppScore": 72,
+          "isWin": false
+        },
+        {
+          "date": "2010-01-31T01:00Z",
+          "opponent": "Oklahoma Sooners",
+          "opponentId": "201",
+          "isHome": true,
+          "nebScore": 63,
+          "oppScore": 46,
+          "isWin": true
+        },
+        {
+          "date": "2010-02-03T01:00Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": true,
+          "nebScore": 57,
+          "oppScore": 76,
+          "isWin": false
+        },
+        {
+          "date": "2010-02-06T23:00Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": false,
+          "nebScore": 64,
+          "oppScore": 75,
+          "isWin": false
+        },
+        {
+          "date": "2010-02-11T02:00Z",
+          "opponent": "Baylor Bears",
+          "opponentId": "239",
+          "isHome": true,
+          "nebScore": 53,
+          "oppScore": 55,
+          "isWin": false
+        },
+        {
+          "date": "2010-02-13T21:00Z",
+          "opponent": "Texas Longhorns",
+          "opponentId": "251",
+          "isHome": false,
+          "nebScore": 51,
+          "oppScore": 91,
+          "isWin": false
+        },
+        {
+          "date": "2010-02-18T00:00Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": false,
+          "nebScore": 87,
+          "oppScore": 91,
+          "isWin": false
+        },
+        {
+          "date": "2010-02-20T23:00Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": true,
+          "nebScore": 59,
+          "oppScore": 74,
+          "isWin": false
+        },
+        {
+          "date": "2010-02-25T00:30Z",
+          "opponent": "Iowa State Cyclones",
+          "opponentId": "66",
+          "isHome": false,
+          "nebScore": 74,
+          "oppScore": 78,
+          "isWin": false
+        },
+        {
+          "date": "2010-02-27T21:00Z",
+          "opponent": "Texas Tech Red Raiders",
+          "opponentId": "2641",
+          "isHome": true,
+          "nebScore": 83,
+          "oppScore": 79,
+          "isWin": true
+        },
+        {
+          "date": "2010-03-03T01:00Z",
+          "opponent": "Colorado Buffaloes",
+          "opponentId": "38",
+          "isHome": true,
+          "nebScore": 68,
+          "oppScore": 81,
+          "isWin": false
+        },
+        {
+          "date": "2010-03-06T18:30Z",
+          "opponent": "Oklahoma State Cowboys",
+          "opponentId": "197",
+          "isHome": false,
+          "nebScore": 55,
+          "oppScore": 74,
+          "isWin": false
+        },
+        {
+          "date": "2010-03-10T20:00Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": false,
+          "nebScore": 75,
+          "oppScore": 60,
+          "isWin": true
+        },
+        {
+          "date": "2010-03-11T20:00Z",
+          "opponent": "Texas A&M Aggies",
+          "opponentId": "245",
+          "isHome": false,
+          "nebScore": 64,
+          "oppScore": 70,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2010-11",
+      "seasonYear": 2011,
+      "wins": 19,
+      "losses": 12,
+      "avgPoints": 66.9,
+      "avgOppPoints": 60,
+      "games": [
+        {
+          "date": "2010-11-13T01:00Z",
+          "opponent": "South Dakota Coyotes",
+          "opponentId": "233",
+          "isHome": true,
+          "nebScore": 76,
+          "oppScore": 68,
+          "isWin": true
+        },
+        {
+          "date": "2010-11-16T01:00Z",
+          "opponent": "Arkansas-Pine Bluff Golden Lions",
+          "opponentId": "2029",
+          "isHome": true,
+          "nebScore": 83,
+          "oppScore": 40,
+          "isWin": true
+        },
+        {
+          "date": "2010-11-18T18:30Z",
+          "opponent": "Vanderbilt Commodores",
+          "opponentId": "238",
+          "isHome": false,
+          "nebScore": 49,
+          "oppScore": 59,
+          "isWin": false
+        },
+        {
+          "date": "2010-11-19T20:00Z",
+          "opponent": "Davidson Wildcats",
+          "opponentId": "2166",
+          "isHome": true,
+          "nebScore": 67,
+          "oppScore": 70,
+          "isWin": false
+        },
+        {
+          "date": "2010-11-21T15:30Z",
+          "opponent": "Hofstra Pride",
+          "opponentId": "2275",
+          "isHome": false,
+          "nebScore": 62,
+          "oppScore": 47,
+          "isWin": true
+        },
+        {
+          "date": "2010-11-27T23:00Z",
+          "opponent": "USC Trojans",
+          "opponentId": "30",
+          "isHome": true,
+          "nebScore": 60,
+          "oppScore": 58,
+          "isWin": true
+        },
+        {
+          "date": "2010-12-02T01:00Z",
+          "opponent": "Jackson State Tigers",
+          "opponentId": "2296",
+          "isHome": true,
+          "nebScore": 76,
+          "oppScore": 57,
+          "isWin": true
+        },
+        {
+          "date": "2010-12-05T19:00Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": true,
+          "nebScore": 59,
+          "oppScore": 54,
+          "isWin": true
+        },
+        {
+          "date": "2010-12-09T01:00Z",
+          "opponent": "Alcorn State Braves",
+          "opponentId": "2016",
+          "isHome": true,
+          "nebScore": 78,
+          "oppScore": 57,
+          "isWin": true
+        },
+        {
+          "date": "2010-12-11T19:00Z",
+          "opponent": "TCU Horned Frogs",
+          "opponentId": "2628",
+          "isHome": true,
+          "nebScore": 70,
+          "oppScore": 56,
+          "isWin": true
+        },
+        {
+          "date": "2010-12-19T00:00Z",
+          "opponent": "Eastern Washington Eagles",
+          "opponentId": "331",
+          "isHome": true,
+          "nebScore": 72,
+          "oppScore": 42,
+          "isWin": true
+        },
+        {
+          "date": "2010-12-22T01:00Z",
+          "opponent": "Grambling Tigers",
+          "opponentId": "2755",
+          "isHome": true,
+          "nebScore": 79,
+          "oppScore": 39,
+          "isWin": true
+        },
+        {
+          "date": "2011-01-02T19:00Z",
+          "opponent": "North Dakota Fighting Hawks",
+          "opponentId": "155",
+          "isHome": true,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2011-01-04T01:00Z",
+          "opponent": "North Dakota Fighting Hawks",
+          "opponentId": "155",
+          "isHome": true,
+          "nebScore": 77,
+          "oppScore": 46,
+          "isWin": true
+        },
+        {
+          "date": "2011-01-06T01:00Z",
+          "opponent": "Savannah State Tigers",
+          "opponentId": "2542",
+          "isHome": true,
+          "nebScore": 68,
+          "oppScore": 48,
+          "isWin": true
+        },
+        {
+          "date": "2011-01-09T01:00Z",
+          "opponent": "Iowa State Cyclones",
+          "opponentId": "66",
+          "isHome": true,
+          "nebScore": 63,
+          "oppScore": 62,
+          "isWin": true
+        },
+        {
+          "date": "2011-01-13T00:00Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": false,
+          "nebScore": 69,
+          "oppScore": 77,
+          "isWin": false
+        },
+        {
+          "date": "2011-01-15T19:00Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": false,
+          "nebScore": 60,
+          "oppScore": 63,
+          "isWin": false
+        },
+        {
+          "date": "2011-01-19T00:00Z",
+          "opponent": "Colorado Buffaloes",
+          "opponentId": "38",
+          "isHome": true,
+          "nebScore": 79,
+          "oppScore": 67,
+          "isWin": true
+        },
+        {
+          "date": "2011-01-23T00:30Z",
+          "opponent": "Texas Tech Red Raiders",
+          "opponentId": "2641",
+          "isHome": false,
+          "nebScore": 71,
+          "oppScore": 72,
+          "isWin": false
+        },
+        {
+          "date": "2011-01-29T19:00Z",
+          "opponent": "Texas A&M Aggies",
+          "opponentId": "245",
+          "isHome": true,
+          "nebScore": 57,
+          "oppScore": 48,
+          "isWin": true
+        },
+        {
+          "date": "2011-02-03T01:00Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": false,
+          "nebScore": 53,
+          "oppScore": 69,
+          "isWin": false
+        },
+        {
+          "date": "2011-02-05T21:00Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": true,
+          "nebScore": 66,
+          "oppScore": 86,
+          "isWin": false
+        },
+        {
+          "date": "2011-02-10T01:00Z",
+          "opponent": "Baylor Bears",
+          "opponentId": "239",
+          "isHome": false,
+          "nebScore": 70,
+          "oppScore": 74,
+          "isWin": false
+        },
+        {
+          "date": "2011-02-13T00:00Z",
+          "opponent": "Oklahoma State Cowboys",
+          "opponentId": "197",
+          "isHome": true,
+          "nebScore": 65,
+          "oppScore": 54,
+          "isWin": true
+        },
+        {
+          "date": "2011-02-17T02:00Z",
+          "opponent": "Oklahoma Sooners",
+          "opponentId": "201",
+          "isHome": false,
+          "nebScore": 59,
+          "oppScore": 58,
+          "isWin": true
+        },
+        {
+          "date": "2011-02-19T18:30Z",
+          "opponent": "Texas Longhorns",
+          "opponentId": "251",
+          "isHome": true,
+          "nebScore": 70,
+          "oppScore": 67,
+          "isWin": true
+        },
+        {
+          "date": "2011-02-24T02:00Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": true,
+          "nebScore": 57,
+          "oppScore": 61,
+          "isWin": false
+        },
+        {
+          "date": "2011-02-26T18:45Z",
+          "opponent": "Iowa State Cyclones",
+          "opponentId": "66",
+          "isHome": false,
+          "nebScore": 82,
+          "oppScore": 83,
+          "isWin": false
+        },
+        {
+          "date": "2011-03-02T01:00Z",
+          "opponent": "Missouri Tigers",
+          "opponentId": "142",
+          "isHome": true,
+          "nebScore": 69,
+          "oppScore": 58,
+          "isWin": true
+        },
+        {
+          "date": "2011-03-06T02:00Z",
+          "opponent": "Colorado Buffaloes",
+          "opponentId": "38",
+          "isHome": false,
+          "nebScore": 57,
+          "oppScore": 67,
+          "isWin": false
+        },
+        {
+          "date": "2011-03-09T17:30Z",
+          "opponent": "Oklahoma State Cowboys",
+          "opponentId": "197",
+          "isHome": true,
+          "nebScore": 52,
+          "oppScore": 53,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2011-12",
+      "seasonYear": 2012,
+      "wins": 12,
+      "losses": 18,
+      "avgPoints": 60.9,
+      "avgOppPoints": 65.6,
+      "games": [
+        {
+          "date": "2011-11-12T01:00Z",
+          "opponent": "South Dakota Coyotes",
+          "opponentId": "233",
+          "isHome": true,
+          "nebScore": 65,
+          "oppScore": 48,
+          "isWin": true
+        },
+        {
+          "date": "2011-11-15T03:30Z",
+          "opponent": "USC Trojans",
+          "opponentId": "30",
+          "isHome": false,
+          "nebScore": 64,
+          "oppScore": 61,
+          "isWin": true
+        },
+        {
+          "date": "2011-11-20T19:00Z",
+          "opponent": "Rhode Island Rams",
+          "opponentId": "227",
+          "isHome": true,
+          "nebScore": 83,
+          "oppScore": 63,
+          "isWin": true
+        },
+        {
+          "date": "2011-11-24T02:00Z",
+          "opponent": "Oregon Ducks",
+          "opponentId": "2483",
+          "isHome": true,
+          "nebScore": 76,
+          "oppScore": 83,
+          "isWin": false
+        },
+        {
+          "date": "2011-11-26T19:00Z",
+          "opponent": "South Dakota State Jackrabbits",
+          "opponentId": "2571",
+          "isHome": true,
+          "nebScore": 76,
+          "oppScore": 64,
+          "isWin": true
+        },
+        {
+          "date": "2011-12-01T02:15Z",
+          "opponent": "Wake Forest Demon Deacons",
+          "opponentId": "154",
+          "isHome": true,
+          "nebScore": 53,
+          "oppScore": 55,
+          "isWin": false
+        },
+        {
+          "date": "2011-12-04T22:05Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": false,
+          "nebScore": 66,
+          "oppScore": 76,
+          "isWin": false
+        },
+        {
+          "date": "2011-12-08T01:00Z",
+          "opponent": "Florida Gulf Coast Eagles",
+          "opponentId": "526",
+          "isHome": true,
+          "nebScore": 51,
+          "oppScore": 50,
+          "isWin": true
+        },
+        {
+          "date": "2011-12-11T01:00Z",
+          "opponent": "TCU Horned Frogs",
+          "opponentId": "2628",
+          "isHome": false,
+          "nebScore": 69,
+          "oppScore": 57,
+          "isWin": true
+        },
+        {
+          "date": "2011-12-18T01:00Z",
+          "opponent": "Alcorn State Braves",
+          "opponentId": "2016",
+          "isHome": true,
+          "nebScore": 60,
+          "oppScore": 46,
+          "isWin": true
+        },
+        {
+          "date": "2011-12-21T01:00Z",
+          "opponent": "Central Michigan Chippewas",
+          "opponentId": "2117",
+          "isHome": true,
+          "nebScore": 72,
+          "oppScore": 69,
+          "isWin": true
+        },
+        {
+          "date": "2011-12-28T02:00Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": true,
+          "nebScore": 40,
+          "oppScore": 64,
+          "isWin": false
+        },
+        {
+          "date": "2011-12-31T20:00Z",
+          "opponent": "Michigan State Spartans",
+          "opponentId": "127",
+          "isHome": true,
+          "nebScore": 55,
+          "oppScore": 68,
+          "isWin": false
+        },
+        {
+          "date": "2012-01-03T23:30Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": false,
+          "nebScore": 40,
+          "oppScore": 71,
+          "isWin": false
+        },
+        {
+          "date": "2012-01-07T18:00Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": false,
+          "nebScore": 54,
+          "oppScore": 59,
+          "isWin": false
+        },
+        {
+          "date": "2012-01-12T01:30Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": true,
+          "nebScore": 70,
+          "oppScore": 58,
+          "isWin": true
+        },
+        {
+          "date": "2012-01-15T23:00Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": false,
+          "nebScore": 45,
+          "oppScore": 50,
+          "isWin": false
+        },
+        {
+          "date": "2012-01-19T00:00Z",
+          "opponent": "Indiana Hoosiers",
+          "opponentId": "84",
+          "isHome": true,
+          "nebScore": 70,
+          "oppScore": 69,
+          "isWin": true
+        },
+        {
+          "date": "2012-01-22T01:00Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": true,
+          "nebScore": 45,
+          "oppScore": 79,
+          "isWin": false
+        },
+        {
+          "date": "2012-01-27T00:00Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": false,
+          "nebScore": 79,
+          "oppScore": 73,
+          "isWin": true
+        },
+        {
+          "date": "2012-02-03T00:00Z",
+          "opponent": "Northwestern Wildcats",
+          "opponentId": "77",
+          "isHome": false,
+          "nebScore": 74,
+          "oppScore": 84,
+          "isWin": false
+        },
+        {
+          "date": "2012-02-05T18:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": true,
+          "nebScore": 61,
+          "oppScore": 69,
+          "isWin": false
+        },
+        {
+          "date": "2012-02-09T01:30Z",
+          "opponent": "Michigan Wolverines",
+          "opponentId": "130",
+          "isHome": true,
+          "nebScore": 46,
+          "oppScore": 62,
+          "isWin": false
+        },
+        {
+          "date": "2012-02-11T18:00Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": false,
+          "nebScore": 51,
+          "oppScore": 67,
+          "isWin": false
+        },
+        {
+          "date": "2012-02-18T22:00Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": true,
+          "nebScore": 80,
+          "oppScore": 57,
+          "isWin": true
+        },
+        {
+          "date": "2012-02-22T23:30Z",
+          "opponent": "Purdue Boilermakers",
+          "opponentId": "2509",
+          "isHome": false,
+          "nebScore": 65,
+          "oppScore": 83,
+          "isWin": false
+        },
+        {
+          "date": "2012-02-26T01:00Z",
+          "opponent": "Michigan State Spartans",
+          "opponentId": "127",
+          "isHome": false,
+          "nebScore": 34,
+          "oppScore": 62,
+          "isWin": false
+        },
+        {
+          "date": "2012-03-01T02:00Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": true,
+          "nebScore": 53,
+          "oppScore": 62,
+          "isWin": false
+        },
+        {
+          "date": "2012-03-03T17:30Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": false,
+          "nebScore": 69,
+          "oppScore": 81,
+          "isWin": false
+        },
+        {
+          "date": "2012-03-09T01:04Z",
+          "opponent": "Purdue Boilermakers",
+          "opponentId": "2509",
+          "isHome": false,
+          "nebScore": 61,
+          "oppScore": 79,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2012-13",
+      "seasonYear": 2013,
+      "wins": 15,
+      "losses": 18,
+      "avgPoints": 58.2,
+      "avgOppPoints": 63.5,
+      "games": [
+        {
+          "date": "2012-11-12T00:00Z",
+          "opponent": "Southern Jaguars",
+          "opponentId": "2582",
+          "isHome": true,
+          "nebScore": 66,
+          "oppScore": 55,
+          "isWin": true
+        },
+        {
+          "date": "2012-11-16T02:00Z",
+          "opponent": "Valparaiso Beacons",
+          "opponentId": "2674",
+          "isHome": true,
+          "nebScore": 50,
+          "oppScore": 48,
+          "isWin": true
+        },
+        {
+          "date": "2012-11-18T20:00Z",
+          "opponent": "Omaha Mavericks",
+          "opponentId": "2437",
+          "isHome": true,
+          "nebScore": 75,
+          "oppScore": 62,
+          "isWin": true
+        },
+        {
+          "date": "2012-11-22T01:00Z",
+          "opponent": "Tulane Green Wave",
+          "opponentId": "2655",
+          "isHome": true,
+          "nebScore": 60,
+          "oppScore": 58,
+          "isWin": true
+        },
+        {
+          "date": "2012-11-25T02:00Z",
+          "opponent": "Kent State Golden Flashes",
+          "opponentId": "2309",
+          "isHome": true,
+          "nebScore": 60,
+          "oppScore": 74,
+          "isWin": false
+        },
+        {
+          "date": "2012-11-28T02:15Z",
+          "opponent": "Wake Forest Demon Deacons",
+          "opponentId": "154",
+          "isHome": false,
+          "nebScore": 79,
+          "oppScore": 63,
+          "isWin": true
+        },
+        {
+          "date": "2012-12-04T01:00Z",
+          "opponent": "USC Trojans",
+          "opponentId": "30",
+          "isHome": true,
+          "nebScore": 63,
+          "oppScore": 51,
+          "isWin": true
+        },
+        {
+          "date": "2012-12-07T01:00Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": true,
+          "nebScore": 42,
+          "oppScore": 64,
+          "isWin": false
+        },
+        {
+          "date": "2012-12-15T21:30Z",
+          "opponent": "Oregon Ducks",
+          "opponentId": "2483",
+          "isHome": false,
+          "nebScore": 38,
+          "oppScore": 60,
+          "isWin": false
+        },
+        {
+          "date": "2012-12-19T02:00Z",
+          "opponent": "Jacksonville State Gamecocks",
+          "opponentId": "55",
+          "isHome": true,
+          "nebScore": 59,
+          "oppScore": 55,
+          "isWin": true
+        },
+        {
+          "date": "2012-12-23T00:00Z",
+          "opponent": "Central Michigan Chippewas",
+          "opponentId": "2117",
+          "isHome": true,
+          "nebScore": 89,
+          "oppScore": 75,
+          "isWin": true
+        },
+        {
+          "date": "2012-12-24T02:00Z",
+          "opponent": "UTEP Miners",
+          "opponentId": "2638",
+          "isHome": false,
+          "nebScore": 52,
+          "oppScore": 68,
+          "isWin": false
+        },
+        {
+          "date": "2012-12-29T20:00Z",
+          "opponent": "Nicholls Colonels",
+          "opponentId": "2447",
+          "isHome": true,
+          "nebScore": 68,
+          "oppScore": 59,
+          "isWin": true
+        },
+        {
+          "date": "2013-01-02T23:30Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": false,
+          "nebScore": 44,
+          "oppScore": 70,
+          "isWin": false
+        },
+        {
+          "date": "2013-01-06T21:30Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": true,
+          "nebScore": 41,
+          "oppScore": 47,
+          "isWin": false
+        },
+        {
+          "date": "2013-01-10T00:00Z",
+          "opponent": "Michigan Wolverines",
+          "opponentId": "130",
+          "isHome": false,
+          "nebScore": 47,
+          "oppScore": 62,
+          "isWin": false
+        },
+        {
+          "date": "2013-01-13T23:00Z",
+          "opponent": "Michigan State Spartans",
+          "opponentId": "127",
+          "isHome": false,
+          "nebScore": 56,
+          "oppScore": 66,
+          "isWin": false
+        },
+        {
+          "date": "2013-01-17T02:00Z",
+          "opponent": "Purdue Boilermakers",
+          "opponentId": "2509",
+          "isHome": true,
+          "nebScore": 56,
+          "oppScore": 65,
+          "isWin": false
+        },
+        {
+          "date": "2013-01-19T18:00Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": false,
+          "nebScore": 68,
+          "oppScore": 64,
+          "isWin": true
+        },
+        {
+          "date": "2013-01-23T01:30Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": true,
+          "nebScore": 51,
+          "oppScore": 71,
+          "isWin": false
+        },
+        {
+          "date": "2013-01-26T20:00Z",
+          "opponent": "Northwestern Wildcats",
+          "opponentId": "77",
+          "isHome": true,
+          "nebScore": 64,
+          "oppScore": 49,
+          "isWin": true
+        },
+        {
+          "date": "2013-01-30T02:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": false,
+          "nebScore": 65,
+          "oppScore": 84,
+          "isWin": false
+        },
+        {
+          "date": "2013-02-03T00:00Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": true,
+          "nebScore": 56,
+          "oppScore": 63,
+          "isWin": false
+        },
+        {
+          "date": "2013-02-10T02:00Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": true,
+          "nebScore": 67,
+          "oppScore": 53,
+          "isWin": true
+        },
+        {
+          "date": "2013-02-14T00:00Z",
+          "opponent": "Indiana Hoosiers",
+          "opponentId": "84",
+          "isHome": false,
+          "nebScore": 47,
+          "oppScore": 76,
+          "isWin": false
+        },
+        {
+          "date": "2013-02-17T01:00Z",
+          "opponent": "Michigan State Spartans",
+          "opponentId": "127",
+          "isHome": true,
+          "nebScore": 64,
+          "oppScore": 73,
+          "isWin": false
+        },
+        {
+          "date": "2013-02-23T19:00Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": true,
+          "nebScore": 64,
+          "oppScore": 60,
+          "isWin": true
+        },
+        {
+          "date": "2013-02-27T02:00Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": false,
+          "nebScore": 46,
+          "oppScore": 77,
+          "isWin": false
+        },
+        {
+          "date": "2013-03-02T22:15Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": false,
+          "nebScore": 65,
+          "oppScore": 72,
+          "isWin": false
+        },
+        {
+          "date": "2013-03-07T02:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": true,
+          "nebScore": 53,
+          "oppScore": 51,
+          "isWin": true
+        },
+        {
+          "date": "2013-03-09T19:21Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": false,
+          "nebScore": 60,
+          "oppScore": 74,
+          "isWin": false
+        },
+        {
+          "date": "2013-03-14T22:30Z",
+          "opponent": "Purdue Boilermakers",
+          "opponentId": "2509",
+          "isHome": false,
+          "nebScore": 57,
+          "oppScore": 55,
+          "isWin": true
+        },
+        {
+          "date": "2013-03-15T22:30Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": false,
+          "nebScore": 50,
+          "oppScore": 71,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2013-14",
+      "seasonYear": 2014,
+      "wins": 19,
+      "losses": 12,
+      "avgPoints": 67,
+      "avgOppPoints": 64.9,
+      "games": [
+        {
+          "date": "2013-11-09T02:00Z",
+          "opponent": "Florida Gulf Coast Eagles",
+          "opponentId": "526",
+          "isHome": true,
+          "nebScore": 79,
+          "oppScore": 55,
+          "isWin": true
+        },
+        {
+          "date": "2013-11-13T01:00Z",
+          "opponent": "Western Illinois Leathernecks",
+          "opponentId": "2710",
+          "isHome": true,
+          "nebScore": 62,
+          "oppScore": 47,
+          "isWin": true
+        },
+        {
+          "date": "2013-11-17T20:00Z",
+          "opponent": "South Carolina State Bulldogs",
+          "opponentId": "2569",
+          "isHome": true,
+          "nebScore": 83,
+          "oppScore": 57,
+          "isWin": true
+        },
+        {
+          "date": "2013-11-21T17:30Z",
+          "opponent": "Massachusetts Minutemen",
+          "opponentId": "113",
+          "isHome": false,
+          "nebScore": 90,
+          "oppScore": 96,
+          "isWin": false
+        },
+        {
+          "date": "2013-11-22T17:00Z",
+          "opponent": "UAB Blazers",
+          "opponentId": "5",
+          "isHome": false,
+          "nebScore": 74,
+          "oppScore": 87,
+          "isWin": false
+        },
+        {
+          "date": "2013-11-24T19:30Z",
+          "opponent": "Georgia Bulldogs",
+          "opponentId": "61",
+          "isHome": false,
+          "nebScore": 73,
+          "oppScore": 65,
+          "isWin": true
+        },
+        {
+          "date": "2013-11-30T18:00Z",
+          "opponent": "Northern Illinois Huskies",
+          "opponentId": "2459",
+          "isHome": true,
+          "nebScore": 63,
+          "oppScore": 58,
+          "isWin": true
+        },
+        {
+          "date": "2013-12-05T02:30Z",
+          "opponent": "Miami Hurricanes",
+          "opponentId": "2390",
+          "isHome": true,
+          "nebScore": 60,
+          "oppScore": 49,
+          "isWin": true
+        },
+        {
+          "date": "2013-12-08T23:07Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": false,
+          "nebScore": 67,
+          "oppScore": 82,
+          "isWin": false
+        },
+        {
+          "date": "2013-12-14T21:00Z",
+          "opponent": "Arkansas State Red Wolves",
+          "opponentId": "2032",
+          "isHome": true,
+          "nebScore": 79,
+          "oppScore": 67,
+          "isWin": true
+        },
+        {
+          "date": "2013-12-22T01:30Z",
+          "opponent": "The Citadel Bulldogs",
+          "opponentId": "2643",
+          "isHome": true,
+          "nebScore": 77,
+          "oppScore": 62,
+          "isWin": true
+        },
+        {
+          "date": "2013-12-28T17:00Z",
+          "opponent": "Cincinnati Bearcats",
+          "opponentId": "2132",
+          "isHome": false,
+          "nebScore": 59,
+          "oppScore": 74,
+          "isWin": false
+        },
+        {
+          "date": "2014-01-01T00:00Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": false,
+          "nebScore": 57,
+          "oppScore": 67,
+          "isWin": false
+        },
+        {
+          "date": "2014-01-04T17:00Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": false,
+          "nebScore": 53,
+          "oppScore": 84,
+          "isWin": false
+        },
+        {
+          "date": "2014-01-10T02:00Z",
+          "opponent": "Michigan Wolverines",
+          "opponentId": "130",
+          "isHome": true,
+          "nebScore": 70,
+          "oppScore": 71,
+          "isWin": false
+        },
+        {
+          "date": "2014-01-12T17:00Z",
+          "opponent": "Purdue Boilermakers",
+          "opponentId": "2509",
+          "isHome": false,
+          "nebScore": 64,
+          "oppScore": 70,
+          "isWin": false
+        },
+        {
+          "date": "2014-01-21T00:00Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": true,
+          "nebScore": 68,
+          "oppScore": 62,
+          "isWin": true
+        },
+        {
+          "date": "2014-01-24T01:00Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": false,
+          "nebScore": 54,
+          "oppScore": 58,
+          "isWin": false
+        },
+        {
+          "date": "2014-01-26T23:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": true,
+          "nebScore": 82,
+          "oppScore": 78,
+          "isWin": true
+        },
+        {
+          "date": "2014-01-31T01:15Z",
+          "opponent": "Indiana Hoosiers",
+          "opponentId": "84",
+          "isHome": true,
+          "nebScore": 60,
+          "oppScore": 55,
+          "isWin": true
+        },
+        {
+          "date": "2014-02-05T23:30Z",
+          "opponent": "Michigan Wolverines",
+          "opponentId": "130",
+          "isHome": false,
+          "nebScore": 50,
+          "oppScore": 79,
+          "isWin": false
+        },
+        {
+          "date": "2014-02-08T18:00Z",
+          "opponent": "Northwestern Wildcats",
+          "opponentId": "77",
+          "isHome": false,
+          "nebScore": 53,
+          "oppScore": 49,
+          "isWin": true
+        },
+        {
+          "date": "2014-02-13T02:00Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": true,
+          "nebScore": 67,
+          "oppScore": 58,
+          "isWin": true
+        },
+        {
+          "date": "2014-02-16T20:00Z",
+          "opponent": "Michigan State Spartans",
+          "opponentId": "127",
+          "isHome": false,
+          "nebScore": 60,
+          "oppScore": 51,
+          "isWin": true
+        },
+        {
+          "date": "2014-02-21T00:00Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": true,
+          "nebScore": 80,
+          "oppScore": 67,
+          "isWin": true
+        },
+        {
+          "date": "2014-02-23T21:15Z",
+          "opponent": "Purdue Boilermakers",
+          "opponentId": "2509",
+          "isHome": true,
+          "nebScore": 76,
+          "oppScore": 57,
+          "isWin": true
+        },
+        {
+          "date": "2014-02-27T02:00Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": false,
+          "nebScore": 49,
+          "oppScore": 60,
+          "isWin": false
+        },
+        {
+          "date": "2014-03-01T22:00Z",
+          "opponent": "Northwestern Wildcats",
+          "opponentId": "77",
+          "isHome": true,
+          "nebScore": 54,
+          "oppScore": 47,
+          "isWin": true
+        },
+        {
+          "date": "2014-03-06T00:00Z",
+          "opponent": "Indiana Hoosiers",
+          "opponentId": "84",
+          "isHome": false,
+          "nebScore": 70,
+          "oppScore": 60,
+          "isWin": true
+        },
+        {
+          "date": "2014-03-09T23:30Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": true,
+          "nebScore": 77,
+          "oppScore": 68,
+          "isWin": true
+        },
+        {
+          "date": "2014-03-14T18:25Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": true,
+          "nebScore": 67,
+          "oppScore": 71,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2014-15",
+      "seasonYear": 2015,
+      "wins": 13,
+      "losses": 18,
+      "avgPoints": 61.5,
+      "avgOppPoints": 63.1,
+      "games": [
+        {
+          "date": "2014-11-16T19:00Z",
+          "opponent": "Northern Kentucky Norse",
+          "opponentId": "94",
+          "isHome": true,
+          "nebScore": 80,
+          "oppScore": 61,
+          "isWin": true
+        },
+        {
+          "date": "2014-11-19T01:00Z",
+          "opponent": "Central Arkansas Bears",
+          "opponentId": "2110",
+          "isHome": true,
+          "nebScore": 82,
+          "oppScore": 56,
+          "isWin": true
+        },
+        {
+          "date": "2014-11-23T00:00Z",
+          "opponent": "Rhode Island Rams",
+          "opponentId": "227",
+          "isHome": false,
+          "nebScore": 62,
+          "oppScore": 66,
+          "isWin": false
+        },
+        {
+          "date": "2014-11-26T01:00Z",
+          "opponent": "Omaha Mavericks",
+          "opponentId": "2437",
+          "isHome": true,
+          "nebScore": 80,
+          "oppScore": 67,
+          "isWin": true
+        },
+        {
+          "date": "2014-11-29T01:00Z",
+          "opponent": "UT Martin Skyhawks",
+          "opponentId": "2630",
+          "isHome": true,
+          "nebScore": 75,
+          "oppScore": 64,
+          "isWin": true
+        },
+        {
+          "date": "2014-12-02T00:00Z",
+          "opponent": "Florida State Seminoles",
+          "opponentId": "52",
+          "isHome": false,
+          "nebScore": 70,
+          "oppScore": 65,
+          "isWin": true
+        },
+        {
+          "date": "2014-12-08T00:00Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": true,
+          "nebScore": 55,
+          "oppScore": 65,
+          "isWin": false
+        },
+        {
+          "date": "2014-12-11T01:00Z",
+          "opponent": "Incarnate Word Cardinals",
+          "opponentId": "2916",
+          "isHome": true,
+          "nebScore": 73,
+          "oppScore": 74,
+          "isWin": false
+        },
+        {
+          "date": "2014-12-14T02:00Z",
+          "opponent": "Cincinnati Bearcats",
+          "opponentId": "2132",
+          "isHome": true,
+          "nebScore": 56,
+          "oppScore": 55,
+          "isWin": true
+        },
+        {
+          "date": "2014-12-23T06:40Z",
+          "opponent": "Hawai'i Rainbow Warriors",
+          "opponentId": "62",
+          "isHome": false,
+          "nebScore": 58,
+          "oppScore": 66,
+          "isWin": false
+        },
+        {
+          "date": "2014-12-24T04:59Z",
+          "opponent": "Loyola Marymount Lions",
+          "opponentId": "2351",
+          "isHome": true,
+          "nebScore": 50,
+          "oppScore": 42,
+          "isWin": true
+        },
+        {
+          "date": "2014-12-25T21:00Z",
+          "opponent": "Ohio Bobcats",
+          "opponentId": "195",
+          "isHome": true,
+          "nebScore": 71,
+          "oppScore": 58,
+          "isWin": true
+        },
+        {
+          "date": "2014-12-31T22:30Z",
+          "opponent": "Indiana Hoosiers",
+          "opponentId": "84",
+          "isHome": true,
+          "nebScore": 65,
+          "oppScore": 70,
+          "isWin": false
+        },
+        {
+          "date": "2015-01-06T02:00Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": false,
+          "nebScore": 59,
+          "oppScore": 70,
+          "isWin": false
+        },
+        {
+          "date": "2015-01-09T02:00Z",
+          "opponent": "Rutgers Scarlet Knights",
+          "opponentId": "164",
+          "isHome": true,
+          "nebScore": 65,
+          "oppScore": 49,
+          "isWin": true
+        },
+        {
+          "date": "2015-01-12T01:30Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": true,
+          "nebScore": 53,
+          "oppScore": 43,
+          "isWin": true
+        },
+        {
+          "date": "2015-01-16T02:00Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": false,
+          "nebScore": 55,
+          "oppScore": 70,
+          "isWin": false
+        },
+        {
+          "date": "2015-01-21T01:30Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": true,
+          "nebScore": 52,
+          "oppScore": 49,
+          "isWin": true
+        },
+        {
+          "date": "2015-01-24T21:00Z",
+          "opponent": "Michigan State Spartans",
+          "opponentId": "127",
+          "isHome": true,
+          "nebScore": 79,
+          "oppScore": 77,
+          "isWin": true
+        },
+        {
+          "date": "2015-01-28T00:00Z",
+          "opponent": "Michigan Wolverines",
+          "opponentId": "130",
+          "isHome": false,
+          "nebScore": 44,
+          "oppScore": 58,
+          "isWin": false
+        },
+        {
+          "date": "2015-01-31T23:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": false,
+          "nebScore": 42,
+          "oppScore": 60,
+          "isWin": false
+        },
+        {
+          "date": "2015-02-04T00:30Z",
+          "opponent": "Northwestern Wildcats",
+          "opponentId": "77",
+          "isHome": true,
+          "nebScore": 76,
+          "oppScore": 60,
+          "isWin": true
+        },
+        {
+          "date": "2015-02-07T21:00Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": false,
+          "nebScore": 43,
+          "oppScore": 56,
+          "isWin": false
+        },
+        {
+          "date": "2015-02-11T02:00Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": true,
+          "nebScore": 55,
+          "oppScore": 65,
+          "isWin": false
+        },
+        {
+          "date": "2015-02-15T22:15Z",
+          "opponent": "Purdue Boilermakers",
+          "opponentId": "2509",
+          "isHome": false,
+          "nebScore": 54,
+          "oppScore": 66,
+          "isWin": false
+        },
+        {
+          "date": "2015-02-20T00:00Z",
+          "opponent": "Maryland Terrapins",
+          "opponentId": "120",
+          "isHome": false,
+          "nebScore": 65,
+          "oppScore": 69,
+          "isWin": false
+        },
+        {
+          "date": "2015-02-22T20:00Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": true,
+          "nebScore": 46,
+          "oppScore": 74,
+          "isWin": false
+        },
+        {
+          "date": "2015-02-27T00:00Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": false,
+          "nebScore": 57,
+          "oppScore": 81,
+          "isWin": false
+        },
+        {
+          "date": "2015-03-05T03:00Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": false,
+          "nebScore": 57,
+          "oppScore": 69,
+          "isWin": false
+        },
+        {
+          "date": "2015-03-08T23:30Z",
+          "opponent": "Maryland Terrapins",
+          "opponentId": "120",
+          "isHome": true,
+          "nebScore": 61,
+          "oppScore": 64,
+          "isWin": false
+        },
+        {
+          "date": "2015-03-11T20:30Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": true,
+          "nebScore": 65,
+          "oppScore": 68,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2015-16",
+      "seasonYear": 2016,
+      "wins": 16,
+      "losses": 18,
+      "avgPoints": 72.2,
+      "avgOppPoints": 69,
+      "games": [
+        {
+          "date": "2015-11-15T01:00Z",
+          "opponent": "Mississippi Valley State Delta Devils",
+          "opponentId": "2400",
+          "isHome": true,
+          "nebScore": 97,
+          "oppScore": 51,
+          "isWin": true
+        },
+        {
+          "date": "2015-11-18T01:30Z",
+          "opponent": "Villanova Wildcats",
+          "opponentId": "222",
+          "isHome": false,
+          "nebScore": 63,
+          "oppScore": 87,
+          "isWin": false
+        },
+        {
+          "date": "2015-11-20T01:00Z",
+          "opponent": "Delaware State Hornets",
+          "opponentId": "2169",
+          "isHome": true,
+          "nebScore": 75,
+          "oppScore": 60,
+          "isWin": true
+        },
+        {
+          "date": "2015-11-23T00:00Z",
+          "opponent": "SE Louisiana Lions",
+          "opponentId": "2545",
+          "isHome": true,
+          "nebScore": 92,
+          "oppScore": 65,
+          "isWin": true
+        },
+        {
+          "date": "2015-11-25T01:00Z",
+          "opponent": "Arkansas-Pine Bluff Golden Lions",
+          "opponentId": "2029",
+          "isHome": true,
+          "nebScore": 67,
+          "oppScore": 44,
+          "isWin": true
+        },
+        {
+          "date": "2015-11-27T23:30Z",
+          "opponent": "Cincinnati Bearcats",
+          "opponentId": "2132",
+          "isHome": false,
+          "nebScore": 61,
+          "oppScore": 65,
+          "isWin": false
+        },
+        {
+          "date": "2015-11-28T17:00Z",
+          "opponent": "Tennessee Volunteers",
+          "opponentId": "2633",
+          "isHome": true,
+          "nebScore": 82,
+          "oppScore": 71,
+          "isWin": true
+        },
+        {
+          "date": "2015-12-02T02:00Z",
+          "opponent": "Miami Hurricanes",
+          "opponentId": "2390",
+          "isHome": true,
+          "nebScore": 72,
+          "oppScore": 77,
+          "isWin": false
+        },
+        {
+          "date": "2015-12-05T19:00Z",
+          "opponent": "Abilene Christian Wildcats",
+          "opponentId": "2000",
+          "isHome": true,
+          "nebScore": 73,
+          "oppScore": 63,
+          "isWin": true
+        },
+        {
+          "date": "2015-12-10T01:00Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": false,
+          "nebScore": 67,
+          "oppScore": 83,
+          "isWin": false
+        },
+        {
+          "date": "2015-12-13T19:00Z",
+          "opponent": "Rhode Island Rams",
+          "opponentId": "227",
+          "isHome": true,
+          "nebScore": 70,
+          "oppScore": 67,
+          "isWin": true
+        },
+        {
+          "date": "2015-12-21T00:00Z",
+          "opponent": "Samford Bulldogs",
+          "opponentId": "2535",
+          "isHome": true,
+          "nebScore": 58,
+          "oppScore": 69,
+          "isWin": false
+        },
+        {
+          "date": "2015-12-23T01:00Z",
+          "opponent": "Prairie View A&M Panthers",
+          "opponentId": "2504",
+          "isHome": true,
+          "nebScore": 81,
+          "oppScore": 50,
+          "isWin": true
+        },
+        {
+          "date": "2015-12-30T21:00Z",
+          "opponent": "Northwestern Wildcats",
+          "opponentId": "77",
+          "isHome": true,
+          "nebScore": 72,
+          "oppScore": 81,
+          "isWin": false
+        },
+        {
+          "date": "2016-01-02T21:00Z",
+          "opponent": "Indiana Hoosiers",
+          "opponentId": "84",
+          "isHome": true,
+          "nebScore": 69,
+          "oppScore": 79,
+          "isWin": false
+        },
+        {
+          "date": "2016-01-06T02:00Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": false,
+          "nebScore": 66,
+          "oppScore": 77,
+          "isWin": false
+        },
+        {
+          "date": "2016-01-09T22:00Z",
+          "opponent": "Rutgers Scarlet Knights",
+          "opponentId": "164",
+          "isHome": false,
+          "nebScore": 90,
+          "oppScore": 56,
+          "isWin": true
+        },
+        {
+          "date": "2016-01-13T02:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": true,
+          "nebScore": 84,
+          "oppScore": 59,
+          "isWin": true
+        },
+        {
+          "date": "2016-01-16T19:30Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": false,
+          "nebScore": 78,
+          "oppScore": 67,
+          "isWin": true
+        },
+        {
+          "date": "2016-01-20T23:30Z",
+          "opponent": "Michigan State Spartans",
+          "opponentId": "127",
+          "isHome": false,
+          "nebScore": 72,
+          "oppScore": 71,
+          "isWin": true
+        },
+        {
+          "date": "2016-01-23T19:00Z",
+          "opponent": "Michigan Wolverines",
+          "opponentId": "130",
+          "isHome": true,
+          "nebScore": 68,
+          "oppScore": 81,
+          "isWin": false
+        },
+        {
+          "date": "2016-01-30T21:30Z",
+          "opponent": "Purdue Boilermakers",
+          "opponentId": "2509",
+          "isHome": false,
+          "nebScore": 74,
+          "oppScore": 89,
+          "isWin": false
+        },
+        {
+          "date": "2016-02-04T01:30Z",
+          "opponent": "Maryland Terrapins",
+          "opponentId": "120",
+          "isHome": true,
+          "nebScore": 65,
+          "oppScore": 70,
+          "isWin": false
+        },
+        {
+          "date": "2016-02-06T19:00Z",
+          "opponent": "Rutgers Scarlet Knights",
+          "opponentId": "164",
+          "isHome": true,
+          "nebScore": 87,
+          "oppScore": 63,
+          "isWin": true
+        },
+        {
+          "date": "2016-02-11T00:00Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": false,
+          "nebScore": 61,
+          "oppScore": 72,
+          "isWin": false
+        },
+        {
+          "date": "2016-02-13T23:00Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": true,
+          "nebScore": 70,
+          "oppScore": 54,
+          "isWin": true
+        },
+        {
+          "date": "2016-02-18T01:30Z",
+          "opponent": "Indiana Hoosiers",
+          "opponentId": "84",
+          "isHome": false,
+          "nebScore": 64,
+          "oppScore": 80,
+          "isWin": false
+        },
+        {
+          "date": "2016-02-21T00:00Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": true,
+          "nebScore": 62,
+          "oppScore": 65,
+          "isWin": false
+        },
+        {
+          "date": "2016-02-26T00:00Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": false,
+          "nebScore": 55,
+          "oppScore": 56,
+          "isWin": false
+        },
+        {
+          "date": "2016-03-02T01:00Z",
+          "opponent": "Purdue Boilermakers",
+          "opponentId": "2509",
+          "isHome": true,
+          "nebScore": 62,
+          "oppScore": 81,
+          "isWin": false
+        },
+        {
+          "date": "2016-03-06T19:00Z",
+          "opponent": "Northwestern Wildcats",
+          "opponentId": "77",
+          "isHome": false,
+          "nebScore": 54,
+          "oppScore": 65,
+          "isWin": false
+        },
+        {
+          "date": "2016-03-10T00:00Z",
+          "opponent": "Rutgers Scarlet Knights",
+          "opponentId": "164",
+          "isHome": true,
+          "nebScore": 89,
+          "oppScore": 72,
+          "isWin": true
+        },
+        {
+          "date": "2016-03-11T02:21Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": false,
+          "nebScore": 70,
+          "oppScore": 58,
+          "isWin": true
+        },
+        {
+          "date": "2016-03-12T01:55Z",
+          "opponent": "Maryland Terrapins",
+          "opponentId": "120",
+          "isHome": false,
+          "nebScore": 86,
+          "oppScore": 97,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2016-17",
+      "seasonYear": 2017,
+      "wins": 12,
+      "losses": 19,
+      "avgPoints": 69.9,
+      "avgOppPoints": 73,
+      "games": [
+        {
+          "date": "2016-11-14T01:00Z",
+          "opponent": "Sacramento State Hornets",
+          "opponentId": "16",
+          "isHome": true,
+          "nebScore": 83,
+          "oppScore": 61,
+          "isWin": true
+        },
+        {
+          "date": "2016-11-16T01:00Z",
+          "opponent": "University of Mary Marauders",
+          "opponentId": "559",
+          "isHome": true,
+          "nebScore": 70,
+          "oppScore": 38,
+          "isWin": true
+        },
+        {
+          "date": "2016-11-20T01:00Z",
+          "opponent": "Louisiana Tech Bulldogs",
+          "opponentId": "2348",
+          "isHome": true,
+          "nebScore": 65,
+          "oppScore": 54,
+          "isWin": true
+        },
+        {
+          "date": "2016-11-25T01:30Z",
+          "opponent": "Dayton Flyers",
+          "opponentId": "2168",
+          "isHome": true,
+          "nebScore": 80,
+          "oppScore": 78,
+          "isWin": true
+        },
+        {
+          "date": "2016-11-26T04:59Z",
+          "opponent": "UCLA Bruins",
+          "opponentId": "26",
+          "isHome": false,
+          "nebScore": 71,
+          "oppScore": 82,
+          "isWin": false
+        },
+        {
+          "date": "2016-11-27T21:00Z",
+          "opponent": "Virginia Tech Hokies",
+          "opponentId": "259",
+          "isHome": true,
+          "nebScore": 53,
+          "oppScore": 66,
+          "isWin": false
+        },
+        {
+          "date": "2016-12-01T02:15Z",
+          "opponent": "Clemson Tigers",
+          "opponentId": "228",
+          "isHome": false,
+          "nebScore": 58,
+          "oppScore": 60,
+          "isWin": false
+        },
+        {
+          "date": "2016-12-03T19:00Z",
+          "opponent": "South Dakota Coyotes",
+          "opponentId": "233",
+          "isHome": true,
+          "nebScore": 73,
+          "oppScore": 61,
+          "isWin": true
+        },
+        {
+          "date": "2016-12-08T02:00Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": true,
+          "nebScore": 62,
+          "oppScore": 77,
+          "isWin": false
+        },
+        {
+          "date": "2016-12-10T20:15Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": false,
+          "nebScore": 72,
+          "oppScore": 89,
+          "isWin": false
+        },
+        {
+          "date": "2016-12-18T19:00Z",
+          "opponent": "Gardner-Webb Runnin' Bulldogs",
+          "opponentId": "2241",
+          "isHome": true,
+          "nebScore": 62,
+          "oppScore": 70,
+          "isWin": false
+        },
+        {
+          "date": "2016-12-21T01:00Z",
+          "opponent": "Southern Jaguars",
+          "opponentId": "2582",
+          "isHome": true,
+          "nebScore": 81,
+          "oppScore": 76,
+          "isWin": true
+        },
+        {
+          "date": "2016-12-28T23:30Z",
+          "opponent": "Indiana Hoosiers",
+          "opponentId": "84",
+          "isHome": false,
+          "nebScore": 87,
+          "oppScore": 83,
+          "isWin": true
+        },
+        {
+          "date": "2017-01-01T17:00Z",
+          "opponent": "Maryland Terrapins",
+          "opponentId": "120",
+          "isHome": false,
+          "nebScore": 67,
+          "oppScore": 65,
+          "isWin": true
+        },
+        {
+          "date": "2017-01-06T02:00Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": true,
+          "nebScore": 93,
+          "oppScore": 90,
+          "isWin": true
+        },
+        {
+          "date": "2017-01-08T19:15Z",
+          "opponent": "Northwestern Wildcats",
+          "opponentId": "77",
+          "isHome": true,
+          "nebScore": 66,
+          "oppScore": 74,
+          "isWin": false
+        },
+        {
+          "date": "2017-01-14T19:00Z",
+          "opponent": "Michigan Wolverines",
+          "opponentId": "130",
+          "isHome": false,
+          "nebScore": 85,
+          "oppScore": 91,
+          "isWin": false
+        },
+        {
+          "date": "2017-01-19T02:00Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": true,
+          "nebScore": 66,
+          "oppScore": 67,
+          "isWin": false
+        },
+        {
+          "date": "2017-01-21T17:00Z",
+          "opponent": "Rutgers Scarlet Knights",
+          "opponentId": "164",
+          "isHome": false,
+          "nebScore": 64,
+          "oppScore": 65,
+          "isWin": false
+        },
+        {
+          "date": "2017-01-27T01:00Z",
+          "opponent": "Northwestern Wildcats",
+          "opponentId": "77",
+          "isHome": false,
+          "nebScore": 61,
+          "oppScore": 73,
+          "isWin": false
+        },
+        {
+          "date": "2017-01-29T21:30Z",
+          "opponent": "Purdue Boilermakers",
+          "opponentId": "2509",
+          "isHome": true,
+          "nebScore": 83,
+          "oppScore": 80,
+          "isWin": true
+        },
+        {
+          "date": "2017-02-03T00:00Z",
+          "opponent": "Michigan State Spartans",
+          "opponentId": "127",
+          "isHome": true,
+          "nebScore": 61,
+          "oppScore": 72,
+          "isWin": false
+        },
+        {
+          "date": "2017-02-05T19:00Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": false,
+          "nebScore": 70,
+          "oppScore": 81,
+          "isWin": false
+        },
+        {
+          "date": "2017-02-10T02:00Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": true,
+          "nebScore": 69,
+          "oppScore": 70,
+          "isWin": false
+        },
+        {
+          "date": "2017-02-15T02:00Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": true,
+          "nebScore": 82,
+          "oppScore": 66,
+          "isWin": true
+        },
+        {
+          "date": "2017-02-18T23:00Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": false,
+          "nebScore": 58,
+          "oppScore": 57,
+          "isWin": true
+        },
+        {
+          "date": "2017-02-24T00:00Z",
+          "opponent": "Michigan State Spartans",
+          "opponentId": "127",
+          "isHome": false,
+          "nebScore": 72,
+          "oppScore": 88,
+          "isWin": false
+        },
+        {
+          "date": "2017-02-27T00:30Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": true,
+          "nebScore": 57,
+          "oppScore": 73,
+          "isWin": false
+        },
+        {
+          "date": "2017-03-03T00:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": false,
+          "nebScore": 73,
+          "oppScore": 88,
+          "isWin": false
+        },
+        {
+          "date": "2017-03-06T01:00Z",
+          "opponent": "Michigan Wolverines",
+          "opponentId": "130",
+          "isHome": true,
+          "nebScore": 57,
+          "oppScore": 93,
+          "isWin": false
+        },
+        {
+          "date": "2017-03-08T21:30Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": true,
+          "nebScore": 67,
+          "oppScore": 76,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2017-18",
+      "seasonYear": 2018,
+      "wins": 22,
+      "losses": 10,
+      "avgPoints": 72.7,
+      "avgOppPoints": 68.7,
+      "games": [
+        {
+          "date": "2017-11-12T01:30Z",
+          "opponent": "Eastern Illinois Panthers",
+          "opponentId": "2197",
+          "isHome": true,
+          "nebScore": 72,
+          "oppScore": 68,
+          "isWin": true
+        },
+        {
+          "date": "2017-11-14T01:00Z",
+          "opponent": "North Texas Mean Green",
+          "opponentId": "249",
+          "isHome": true,
+          "nebScore": 86,
+          "oppScore": 67,
+          "isWin": true
+        },
+        {
+          "date": "2017-11-16T23:30Z",
+          "opponent": "St. John's Red Storm",
+          "opponentId": "2599",
+          "isHome": false,
+          "nebScore": 56,
+          "oppScore": 79,
+          "isWin": false
+        },
+        {
+          "date": "2017-11-19T19:00Z",
+          "opponent": "North Dakota Fighting Hawks",
+          "opponentId": "155",
+          "isHome": true,
+          "nebScore": 92,
+          "oppScore": 70,
+          "isWin": true
+        },
+        {
+          "date": "2017-11-23T23:00Z",
+          "opponent": "UCF Knights",
+          "opponentId": "2116",
+          "isHome": true,
+          "nebScore": 59,
+          "oppScore": 68,
+          "isWin": false
+        },
+        {
+          "date": "2017-11-25T00:30Z",
+          "opponent": "Marist Red Foxes",
+          "opponentId": "2368",
+          "isHome": false,
+          "nebScore": 84,
+          "oppScore": 59,
+          "isWin": true
+        },
+        {
+          "date": "2017-11-26T19:31Z",
+          "opponent": "Long Beach State Beach",
+          "opponentId": "299",
+          "isHome": true,
+          "nebScore": 85,
+          "oppScore": 80,
+          "isWin": true
+        },
+        {
+          "date": "2017-11-30T02:15Z",
+          "opponent": "Boston College Eagles",
+          "opponentId": "103",
+          "isHome": true,
+          "nebScore": 71,
+          "oppScore": 62,
+          "isWin": true
+        },
+        {
+          "date": "2017-12-03T21:30Z",
+          "opponent": "Michigan State Spartans",
+          "opponentId": "127",
+          "isHome": false,
+          "nebScore": 57,
+          "oppScore": 86,
+          "isWin": false
+        },
+        {
+          "date": "2017-12-06T02:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": true,
+          "nebScore": 78,
+          "oppScore": 68,
+          "isWin": true
+        },
+        {
+          "date": "2017-12-09T19:30Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": false,
+          "nebScore": 65,
+          "oppScore": 75,
+          "isWin": false
+        },
+        {
+          "date": "2017-12-17T01:00Z",
+          "opponent": "Kansas Jayhawks",
+          "opponentId": "2305",
+          "isHome": true,
+          "nebScore": 72,
+          "oppScore": 73,
+          "isWin": false
+        },
+        {
+          "date": "2017-12-21T01:00Z",
+          "opponent": "UTSA Roadrunners",
+          "opponentId": "2636",
+          "isHome": true,
+          "nebScore": 104,
+          "oppScore": 94,
+          "isWin": true
+        },
+        {
+          "date": "2017-12-23T01:00Z",
+          "opponent": "Delaware State Hornets",
+          "opponentId": "2169",
+          "isHome": true,
+          "nebScore": 85,
+          "oppScore": 68,
+          "isWin": true
+        },
+        {
+          "date": "2017-12-30T01:00Z",
+          "opponent": "Stetson Hatters",
+          "opponentId": "56",
+          "isHome": true,
+          "nebScore": 71,
+          "oppScore": 62,
+          "isWin": true
+        },
+        {
+          "date": "2018-01-03T02:00Z",
+          "opponent": "Northwestern Wildcats",
+          "opponentId": "77",
+          "isHome": false,
+          "nebScore": 70,
+          "oppScore": 55,
+          "isWin": true
+        },
+        {
+          "date": "2018-01-06T19:15Z",
+          "opponent": "Purdue Boilermakers",
+          "opponentId": "2509",
+          "isHome": false,
+          "nebScore": 62,
+          "oppScore": 74,
+          "isWin": false
+        },
+        {
+          "date": "2018-01-10T01:30Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": true,
+          "nebScore": 63,
+          "oppScore": 59,
+          "isWin": true
+        },
+        {
+          "date": "2018-01-13T00:00Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": false,
+          "nebScore": 74,
+          "oppScore": 76,
+          "isWin": false
+        },
+        {
+          "date": "2018-01-16T02:00Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": true,
+          "nebScore": 64,
+          "oppScore": 63,
+          "isWin": true
+        },
+        {
+          "date": "2018-01-19T02:00Z",
+          "opponent": "Michigan Wolverines",
+          "opponentId": "130",
+          "isHome": true,
+          "nebScore": 72,
+          "oppScore": 52,
+          "isWin": true
+        },
+        {
+          "date": "2018-01-23T01:00Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": false,
+          "nebScore": 59,
+          "oppScore": 64,
+          "isWin": false
+        },
+        {
+          "date": "2018-01-25T00:00Z",
+          "opponent": "Rutgers Scarlet Knights",
+          "opponentId": "164",
+          "isHome": false,
+          "nebScore": 60,
+          "oppScore": 54,
+          "isWin": true
+        },
+        {
+          "date": "2018-01-28T01:00Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": true,
+          "nebScore": 98,
+          "oppScore": 84,
+          "isWin": true
+        },
+        {
+          "date": "2018-01-30T02:00Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": false,
+          "nebScore": 74,
+          "oppScore": 63,
+          "isWin": true
+        },
+        {
+          "date": "2018-02-07T02:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": false,
+          "nebScore": 91,
+          "oppScore": 85,
+          "isWin": true
+        },
+        {
+          "date": "2018-02-10T21:00Z",
+          "opponent": "Rutgers Scarlet Knights",
+          "opponentId": "164",
+          "isHome": true,
+          "nebScore": 67,
+          "oppScore": 55,
+          "isWin": true
+        },
+        {
+          "date": "2018-02-14T00:00Z",
+          "opponent": "Maryland Terrapins",
+          "opponentId": "120",
+          "isHome": true,
+          "nebScore": 70,
+          "oppScore": 66,
+          "isWin": true
+        },
+        {
+          "date": "2018-02-18T20:30Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": false,
+          "nebScore": 66,
+          "oppScore": 72,
+          "isWin": false
+        },
+        {
+          "date": "2018-02-21T02:00Z",
+          "opponent": "Indiana Hoosiers",
+          "opponentId": "84",
+          "isHome": true,
+          "nebScore": 66,
+          "oppScore": 57,
+          "isWin": true
+        },
+        {
+          "date": "2018-02-25T22:15Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": true,
+          "nebScore": 76,
+          "oppScore": 64,
+          "isWin": true
+        },
+        {
+          "date": "2018-03-02T19:25Z",
+          "opponent": "Michigan Wolverines",
+          "opponentId": "130",
+          "isHome": true,
+          "nebScore": 58,
+          "oppScore": 77,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2018-19",
+      "seasonYear": 2019,
+      "wins": 18,
+      "losses": 16,
+      "avgPoints": 71.6,
+      "avgOppPoints": 66.4,
+      "games": [
+        {
+          "date": "2018-11-07T01:00Z",
+          "opponent": "Mississippi Valley State Delta Devils",
+          "opponentId": "2400",
+          "isHome": true,
+          "nebScore": 106,
+          "oppScore": 37,
+          "isWin": true
+        },
+        {
+          "date": "2018-11-11T21:00Z",
+          "opponent": "SE Louisiana Lions",
+          "opponentId": "2545",
+          "isHome": true,
+          "nebScore": 87,
+          "oppScore": 35,
+          "isWin": true
+        },
+        {
+          "date": "2018-11-15T00:30Z",
+          "opponent": "Seton Hall Pirates",
+          "opponentId": "2550",
+          "isHome": true,
+          "nebScore": 80,
+          "oppScore": 57,
+          "isWin": true
+        },
+        {
+          "date": "2018-11-20T00:00Z",
+          "opponent": "Missouri State Bears",
+          "opponentId": "2623",
+          "isHome": true,
+          "nebScore": 85,
+          "oppScore": 62,
+          "isWin": true
+        },
+        {
+          "date": "2018-11-21T02:30Z",
+          "opponent": "Texas Tech Red Raiders",
+          "opponentId": "2641",
+          "isHome": true,
+          "nebScore": 52,
+          "oppScore": 70,
+          "isWin": false
+        },
+        {
+          "date": "2018-11-24T19:00Z",
+          "opponent": "Western Illinois Leathernecks",
+          "opponentId": "2710",
+          "isHome": true,
+          "nebScore": 73,
+          "oppScore": 49,
+          "isWin": true
+        },
+        {
+          "date": "2018-11-27T00:00Z",
+          "opponent": "Clemson Tigers",
+          "opponentId": "228",
+          "isHome": false,
+          "nebScore": 68,
+          "oppScore": 66,
+          "isWin": true
+        },
+        {
+          "date": "2018-12-02T22:00Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": true,
+          "nebScore": 75,
+          "oppScore": 60,
+          "isWin": true
+        },
+        {
+          "date": "2018-12-06T02:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": false,
+          "nebScore": 78,
+          "oppScore": 85,
+          "isWin": false
+        },
+        {
+          "date": "2018-12-08T23:00Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": true,
+          "nebScore": 94,
+          "oppScore": 75,
+          "isWin": true
+        },
+        {
+          "date": "2018-12-17T00:00Z",
+          "opponent": "Oklahoma State Cowboys",
+          "opponentId": "197",
+          "isHome": true,
+          "nebScore": 79,
+          "oppScore": 56,
+          "isWin": true
+        },
+        {
+          "date": "2018-12-22T19:00Z",
+          "opponent": "Cal State Fullerton Titans",
+          "opponentId": "2239",
+          "isHome": true,
+          "nebScore": 86,
+          "oppScore": 62,
+          "isWin": true
+        },
+        {
+          "date": "2018-12-29T19:00Z",
+          "opponent": "Southwest Minnesota State Mustangs",
+          "opponentId": "2587",
+          "isHome": true,
+          "nebScore": 79,
+          "oppScore": 38,
+          "isWin": true
+        },
+        {
+          "date": "2019-01-02T23:30Z",
+          "opponent": "Maryland Terrapins",
+          "opponentId": "120",
+          "isHome": false,
+          "nebScore": 72,
+          "oppScore": 74,
+          "isWin": false
+        },
+        {
+          "date": "2019-01-06T22:30Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": false,
+          "nebScore": 84,
+          "oppScore": 93,
+          "isWin": false
+        },
+        {
+          "date": "2019-01-11T02:00Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": true,
+          "nebScore": 70,
+          "oppScore": 64,
+          "isWin": true
+        },
+        {
+          "date": "2019-01-14T23:30Z",
+          "opponent": "Indiana Hoosiers",
+          "opponentId": "84",
+          "isHome": false,
+          "nebScore": 66,
+          "oppScore": 51,
+          "isWin": true
+        },
+        {
+          "date": "2019-01-18T01:00Z",
+          "opponent": "Michigan State Spartans",
+          "opponentId": "127",
+          "isHome": true,
+          "nebScore": 64,
+          "oppScore": 70,
+          "isWin": false
+        },
+        {
+          "date": "2019-01-22T01:00Z",
+          "opponent": "Rutgers Scarlet Knights",
+          "opponentId": "164",
+          "isHome": false,
+          "nebScore": 69,
+          "oppScore": 76,
+          "isWin": false
+        },
+        {
+          "date": "2019-01-26T17:00Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": true,
+          "nebScore": 60,
+          "oppScore": 70,
+          "isWin": false
+        },
+        {
+          "date": "2019-01-30T01:00Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": true,
+          "nebScore": 51,
+          "oppScore": 62,
+          "isWin": false
+        },
+        {
+          "date": "2019-02-02T19:15Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": false,
+          "nebScore": 64,
+          "oppScore": 71,
+          "isWin": false
+        },
+        {
+          "date": "2019-02-07T00:00Z",
+          "opponent": "Maryland Terrapins",
+          "opponentId": "120",
+          "isHome": true,
+          "nebScore": 45,
+          "oppScore": 60,
+          "isWin": false
+        },
+        {
+          "date": "2019-02-10T01:30Z",
+          "opponent": "Purdue Boilermakers",
+          "opponentId": "2509",
+          "isHome": false,
+          "nebScore": 62,
+          "oppScore": 81,
+          "isWin": false
+        },
+        {
+          "date": "2019-02-14T02:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": true,
+          "nebScore": 62,
+          "oppScore": 61,
+          "isWin": true
+        },
+        {
+          "date": "2019-02-17T01:30Z",
+          "opponent": "Northwestern Wildcats",
+          "opponentId": "77",
+          "isHome": true,
+          "nebScore": 59,
+          "oppScore": 50,
+          "isWin": true
+        },
+        {
+          "date": "2019-02-20T00:00Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": false,
+          "nebScore": 71,
+          "oppScore": 95,
+          "isWin": false
+        },
+        {
+          "date": "2019-02-23T19:00Z",
+          "opponent": "Purdue Boilermakers",
+          "opponentId": "2509",
+          "isHome": true,
+          "nebScore": 72,
+          "oppScore": 75,
+          "isWin": false
+        },
+        {
+          "date": "2019-03-01T00:00Z",
+          "opponent": "Michigan Wolverines",
+          "opponentId": "130",
+          "isHome": false,
+          "nebScore": 53,
+          "oppScore": 82,
+          "isWin": false
+        },
+        {
+          "date": "2019-03-06T00:00Z",
+          "opponent": "Michigan State Spartans",
+          "opponentId": "127",
+          "isHome": false,
+          "nebScore": 76,
+          "oppScore": 91,
+          "isWin": false
+        },
+        {
+          "date": "2019-03-10T18:00Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": true,
+          "nebScore": 93,
+          "oppScore": 91,
+          "isWin": true
+        },
+        {
+          "date": "2019-03-13T22:30Z",
+          "opponent": "Rutgers Scarlet Knights",
+          "opponentId": "164",
+          "isHome": false,
+          "nebScore": 68,
+          "oppScore": 61,
+          "isWin": true
+        },
+        {
+          "date": "2019-03-14T19:20Z",
+          "opponent": "Maryland Terrapins",
+          "opponentId": "120",
+          "isHome": false,
+          "nebScore": 69,
+          "oppScore": 61,
+          "isWin": true
+        },
+        {
+          "date": "2019-03-15T19:15Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": false,
+          "nebScore": 62,
+          "oppScore": 66,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2019-20",
+      "seasonYear": 2020,
+      "wins": 7,
+      "losses": 25,
+      "avgPoints": 69.8,
+      "avgOppPoints": 78.1,
+      "games": [
+        {
+          "date": "2019-11-06T02:00Z",
+          "opponent": "UC Riverside Highlanders",
+          "opponentId": "27",
+          "isHome": true,
+          "nebScore": 47,
+          "oppScore": 66,
+          "isWin": false
+        },
+        {
+          "date": "2019-11-09T19:00Z",
+          "opponent": "Southern Utah Thunderbirds",
+          "opponentId": "253",
+          "isHome": true,
+          "nebScore": 78,
+          "oppScore": 79,
+          "isWin": false
+        },
+        {
+          "date": "2019-11-16T02:00Z",
+          "opponent": "South Dakota State Jackrabbits",
+          "opponentId": "2571",
+          "isHome": true,
+          "nebScore": 90,
+          "oppScore": 73,
+          "isWin": true
+        },
+        {
+          "date": "2019-11-23T01:00Z",
+          "opponent": "Southern Jaguars",
+          "opponentId": "2582",
+          "isHome": true,
+          "nebScore": 93,
+          "oppScore": 86,
+          "isWin": true
+        },
+        {
+          "date": "2019-11-26T00:30Z",
+          "opponent": "Washington State Cougars",
+          "opponentId": "265",
+          "isHome": true,
+          "nebScore": 82,
+          "oppScore": 71,
+          "isWin": true
+        },
+        {
+          "date": "2019-11-27T00:30Z",
+          "opponent": "George Mason Patriots",
+          "opponentId": "2244",
+          "isHome": true,
+          "nebScore": 66,
+          "oppScore": 85,
+          "isWin": false
+        },
+        {
+          "date": "2019-11-27T22:00Z",
+          "opponent": "South Florida Bulls",
+          "opponentId": "58",
+          "isHome": true,
+          "nebScore": 74,
+          "oppScore": 67,
+          "isWin": true
+        },
+        {
+          "date": "2019-12-05T00:15Z",
+          "opponent": "Georgia Tech Yellow Jackets",
+          "opponentId": "59",
+          "isHome": false,
+          "nebScore": 56,
+          "oppScore": 73,
+          "isWin": false
+        },
+        {
+          "date": "2019-12-07T19:30Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": false,
+          "nebScore": 76,
+          "oppScore": 95,
+          "isWin": false
+        },
+        {
+          "date": "2019-12-14T01:00Z",
+          "opponent": "Indiana Hoosiers",
+          "opponentId": "84",
+          "isHome": false,
+          "nebScore": 90,
+          "oppScore": 96,
+          "isWin": false
+        },
+        {
+          "date": "2019-12-15T21:00Z",
+          "opponent": "Purdue Boilermakers",
+          "opponentId": "2509",
+          "isHome": true,
+          "nebScore": 70,
+          "oppScore": 56,
+          "isWin": true
+        },
+        {
+          "date": "2019-12-21T23:00Z",
+          "opponent": "North Dakota Fighting Hawks",
+          "opponentId": "155",
+          "isHome": true,
+          "nebScore": 74,
+          "oppScore": 75,
+          "isWin": false
+        },
+        {
+          "date": "2019-12-29T19:00Z",
+          "opponent": "Texas A&M-Corpus Christi Islanders",
+          "opponentId": "357",
+          "isHome": true,
+          "nebScore": 73,
+          "oppScore": 52,
+          "isWin": true
+        },
+        {
+          "date": "2020-01-04T01:00Z",
+          "opponent": "Rutgers Scarlet Knights",
+          "opponentId": "164",
+          "isHome": true,
+          "nebScore": 62,
+          "oppScore": 79,
+          "isWin": false
+        },
+        {
+          "date": "2020-01-08T02:00Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": true,
+          "nebScore": 76,
+          "oppScore": 70,
+          "isWin": true
+        },
+        {
+          "date": "2020-01-11T21:30Z",
+          "opponent": "Northwestern Wildcats",
+          "opponentId": "77",
+          "isHome": false,
+          "nebScore": 57,
+          "oppScore": 62,
+          "isWin": false
+        },
+        {
+          "date": "2020-01-14T23:30Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": false,
+          "nebScore": 68,
+          "oppScore": 80,
+          "isWin": false
+        },
+        {
+          "date": "2020-01-19T00:00Z",
+          "opponent": "Indiana Hoosiers",
+          "opponentId": "84",
+          "isHome": true,
+          "nebScore": 74,
+          "oppScore": 82,
+          "isWin": false
+        },
+        {
+          "date": "2020-01-22T02:00Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": false,
+          "nebScore": 68,
+          "oppScore": 82,
+          "isWin": false
+        },
+        {
+          "date": "2020-01-25T19:00Z",
+          "opponent": "Rutgers Scarlet Knights",
+          "opponentId": "164",
+          "isHome": false,
+          "nebScore": 72,
+          "oppScore": 75,
+          "isWin": false
+        },
+        {
+          "date": "2020-01-29T00:00Z",
+          "opponent": "Michigan Wolverines",
+          "opponentId": "130",
+          "isHome": true,
+          "nebScore": 68,
+          "oppScore": 79,
+          "isWin": false
+        },
+        {
+          "date": "2020-02-02T00:00Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": true,
+          "nebScore": 64,
+          "oppScore": 76,
+          "isWin": false
+        },
+        {
+          "date": "2020-02-08T23:00Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": false,
+          "nebScore": 72,
+          "oppScore": 96,
+          "isWin": false
+        },
+        {
+          "date": "2020-02-12T01:30Z",
+          "opponent": "Maryland Terrapins",
+          "opponentId": "120",
+          "isHome": false,
+          "nebScore": 70,
+          "oppScore": 72,
+          "isWin": false
+        },
+        {
+          "date": "2020-02-15T19:15Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": true,
+          "nebScore": 64,
+          "oppScore": 81,
+          "isWin": false
+        },
+        {
+          "date": "2020-02-21T01:30Z",
+          "opponent": "Michigan State Spartans",
+          "opponentId": "127",
+          "isHome": true,
+          "nebScore": 65,
+          "oppScore": 86,
+          "isWin": false
+        },
+        {
+          "date": "2020-02-25T01:00Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": false,
+          "nebScore": 59,
+          "oppScore": 71,
+          "isWin": false
+        },
+        {
+          "date": "2020-02-28T02:00Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": true,
+          "nebScore": 54,
+          "oppScore": 75,
+          "isWin": false
+        },
+        {
+          "date": "2020-03-01T21:15Z",
+          "opponent": "Northwestern Wildcats",
+          "opponentId": "77",
+          "isHome": true,
+          "nebScore": 76,
+          "oppScore": 81,
+          "isWin": false
+        },
+        {
+          "date": "2020-03-05T23:30Z",
+          "opponent": "Michigan Wolverines",
+          "opponentId": "130",
+          "isHome": false,
+          "nebScore": 58,
+          "oppScore": 82,
+          "isWin": false
+        },
+        {
+          "date": "2020-03-08T17:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": false,
+          "nebScore": 75,
+          "oppScore": 107,
+          "isWin": false
+        },
+        {
+          "date": "2020-03-12T00:30Z",
+          "opponent": "Indiana Hoosiers",
+          "opponentId": "84",
+          "isHome": false,
+          "nebScore": 64,
+          "oppScore": 89,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2020-21",
+      "seasonYear": 2021,
+      "wins": 7,
+      "losses": 20,
+      "avgPoints": 70,
+      "avgOppPoints": 74.2,
+      "games": [
+        {
+          "date": "2020-11-25T17:00Z",
+          "opponent": "McNeese Cowboys",
+          "opponentId": "2377",
+          "isHome": true,
+          "nebScore": 102,
+          "oppScore": 55,
+          "isWin": true
+        },
+        {
+          "date": "2020-11-26T19:00Z",
+          "opponent": "Nevada Wolf Pack",
+          "opponentId": "2440",
+          "isHome": true,
+          "nebScore": 66,
+          "oppScore": 69,
+          "isWin": false
+        },
+        {
+          "date": "2020-11-28T17:00Z",
+          "opponent": "North Dakota State Bison",
+          "opponentId": "2449",
+          "isHome": true,
+          "nebScore": 79,
+          "oppScore": 57,
+          "isWin": true
+        },
+        {
+          "date": "2020-12-02T02:00Z",
+          "opponent": "South Dakota Coyotes",
+          "opponentId": "233",
+          "isHome": true,
+          "nebScore": 76,
+          "oppScore": 69,
+          "isWin": true
+        },
+        {
+          "date": "2020-12-06T19:00Z",
+          "opponent": "Florida A&M Rattlers",
+          "opponentId": "50",
+          "isHome": true,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2020-12-10T00:15Z",
+          "opponent": "Georgia Tech Yellow Jackets",
+          "opponentId": "59",
+          "isHome": true,
+          "nebScore": 64,
+          "oppScore": 75,
+          "isWin": false
+        },
+        {
+          "date": "2020-12-12T00:00Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": false,
+          "nebScore": 74,
+          "oppScore": 98,
+          "isWin": false
+        },
+        {
+          "date": "2020-12-18T00:00Z",
+          "opponent": "Doane Tigers",
+          "opponentId": "2178",
+          "isHome": true,
+          "nebScore": 110,
+          "oppScore": 64,
+          "isWin": true
+        },
+        {
+          "date": "2020-12-23T00:00Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": false,
+          "nebScore": 53,
+          "oppScore": 67,
+          "isWin": false
+        },
+        {
+          "date": "2020-12-25T23:00Z",
+          "opponent": "Michigan Wolverines",
+          "opponentId": "130",
+          "isHome": true,
+          "nebScore": 69,
+          "oppScore": 80,
+          "isWin": false
+        },
+        {
+          "date": "2020-12-30T23:30Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": false,
+          "nebScore": 54,
+          "oppScore": 90,
+          "isWin": false
+        },
+        {
+          "date": "2021-01-03T01:00Z",
+          "opponent": "Michigan State Spartans",
+          "opponentId": "127",
+          "isHome": true,
+          "nebScore": 77,
+          "oppScore": 84,
+          "isWin": false
+        },
+        {
+          "date": "2021-01-06T00:00Z",
+          "opponent": "Purdue Boilermakers",
+          "opponentId": "2509",
+          "isHome": false,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2021-01-10T23:00Z",
+          "opponent": "Indiana Hoosiers",
+          "opponentId": "84",
+          "isHome": true,
+          "nebScore": 76,
+          "oppScore": 84,
+          "isWin": false
+        },
+        {
+          "date": "2021-01-14T02:00Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": true,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2021-01-16T17:00Z",
+          "opponent": "Maryland Terrapins",
+          "opponentId": "120",
+          "isHome": false,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2021-01-21T02:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": true,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2021-01-24T19:00Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": false,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2021-02-06T23:30Z",
+          "opponent": "Michigan State Spartans",
+          "opponentId": "127",
+          "isHome": false,
+          "nebScore": 56,
+          "oppScore": 66,
+          "isWin": false
+        },
+        {
+          "date": "2021-02-09T01:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": false,
+          "nebScore": 61,
+          "oppScore": 79,
+          "isWin": false
+        },
+        {
+          "date": "2021-02-11T02:30Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": true,
+          "nebScore": 48,
+          "oppScore": 61,
+          "isWin": false
+        },
+        {
+          "date": "2021-02-13T02:00Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": true,
+          "nebScore": 72,
+          "oppScore": 77,
+          "isWin": false
+        },
+        {
+          "date": "2021-02-14T20:00Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": false,
+          "nebScore": 62,
+          "oppScore": 61,
+          "isWin": true
+        },
+        {
+          "date": "2021-02-17T00:00Z",
+          "opponent": "Maryland Terrapins",
+          "opponentId": "120",
+          "isHome": false,
+          "nebScore": 50,
+          "oppScore": 64,
+          "isWin": false
+        },
+        {
+          "date": "2021-02-18T00:00Z",
+          "opponent": "Maryland Terrapins",
+          "opponentId": "120",
+          "isHome": false,
+          "nebScore": 71,
+          "oppScore": 79,
+          "isWin": false
+        },
+        {
+          "date": "2021-02-20T22:30Z",
+          "opponent": "Purdue Boilermakers",
+          "opponentId": "2509",
+          "isHome": true,
+          "nebScore": 58,
+          "oppScore": 75,
+          "isWin": false
+        },
+        {
+          "date": "2021-02-24T01:00Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": true,
+          "nebScore": 83,
+          "oppScore": 86,
+          "isWin": false
+        },
+        {
+          "date": "2021-02-26T00:00Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": false,
+          "nebScore": 70,
+          "oppScore": 86,
+          "isWin": false
+        },
+        {
+          "date": "2021-02-28T00:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": true,
+          "nebScore": 78,
+          "oppScore": 74,
+          "isWin": true
+        },
+        {
+          "date": "2021-03-02T00:00Z",
+          "opponent": "Rutgers Scarlet Knights",
+          "opponentId": "164",
+          "isHome": true,
+          "nebScore": 72,
+          "oppScore": 51,
+          "isWin": true
+        },
+        {
+          "date": "2021-03-05T02:00Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": false,
+          "nebScore": 64,
+          "oppScore": 102,
+          "isWin": false
+        },
+        {
+          "date": "2021-03-07T18:30Z",
+          "opponent": "Northwestern Wildcats",
+          "opponentId": "77",
+          "isHome": false,
+          "nebScore": 78,
+          "oppScore": 79,
+          "isWin": false
+        },
+        {
+          "date": "2021-03-11T02:00Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": false,
+          "nebScore": 66,
+          "oppScore": 72,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2021-22",
+      "seasonYear": 2022,
+      "wins": 10,
+      "losses": 22,
+      "avgPoints": 73.3,
+      "avgOppPoints": 78.5,
+      "games": [
+        {
+          "date": "2021-11-10T01:00Z",
+          "opponent": "Western Illinois Leathernecks",
+          "opponentId": "2710",
+          "isHome": true,
+          "nebScore": 74,
+          "oppScore": 75,
+          "isWin": false
+        },
+        {
+          "date": "2021-11-13T01:30Z",
+          "opponent": "Sam Houston Bearkats",
+          "opponentId": "2534",
+          "isHome": true,
+          "nebScore": 74,
+          "oppScore": 65,
+          "isWin": true
+        },
+        {
+          "date": "2021-11-17T00:00Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": true,
+          "nebScore": 69,
+          "oppScore": 77,
+          "isWin": false
+        },
+        {
+          "date": "2021-11-20T00:00Z",
+          "opponent": "Idaho State Bengals",
+          "opponentId": "304",
+          "isHome": true,
+          "nebScore": 78,
+          "oppScore": 60,
+          "isWin": true
+        },
+        {
+          "date": "2021-11-21T21:00Z",
+          "opponent": "Southern Jaguars",
+          "opponentId": "2582",
+          "isHome": true,
+          "nebScore": 82,
+          "oppScore": 59,
+          "isWin": true
+        },
+        {
+          "date": "2021-11-24T02:00Z",
+          "opponent": "Tennessee State Tigers",
+          "opponentId": "2634",
+          "isHome": true,
+          "nebScore": 79,
+          "oppScore": 73,
+          "isWin": true
+        },
+        {
+          "date": "2021-11-27T19:00Z",
+          "opponent": "South Dakota Coyotes",
+          "opponentId": "233",
+          "isHome": true,
+          "nebScore": 83,
+          "oppScore": 70,
+          "isWin": true
+        },
+        {
+          "date": "2021-12-02T00:15Z",
+          "opponent": "NC State Wolfpack",
+          "opponentId": "152",
+          "isHome": false,
+          "nebScore": 100,
+          "oppScore": 104,
+          "isWin": false
+        },
+        {
+          "date": "2021-12-04T17:00Z",
+          "opponent": "Indiana Hoosiers",
+          "opponentId": "84",
+          "isHome": false,
+          "nebScore": 55,
+          "oppScore": 68,
+          "isWin": false
+        },
+        {
+          "date": "2021-12-08T00:00Z",
+          "opponent": "Michigan Wolverines",
+          "opponentId": "130",
+          "isHome": true,
+          "nebScore": 67,
+          "oppScore": 102,
+          "isWin": false
+        },
+        {
+          "date": "2021-12-11T16:30Z",
+          "opponent": "Auburn Tigers",
+          "opponentId": "2",
+          "isHome": false,
+          "nebScore": 68,
+          "oppScore": 99,
+          "isWin": false
+        },
+        {
+          "date": "2021-12-19T23:00Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": true,
+          "nebScore": 58,
+          "oppScore": 67,
+          "isWin": false
+        },
+        {
+          "date": "2021-12-23T00:30Z",
+          "opponent": "Kennesaw State Owls",
+          "opponentId": "338",
+          "isHome": true,
+          "nebScore": 88,
+          "oppScore": 74,
+          "isWin": true
+        },
+        {
+          "date": "2022-01-03T01:00Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": true,
+          "nebScore": 79,
+          "oppScore": 87,
+          "isWin": false
+        },
+        {
+          "date": "2022-01-06T00:00Z",
+          "opponent": "Michigan State Spartans",
+          "opponentId": "127",
+          "isHome": false,
+          "nebScore": 67,
+          "oppScore": 79,
+          "isWin": false
+        },
+        {
+          "date": "2022-01-08T19:00Z",
+          "opponent": "Rutgers Scarlet Knights",
+          "opponentId": "164",
+          "isHome": false,
+          "nebScore": 65,
+          "oppScore": 93,
+          "isWin": false
+        },
+        {
+          "date": "2022-01-12T01:30Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": true,
+          "nebScore": 71,
+          "oppScore": 81,
+          "isWin": false
+        },
+        {
+          "date": "2022-01-14T23:30Z",
+          "opponent": "Purdue Boilermakers",
+          "opponentId": "2509",
+          "isHome": false,
+          "nebScore": 65,
+          "oppScore": 92,
+          "isWin": false
+        },
+        {
+          "date": "2022-01-17T23:00Z",
+          "opponent": "Indiana Hoosiers",
+          "opponentId": "84",
+          "isHome": true,
+          "nebScore": 71,
+          "oppScore": 78,
+          "isWin": false
+        },
+        {
+          "date": "2022-01-22T19:15Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": false,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2022-01-27T22:00Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": true,
+          "nebScore": 65,
+          "oppScore": 73,
+          "isWin": false
+        },
+        {
+          "date": "2022-01-29T23:30Z",
+          "opponent": "Rutgers Scarlet Knights",
+          "opponentId": "164",
+          "isHome": true,
+          "nebScore": 61,
+          "oppScore": 63,
+          "isWin": false
+        },
+        {
+          "date": "2022-02-02T02:00Z",
+          "opponent": "Michigan Wolverines",
+          "opponentId": "130",
+          "isHome": false,
+          "nebScore": 79,
+          "oppScore": 85,
+          "isWin": false
+        },
+        {
+          "date": "2022-02-05T18:00Z",
+          "opponent": "Northwestern Wildcats",
+          "opponentId": "77",
+          "isHome": true,
+          "nebScore": 63,
+          "oppScore": 87,
+          "isWin": false
+        },
+        {
+          "date": "2022-02-10T02:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": true,
+          "nebScore": 78,
+          "oppScore": 65,
+          "isWin": true
+        },
+        {
+          "date": "2022-02-13T19:00Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": false,
+          "nebScore": 75,
+          "oppScore": 98,
+          "isWin": false
+        },
+        {
+          "date": "2022-02-19T02:00Z",
+          "opponent": "Maryland Terrapins",
+          "opponentId": "120",
+          "isHome": true,
+          "nebScore": 74,
+          "oppScore": 90,
+          "isWin": false
+        },
+        {
+          "date": "2022-02-23T01:00Z",
+          "opponent": "Northwestern Wildcats",
+          "opponentId": "77",
+          "isHome": false,
+          "nebScore": 65,
+          "oppScore": 77,
+          "isWin": false
+        },
+        {
+          "date": "2022-02-26T02:00Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": true,
+          "nebScore": 78,
+          "oppScore": 88,
+          "isWin": false
+        },
+        {
+          "date": "2022-02-28T00:00Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": false,
+          "nebScore": 93,
+          "oppScore": 70,
+          "isWin": true
+        },
+        {
+          "date": "2022-03-02T00:00Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": false,
+          "nebScore": 78,
+          "oppScore": 70,
+          "isWin": true
+        },
+        {
+          "date": "2022-03-06T19:00Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": false,
+          "nebScore": 74,
+          "oppScore": 73,
+          "isWin": true
+        },
+        {
+          "date": "2022-03-09T23:00Z",
+          "opponent": "Northwestern Wildcats",
+          "opponentId": "77",
+          "isHome": false,
+          "nebScore": 69,
+          "oppScore": 71,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2022-23",
+      "seasonYear": 2023,
+      "wins": 16,
+      "losses": 16,
+      "avgPoints": 68,
+      "avgOppPoints": 69.9,
+      "games": [
+        {
+          "date": "2022-11-08T01:00Z",
+          "opponent": "Maine Black Bears",
+          "opponentId": "311",
+          "isHome": true,
+          "nebScore": 79,
+          "oppScore": 66,
+          "isWin": true
+        },
+        {
+          "date": "2022-11-11T01:00Z",
+          "opponent": "Omaha Mavericks",
+          "opponentId": "2437",
+          "isHome": true,
+          "nebScore": 75,
+          "oppScore": 61,
+          "isWin": true
+        },
+        {
+          "date": "2022-11-17T23:30Z",
+          "opponent": "St. John's Red Storm",
+          "opponentId": "2599",
+          "isHome": false,
+          "nebScore": 50,
+          "oppScore": 70,
+          "isWin": false
+        },
+        {
+          "date": "2022-11-20T20:30Z",
+          "opponent": "Arkansas-Pine Bluff Golden Lions",
+          "opponentId": "2029",
+          "isHome": true,
+          "nebScore": 82,
+          "oppScore": 58,
+          "isWin": true
+        },
+        {
+          "date": "2022-11-24T22:00Z",
+          "opponent": "Oklahoma Sooners",
+          "opponentId": "201",
+          "isHome": true,
+          "nebScore": 56,
+          "oppScore": 69,
+          "isWin": false
+        },
+        {
+          "date": "2022-11-25T22:30Z",
+          "opponent": "Memphis Tigers",
+          "opponentId": "235",
+          "isHome": false,
+          "nebScore": 61,
+          "oppScore": 73,
+          "isWin": false
+        },
+        {
+          "date": "2022-11-28T00:40Z",
+          "opponent": "Florida State Seminoles",
+          "opponentId": "52",
+          "isHome": true,
+          "nebScore": 75,
+          "oppScore": 58,
+          "isWin": true
+        },
+        {
+          "date": "2022-12-01T02:20Z",
+          "opponent": "Boston College Eagles",
+          "opponentId": "103",
+          "isHome": true,
+          "nebScore": 88,
+          "oppScore": 67,
+          "isWin": true
+        },
+        {
+          "date": "2022-12-04T21:30Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": false,
+          "nebScore": 63,
+          "oppScore": 53,
+          "isWin": true
+        },
+        {
+          "date": "2022-12-08T01:30Z",
+          "opponent": "Indiana Hoosiers",
+          "opponentId": "84",
+          "isHome": false,
+          "nebScore": 65,
+          "oppScore": 81,
+          "isWin": false
+        },
+        {
+          "date": "2022-12-10T19:15Z",
+          "opponent": "Purdue Boilermakers",
+          "opponentId": "2509",
+          "isHome": true,
+          "nebScore": 62,
+          "oppScore": 65,
+          "isWin": false
+        },
+        {
+          "date": "2022-12-18T00:00Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": false,
+          "nebScore": 56,
+          "oppScore": 71,
+          "isWin": false
+        },
+        {
+          "date": "2022-12-21T00:30Z",
+          "opponent": "Queens University Royals",
+          "opponentId": "2511",
+          "isHome": true,
+          "nebScore": 75,
+          "oppScore": 65,
+          "isWin": true
+        },
+        {
+          "date": "2022-12-30T00:00Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": true,
+          "nebScore": 66,
+          "oppScore": 50,
+          "isWin": true
+        },
+        {
+          "date": "2023-01-04T00:00Z",
+          "opponent": "Michigan State Spartans",
+          "opponentId": "127",
+          "isHome": false,
+          "nebScore": 56,
+          "oppScore": 74,
+          "isWin": false
+        },
+        {
+          "date": "2023-01-07T17:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": false,
+          "nebScore": 81,
+          "oppScore": 79,
+          "isWin": true
+        },
+        {
+          "date": "2023-01-11T02:00Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": true,
+          "nebScore": 50,
+          "oppScore": 76,
+          "isWin": false
+        },
+        {
+          "date": "2023-01-14T00:00Z",
+          "opponent": "Purdue Boilermakers",
+          "opponentId": "2509",
+          "isHome": false,
+          "nebScore": 55,
+          "oppScore": 73,
+          "isWin": false
+        },
+        {
+          "date": "2023-01-19T00:00Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": true,
+          "nebScore": 63,
+          "oppScore": 60,
+          "isWin": true
+        },
+        {
+          "date": "2023-01-21T19:15Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": false,
+          "nebScore": 65,
+          "oppScore": 76,
+          "isWin": false
+        },
+        {
+          "date": "2023-01-26T00:00Z",
+          "opponent": "Northwestern Wildcats",
+          "opponentId": "77",
+          "isHome": true,
+          "nebScore": 63,
+          "oppScore": 78,
+          "isWin": false
+        },
+        {
+          "date": "2023-01-28T21:30Z",
+          "opponent": "Maryland Terrapins",
+          "opponentId": "120",
+          "isHome": false,
+          "nebScore": 63,
+          "oppScore": 82,
+          "isWin": false
+        },
+        {
+          "date": "2023-02-01T00:00Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": false,
+          "nebScore": 56,
+          "oppScore": 72,
+          "isWin": false
+        },
+        {
+          "date": "2023-02-05T21:30Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": true,
+          "nebScore": 72,
+          "oppScore": 63,
+          "isWin": true
+        },
+        {
+          "date": "2023-02-08T23:30Z",
+          "opponent": "Michigan Wolverines",
+          "opponentId": "130",
+          "isHome": false,
+          "nebScore": 72,
+          "oppScore": 93,
+          "isWin": false
+        },
+        {
+          "date": "2023-02-11T21:00Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": true,
+          "nebScore": 73,
+          "oppScore": 63,
+          "isWin": true
+        },
+        {
+          "date": "2023-02-15T01:00Z",
+          "opponent": "Rutgers Scarlet Knights",
+          "opponentId": "164",
+          "isHome": false,
+          "nebScore": 82,
+          "oppScore": 72,
+          "isWin": true
+        },
+        {
+          "date": "2023-02-19T22:00Z",
+          "opponent": "Maryland Terrapins",
+          "opponentId": "120",
+          "isHome": true,
+          "nebScore": 70,
+          "oppScore": 66,
+          "isWin": true
+        },
+        {
+          "date": "2023-02-25T20:30Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": true,
+          "nebScore": 78,
+          "oppScore": 67,
+          "isWin": true
+        },
+        {
+          "date": "2023-03-01T02:00Z",
+          "opponent": "Michigan State Spartans",
+          "opponentId": "127",
+          "isHome": true,
+          "nebScore": 67,
+          "oppScore": 80,
+          "isWin": false
+        },
+        {
+          "date": "2023-03-05T19:00Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": false,
+          "nebScore": 81,
+          "oppScore": 77,
+          "isWin": true
+        },
+        {
+          "date": "2023-03-09T02:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": true,
+          "nebScore": 75,
+          "oppScore": 78,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2023-24",
+      "seasonYear": 2024,
+      "wins": 23,
+      "losses": 10,
+      "avgPoints": 77.6,
+      "avgOppPoints": 70.1,
+      "games": [
+        {
+          "date": "2023-11-07T01:00Z",
+          "opponent": "Lindenwood Lions",
+          "opponentId": "2815",
+          "isHome": true,
+          "nebScore": 84,
+          "oppScore": 52,
+          "isWin": true
+        },
+        {
+          "date": "2023-11-10T01:00Z",
+          "opponent": "Florida A&M Rattlers",
+          "opponentId": "50",
+          "isHome": true,
+          "nebScore": 81,
+          "oppScore": 54,
+          "isWin": true
+        },
+        {
+          "date": "2023-11-14T01:00Z",
+          "opponent": "Rider Broncs",
+          "opponentId": "2520",
+          "isHome": true,
+          "nebScore": 64,
+          "oppScore": 50,
+          "isWin": true
+        },
+        {
+          "date": "2023-11-16T01:00Z",
+          "opponent": "Stony Brook Seawolves",
+          "opponentId": "2619",
+          "isHome": true,
+          "nebScore": 84,
+          "oppScore": 63,
+          "isWin": true
+        },
+        {
+          "date": "2023-11-18T21:00Z",
+          "opponent": "Oregon State Beavers",
+          "opponentId": "204",
+          "isHome": true,
+          "nebScore": 84,
+          "oppScore": 63,
+          "isWin": true
+        },
+        {
+          "date": "2023-11-23T01:00Z",
+          "opponent": "Duquesne Dukes",
+          "opponentId": "2184",
+          "isHome": true,
+          "nebScore": 89,
+          "oppScore": 79,
+          "isWin": true
+        },
+        {
+          "date": "2023-11-26T19:00Z",
+          "opponent": "Cal State Fullerton Titans",
+          "opponentId": "2239",
+          "isHome": true,
+          "nebScore": 85,
+          "oppScore": 72,
+          "isWin": true
+        },
+        {
+          "date": "2023-12-03T21:00Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": true,
+          "nebScore": 60,
+          "oppScore": 89,
+          "isWin": false
+        },
+        {
+          "date": "2023-12-07T02:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": false,
+          "nebScore": 65,
+          "oppScore": 76,
+          "isWin": false
+        },
+        {
+          "date": "2023-12-10T23:30Z",
+          "opponent": "Michigan State Spartans",
+          "opponentId": "127",
+          "isHome": true,
+          "nebScore": 77,
+          "oppScore": 70,
+          "isWin": true
+        },
+        {
+          "date": "2023-12-17T20:00Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": false,
+          "nebScore": 62,
+          "oppScore": 46,
+          "isWin": true
+        },
+        {
+          "date": "2023-12-21T00:30Z",
+          "opponent": "North Dakota Fighting Hawks",
+          "opponentId": "155",
+          "isHome": true,
+          "nebScore": 83,
+          "oppScore": 75,
+          "isWin": true
+        },
+        {
+          "date": "2023-12-30T00:30Z",
+          "opponent": "South Carolina State Bulldogs",
+          "opponentId": "2569",
+          "isHome": true,
+          "nebScore": 91,
+          "oppScore": 62,
+          "isWin": true
+        },
+        {
+          "date": "2024-01-04T02:00Z",
+          "opponent": "Indiana Hoosiers",
+          "opponentId": "84",
+          "isHome": true,
+          "nebScore": 86,
+          "oppScore": 70,
+          "isWin": true
+        },
+        {
+          "date": "2024-01-06T19:15Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": false,
+          "nebScore": 72,
+          "oppScore": 88,
+          "isWin": false
+        },
+        {
+          "date": "2024-01-10T02:00Z",
+          "opponent": "Purdue Boilermakers",
+          "opponentId": "2509",
+          "isHome": true,
+          "nebScore": 88,
+          "oppScore": 72,
+          "isWin": true
+        },
+        {
+          "date": "2024-01-13T02:30Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": false,
+          "nebScore": 76,
+          "oppScore": 94,
+          "isWin": false
+        },
+        {
+          "date": "2024-01-18T00:00Z",
+          "opponent": "Rutgers Scarlet Knights",
+          "opponentId": "164",
+          "isHome": false,
+          "nebScore": 82,
+          "oppScore": 87,
+          "isWin": false
+        },
+        {
+          "date": "2024-01-20T19:15Z",
+          "opponent": "Northwestern Wildcats",
+          "opponentId": "77",
+          "isHome": true,
+          "nebScore": 75,
+          "oppScore": 69,
+          "isWin": true
+        },
+        {
+          "date": "2024-01-24T00:00Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": true,
+          "nebScore": 83,
+          "oppScore": 69,
+          "isWin": true
+        },
+        {
+          "date": "2024-01-27T17:00Z",
+          "opponent": "Maryland Terrapins",
+          "opponentId": "120",
+          "isHome": false,
+          "nebScore": 51,
+          "oppScore": 73,
+          "isWin": false
+        },
+        {
+          "date": "2024-02-02T01:30Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": true,
+          "nebScore": 80,
+          "oppScore": 72,
+          "isWin": true
+        },
+        {
+          "date": "2024-02-04T23:30Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": false,
+          "nebScore": 84,
+          "oppScore": 87,
+          "isWin": false
+        },
+        {
+          "date": "2024-02-08T02:00Z",
+          "opponent": "Northwestern Wildcats",
+          "opponentId": "77",
+          "isHome": false,
+          "nebScore": 68,
+          "oppScore": 80,
+          "isWin": false
+        },
+        {
+          "date": "2024-02-10T23:30Z",
+          "opponent": "Michigan Wolverines",
+          "opponentId": "130",
+          "isHome": true,
+          "nebScore": 79,
+          "oppScore": 59,
+          "isWin": true
+        },
+        {
+          "date": "2024-02-17T17:00Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": true,
+          "nebScore": 68,
+          "oppScore": 49,
+          "isWin": true
+        },
+        {
+          "date": "2024-02-22T01:30Z",
+          "opponent": "Indiana Hoosiers",
+          "opponentId": "84",
+          "isHome": false,
+          "nebScore": 85,
+          "oppScore": 70,
+          "isWin": true
+        },
+        {
+          "date": "2024-02-25T23:30Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": true,
+          "nebScore": 73,
+          "oppScore": 55,
+          "isWin": true
+        },
+        {
+          "date": "2024-02-29T23:30Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": false,
+          "nebScore": 69,
+          "oppScore": 78,
+          "isWin": false
+        },
+        {
+          "date": "2024-03-03T23:30Z",
+          "opponent": "Rutgers Scarlet Knights",
+          "opponentId": "164",
+          "isHome": true,
+          "nebScore": 67,
+          "oppScore": 56,
+          "isWin": true
+        },
+        {
+          "date": "2024-03-10T16:00Z",
+          "opponent": "Michigan Wolverines",
+          "opponentId": "130",
+          "isHome": false,
+          "nebScore": 85,
+          "oppScore": 70,
+          "isWin": true
+        },
+        {
+          "date": "2024-03-16T01:20Z",
+          "opponent": "Indiana Hoosiers",
+          "opponentId": "84",
+          "isHome": true,
+          "nebScore": 93,
+          "oppScore": 66,
+          "isWin": true
+        },
+        {
+          "date": "2024-03-16T20:00Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": false,
+          "nebScore": 87,
+          "oppScore": 98,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2024-25",
+      "seasonYear": 2025,
+      "wins": 17,
+      "losses": 14,
+      "avgPoints": 75.4,
+      "avgOppPoints": 72.9,
+      "games": [
+        {
+          "date": "2024-11-05T01:00Z",
+          "opponent": "UT Rio Grande Valley Vaqueros",
+          "opponentId": "292",
+          "isHome": true,
+          "nebScore": 87,
+          "oppScore": 67,
+          "isWin": true
+        },
+        {
+          "date": "2024-11-10T01:00Z",
+          "opponent": "Bethune-Cookman Wildcats",
+          "opponentId": "2065",
+          "isHome": true,
+          "nebScore": 63,
+          "oppScore": 58,
+          "isWin": true
+        },
+        {
+          "date": "2024-11-14T01:00Z",
+          "opponent": "Fairleigh Dickinson Knights",
+          "opponentId": "161",
+          "isHome": true,
+          "nebScore": 86,
+          "oppScore": 60,
+          "isWin": true
+        },
+        {
+          "date": "2024-11-17T18:00Z",
+          "opponent": "Saint Mary's Gaels",
+          "opponentId": "2608",
+          "isHome": false,
+          "nebScore": 74,
+          "oppScore": 77,
+          "isWin": false
+        },
+        {
+          "date": "2024-11-23T01:00Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": false,
+          "nebScore": 74,
+          "oppScore": 63,
+          "isWin": true
+        },
+        {
+          "date": "2024-11-27T23:30Z",
+          "opponent": "South Dakota Coyotes",
+          "opponentId": "233",
+          "isHome": true,
+          "nebScore": 96,
+          "oppScore": 79,
+          "isWin": true
+        },
+        {
+          "date": "2024-12-01T21:00Z",
+          "opponent": "North Florida Ospreys",
+          "opponentId": "2454",
+          "isHome": true,
+          "nebScore": 103,
+          "oppScore": 72,
+          "isWin": true
+        },
+        {
+          "date": "2024-12-07T17:00Z",
+          "opponent": "Michigan State Spartans",
+          "opponentId": "127",
+          "isHome": false,
+          "nebScore": 52,
+          "oppScore": 89,
+          "isWin": false
+        },
+        {
+          "date": "2024-12-14T01:00Z",
+          "opponent": "Indiana Hoosiers",
+          "opponentId": "84",
+          "isHome": true,
+          "nebScore": 85,
+          "oppScore": 68,
+          "isWin": true
+        },
+        {
+          "date": "2024-12-23T02:00Z",
+          "opponent": "Murray State Racers",
+          "opponentId": "93",
+          "isHome": false,
+          "nebScore": 66,
+          "oppScore": 49,
+          "isWin": true
+        },
+        {
+          "date": "2024-12-24T03:39Z",
+          "opponent": "Hawai'i Rainbow Warriors",
+          "opponentId": "62",
+          "isHome": false,
+          "nebScore": 69,
+          "oppScore": 55,
+          "isWin": true
+        },
+        {
+          "date": "2024-12-26T02:45Z",
+          "opponent": "Oregon State Beavers",
+          "opponentId": "204",
+          "isHome": true,
+          "nebScore": 78,
+          "oppScore": 66,
+          "isWin": true
+        },
+        {
+          "date": "2024-12-31T02:00Z",
+          "opponent": "Southern Jaguars",
+          "opponentId": "2582",
+          "isHome": true,
+          "nebScore": 77,
+          "oppScore": 43,
+          "isWin": true
+        },
+        {
+          "date": "2025-01-04T19:00Z",
+          "opponent": "UCLA Bruins",
+          "opponentId": "26",
+          "isHome": true,
+          "nebScore": 66,
+          "oppScore": 58,
+          "isWin": true
+        },
+        {
+          "date": "2025-01-08T01:00Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": false,
+          "nebScore": 87,
+          "oppScore": 97,
+          "isWin": false
+        },
+        {
+          "date": "2025-01-12T17:00Z",
+          "opponent": "Purdue Boilermakers",
+          "opponentId": "2509",
+          "isHome": false,
+          "nebScore": 68,
+          "oppScore": 104,
+          "isWin": false
+        },
+        {
+          "date": "2025-01-17T02:00Z",
+          "opponent": "Rutgers Scarlet Knights",
+          "opponentId": "164",
+          "isHome": true,
+          "nebScore": 82,
+          "oppScore": 85,
+          "isWin": false
+        },
+        {
+          "date": "2025-01-19T17:00Z",
+          "opponent": "Maryland Terrapins",
+          "opponentId": "120",
+          "isHome": false,
+          "nebScore": 66,
+          "oppScore": 69,
+          "isWin": false
+        },
+        {
+          "date": "2025-01-23T02:00Z",
+          "opponent": "USC Trojans",
+          "opponentId": "30",
+          "isHome": true,
+          "nebScore": 73,
+          "oppScore": 78,
+          "isWin": false
+        },
+        {
+          "date": "2025-01-26T18:00Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": false,
+          "nebScore": 55,
+          "oppScore": 83,
+          "isWin": false
+        },
+        {
+          "date": "2025-01-31T01:30Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": true,
+          "nebScore": 80,
+          "oppScore": 74,
+          "isWin": true
+        },
+        {
+          "date": "2025-02-03T00:30Z",
+          "opponent": "Oregon Ducks",
+          "opponentId": "2483",
+          "isHome": false,
+          "nebScore": 77,
+          "oppScore": 71,
+          "isWin": true
+        },
+        {
+          "date": "2025-02-06T03:30Z",
+          "opponent": "Washington Huskies",
+          "opponentId": "264",
+          "isHome": false,
+          "nebScore": 86,
+          "oppScore": 72,
+          "isWin": true
+        },
+        {
+          "date": "2025-02-09T19:00Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": true,
+          "nebScore": 79,
+          "oppScore": 71,
+          "isWin": true
+        },
+        {
+          "date": "2025-02-14T01:30Z",
+          "opponent": "Maryland Terrapins",
+          "opponentId": "120",
+          "isHome": true,
+          "nebScore": 75,
+          "oppScore": 83,
+          "isWin": false
+        },
+        {
+          "date": "2025-02-16T20:00Z",
+          "opponent": "Northwestern Wildcats",
+          "opponentId": "77",
+          "isHome": false,
+          "nebScore": 68,
+          "oppScore": 64,
+          "isWin": true
+        },
+        {
+          "date": "2025-02-19T23:30Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": false,
+          "nebScore": 72,
+          "oppScore": 89,
+          "isWin": false
+        },
+        {
+          "date": "2025-02-25T01:00Z",
+          "opponent": "Michigan Wolverines",
+          "opponentId": "130",
+          "isHome": true,
+          "nebScore": 46,
+          "oppScore": 49,
+          "isWin": false
+        },
+        {
+          "date": "2025-03-01T19:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": true,
+          "nebScore": 65,
+          "oppScore": 67,
+          "isWin": false
+        },
+        {
+          "date": "2025-03-05T02:00Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": false,
+          "nebScore": 114,
+          "oppScore": 116,
+          "isWin": false
+        },
+        {
+          "date": "2025-03-09T16:30Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": true,
+          "nebScore": 68,
+          "oppScore": 83,
+          "isWin": false
+        }
+      ]
+    },
+    {
+      "season": "2025-26",
+      "seasonYear": 2026,
+      "wins": 11,
+      "losses": 0,
+      "avgPoints": 83.8,
+      "avgOppPoints": 68.3,
+      "games": [
+        {
+          "date": "2025-11-04T01:00Z",
+          "opponent": "West Georgia Wolves",
+          "opponentId": "2698",
+          "isHome": true,
+          "nebScore": 86,
+          "oppScore": 53,
+          "isWin": true
+        },
+        {
+          "date": "2025-11-08T18:00Z",
+          "opponent": "Florida International Panthers",
+          "opponentId": "2229",
+          "isHome": true,
+          "nebScore": 96,
+          "oppScore": 66,
+          "isWin": true
+        },
+        {
+          "date": "2025-11-12T01:00Z",
+          "opponent": "Maryland Eastern Shore Hawks",
+          "opponentId": "2379",
+          "isHome": true,
+          "nebScore": 69,
+          "oppScore": 50,
+          "isWin": true
+        },
+        {
+          "date": "2025-11-16T00:00Z",
+          "opponent": "Oklahoma Sooners",
+          "opponentId": "201",
+          "isHome": true,
+          "nebScore": 105,
+          "oppScore": 99,
+          "isWin": true
+        },
+        {
+          "date": "2025-11-21T00:00Z",
+          "opponent": "New Mexico Lobos",
+          "opponentId": "167",
+          "isHome": false,
+          "nebScore": 84,
+          "oppScore": 72,
+          "isWin": true
+        },
+        {
+          "date": "2025-11-22T02:30Z",
+          "opponent": "Kansas State Wildcats",
+          "opponentId": "2306",
+          "isHome": true,
+          "nebScore": 86,
+          "oppScore": 85,
+          "isWin": true
+        },
+        {
+          "date": "2025-11-26T01:30Z",
+          "opponent": "Winthrop Eagles",
+          "opponentId": "2737",
+          "isHome": true,
+          "nebScore": 80,
+          "oppScore": 73,
+          "isWin": true
+        },
+        {
+          "date": "2025-11-29T19:00Z",
+          "opponent": "South Carolina Upstate Spartans",
+          "opponentId": "2908",
+          "isHome": true,
+          "nebScore": 72,
+          "oppScore": 63,
+          "isWin": true
+        },
+        {
+          "date": "2025-12-07T22:00Z",
+          "opponent": "Creighton Bluejays",
+          "opponentId": "156",
+          "isHome": true,
+          "nebScore": 71,
+          "oppScore": 50,
+          "isWin": true
+        },
+        {
+          "date": "2025-12-11T02:00Z",
+          "opponent": "Wisconsin Badgers",
+          "opponentId": "275",
+          "isHome": true,
+          "nebScore": 90,
+          "oppScore": 60,
+          "isWin": true
+        },
+        {
+          "date": "2025-12-13T21:00Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": false,
+          "nebScore": 83,
+          "oppScore": 80,
+          "isWin": true
+        },
+        {
+          "date": "2025-12-22T01:00Z",
+          "opponent": "North Dakota Fighting Hawks",
+          "opponentId": "155",
+          "isHome": true,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2025-12-31T02:00Z",
+          "opponent": "New Hampshire Wildcats",
+          "opponentId": "160",
+          "isHome": true,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2026-01-03T02:00Z",
+          "opponent": "Michigan State Spartans",
+          "opponentId": "127",
+          "isHome": true,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2026-01-05T23:30Z",
+          "opponent": "Ohio State Buckeyes",
+          "opponentId": "194",
+          "isHome": false,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2026-01-10T17:00Z",
+          "opponent": "Indiana Hoosiers",
+          "opponentId": "84",
+          "isHome": false,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2026-01-14T02:00Z",
+          "opponent": "Oregon Ducks",
+          "opponentId": "2483",
+          "isHome": true,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2026-01-17T21:00Z",
+          "opponent": "Northwestern Wildcats",
+          "opponentId": "77",
+          "isHome": false,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2026-01-22T02:00Z",
+          "opponent": "Washington Huskies",
+          "opponentId": "264",
+          "isHome": true,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2026-01-24T17:00Z",
+          "opponent": "Minnesota Golden Gophers",
+          "opponentId": "135",
+          "isHome": false,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2026-01-28T00:00Z",
+          "opponent": "Michigan Wolverines",
+          "opponentId": "130",
+          "isHome": false,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2026-02-01T21:00Z",
+          "opponent": "Illinois Fighting Illini",
+          "opponentId": "356",
+          "isHome": true,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2026-02-07T17:00Z",
+          "opponent": "Rutgers Scarlet Knights",
+          "opponentId": "164",
+          "isHome": false,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2026-02-11T00:00Z",
+          "opponent": "Purdue Boilermakers",
+          "opponentId": "2509",
+          "isHome": true,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2026-02-14T18:00Z",
+          "opponent": "Northwestern Wildcats",
+          "opponentId": "77",
+          "isHome": true,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2026-02-18T02:00Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": false,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2026-02-21T19:00Z",
+          "opponent": "Penn State Nittany Lions",
+          "opponentId": "213",
+          "isHome": true,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2026-02-26T00:00Z",
+          "opponent": "Maryland Terrapins",
+          "opponentId": "120",
+          "isHome": true,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2026-02-28T21:00Z",
+          "opponent": "USC Trojans",
+          "opponentId": "30",
+          "isHome": false,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2026-03-04T04:00Z",
+          "opponent": "UCLA Bruins",
+          "opponentId": "26",
+          "isHome": false,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        },
+        {
+          "date": "2026-03-08T21:00Z",
+          "opponent": "Iowa Hawkeyes",
+          "opponentId": "2294",
+          "isHome": true,
+          "nebScore": 0,
+          "oppScore": 0,
+          "isWin": null
+        }
+      ]
+    }
+  ]
+}

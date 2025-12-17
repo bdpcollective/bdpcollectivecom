@@ -1,0 +1,269 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Cinderella Scout - Apps">
+  <main>
+    {/* Content Section */}
+    <section class="container mx-auto px-4 py-12">
+      <div class="max-w-4xl mx-auto space-y-8">
+        {/* Back Button */}
+        <a
+          href="/apps"
+          class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+        >
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to Apps
+        </a>
+
+        {/* Header */}
+        <div class="text-center">
+          <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Cinderella Scout</h1>
+          <p class="text-gray-600">Identifying mid-major teams with the statistical profile to pull March Madness upsets.</p>
+        </div>
+
+        {/* Loading State */}
+        <div id="loading" class="text-center py-12">
+          <div class="inline-block animate-spin rounded-full h-10 w-10 border-4 border-gray-300 border-t-blue-600"></div>
+          <p class="mt-4 text-gray-600">Scouting potential Cinderellas...</p>
+        </div>
+
+        {/* Results Container */}
+        <div id="results" class="hidden space-y-4">
+          {/* Results will be inserted here */}
+        </div>
+
+        {/* Giant Killer Traits Info */}
+        <div class="p-6 bg-gray-50 rounded-xl border border-gray-200">
+          <h3 class="font-semibold text-gray-900 mb-3">Giant Killer Traits</h3>
+          <ul class="text-sm text-gray-600 space-y-2">
+            <li><span class="font-medium">3-Point Reliance:</span> High volume of threes = high variance = helps underdogs</li>
+            <li><span class="font-medium">Free Throw Accuracy:</span> Can close out tight games in crunch time</li>
+            <li><span class="font-medium">Defensive Efficiency:</span> Hold opponents to low scoring</li>
+            <li><span class="font-medium">Winning Record:</span> Battle-tested teams that know how to win</li>
+            <li><span class="font-medium">Ball Security:</span> Low turnovers keep games close</li>
+          </ul>
+        </div>
+
+        {/* Data Source */}
+        <p class="text-center text-sm text-gray-500">
+          Stats powered by ESPN. Updated in real-time.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const ESPN_BASE = 'https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball';
+      const loadingEl = document.getElementById('loading');
+      const resultsEl = document.getElementById('results');
+
+      async function fetchTeamStats(teamId: number): Promise<any> {
+        try {
+          const response = await fetch(`${ESPN_BASE}/teams/${teamId}/statistics`);
+          const data = await response.json();
+          const stats: any = {};
+
+          const categories = data.results?.stats?.categories || [];
+          categories.forEach((cat: any) => {
+            cat.stats?.forEach((stat: any) => {
+              stats[stat.name] = parseFloat(stat.value) || 0;
+            });
+          });
+
+          return stats;
+        } catch {
+          return {};
+        }
+      }
+
+      async function analyzeCinderellas() {
+        try {
+          // Fetch rankings to find mid-majors with good records
+          const rankingsResponse = await fetch(`${ESPN_BASE}/rankings`);
+          const rankingsData = await rankingsResponse.json();
+
+          // Get teams from AP Top 25 and others receiving votes
+          const rankedTeams = new Set<number>();
+          rankingsData.rankings?.forEach((ranking: any) => {
+            ranking.ranks?.forEach((team: any) => {
+              rankedTeams.add(parseInt(team.team?.id));
+            });
+          });
+
+          // Fetch scoreboard for recent games to find hot mid-majors
+          const scoreboardResponse = await fetch(`${ESPN_BASE}/scoreboard`);
+          const scoreboardData = await scoreboardResponse.json();
+
+          // Collect potential Cinderellas from various sources
+          const potentialCinderellas: any[] = [];
+          const processedTeams = new Set<number>();
+
+          // Process teams from scoreboard
+          for (const event of (scoreboardData.events || []).slice(0, 30)) {
+            for (const competitor of event.competitions?.[0]?.competitors || []) {
+              const team = competitor.team;
+              const teamId = parseInt(team?.id);
+
+              if (processedTeams.has(teamId)) continue;
+              processedTeams.add(teamId);
+
+              // Skip if ranked in top 25
+              if (rankedTeams.has(teamId)) continue;
+
+              const record = competitor.records?.[0]?.summary || '';
+              const [wins, losses] = record.split('-').map(Number);
+
+              // Only consider teams with winning records
+              if (!wins || !losses || wins <= losses || wins < 8) continue;
+
+              potentialCinderellas.push({
+                id: teamId,
+                name: team?.displayName || team?.name,
+                logo: team?.logos?.[0]?.href,
+                record,
+                wins,
+                losses,
+                winPct: wins / (wins + losses)
+              });
+            }
+          }
+
+          // Analyze each potential Cinderella
+          const analyzedTeams: any[] = [];
+
+          for (const team of potentialCinderellas.slice(0, 15)) {
+            const stats = await fetchTeamStats(team.id);
+
+            let cinderellaScore = 0;
+            const traits: string[] = [];
+
+            // Trait 1: 3-Point Reliance (high volume + decent %)
+            const threePtAttempts = stats.threePointFieldGoalsAttemptedPerGame || stats.avgThreePointFieldGoalsAttempted || 0;
+            const threePtPct = stats.threePointFieldGoalPct || 0;
+
+            if (threePtAttempts >= 25) {
+              cinderellaScore += 20;
+              traits.push(`${threePtAttempts.toFixed(0)} 3PA/game`);
+            } else if (threePtAttempts >= 20) {
+              cinderellaScore += 10;
+              traits.push(`${threePtAttempts.toFixed(0)} 3PA/game`);
+            }
+
+            if (threePtPct >= 36) {
+              cinderellaScore += 15;
+              traits.push(`${(threePtPct).toFixed(1)}% from 3`);
+            }
+
+            // Trait 2: Free Throw Accuracy
+            const ftPct = stats.freeThrowPct || 0;
+            if (ftPct >= 77) {
+              cinderellaScore += 15;
+              traits.push(`${ftPct.toFixed(1)}% FT`);
+            } else if (ftPct >= 73) {
+              cinderellaScore += 8;
+              traits.push(`${ftPct.toFixed(1)}% FT`);
+            }
+
+            // Trait 3: Defensive Efficiency (low opponent PPG)
+            const oppPpg = stats.avgPointsAllowed || stats.pointsAllowedPerGame || 0;
+            if (oppPpg > 0 && oppPpg <= 65) {
+              cinderellaScore += 20;
+              traits.push(`${oppPpg.toFixed(1)} opp PPG`);
+            } else if (oppPpg > 0 && oppPpg <= 70) {
+              cinderellaScore += 10;
+              traits.push(`${oppPpg.toFixed(1)} opp PPG`);
+            }
+
+            // Trait 4: Winning Record Bonus
+            if (team.winPct >= 0.85) {
+              cinderellaScore += 20;
+              traits.push(`${team.record} record`);
+            } else if (team.winPct >= 0.75) {
+              cinderellaScore += 15;
+              traits.push(`${team.record} record`);
+            } else if (team.winPct >= 0.65) {
+              cinderellaScore += 10;
+              traits.push(`${team.record} record`);
+            }
+
+            // Trait 5: Turnover margin / Ball security
+            const turnovers = stats.turnoversPerGame || stats.avgTurnovers || 0;
+            if (turnovers > 0 && turnovers <= 11) {
+              cinderellaScore += 10;
+              traits.push(`${turnovers.toFixed(1)} TO/game`);
+            }
+
+            if (traits.length > 0) {
+              analyzedTeams.push({
+                ...team,
+                cinderellaScore: Math.min(cinderellaScore, 100),
+                traits,
+                threatLevel: cinderellaScore >= 60 ? 'Dangerous' : cinderellaScore >= 40 ? 'Sleeper' : 'Watch'
+              });
+            }
+          }
+
+          // Sort by Cinderella score descending
+          analyzedTeams.sort((a, b) => b.cinderellaScore - a.cinderellaScore);
+
+          // Render results
+          if (resultsEl) {
+            if (analyzedTeams.length === 0) {
+              resultsEl.innerHTML = '<p class="text-center text-gray-500 py-8">No potential Cinderellas found. Check back during the season!</p>';
+            } else {
+              resultsEl.innerHTML = `
+                <div class="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-xl">
+                  <p class="text-sm text-blue-800"><strong>Bust-a-Bracket Dashboard:</strong> These mid-majors have the statistical profile to pull March Madness upsets.</p>
+                </div>
+                ${analyzedTeams.map((team, index) => {
+                  const threatBg = team.threatLevel === 'Dangerous' ? 'bg-red-50 border-red-200' : team.threatLevel === 'Sleeper' ? 'bg-yellow-50 border-yellow-200' : 'bg-gray-50 border-gray-200';
+                  const threatColor = team.threatLevel === 'Dangerous' ? 'text-red-700' : team.threatLevel === 'Sleeper' ? 'text-yellow-700' : 'text-gray-600';
+
+                  return `
+                    <div class="p-4 rounded-xl border ${threatBg}">
+                      <div class="flex items-center justify-between mb-3">
+                        <div class="flex items-center gap-3">
+                          <span class="text-lg font-bold text-gray-400">#${index + 1}</span>
+                          ${team.logo ? `<img src="${team.logo}" alt="${team.name}" class="w-10 h-10 object-contain" />` : ''}
+                          <div>
+                            <p class="font-semibold text-gray-900">${team.name}</p>
+                            <p class="text-sm text-gray-500">${team.record}</p>
+                          </div>
+                        </div>
+                        <div class="text-right">
+                          <p class="text-2xl font-bold ${threatColor}">${team.cinderellaScore}</p>
+                          <p class="text-xs ${threatColor} font-medium">${team.threatLevel}</p>
+                        </div>
+                      </div>
+                      <div class="flex flex-wrap gap-2">
+                        ${team.traits.map((t: string) => `<span class="text-xs px-2 py-1 rounded-full bg-white/70 text-gray-700">${t}</span>`).join('')}
+                      </div>
+                    </div>
+                  `;
+                }).join('')}
+              `;
+            }
+          }
+
+          loadingEl?.classList.add('hidden');
+          resultsEl?.classList.remove('hidden');
+
+        } catch (error) {
+          console.error('Error analyzing Cinderellas:', error);
+          loadingEl?.classList.add('hidden');
+          if (resultsEl) {
+            resultsEl.innerHTML = '<p class="text-center text-red-500 py-8">Error scouting Cinderellas. Please try again later.</p>';
+            resultsEl.classList.remove('hidden');
+          }
+        }
+      }
+
+      // Run analysis on load
+      analyzeCinderellas();
+    });
+  </script>
+</Layout>

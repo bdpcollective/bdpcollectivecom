@@ -1,0 +1,419 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Nebraska Basketball All-time - Apps">
+  <main>
+    {/* Chart.js CDN */}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    {/* Content Section */}
+    <section class="container mx-auto px-4 py-12">
+      <div class="max-w-5xl mx-auto space-y-8">
+        {/* Back Button */}
+        <a
+          href="/apps"
+          class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+        >
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to Apps
+        </a>
+
+        {/* Header */}
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Nebraska Basketball All-time</h1>
+            <p class="text-gray-600">Historical game results and stats for Husker basketball.</p>
+          </div>
+          <img id="team-logo" src="" alt="Nebraska" class="w-20 h-20 object-contain" />
+        </div>
+
+        {/* All-time Wins Chart */}
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <h2 class="text-xl font-bold text-gray-900 mb-4">Wins by Season</h2>
+          <div id="chart-loading" class="text-center py-8">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-300 border-t-red-700"></div>
+            <p class="mt-2 text-gray-600">Loading historical data...</p>
+          </div>
+          <div id="chart-container" class="hidden" style="height: 350px;">
+            <canvas id="wins-chart"></canvas>
+          </div>
+        </div>
+
+        {/* All-time Summary */}
+        <div id="alltime-summary" class="hidden bg-white rounded-xl shadow-lg p-6">
+          <h2 class="text-xl font-bold text-gray-900 mb-4">All-time Summary (2002-Present)</h2>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div class="bg-green-50 rounded-lg p-4 text-center">
+              <p class="text-3xl font-bold text-green-600" id="alltime-wins">0</p>
+              <p class="text-sm text-gray-500">Total Wins</p>
+            </div>
+            <div class="bg-red-50 rounded-lg p-4 text-center">
+              <p class="text-3xl font-bold text-red-600" id="alltime-losses">0</p>
+              <p class="text-sm text-gray-500">Total Losses</p>
+            </div>
+            <div class="bg-blue-50 rounded-lg p-4 text-center">
+              <p class="text-3xl font-bold text-blue-600" id="alltime-pct">0%</p>
+              <p class="text-sm text-gray-500">Win %</p>
+            </div>
+            <div class="bg-yellow-50 rounded-lg p-4 text-center">
+              <p class="text-3xl font-bold text-yellow-600" id="alltime-best">--</p>
+              <p class="text-sm text-gray-500">Best Season</p>
+            </div>
+          </div>
+          <p id="last-updated" class="text-xs text-gray-400 mt-4 text-right"></p>
+        </div>
+
+        {/* Season Selector */}
+        <div class="bg-white rounded-xl shadow-lg p-6">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <label for="season-select" class="font-semibold text-gray-900">View Season Details:</label>
+            <select id="season-select" class="px-4 py-2 border border-gray-300 rounded-lg text-lg focus:ring-2 focus:ring-red-700 focus:border-transparent outline-none bg-white cursor-pointer">
+              {/* Options will be populated by JS */}
+            </select>
+          </div>
+        </div>
+
+        {/* Season Summary */}
+        <div id="season-summary" class="hidden bg-white rounded-xl shadow-lg p-6">
+          <h2 class="text-xl font-bold text-gray-900 mb-4">Season Summary</h2>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div class="bg-gray-50 rounded-lg p-4 text-center">
+              <p class="text-3xl font-bold text-green-600" id="stat-wins">0</p>
+              <p class="text-sm text-gray-500">Wins</p>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-4 text-center">
+              <p class="text-3xl font-bold text-red-600" id="stat-losses">0</p>
+              <p class="text-sm text-gray-500">Losses</p>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-4 text-center">
+              <p class="text-3xl font-bold text-gray-900" id="stat-ppg">0</p>
+              <p class="text-sm text-gray-500">Avg Points</p>
+            </div>
+            <div class="bg-gray-50 rounded-lg p-4 text-center">
+              <p class="text-3xl font-bold text-gray-900" id="stat-oppg">0</p>
+              <p class="text-sm text-gray-500">Opp Avg</p>
+            </div>
+          </div>
+          <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-green-50 rounded-lg p-4">
+              <p class="text-sm text-gray-600 mb-1">Biggest Win</p>
+              <p class="font-semibold text-green-700" id="stat-biggest-win">--</p>
+            </div>
+            <div class="bg-red-50 rounded-lg p-4">
+              <p class="text-sm text-gray-600 mb-1">Worst Loss</p>
+              <p class="font-semibold text-red-700" id="stat-worst-loss">--</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Games List */}
+        <div id="games-container" class="hidden">
+          <h2 class="text-xl font-bold text-gray-900 mb-4">All Games</h2>
+          <div id="games-list" class="space-y-3">
+            {/* Games will be inserted here */}
+          </div>
+        </div>
+
+        {/* Data Source */}
+        <p class="text-center text-sm text-gray-500">
+          Stats powered by ESPN.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const NEBRASKA_TEAM_ID = 158;
+      const ESPN_BASE = 'https://site.api.espn.com/apis/site/v2/sports/basketball/mens-college-basketball';
+      const DATA_URL = '/data/nebraska-basketball-history.json';
+
+      const teamLogo = document.getElementById('team-logo') as HTMLImageElement;
+      const seasonSelect = document.getElementById('season-select') as HTMLSelectElement;
+      const seasonSummary = document.getElementById('season-summary');
+      const gamesContainer = document.getElementById('games-container');
+      const gamesList = document.getElementById('games-list');
+      const statWins = document.getElementById('stat-wins');
+      const statLosses = document.getElementById('stat-losses');
+      const statPpg = document.getElementById('stat-ppg');
+      const statOppg = document.getElementById('stat-oppg');
+      const statBiggestWin = document.getElementById('stat-biggest-win');
+      const statWorstLoss = document.getElementById('stat-worst-loss');
+
+      // Chart elements
+      const chartLoading = document.getElementById('chart-loading');
+      const chartContainer = document.getElementById('chart-container');
+      const alltimeSummary = document.getElementById('alltime-summary');
+      const alltimeWins = document.getElementById('alltime-wins');
+      const alltimeLosses = document.getElementById('alltime-losses');
+      const alltimePct = document.getElementById('alltime-pct');
+      const alltimeBest = document.getElementById('alltime-best');
+      const lastUpdated = document.getElementById('last-updated');
+
+      let winsChart: any = null;
+      let historicalData: any = null;
+
+      // Fetch team logo
+      async function fetchTeamInfo() {
+        try {
+          const response = await fetch(`${ESPN_BASE}/teams/${NEBRASKA_TEAM_ID}`);
+          const data = await response.json();
+          if (teamLogo && data.team?.logos?.[0]?.href) {
+            teamLogo.src = data.team.logos[0].href;
+          }
+        } catch (error) {
+          console.error('Error fetching team info:', error);
+        }
+      }
+
+      // Load historical data from JSON
+      async function loadHistoricalData() {
+        try {
+          const response = await fetch(DATA_URL);
+          historicalData = await response.json();
+
+          // Populate season dropdown
+          if (seasonSelect && historicalData.seasons) {
+            seasonSelect.innerHTML = '';
+            // Sort seasons by year descending (most recent first)
+            const sortedSeasons = [...historicalData.seasons].sort((a, b) => b.seasonYear - a.seasonYear);
+
+            sortedSeasons.forEach(season => {
+              const option = document.createElement('option');
+              option.value = String(season.seasonYear);
+              option.textContent = `${season.season} Season`;
+              seasonSelect.appendChild(option);
+            });
+
+            // Default to most recent season
+            if (sortedSeasons.length > 0) {
+              seasonSelect.value = String(sortedSeasons[0].seasonYear);
+            }
+          }
+
+          // Calculate all-time stats
+          let totalWins = 0;
+          let totalLosses = 0;
+          let bestSeason = { season: '', wins: 0 };
+
+          historicalData.seasons.forEach((season: any) => {
+            totalWins += season.wins;
+            totalLosses += season.losses;
+            if (season.wins > bestSeason.wins) {
+              bestSeason = { season: season.season, wins: season.wins };
+            }
+          });
+
+          // Update all-time summary
+          if (alltimeWins) alltimeWins.textContent = String(totalWins);
+          if (alltimeLosses) alltimeLosses.textContent = String(totalLosses);
+          if (alltimePct) alltimePct.textContent = totalWins + totalLosses > 0
+            ? ((totalWins / (totalWins + totalLosses)) * 100).toFixed(1) + '%'
+            : '0%';
+          if (alltimeBest) alltimeBest.textContent = `${bestSeason.season} (${bestSeason.wins}W)`;
+          if (lastUpdated && historicalData.lastUpdated) {
+            const date = new Date(historicalData.lastUpdated);
+            lastUpdated.textContent = `Data last updated: ${date.toLocaleDateString()}`;
+          }
+
+          // Create chart
+          createChart();
+
+          // Show UI
+          chartLoading?.classList.add('hidden');
+          chartContainer?.classList.remove('hidden');
+          alltimeSummary?.classList.remove('hidden');
+
+          // Load default season
+          if (seasonSelect?.value) {
+            showSeasonData(parseInt(seasonSelect.value));
+          }
+
+        } catch (error) {
+          console.error('Error loading historical data:', error);
+          if (chartLoading) {
+            chartLoading.innerHTML = '<p class="text-red-500">Error loading data. Please refresh.</p>';
+          }
+        }
+      }
+
+      // Create the wins/losses chart
+      function createChart() {
+        if (!historicalData?.seasons) return;
+
+        const ctx = document.getElementById('wins-chart') as HTMLCanvasElement;
+        if (!ctx) return;
+
+        // Destroy existing chart if any
+        if (winsChart) {
+          winsChart.destroy();
+        }
+
+        // Sort seasons by year ascending for chart
+        const sortedSeasons = [...historicalData.seasons].sort((a, b) => a.seasonYear - b.seasonYear);
+
+        winsChart = new (window as any).Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: sortedSeasons.map(s => s.season),
+            datasets: [
+              {
+                label: 'Wins',
+                data: sortedSeasons.map(s => s.wins),
+                backgroundColor: 'rgba(34, 197, 94, 0.7)',
+                borderColor: 'rgb(34, 197, 94)',
+                borderWidth: 1
+              },
+              {
+                label: 'Losses',
+                data: sortedSeasons.map(s => s.losses),
+                backgroundColor: 'rgba(239, 68, 68, 0.7)',
+                borderColor: 'rgb(239, 68, 68)',
+                borderWidth: 1
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'top',
+              },
+              tooltip: {
+                callbacks: {
+                  afterLabel: function(context: any) {
+                    const idx = context.dataIndex;
+                    const wins = sortedSeasons[idx].wins;
+                    const losses = sortedSeasons[idx].losses;
+                    const pct = wins + losses > 0 ? ((wins / (wins + losses)) * 100).toFixed(1) : '0';
+                    return `Win %: ${pct}%`;
+                  }
+                }
+              }
+            },
+            scales: {
+              x: {
+                stacked: true,
+                ticks: {
+                  maxRotation: 45,
+                  minRotation: 45
+                }
+              },
+              y: {
+                stacked: true,
+                beginAtZero: true,
+                title: {
+                  display: true,
+                  text: 'Games'
+                }
+              }
+            }
+          }
+        });
+      }
+
+      // Show season data from cached JSON
+      function showSeasonData(seasonYear: number) {
+        if (!historicalData?.seasons) return;
+
+        const season = historicalData.seasons.find((s: any) => s.seasonYear === seasonYear);
+        if (!season) return;
+
+        // Update summary stats
+        if (statWins) statWins.textContent = String(season.wins);
+        if (statLosses) statLosses.textContent = String(season.losses);
+        if (statPpg) statPpg.textContent = String(season.avgPoints);
+        if (statOppg) statOppg.textContent = String(season.avgOppPoints);
+
+        // Calculate biggest win and worst loss
+        let biggestWin = { margin: 0, desc: '--' };
+        let worstLoss = { margin: 0, desc: '--' };
+
+        season.games.forEach((game: any) => {
+          if (game.nebScore > 0 && game.oppScore > 0) {
+            const margin = game.nebScore - game.oppScore;
+            if (margin > biggestWin.margin) {
+              biggestWin = { margin, desc: `${game.nebScore}-${game.oppScore} vs ${game.opponent}` };
+            }
+            if (margin < worstLoss.margin) {
+              worstLoss = { margin, desc: `${game.nebScore}-${game.oppScore} vs ${game.opponent}` };
+            }
+          }
+        });
+
+        if (statBiggestWin) statBiggestWin.textContent = biggestWin.desc;
+        if (statWorstLoss) statWorstLoss.textContent = worstLoss.desc;
+
+        // Render games list
+        if (gamesList) {
+          // Sort games by date (most recent first)
+          const sortedGames = [...season.games].sort((a, b) =>
+            new Date(b.date).getTime() - new Date(a.date).getTime()
+          );
+
+          if (sortedGames.length === 0) {
+            gamesList.innerHTML = '<p class="text-center text-gray-500 py-8">No games found for this season.</p>';
+          } else {
+            gamesList.innerHTML = sortedGames.map(game => {
+              const hasScores = game.nebScore > 0 && game.oppScore > 0;
+              const resultClass = hasScores
+                ? (game.isWin ? 'border-l-green-500' : 'border-l-red-500')
+                : 'border-l-gray-300';
+              const resultBadge = hasScores
+                ? (game.isWin
+                    ? '<span class="text-xs font-bold text-green-600 bg-green-100 px-2 py-1 rounded">W</span>'
+                    : '<span class="text-xs font-bold text-red-600 bg-red-100 px-2 py-1 rounded">L</span>')
+                : '<span class="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded">--</span>';
+              const scoreDisplay = hasScores
+                ? `<span class="font-bold ${game.isWin ? 'text-green-600' : 'text-red-600'}">${game.nebScore}</span> - <span class="text-gray-600">${game.oppScore}</span>`
+                : '<span class="text-gray-400">--</span>';
+              const locationIcon = game.isHome ? '' : '@';
+
+              const gameDate = new Date(game.date);
+              const dateStr = gameDate.toLocaleDateString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                year: 'numeric'
+              });
+
+              return `
+                <div class="bg-white rounded-lg border-l-4 ${resultClass} shadow-sm p-4 hover:shadow-md transition-shadow">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                      ${resultBadge}
+                      <div>
+                        <p class="font-medium text-gray-900">${locationIcon} ${game.opponent}</p>
+                        <p class="text-sm text-gray-500">${dateStr}</p>
+                      </div>
+                    </div>
+                    <div class="text-right text-lg">
+                      ${scoreDisplay}
+                    </div>
+                  </div>
+                </div>
+              `;
+            }).join('');
+          }
+        }
+
+        seasonSummary?.classList.remove('hidden');
+        gamesContainer?.classList.remove('hidden');
+      }
+
+      // Initialize
+      fetchTeamInfo();
+      loadHistoricalData();
+
+      // Handle season change
+      seasonSelect?.addEventListener('change', () => {
+        if (seasonSelect.value) {
+          showSeasonData(parseInt(seasonSelect.value));
+        }
+      });
+    });
+  </script>
+</Layout>
