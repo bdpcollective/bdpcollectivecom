@@ -169,45 +169,29 @@ interface Props {
 			}
 			.custom-cursor {
 				position: fixed;
-				width: 20px;
-				height: 20px;
-				border: 2px solid rgba(255, 255, 255, 0.8);
+				width: 8px;
+				height: 8px;
+				background: rgba(255, 255, 255, 0.9);
 				border-radius: 50%;
 				pointer-events: none;
 				transform: translate(-50%, -50%);
-				transition: width 0.2s, height 0.2s, border-color 0.2s, opacity 0.2s;
+				transition: width 0.15s ease-out, height 0.15s ease-out, background 0.15s ease-out;
 				z-index: 99999;
 				opacity: 0;
-				will-change: transform;
+				will-change: left, top;
 				mix-blend-mode: difference;
 			}
 			.custom-cursor.visible {
 				opacity: 1;
 			}
-			.cursor-dot {
-				position: fixed;
-				width: 4px;
-				height: 4px;
-				background: rgba(255, 255, 255, 0.95);
-				border-radius: 50%;
-				pointer-events: none;
-				transform: translate(-50%, -50%);
-				z-index: 100000;
-				opacity: 0;
-				will-change: transform;
-				mix-blend-mode: difference;
-			}
-			.cursor-dot.visible {
-				opacity: 1;
-			}
 			.custom-cursor.hover {
-				width: 40px;
-				height: 40px;
-				border-color: rgba(59, 130, 246, 0.9);
+				width: 32px;
+				height: 32px;
+				background: rgba(59, 130, 246, 0.6);
 			}
 			.custom-cursor.click {
-				width: 15px;
-				height: 15px;
+				width: 6px;
+				height: 6px;
 			}
 			/* Scroll Progress Indicator */
 			.scroll-progress-bar {
@@ -271,7 +255,6 @@ interface Props {
 	</head>
 	<body class="min-h-screen flex flex-col font-franklin custom-cursor-enabled overflow-x-hidden">
 		<div id="custom-cursor" class="custom-cursor" transition:persist></div>
-		<div id="cursor-dot" class="cursor-dot" transition:persist></div>
 		<div id="scroll-progress" class="scroll-progress-bar"></div>
 		<nav class="bg-white/80 backdrop-blur-md shadow-sm glass-nav w-full overflow-x-hidden">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -412,9 +395,8 @@ interface Props {
 
 		// Custom Cursor Effects
 		const customCursor = document.getElementById('custom-cursor');
-		const cursorDot = document.getElementById('cursor-dot');
 
-		if (customCursor && cursorDot) {
+		if (customCursor) {
 			// Only enable on non-touch devices
 			if (window.matchMedia('(pointer: fine)').matches) {
 				// Re-bind hover effects on interactive elements for new page content
@@ -463,12 +445,7 @@ interface Props {
 			cursorState?: {
 				mouseX: number;
 				mouseY: number;
-				cursorX: number;
-				cursorY: number;
-				dotX: number;
-				dotY: number;
 				initialized: boolean;
-				animating: boolean;
 			};
 		}
 	}
@@ -476,12 +453,10 @@ interface Props {
 	// Initialize cursor on page load and after View Transitions
 	function initCursor() {
 		const customCursor = document.getElementById('custom-cursor');
-		const cursorDot = document.getElementById('cursor-dot');
 
-		if (!customCursor || !cursorDot) return;
+		if (!customCursor) return;
 		if (!window.matchMedia('(pointer: fine)').matches) {
 			customCursor.style.display = 'none';
-			cursorDot.style.display = 'none';
 			return;
 		}
 
@@ -490,12 +465,7 @@ interface Props {
 			window.cursorState = {
 				mouseX: 0,
 				mouseY: 0,
-				cursorX: 0,
-				cursorY: 0,
-				dotX: 0,
-				dotY: 0,
-				initialized: false,
-				animating: false
+				initialized: false
 			};
 		}
 
@@ -504,24 +474,17 @@ interface Props {
 		// Only add mousemove listener once
 		if (!state.initialized) {
 			document.addEventListener('mousemove', (e) => {
-				if (!state.initialized) {
-					state.mouseX = e.clientX;
-					state.mouseY = e.clientY;
-					state.cursorX = e.clientX;
-					state.cursorY = e.clientY;
-					state.dotX = e.clientX;
-					state.dotY = e.clientY;
-					state.initialized = true;
-				}
-
 				state.mouseX = e.clientX;
 				state.mouseY = e.clientY;
+				state.initialized = true;
 
-				// Make cursor visible
+				// Update cursor position directly (no trailing)
 				const cursor = document.getElementById('custom-cursor');
-				const dot = document.getElementById('cursor-dot');
-				if (cursor) cursor.classList.add('visible');
-				if (dot) dot.classList.add('visible');
+				if (cursor) {
+					cursor.style.left = `${e.clientX}px`;
+					cursor.style.top = `${e.clientY}px`;
+					cursor.classList.add('visible');
+				}
 			});
 
 			document.addEventListener('mousedown', () => {
@@ -535,36 +498,11 @@ interface Props {
 			});
 		}
 
-		// Start animation loop if not already running
-		if (!state.animating) {
-			state.animating = true;
-
-			function animateCursor() {
-				const cursor = document.getElementById('custom-cursor');
-				const dot = document.getElementById('cursor-dot');
-				const s = window.cursorState;
-
-				if (s && s.initialized && cursor && dot) {
-					s.cursorX += (s.mouseX - s.cursorX) * 0.1;
-					s.cursorY += (s.mouseY - s.cursorY) * 0.1;
-					s.dotX += (s.mouseX - s.dotX) * 0.3;
-					s.dotY += (s.mouseY - s.dotY) * 0.3;
-
-					cursor.style.left = `${s.cursorX}px`;
-					cursor.style.top = `${s.cursorY}px`;
-					dot.style.left = `${s.dotX}px`;
-					dot.style.top = `${s.dotY}px`;
-				}
-
-				requestAnimationFrame(animateCursor);
-			}
-			animateCursor();
-		}
-
 		// If cursor was already visible, make sure new elements are too
 		if (state.initialized) {
 			customCursor.classList.add('visible');
-			cursorDot.classList.add('visible');
+			customCursor.style.left = `${state.mouseX}px`;
+			customCursor.style.top = `${state.mouseY}px`;
 		}
 	}
 
