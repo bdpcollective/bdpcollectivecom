@@ -1,11 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Lightbox from '../components/Lightbox.astro';
+import fs from 'node:fs';
+import path from 'node:path';
 
-// Generate image array for all 93 slides
-const images = Array.from({ length: 93 }, (_, i) =>
-  `/images/codemash2026/Codemash.${String(i + 1).padStart(3, '0')}.jpeg`
-);
+// Dynamically read slide images from the folder
+const imageDir = path.join(process.cwd(), 'public/images/codemash2026');
+const files = fs.readdirSync(imageDir)
+  .filter(f => f.endsWith('.jpeg'))
+  .sort();
+
+const images = files.map(f => `/images/codemash2026/${f}`);
 
 const title = "CodeMash 2026 - Slide Deck";
 const description = "Slides from Brian Pope's CodeMash 2026 presentation";
