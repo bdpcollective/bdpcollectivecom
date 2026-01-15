@@ -1,6 +1,10 @@
 name: Security Check
 
 on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
   schedule:
     - cron: '0 2 * * 0' # Weekly on Sunday at 2 AM UTC
   workflow_dispatch:
