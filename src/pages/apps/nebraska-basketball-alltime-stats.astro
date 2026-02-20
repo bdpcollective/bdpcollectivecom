@@ -2,10 +2,10 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="All-time Nebraska Basketball Stats - Apps">
+<Layout title="Nebraska Basketball- Results by Year - Apps">
   <main>
     <section class="container mx-auto px-4 py-12">
-      <div class="max-w-6xl mx-auto space-y-8">
+      <div class="max-w-7xl mx-auto space-y-8">
         <!-- Back Button -->
         <a
           href="/apps"
@@ -19,527 +19,86 @@ import Layout from '../../layouts/Layout.astro';
 
         <!-- Header -->
         <div class="text-center">
-          <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">All-time Nebraska Basketball Stats</h1>
-          <p class="text-gray-600">Comprehensive statistics since 1896 for men's and women's basketball.</p>
+          <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Nebraska Basketball- Results by Year</h1>
+          <p class="text-gray-600">Season-by-season results and stats since 1949-50.</p>
         </div>
 
         <!-- Loading State -->
         <div id="loading" class="text-center py-12">
           <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-gray-300 border-t-red-700"></div>
-          <p class="mt-4 text-gray-600">Loading statistics...</p>
+          <p class="mt-4 text-gray-600">Loading results...</p>
         </div>
 
         <!-- Content Container (hidden until data loads) -->
         <div id="content" class="hidden space-y-8">
 
-          <!-- Program Selector Tabs -->
-          <div class="flex flex-wrap justify-center gap-2 md:gap-4">
-            <button id="btn-mens" class="px-4 md:px-6 py-3 rounded-lg font-semibold transition-colors bg-red-700 text-white">
-              Men's Basketball
-            </button>
-            <button id="btn-womens" class="px-4 md:px-6 py-3 rounded-lg font-semibold transition-colors bg-gray-200 text-gray-700 hover:bg-gray-300">
-              Women's Basketball
-            </button>
-            <button id="btn-players" class="px-4 md:px-6 py-3 rounded-lg font-semibold transition-colors bg-gray-200 text-gray-700 hover:bg-gray-300">
-              Compare Players
-            </button>
-            <button id="btn-compare" class="px-4 md:px-6 py-3 rounded-lg font-semibold transition-colors bg-gray-200 text-gray-700 hover:bg-gray-300">
-              Compare Programs
-            </button>
-          </div>
-
-          <!-- Men's Basketball Section -->
-          <div id="mens-section" class="space-y-6">
-            <!-- Program Overview -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-              <h2 class="text-2xl font-bold text-gray-900 mb-4">Program Overview</h2>
-              <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="bg-red-50 rounded-lg p-4 text-center">
-                  <p class="text-3xl font-bold text-red-700" id="mens-established">--</p>
-                  <p class="text-sm text-gray-600">Established</p>
-                </div>
-                <div class="bg-green-50 rounded-lg p-4 text-center">
-                  <p class="text-3xl font-bold text-green-600" id="mens-wins">--</p>
-                  <p class="text-sm text-gray-600">All-time Wins</p>
-                </div>
-                <div class="bg-red-50 rounded-lg p-4 text-center">
-                  <p class="text-3xl font-bold text-red-600" id="mens-losses">--</p>
-                  <p class="text-sm text-gray-600">All-time Losses</p>
-                </div>
-                <div class="bg-blue-50 rounded-lg p-4 text-center">
-                  <p class="text-3xl font-bold text-blue-600" id="mens-winpct">--</p>
-                  <p class="text-sm text-gray-600">Win %</p>
-                </div>
-              </div>
-              <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-gray-50 rounded-lg p-4">
-                  <p class="text-sm text-gray-600 mb-1">Current Arena</p>
-                  <p class="font-semibold text-gray-900" id="mens-arena">--</p>
-                </div>
-                <div class="bg-gray-50 rounded-lg p-4">
-                  <p class="text-sm text-gray-600 mb-1">Conference</p>
-                  <p class="font-semibold text-gray-900" id="mens-conference">--</p>
-                </div>
-              </div>
+          <!-- Chart Section -->
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <div class="flex flex-wrap items-center justify-between gap-4 mb-4">
+              <h2 class="text-2xl font-bold text-gray-900">Stats by Year</h2>
+              <select id="chart-stat" class="px-4 py-2 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none cursor-pointer">
+                <option value="wins">Wins</option>
+                <option value="losses">Losses</option>
+                <option value="winPct">Win %</option>
+                <option value="psG">Points Scored / Game</option>
+                <option value="paG">Points Against / Game</option>
+                <option value="srs">SRS (Simple Rating System)</option>
+                <option value="sos">SOS (Strength of Schedule)</option>
+                <option value="oRtg">Offensive Rating</option>
+                <option value="dRtg">Defensive Rating</option>
+              </select>
             </div>
-
-            <!-- Postseason History -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-              <h2 class="text-2xl font-bold text-gray-900 mb-4">Postseason History</h2>
-              <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="bg-yellow-50 rounded-lg p-4 text-center">
-                  <p class="text-3xl font-bold text-yellow-600" id="mens-ncaa">--</p>
-                  <p class="text-sm text-gray-600">NCAA Appearances</p>
-                </div>
-                <div class="bg-purple-50 rounded-lg p-4 text-center">
-                  <p class="text-3xl font-bold text-purple-600" id="mens-nit">--</p>
-                  <p class="text-sm text-gray-600">NIT Appearances</p>
-                </div>
-                <div class="bg-green-50 rounded-lg p-4 text-center">
-                  <p class="text-3xl font-bold text-green-600" id="mens-nit-champs">--</p>
-                  <p class="text-sm text-gray-600">NIT Championships</p>
-                </div>
-                <div class="bg-blue-50 rounded-lg p-4 text-center">
-                  <p class="text-3xl font-bold text-blue-600" id="mens-postseason-total">--</p>
-                  <p class="text-sm text-gray-600">Total Postseason</p>
-                </div>
-              </div>
-              <div class="mt-4 bg-gray-50 rounded-lg p-4">
-                <p class="text-sm text-gray-600 mb-1">NCAA Tournament Years</p>
-                <p class="font-semibold text-gray-900" id="mens-ncaa-years">--</p>
-              </div>
-            </div>
-
-            <!-- Coaches -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-              <h2 class="text-2xl font-bold text-gray-900 mb-4">Coaching History</h2>
-              <div class="overflow-x-auto">
-                <table class="w-full text-left">
-                  <thead>
-                    <tr class="border-b border-gray-200">
-                      <th class="py-3 px-4 font-semibold text-gray-700">Coach</th>
-                      <th class="py-3 px-4 font-semibold text-gray-700">Years</th>
-                      <th class="py-3 px-4 font-semibold text-gray-700">Record</th>
-                      <th class="py-3 px-4 font-semibold text-gray-700">Notable</th>
-                    </tr>
-                  </thead>
-                  <tbody id="mens-coaches-table">
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <!-- Statistical Leaders -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-              <h2 class="text-2xl font-bold text-gray-900 mb-4">All-time Statistical Leaders</h2>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-gray-50 rounded-lg p-4">
-                  <p class="text-sm text-gray-600 mb-1">Career Points Leader</p>
-                  <p class="font-bold text-gray-900 text-xl" id="mens-points-leader">--</p>
-                  <p class="text-sm text-gray-500" id="mens-points-details">--</p>
-                </div>
-                <div class="bg-gray-50 rounded-lg p-4">
-                  <p class="text-sm text-gray-600 mb-1">Career Rebounds Leader</p>
-                  <p class="font-bold text-gray-900 text-xl" id="mens-rebounds-leader">--</p>
-                  <p class="text-sm text-gray-500" id="mens-rebounds-details">--</p>
-                </div>
-                <div class="bg-gray-50 rounded-lg p-4">
-                  <p class="text-sm text-gray-600 mb-1">Single Game Assists Record</p>
-                  <p class="font-bold text-gray-900 text-xl" id="mens-assists-record">--</p>
-                  <p class="text-sm text-gray-500" id="mens-assists-details">--</p>
-                </div>
-                <div class="bg-gray-50 rounded-lg p-4">
-                  <p class="text-sm text-gray-600 mb-1">Single Game Scoring Record</p>
-                  <p class="font-bold text-gray-900 text-xl" id="mens-scoring-record">--</p>
-                  <p class="text-sm text-gray-500" id="mens-scoring-details">--</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Retired Jerseys -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-              <h2 class="text-2xl font-bold text-gray-900 mb-4">Retired Jerseys</h2>
-              <div id="mens-retired-jerseys" class="grid grid-cols-1 md:grid-cols-3 gap-4">
-              </div>
+            <div class="relative" style="height: 400px;">
+              <canvas id="stats-chart"></canvas>
             </div>
           </div>
 
-          <!-- Women's Basketball Section -->
-          <div id="womens-section" class="hidden space-y-6">
-            <!-- Program Overview -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-              <h2 class="text-2xl font-bold text-gray-900 mb-4">Program Overview</h2>
-              <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="bg-red-50 rounded-lg p-4 text-center">
-                  <p class="text-3xl font-bold text-red-700" id="womens-established">--</p>
-                  <p class="text-sm text-gray-600">Established</p>
-                </div>
-                <div class="bg-green-50 rounded-lg p-4 text-center">
-                  <p class="text-3xl font-bold text-green-600" id="womens-seasons">--</p>
-                  <p class="text-sm text-gray-600">Total Seasons</p>
-                </div>
-                <div class="bg-yellow-50 rounded-lg p-4 text-center">
-                  <p class="text-3xl font-bold text-yellow-600" id="womens-ncaa">--</p>
-                  <p class="text-sm text-gray-600">NCAA Appearances</p>
-                </div>
-                <div class="bg-purple-50 rounded-lg p-4 text-center">
-                  <p class="text-3xl font-bold text-purple-600" id="womens-sweet16">--</p>
-                  <p class="text-sm text-gray-600">Sweet 16s</p>
-                </div>
-              </div>
-              <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-gray-50 rounded-lg p-4">
-                  <p class="text-sm text-gray-600 mb-1">Current Arena</p>
-                  <p class="font-semibold text-gray-900" id="womens-arena">--</p>
-                </div>
-                <div class="bg-gray-50 rounded-lg p-4">
-                  <p class="text-sm text-gray-600 mb-1">Conference</p>
-                  <p class="font-semibold text-gray-900" id="womens-conference">--</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Postseason History -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-              <h2 class="text-2xl font-bold text-gray-900 mb-4">Postseason History</h2>
-              <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="bg-green-50 rounded-lg p-4 text-center">
-                  <p class="text-3xl font-bold text-green-600" id="womens-ncaa-wins">--</p>
-                  <p class="text-sm text-gray-600">NCAA Tournament Wins</p>
-                </div>
-                <div class="bg-red-50 rounded-lg p-4 text-center">
-                  <p class="text-3xl font-bold text-red-600" id="womens-ncaa-losses">--</p>
-                  <p class="text-sm text-gray-600">NCAA Tournament Losses</p>
-                </div>
-                <div class="bg-yellow-50 rounded-lg p-4 text-center">
-                  <p class="text-3xl font-bold text-yellow-600" id="womens-conf-champs">--</p>
-                  <p class="text-sm text-gray-600">Conference Titles</p>
-                </div>
-                <div class="bg-purple-50 rounded-lg p-4 text-center">
-                  <p class="text-3xl font-bold text-purple-600" id="womens-sweet16-years">--</p>
-                  <p class="text-sm text-gray-600">Sweet 16 Years</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Coaches -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-              <h2 class="text-2xl font-bold text-gray-900 mb-4">Coaching History</h2>
-              <div class="overflow-x-auto">
-                <table class="w-full text-left">
-                  <thead>
-                    <tr class="border-b border-gray-200">
-                      <th class="py-3 px-4 font-semibold text-gray-700">Coach</th>
-                      <th class="py-3 px-4 font-semibold text-gray-700">Years</th>
-                      <th class="py-3 px-4 font-semibold text-gray-700">Record</th>
-                      <th class="py-3 px-4 font-semibold text-gray-700">Notable</th>
-                    </tr>
-                  </thead>
-                  <tbody id="womens-coaches-table">
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <!-- Statistical Leaders -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-              <h2 class="text-2xl font-bold text-gray-900 mb-4">All-time Statistical Leaders</h2>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-gray-50 rounded-lg p-4">
-                  <p class="text-sm text-gray-600 mb-1">Career Points Leader</p>
-                  <p class="font-bold text-gray-900 text-xl" id="womens-points-leader">--</p>
-                  <p class="text-sm text-gray-500" id="womens-points-details">--</p>
-                </div>
-                <div class="bg-gray-50 rounded-lg p-4">
-                  <p class="text-sm text-gray-600 mb-1">Career Rebounds Leader</p>
-                  <p class="font-bold text-gray-900 text-xl" id="womens-rebounds-leader">--</p>
-                  <p class="text-sm text-gray-500" id="womens-rebounds-details">--</p>
-                </div>
-                <div class="bg-gray-50 rounded-lg p-4">
-                  <p class="text-sm text-gray-600 mb-1">Single Game Scoring Record</p>
-                  <p class="font-bold text-gray-900 text-xl" id="womens-scoring-record">--</p>
-                  <p class="text-sm text-gray-500" id="womens-scoring-details">--</p>
-                </div>
-                <div class="bg-gray-50 rounded-lg p-4">
-                  <p class="text-sm text-gray-600 mb-1">Career 3-Pointers Leader</p>
-                  <p class="font-bold text-gray-900 text-xl" id="womens-threes-leader">--</p>
-                  <p class="text-sm text-gray-500" id="womens-threes-details">--</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- 2000 Point Club -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-              <h2 class="text-2xl font-bold text-gray-900 mb-4">2,000 Point Club</h2>
-              <div id="womens-2000-club" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              </div>
-            </div>
-
-            <!-- Retired Jerseys -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-              <h2 class="text-2xl font-bold text-gray-900 mb-4">Retired Jerseys</h2>
-              <div id="womens-retired-jerseys" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              </div>
-            </div>
-          </div>
-
-          <!-- Player Comparison Section -->
-          <div id="players-section" class="hidden space-y-6">
-            <!-- Interactive Stats Table -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-              <h2 class="text-2xl font-bold text-gray-900 mb-4">Statistical Leaders</h2>
-
-              <!-- Filters Row -->
-              <div class="flex flex-wrap items-center gap-4 mb-6 pb-4 border-b border-gray-200">
-                <!-- Program Toggle -->
-                <div class="flex items-center gap-2">
-                  <span class="text-sm font-medium text-gray-600">Program:</span>
-                  <div class="flex rounded-lg overflow-hidden border border-gray-300">
-                    <button id="filter-mens" class="px-4 py-2 font-medium transition-colors bg-red-700 text-white">
-                      Men's
-                    </button>
-                    <button id="filter-womens" class="px-4 py-2 font-medium transition-colors bg-white text-gray-700 hover:bg-gray-100">
-                      Women's
-                    </button>
-                  </div>
-                </div>
-
-                <!-- Year Filter -->
-                <div class="flex items-center gap-2">
-                  <span class="text-sm font-medium text-gray-600">Years:</span>
-                  <select id="filter-year" class="px-4 py-2 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none cursor-pointer">
-                    <option value="all">All Years</option>
-                  </select>
-                </div>
-
-                <!-- Results Count -->
-                <div class="ml-auto text-sm text-gray-500">
-                  <span id="results-count">0</span> players
-                </div>
-              </div>
-
-              <!-- Sortable Table -->
-              <div class="overflow-x-auto">
-                <table class="w-full text-left" id="stats-table">
-                  <thead>
-                    <tr class="border-b-2 border-red-200 bg-red-50">
-                      <th class="py-3 px-4 font-semibold text-gray-700 cursor-pointer hover:bg-red-100 transition-colors sortable" data-sort="name">
-                        <div class="flex items-center gap-1">
-                          Player
-                          <svg class="w-4 h-4 sort-icon opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
-                          </svg>
-                        </div>
-                      </th>
-                      <th class="py-3 px-4 font-semibold text-gray-700 cursor-pointer hover:bg-red-100 transition-colors sortable" data-sort="years">
-                        <div class="flex items-center gap-1">
-                          Years
-                          <svg class="w-4 h-4 sort-icon opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
-                          </svg>
-                        </div>
-                      </th>
-                      <th class="py-3 px-4 font-semibold text-gray-700 cursor-pointer hover:bg-red-100 transition-colors sortable text-right" data-sort="points">
-                        <div class="flex items-center justify-end gap-1">
-                          Points
-                          <svg class="w-4 h-4 sort-icon opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
-                          </svg>
-                        </div>
-                      </th>
-                      <th class="py-3 px-4 font-semibold text-gray-700 cursor-pointer hover:bg-red-100 transition-colors sortable text-right" data-sort="ppg">
-                        <div class="flex items-center justify-end gap-1">
-                          PPG
-                          <svg class="w-4 h-4 sort-icon opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
-                          </svg>
-                        </div>
-                      </th>
-                      <th class="py-3 px-4 font-semibold text-gray-700 cursor-pointer hover:bg-red-100 transition-colors sortable text-right" data-sort="rebounds">
-                        <div class="flex items-center justify-end gap-1">
-                          Rebounds
-                          <svg class="w-4 h-4 sort-icon opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
-                          </svg>
-                        </div>
-                      </th>
-                      <th class="py-3 px-4 font-semibold text-gray-700 cursor-pointer hover:bg-red-100 transition-colors sortable text-right" data-sort="assists">
-                        <div class="flex items-center justify-end gap-1">
-                          Assists
-                          <svg class="w-4 h-4 sort-icon opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
-                          </svg>
-                        </div>
-                      </th>
-                      <th class="py-3 px-4 font-semibold text-gray-700 cursor-pointer hover:bg-red-100 transition-colors sortable text-right" data-sort="steals">
-                        <div class="flex items-center justify-end gap-1">
-                          Steals
-                          <svg class="w-4 h-4 sort-icon opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
-                          </svg>
-                        </div>
-                      </th>
-                      <th class="py-3 px-4 font-semibold text-gray-700 cursor-pointer hover:bg-red-100 transition-colors sortable text-right" data-sort="threePointers">
-                        <div class="flex items-center justify-end gap-1">
-                          3PT
-                          <svg class="w-4 h-4 sort-icon opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
-                          </svg>
-                        </div>
-                      </th>
-                      <th class="py-3 px-4 font-semibold text-gray-700 cursor-pointer hover:bg-red-100 transition-colors sortable text-right" data-sort="fgPct">
-                        <div class="flex items-center justify-end gap-1">
-                          FG%
-                          <svg class="w-4 h-4 sort-icon opacity-30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
-                          </svg>
-                        </div>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody id="stats-table-body">
-                  </tbody>
-                </table>
-              </div>
-
-              <!-- No Results Message -->
-              <div id="no-results" class="hidden py-12 text-center text-gray-500">
-                No players found matching the selected filters.
-              </div>
-            </div>
-
-            <!-- Men's Season Comparison -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-              <h2 class="text-2xl font-bold text-gray-900 mb-4">Men's Seasons Comparison</h2>
-              <p class="text-gray-600 mb-4">Select seasons to compare team performance:</p>
-
-              <!-- Season Selection -->
-              <div id="mens-season-checkboxes" class="flex flex-wrap gap-2 mb-6 max-h-48 overflow-y-auto">
-              </div>
-
-              <!-- Comparison Table -->
-              <div id="mens-season-comparison" class="hidden">
-                <div class="overflow-x-auto">
-                  <table class="w-full text-left">
-                    <thead>
-                      <tr class="border-b-2 border-red-200 bg-red-50">
-                        <th class="py-3 px-4 font-semibold text-gray-700">Detail</th>
-                      </tr>
-                    </thead>
-                    <tbody id="mens-season-body">
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <p id="mens-season-prompt" class="text-gray-500 italic text-center py-8">
-                Select at least 2 seasons above to compare
-              </p>
-            </div>
-
-            <!-- Women's Season Comparison -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-              <h2 class="text-2xl font-bold text-gray-900 mb-4">Women's Seasons Comparison</h2>
-              <p class="text-gray-600 mb-4">Select seasons to compare team performance:</p>
-
-              <!-- Season Selection -->
-              <div id="womens-season-checkboxes" class="flex flex-wrap gap-2 mb-6 max-h-48 overflow-y-auto">
-              </div>
-
-              <!-- Comparison Table -->
-              <div id="womens-season-comparison" class="hidden">
-                <div class="overflow-x-auto">
-                  <table class="w-full text-left">
-                    <thead>
-                      <tr class="border-b-2 border-red-200 bg-red-50">
-                        <th class="py-3 px-4 font-semibold text-gray-700">Detail</th>
-                      </tr>
-                    </thead>
-                    <tbody id="womens-season-body">
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <p id="womens-season-prompt" class="text-gray-500 italic text-center py-8">
-                Select at least 2 seasons above to compare
-              </p>
-            </div>
-          </div>
-
-          <!-- Comparison Section -->
-          <div id="compare-section" class="hidden space-y-6">
-            <div class="bg-white rounded-xl shadow-lg p-6">
-              <h2 class="text-2xl font-bold text-gray-900 mb-4">Program Comparison</h2>
-              <div class="overflow-x-auto">
-                <table class="w-full text-left">
-                  <thead>
-                    <tr class="border-b border-gray-200">
-                      <th class="py-3 px-4 font-semibold text-gray-700">Category</th>
-                      <th class="py-3 px-4 font-semibold text-gray-700 text-center">Men's</th>
-                      <th class="py-3 px-4 font-semibold text-gray-700 text-center">Women's</th>
-                    </tr>
-                  </thead>
-                  <tbody id="comparison-table">
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-lg p-6">
-              <h2 class="text-2xl font-bold text-gray-900 mb-4">Coaching Comparison</h2>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <h3 class="text-lg font-semibold text-gray-800 mb-3">Men's Program</h3>
-                  <div class="space-y-2">
-                    <div class="bg-gray-50 rounded-lg p-3">
-                      <p class="text-sm text-gray-600">Most Wins</p>
-                      <p class="font-semibold" id="compare-mens-most-wins">--</p>
-                    </div>
-                    <div class="bg-gray-50 rounded-lg p-3">
-                      <p class="text-sm text-gray-600">Longest Tenure</p>
-                      <p class="font-semibold" id="compare-mens-tenure">--</p>
-                    </div>
-                    <div class="bg-gray-50 rounded-lg p-3">
-                      <p class="text-sm text-gray-600">Most NCAA Tournaments</p>
-                      <p class="font-semibold" id="compare-mens-ncaa">--</p>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <h3 class="text-lg font-semibold text-gray-800 mb-3">Women's Program</h3>
-                  <div class="space-y-2">
-                    <div class="bg-gray-50 rounded-lg p-3">
-                      <p class="text-sm text-gray-600">Most Wins</p>
-                      <p class="font-semibold" id="compare-womens-most-wins">--</p>
-                    </div>
-                    <div class="bg-gray-50 rounded-lg p-3">
-                      <p class="text-sm text-gray-600">Longest Tenure</p>
-                      <p class="font-semibold" id="compare-womens-tenure">--</p>
-                    </div>
-                    <div class="bg-gray-50 rounded-lg p-3">
-                      <p class="text-sm text-gray-600">Most NCAA Tournaments</p>
-                      <p class="font-semibold" id="compare-womens-ncaa">--</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="bg-white rounded-xl shadow-lg p-6">
-              <h2 class="text-2xl font-bold text-gray-900 mb-4">Scoring Leaders Comparison</h2>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-gray-50 rounded-lg p-4">
-                  <h3 class="text-lg font-semibold text-gray-800 mb-2">Men's All-time Leader</h3>
-                  <p class="text-2xl font-bold text-red-700" id="compare-mens-scorer">--</p>
-                  <p class="text-gray-600" id="compare-mens-scorer-pts">--</p>
-                </div>
-                <div class="bg-gray-50 rounded-lg p-4">
-                  <h3 class="text-lg font-semibold text-gray-800 mb-2">Women's All-time Leader</h3>
-                  <p class="text-2xl font-bold text-red-700" id="compare-womens-scorer">--</p>
-                  <p class="text-gray-600" id="compare-womens-scorer-pts">--</p>
-                </div>
-              </div>
+          <!-- Season Summary Table -->
+          <div class="bg-white rounded-xl shadow-lg p-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Season Results</h2>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left text-sm" id="season-table">
+                <thead>
+                  <tr class="border-b-2 border-red-200 bg-red-50">
+                    <th class="py-3 px-3 font-semibold text-gray-700 cursor-pointer hover:bg-red-100 transition-colors sortable" data-sort="year">
+                      <div class="flex items-center gap-1">Year <span class="sort-arrow"></span></div>
+                    </th>
+                    <th class="py-3 px-3 font-semibold text-gray-700 cursor-pointer hover:bg-red-100 transition-colors sortable" data-sort="coach">
+                      <div class="flex items-center gap-1">Coach <span class="sort-arrow"></span></div>
+                    </th>
+                    <th class="py-3 px-3 font-semibold text-gray-700 cursor-pointer hover:bg-red-100 transition-colors sortable text-right" data-sort="wins">
+                      <div class="flex items-center justify-end gap-1">W <span class="sort-arrow"></span></div>
+                    </th>
+                    <th class="py-3 px-3 font-semibold text-gray-700 cursor-pointer hover:bg-red-100 transition-colors sortable text-right" data-sort="losses">
+                      <div class="flex items-center justify-end gap-1">L <span class="sort-arrow"></span></div>
+                    </th>
+                    <th class="py-3 px-3 font-semibold text-gray-700 cursor-pointer hover:bg-red-100 transition-colors sortable text-right" data-sort="winPct">
+                      <div class="flex items-center justify-end gap-1">Win% <span class="sort-arrow"></span></div>
+                    </th>
+                    <th class="py-3 px-3 font-semibold text-gray-700 cursor-pointer hover:bg-red-100 transition-colors sortable text-right" data-sort="psG">
+                      <div class="flex items-center justify-end gap-1">Pts/G <span class="sort-arrow"></span></div>
+                    </th>
+                    <th class="py-3 px-3 font-semibold text-gray-700 cursor-pointer hover:bg-red-100 transition-colors sortable text-right" data-sort="paG">
+                      <div class="flex items-center justify-end gap-1">Opp/G <span class="sort-arrow"></span></div>
+                    </th>
+                    <th class="py-3 px-3 font-semibold text-gray-700 cursor-pointer hover:bg-red-100 transition-colors sortable text-right" data-sort="srs">
+                      <div class="flex items-center justify-end gap-1">SRS <span class="sort-arrow"></span></div>
+                    </th>
+                    <th class="py-3 px-3 font-semibold text-gray-700 cursor-pointer hover:bg-red-100 transition-colors sortable text-right" data-sort="sos">
+                      <div class="flex items-center justify-end gap-1">SOS <span class="sort-arrow"></span></div>
+                    </th>
+                    <th class="py-3 px-3 font-semibold text-gray-700 cursor-pointer hover:bg-red-100 transition-colors sortable text-right" data-sort="oRtg">
+                      <div class="flex items-center justify-end gap-1">ORtg <span class="sort-arrow"></span></div>
+                    </th>
+                    <th class="py-3 px-3 font-semibold text-gray-700 cursor-pointer hover:bg-red-100 transition-colors sortable text-right" data-sort="dRtg">
+                      <div class="flex items-center justify-end gap-1">DRtg <span class="sort-arrow"></span></div>
+                    </th>
+                    <th class="py-3 px-3 w-8"></th>
+                  </tr>
+                </thead>
+                <tbody id="season-table-body">
+                </tbody>
+              </table>
             </div>
           </div>
 
@@ -547,95 +106,396 @@ import Layout from '../../layouts/Layout.astro';
 
         <!-- Data Source -->
         <p id="data-source" class="hidden text-center text-sm text-gray-500 mt-8">
-          Data compiled from Sports Reference, Huskers.com, Wikipedia, ESPN, and Daily Nebraskan.
-          <span id="last-updated" class="block mt-1"></span>
+          Data from Sports Reference.
         </p>
       </div>
     </section>
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
   <script>
     document.addEventListener('astro:page-load', () => {
-      const DATA_URL = '/data/nebraskabasketballstats/nebraska_basketball_stats.json';
+      const CSV_URL = '/data/nebraskabasketballstats/Nebraska Basketball Stats - Results.csv';
 
-      // Elements
       const loading = document.getElementById('loading');
       const content = document.getElementById('content');
       const dataSource = document.getElementById('data-source');
 
-      // Tab buttons
-      const btnMens = document.getElementById('btn-mens');
-      const btnWomens = document.getElementById('btn-womens');
-      const btnPlayers = document.getElementById('btn-players');
-      const btnCompare = document.getElementById('btn-compare');
-
-      // Sections
-      const mensSection = document.getElementById('mens-section');
-      const womensSection = document.getElementById('womens-section');
-      const playersSection = document.getElementById('players-section');
-      const compareSection = document.getElementById('compare-section');
-
-      let statsData: any = null;
-
-      // Tab switching
-      function showTab(tab: string) {
-        // Reset all buttons
-        [btnMens, btnWomens, btnPlayers, btnCompare].forEach(btn => {
-          if (btn) {
-            btn.classList.remove('bg-red-700', 'text-white');
-            btn.classList.add('bg-gray-200', 'text-gray-700');
-          }
-        });
-
-        // Hide all sections
-        mensSection?.classList.add('hidden');
-        womensSection?.classList.add('hidden');
-        playersSection?.classList.add('hidden');
-        compareSection?.classList.add('hidden');
-
-        // Show selected
-        if (tab === 'mens' && btnMens && mensSection) {
-          btnMens.classList.remove('bg-gray-200', 'text-gray-700');
-          btnMens.classList.add('bg-red-700', 'text-white');
-          mensSection.classList.remove('hidden');
-        } else if (tab === 'womens' && btnWomens && womensSection) {
-          btnWomens.classList.remove('bg-gray-200', 'text-gray-700');
-          btnWomens.classList.add('bg-red-700', 'text-white');
-          womensSection.classList.remove('hidden');
-        } else if (tab === 'players' && btnPlayers && playersSection) {
-          btnPlayers.classList.remove('bg-gray-200', 'text-gray-700');
-          btnPlayers.classList.add('bg-red-700', 'text-white');
-          playersSection.classList.remove('hidden');
-        } else if (tab === 'compare' && btnCompare && compareSection) {
-          btnCompare.classList.remove('bg-gray-200', 'text-gray-700');
-          btnCompare.classList.add('bg-red-700', 'text-white');
-          compareSection.classList.remove('hidden');
-        }
+      interface SeasonData {
+        year: string;
+        wins: number;
+        losses: number;
+        coach: string;
+        psG: number;
+        paG: number;
+        srs: number;
+        sos: number;
+        oRtg: number;
+        dRtg: number;
+        winPct: number;
+        games: GameData[];
       }
 
-      btnMens?.addEventListener('click', () => showTab('mens'));
-      btnWomens?.addEventListener('click', () => showTab('womens'));
-      btnPlayers?.addEventListener('click', () => showTab('players'));
-      btnCompare?.addEventListener('click', () => showTab('compare'));
+      interface GameData {
+        gameNum: number;
+        date: string;
+        type: string;
+        location: string;
+        opponent: string;
+        conf: string;
+        teamScore: number;
+        oppScore: number;
+        result: string;
+        ot: string;
+        wins: number;
+        losses: number;
+        streak: string;
+        arena: string;
+      }
 
-      // Load data
-      async function loadData() {
-        try {
-          const response = await fetch(DATA_URL);
-          statsData = await response.json();
+      let seasons: SeasonData[] = [];
+      let currentSort = { column: 'year', direction: 'desc' as 'asc' | 'desc' };
+      let expandedYear: string | null = null;
+      let chartInstance: any = null;
 
-          populateMensData();
-          populateWomensData();
-          populateComparisonData();
-          populatePlayerComparison();
+      function parseCSV(text: string): string[][] {
+        const rows: string[][] = [];
+        let current = '';
+        let inQuotes = false;
+        let row: string[] = [];
 
-          // Update last updated
-          const lastUpdated = document.getElementById('last-updated');
-          if (lastUpdated && statsData.metadata?.lastUpdated) {
-            lastUpdated.textContent = `Last updated: ${statsData.metadata.lastUpdated}`;
+        for (let i = 0; i < text.length; i++) {
+          const char = text[i];
+          if (char === '"') {
+            inQuotes = !inQuotes;
+          } else if (char === ',' && !inQuotes) {
+            row.push(current.trim());
+            current = '';
+          } else if ((char === '\n' || char === '\r') && !inQuotes) {
+            if (char === '\r' && text[i + 1] === '\n') i++;
+            row.push(current.trim());
+            if (row.length > 1) rows.push(row);
+            row = [];
+            current = '';
+          } else {
+            current += char;
+          }
+        }
+        if (current || row.length > 0) {
+          row.push(current.trim());
+          if (row.length > 1) rows.push(row);
+        }
+        return rows;
+      }
+
+      function processData(rows: string[][]) {
+        // Skip header row
+        const dataRows = rows.slice(1);
+        const seasonMap = new Map<string, SeasonData>();
+
+        for (const row of dataRows) {
+          const year = row[0];
+          if (!year) continue;
+
+          if (!seasonMap.has(year)) {
+            const wins = parseInt(row[1]) || 0;
+            const losses = parseInt(row[2]) || 0;
+            seasonMap.set(year, {
+              year,
+              wins,
+              losses,
+              coach: row[3] || '',
+              psG: parseFloat(row[4]) || 0,
+              paG: parseFloat(row[5]) || 0,
+              srs: parseFloat(row[6]) || 0,
+              sos: parseFloat(row[7]) || 0,
+              oRtg: parseFloat(row[8]) || 0,
+              dRtg: parseFloat(row[9]) || 0,
+              winPct: wins + losses > 0 ? wins / (wins + losses) : 0,
+              games: []
+            });
           }
 
-          // Show content
+          // Add game data
+          const season = seasonMap.get(year)!;
+          const resultCol = row[17]; // W or L column
+          const teamScore = parseInt(row[18]) || 0;
+          const oppScore = parseInt(row[19]) || 0;
+
+          season.games.push({
+            gameNum: parseInt(row[10]) || 0,
+            date: row[11] || '',
+            type: row[12] || '',
+            location: row[13] || '',
+            opponent: row[14] || '',
+            conf: row[15] || '',
+            teamScore,
+            oppScore,
+            result: resultCol || '',
+            ot: row[20] || '',
+            wins: parseInt(row[21]) || 0,
+            losses: parseInt(row[22]) || 0,
+            streak: row[23] || '',
+            arena: row[24] || ''
+          });
+        }
+
+        seasons = Array.from(seasonMap.values());
+      }
+
+      function sortSeasons() {
+        seasons.sort((a, b) => {
+          let aVal: any = a[currentSort.column as keyof SeasonData];
+          let bVal: any = b[currentSort.column as keyof SeasonData];
+
+          if (typeof aVal === 'string') {
+            aVal = aVal.toLowerCase();
+            bVal = (bVal as string).toLowerCase();
+          }
+
+          if (currentSort.direction === 'asc') {
+            return aVal > bVal ? 1 : aVal < bVal ? -1 : 0;
+          } else {
+            return aVal < bVal ? 1 : aVal > bVal ? -1 : 0;
+          }
+        });
+      }
+
+      function renderTable() {
+        const tbody = document.getElementById('season-table-body');
+        if (!tbody) return;
+
+        sortSeasons();
+
+        let html = '';
+        for (const season of seasons) {
+          const isExpanded = expandedYear === season.year;
+          const winPctColor = season.winPct >= 0.6 ? 'text-green-600 font-semibold' :
+                             season.winPct < 0.4 ? 'text-red-600' : '';
+          const srsColor = season.srs > 5 ? 'text-green-600 font-semibold' :
+                          season.srs < -5 ? 'text-red-600' : '';
+
+          html += `
+            <tr class="border-b border-gray-100 hover:bg-gray-50 cursor-pointer season-row" data-year="${season.year}">
+              <td class="py-3 px-3 font-medium text-gray-900">${season.year}</td>
+              <td class="py-3 px-3 text-gray-700">${season.coach}</td>
+              <td class="py-3 px-3 text-right font-semibold text-green-700">${season.wins}</td>
+              <td class="py-3 px-3 text-right font-semibold text-red-600">${season.losses}</td>
+              <td class="py-3 px-3 text-right ${winPctColor}">${(season.winPct * 100).toFixed(1)}%</td>
+              <td class="py-3 px-3 text-right">${season.psG || '--'}</td>
+              <td class="py-3 px-3 text-right">${season.paG || '--'}</td>
+              <td class="py-3 px-3 text-right ${srsColor}">${season.srs || '--'}</td>
+              <td class="py-3 px-3 text-right">${season.sos || '--'}</td>
+              <td class="py-3 px-3 text-right">${season.oRtg || '--'}</td>
+              <td class="py-3 px-3 text-right">${season.dRtg || '--'}</td>
+              <td class="py-3 px-3 text-center">
+                <svg class="w-5 h-5 transition-transform ${isExpanded ? 'rotate-180' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </td>
+            </tr>
+          `;
+
+          if (isExpanded) {
+            html += `
+              <tr>
+                <td colspan="12" class="p-0">
+                  <div class="bg-gray-50 p-4">
+                    <h3 class="font-bold text-gray-900 mb-3">${season.year} Game Results (${season.coach})</h3>
+                    <div class="overflow-x-auto">
+                      <table class="w-full text-xs">
+                        <thead>
+                          <tr class="border-b border-gray-300 bg-gray-100">
+                            <th class="py-2 px-2 text-left">#</th>
+                            <th class="py-2 px-2 text-left">Date</th>
+                            <th class="py-2 px-2 text-left">Type</th>
+                            <th class="py-2 px-2 text-left">Opponent</th>
+                            <th class="py-2 px-2 text-left">Conf</th>
+                            <th class="py-2 px-2 text-center">Result</th>
+                            <th class="py-2 px-2 text-right">NEB</th>
+                            <th class="py-2 px-2 text-right">OPP</th>
+                            <th class="py-2 px-2 text-left">OT</th>
+                            <th class="py-2 px-2 text-center">Record</th>
+                            <th class="py-2 px-2 text-left">Streak</th>
+                            <th class="py-2 px-2 text-left">Arena</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          ${season.games.map(g => {
+                            const loc = g.location === '@' ? '@ ' : g.location === 'N' ? 'N ' : '';
+                            const resultClass = g.result === 'W' ? 'text-green-700 font-semibold' : 'text-red-600 font-semibold';
+                            return `
+                              <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                <td class="py-1.5 px-2">${g.gameNum}</td>
+                                <td class="py-1.5 px-2 whitespace-nowrap">${g.date}</td>
+                                <td class="py-1.5 px-2">${g.type}</td>
+                                <td class="py-1.5 px-2 font-medium">${loc}${g.opponent}</td>
+                                <td class="py-1.5 px-2 text-gray-500">${g.conf}</td>
+                                <td class="py-1.5 px-2 text-center ${resultClass}">${g.result}</td>
+                                <td class="py-1.5 px-2 text-right">${g.teamScore}</td>
+                                <td class="py-1.5 px-2 text-right">${g.oppScore}</td>
+                                <td class="py-1.5 px-2">${g.ot}</td>
+                                <td class="py-1.5 px-2 text-center">${g.wins}-${g.losses}</td>
+                                <td class="py-1.5 px-2">${g.streak}</td>
+                                <td class="py-1.5 px-2 text-gray-500 max-w-[200px] truncate">${g.arena}</td>
+                              </tr>
+                            `;
+                          }).join('')}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            `;
+          }
+        }
+
+        tbody.innerHTML = html;
+
+        // Attach click handlers for expand/collapse
+        document.querySelectorAll('.season-row').forEach(row => {
+          row.addEventListener('click', () => {
+            const year = (row as HTMLElement).dataset.year || '';
+            expandedYear = expandedYear === year ? null : year;
+            renderTable();
+          });
+        });
+      }
+
+      function updateSortArrows() {
+        document.querySelectorAll('#season-table .sortable').forEach(th => {
+          const col = (th as HTMLElement).dataset.sort;
+          const arrow = th.querySelector('.sort-arrow');
+          if (arrow) {
+            if (col === currentSort.column) {
+              arrow.textContent = currentSort.direction === 'asc' ? '\u25B2' : '\u25BC';
+            } else {
+              arrow.textContent = '';
+            }
+          }
+        });
+      }
+
+      function renderChart(stat: string) {
+        const canvas = document.getElementById('stats-chart') as HTMLCanvasElement;
+        if (!canvas) return;
+
+        // Sort by year ascending for the chart
+        const sorted = [...seasons].sort((a, b) => a.year.localeCompare(b.year));
+        const labels = sorted.map(s => s.year);
+        const data = sorted.map(s => s[stat as keyof SeasonData] as number);
+
+        const statLabels: Record<string, string> = {
+          wins: 'Wins',
+          losses: 'Losses',
+          winPct: 'Win %',
+          psG: 'Points Scored / Game',
+          paG: 'Points Against / Game',
+          srs: 'SRS',
+          sos: 'Strength of Schedule',
+          oRtg: 'Offensive Rating',
+          dRtg: 'Defensive Rating'
+        };
+
+        if (chartInstance) {
+          chartInstance.destroy();
+        }
+
+        const ctx = canvas.getContext('2d');
+        chartInstance = new (window as any).Chart(ctx, {
+          type: 'line',
+          data: {
+            labels,
+            datasets: [{
+              label: statLabels[stat] || stat,
+              data,
+              borderColor: '#b91c1c',
+              backgroundColor: 'rgba(185, 28, 28, 0.1)',
+              fill: true,
+              tension: 0.3,
+              pointRadius: 2,
+              pointHoverRadius: 6,
+              pointBackgroundColor: '#b91c1c',
+              borderWidth: 2
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: function(context: any) {
+                    const val = context.parsed.y;
+                    if (stat === 'winPct') return `${(val * 100).toFixed(1)}%`;
+                    return `${statLabels[stat]}: ${val}`;
+                  }
+                }
+              }
+            },
+            scales: {
+              x: {
+                ticks: {
+                  maxRotation: 90,
+                  autoSkip: true,
+                  maxTicksLimit: 30,
+                  font: { size: 10 }
+                },
+                grid: { display: false }
+              },
+              y: {
+                beginAtZero: stat === 'wins' || stat === 'losses' || stat === 'winPct',
+                ticks: {
+                  callback: function(value: any) {
+                    if (stat === 'winPct') return (value * 100).toFixed(0) + '%';
+                    return value;
+                  }
+                }
+              }
+            },
+            interaction: {
+              intersect: false,
+              mode: 'index'
+            }
+          }
+        });
+      }
+
+      async function loadData() {
+        try {
+          const response = await fetch(CSV_URL);
+          const text = await response.text();
+          const rows = parseCSV(text);
+          processData(rows);
+
+          // Setup sort headers
+          document.querySelectorAll('#season-table .sortable').forEach(th => {
+            th.addEventListener('click', () => {
+              const col = (th as HTMLElement).dataset.sort || 'year';
+              if (currentSort.column === col) {
+                currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+              } else {
+                currentSort.column = col;
+                currentSort.direction = col === 'year' ? 'desc' : 'desc';
+              }
+              updateSortArrows();
+              renderTable();
+            });
+          });
+
+          // Setup chart stat selector
+          document.getElementById('chart-stat')?.addEventListener('change', (e) => {
+            renderChart((e.target as HTMLSelectElement).value);
+          });
+
+          // Initial render
+          updateSortArrows();
+          renderTable();
+          renderChart('wins');
+
           loading?.classList.add('hidden');
           content?.classList.remove('hidden');
           dataSource?.classList.remove('hidden');
@@ -648,612 +508,6 @@ import Layout from '../../layouts/Layout.astro';
         }
       }
 
-      function populateMensData() {
-        const mens = statsData.mens_basketball;
-        if (!mens) return;
-
-        // Program Overview
-        const overview = mens.program_overview;
-        setText('mens-established', overview.established);
-        setText('mens-wins', overview.allTimeRecord.wins.toLocaleString());
-        setText('mens-losses', overview.allTimeRecord.losses.toLocaleString());
-        setText('mens-winpct', (overview.allTimeRecord.winPercentage * 100).toFixed(1) + '%');
-        setText('mens-arena', `${overview.homeArena.current} (${overview.homeArena.capacity.toLocaleString()} capacity)`);
-        setText('mens-conference', overview.conferenceHistory[0].conference + ' (' + overview.conferenceHistory[0].years + ')');
-
-        // Postseason
-        const postseason = mens.postseason_history;
-        setText('mens-ncaa', postseason.ncaaTournament.appearances);
-        setText('mens-nit', postseason.nit.appearances);
-        setText('mens-nit-champs', postseason.nit.championships);
-        setText('mens-postseason-total', postseason.totalPostseasonAppearances);
-        setText('mens-ncaa-years', postseason.ncaaTournament.years.join(', '));
-
-        // Coaches
-        const coachesTable = document.getElementById('mens-coaches-table');
-        if (coachesTable && mens.coaches) {
-          coachesTable.innerHTML = mens.coaches.map((coach: any) => `
-            <tr class="border-b border-gray-100 hover:bg-gray-50">
-              <td class="py-3 px-4 font-medium">${coach.name}</td>
-              <td class="py-3 px-4">${coach.years}</td>
-              <td class="py-3 px-4">${coach.record ? `${coach.record.wins}-${coach.record.losses}` : '--'}</td>
-              <td class="py-3 px-4 text-sm text-gray-600">${coach.achievements ? coach.achievements[0] || '' : ''}</td>
-            </tr>
-          `).join('');
-        }
-
-        // Statistical Leaders
-        const leaders = mens.allTimeStatisticalLeaders;
-        if (leaders.points?.career?.[0]) {
-          const p = leaders.points.career[0];
-          setText('mens-points-leader', `${p.name} - ${p.points.toLocaleString()} pts`);
-          setText('mens-points-details', `${p.years} | ${p.ppg} PPG`);
-        }
-        if (leaders.rebounds?.career?.[0]) {
-          const r = leaders.rebounds.career[0];
-          setText('mens-rebounds-leader', `${r.name} - ${r.rebounds} reb`);
-          setText('mens-rebounds-details', r.years);
-        }
-        if (leaders.assists?.singleGame) {
-          const a = leaders.assists.singleGame;
-          setText('mens-assists-record', `${a.name} - ${a.assists} assists`);
-          setText('mens-assists-details', `vs ${a.opponent} (${a.date})`);
-        }
-        if (leaders.singleGameScoring?.record) {
-          const s = leaders.singleGameScoring.record;
-          setText('mens-scoring-record', `${s.name} - ${s.points} pts`);
-          setText('mens-scoring-details', `vs ${s.opponent} (${s.season})`);
-        }
-
-        // Retired Jerseys
-        const jerseysContainer = document.getElementById('mens-retired-jerseys');
-        if (jerseysContainer && mens.retiredJerseys) {
-          jerseysContainer.innerHTML = mens.retiredJerseys.map((j: any) => `
-            <div class="bg-red-50 rounded-lg p-4 text-center">
-              <p class="text-4xl font-bold text-red-700">#${j.number}</p>
-              <p class="font-semibold text-gray-900 mt-2">${j.name}</p>
-              <p class="text-sm text-gray-600">${j.years}</p>
-              ${j.nickname ? `<p class="text-sm text-gray-500 italic">"${j.nickname}"</p>` : ''}
-            </div>
-          `).join('');
-        }
-      }
-
-      function populateWomensData() {
-        const womens = statsData.womens_basketball;
-        if (!womens) return;
-
-        // Program Overview
-        const overview = womens.program_overview;
-        setText('womens-established', overview.established);
-        setText('womens-seasons', overview.totalSeasons);
-        setText('womens-ncaa', womens.postseason_history.ncaaTournament.appearances);
-        setText('womens-sweet16', womens.postseason_history.ncaaTournament.sweet16);
-        setText('womens-arena', `${overview.homeArena.current} (${overview.homeArena.capacity.toLocaleString()} capacity)`);
-        setText('womens-conference', overview.conferenceHistory[0].conference + ' (' + overview.conferenceHistory[0].years + ')');
-
-        // Postseason
-        const postseason = womens.postseason_history;
-        setText('womens-ncaa-wins', postseason.ncaaTournament.record.wins);
-        setText('womens-ncaa-losses', postseason.ncaaTournament.record.losses);
-        setText('womens-conf-champs', womens.conferenceChampionships.regularSeason + womens.conferenceChampionships.tournament);
-        setText('womens-sweet16-years', postseason.ncaaTournament.sweet16Years?.join(', ') || '--');
-
-        // Coaches
-        const coachesTable = document.getElementById('womens-coaches-table');
-        if (coachesTable && womens.coaches) {
-          coachesTable.innerHTML = womens.coaches.slice(0, 6).map((coach: any) => `
-            <tr class="border-b border-gray-100 hover:bg-gray-50">
-              <td class="py-3 px-4 font-medium">${coach.name}</td>
-              <td class="py-3 px-4">${coach.years}</td>
-              <td class="py-3 px-4">${coach.record?.wins ? `${coach.record.wins} wins` : '--'}</td>
-              <td class="py-3 px-4 text-sm text-gray-600">${coach.achievements ? coach.achievements[0] || '' : ''}</td>
-            </tr>
-          `).join('');
-        }
-
-        // Statistical Leaders
-        const leaders = womens.allTimeStatisticalLeaders;
-        if (leaders.points?.career?.[0]) {
-          const p = leaders.points.career[0];
-          setText('womens-points-leader', `${p.name} - ${p.points.toLocaleString()} pts`);
-          setText('womens-points-details', `${p.years} | ${p.ppg} PPG`);
-        }
-        if (leaders.rebounds?.career?.[0]) {
-          const r = leaders.rebounds.career[0];
-          setText('womens-rebounds-leader', `${r.name} - ${r.rebounds.toLocaleString()} reb`);
-          setText('womens-rebounds-details', r.years);
-        }
-        if (leaders.singleGameScoring?.record) {
-          const s = leaders.singleGameScoring.record;
-          setText('womens-scoring-record', `${s.name} - ${s.points} pts`);
-          setText('womens-scoring-details', `vs ${s.opponent} (${s.date})`);
-        }
-        if (leaders.threePointers?.career?.[0]) {
-          const t = leaders.threePointers.career[0];
-          setText('womens-threes-leader', `${t.name} - ${t.threePointers} 3PM`);
-          setText('womens-threes-details', t.years);
-        }
-
-        // 2000 Point Club
-        const clubContainer = document.getElementById('womens-2000-club');
-        if (clubContainer && womens['2000PlusPointScorers']) {
-          clubContainer.innerHTML = womens['2000PlusPointScorers'].map((p: any) => `
-            <div class="bg-yellow-50 rounded-lg p-4 flex justify-between items-center">
-              <span class="font-semibold text-gray-900">${p.name}</span>
-              <span class="text-xl font-bold text-yellow-700">${p.points.toLocaleString()} pts</span>
-            </div>
-          `).join('');
-        }
-
-        // Retired Jerseys
-        const jerseysContainer = document.getElementById('womens-retired-jerseys');
-        if (jerseysContainer && womens.retiredJerseys) {
-          jerseysContainer.innerHTML = womens.retiredJerseys.map((j: any) => `
-            <div class="bg-red-50 rounded-lg p-4">
-              <div class="flex items-center gap-4">
-                <p class="text-4xl font-bold text-red-700">#${j.number}</p>
-                <div>
-                  <p class="font-semibold text-gray-900">${j.name}</p>
-                  <p class="text-sm text-gray-600">${j.years} | ${j.position || ''}</p>
-                  ${j.stats ? `<p class="text-sm text-gray-500">${j.stats.points?.toLocaleString() || ''} pts, ${j.stats.rebounds?.toLocaleString() || ''} reb</p>` : ''}
-                </div>
-              </div>
-            </div>
-          `).join('');
-        }
-      }
-
-      function populateComparisonData() {
-        const compare = statsData.comparison_data;
-        if (!compare) return;
-
-        // Program Comparison Table
-        const table = document.getElementById('comparison-table');
-        if (table) {
-          const rows = [
-            { label: 'Program Established', mens: compare.program_comparison.programEstablished.mens, womens: compare.program_comparison.programEstablished.womens },
-            { label: 'NCAA Tournament Appearances', mens: compare.program_comparison.ncaaTournamentAppearances.mens, womens: compare.program_comparison.ncaaTournamentAppearances.womens },
-            { label: 'NCAA Tournament Wins', mens: compare.program_comparison.ncaaTournamentWins.mens, womens: compare.program_comparison.ncaaTournamentWins.womens },
-            { label: 'Conference Championships', mens: compare.program_comparison.conferenceChampionships.mens, womens: compare.program_comparison.conferenceChampionships.womens },
-            { label: 'Sweet 16 Appearances', mens: compare.program_comparison.sweet16Appearances.mens, womens: compare.program_comparison.sweet16Appearances.womens },
-            { label: 'Retired Jerseys', mens: compare.player_comparison.retiredJerseys.mens, womens: compare.player_comparison.retiredJerseys.womens },
-          ];
-
-          table.innerHTML = rows.map(row => `
-            <tr class="border-b border-gray-100 hover:bg-gray-50">
-              <td class="py-3 px-4 font-medium">${row.label}</td>
-              <td class="py-3 px-4 text-center">${row.mens}</td>
-              <td class="py-3 px-4 text-center">${row.womens}</td>
-            </tr>
-          `).join('');
-        }
-
-        // Coach Comparison
-        const coachMens = compare.coach_comparison.mens;
-        const coachWomens = compare.coach_comparison.womens;
-
-        setText('compare-mens-most-wins', `${coachMens.mostWins.name} (${coachMens.mostWins.wins} wins)`);
-        setText('compare-mens-tenure', `${coachMens.longestTenure.name} (${coachMens.longestTenure.years} years)`);
-        setText('compare-mens-ncaa', `${coachMens.mostNCAATournaments.name} (${coachMens.mostNCAATournaments.appearances})`);
-
-        setText('compare-womens-most-wins', `${coachWomens.mostWins.name} (${coachWomens.mostWins.wins} wins)`);
-        setText('compare-womens-tenure', `${coachWomens.longestTenure.name} (${coachWomens.longestTenure.years} years)`);
-        setText('compare-womens-ncaa', `${coachWomens.mostNCAATournaments.name} (${coachWomens.mostNCAATournaments.appearances})`);
-
-        // Scoring Leaders
-        const scoring = compare.player_comparison.scoring;
-        setText('compare-mens-scorer', scoring.mens.leader);
-        setText('compare-mens-scorer-pts', `${scoring.mens.points.toLocaleString()} career points`);
-        setText('compare-womens-scorer', scoring.womens.leader);
-        setText('compare-womens-scorer-pts', `${scoring.womens.points.toLocaleString()} career points`);
-      }
-
-      // Interactive Stats Table State
-      let currentProgram = 'mens';
-      let currentYear = 'all';
-      let currentSort = { column: 'points', direction: 'desc' };
-      let allPlayersData: any[] = [];
-
-      function populatePlayerComparison() {
-        // Build unified player data from both programs
-        buildPlayerData();
-
-        // Populate year filter dropdown
-        populateYearFilter();
-
-        // Set up filter listeners
-        document.getElementById('filter-mens')?.addEventListener('click', () => {
-          currentProgram = 'mens';
-          updateProgramButtons();
-          renderStatsTable();
-        });
-
-        document.getElementById('filter-womens')?.addEventListener('click', () => {
-          currentProgram = 'womens';
-          updateProgramButtons();
-          renderStatsTable();
-        });
-
-        document.getElementById('filter-year')?.addEventListener('change', (e) => {
-          currentYear = (e.target as HTMLSelectElement).value;
-          renderStatsTable();
-        });
-
-        // Set up sortable headers
-        document.querySelectorAll('.sortable').forEach(header => {
-          header.addEventListener('click', () => {
-            const column = (header as HTMLElement).dataset.sort || 'name';
-            if (currentSort.column === column) {
-              currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
-            } else {
-              currentSort.column = column;
-              currentSort.direction = 'desc';
-            }
-            updateSortIndicators();
-            renderStatsTable();
-          });
-        });
-
-        // Initial render
-        updateSortIndicators();
-        renderStatsTable();
-
-        // Men's seasons
-        const mensSeasons = statsData.mens_basketball?.seasonBySeasonRecords?.seasons || [];
-        const mensSeasonCheckboxes = document.getElementById('mens-season-checkboxes');
-
-        if (mensSeasonCheckboxes && mensSeasons.length > 0) {
-          mensSeasonCheckboxes.innerHTML = mensSeasons.map((season: any, idx: number) => `
-            <label class="flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors text-sm">
-              <input type="checkbox" class="mens-season-checkbox w-4 h-4 text-red-700 rounded focus:ring-red-500" data-index="${idx}" />
-              <span class="font-medium">${season.season}</span>
-            </label>
-          `).join('');
-
-          document.querySelectorAll('.mens-season-checkbox').forEach(cb => {
-            cb.addEventListener('change', () => updateMensSeasonComparison(mensSeasons));
-          });
-        }
-
-        // Women's seasons
-        const womensSeasons = statsData.womens_basketball?.seasonBySeasonRecords?.seasons || [];
-        const womensSeasonCheckboxes = document.getElementById('womens-season-checkboxes');
-
-        if (womensSeasonCheckboxes && womensSeasons.length > 0) {
-          womensSeasonCheckboxes.innerHTML = womensSeasons.map((season: any, idx: number) => `
-            <label class="flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-lg cursor-pointer hover:bg-gray-200 transition-colors text-sm">
-              <input type="checkbox" class="womens-season-checkbox w-4 h-4 text-red-700 rounded focus:ring-red-500" data-index="${idx}" />
-              <span class="font-medium">${season.season}</span>
-            </label>
-          `).join('');
-
-          document.querySelectorAll('.womens-season-checkbox').forEach(cb => {
-            cb.addEventListener('change', () => updateWomensSeasonComparison(womensSeasons));
-          });
-        }
-      }
-
-      function buildPlayerData() {
-        allPlayersData = [];
-
-        // Process men's players
-        const mensNotable = statsData.mens_basketball?.notablePlayers || [];
-        const mensLeaders = statsData.mens_basketball?.allTimeStatisticalLeaders || {};
-
-        mensNotable.forEach((p: any) => {
-          allPlayersData.push({
-            program: 'mens',
-            name: p.name,
-            years: p.years,
-            startYear: parseInt(p.years?.split('-')[0]) || 0,
-            endYear: parseInt(p.years?.split('-')[1]) || 0,
-            points: p.careerStats?.points || 0,
-            ppg: p.careerStats?.ppg || 0,
-            rebounds: p.careerStats?.rebounds || 0,
-            assists: p.careerStats?.assists || 0,
-            steals: p.careerStats?.steals || 0,
-            threePointers: p.careerStats?.threePointers || 0,
-            fgPct: p.careerStats?.fgPercentage || 0
-          });
-        });
-
-        // Add any players from leaders not in notable
-        const mensPointsLeaders = mensLeaders.points?.career || [];
-        mensPointsLeaders.forEach((p: any) => {
-          if (!allPlayersData.find(x => x.name === p.name && x.program === 'mens')) {
-            allPlayersData.push({
-              program: 'mens',
-              name: p.name,
-              years: p.years,
-              startYear: parseInt(p.years?.split('-')[0]) || 0,
-              endYear: parseInt(p.years?.split('-')[1]) || 0,
-              points: p.points || 0,
-              ppg: p.ppg || 0,
-              rebounds: 0,
-              assists: 0,
-              steals: 0,
-              threePointers: 0,
-              fgPct: 0
-            });
-          }
-        });
-
-        // Process women's players
-        const womensNotable = statsData.womens_basketball?.notablePlayers || [];
-        const womensLeaders = statsData.womens_basketball?.allTimeStatisticalLeaders || {};
-
-        womensNotable.forEach((p: any) => {
-          allPlayersData.push({
-            program: 'womens',
-            name: p.name,
-            years: p.years,
-            startYear: parseInt(p.years?.split('-')[0]) || 0,
-            endYear: parseInt(p.years?.split('-')[1]) || 0,
-            points: p.careerStats?.points || 0,
-            ppg: p.careerStats?.ppg || 0,
-            rebounds: p.careerStats?.rebounds || 0,
-            assists: p.careerStats?.assists || 0,
-            steals: p.careerStats?.steals || 0,
-            threePointers: p.careerStats?.threePointers || 0,
-            fgPct: p.careerStats?.fgPercentage || 0
-          });
-        });
-
-        // Add any players from leaders not in notable
-        const womensPointsLeaders = womensLeaders.points?.career || [];
-        womensPointsLeaders.forEach((p: any) => {
-          if (!allPlayersData.find(x => x.name === p.name && x.program === 'womens')) {
-            allPlayersData.push({
-              program: 'womens',
-              name: p.name,
-              years: p.years,
-              startYear: parseInt(p.years?.split('-')[0]) || 0,
-              endYear: parseInt(p.years?.split('-')[1]) || 0,
-              points: p.points || 0,
-              ppg: p.ppg || 0,
-              rebounds: 0,
-              assists: 0,
-              steals: 0,
-              threePointers: 0,
-              fgPct: 0
-            });
-          }
-        });
-      }
-
-      function populateYearFilter() {
-        const yearSelect = document.getElementById('filter-year') as HTMLSelectElement;
-        if (!yearSelect) return;
-
-        // Get all unique years from player data
-        const years = new Set<number>();
-        allPlayersData.forEach(p => {
-          if (p.startYear) years.add(p.startYear);
-          if (p.endYear) years.add(p.endYear);
-        });
-
-        const sortedYears = Array.from(years).sort((a, b) => b - a);
-
-        yearSelect.innerHTML = '<option value="all">All Years</option>' +
-          sortedYears.map(y => `<option value="${y}">${y}</option>`).join('');
-      }
-
-      function updateProgramButtons() {
-        const mensBtn = document.getElementById('filter-mens');
-        const womensBtn = document.getElementById('filter-womens');
-
-        if (currentProgram === 'mens') {
-          mensBtn?.classList.add('bg-red-700', 'text-white');
-          mensBtn?.classList.remove('bg-white', 'text-gray-700');
-          womensBtn?.classList.remove('bg-red-700', 'text-white');
-          womensBtn?.classList.add('bg-white', 'text-gray-700');
-        } else {
-          womensBtn?.classList.add('bg-red-700', 'text-white');
-          womensBtn?.classList.remove('bg-white', 'text-gray-700');
-          mensBtn?.classList.remove('bg-red-700', 'text-white');
-          mensBtn?.classList.add('bg-white', 'text-gray-700');
-        }
-      }
-
-      function updateSortIndicators() {
-        document.querySelectorAll('.sortable').forEach(header => {
-          const column = (header as HTMLElement).dataset.sort;
-          const icon = header.querySelector('.sort-icon');
-
-          if (column === currentSort.column) {
-            icon?.classList.remove('opacity-30');
-            icon?.classList.add('opacity-100', 'text-red-700');
-            // Update icon direction
-            if (currentSort.direction === 'asc') {
-              icon!.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />';
-            } else {
-              icon!.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />';
-            }
-          } else {
-            icon?.classList.add('opacity-30');
-            icon?.classList.remove('opacity-100', 'text-red-700');
-            icon!.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />';
-          }
-        });
-      }
-
-      function renderStatsTable() {
-        const tbody = document.getElementById('stats-table-body');
-        const noResults = document.getElementById('no-results');
-        const resultsCount = document.getElementById('results-count');
-        if (!tbody) return;
-
-        // Filter data
-        let filtered = allPlayersData.filter(p => p.program === currentProgram);
-
-        if (currentYear !== 'all') {
-          const year = parseInt(currentYear);
-          filtered = filtered.filter(p =>
-            (p.startYear <= year && p.endYear >= year) ||
-            p.startYear === year ||
-            p.endYear === year
-          );
-        }
-
-        // Sort data
-        filtered.sort((a, b) => {
-          let aVal = a[currentSort.column];
-          let bVal = b[currentSort.column];
-
-          // Handle string sorting
-          if (typeof aVal === 'string') {
-            aVal = aVal.toLowerCase();
-            bVal = bVal.toLowerCase();
-          }
-
-          if (currentSort.direction === 'asc') {
-            return aVal > bVal ? 1 : aVal < bVal ? -1 : 0;
-          } else {
-            return aVal < bVal ? 1 : aVal > bVal ? -1 : 0;
-          }
-        });
-
-        // Update count
-        if (resultsCount) resultsCount.textContent = String(filtered.length);
-
-        if (filtered.length === 0) {
-          tbody.innerHTML = '';
-          noResults?.classList.remove('hidden');
-          return;
-        }
-
-        noResults?.classList.add('hidden');
-
-        // Find max values for highlighting
-        const maxValues: Record<string, number> = {};
-        ['points', 'ppg', 'rebounds', 'assists', 'steals', 'threePointers', 'fgPct'].forEach(stat => {
-          maxValues[stat] = Math.max(...filtered.map(p => p[stat] || 0));
-        });
-
-        tbody.innerHTML = filtered.map((player, idx) => {
-          const isTopInSort = idx === 0 && currentSort.column !== 'name' && currentSort.column !== 'years';
-
-          return `
-            <tr class="border-b border-gray-100 hover:bg-gray-50 ${isTopInSort ? 'bg-yellow-50' : ''}">
-              <td class="py-3 px-4 font-semibold text-gray-900">${player.name}</td>
-              <td class="py-3 px-4 text-gray-600">${player.years || '--'}</td>
-              <td class="py-3 px-4 text-right ${player.points === maxValues.points && player.points > 0 ? 'font-bold text-red-700' : ''}">${player.points ? player.points.toLocaleString() : '--'}</td>
-              <td class="py-3 px-4 text-right ${player.ppg === maxValues.ppg && player.ppg > 0 ? 'font-bold text-red-700' : ''}">${player.ppg || '--'}</td>
-              <td class="py-3 px-4 text-right ${player.rebounds === maxValues.rebounds && player.rebounds > 0 ? 'font-bold text-red-700' : ''}">${player.rebounds ? player.rebounds.toLocaleString() : '--'}</td>
-              <td class="py-3 px-4 text-right ${player.assists === maxValues.assists && player.assists > 0 ? 'font-bold text-red-700' : ''}">${player.assists || '--'}</td>
-              <td class="py-3 px-4 text-right ${player.steals === maxValues.steals && player.steals > 0 ? 'font-bold text-red-700' : ''}">${player.steals || '--'}</td>
-              <td class="py-3 px-4 text-right ${player.threePointers === maxValues.threePointers && player.threePointers > 0 ? 'font-bold text-red-700' : ''}">${player.threePointers || '--'}</td>
-              <td class="py-3 px-4 text-right ${player.fgPct === maxValues.fgPct && player.fgPct > 0 ? 'font-bold text-red-700' : ''}">${player.fgPct ? (player.fgPct * 100).toFixed(1) + '%' : '--'}</td>
-            </tr>
-          `;
-        }).join('');
-      }
-
-      function updateMensSeasonComparison(seasons: any[]) {
-        const checkboxes = document.querySelectorAll('.mens-season-checkbox:checked');
-        const selectedIndices = Array.from(checkboxes).map(cb => parseInt((cb as HTMLInputElement).dataset.index || '0'));
-        const selectedSeasons = selectedIndices.map(idx => seasons[idx]);
-
-        const comparisonDiv = document.getElementById('mens-season-comparison');
-        const promptDiv = document.getElementById('mens-season-prompt');
-
-        if (selectedSeasons.length < 2) {
-          comparisonDiv?.classList.add('hidden');
-          promptDiv?.classList.remove('hidden');
-          return;
-        }
-
-        comparisonDiv?.classList.remove('hidden');
-        promptDiv?.classList.add('hidden');
-
-        // Update table header
-        const thead = comparisonDiv?.querySelector('thead tr');
-        if (thead) {
-          thead.innerHTML = `
-            <th class="py-3 px-4 font-semibold text-gray-700 sticky left-0 bg-red-50">Detail</th>
-            ${selectedSeasons.map(s => `<th class="py-3 px-4 font-semibold text-gray-900 text-center min-w-[120px]">${s.season}</th>`).join('')}
-          `;
-        }
-
-        // Build comparison rows
-        const tbody = document.getElementById('mens-season-body');
-        if (tbody) {
-          const rows = [
-            { label: 'Coach', key: 'coach' },
-            { label: 'Overall Record', key: 'overall' },
-            { label: 'Conference', key: 'conference' },
-            { label: 'Postseason', key: 'postseason' },
-            { label: 'Notes', key: 'notes' },
-          ];
-
-          tbody.innerHTML = rows.map(row => {
-            const values = selectedSeasons.map(s => s[row.key] || '--');
-            return `
-              <tr class="border-b border-gray-100 hover:bg-gray-50">
-                <td class="py-3 px-4 font-medium text-gray-700 sticky left-0 bg-white">${row.label}</td>
-                ${values.map(v => `<td class="py-3 px-4 text-center">${v}</td>`).join('')}
-              </tr>
-            `;
-          }).join('');
-        }
-      }
-
-      function updateWomensSeasonComparison(seasons: any[]) {
-        const checkboxes = document.querySelectorAll('.womens-season-checkbox:checked');
-        const selectedIndices = Array.from(checkboxes).map(cb => parseInt((cb as HTMLInputElement).dataset.index || '0'));
-        const selectedSeasons = selectedIndices.map(idx => seasons[idx]);
-
-        const comparisonDiv = document.getElementById('womens-season-comparison');
-        const promptDiv = document.getElementById('womens-season-prompt');
-
-        if (selectedSeasons.length < 2) {
-          comparisonDiv?.classList.add('hidden');
-          promptDiv?.classList.remove('hidden');
-          return;
-        }
-
-        comparisonDiv?.classList.remove('hidden');
-        promptDiv?.classList.add('hidden');
-
-        // Update table header
-        const thead = comparisonDiv?.querySelector('thead tr');
-        if (thead) {
-          thead.innerHTML = `
-            <th class="py-3 px-4 font-semibold text-gray-700 sticky left-0 bg-red-50">Detail</th>
-            ${selectedSeasons.map(s => `<th class="py-3 px-4 font-semibold text-gray-900 text-center min-w-[120px]">${s.season}</th>`).join('')}
-          `;
-        }
-
-        // Build comparison rows
-        const tbody = document.getElementById('womens-season-body');
-        if (tbody) {
-          const rows = [
-            { label: 'Coach', key: 'coach' },
-            { label: 'Overall Record', key: 'overall' },
-            { label: 'Conference', key: 'conference' },
-            { label: 'Postseason', key: 'postseason' },
-            { label: 'Notes', key: 'notes' },
-          ];
-
-          tbody.innerHTML = rows.map(row => {
-            const values = selectedSeasons.map(s => s[row.key] || '--');
-            return `
-              <tr class="border-b border-gray-100 hover:bg-gray-50">
-                <td class="py-3 px-4 font-medium text-gray-700 sticky left-0 bg-white">${row.label}</td>
-                ${values.map(v => `<td class="py-3 px-4 text-center">${v}</td>`).join('')}
-              </tr>
-            `;
-          }).join('');
-        }
-      }
-
-      function setText(id: string, value: any) {
-        const el = document.getElementById(id);
-        if (el) el.textContent = String(value);
-      }
-
-      // Initialize
       loadData();
     });
   </script>
