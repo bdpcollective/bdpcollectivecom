@@ -7,11 +7,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "vitest",
-    "lint": "astro check"
+    "test": "vitest"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
     "@types/node": "^22.13.13",
     "@types/nodemailer": "^6.4.17",
     "@types/topojson-client": "^3.1.5",
