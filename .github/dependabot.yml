@@ -1,0 +1,16 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    ignore:
+      # These are managed via npm overrides in package.json
+      # Dependabot can't handle overrides properly
+      - dependency-name: "glob"
+      - dependency-name: "devalue"
+      - dependency-name: "diff"
+      - dependency-name: "h3"
+      - dependency-name: "fast-xml-parser"
+      - dependency-name: "minimatch"
