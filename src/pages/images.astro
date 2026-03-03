@@ -147,6 +147,16 @@ const categoryImages = {
     '/images/elkhornsouthbasketball/2025-01-03-vs-burke/20250103_ElkhornSouthvsBurke-006.jpg',
     '/images/elkhornsouthbasketball/2025-01-03-vs-burke/20250103_ElkhornSouthvsBurke-007.jpg',
     '/images/elkhornsouthbasketball/2025-01-03-vs-burke/20250103_ElkhornSouthvsBurke-008.jpg'
+  ],
+  "2026 Lacrosse": [
+    '/images/lacrosse/20260302_mwscrimmage/20250302_MWScrimmage.jpg',
+    '/images/lacrosse/20260302_mwscrimmage/20250302_MWScrimmage-2.jpg',
+    '/images/lacrosse/20260302_mwscrimmage/20250302_MWScrimmage-3.jpg',
+    '/images/lacrosse/20260302_mwscrimmage/20250302_MWScrimmage-4.jpg',
+    '/images/lacrosse/20260302_mwscrimmage/20250302_MWScrimmage-5.jpg',
+    '/images/lacrosse/20260302_mwscrimmage/20250302_MWScrimmage-6.jpg',
+    '/images/lacrosse/20260302_mwscrimmage/20250302_MWScrimmage-7.jpg',
+    '/images/lacrosse/20260302_mwscrimmage/20250302_MWScrimmage-8.jpg'
   ]
 };
 
@@ -157,7 +167,8 @@ const categoryTitles: Record<string, string> = {
   "Nebraska Athletics": "Nebraska Athletics",
   "Landscape": "Landscapes",
   "Box Lacrosse": "2025 Box Lacrosse",
-  "Elkhorn South Basketball": "Elkhorn South Basketball"
+  "Elkhorn South Basketball": "Elkhorn South Basketball",
+  "2026 Lacrosse": "2026 Millard West Lacrosse"
 };
 
 // Function to get a random image from an array
@@ -196,32 +207,39 @@ images.push({
 // Order cards from newest to oldest
 images.reverse();
 
-// Move 'Elkhorn South Basketball' to index 0 (first position - newest gallery)
+// Move '2026 Millard West Lacrosse' to index 0 (first position - newest gallery)
+const mwlax2026Index = images.findIndex(img => img.title === '2026 Millard West Lacrosse');
+if (mwlax2026Index > 0) {
+  const [mwlax2026Card] = images.splice(mwlax2026Index, 1);
+  images.splice(0, 0, mwlax2026Card);
+}
+
+// Move 'Elkhorn South Basketball' to index 1 (second position)
 const esIndex = images.findIndex(img => img.title === 'Elkhorn South Basketball');
-if (esIndex > 0) {
+if (esIndex > 1) {
   const [esCard] = images.splice(esIndex, 1);
-  images.splice(0, 0, esCard);
+  images.splice(1, 0, esCard);
 }
 
-// Move '2025 Box Lacrosse' to index 1 (second position)
+// Move '2025 Box Lacrosse' to index 2 (third position)
 const boxIndex = images.findIndex(img => img.title === '2025 Box Lacrosse');
-if (boxIndex > 1) {
+if (boxIndex > 2) {
   const [boxCard] = images.splice(boxIndex, 1);
-  images.splice(1, 0, boxCard);
+  images.splice(2, 0, boxCard);
 }
 
-// Move 'Landscapes' to index 2 (third position)
+// Move 'Landscapes' to index 3 (fourth position)
 const landscapeIndex = images.findIndex(img => img.title === 'Landscapes');
-if (landscapeIndex > 2) {
+if (landscapeIndex > 3) {
   const [landscapeCard] = images.splice(landscapeIndex, 1);
-  images.splice(2, 0, landscapeCard);
+  images.splice(3, 0, landscapeCard);
 }
 
-// Move '2025 Millard West Lacrosse' to index 3 (fourth position)
+// Move '2025 Millard West Lacrosse' to index 4 (fifth position)
 const mwIndex = images.findIndex(img => img.title === '2025 Millard West Lacrosse');
-if (mwIndex > 3) {
+if (mwIndex > 4) {
   const [mwCard] = images.splice(mwIndex, 1);
-  images.splice(3, 0, mwCard);
+  images.splice(4, 0, mwCard);
 }
 ---
 
@@ -286,6 +304,7 @@ if (mwIndex > 3) {
               image.category === "Landscape" ? '/images/landscape' :
               image.category === "Box Lacrosse" ? '/images/boxlacrosse' :
               image.category === "Elkhorn South Basketball" ? '/images/elkhornsouthbasketball' :
+              image.category === "2026 Lacrosse" ? '/images/lacrosse2026' :
               "#"
             }
             class="group h-full scroll-fade-in magnetic-card"
