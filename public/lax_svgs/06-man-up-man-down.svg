@@ -29,53 +29,56 @@
       <!-- Half field -->
       <rect x="0" y="0" width="360" height="210" fill="#e8efe8" stroke="#bbb" stroke-width="0.5"/>
 
-      <!-- Goal -->
-      <rect x="4" y="90" width="4" height="24" fill="#c0392b" opacity="0.6"/>
+      <!-- Goal (set in from end line with space behind) -->
+      <rect x="120" y="90" width="4" height="24" fill="#c0392b" opacity="0.6"/>
       <!-- Crease -->
-      <circle cx="8" cy="102" r="30" fill="none" stroke="#999" stroke-width="0.5"/>
+      <circle cx="124" cy="102" r="30" fill="none" stroke="#999" stroke-width="0.5"/>
 
       <!-- Goalie (defense) -->
-      <polygon points="20,96 25,102 20,108 15,102" fill="#888" opacity="0.6"/>
+      <polygon points="134,96 139,102 134,108 129,102" fill="#888" opacity="0.6"/>
 
-      <!-- Man-down defense: 5 players (zone, compact) — labels offset right with padding -->
-      <rect x="60" y="44" width="7" height="7" fill="#666" opacity="0.7"/>
-      <text x="76" y="52" font-size="7.5" fill="#999">D</text>
-      <rect x="53" y="95" width="7" height="7" fill="#666" opacity="0.7"/>
-      <text x="69" y="103" font-size="7.5" fill="#999">D</text>
-      <rect x="60" y="150" width="7" height="7" fill="#666" opacity="0.7"/>
-      <text x="76" y="158" font-size="7.5" fill="#999">D</text>
-      <rect x="106" y="64" width="7" height="7" fill="#666" opacity="0.7"/>
-      <text x="122" y="72" font-size="7.5" fill="#999">M</text>
-      <rect x="106" y="130" width="7" height="7" fill="#666" opacity="0.7"/>
-      <text x="122" y="138" font-size="7.5" fill="#999">M</text>
+      <!-- Man-up offense: 6 players (2-3-1) -->
+      <circle cx="155" cy="36" r="4.5" fill="#333" opacity="0.8"/>
+      <text x="166" y="40" font-size="7.5" fill="#555">A</text>
+      <circle cx="220" cy="58" r="4.5" fill="#333" opacity="0.8"/>
+      <text x="231" y="62" font-size="7.5" fill="#555">M</text>
+      <circle cx="47" cy="102" r="4.5" fill="#333" opacity="0.8"/>
+      <text x="37" y="93" font-size="7.5" fill="#555">A</text>
+      <circle cx="220" cy="150" r="4.5" fill="#333" opacity="0.8"/>
+      <text x="231" y="154" font-size="7.5" fill="#555">M</text>
+      <circle cx="155" cy="174" r="4.5" fill="#333" opacity="0.8"/>
+      <text x="166" y="178" font-size="7.5" fill="#555">A</text>
+      <!-- Point M — OPEN (the man-up advantage!) -->
+      <circle cx="270" cy="102" r="4.5" fill="#333" opacity="0.8"/>
+      <text x="281" y="106" font-size="7.5" fill="#555">M</text>
+      <text x="270" y="88" text-anchor="middle" font-size="7" fill="#c0392b" font-style="italic">open!</text>
 
-      <!-- Man-up offense: 6 players (2-3-1) — labels offset with padding -->
-      <!-- Top -->
-      <circle cx="185" cy="36" r="4.5" fill="#333" opacity="0.8"/>
-      <text x="196" y="40" font-size="7.5" fill="#555">A</text>
-      <!-- Middle row -->
-      <circle cx="248" cy="58" r="4.5" fill="#333" opacity="0.8"/>
-      <text x="259" y="62" font-size="7.5" fill="#555">M</text>
-      <circle cx="168" cy="102" r="4.5" fill="#333" opacity="0.8"/>
-      <text x="179" y="106" font-size="7.5" fill="#555">A</text>
-      <circle cx="248" cy="150" r="4.5" fill="#333" opacity="0.8"/>
-      <text x="259" y="154" font-size="7.5" fill="#555">M</text>
-      <!-- Bottom -->
-      <circle cx="185" cy="174" r="4.5" fill="#333" opacity="0.8"/>
-      <text x="196" y="178" font-size="7.5" fill="#555">A</text>
-      <!-- Point -->
-      <circle cx="312" cy="102" r="4.5" fill="#333" opacity="0.8"/>
-      <text x="323" y="106" font-size="7.5" fill="#555">M</text>
+      <!-- Man-down defense: 5 players in diamond zone right of crease -->
+      <!-- Top of diamond -->
+      <rect x="172" y="56" width="7" height="7" fill="#666" opacity="0.7"/>
+      <text x="163" y="63" font-size="7.5" fill="#999">D</text>
+      <!-- Right of diamond -->
+      <rect x="196" y="99" width="7" height="7" fill="#666" opacity="0.7"/>
+      <text x="207" y="106" font-size="7.5" fill="#999">M</text>
+      <!-- Center of diamond -->
+      <rect x="168" y="99" width="7" height="7" fill="#666" opacity="0.7"/>
+      <text x="159" y="106" font-size="7.5" fill="#999">D</text>
+      <!-- Bottom of diamond -->
+      <rect x="172" y="142" width="7" height="7" fill="#666" opacity="0.7"/>
+      <text x="163" y="149" font-size="7.5" fill="#999">D</text>
+      <!-- Left of diamond (near crease) -->
+      <rect x="152" y="99" width="7" height="7" fill="#666" opacity="0.7"/>
+      <text x="143" y="106" font-size="7.5" fill="#999">M</text>
 
       <!-- Ball orbiting the formation -->
       <circle r="3" fill="#c0392b" opacity="0.65">
-        <animate attributeName="cx" values="312;248;185;168;185;248;312" dur="5s" repeatCount="indefinite"/>
+        <animate attributeName="cx" values="270;220;155;47;155;220;270" dur="5s" repeatCount="indefinite"/>
         <animate attributeName="cy" values="102;58;36;102;174;150;102" dur="5s" repeatCount="indefinite"/>
       </circle>
 
       <!-- Annotations -->
-      <text x="240" y="12" font-size="9" fill="#555" font-style="italic">6 attackers</text>
-      <text x="65" y="12" font-size="9" fill="#999" font-style="italic">5 defenders</text>
+      <text x="230" y="12" font-size="9" fill="#555" font-style="italic">6 attackers (&#9679;)</text>
+      <text x="85" y="12" font-size="9" fill="#999" font-style="italic">5 defenders (&#9632;)</text>
     </g>
 
     <!-- Penalty box — small, off to the side -->
