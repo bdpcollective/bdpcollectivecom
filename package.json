@@ -13,9 +13,8 @@
     "@types/node": "^22.13.13",
     "@types/nodemailer": "^6.4.17",
     "@types/topojson-client": "^3.1.5",
-    "astro": "^5.15.8",
+    "astro": "^5.18.0",
     "d3": "^7.9.0",
-    "nodemailer": "^7.0.11",
     "resend": "^4.2.0",
     "sharp": "^0.34.4",
     "topojson-client": "^3.1.0",
@@ -25,10 +24,11 @@
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.1",
     "@types/d3": "^7.4.3",
-    "lighthouse": "^12.8.2",
+    "lighthouse": "^13.0.3",
+    "nodemailer": "^8.0.2",
     "postcss": "^8.4.35",
     "tailwindcss": "^4.2.1",
-    "vitest": "^3.1.2"
+    "vitest": "^4.0.18"
   },
   "overrides": {
     "glob": "^11.1.0",
