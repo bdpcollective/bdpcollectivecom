@@ -23,13 +23,13 @@
     <g transform="translate(0, 18)">
       <rect x="0" y="0" width="280" height="180" fill="#e8efe8" stroke="#bbb" stroke-width="0.5"/>
 
-      <!-- Goal -->
-      <rect x="4" y="78" width="4" height="24" fill="#c0392b" opacity="0.7"/>
+      <!-- Goal (set in from end line) -->
+      <rect x="54" y="78" width="4" height="24" fill="#c0392b" opacity="0.7"/>
       <!-- Crease -->
-      <circle cx="8" cy="90" r="28" fill="none" stroke="#999" stroke-width="0.5"/>
+      <circle cx="58" cy="90" r="28" fill="none" stroke="#999" stroke-width="0.5"/>
 
       <!-- Goalie -->
-      <polygon points="18,84 23,90 18,96 13,90" fill="#888" opacity="0.7"/>
+      <polygon points="68,84 73,90 68,96 63,90" fill="#888" opacity="0.7"/>
 
       <!-- Shooter -->
       <circle cx="210" cy="80" r="5" fill="#333" opacity="0.8"/>
@@ -37,20 +37,20 @@
 
       <!-- Ball flight -->
       <circle r="3" fill="#c0392b" opacity="0.7">
-        <animate attributeName="cx" values="205;110;18" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="cx" values="205;130;68" dur="3s" repeatCount="indefinite"/>
         <animate attributeName="cy" values="80;85;90" dur="3s" repeatCount="indefinite"/>
         <animate attributeName="opacity" values="0.7;0.7;0" dur="3s" repeatCount="indefinite"/>
       </circle>
 
       <!-- Goal flash — subtle -->
-      <text x="140" y="50" text-anchor="middle" font-size="13" fill="#333" font-style="italic" opacity="0">
+      <text x="150" y="50" text-anchor="middle" font-size="13" fill="#333" font-style="italic" opacity="0">
         goal
         <animate attributeName="opacity" values="0;0;0;0.6;0" dur="3s" repeatCount="indefinite"/>
       </text>
 
       <!-- Direct annotation — positioned outside crease radius -->
-      <text x="8" y="140" font-size="8" fill="#999" font-style="italic">crease</text>
-      <text x="50" y="78" font-size="8" fill="#999" font-style="italic">goal</text>
+      <text x="58" y="140" font-size="8" fill="#999" font-style="italic">crease</text>
+      <text x="100" y="78" font-size="8" fill="#999" font-style="italic">goal</text>
     </g>
 
     <!-- Text alongside — Tufte: integrated prose -->
@@ -74,19 +74,19 @@
     <!-- Violation -->
     <g transform="translate(0, 20)">
       <rect x="0" y="0" width="160" height="120" fill="#e8efe8" stroke="#bbb" stroke-width="0.5"/>
-      <rect x="4" y="45" width="4" height="20" fill="#c0392b" opacity="0.6"/>
-      <circle cx="8" cy="55" r="24" fill="none" stroke="#999" stroke-width="0.5"/>
-      <polygon points="16,50 20,55 16,60 12,55" fill="#888" opacity="0.6"/>
+      <rect x="28" y="45" width="4" height="20" fill="#c0392b" opacity="0.6"/>
+      <circle cx="32" cy="55" r="24" fill="none" stroke="#999" stroke-width="0.5"/>
+      <polygon points="40,50 44,55 40,60 36,55" fill="#888" opacity="0.6"/>
 
       <!-- Attacker stepping in -->
       <circle cy="48" r="4" fill="#333" opacity="0.8">
-        <animate attributeName="cx" values="52;30;30;52" dur="3.5s" repeatCount="indefinite"/>
+        <animate attributeName="cx" values="72;50;50;72" dur="3.5s" repeatCount="indefinite"/>
       </circle>
 
       <!-- Violation mark -->
       <g opacity="0">
-        <line x1="70" y1="85" x2="90" y2="105" stroke="#c0392b" stroke-width="1.5"/>
-        <line x1="90" y1="85" x2="70" y2="105" stroke="#c0392b" stroke-width="1.5"/>
+        <line x1="85" y1="85" x2="105" y2="105" stroke="#c0392b" stroke-width="1.5"/>
+        <line x1="105" y1="85" x2="85" y2="105" stroke="#c0392b" stroke-width="1.5"/>
         <animate attributeName="opacity" values="0;0;0.7;0.7;0" dur="3.5s" repeatCount="indefinite"/>
       </g>
 
@@ -97,14 +97,14 @@
     <!-- Legal -->
     <g transform="translate(190, 20)">
       <rect x="0" y="0" width="160" height="120" fill="#e8efe8" stroke="#bbb" stroke-width="0.5"/>
-      <rect x="4" y="45" width="4" height="20" fill="#c0392b" opacity="0.6"/>
-      <circle cx="8" cy="55" r="24" fill="none" stroke="#999" stroke-width="0.5"/>
-      <polygon points="16,50 20,55 16,60 12,55" fill="#888" opacity="0.6"/>
+      <rect x="28" y="45" width="4" height="20" fill="#c0392b" opacity="0.6"/>
+      <circle cx="32" cy="55" r="24" fill="none" stroke="#999" stroke-width="0.5"/>
+      <polygon points="40,50 44,55 40,60 36,55" fill="#888" opacity="0.6"/>
 
       <!-- Attacker outside, ball goes in -->
-      <circle cx="65" cy="42" r="4" fill="#333" opacity="0.8"/>
+      <circle cx="85" cy="42" r="4" fill="#333" opacity="0.8"/>
       <circle r="2.5" fill="#c0392b" opacity="0.6">
-        <animate attributeName="cx" values="60;30;8" dur="2.5s" repeatCount="indefinite"/>
+        <animate attributeName="cx" values="80;55;32" dur="2.5s" repeatCount="indefinite"/>
         <animate attributeName="cy" values="42;48;55" dur="2.5s" repeatCount="indefinite"/>
       </circle>
 

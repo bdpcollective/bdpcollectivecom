@@ -27,13 +27,17 @@
   <line x1="228" y1="82" x2="228" y2="422" stroke="#888" stroke-width="0.5" stroke-dasharray="6 3" style="animation: dashDrift 2s linear infinite"/>
   <line x1="672" y1="82" x2="672" y2="422" stroke="#888" stroke-width="0.5" stroke-dasharray="6 3" style="animation: dashDrift 2s linear infinite"/>
 
-  <!-- Goals -->
-  <rect x="57" y="237" width="5" height="30" fill="#c0392b" opacity="0.8"/>
-  <rect x="838" y="237" width="5" height="30" fill="#c0392b" opacity="0.8"/>
+  <!-- Goals (set in from end line ~15 yards) -->
+  <rect x="157" y="237" width="5" height="30" fill="#c0392b" opacity="0.8"/>
+  <rect x="738" y="237" width="5" height="30" fill="#c0392b" opacity="0.8"/>
 
   <!-- Creases -->
-  <circle cx="62" cy="252" r="34" fill="none" stroke="#888" stroke-width="0.5"/>
-  <circle cx="838" cy="252" r="34" fill="none" stroke="#888" stroke-width="0.5"/>
+  <circle cx="160" cy="252" r="34" fill="none" stroke="#888" stroke-width="0.5"/>
+  <circle cx="740" cy="252" r="34" fill="none" stroke="#888" stroke-width="0.5"/>
+
+  <!-- End lines behind goals -->
+  <text x="52" y="258" font-size="7" fill="#aaa" writing-mode="tb" text-anchor="middle">end line</text>
+  <text x="848" y="258" font-size="7" fill="#aaa" writing-mode="tb" text-anchor="middle">end line</text>
 
   <!-- Wing marks -->
   <line x1="446" y1="108" x2="454" y2="116" stroke="#888" stroke-width="0.5"/>
@@ -52,16 +56,16 @@
   <text x="450" y="440" text-anchor="middle" font-size="8" fill="#999" font-style="italic">midfield</text>
   <text x="672" y="440" text-anchor="middle" font-size="8" fill="#999" font-style="italic">restraining line</text>
 
-  <!-- Attackmen: filled circles — shifted away from zone label row -->
+  <!-- Attackmen: filled circles — around the offensive crease -->
   <g style="animation: labelReveal1 5s ease both">
-    <circle cx="155" cy="165" r="6" fill="#333" opacity="0.85"><animate attributeName="opacity" values="0.75;1;0.75" dur="3s" repeatCount="indefinite"/></circle>
-    <text x="167" y="169" font-size="9" fill="#555">A</text>
+    <circle cx="195" cy="170" r="6" fill="#333" opacity="0.85"><animate attributeName="opacity" values="0.75;1;0.75" dur="3s" repeatCount="indefinite"/></circle>
+    <text x="207" y="174" font-size="9" fill="#555">A</text>
 
-    <circle cx="120" cy="245" r="6" fill="#333" opacity="0.85"><animate attributeName="opacity" values="0.75;1;0.75" dur="3s" begin="0.5s" repeatCount="indefinite"/></circle>
-    <text x="132" y="249" font-size="9" fill="#555">A</text>
+    <circle cx="115" cy="252" r="6" fill="#333" opacity="0.85"><animate attributeName="opacity" values="0.75;1;0.75" dur="3s" begin="0.5s" repeatCount="indefinite"/></circle>
+    <text x="127" y="256" font-size="9" fill="#555">A</text>
 
-    <circle cx="155" cy="340" r="6" fill="#333" opacity="0.85"><animate attributeName="opacity" values="0.75;1;0.75" dur="3s" begin="1s" repeatCount="indefinite"/></circle>
-    <text x="167" y="344" font-size="9" fill="#555">A</text>
+    <circle cx="195" cy="335" r="6" fill="#333" opacity="0.85"><animate attributeName="opacity" values="0.75;1;0.75" dur="3s" begin="1s" repeatCount="indefinite"/></circle>
+    <text x="207" y="339" font-size="9" fill="#555">A</text>
   </g>
 
   <!-- Midfielders: open circles — shifted away from zone label row -->
@@ -76,27 +80,27 @@
     <text x="387" y="359" font-size="9" fill="#555">M</text>
   </g>
 
-  <!-- Defensemen: filled squares — shifted away from zone label row -->
+  <!-- Defensemen: filled squares — around the defensive crease -->
   <g style="animation: labelReveal3 5s ease both">
-    <rect x="722" y="159" width="10" height="10" fill="#666" opacity="0.85"><animate attributeName="opacity" values="0.75;1;0.75" dur="3.4s" repeatCount="indefinite"/></rect>
-    <text x="740" y="169" font-size="9" fill="#555">D</text>
+    <rect x="700" y="164" width="10" height="10" fill="#666" opacity="0.85"><animate attributeName="opacity" values="0.75;1;0.75" dur="3.4s" repeatCount="indefinite"/></rect>
+    <text x="718" y="174" font-size="9" fill="#555">D</text>
 
-    <rect x="745" y="240" width="10" height="10" fill="#666" opacity="0.85"><animate attributeName="opacity" values="0.75;1;0.75" dur="3.4s" begin="0.3s" repeatCount="indefinite"/></rect>
-    <text x="763" y="250" font-size="9" fill="#555">D</text>
+    <rect x="780" y="245" width="10" height="10" fill="#666" opacity="0.85"><animate attributeName="opacity" values="0.75;1;0.75" dur="3.4s" begin="0.3s" repeatCount="indefinite"/></rect>
+    <text x="798" y="255" font-size="9" fill="#555">D</text>
 
-    <rect x="722" y="335" width="10" height="10" fill="#666" opacity="0.85"><animate attributeName="opacity" values="0.75;1;0.75" dur="3.4s" begin="0.6s" repeatCount="indefinite"/></rect>
-    <text x="740" y="345" font-size="9" fill="#555">D</text>
+    <rect x="700" y="330" width="10" height="10" fill="#666" opacity="0.85"><animate attributeName="opacity" values="0.75;1;0.75" dur="3.4s" begin="0.6s" repeatCount="indefinite"/></rect>
+    <text x="718" y="340" font-size="9" fill="#555">D</text>
   </g>
 
-  <!-- Goalie: diamond -->
+  <!-- Goalie: diamond — in the crease -->
   <g style="animation: labelReveal4 5s ease both">
-    <polygon points="830,244 838,252 830,260 822,252" fill="#999" opacity="0.85"><animate attributeName="opacity" values="0.75;1;0.75" dur="3s" repeatCount="indefinite"/></polygon>
-    <text x="830" y="278" text-anchor="middle" font-size="9" fill="#555">G</text>
+    <polygon points="748,244 756,252 748,260 740,252" fill="#999" opacity="0.85"><animate attributeName="opacity" values="0.75;1;0.75" dur="3s" repeatCount="indefinite"/></polygon>
+    <text x="748" y="278" text-anchor="middle" font-size="9" fill="#555">G</text>
   </g>
 
   <!-- Crease + goal labels — positioned outside crease circles -->
-  <text x="62" y="300" text-anchor="middle" font-size="8" fill="#999" font-style="italic">crease</text>
-  <text x="838" y="300" text-anchor="middle" font-size="8" fill="#999" font-style="italic">crease</text>
+  <text x="160" y="300" text-anchor="middle" font-size="8" fill="#999" font-style="italic">crease</text>
+  <text x="740" y="300" text-anchor="middle" font-size="8" fill="#999" font-style="italic">crease</text>
   <text x="465" y="130" font-size="8" fill="#999" font-style="italic">wing</text>
   <text x="465" y="410" font-size="8" fill="#999" font-style="italic">wing</text>
 
