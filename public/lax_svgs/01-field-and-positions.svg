@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" font-family="Georgia, 'Times New Roman', serif">
+  <defs>
+    <style>
+      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes dashDrift { to { stroke-dashoffset: -12; } }
+      @keyframes labelReveal1 { 0%, 8% { opacity: 0; } 12%, 100% { opacity: 1; } }
+      @keyframes labelReveal2 { 0%, 16% { opacity: 0; } 20%, 100% { opacity: 1; } }
+      @keyframes labelReveal3 { 0%, 24% { opacity: 0; } 28%, 100% { opacity: 1; } }
+      @keyframes labelReveal4 { 0%, 32% { opacity: 0; } 36%, 100% { opacity: 1; } }
+    </style>
+  </defs>
+
+  <rect width="900" height="600" fill="#fffff8"/>
+
+  <!-- Title -->
+  <text x="52" y="36" font-size="19" fill="#333" font-weight="400" style="animation: fadeIn 0.8s ease" letter-spacing="0.3">The Field and Its Positions</text>
+  <text x="52" y="56" font-size="12" fill="#999" font-style="italic">Men's field lacrosse &#8212; 110 &#215; 60 yards, ten players per side</text>
+  <line x1="52" y1="64" x2="848" y2="64" stroke="#ccc" stroke-width="0.5"/>
+
+  <!-- Field -->
+  <rect x="52" y="82" width="796" height="340" fill="#e8efe8" stroke="#999" stroke-width="0.5"/>
+
+  <!-- Midfield line -->
+  <line x1="450" y1="82" x2="450" y2="422" stroke="#888" stroke-width="0.75"/>
+
+  <!-- Restraining lines -->
+  <line x1="228" y1="82" x2="228" y2="422" stroke="#888" stroke-width="0.5" stroke-dasharray="6 3" style="animation: dashDrift 2s linear infinite"/>
+  <line x1="672" y1="82" x2="672" y2="422" stroke="#888" stroke-width="0.5" stroke-dasharray="6 3" style="animation: dashDrift 2s linear infinite"/>
+
+  <!-- Goals -->
+  <rect x="57" y="237" width="5" height="30" fill="#c0392b" opacity="0.8"/>
+  <rect x="838" y="237" width="5" height="30" fill="#c0392b" opacity="0.8"/>
+
+  <!-- Creases -->
+  <circle cx="62" cy="252" r="34" fill="none" stroke="#888" stroke-width="0.5"/>
+  <circle cx="838" cy="252" r="34" fill="none" stroke="#888" stroke-width="0.5"/>
+
+  <!-- Wing marks -->
+  <line x1="446" y1="108" x2="454" y2="116" stroke="#888" stroke-width="0.5"/>
+  <line x1="454" y1="108" x2="446" y2="116" stroke="#888" stroke-width="0.5"/>
+  <line x1="446" y1="388" x2="454" y2="396" stroke="#888" stroke-width="0.5"/>
+  <line x1="454" y1="388" x2="446" y2="396" stroke="#888" stroke-width="0.5"/>
+
+  <!-- Zone labels — positioned BELOW center to avoid player markers -->
+  <text x="140" y="310" text-anchor="middle" font-size="9" fill="#777" letter-spacing="1.5" font-variant="small-caps">attack zone</text>
+  <text x="340" y="310" text-anchor="middle" font-size="9" fill="#777" letter-spacing="1.5" font-variant="small-caps">midfield</text>
+  <text x="560" y="310" text-anchor="middle" font-size="9" fill="#777" letter-spacing="1.5" font-variant="small-caps">midfield</text>
+  <text x="755" y="310" text-anchor="middle" font-size="9" fill="#777" letter-spacing="1.5" font-variant="small-caps">defense zone</text>
+
+  <!-- Line annotations — below field with clear spacing -->
+  <text x="228" y="440" text-anchor="middle" font-size="8" fill="#999" font-style="italic">restraining line</text>
+  <text x="450" y="440" text-anchor="middle" font-size="8" fill="#999" font-style="italic">midfield</text>
+  <text x="672" y="440" text-anchor="middle" font-size="8" fill="#999" font-style="italic">restraining line</text>
+
+  <!-- Attackmen: filled circles — shifted away from zone label row -->
+  <g style="animation: labelReveal1 5s ease both">
+    <circle cx="155" cy="165" r="6" fill="#333" opacity="0.85"><animate attributeName="opacity" values="0.75;1;0.75" dur="3s" repeatCount="indefinite"/></circle>
+    <text x="167" y="169" font-size="9" fill="#555">A</text>
+
+    <circle cx="120" cy="245" r="6" fill="#333" opacity="0.85"><animate attributeName="opacity" values="0.75;1;0.75" dur="3s" begin="0.5s" repeatCount="indefinite"/></circle>
+    <text x="132" y="249" font-size="9" fill="#555">A</text>
+
+    <circle cx="155" cy="340" r="6" fill="#333" opacity="0.85"><animate attributeName="opacity" values="0.75;1;0.75" dur="3s" begin="1s" repeatCount="indefinite"/></circle>
+    <text x="167" y="344" font-size="9" fill="#555">A</text>
+  </g>
+
+  <!-- Midfielders: open circles — shifted away from zone label row -->
+  <g style="animation: labelReveal2 5s ease both">
+    <circle cx="375" cy="150" r="6" fill="none" stroke="#333" stroke-width="1.2"><animate attributeName="opacity" values="0.75;1;0.75" dur="3.2s" repeatCount="indefinite"/></circle>
+    <text x="387" y="154" font-size="9" fill="#555">M</text>
+
+    <circle cx="355" cy="245" r="6" fill="none" stroke="#333" stroke-width="1.2"><animate attributeName="opacity" values="0.75;1;0.75" dur="3.2s" begin="0.4s" repeatCount="indefinite"/></circle>
+    <text x="367" y="249" font-size="9" fill="#555">M</text>
+
+    <circle cx="375" cy="355" r="6" fill="none" stroke="#333" stroke-width="1.2"><animate attributeName="opacity" values="0.75;1;0.75" dur="3.2s" begin="0.8s" repeatCount="indefinite"/></circle>
+    <text x="387" y="359" font-size="9" fill="#555">M</text>
+  </g>
+
+  <!-- Defensemen: filled squares — shifted away from zone label row -->
+  <g style="animation: labelReveal3 5s ease both">
+    <rect x="722" y="159" width="10" height="10" fill="#666" opacity="0.85"><animate attributeName="opacity" values="0.75;1;0.75" dur="3.4s" repeatCount="indefinite"/></rect>
+    <text x="740" y="169" font-size="9" fill="#555">D</text>
+
+    <rect x="745" y="240" width="10" height="10" fill="#666" opacity="0.85"><animate attributeName="opacity" values="0.75;1;0.75" dur="3.4s" begin="0.3s" repeatCount="indefinite"/></rect>
+    <text x="763" y="250" font-size="9" fill="#555">D</text>
+
+    <rect x="722" y="335" width="10" height="10" fill="#666" opacity="0.85"><animate attributeName="opacity" values="0.75;1;0.75" dur="3.4s" begin="0.6s" repeatCount="indefinite"/></rect>
+    <text x="740" y="345" font-size="9" fill="#555">D</text>
+  </g>
+
+  <!-- Goalie: diamond -->
+  <g style="animation: labelReveal4 5s ease both">
+    <polygon points="830,244 838,252 830,260 822,252" fill="#999" opacity="0.85"><animate attributeName="opacity" values="0.75;1;0.75" dur="3s" repeatCount="indefinite"/></polygon>
+    <text x="830" y="278" text-anchor="middle" font-size="9" fill="#555">G</text>
+  </g>
+
+  <!-- Crease + goal labels — positioned outside crease circles -->
+  <text x="62" y="300" text-anchor="middle" font-size="8" fill="#999" font-style="italic">crease</text>
+  <text x="838" y="300" text-anchor="middle" font-size="8" fill="#999" font-style="italic">crease</text>
+  <text x="465" y="130" font-size="8" fill="#999" font-style="italic">wing</text>
+  <text x="465" y="410" font-size="8" fill="#999" font-style="italic">wing</text>
+
+  <!-- Key — below field with generous spacing -->
+  <line x1="52" y1="460" x2="848" y2="460" stroke="#ddd" stroke-width="0.5"/>
+  <g transform="translate(52, 486)" style="animation: fadeIn 1s ease 1.5s both">
+    <circle cx="0" cy="0" r="5" fill="#333"/>
+    <text x="14" y="4" font-size="10.5" fill="#555">Attackmen (3) &#8212; stay in offensive half</text>
+
+    <circle cx="280" cy="0" r="5" fill="none" stroke="#333" stroke-width="1"/>
+    <text x="294" y="4" font-size="10.5" fill="#555">Midfielders (3) &#8212; roam entire field</text>
+
+    <rect x="555" y="-4" width="8" height="8" fill="#666"/>
+    <text x="572" y="4" font-size="10.5" fill="#555">Defensemen (3)</text>
+
+    <polygon points="718,-4 723,0 718,4 713,0" fill="#999"/>
+    <text x="732" y="4" font-size="10.5" fill="#555">Goalie (1)</text>
+  </g>
+
+  <!-- Marginal note -->
+  <text x="52" y="526" font-size="10" fill="#999" font-style="italic">Each team fields ten. The restraining lines confine attackmen and defensemen to their respective halves;</text>
+  <text x="52" y="542" font-size="10" fill="#999" font-style="italic">only midfielders cross freely.</text>
+</svg>

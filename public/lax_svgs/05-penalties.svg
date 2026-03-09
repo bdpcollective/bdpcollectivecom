@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" font-family="Georgia, 'Times New Roman', serif">
+  <defs>
+    <style>
+      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes timerDrain { from { width: 60; } to { width: 0; } }
+      @keyframes timerDrainLong { from { width: 60; } to { width: 0; } }
+    </style>
+  </defs>
+
+  <rect width="900" height="640" fill="#fffff8"/>
+
+  <text x="52" y="36" font-size="19" fill="#333" font-weight="400" style="animation: fadeIn 0.8s ease" letter-spacing="0.3">Penalties and Violations</text>
+  <text x="52" y="56" font-size="12" fill="#999" font-style="italic">Two classes of foul: technical (minor) and personal (major)</text>
+  <line x1="52" y1="64" x2="848" y2="64" stroke="#ccc" stroke-width="0.5"/>
+
+  <!-- ===== TECHNICAL FOULS ===== -->
+  <g transform="translate(52, 88)" style="animation: fadeIn 0.6s ease 0.2s both">
+    <text x="0" y="0" font-size="13" fill="#555" font-variant="small-caps" letter-spacing="1.5">technical fouls</text>
+    <text x="0" y="18" font-size="10" fill="#999" font-style="italic">30-second releasable penalty, or loss of possession</text>
+
+    <!-- Penalty time bar — Tufte sparkline style, right-aligned -->
+    <g transform="translate(680, -2)">
+      <rect x="0" y="0" width="60" height="6" fill="#ddd"/>
+      <rect x="0" y="0" height="6" fill="#888" opacity="0.7">
+        <animate attributeName="width" values="60;0;60" dur="4s" repeatCount="indefinite"/>
+      </rect>
+      <text x="68" y="6" font-size="8" fill="#999">0:30</text>
+    </g>
+
+    <!-- List — Tufte: no bullets, use em dashes, each with a brief definition -->
+    <g transform="translate(0, 38)">
+      <text x="0" y="0" font-size="11" fill="#444"><tspan font-weight="600">Offsides</tspan> &#8212; too many players on one half of the field</text>
+      <text x="0" y="20" font-size="11" fill="#444"><tspan font-weight="600">Pushing</tspan> &#8212; pushing from behind or pushing a player without the ball</text>
+      <text x="0" y="40" font-size="11" fill="#444"><tspan font-weight="600">Holding</tspan> &#8212; using body or stick to impede an opponent's movement</text>
+      <text x="0" y="60" font-size="11" fill="#444"><tspan font-weight="600">Interference</tspan> &#8212; blocking a player not in possession and not near the ball</text>
+      <text x="0" y="80" font-size="11" fill="#444"><tspan font-weight="600">Warding off</tspan> &#8212; ball carrier uses the free hand to push away a defender</text>
+      <text x="0" y="100" font-size="11" fill="#444"><tspan font-weight="600">Stalling</tspan> &#8212; deliberately keeping the ball from play; team must advance</text>
+      <text x="0" y="120" font-size="11" fill="#444"><tspan font-weight="600">Crease violation</tspan> &#8212; offensive player steps into the crease area</text>
+    </g>
+  </g>
+
+  <!-- Divider -->
+  <line x1="52" y1="282" x2="848" y2="282" stroke="#ddd" stroke-width="0.5"/>
+
+  <!-- ===== PERSONAL FOULS ===== -->
+  <g transform="translate(52, 304)" style="animation: fadeIn 0.6s ease 0.6s both">
+    <text x="0" y="0" font-size="13" fill="#555" font-variant="small-caps" letter-spacing="1.5">personal fouls</text>
+    <text x="0" y="18" font-size="10" fill="#999" font-style="italic">One to three minutes; some non-releasable</text>
+
+    <!-- Longer penalty bar — right-aligned -->
+    <g transform="translate(680, -2)">
+      <rect x="0" y="0" width="60" height="6" fill="#ddd"/>
+      <rect x="0" y="0" height="6" fill="#c0392b" opacity="0.6">
+        <animate attributeName="width" values="60;0;60" dur="8s" repeatCount="indefinite"/>
+      </rect>
+      <text x="68" y="6" font-size="8" fill="#c0392b">1:00 &#8211; 3:00</text>
+    </g>
+
+    <g transform="translate(0, 38)">
+      <text x="0" y="0" font-size="11" fill="#444"><tspan font-weight="600">Slashing</tspan> &#8212; reckless swing of the stick striking an opponent</text>
+      <text x="0" y="20" font-size="11" fill="#444"><tspan font-weight="600">Cross-checking</tspan> &#8212; checking with the shaft between the hands, aimed at</text>
+      <text x="28" y="35" font-size="11" fill="#444">neck, head, or back</text>
+      <text x="0" y="58" font-size="11" fill="#444"><tspan font-weight="600">Illegal body check</tspan> &#8212; hitting from behind, above the shoulders, below the</text>
+      <text x="28" y="73" font-size="11" fill="#444">knees, or hitting a player without the ball</text>
+      <text x="0" y="96" font-size="11" fill="#444"><tspan font-weight="600">Tripping</tspan> &#8212; using stick, foot, or body to trip an opponent</text>
+      <text x="0" y="116" font-size="11" fill="#444"><tspan font-weight="600">Unnecessary roughness</tspan> &#8212; excessive force beyond what the play requires</text>
+      <text x="0" y="136" font-size="11" fill="#444"><tspan font-weight="600">Unsportsmanlike conduct</tspan> &#8212; taunting, abusive language, demeaning actions</text>
+      <text x="0" y="156" font-size="11" fill="#444"><tspan font-weight="600">Illegal equipment</tspan> &#8212; stick fails specifications (pocket too deep, etc.)</text>
+    </g>
+  </g>
+
+  <!-- Divider -->
+  <line x1="52" y1="512" x2="848" y2="512" stroke="#ddd" stroke-width="0.5"/>
+
+  <!-- ===== RELEASABLE vs. NON-RELEASABLE ===== -->
+  <g transform="translate(52, 532)" style="animation: fadeIn 0.8s ease 1s both">
+    <text x="0" y="0" font-size="12" fill="#555" font-variant="small-caps" letter-spacing="1">releasable vs. non-releasable</text>
+
+    <text x="0" y="24" font-size="11" fill="#444">A <tspan font-style="italic">releasable</tspan> penalty ends early if the opposing team scores during the man-up.</text>
+    <text x="0" y="42" font-size="11" fill="#444">A <tspan font-style="italic">non-releasable</tspan> penalty requires the full time to be served regardless of goals.</text>
+    <text x="0" y="64" font-size="10" fill="#999" font-style="italic">A flagrant foul may result in ejection from the game.</text>
+  </g>
+</svg>

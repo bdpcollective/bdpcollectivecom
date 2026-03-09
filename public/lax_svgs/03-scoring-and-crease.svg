@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 570" font-family="Georgia, 'Times New Roman', serif">
+  <defs>
+    <style>
+      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes ballTravel { 0% { cx: 230; cy: 90; opacity: 1; } 50% { cx: 110; cy: 100; opacity: 1; } 80% { cx: 38; cy: 108; opacity: 1; } 85%, 100% { cx: 38; cy: 108; opacity: 0; } }
+      @keyframes goalMark { 0%, 75% { opacity: 0; } 80%, 95% { opacity: 0.6; } 100% { opacity: 0; } }
+      @keyframes stepIn { 0%, 100% { cx: 70; } 40%, 60% { cx: 48; } }
+      @keyframes warnFlash { 0%, 35% { opacity: 0; } 40%, 60% { opacity: 0.7; } 65%, 100% { opacity: 0; } }
+    </style>
+  </defs>
+
+  <rect width="900" height="570" fill="#fffff8"/>
+
+  <text x="52" y="36" font-size="19" fill="#333" font-weight="400" style="animation: fadeIn 0.8s ease" letter-spacing="0.3">Scoring and the Crease</text>
+  <text x="52" y="56" font-size="12" fill="#999" font-style="italic">One point per goal; the crease protects the goalkeeper</text>
+  <line x1="52" y1="64" x2="848" y2="64" stroke="#ccc" stroke-width="0.5"/>
+
+  <!-- ===== SCORING ===== -->
+  <g transform="translate(52, 90)" style="animation: fadeIn 0.6s ease 0.2s both">
+    <text x="0" y="0" font-size="12" fill="#555" font-variant="small-caps" letter-spacing="1">scoring a goal</text>
+
+    <!-- Minimal half-field diagram -->
+    <g transform="translate(0, 18)">
+      <rect x="0" y="0" width="280" height="180" fill="#e8efe8" stroke="#bbb" stroke-width="0.5"/>
+
+      <!-- Goal -->
+      <rect x="4" y="78" width="4" height="24" fill="#c0392b" opacity="0.7"/>
+      <!-- Crease -->
+      <circle cx="8" cy="90" r="28" fill="none" stroke="#999" stroke-width="0.5"/>
+
+      <!-- Goalie -->
+      <polygon points="18,84 23,90 18,96 13,90" fill="#888" opacity="0.7"/>
+
+      <!-- Shooter -->
+      <circle cx="210" cy="80" r="5" fill="#333" opacity="0.8"/>
+      <text x="222" y="84" font-size="8.5" fill="#777" font-style="italic">shooter</text>
+
+      <!-- Ball flight -->
+      <circle r="3" fill="#c0392b" opacity="0.7">
+        <animate attributeName="cx" values="205;110;18" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="80;85;90" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.7;0.7;0" dur="3s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Goal flash — subtle -->
+      <text x="140" y="50" text-anchor="middle" font-size="13" fill="#333" font-style="italic" opacity="0">
+        goal
+        <animate attributeName="opacity" values="0;0;0;0.6;0" dur="3s" repeatCount="indefinite"/>
+      </text>
+
+      <!-- Direct annotation — positioned outside crease radius -->
+      <text x="8" y="140" font-size="8" fill="#999" font-style="italic">crease</text>
+      <text x="50" y="78" font-size="8" fill="#999" font-style="italic">goal</text>
+    </g>
+
+    <!-- Text alongside — Tufte: integrated prose -->
+    <g transform="translate(300, 18)">
+      <text x="0" y="16" font-size="11" fill="#444">Each goal is worth <tspan font-weight="600">one point</tspan>. The ball must cross the</text>
+      <text x="0" y="32" font-size="11" fill="#444">goal line entirely. Goals may be scored from anywhere</text>
+      <text x="0" y="48" font-size="11" fill="#444">on the field, though most come from close range.</text>
+      <text x="0" y="76" font-size="11" fill="#444">Typical final scores range from 8 to 18 goals per team.</text>
+      <text x="0" y="104" font-size="11" fill="#444">A shot on goal must come within 80 seconds of gaining</text>
+      <text x="0" y="120" font-size="11" fill="#444">possession (the shot clock). Failure results in a turnover.</text>
+      <text x="0" y="148" font-size="10" fill="#999" font-style="italic">The shot clock resets to 80 seconds on a change of</text>
+      <text x="0" y="163" font-size="10" fill="#999" font-style="italic">possession, or 60 after certain stoppages.</text>
+    </g>
+  </g>
+
+  <!-- ===== THE CREASE ===== -->
+  <g transform="translate(52, 310)" style="animation: fadeIn 0.8s ease 0.8s both">
+    <text x="0" y="0" font-size="12" fill="#555" font-variant="small-caps" letter-spacing="1">the crease</text>
+
+    <!-- Two small-multiple diagrams side by side — Tufte hallmark -->
+    <!-- Violation -->
+    <g transform="translate(0, 20)">
+      <rect x="0" y="0" width="160" height="120" fill="#e8efe8" stroke="#bbb" stroke-width="0.5"/>
+      <rect x="4" y="45" width="4" height="20" fill="#c0392b" opacity="0.6"/>
+      <circle cx="8" cy="55" r="24" fill="none" stroke="#999" stroke-width="0.5"/>
+      <polygon points="16,50 20,55 16,60 12,55" fill="#888" opacity="0.6"/>
+
+      <!-- Attacker stepping in -->
+      <circle cy="48" r="4" fill="#333" opacity="0.8">
+        <animate attributeName="cx" values="52;30;30;52" dur="3.5s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- Violation mark -->
+      <g opacity="0">
+        <line x1="70" y1="85" x2="90" y2="105" stroke="#c0392b" stroke-width="1.5"/>
+        <line x1="90" y1="85" x2="70" y2="105" stroke="#c0392b" stroke-width="1.5"/>
+        <animate attributeName="opacity" values="0;0;0.7;0.7;0" dur="3.5s" repeatCount="indefinite"/>
+      </g>
+
+      <text x="80" y="14" text-anchor="middle" font-size="9" fill="#c0392b" font-style="italic">violation &#8212; no goal</text>
+      <text x="80" y="118" text-anchor="middle" font-size="8" fill="#999">attacker enters crease</text>
+    </g>
+
+    <!-- Legal -->
+    <g transform="translate(190, 20)">
+      <rect x="0" y="0" width="160" height="120" fill="#e8efe8" stroke="#bbb" stroke-width="0.5"/>
+      <rect x="4" y="45" width="4" height="20" fill="#c0392b" opacity="0.6"/>
+      <circle cx="8" cy="55" r="24" fill="none" stroke="#999" stroke-width="0.5"/>
+      <polygon points="16,50 20,55 16,60 12,55" fill="#888" opacity="0.6"/>
+
+      <!-- Attacker outside, ball goes in -->
+      <circle cx="65" cy="42" r="4" fill="#333" opacity="0.8"/>
+      <circle r="2.5" fill="#c0392b" opacity="0.6">
+        <animate attributeName="cx" values="60;30;8" dur="2.5s" repeatCount="indefinite"/>
+        <animate attributeName="cy" values="42;48;55" dur="2.5s" repeatCount="indefinite"/>
+      </circle>
+
+      <text x="80" y="14" text-anchor="middle" font-size="9" fill="#555" font-style="italic">legal &#8212; goal counts</text>
+      <text x="80" y="118" text-anchor="middle" font-size="8" fill="#999">shot from outside crease</text>
+    </g>
+
+    <!-- Prose explanation -->
+    <g transform="translate(380, 20)">
+      <text x="0" y="16" font-size="11" fill="#444">The crease is a circle around each goal. Offensive</text>
+      <text x="0" y="32" font-size="11" fill="#444">players <tspan font-style="italic">may not</tspan> step into it. If they do, any resulting</text>
+      <text x="0" y="48" font-size="11" fill="#444">goal is disallowed and possession changes.</text>
+      <text x="0" y="72" font-size="11" fill="#444">The ball itself may pass through the crease freely &#8212;</text>
+      <text x="0" y="88" font-size="11" fill="#444">only feet matter. The goalie is protected within it.</text>
+      <text x="0" y="108" font-size="10" fill="#999" font-style="italic">Defenders may enter the crease at any time.</text>
+    </g>
+  </g>
+
+  <!-- Bottom rule -->
+  <line x1="52" y1="480" x2="848" y2="480" stroke="#ddd" stroke-width="0.5"/>
+  <text x="52" y="500" font-size="9.5" fill="#bbb" font-style="italic">The crease violation is among the most common calls in lacrosse, particularly on close-range shooting attempts around the goal.</text>
+</svg>

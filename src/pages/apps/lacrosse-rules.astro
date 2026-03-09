@@ -1,0 +1,107 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { baseUrl } from '../../config';
+
+const sections = [
+  { file: "01-field-and-positions.svg", title: "The Field & Its Positions", description: "110 × 60 yards, ten players per side — attackmen, midfielders, defensemen, and a goalie." },
+  { file: "02-game-structure.svg", title: "Game Structure", description: "Four quarters, faceoffs, timeouts, and overtime rules." },
+  { file: "03-scoring-and-crease.svg", title: "Scoring & the Crease", description: "How goals are scored and the crease protection rules." },
+  { file: "04-offsides.svg", title: "Offsides", description: "Restraining lines and player count requirements on each half." },
+  { file: "05-penalties.svg", title: "Penalties", description: "Personal fouls, technical fouls, and time-served penalties." },
+  { file: "06-man-up-man-down.svg", title: "Man-Up / Man-Down", description: "How teams play with a player advantage or disadvantage." },
+];
+---
+
+<Layout title="Lacrosse Rules Explained - Apps">
+  <main>
+    {/* Hero Section */}
+    <section class="relative h-[40vh] overflow-hidden bg-gradient-to-br from-gray-900 to-gray-700">
+      <div class="absolute inset-0 opacity-20">
+        <img
+          src={`${baseUrl}/lax_svgs/01-field-and-positions.svg`}
+          alt=""
+          class="w-full h-full object-cover"
+        />
+      </div>
+      <div class="relative z-10 flex flex-col justify-center h-full px-4 container mx-auto">
+        <div class="max-w-7xl mx-auto w-full">
+          <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">
+            Lacrosse Rules Explained
+          </h1>
+          <p class="text-lg md:text-xl text-gray-300 mb-4">
+            Animated diagrams covering the fundamentals of men's field lacrosse.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    {/* Content Section */}
+    <section class="container mx-auto px-4 py-20">
+      <div class="max-w-5xl mx-auto space-y-16">
+        {/* Back Button */}
+        <a
+          href="/apps"
+          class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+        >
+          <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to Apps
+        </a>
+
+        {sections.map((section, index) => (
+          <div
+            class="scroll-fade-in"
+            data-index={index}
+            style="opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;"
+          >
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">{section.title}</h2>
+            <p class="text-gray-600 mb-6">{section.description}</p>
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+              <img
+                src={`${baseUrl}/lax_svgs/${section.file}`}
+                alt={section.title}
+                class="w-full h-auto"
+                loading={index === 0 ? "eager" : "lazy"}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('astro:page-load', () => {
+      const animatedItems = document.querySelectorAll('.scroll-fade-in');
+
+      if (animatedItems.length > 0 && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const element = entry.target as HTMLElement;
+              const index = parseInt(element.dataset.index || '0');
+              setTimeout(() => {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+              }, index * 80);
+              observer.unobserve(element);
+            }
+          });
+        }, {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        });
+
+        animatedItems.forEach((item) => {
+          observer.observe(item);
+        });
+      } else {
+        animatedItems.forEach((item) => {
+          (item as HTMLElement).style.opacity = '1';
+          (item as HTMLElement).style.transform = 'translateY(0)';
+        });
+      }
+    });
+  </script>
+</Layout>
