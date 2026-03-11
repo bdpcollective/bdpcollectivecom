@@ -1,130 +1,200 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 580" font-family="Georgia, 'Times New Roman', serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 760" font-family="Georgia, 'Times New Roman', serif">
   <defs>
     <style>
       @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-      @keyframes passOrbit { 0% { cx: 310; cy: 115; } 16% { cx: 250; cy: 68; } 33% { cx: 185; cy: 48; } 50% { cx: 165; cy: 115; } 66% { cx: 185; cy: 182; } 83% { cx: 250; cy: 162; } 100% { cx: 310; cy: 115; } }
       @keyframes penaltyPulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.6; } }
       @keyframes timerDrain { from { width: 50; } to { width: 0; } }
+      @keyframes dashDrift { to { stroke-dashoffset: -12; } }
     </style>
   </defs>
 
-  <rect width="900" height="580" fill="#fffff8"/>
+  <rect width="900" height="760" fill="#fffff8"/>
 
-  <text x="52" y="36" font-size="19" fill="#333" font-weight="400" style="animation: fadeIn 0.8s ease" letter-spacing="0.3">Man-Up and Man-Down</text>
-  <text x="52" y="56" font-size="12" fill="#999" font-style="italic">The power play: what happens when a player is sent to the penalty box</text>
+  <text x="52" y="36" font-size="22" fill="#333" font-weight="400" style="animation: fadeIn 0.8s ease" letter-spacing="0.3">Man-Up and Man-Down</text>
+  <text x="52" y="56" font-size="14" fill="#999" font-style="italic">The power play: what happens when a player is sent to the penalty box</text>
   <line x1="52" y1="64" x2="848" y2="64" stroke="#ccc" stroke-width="0.5"/>
 
   <!-- ===== CONCEPT ===== -->
   <g transform="translate(52, 88)" style="animation: fadeIn 0.5s ease 0.2s both">
-    <text x="0" y="0" font-size="11" fill="#444">When a player commits a personal foul, he serves time in the penalty box. His team plays</text>
-    <text x="0" y="18" font-size="11" fill="#444">one man short. The team with the numerical advantage is on the <tspan font-style="italic">extra-man offense</tspan> (EMO),</text>
-    <text x="0" y="36" font-size="11" fill="#444">commonly called <tspan font-style="italic">man-up</tspan>. The short-handed team is <tspan font-style="italic">man-down</tspan>.</text>
+    <text x="0" y="0" font-size="13" fill="#444">When a player commits a personal foul, he serves time in the penalty box. His team plays</text>
+    <text x="0" y="18" font-size="13" fill="#444">one man short. The team with the numerical advantage is on the <tspan font-style="italic">extra-man offense</tspan> (EMO),</text>
+    <text x="0" y="36" font-size="13" fill="#444">commonly called <tspan font-style="italic">man-up</tspan>. The short-handed team is <tspan font-style="italic">man-down</tspan>.</text>
   </g>
 
   <!-- ===== 6v5 DIAGRAM ===== -->
-  <g transform="translate(52, 150)" style="animation: fadeIn 0.6s ease 0.5s both">
-    <text x="0" y="0" font-size="12" fill="#555" font-variant="small-caps" letter-spacing="1">the 6-on-5 situation</text>
+  <g style="animation: fadeIn 0.6s ease 0.5s both">
+    <text x="52" y="150" font-size="14" fill="#555" font-variant="small-caps" letter-spacing="1">the 6-on-5 situation</text>
 
-    <g transform="translate(0, 18)">
-      <!-- Half field -->
-      <rect x="0" y="0" width="360" height="210" fill="#e8efe8" stroke="#bbb" stroke-width="0.5"/>
+    <!-- Field: 796x340, matching offsides/field-and-positions -->
+    <rect x="52" y="166" width="796" height="340" fill="#e8efe8" stroke="#999" stroke-width="0.5"/>
 
-      <!-- Goal (set in from end line with space behind) -->
-      <rect x="120" y="90" width="4" height="24" fill="#c0392b" opacity="0.6"/>
-      <!-- Crease -->
-      <circle cx="124" cy="102" r="30" fill="none" stroke="#999" stroke-width="0.5"/>
+    <!-- Midfield line -->
+    <line x1="450" y1="166" x2="450" y2="506" stroke="#888" stroke-width="0.75"/>
 
-      <!-- Goalie (defense) -->
-      <polygon points="134,96 139,102 134,108 129,102" fill="#888" opacity="0.6"/>
+    <!-- Restraining lines -->
+    <line x1="228" y1="166" x2="228" y2="506" stroke="#888" stroke-width="0.5" stroke-dasharray="6 3" style="animation: dashDrift 2s linear infinite"/>
+    <line x1="672" y1="166" x2="672" y2="506" stroke="#888" stroke-width="0.5" stroke-dasharray="6 3" style="animation: dashDrift 2s linear infinite"/>
 
-      <!-- Man-up offense: 6 players (2-3-1) -->
-      <circle cx="155" cy="36" r="4.5" fill="#333" opacity="0.8"/>
-      <text x="166" y="40" font-size="7.5" fill="#555">A</text>
-      <circle cx="220" cy="58" r="4.5" fill="#333" opacity="0.8"/>
-      <text x="231" y="62" font-size="7.5" fill="#555">M</text>
-      <circle cx="47" cy="102" r="4.5" fill="#333" opacity="0.8"/>
-      <text x="37" y="93" font-size="7.5" fill="#555">A</text>
-      <circle cx="220" cy="150" r="4.5" fill="#333" opacity="0.8"/>
-      <text x="231" y="154" font-size="7.5" fill="#555">M</text>
-      <circle cx="155" cy="174" r="4.5" fill="#333" opacity="0.8"/>
-      <text x="166" y="178" font-size="7.5" fill="#555">A</text>
-      <!-- Point M — OPEN (the man-up advantage!) -->
-      <circle cx="270" cy="102" r="4.5" fill="#333" opacity="0.8"/>
-      <text x="281" y="106" font-size="7.5" fill="#555">M</text>
-      <text x="270" y="88" text-anchor="middle" font-size="7" fill="#c0392b" font-style="italic">open!</text>
+    <!-- Goals -->
+    <rect x="157" y="321" width="5" height="30" fill="#c0392b" opacity="0.8"/>
+    <rect x="738" y="321" width="5" height="30" fill="#c0392b" opacity="0.8"/>
 
-      <!-- Man-down defense: 5 players in diamond zone right of crease -->
-      <!-- Top of diamond -->
-      <rect x="172" y="56" width="7" height="7" fill="#666" opacity="0.7"/>
-      <text x="163" y="63" font-size="7.5" fill="#999">D</text>
-      <!-- Right of diamond -->
-      <rect x="196" y="99" width="7" height="7" fill="#666" opacity="0.7"/>
-      <text x="207" y="106" font-size="7.5" fill="#999">M</text>
-      <!-- Center of diamond -->
-      <rect x="168" y="99" width="7" height="7" fill="#666" opacity="0.7"/>
-      <text x="159" y="106" font-size="7.5" fill="#999">D</text>
-      <!-- Bottom of diamond -->
-      <rect x="172" y="142" width="7" height="7" fill="#666" opacity="0.7"/>
-      <text x="163" y="149" font-size="7.5" fill="#999">D</text>
-      <!-- Left of diamond (near crease) -->
-      <rect x="152" y="99" width="7" height="7" fill="#666" opacity="0.7"/>
-      <text x="143" y="106" font-size="7.5" fill="#999">M</text>
+    <!-- Creases -->
+    <circle cx="160" cy="336" r="34" fill="none" stroke="#888" stroke-width="0.5"/>
+    <circle cx="740" cy="336" r="34" fill="none" stroke="#888" stroke-width="0.5"/>
 
-      <!-- Ball orbiting the formation -->
-      <circle r="3" fill="#c0392b" opacity="0.65">
-        <animate attributeName="cx" values="270;220;155;47;155;220;270" dur="5s" repeatCount="indefinite"/>
-        <animate attributeName="cy" values="102;58;36;102;174;150;102" dur="5s" repeatCount="indefinite"/>
-      </circle>
+    <!-- Faceoff circle -->
+    <circle cx="450" cy="336" r="20" fill="none" stroke="#888" stroke-width="0.5"/>
 
-      <!-- Annotations -->
-      <text x="230" y="12" font-size="9" fill="#555" font-style="italic">6 attackers (&#9679;)</text>
-      <text x="85" y="12" font-size="9" fill="#999" font-style="italic">5 defenders (&#9632;)</text>
-    </g>
+    <!-- ===== Man-up offense: 6 players (filled circles) — subtle movement ===== -->
+    <!-- Top A -->
+    <circle r="6" fill="#333" opacity="0.85">
+      <animate attributeName="cx" values="210;215;210;205;210" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="230;225;230;235;230" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <text x="222" y="234" font-size="11" fill="#555">A</text>
+    <!-- Top-right M -->
+    <circle r="6" fill="#333" opacity="0.85">
+      <animate attributeName="cx" values="310;315;310;305;310" dur="3.8s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="260;255;260;265;260" dur="3.8s" repeatCount="indefinite"/>
+    </circle>
+    <text x="322" y="264" font-size="11" fill="#555">M</text>
+    <!-- Left A (behind crease) -->
+    <circle r="6" fill="#333" opacity="0.85">
+      <animate attributeName="cx" values="85;80;85;90;85" dur="4.2s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="336;330;336;342;336" dur="4.2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="70" y="325" font-size="11" fill="#555">A</text>
+    <!-- Bottom-right M -->
+    <circle r="6" fill="#333" opacity="0.85">
+      <animate attributeName="cx" values="310;315;310;305;310" dur="3.8s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="415;420;415;410;415" dur="3.8s" repeatCount="indefinite"/>
+    </circle>
+    <text x="322" y="419" font-size="11" fill="#555">M</text>
+    <!-- Bottom A -->
+    <circle r="6" fill="#333" opacity="0.85">
+      <animate attributeName="cx" values="210;205;210;215;210" dur="4s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="445;450;445;440;445" dur="4s" repeatCount="indefinite"/>
+    </circle>
+    <text x="222" y="449" font-size="11" fill="#555">A</text>
+    <!-- Point M — OPEN (the man-up advantage!) -->
+    <circle r="6" fill="#333" opacity="0.85">
+      <animate attributeName="cx" values="380;385;380;375;380" dur="3.6s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="336;330;336;342;336" dur="3.6s" repeatCount="indefinite"/>
+    </circle>
+    <text x="392" y="340" font-size="11" fill="#555">M</text>
+    <text x="380" y="318" text-anchor="middle" font-size="10" fill="#c0392b" font-style="italic">open!</text>
 
-    <!-- Penalty box — small, off to the side -->
-    <g transform="translate(390, 18)">
-      <rect x="0" y="0" width="120" height="60" fill="none" stroke="#bbb" stroke-width="0.5"/>
-      <text x="60" y="14" text-anchor="middle" font-size="9" fill="#999" font-variant="small-caps" letter-spacing="0.5">penalty box</text>
+    <!-- ===== Man-down defense: 5 players (squares) — react to ball ===== -->
+    <!-- Ball path (5s): PointM(380,336) → TopM(310,260) → TopA(210,230) → LeftA(85,336) → BotA(210,445) → BotM(310,415) → PointM -->
+
+    <!-- Top D — covers top, shifts toward ball when it's in upper arc -->
+    <rect width="10" height="10" fill="#666" opacity="0.7">
+      <animate attributeName="x" values="235;260;220;215;235;235;235" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="268;255;240;268;268;268;268" dur="5s" repeatCount="indefinite"/>
+    </rect>
+    <text font-size="11" fill="#999" text-anchor="end">
+      <animate attributeName="x" values="233;258;218;213;233;233;233" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="278;265;250;278;278;278;278" dur="5s" repeatCount="indefinite"/>
+      D</text>
+
+    <!-- Right M — covers right side, shifts toward point and top-right -->
+    <rect width="10" height="10" fill="#666" opacity="0.7">
+      <animate attributeName="x" values="300;285;270;260;270;285;300" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="331;290;310;331;355;375;331" dur="5s" repeatCount="indefinite"/>
+    </rect>
+    <text font-size="11" fill="#999">
+      <animate attributeName="x" values="316;301;286;276;286;301;316" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="341;300;320;341;365;385;341" dur="5s" repeatCount="indefinite"/>
+      M</text>
+
+    <!-- Center D — anchor, shifts subtly toward ball side -->
+    <rect width="10" height="10" fill="#666" opacity="0.7">
+      <animate attributeName="x" values="245;240;225;210;225;240;245" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="331;310;300;331;365;355;331" dur="5s" repeatCount="indefinite"/>
+    </rect>
+    <text font-size="11" fill="#999" text-anchor="end">
+      <animate attributeName="x" values="243;238;223;208;223;238;243" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="341;320;310;341;375;365;341" dur="5s" repeatCount="indefinite"/>
+      D</text>
+
+    <!-- Bottom D — covers bottom, shifts toward ball when it's in lower arc -->
+    <rect width="10" height="10" fill="#666" opacity="0.7">
+      <animate attributeName="x" values="235;235;235;215;220;260;235" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="398;398;398;398;430;410;398" dur="5s" repeatCount="indefinite"/>
+    </rect>
+    <text font-size="11" fill="#999" text-anchor="end">
+      <animate attributeName="x" values="233;233;233;213;218;258;233" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="408;408;408;408;440;420;408" dur="5s" repeatCount="indefinite"/>
+      D</text>
+
+    <!-- Left M — near crease, shifts toward ball when it's on left side -->
+    <rect width="10" height="10" fill="#666" opacity="0.7">
+      <animate attributeName="x" values="195;195;200;170;200;195;195" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="331;310;300;331;365;355;331" dur="5s" repeatCount="indefinite"/>
+    </rect>
+    <text font-size="11" fill="#999" text-anchor="end">
+      <animate attributeName="x" values="193;193;198;168;198;193;193" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="y" values="341;320;310;341;375;365;341" dur="5s" repeatCount="indefinite"/>
+      M</text>
+
+    <!-- Goalie (man-down team) — right of goal -->
+    <polygon points="175,328 183,336 175,344 167,336" fill="#888" opacity="0.7"/>
+    <text x="175" y="360" text-anchor="middle" font-size="11" fill="#555">G</text>
+
+    <!-- Ball orbiting the man-up formation -->
+    <circle r="4" fill="#c0392b" opacity="0.65">
+      <animate attributeName="cx" values="380;310;210;85;210;310;380" dur="5s" repeatCount="indefinite"/>
+      <animate attributeName="cy" values="336;260;230;336;445;415;336" dur="5s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Annotations on field -->
+    <text x="300" y="184" font-size="11" fill="#555" font-style="italic">6 attackers (&#9679;) &#8212; man-up offense</text>
+    <text x="300" y="198" font-size="11" fill="#999" font-style="italic">5 defenders (&#9632;) &#8212; man-down defense</text>
+
+    <!-- Penalty box — upper right area of field -->
+    <g transform="translate(630, 176)">
+      <rect x="0" y="0" width="140" height="70" fill="#fffff8" fill-opacity="0.85" stroke="#bbb" stroke-width="0.5"/>
+      <text x="70" y="16" text-anchor="middle" font-size="11" fill="#999" font-variant="small-caps" letter-spacing="0.5">penalty box</text>
 
       <!-- Penalized player -->
-      <rect x="55" y="28" width="9" height="9" fill="#666" opacity="0.4">
+      <rect x="63" y="30" width="10" height="10" fill="#666" opacity="0.4">
         <animate attributeName="opacity" values="0.25;0.5;0.25" dur="2s" repeatCount="indefinite"/>
       </rect>
 
       <!-- Timer bar -->
-      <rect x="30" y="46" width="50" height="4" fill="#ddd"/>
-      <rect x="30" y="46" height="4" fill="#c0392b" opacity="0.5">
-        <animate attributeName="width" values="50;0;50" dur="6s" repeatCount="indefinite"/>
+      <rect x="35" y="52" width="60" height="5" fill="#ddd"/>
+      <rect x="35" y="52" height="5" fill="#c0392b" opacity="0.5">
+        <animate attributeName="width" values="60;0;60" dur="6s" repeatCount="indefinite"/>
       </rect>
     </g>
   </g>
 
   <!-- ===== STRATEGY ===== -->
-  <g transform="translate(52, 405)" style="animation: fadeIn 0.8s ease 0.8s both">
-    <text x="0" y="0" font-size="12" fill="#555" font-variant="small-caps" letter-spacing="1">strategy</text>
+  <g transform="translate(52, 540)" style="animation: fadeIn 0.8s ease 0.8s both">
+    <text x="0" y="0" font-size="14" fill="#555" font-variant="small-caps" letter-spacing="1">strategy</text>
 
-    <!-- Two columns — Tufte: clean prose, no boxes -->
     <g transform="translate(0, 22)">
-      <text x="0" y="0" font-size="11" fill="#444" font-style="italic">Man-up offense</text>
-      <text x="0" y="18" font-size="11" fill="#444">Quick ball movement around the perimeter to</text>
-      <text x="0" y="34" font-size="11" fill="#444">create open shots. Common formations include</text>
-      <text x="0" y="50" font-size="11" fill="#444">the 1-3-2, 2-3-1, and 1-4-1. The goal is to</text>
-      <text x="0" y="66" font-size="11" fill="#444">exploit the gap before penalty time expires.</text>
+      <text x="0" y="0" font-size="13" fill="#444" font-style="italic">Man-up offense</text>
+      <text x="0" y="18" font-size="13" fill="#444">Quick ball movement around the perimeter to</text>
+      <text x="0" y="34" font-size="13" fill="#444">create open shots. Common formations include</text>
+      <text x="0" y="50" font-size="13" fill="#444">the 1-3-2, 2-3-1, and 1-4-1. The goal is to</text>
+      <text x="0" y="66" font-size="13" fill="#444">exploit the gap before penalty time expires.</text>
     </g>
 
     <g transform="translate(430, 22)">
-      <text x="0" y="0" font-size="11" fill="#444" font-style="italic">Man-down defense</text>
-      <text x="0" y="18" font-size="11" fill="#444">Compact zone around the crease, often a box</text>
-      <text x="0" y="34" font-size="11" fill="#444">or diamond shape. Defenders use aggressive</text>
-      <text x="0" y="50" font-size="11" fill="#444">stick checks to disrupt passing lanes and try</text>
-      <text x="0" y="66" font-size="11" fill="#444">to burn the clock until their teammate returns.</text>
+      <text x="0" y="0" font-size="13" fill="#444" font-style="italic">Man-down defense</text>
+      <text x="0" y="18" font-size="13" fill="#444">Compact zone around the crease, often a box</text>
+      <text x="0" y="34" font-size="13" fill="#444">or diamond shape. Defenders use aggressive</text>
+      <text x="0" y="50" font-size="13" fill="#444">stick checks to disrupt passing lanes and try</text>
+      <text x="0" y="66" font-size="13" fill="#444">to burn the clock until their teammate returns.</text>
     </g>
   </g>
 
   <!-- ===== EDGE CASES ===== -->
-  <line x1="52" y1="510" x2="848" y2="510" stroke="#ddd" stroke-width="0.5"/>
-  <g transform="translate(52, 530)" style="animation: fadeIn 0.8s ease 1.2s both">
-    <text x="0" y="0" font-size="10" fill="#999" font-style="italic">Multiple penalties can stack: a team may play 5-on-4, or in rare cases 5-on-3.</text>
-    <text x="0" y="16" font-size="10" fill="#999" font-style="italic">For a releasable penalty, the player returns when the opposing team scores; for non-releasable, the full time must be served.</text>
+  <line x1="52" y1="670" x2="848" y2="670" stroke="#ddd" stroke-width="0.5"/>
+  <g transform="translate(52, 690)" style="animation: fadeIn 0.8s ease 1.2s both">
+    <text x="0" y="0" font-size="12" fill="#999" font-style="italic">Multiple penalties can stack: a team may play 5-on-4, or in rare cases 5-on-3.</text>
+    <text x="0" y="18" font-size="12" fill="#999" font-style="italic">For a releasable penalty, the player returns when the opposing team scores; for non-releasable, the full time must be served.</text>
   </g>
 </svg>
