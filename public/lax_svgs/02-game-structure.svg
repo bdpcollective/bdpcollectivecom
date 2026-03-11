@@ -13,7 +13,7 @@
 
   <!-- Title -->
   <text x="52" y="36" font-size="19" fill="#333" font-weight="400" style="animation: fadeIn 0.8s ease" letter-spacing="0.3">Game Structure</text>
-  <text x="52" y="56" font-size="12" fill="#999" font-style="italic">Four quarters, a running clock, and the faceoff</text>
+  <text x="52" y="56" font-size="12" fill="#999" font-style="italic">Four quarters, the clock, and the faceoff</text>
   <line x1="52" y1="64" x2="848" y2="64" stroke="#ccc" stroke-width="0.5"/>
 
   <!-- ===== TIMELINE — Tufte sparkline-inspired quarter bar ===== -->
@@ -25,11 +25,11 @@
 
     <!-- Q1 -->
     <rect x="0" y="18" width="160" height="24" fill="#333" opacity="0.75" style="animation: slideIn 0.5s ease 0.3s both"/>
-    <text x="80" y="34" text-anchor="middle" fill="#fffff8" font-size="10.5">Q1 &#8212; 15 min</text>
+    <text x="80" y="34" text-anchor="middle" fill="#fffff8" font-size="10.5">Q1</text>
 
     <!-- Q2 -->
     <rect x="170" y="18" width="160" height="24" fill="#333" opacity="0.6" style="animation: slideIn 0.5s ease 0.5s both"/>
-    <text x="250" y="34" text-anchor="middle" fill="#fffff8" font-size="10.5">Q2 &#8212; 15 min</text>
+    <text x="250" y="34" text-anchor="middle" fill="#fffff8" font-size="10.5">Q2</text>
 
     <!-- Halftime gap -->
     <text x="365" y="34" text-anchor="middle" font-size="9" fill="#999" font-style="italic" style="animation: fadeIn 0.5s ease 0.7s both">halftime</text>
@@ -37,14 +37,14 @@
 
     <!-- Q3 -->
     <rect x="400" y="18" width="160" height="24" fill="#333" opacity="0.6" style="animation: slideIn 0.5s ease 0.9s both"/>
-    <text x="480" y="34" text-anchor="middle" fill="#fffff8" font-size="10.5">Q3 &#8212; 15 min</text>
+    <text x="480" y="34" text-anchor="middle" fill="#fffff8" font-size="10.5">Q3</text>
 
     <!-- Q4 -->
     <rect x="570" y="18" width="160" height="24" fill="#333" opacity="0.75" style="animation: slideIn 0.5s ease 1.1s both"/>
-    <text x="650" y="34" text-anchor="middle" fill="#fffff8" font-size="10.5">Q4 &#8212; 15 min</text>
+    <text x="650" y="34" text-anchor="middle" fill="#fffff8" font-size="10.5">Q4</text>
 
     <!-- Total annotation — right-aligned marginal note -->
-    <text x="740" y="14" text-anchor="end" font-size="10" fill="#999" font-style="italic">60 minutes of regulation play</text>
+    <text x="740" y="14" text-anchor="end" font-size="10" fill="#999" font-style="italic">NCAA: 4 &#215; 15 min (60 min) &#8212; NFHS: 4 &#215; 12 min (48 min)</text>
   </g>
 
   <!-- ===== CLOCK RULES ===== -->
@@ -59,9 +59,9 @@
     <line x1="22" y1="40" x2="22" y2="30" stroke="#555" stroke-width="0.75"/>
     <line x1="22" y1="40" x2="30" y2="40" stroke="#c0392b" stroke-width="0.5" opacity="0.6"/>
 
-    <text x="52" y="30" font-size="11" fill="#444">The clock runs continuously for most of the game.</text>
-    <text x="52" y="48" font-size="11" fill="#444">In the <tspan font-style="italic">final two minutes</tspan> of Q4, if the score is within two goals,</text>
-    <text x="52" y="64" font-size="11" fill="#444">the clock stops on every whistle, goal, and penalty.</text>
+    <text x="52" y="30" font-size="11" fill="#444">At the NCAA level, the clock is <tspan font-style="italic">stop-time</tspan> &#8212; it stops on every whistle.</text>
+    <text x="52" y="48" font-size="11" fill="#444">At the NFHS (high school) level, stop-time is also standard, with a running</text>
+    <text x="52" y="64" font-size="11" fill="#444">clock used only under a mercy rule (12+ goal lead in the second half).</text>
   </g>
 
   <!-- ===== FACEOFF ===== -->
@@ -108,7 +108,7 @@
   <!-- ===== TIMEOUTS ===== -->
   <g transform="translate(52, 448)" style="animation: fadeIn 0.8s ease 1.6s both">
     <text x="0" y="0" font-size="12" fill="#555" font-variant="small-caps" letter-spacing="1">timeouts</text>
-    <text x="0" y="22" font-size="11" fill="#444">Each team receives two timeouts per half, each lasting two minutes.</text>
+    <text x="0" y="22" font-size="11" fill="#444">Each team receives two timeouts per half. NCAA timeouts last 100 seconds; NFHS timeouts last two minutes.</text>
     <text x="0" y="38" font-size="11" fill="#444">Only the team with possession &#8212; or either team after a goal &#8212; may call one.</text>
   </g>
 
