@@ -19,16 +19,16 @@
     "sharp": "^0.34.4",
     "topojson-client": "^3.1.0",
     "typescript": "^5.9.2",
-    "vite": "^6.4.1"
+    "vite": "^8.0.1"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.2.1",
+    "@tailwindcss/vite": "^4.2.2",
     "@types/d3": "^7.4.3",
     "lighthouse": "^13.0.3",
     "nodemailer": "^8.0.3",
     "postcss": "^8.4.35",
-    "tailwindcss": "^4.2.1",
-    "vitest": "^4.1.1"
+    "tailwindcss": "^4.2.2",
+    "vitest": "^4.0.18"
   },
   "overrides": {
     "glob": "^11.1.0",
