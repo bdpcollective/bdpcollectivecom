@@ -9,9 +9,9 @@ import heroImage from '../../public/hero-bg.jpg';
 	<Fragment slot="head">
 		<link rel="preload" as="image" href={heroImage.src} fetchpriority="high" type="image/jpeg" />
 	</Fragment>
-	<main class="relative min-h-screen overflow-hidden w-full max-w-full">
-		{/* Background Image with Parallax */}
-		<div class="absolute inset-0 z-0 parallax-bg">
+	<main class="relative min-h-screen overflow-x-clip w-full max-w-full">
+		{/* Background Image */}
+		<div class="absolute inset-0 z-0">
 			<Image
 				src={heroImage}
 				alt=""
@@ -21,7 +21,7 @@ import heroImage from '../../public/hero-bg.jpg';
 				format="webp"
 				widths={[640, 750, 828, 1080, 1200, 1920, 2048]}
 				sizes="(max-width: 640px) 640px, (max-width: 750px) 750px, (max-width: 828px) 828px, (max-width: 1080px) 1080px, (max-width: 1200px) 1200px, (max-width: 1920px) 1920px, 2048px"
-				class="w-full h-full object-cover brightness-75 parallax-image"
+				class="w-full h-full object-cover brightness-75"
 			/>
 			{/* Video Background (optional - uncomment and add video file) */}
 			{/* <video 
@@ -42,8 +42,8 @@ import heroImage from '../../public/hero-bg.jpg';
 		{/* Particle Background */}
 		<canvas id="particle-canvas" class="absolute inset-0 z-[1] opacity-30 pointer-events-none"></canvas>
 
-		{/* Content with Parallax */}
-		<div class="relative z-10 flex items-center justify-center min-h-screen parallax-content">
+		{/* Content */}
+		<div class="relative z-10 flex items-center justify-center min-h-screen">
 			<div class="text-center px-4 py-20 md:py-32">
 				<h1 class="text-4xl md:text-6xl font-bold mb-6 text-white creative-typography">
 					<span class="gradient-text animate-reveal draggable-element" draggable="true">Hello friendos.</span>
@@ -70,17 +70,6 @@ import heroImage from '../../public/hero-bg.jpg';
 	</main>
 
 	<style>
-		.parallax-bg {
-			will-change: transform;
-		}
-		.parallax-image {
-			transform: translateY(0);
-			will-change: transform;
-		}
-		.parallax-content {
-			will-change: transform;
-		}
-
 		/* Creative Typography Styles */
 		.gradient-text {
 			background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 50%, #c7d2fe 100%);
@@ -309,42 +298,8 @@ import heroImage from '../../public/hero-bg.jpg';
 			}
 		}
 
-		// Parallax scrolling effect - optimized with requestAnimationFrame
+		// Scroll down button
 		let ticking = false;
-		const parallaxBg = document.querySelector('.parallax-image') as HTMLElement;
-		const parallaxContent = document.querySelector('.parallax-content') as HTMLElement;
-
-		function updateParallax() {
-			const scrolled = window.pageYOffset;
-			const heroHeight = window.innerHeight;
-			
-			// Only apply parallax within hero section
-			if (scrolled < heroHeight) {
-				// Background moves slower (0.5x speed)
-				if (parallaxBg) {
-					parallaxBg.style.transform = `translateY(${scrolled * 0.5}px)`;
-				}
-				// Content moves faster (0.3x speed) for depth effect
-				if (parallaxContent) {
-					parallaxContent.style.transform = `translateY(${scrolled * 0.3}px)`;
-					parallaxContent.style.opacity = `${1 - scrolled / heroHeight * 0.5}`;
-				}
-			}
-			
-			ticking = false;
-		}
-
-		function requestTick() {
-			if (!ticking) {
-				requestAnimationFrame(updateParallax);
-				ticking = true;
-			}
-		}
-
-		// Use passive listener for better performance
-		window.addEventListener('scroll', requestTick, { passive: true });
-
-		// Scroll down button - optimized
 		const btn = document.getElementById('scroll-down-button');
 		if (btn) {
 			btn.addEventListener('click', () => {
