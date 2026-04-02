@@ -58,15 +58,14 @@ interface Props {
 				margin: 0;
 				padding: 0;
 				box-sizing: border-box;
-				overflow-x: hidden;
 				width: 100%;
 				max-width: 100%;
 			}
 			* {
 				box-sizing: border-box;
 			}
-			main {
-				overflow-x: hidden;
+			.overflow-clip-wrapper {
+				overflow-x: clip;
 				width: 100%;
 				max-width: 100%;
 			}
@@ -252,9 +251,10 @@ interface Props {
 		<ClientRouter />
 	</head>
 	<body class="min-h-screen flex flex-col font-franklin custom-cursor-enabled">
+		<div class="overflow-clip-wrapper min-h-screen flex flex-col">
 		<div id="custom-cursor" class="custom-cursor" transition:persist></div>
 		<div id="scroll-progress" class="scroll-progress-bar"></div>
-		<nav class="bg-white/80 backdrop-blur-md shadow-sm glass-nav w-full overflow-x-hidden">
+		<nav class="bg-white/80 backdrop-blur-md shadow-sm glass-nav w-full">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 				<div class="flex justify-between h-16">
 					<div class="flex">
@@ -337,15 +337,20 @@ interface Props {
 				}
 
 				// Run after View Transitions
-				document.addEventListener('astro:page-load', setupMobileMenu);
+				document.addEventListener('astro:page-load', function() {
+					setupMobileMenu();
+					// Reset any stuck overflow:hidden from lightbox or mobile menu
+					document.body.style.overflow = '';
+				});
 			})();
 		</script>
 
-		<main class="flex-grow overflow-x-hidden w-full max-w-full">
+		<main class="flex-grow w-full max-w-full">
 			<slot />
 		</main>
 
 		<Footer />
+		</div>
 	</body>
 </html>
 
