@@ -13,7 +13,7 @@ interface Props {
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href={`${baseUrl}/favicon.svg`} />
 		<meta name="generator" content={Astro.generator} />
 		<title>Brian Pope | bdpcollective</title>
@@ -51,6 +51,8 @@ interface Props {
 				background-size: 224px;
 				width: 100%;
 				max-width: 100%;
+				-webkit-overflow-scrolling: touch;
+				touch-action: manipulation;
 			}
 			body {
 				margin: 0;
@@ -157,9 +159,11 @@ interface Props {
 			#mobile-menu-button.active .hamburger-line:nth-child(3) {
 				transform: rotate(-45deg) translate(5px, -5px);
 			}
-			/* Custom Cursor */
-			.custom-cursor-enabled {
-				cursor: none;
+			/* Custom Cursor - only on non-touch devices */
+			@media (pointer: fine) {
+				.custom-cursor-enabled {
+					cursor: none;
+				}
 			}
 			.custom-cursor {
 				position: fixed;
@@ -247,7 +251,7 @@ interface Props {
 		<slot name="head" />
 		<ClientRouter />
 	</head>
-	<body class="min-h-screen flex flex-col font-franklin custom-cursor-enabled overflow-x-hidden">
+	<body class="min-h-screen flex flex-col font-franklin custom-cursor-enabled">
 		<div id="custom-cursor" class="custom-cursor" transition:persist></div>
 		<div id="scroll-progress" class="scroll-progress-bar"></div>
 		<nav class="bg-white/80 backdrop-blur-md shadow-sm glass-nav w-full overflow-x-hidden">
