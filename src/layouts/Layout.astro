@@ -64,11 +64,6 @@ interface Props {
 			* {
 				box-sizing: border-box;
 			}
-			.overflow-clip-wrapper {
-				overflow-x: clip;
-				width: 100%;
-				max-width: 100%;
-			}
 			/* Page Transitions */
 			::view-transition-old(root),
 			::view-transition-new(root) {
@@ -251,7 +246,6 @@ interface Props {
 		<ClientRouter />
 	</head>
 	<body class="min-h-screen flex flex-col font-franklin custom-cursor-enabled">
-		<div class="overflow-clip-wrapper min-h-screen flex flex-col">
 		<div id="custom-cursor" class="custom-cursor" transition:persist></div>
 		<div id="scroll-progress" class="scroll-progress-bar"></div>
 		<nav class="bg-white/80 backdrop-blur-md shadow-sm glass-nav w-full">
@@ -350,7 +344,6 @@ interface Props {
 		</main>
 
 		<Footer />
-		</div>
 	</body>
 </html>
 
