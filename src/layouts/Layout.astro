@@ -1,7 +1,7 @@
 ---
 import Footer from '../components/Footer.astro';
 import { baseUrl } from '../config';
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 
 interface Props {
@@ -252,7 +252,7 @@ interface Props {
 		</script>
 
 		<slot name="head" />
-		<ViewTransitions />
+		<ClientRouter />
 	</head>
 	<body class="min-h-screen flex flex-col font-franklin custom-cursor-enabled overflow-x-hidden">
 		<div id="custom-cursor" class="custom-cursor" transition:persist></div>
