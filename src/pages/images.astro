@@ -161,14 +161,15 @@ const categoryImages = {
 };
 
 const categoryTitles: Record<string, string> = {
-  "Events": "Events",
-  "Lacrosse": "2025 Millard West Lacrosse",
-  "Zoo": "Omaha Henry Doorly Zoo",
-  "Nebraska Athletics": "Nebraska Athletics",
-  "Landscape": "Landscapes",
+  "2026 Lacrosse": "2026 Millard West Lacrosse",
   "Box Lacrosse": "2025 Box Lacrosse",
+  "Landscape": "Landscapes",
+  "Hula": "2025 Hula Lacrosse",
+  "Lacrosse": "2025 Millard West Lacrosse",
   "Elkhorn South Basketball": "Elkhorn South Basketball",
-  "2026 Lacrosse": "2026 Millard West Lacrosse"
+  "Events": "Events",
+  "Nebraska Athletics": "Nebraska Athletics",
+  "Zoo": "Omaha Henry Doorly Zoo"
 };
 
 // Function to get a random image from an array
@@ -183,64 +184,37 @@ type ImageCard = {
   category: string;
 };
 
-const images: ImageCard[] = Object.entries(categoryImages).map(([category, images]) => ({
-  src: getRandomImage(images),
-  alt: category,
-  title: categoryTitles[category] || category,
-  category: category
-}));
-
-// Gather all Hula gallery images (currently only Blue Ox)
+// Hula gallery images
 const hulaImages = [
   // prettier-ignore
   '/images/hula2025/blueox/Hula_BlueOx-01.jpg','/images/hula2025/blueox/Hula_BlueOx-02.jpg','/images/hula2025/blueox/Hula_BlueOx-03.jpg','/images/hula2025/blueox/Hula_BlueOx-04.jpg','/images/hula2025/blueox/Hula_BlueOx-05.jpg','/images/hula2025/blueox/Hula_BlueOx-06.jpg','/images/hula2025/blueox/Hula_BlueOx-07.jpg','/images/hula2025/blueox/Hula_BlueOx-08.jpg','/images/hula2025/blueox/Hula_BlueOx-09.jpg','/images/hula2025/blueox/Hula_BlueOx-10.jpg','/images/hula2025/blueox/Hula_BlueOx-11.jpg','/images/hula2025/blueox/Hula_BlueOx-12.jpg','/images/hula2025/blueox/Hula_BlueOx-13.jpg','/images/hula2025/blueox/Hula_BlueOx-14.jpg','/images/hula2025/blueox/Hula_BlueOx-15.jpg','/images/hula2025/blueox/Hula_BlueOx-16.jpg','/images/hula2025/blueox/Hula_BlueOx-17.jpg','/images/hula2025/blueox/Hula_BlueOx-18.jpg','/images/hula2025/blueox/Hula_BlueOx-19.jpg','/images/hula2025/blueox/Hula_BlueOx-20.jpg','/images/hula2025/blueox/Hula_BlueOx-21.jpg','/images/hula2025/blueox/Hula_BlueOx-22.jpg','/images/hula2025/blueox/Hula_BlueOx-23.jpg','/images/hula2025/blueox/Hula_BlueOx-24.jpg','/images/hula2025/blueox/Hula_BlueOx-25.jpg','/images/hula2025/blueox/Hula_BlueOx-26.jpg','/images/hula2025/blueox/Hula_BlueOx-27.jpg','/images/hula2025/blueox/Hula_BlueOx-28.jpg','/images/hula2025/blueox/Hula_BlueOx-29.jpg','/images/hula2025/blueox/Hula_BlueOx-30.jpg','/images/hula2025/blueox/Hula_BlueOx-31.jpg','/images/hula2025/blueox/Hula_BlueOx-32.jpg','/images/hula2025/blueox/Hula_BlueOx-33.jpg','/images/hula2025/blueox/Hula_BlueOx-34.jpg','/images/hula2025/blueox/Hula_BlueOx-35.jpg','/images/hula2025/blueox/Hula_BlueOx-36.jpg','/images/hula2025/blueox/Hula_BlueOx-37.jpg','/images/hula2025/blueox/Hula_BlueOx-38.jpg','/images/hula2025/blueox/Hula_BlueOx-39.jpg','/images/hula2025/blueox/Hula_BlueOx-40.jpg','/images/hula2025/blueox/Hula_BlueOx-41.jpg','/images/hula2025/blueox/Hula_BlueOx-42.jpg','/images/hula2025/blueox/Hula_BlueOx-43.jpg','/images/hula2025/blueox/Hula_BlueOx-44.jpg','/images/hula2025/blueox/Hula_BlueOx-45.jpg','/images/hula2025/blueox/Hula_BlueOx-46.jpg','/images/hula2025/blueox/Hula_BlueOx-47.jpg','/images/hula2025/blueox/Hula_BlueOx-48.jpg','/images/hula2025/blueox/Hula_BlueOx-49.jpg','/images/hula2025/blueox/Hula_BlueOx-50.jpg','/images/hula2025/blueox/Hula_BlueOx-51.jpg','/images/hula2025/blueox/Hula_BlueOx-52.jpg','/images/hula2025/blueox/Hula_BlueOx-53.jpg','/images/hula2025/blueox/Hula_BlueOx-54.jpg','/images/hula2025/blueox/Hula_BlueOx-55.jpg','/images/hula2025/blueox/Hula_BlueOx-56.jpg','/images/hula2025/blueox/Hula_BlueOx-57.jpg','/images/hula2025/blueox/Hula_BlueOx-58.jpg','/images/hula2025/blueox/Hula_BlueOx-59.jpg','/images/hula2025/blueox/Hula_BlueOx-60.jpg','/images/hula2025/blueox/Hula_BlueOx-61.jpg','/images/hula2025/blueox/Hula_BlueOx-62.jpg','/images/hula2025/blueox/Hula_BlueOx-63.jpg','/images/hula2025/blueox/Hula_BlueOx-64.jpg','/images/hula2025/blueox/Hula_BlueOx-65.jpg','/images/hula2025/blueox/Hula_BlueOx-66.jpg','/images/hula2025/blueox/Hula_BlueOx-67.jpg','/images/hula2025/blueox/Hula_BlueOx-68.jpg','/images/hula2025/blueox/Hula_BlueOx-69.jpg','/images/hula2025/blueox/Hula_BlueOx-70.jpg','/images/hula2025/blueox/Hula_BlueOx-71.jpg','/images/hula2025/blueox/Hula_BlueOx-72.jpg','/images/hula2025/blueox/Hula_BlueOx-73.jpg','/images/hula2025/blueox/Hula_BlueOx-74.jpg','/images/hula2025/blueox/Hula_BlueOx-75.jpg','/images/hula2025/blueox/Hula_BlueOx-76.jpg','/images/hula2025/blueox/Hula_BlueOx-77.jpg','/images/hula2025/blueox/Hula_BlueOx-78.jpg','/images/hula2025/blueox/Hula_BlueOx-79.jpg','/images/hula2025/blueox/Hula_BlueOx-80.jpg','/images/hula2025/blueox/Hula_BlueOx-81.jpg','/images/hula2025/blueox/Hula_BlueOx-82.jpg','/images/hula2025/blueox/Hula_BlueOx-83.jpg','/images/hula2025/blueox/Hula_BlueOx-84.jpg','/images/hula2025/blueox/Hula_BlueOx-85.jpg',
 ];
 
-// Duplicate 2025 Millard West Lacrosse as 2025 Hula
-images.push({
-  src: getRandomImage(hulaImages),
-  alt: "Hula",
-  title: "2025 Hula Lacrosse",
-  category: "Hula"
-});
+// All image sources including Hula
+const allCategoryImages: Record<string, string[]> = {
+  ...categoryImages,
+  "Hula": hulaImages
+};
 
-// Order cards from newest to oldest
-images.reverse();
+// Ordered from newest updated to oldest
+const categoryOrder = [
+  "2026 Lacrosse",
+  "Box Lacrosse",
+  "Landscape",
+  "Hula",
+  "Lacrosse",
+  "Elkhorn South Basketball",
+  "Events",
+  "Nebraska Athletics",
+  "Zoo"
+];
 
-// Move '2026 Millard West Lacrosse' to index 0 (first position - newest gallery)
-const mwlax2026Index = images.findIndex(img => img.title === '2026 Millard West Lacrosse');
-if (mwlax2026Index > 0) {
-  const [mwlax2026Card] = images.splice(mwlax2026Index, 1);
-  images.splice(0, 0, mwlax2026Card);
-}
-
-// Move 'Elkhorn South Basketball' to index 1 (second position)
-const esIndex = images.findIndex(img => img.title === 'Elkhorn South Basketball');
-if (esIndex > 1) {
-  const [esCard] = images.splice(esIndex, 1);
-  images.splice(1, 0, esCard);
-}
-
-// Move '2025 Box Lacrosse' to index 2 (third position)
-const boxIndex = images.findIndex(img => img.title === '2025 Box Lacrosse');
-if (boxIndex > 2) {
-  const [boxCard] = images.splice(boxIndex, 1);
-  images.splice(2, 0, boxCard);
-}
-
-// Move 'Landscapes' to index 3 (fourth position)
-const landscapeIndex = images.findIndex(img => img.title === 'Landscapes');
-if (landscapeIndex > 3) {
-  const [landscapeCard] = images.splice(landscapeIndex, 1);
-  images.splice(3, 0, landscapeCard);
-}
-
-// Move '2025 Millard West Lacrosse' to index 4 (fifth position)
-const mwIndex = images.findIndex(img => img.title === '2025 Millard West Lacrosse');
-if (mwIndex > 4) {
-  const [mwCard] = images.splice(mwIndex, 1);
-  images.splice(4, 0, mwCard);
-}
+const images: ImageCard[] = categoryOrder.map((category) => ({
+  src: getRandomImage(allCategoryImages[category]),
+  alt: category,
+  title: categoryTitles[category] || category,
+  category: category
+}));
 ---
 
 <Layout title="Images">

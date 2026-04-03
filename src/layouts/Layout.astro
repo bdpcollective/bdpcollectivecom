@@ -1,7 +1,7 @@
 ---
 import Footer from '../components/Footer.astro';
 import { baseUrl } from '../config';
-import { ViewTransitions } from 'astro:transitions';
+import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 
 interface Props {
@@ -13,7 +13,7 @@ interface Props {
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href={`${baseUrl}/favicon.svg`} />
 		<meta name="generator" content={Astro.generator} />
 		<title>Brian Pope | bdpcollective</title>
@@ -49,31 +49,20 @@ interface Props {
 				font-family: "Libre Franklin", "Franklin Gothic", "ITC Franklin Gothic", "Franklin Gothic Medium", "Franklin Gothic Book", "Franklin Gothic Demi", "Franklin Gothic Heavy", system-ui, sans-serif;
 				background: #f6f6f6;
 				background-size: 224px;
-				overflow-x: hidden;
 				width: 100%;
 				max-width: 100%;
+				-webkit-overflow-scrolling: touch;
+				touch-action: manipulation;
 			}
 			body {
 				margin: 0;
 				padding: 0;
 				box-sizing: border-box;
-				overflow-x: hidden;
-				overflow-y: auto !important;
 				width: 100%;
 				max-width: 100%;
-			}
-			html, body {
-				overflow-x: hidden !important;
-				height: auto !important;
-				position: relative;
 			}
 			* {
 				box-sizing: border-box;
-			}
-			main {
-				overflow-x: hidden;
-				width: 100%;
-				max-width: 100%;
 			}
 			/* Page Transitions */
 			::view-transition-old(root),
@@ -164,9 +153,11 @@ interface Props {
 			#mobile-menu-button.active .hamburger-line:nth-child(3) {
 				transform: rotate(-45deg) translate(5px, -5px);
 			}
-			/* Custom Cursor */
-			.custom-cursor-enabled {
-				cursor: none;
+			/* Custom Cursor - only on non-touch devices */
+			@media (pointer: fine) {
+				.custom-cursor-enabled {
+					cursor: none;
+				}
 			}
 			.custom-cursor {
 				position: fixed;
@@ -252,12 +243,12 @@ interface Props {
 		</script>
 
 		<slot name="head" />
-		<ViewTransitions />
+		<ClientRouter />
 	</head>
-	<body class="min-h-screen flex flex-col font-franklin custom-cursor-enabled overflow-x-hidden">
+	<body class="min-h-screen flex flex-col font-franklin custom-cursor-enabled">
 		<div id="custom-cursor" class="custom-cursor" transition:persist></div>
 		<div id="scroll-progress" class="scroll-progress-bar"></div>
-		<nav class="bg-white/80 backdrop-blur-md shadow-sm glass-nav w-full overflow-x-hidden">
+		<nav class="bg-white/80 backdrop-blur-md shadow-sm glass-nav w-full">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 				<div class="flex justify-between h-16">
 					<div class="flex">
@@ -340,11 +331,15 @@ interface Props {
 				}
 
 				// Run after View Transitions
-				document.addEventListener('astro:page-load', setupMobileMenu);
+				document.addEventListener('astro:page-load', function() {
+					setupMobileMenu();
+					// Reset any stuck overflow:hidden from lightbox or mobile menu
+					document.body.style.overflow = '';
+				});
 			})();
 		</script>
 
-		<main class="flex-grow overflow-x-hidden w-full max-w-full">
+		<main class="flex-grow w-full max-w-full">
 			<slot />
 		</main>
 
