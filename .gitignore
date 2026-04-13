@@ -25,6 +25,7 @@ pnpm-debug.log*
 # IDE
 .vscode/
 .idea/
+.claude/
 
 # Large data files
 public/data/*.csv
