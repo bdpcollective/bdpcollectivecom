@@ -24,7 +24,7 @@
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.2",
     "@types/d3": "^7.4.3",
-    "lighthouse": "^13.0.3",
+    "lighthouse": "^13.1.0",
     "nodemailer": "^8.0.3",
     "postcss": "^8.5.9",
     "tailwindcss": "^4.2.2",
