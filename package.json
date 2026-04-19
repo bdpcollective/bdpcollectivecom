@@ -10,7 +10,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@types/node": "^25.5.0",
+    "@types/node": "^25.5.2",
     "@types/nodemailer": "^6.4.17",
     "@types/topojson-client": "^3.1.5",
     "astro": "^6.1.5",
