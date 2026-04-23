@@ -28,7 +28,7 @@
     "nodemailer": "^8.0.5",
     "postcss": "^8.5.9",
     "tailwindcss": "^4.2.2",
-    "vitest": "^4.1.4"
+    "vitest": "^4.1.5"
   },
   "overrides": {
     "glob": "^11.1.0",
