@@ -1,0 +1,48 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Lightbox from '../../../components/Lightbox.astro';
+
+// Generate image array - first image has no dash, rest are numbered 2-40
+const images = [
+  `/images/lacrosse/20260423_MWvsGretna_Varsity/20260423_MWvsGretna_Varsity.jpg`,
+  ...Array.from({ length: 39 }, (_, i) => `/images/lacrosse/20260423_MWvsGretna_Varsity/20260423_MWvsGretna_Varsity-${i + 2}.jpg`)
+];
+
+const title = "Millard West vs Gretna | Varsity";
+const description = "Photos from the Millard West vs Gretna Varsity lacrosse game on April 23, 2026";
+---
+
+<Layout title={title}>
+  <div class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="mb-8">
+        <a href="/images/lacrosse2026" class="text-blue-600 hover:text-blue-800">← Back to 2026 Lacrosse</a>
+      </div>
+
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
+      <p class="text-gray-600 mb-8">April 23, 2026</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {images.map((image, index) => (
+          <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
+            <img
+              src={image}
+              alt={`Millard West vs Gretna Varsity photo ${index + 1}`}
+              class="gallery-image w-full h-full object-cover cursor-pointer transform hover:scale-105 transition-transform duration-300"
+              loading={index < 9 ? "eager" : "lazy"}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <Lightbox images={images} />
+</Layout>
+
+<style>
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
