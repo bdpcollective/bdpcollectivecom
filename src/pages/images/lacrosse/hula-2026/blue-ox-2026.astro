@@ -5,9 +5,6 @@ import Lightbox from '../../../../components/Lightbox.astro';
 const basePath = `/images/lacrosse/20260614_Hula_BlueOx`;
 
 const images = [
-  // Friday - June 11 (5 photos)
-  `${basePath}/20260611_MWLAX_Hula.jpg`,
-  ...Array.from({ length: 4 }, (_, i) => `${basePath}/20260611_MWLAX_Hula-${i + 2}.jpg`),
   // Saturday - June 13 (69 photos)
   `${basePath}/20260613_MWLAX_Hula_Sat.jpg`,
   ...Array.from({ length: 68 }, (_, i) => `${basePath}/20260613_MWLAX_Hula_Sat-${i + 2}.jpg`),
@@ -28,7 +25,7 @@ const description = "Photos from the Blue Ox game at the Hula 2026 tournament";
       </div>
 
       <h1 class="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
-      <p class="text-gray-600 mb-8">June 11-14, 2026</p>
+      <p class="text-gray-600 mb-8">June 13-14, 2026</p>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {images.map((image, index) => (

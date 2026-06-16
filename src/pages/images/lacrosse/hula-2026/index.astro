@@ -4,8 +4,6 @@ import Lightbox from '../../../../components/Lightbox.astro';
 
 const basePath = `/images/lacrosse/20260614_Hula_BlueOx`;
 const allImages = [
-  `${basePath}/20260611_MWLAX_Hula.jpg`,
-  ...Array.from({ length: 4 }, (_, i) => `${basePath}/20260611_MWLAX_Hula-${i + 2}.jpg`),
   `${basePath}/20260613_MWLAX_Hula_Sat.jpg`,
   ...Array.from({ length: 68 }, (_, i) => `${basePath}/20260613_MWLAX_Hula_Sat-${i + 2}.jpg`),
   `${basePath}/20260614_MWLAX_Hula_Sun.jpg`,
@@ -16,7 +14,7 @@ const tournaments = [
   {
     id: "blue-ox-2026",
     title: "Blue Ox 2026",
-    date: "June 11-14, 2026",
+    date: "June 13-14, 2026",
     location: "Hula Tournament",
     previewImage: allImages[Math.floor(Math.random() * allImages.length)],
     photoCount: allImages.length
