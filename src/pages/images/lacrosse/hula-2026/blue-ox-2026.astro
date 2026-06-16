@@ -1,0 +1,56 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import Lightbox from '../../../../components/Lightbox.astro';
+
+const basePath = `/images/lacrosse/20260614_Hula_BlueOx`;
+
+const images = [
+  // Friday - June 11 (5 photos)
+  `${basePath}/20260611_MWLAX_Hula.jpg`,
+  ...Array.from({ length: 4 }, (_, i) => `${basePath}/20260611_MWLAX_Hula-${i + 2}.jpg`),
+  // Saturday - June 13 (69 photos)
+  `${basePath}/20260613_MWLAX_Hula_Sat.jpg`,
+  ...Array.from({ length: 68 }, (_, i) => `${basePath}/20260613_MWLAX_Hula_Sat-${i + 2}.jpg`),
+  // Sunday - June 14 (12 photos)
+  `${basePath}/20260614_MWLAX_Hula_Sun.jpg`,
+  ...Array.from({ length: 11 }, (_, i) => `${basePath}/20260614_MWLAX_Hula_Sun-${i + 2}.jpg`),
+];
+
+const title = "Blue Ox 2026";
+const description = "Photos from the Blue Ox game at the Hula 2026 tournament";
+---
+
+<Layout title={title}>
+  <div class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="mb-8">
+        <a href="/images/lacrosse/hula-2026" class="text-blue-600 hover:text-blue-800">← Back to Hula 2026</a>
+      </div>
+
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
+      <p class="text-gray-600 mb-8">June 11-14, 2026</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {images.map((image, index) => (
+          <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
+            <img
+              src={image}
+              alt={`Blue Ox 2026 photo ${index + 1}`}
+              class="gallery-image w-full h-full object-cover cursor-pointer transform hover:scale-105 transition-transform duration-300"
+              loading={index < 9 ? "eager" : "lazy"}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <Lightbox images={images} />
+</Layout>
+
+<style>
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>

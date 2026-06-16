@@ -157,10 +157,21 @@ const categoryImages = {
     '/images/lacrosse/20260302_mwscrimmage/20250302_MWScrimmage-6.jpg',
     '/images/lacrosse/20260302_mwscrimmage/20250302_MWScrimmage-7.jpg',
     '/images/lacrosse/20260302_mwscrimmage/20250302_MWScrimmage-8.jpg'
+  ],
+  "Hula 2026": [
+    '/images/lacrosse/20260614_Hula_BlueOx/20260611_MWLAX_Hula.jpg',
+    '/images/lacrosse/20260614_Hula_BlueOx/20260611_MWLAX_Hula-2.jpg',
+    '/images/lacrosse/20260614_Hula_BlueOx/20260613_MWLAX_Hula_Sat.jpg',
+    '/images/lacrosse/20260614_Hula_BlueOx/20260613_MWLAX_Hula_Sat-2.jpg',
+    '/images/lacrosse/20260614_Hula_BlueOx/20260613_MWLAX_Hula_Sat-3.jpg',
+    '/images/lacrosse/20260614_Hula_BlueOx/20260614_MWLAX_Hula_Sun.jpg',
+    '/images/lacrosse/20260614_Hula_BlueOx/20260614_MWLAX_Hula_Sun-2.jpg',
+    '/images/lacrosse/20260614_Hula_BlueOx/20260614_MWLAX_Hula_Sun-3.jpg'
   ]
 };
 
 const categoryTitles: Record<string, string> = {
+  "Hula 2026": "Hula 2026",
   "2026 Lacrosse": "2026 Millard West Lacrosse",
   "Box Lacrosse": "2025 Box Lacrosse",
   "Landscape": "Landscapes",
@@ -193,11 +204,12 @@ const hulaImages = [
 // All image sources including Hula
 const allCategoryImages: Record<string, string[]> = {
   ...categoryImages,
-  "Hula": hulaImages
+  "Hula": hulaImages,
 };
 
 // Ordered from newest updated to oldest
 const categoryOrder = [
+  "Hula 2026",
   "2026 Lacrosse",
   "Box Lacrosse",
   "Landscape",
@@ -278,6 +290,7 @@ const images: ImageCard[] = categoryOrder.map((category) => ({
               image.category === "Landscape" ? '/images/landscape' :
               image.category === "Box Lacrosse" ? '/images/boxlacrosse' :
               image.category === "Elkhorn South Basketball" ? '/images/elkhornsouthbasketball' :
+              image.category === "Hula 2026" ? '/images/lacrosse/hula-2026' :
               image.category === "2026 Lacrosse" ? '/images/lacrosse2026' :
               "#"
             }
