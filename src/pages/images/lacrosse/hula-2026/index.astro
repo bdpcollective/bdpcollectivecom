@@ -1,0 +1,211 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import Lightbox from '../../../../components/Lightbox.astro';
+
+const blueOxBasePath = `/images/lacrosse/20260614_Hula_BlueOx`;
+const blueOxImages = [
+  `${blueOxBasePath}/20260613_MWLAX_Hula_Sat.jpg`,
+  ...Array.from({ length: 68 }, (_, i) => `${blueOxBasePath}/20260613_MWLAX_Hula_Sat-${i + 2}.jpg`),
+  `${blueOxBasePath}/20260614_MWLAX_Hula_Sun.jpg`,
+  ...Array.from({ length: 11 }, (_, i) => `${blueOxBasePath}/20260614_MWLAX_Hula_Sun-${i + 2}.jpg`),
+];
+
+const bbqBlueBasePath = `/images/lacrosse/20260620_Hula_BBQ_Blue`;
+const bbqBlueImages = [
+  `${bbqBlueBasePath}/20260620_Hula_BBQTown_Blue.jpg`,
+  ...Array.from({ length: 64 }, (_, i) => `${bbqBlueBasePath}/20260620_Hula_BBQTown_Blue-${i + 2}.jpg`),
+];
+
+const bbqWhiteBasePath = `/images/lacrosse/20260620_Hula_BBQ_White`;
+const bbqWhiteImages = [
+  `${bbqWhiteBasePath}/20260620_Hula_BBQTown_White.jpg`,
+  ...Array.from({ length: 44 }, (_, i) => `${bbqWhiteBasePath}/20260620_Hula_BBQTown_White-${i + 2}.jpg`),
+];
+
+const tournaments = [
+  {
+    id: "blue-ox-2026",
+    title: "Blue Ox 2026 | Blue",
+    date: "June 13-14, 2026",
+    location: "Hula Tournament",
+    previewImage: blueOxImages[Math.floor(Math.random() * blueOxImages.length)],
+    photoCount: blueOxImages.length
+  },
+  {
+    id: "bbq-town-blue",
+    title: "BBQ Town | Blue",
+    date: "June 20, 2026",
+    location: "Hula Tournament",
+    previewImage: bbqBlueImages[Math.floor(Math.random() * bbqBlueImages.length)],
+    photoCount: bbqBlueImages.length
+  },
+  {
+    id: "bbq-town-white",
+    title: "BBQ Town | White",
+    date: "June 20, 2026",
+    location: "Hula Tournament",
+    previewImage: bbqWhiteImages[Math.floor(Math.random() * bbqWhiteImages.length)],
+    photoCount: bbqWhiteImages.length
+  }
+];
+
+const allImages = [...blueOxImages, ...bbqBlueImages, ...bbqWhiteImages];
+const previewImages = tournaments.map(t => t.previewImage);
+---
+
+<Layout title="Hula 2026">
+  <main class="min-h-screen bg-white">
+    <section class="bg-black text-white py-16">
+      <div class="container mx-auto px-4">
+        <h1 class="text-4xl font-bold mb-4">Hula Lacrosse 2026</h1>
+        <p class="text-lg text-gray-300 max-w-3xl">
+          Capturing the energy and excitement of lacrosse through photography
+        </p>
+      </div>
+    </section>
+
+    <section class="container mx-auto px-4 py-12">
+      <a
+        href="/images/lacrosse"
+        class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors mb-8"
+      >
+        <svg
+          class="w-5 h-5 mr-2"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 19l-7-7m0 0l7-7m-7 7h18"
+          />
+        </svg>
+        Back to Lacrosse
+      </a>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="games-grid">
+        {tournaments.map((game, index) => (
+          <a
+            href={`/images/lacrosse/hula-2026/${game.id}`}
+            class="group relative game-card scroll-fade-in magnetic-card"
+            data-index={index}
+            style="opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;"
+          >
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <div class="relative h-64">
+                <img
+                  src={game.previewImage}
+                  alt={game.title}
+                  class="gallery-image w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                  data-index={index}
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+                  <div class="absolute bottom-0 left-0 right-0 p-4">
+                    <h2 class="text-white text-xl font-semibold mb-2">{game.title}</h2>
+                    <div class="flex justify-between text-sm text-gray-300">
+                      <span>{game.date}</span>
+                      <span>{game.photoCount} photos</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <Lightbox images={previewImages} />
+</Layout>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const animatedCards = document.querySelectorAll('.scroll-fade-in');
+
+    if (animatedCards.length > 0 && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const element = entry.target as HTMLElement;
+            const index = parseInt(element.dataset.index || '0');
+            setTimeout(() => {
+              element.style.opacity = '1';
+              element.style.transform = 'translateY(0)';
+            }, index * 100);
+            observer.unobserve(element);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      animatedCards.forEach((card) => {
+        observer.observe(card);
+      });
+    } else {
+      animatedCards.forEach((card) => {
+        (card as HTMLElement).style.opacity = '1';
+        (card as HTMLElement).style.transform = 'translateY(0)';
+      });
+    }
+
+    const magneticCards = document.querySelectorAll('.magnetic-card');
+    const magneticStrength = 0.15;
+
+    magneticCards.forEach((card) => {
+      const cardElement = card as HTMLElement;
+      let currentX = 0;
+      let currentY = 0;
+      let targetX = 0;
+      let targetY = 0;
+      let rafId: number | null = null;
+
+      function animate() {
+        currentX += (targetX - currentX) * 0.1;
+        currentY += (targetY - currentY) * 0.1;
+
+        cardElement.style.transform = `translate(${currentX}px, ${currentY}px)`;
+
+        if (Math.abs(targetX - currentX) > 0.1 || Math.abs(targetY - currentY) > 0.1) {
+          rafId = requestAnimationFrame(animate);
+        } else {
+          rafId = null;
+        }
+      }
+
+      cardElement.addEventListener('mouseenter', () => {
+        cardElement.style.transition = 'none';
+      });
+
+      cardElement.addEventListener('mouseleave', () => {
+        targetX = 0;
+        targetY = 0;
+        cardElement.style.transition = 'transform 0.3s ease-out';
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+        }
+        animate();
+      });
+
+      cardElement.addEventListener('mousemove', (e) => {
+        const rect = cardElement.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        const deltaX = (e.clientX - centerX) * magneticStrength;
+        const deltaY = (e.clientY - centerY) * magneticStrength;
+
+        targetX = deltaX;
+        targetY = deltaY;
+
+        if (!rafId) {
+          rafId = requestAnimationFrame(animate);
+        }
+      });
+    });
+  });
+</script>

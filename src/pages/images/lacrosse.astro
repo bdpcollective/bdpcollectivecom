@@ -4,6 +4,22 @@ import Lightbox from '../../components/Lightbox.astro';
 
 const lacrosseGames = [
   {
+    id: "hula-2026",
+    title: "Hula Lacrosse 2026",
+    date: "Summer 2026",
+    location: "Hula Tournament",
+    previewImage: `/images/lacrosse/20260614_Hula_BlueOx/20260613_MWLAX_Hula_Sat-${Math.floor(Math.random() * 68) + 2}.jpg`,
+    photoCount: 191
+  },
+  {
+    id: "hula-2025",
+    title: "Hula 2025",
+    date: "Summer 2025",
+    location: "Hula Tournament",
+    previewImage: `/images/lacrosse/hula2025/blueox/Hula_BlueOx-${String(Math.floor(Math.random() * 85) + 1).padStart(2, '0')}.jpg`,
+    photoCount: 322
+  },
+  {
     id: "20251123-first-responder-baskets",
     title: "First Responder Baskets",
     date: "November 23, 2025",
@@ -179,10 +195,10 @@ const previewImages = lacrosseGames.map(game => game.previewImage);
 
       <div class="flex justify-between items-center mb-8">
         <div class="flex gap-4">
-          <button id="filter-2025" class="filter-btn px-4 py-2 rounded-full bg-gray-900 text-white hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 active:scale-95" data-year="2025">
+          <button id="filter-2025" class="filter-btn px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 active:scale-95" data-year="2025">
             2025
           </button>
-          <button id="filter-2026" class="filter-btn px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-300 transform hover:scale-105 active:scale-95" data-year="2026">
+          <button id="filter-2026" class="filter-btn px-4 py-2 rounded-full bg-gray-900 text-white hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 active:scale-95" data-year="2026">
             2026
           </button>
         </div>
@@ -372,6 +388,12 @@ const previewImages = lacrosseGames.map(game => game.previewImage);
         });
       });
     });
+
+    // Default to newest year on page load
+    const filter2026 = document.getElementById('filter-2026');
+    if (filter2026) {
+      filter2026.click();
+    }
   });
 </script>
 
