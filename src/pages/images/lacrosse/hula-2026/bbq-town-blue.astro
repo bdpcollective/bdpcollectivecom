@@ -1,0 +1,49 @@
+---
+import Layout from '../../../../layouts/Layout.astro';
+import Lightbox from '../../../../components/Lightbox.astro';
+
+const basePath = `/images/lacrosse/20260620_Hula_BBQ_Blue`;
+
+const images = [
+  `${basePath}/20260620_Hula_BBQTown_Blue.jpg`,
+  ...Array.from({ length: 64 }, (_, i) => `${basePath}/20260620_Hula_BBQTown_Blue-${i + 2}.jpg`),
+];
+
+const title = "BBQ Town | Blue";
+const description = "Photos from the BBQ Town Blue game at the Hula 2026 tournament";
+---
+
+<Layout title={title}>
+  <div class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="mb-8">
+        <a href="/images/lacrosse/hula-2026" class="text-blue-600 hover:text-blue-800">← Back to Hula 2026</a>
+      </div>
+
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
+      <p class="text-gray-600 mb-8">June 20, 2026</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {images.map((image, index) => (
+          <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
+            <img
+              src={image}
+              alt={`BBQ Town Blue photo ${index + 1}`}
+              class="gallery-image w-full h-full object-cover cursor-pointer transform hover:scale-105 transition-transform duration-300"
+              loading={index < 9 ? "eager" : "lazy"}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <Lightbox images={images} />
+</Layout>
+
+<style>
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>

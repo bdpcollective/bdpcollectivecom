@@ -2,12 +2,24 @@
 import Layout from '../../../../layouts/Layout.astro';
 import Lightbox from '../../../../components/Lightbox.astro';
 
-const basePath = `/images/lacrosse/20260614_Hula_BlueOx`;
-const allImages = [
-  `${basePath}/20260613_MWLAX_Hula_Sat.jpg`,
-  ...Array.from({ length: 68 }, (_, i) => `${basePath}/20260613_MWLAX_Hula_Sat-${i + 2}.jpg`),
-  `${basePath}/20260614_MWLAX_Hula_Sun.jpg`,
-  ...Array.from({ length: 11 }, (_, i) => `${basePath}/20260614_MWLAX_Hula_Sun-${i + 2}.jpg`),
+const blueOxBasePath = `/images/lacrosse/20260614_Hula_BlueOx`;
+const blueOxImages = [
+  `${blueOxBasePath}/20260613_MWLAX_Hula_Sat.jpg`,
+  ...Array.from({ length: 68 }, (_, i) => `${blueOxBasePath}/20260613_MWLAX_Hula_Sat-${i + 2}.jpg`),
+  `${blueOxBasePath}/20260614_MWLAX_Hula_Sun.jpg`,
+  ...Array.from({ length: 11 }, (_, i) => `${blueOxBasePath}/20260614_MWLAX_Hula_Sun-${i + 2}.jpg`),
+];
+
+const bbqBlueBasePath = `/images/lacrosse/20260620_Hula_BBQ_Blue`;
+const bbqBlueImages = [
+  `${bbqBlueBasePath}/20260620_Hula_BBQTown_Blue.jpg`,
+  ...Array.from({ length: 64 }, (_, i) => `${bbqBlueBasePath}/20260620_Hula_BBQTown_Blue-${i + 2}.jpg`),
+];
+
+const bbqWhiteBasePath = `/images/lacrosse/20260620_Hula_BBQ_White`;
+const bbqWhiteImages = [
+  `${bbqWhiteBasePath}/20260620_Hula_BBQTown_White.jpg`,
+  ...Array.from({ length: 44 }, (_, i) => `${bbqWhiteBasePath}/20260620_Hula_BBQTown_White-${i + 2}.jpg`),
 ];
 
 const tournaments = [
@@ -16,11 +28,28 @@ const tournaments = [
     title: "Blue Ox 2026 | Blue",
     date: "June 13-14, 2026",
     location: "Hula Tournament",
-    previewImage: allImages[Math.floor(Math.random() * allImages.length)],
-    photoCount: allImages.length
+    previewImage: blueOxImages[Math.floor(Math.random() * blueOxImages.length)],
+    photoCount: blueOxImages.length
+  },
+  {
+    id: "bbq-town-blue",
+    title: "BBQ Town | Blue",
+    date: "June 20, 2026",
+    location: "Hula Tournament",
+    previewImage: bbqBlueImages[Math.floor(Math.random() * bbqBlueImages.length)],
+    photoCount: bbqBlueImages.length
+  },
+  {
+    id: "bbq-town-white",
+    title: "BBQ Town | White",
+    date: "June 20, 2026",
+    location: "Hula Tournament",
+    previewImage: bbqWhiteImages[Math.floor(Math.random() * bbqWhiteImages.length)],
+    photoCount: bbqWhiteImages.length
   }
 ];
 
+const allImages = [...blueOxImages, ...bbqBlueImages, ...bbqWhiteImages];
 const previewImages = tournaments.map(t => t.previewImage);
 ---
 
@@ -28,7 +57,7 @@ const previewImages = tournaments.map(t => t.previewImage);
   <main class="min-h-screen bg-white">
     <section class="bg-black text-white py-16">
       <div class="container mx-auto px-4">
-        <h1 class="text-4xl font-bold mb-4">Hula 2026</h1>
+        <h1 class="text-4xl font-bold mb-4">Hula Lacrosse 2026</h1>
         <p class="text-lg text-gray-300 max-w-3xl">
           Capturing the energy and excitement of lacrosse through photography
         </p>
