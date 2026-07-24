@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leveraging Generative AI for Faster, Smarter Design</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/theme/black.min.css" id="theme">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/highlight/monokai.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --r-background-color: #0a0f1a;
+      --r-main-color: #f5f5f7;
+      --r-heading-color: #f5f5f7;
+      --r-link-color: #34c759;
+      --r-selection-background-color: rgba(52,199,89,0.3);
+      --brand-green: #34c759;
+      --brand-green-dim: #30b854;
+      --brand-green-faint: rgba(52,199,89,0.1);
+      --brand-green-glow: rgba(52,199,89,0.06);
+      --text-dim: #8da3b8;
+      --text-muted: #8da3b8;
+      --text-faint: #8a97a5;
+      --glass-bg: rgba(255,255,255,0.03);
+      --glass-border: rgba(255,255,255,0.06);
+      --border-hover: rgba(52,199,89,0.12);
+      --warning-red: #ff6c6c;
+    }
+    .reveal {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    /* --- Slide layout: top-aligned, left-aligned, responsive --- */
+    .reveal .slides > section,
+    .reveal .slides > section > section {
+      text-align: left !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      display: block !important;
+      overflow: hidden !important;
+    }
+    .reveal .slides > section > .slide-inner,
+    .reveal .slides > section > section > .slide-inner {
+      padding: 24px 64px;
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      overflow: hidden;
+    }
+    .reveal .slides section aside.notes {
+      display: none !important;
+    }
+    .reveal h1, .reveal h2 {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      text-wrap: balance;
+      text-align: left;
+    }
+    .reveal h3 {
+      font-family: 'DM Serif Display', serif;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: -0.025em;
+      line-height: 1.25;
+      color: #f5f5f7;
+      text-wrap: balance;
+      text-align: left;
+    }
+    .reveal p, .reveal li {
+      text-wrap: pretty;
+    }
+    /* --- Golden ratio type scale (φ = 1.618, base = 1.0em) --- */
+    .reveal h1 { font-size: 2.618em; }  /* base × φ²  */
+    .reveal h2 { font-size: 1.618em; }  /* base × φ   */
+    .reveal h3 { font-size: 1.272em; }  /* base × √φ  */
+    .reveal .subtitle {
+      color: var(--text-dim);
+      font-size: 0.618em;              /* base ÷ φ   */
+      margin-top: 0.5em;
+    }
+    /* --- Type scale utilities (golden ratio) --- */
+    .reveal .text-lead   { font-size: 1.0em;   color: var(--text-dim); }   /* base        */
+    .reveal .text-body   { font-size: 0.786em;  color: var(--text-dim); }  /* base ÷ √φ   */
+    .reveal .text-small  { font-size: 0.618em;  color: var(--text-dim); }  /* base ÷ φ    */
+    .reveal .text-caption { font-size: 0.486em; color: var(--text-faint); } /* base ÷ φ^1.5 */
+    .reveal .section-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--brand-green);
+      margin-bottom: 0.5em;
+    }
+    .reveal .section-label::before {
+      content: "";
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--brand-green);
+      border-radius: 50%;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+    .reveal .accent { color: var(--brand-green); }
+    .reveal .highlight { color: var(--warning-red); }
+    .reveal .green { color: var(--brand-green); }
+    .reveal ul,
+    .reveal ol { list-style: none; padding-left: 0 !important; margin-left: 0 !important; text-align: left; }
+    .reveal ul li {
+      margin-bottom: 0.6em;
+      padding-left: 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6em;
+    }
+    .reveal ul li::before {
+      content: "";
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      background: var(--brand-green);
+      border-radius: 50%;
+      margin-top: 0.55em;
+    }
+    .reveal .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2em;
+      text-align: left;
+    }
+    .reveal .quote {
+      font-family: 'DM Serif Display', serif;
+      font-style: italic;
+      color: var(--brand-green);
+      font-size: 1.272em;
+      border-left: 3px solid var(--brand-green);
+      padding-left: 0.8em;
+      margin: 1em 0;
+      text-wrap: pretty;
+    }
+    .reveal .big-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 5em;
+      font-weight: 700;
+      color: var(--brand-green);
+      line-height: 1;
+      text-align: left;
+    }
+    .reveal .slide-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+    }
+    .reveal .time-badge {
+      display: inline-block;
+      background: var(--brand-green-faint);
+      color: var(--brand-green);
+      border: 1px solid var(--border-hover);
+      padding: 0.15em 0.6em;
+      border-radius: 100px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.486em;
+      font-weight: 500;
+      vertical-align: middle;
+      margin-left: 0.5em;
+      letter-spacing: 0.05em;
+    }
+    .reveal table {
+      margin: 0.5em 0;
+      font-size: 0.618em;
+    }
+    .reveal table th {
+      background: var(--brand-green-faint);
+      color: var(--brand-green);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .reveal table td, .reveal table th {
+      padding: 0.4em 1em;
+      border: 1px solid var(--glass-border);
+    }
+    .reveal .prompt-example {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 0.6em 1em;
+      text-align: left;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.486em;
+      color: var(--text-dim);
+      margin: 0.5em 0;
+      position: relative;
+    }
+    .reveal .prompt-example .label {
+      color: var(--brand-green);
+      font-weight: 600;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1em;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4em;
+    }
+    .reveal .ai-response {
+      background: rgba(52,199,89,0.04);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(52,199,89,0.1);
+      border-top: 1px solid rgba(52,199,89,0.15);
+      border-radius: 20px;
+      padding: 0.6em 1em;
+      text-align: left;
+      font-size: 0.486em;
+      color: var(--text-dim);
+      margin: 0.5em 0;
+    }
+    .reveal .ai-response .label {
+      color: var(--brand-green);
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 1em;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4em;
+    }
+    .reveal .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8em;
+      margin-top: 0.8em;
+      flex: 1;
+      min-height: 0;
+    }
+    .reveal .card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 0.8em 1em;
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      min-height: 0;
+      overflow: hidden;
+    }
+    .reveal .card.selected {
+      border-color: rgba(52,199,89,0.3);
+      box-shadow: 0 0 20px var(--brand-green-glow), inset 0 1px 0 rgba(52,199,89,0.15);
+    }
+    .reveal .card.rejected {
+      border-color: rgba(255,108,108,0.15);
+      opacity: 0.5;
+    }
+    .reveal .card h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--brand-green);
+      margin: 0 0 0.3em 0;
+      font-size: 0.618em;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .reveal .card p {
+      font-size: 0.486em;
+      color: var(--text-dim);
+      margin: 0;
+      line-height: 1.5;
+    }
+    .reveal .compact .card h4 { font-size: 0.486em; }
+    .reveal .compact .card p  { font-size: 0.382em; }
+    .reveal .pipeline {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 0.3em;
+      font-size: 0.618em;
+      flex-wrap: wrap;
+    }
+    .reveal .pipeline .step {
+      background: var(--glass-bg);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--glass-border);
+      padding: 0.3em 0.8em;
+      border-radius: 100px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+    }
+    .reveal .pipeline .step.active {
+      border-color: rgba(52,199,89,0.3);
+      color: var(--brand-green);
+    }
+    .reveal .pipeline .arrow {
+      color: var(--text-faint);
+    }
+    .reveal .takeaway-num {
+      display: inline-block;
+      background: var(--brand-green);
+      color: #0a0f1a;
+      width: 1.4em;
+      height: 1.4em;
+      line-height: 1.4em;
+      border-radius: 50%;
+      text-align: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      margin-right: 0.4em;
+    }
+    .reveal .color-swatch {
+      display: inline-block;
+      width: 2.5em;
+      height: 2.5em;
+      border-radius: 10px;
+      margin: 0.2em;
+      vertical-align: middle;
+    }
+    .reveal .iteration-chain {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6em;
+      margin: 0.5em 0;
+      font-size: 0.618em;
+      text-align: left;
+    }
+    .reveal .iteration-chain .prompt-example {
+      font-size: 1.0em;
+    }
+    .reveal .iteration-chain .iter-label {
+      font-family: 'Space Grotesk', sans-serif;
+      color: var(--brand-green);
+      font-weight: 700;
+      font-size: 1.618em;
+      min-width: 1.2em;
+    }
+    /* Prototype mockup cards — no glass effects */
+    .reveal .proto-card {
+      border-radius: 12px;
+      overflow: hidden;
+      background: #141c2b;
+    }
+    .reveal .proto-card img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      max-width: none !important;
+      max-height: none !important;
+    }
+    /* Noise texture overlay for glass surfaces */
+    .reveal .card::before,
+    .reveal .prompt-example::before,
+    .reveal .ai-response::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      opacity: 0.03;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+    .reveal .card,
+    .reveal .prompt-example,
+    .reveal .ai-response {
+      position: relative;
+      overflow: hidden;
+    }
+    /* Persistent footer */
+    .slide-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 64px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      color: var(--text-faint);
+      z-index: 30;
+      pointer-events: none;
+    }
+    .slide-footer a {
+      color: var(--text-faint);
+      text-decoration: none;
+      pointer-events: auto;
+      transition: color 0.3s ease;
+    }
+    .slide-footer a:hover {
+      color: var(--brand-green);
+    }
+    /* Background grid */
+    .reveal .slides {
+      background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- ===== TITLE SLIDE ===== -->
+      <section>
+        <div class="slide-inner">
+          <p class="section-label">Nebraska.Code() 2026</p>
+          <h1>Leveraging Generative AI for Faster, Smarter Design</h1>
+          <p class="subtitle" style="color: var(--brand-green);">Accelerating Prototyping Without Sacrificing Creativity</p>
+          <p class="text-body" style="color: var(--text-faint); margin-top: 2em;">
+            Brian Pope &nbsp;|&nbsp; Director of Delivery &amp; Design &nbsp;|&nbsp; DevObsessed
+          </p>
+        </div>
+        <aside class="notes">
+          SCRIPT: "Good morning/afternoon, everyone. I'm Brian Pope, Director of Delivery and Design at DevObsessed. I spend my days at the intersection of building products and designing the experiences around them — shipping things that look good AND work well.
+
+          Today I want to talk about something that has genuinely changed how I work. Not in a buzzy, hype-cycle way, but in a 'I actually prototype faster now' way. We're going to talk about using generative AI — specifically large language models — to speed up the design process.
+
+          But before we dive in, I want to set one expectation right up front..."
+        </aside>
+      </section>
+
+      <!-- ===== SECTION 1: OPENING & HOOK ===== -->
+      <section>
+        <section>
+          <div class="slide-inner">
+            <p class="section-label">Opening</p>
+            <h2>Before We Start</h2>
+            <p class="quote">AI is a power tool, not an autopilot.</p>
+            <p class="text-lead" style="margin-top: 1em;">Every example today includes a human making the decisions.</p>
+          </div>
+          <aside class="notes">
+            SCRIPT: "I want you to hold onto this idea for the whole talk: AI is a power tool, not an autopilot. A table saw doesn't design furniture — a woodworker does. The saw just makes them faster.
+
+            Every single example I'm going to show you today has a human — me — making the creative decisions. AI generated options. I chose. I refined. I rejected things that didn't work. That's the model.
+
+            If you take nothing else from this talk, take that. Now let me show you WHY this matters..."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h2>The Before &amp; After</h2>
+            <div class="two-col">
+              <div>
+                <h3 style="font-size: 1.0em;">Traditional</h3>
+                <ul>
+                  <li>Stare at blank canvas</li>
+                  <li>Sketch 2-3 wireframes</li>
+                  <li>Write placeholder copy</li>
+                  <li>Build one prototype</li>
+                  <li>Iterate slowly</li>
+                </ul>
+                <p class="text-body" style="color: var(--warning-red);">Hours of work</p>
+              </div>
+              <div>
+                <h3 style="font-size: 1.0em;">With AI</h3>
+                <ul>
+                  <li>Describe your intent</li>
+                  <li>Generate 5+ concepts</li>
+                  <li>Real copy in seconds</li>
+                  <li>Multiple mockups fast</li>
+                  <li>Rapid exploration</li>
+                </ul>
+                <p class="text-body" style="color: var(--brand-green);">Minutes to first draft</p>
+              </div>
+            </div>
+          </div>
+          <aside class="notes">
+            SCRIPT: "Here's the before and after. On the left — the way most of us have worked. You open Figma, you stare at the blank canvas, you sketch a couple wireframes, you write lorem ipsum everywhere, you build one prototype, and then you iterate slowly because every change takes effort.
+
+            On the right — what it looks like when you bring AI into the loop. You describe what you want in plain English. You get five or six concepts back instead of two. Real copy, not lorem ipsum. Multiple directions to evaluate. And you can explore rapidly because generating a new variation costs you a prompt, not an hour.
+
+            I want to be clear: the RIGHT side doesn't replace the thinking. It replaces the busywork. You still make every decision. You just make them faster because AI handled the mechanical parts."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <p class="section-label">Framing</p>
+            <h2>What This Talk Is</h2>
+            <ul>
+              <li>Tool-agnostic principles demonstrated through Claude</li>
+              <li>Applicable to ChatGPT, Gemini, or any LLM</li>
+              <li>About workflow change, not vendor lock-in</li>
+              <li>Practical techniques you can use this week</li>
+            </ul>
+          </div>
+          <aside class="notes">
+            SCRIPT: "One more note before we get into it. I'm going to be using Claude for my demos today, but this talk is NOT a Claude commercial. Everything I show you — every technique, every prompting pattern — works across ChatGPT, Gemini, Copilot, whatever you prefer.
+
+            The skill is in HOW you prompt, not WHICH tool you use. I'm teaching you a workflow, not a product. The goal is that you walk out of here with techniques you can try this week with whatever AI tool you already have access to.
+
+            OK. Let's talk about why we need this in the first place."
+          </aside>
+        </section>
+      </section>
+
+      <!-- ===== SECTION 2: THE PROTOTYPING BOTTLENECK ===== -->
+      <section>
+        <section>
+          <div class="slide-inner">
+            <p class="section-label">The Problem</p>
+            <h2>The Prototyping Bottleneck</h2>
+            <div class="pipeline">
+              <span class="step">Ideation</span>
+              <span class="arrow">&rarr;</span>
+              <span class="step">Wireframes</span>
+              <span class="arrow">&rarr;</span>
+              <span class="step">Mockups</span>
+              <span class="arrow">&rarr;</span>
+              <span class="step">Iteration</span>
+              <span class="arrow">&rarr;</span>
+              <span class="step">Testing</span>
+              <span class="arrow">&rarr;</span>
+              <span class="step">Repeat</span>
+            </div>
+            <p class="text-lead" style="margin-top: 1.5em;">This cycle is essential. But <span class="highlight">where does time get burned?</span></p>
+          </div>
+          <aside class="notes">
+            SCRIPT: "This is the prototyping cycle we all know. Ideation, wireframes, mockups, iteration, testing, repeat. It works. It's how good products get built.
+
+            But here's the thing — not every step in this cycle requires the same kind of thinking. Some of these steps are deeply creative. Deciding what problem to solve, choosing which layout best serves the user, interpreting test results. That's where your expertise lives.
+
+            But other steps? They're just... labor. And that's where AI comes in. Let me show you what I mean."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h2>Where Time Gets Burned</h2>
+            <div class="card-grid">
+              <div class="card">
+                <h4>Blank-Canvas Syndrome</h4>
+                <p>Staring at an empty file, unsure where to start</p>
+              </div>
+              <div class="card">
+                <h4>Repetitive Variations</h4>
+                <p>Creating the 4th button style or layout option manually</p>
+              </div>
+              <div class="card">
+                <h4>Placeholder Content</h4>
+                <p>Writing lorem ipsum or fake data instead of real copy</p>
+              </div>
+              <div class="card">
+                <h4>Idea &rarr; Artifact Gap</h4>
+                <p>Translating what's in your head into something visible</p>
+              </div>
+            </div>
+          </div>
+          <aside class="notes">
+            SCRIPT: "Four places where time disappears.
+
+            Blank-canvas syndrome — how many of you have opened a new file and just... stared at it for twenty minutes before placing the first element? I see some hands. Me too. Every time.
+
+            Repetitive variations — your stakeholder says 'can I see three more options?' and your heart sinks because each one takes an hour. You're not making creative decisions on version four. You're doing production work.
+
+            Placeholder content — lorem ipsum everywhere. Fake names, fake addresses, fake everything. You know what's better than placeholder content? Actual content. But writing it takes time.
+
+            And the idea-to-artifact gap — you know EXACTLY what you want in your head. The bottleneck is translating it into pixels. That translation step is mechanical, not creative.
+
+            These are all low-creativity, high-effort tasks. And that's exactly where AI fits."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h2>The Opportunity</h2>
+            <p class="text-lead">AI compresses the low-creativity, high-effort parts</p>
+            <p class="text-lead">so you spend more time on high-creativity decisions</p>
+            <br>
+            <p class="quote">Let me walk you through how AI fits into each stage of prototyping.</p>
+          </div>
+          <aside class="notes">
+            SCRIPT: "So here's the thesis of this entire talk. AI compresses the low-creativity, high-effort parts of the prototyping cycle — so you can spend MORE time on the high-creativity decisions that actually matter.
+
+            AI doesn't replace your creativity. It removes the busywork so you can focus on it. That's the pitch. Now let me prove it.
+
+            I'm going to walk through three stages: ideation and wireframing, generating UI elements, and rapid iteration for testing. Each one with real demos. Let's start at the beginning — ideation."
+          </aside>
+        </section>
+      </section>
+
+      <!-- ===== SECTION 3: AI-ASSISTED IDEATION & WIREFRAMING ===== -->
+      <section>
+        <section>
+          <div class="slide-inner">
+            <p class="section-label">Stage 1</p>
+            <h2>AI-Assisted Ideation &amp; Wireframing</h2>
+            <p class="text-lead">From a <span class="accent">vague idea</span> to <span class="accent">structured concepts</span></p>
+          </div>
+          <aside class="notes">
+            SCRIPT: "The earliest stage of design is often the hardest. You have a vague idea — maybe from a stakeholder, maybe from user research — and you need to turn it into something structured. A layout. An information architecture. A wireframe.
+
+            This is where AI shines, because it's incredibly good at generating structure from ambiguity. Let me show you."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h3>Demo: Idea &rarr; Wireframe Concepts</h3>
+            <div class="prompt-example">
+              <div class="label">Prompt</div>
+              I'm designing a mobile app for tracking personal fitness goals.
+              The primary users are busy professionals aged 25-40.
+              Generate 3 different wireframe layouts for the dashboard screen.
+              Include: daily progress, weekly trends, and quick-add buttons.
+            </div>
+            <div class="ai-response">
+              <div class="label">Claude's Response</div>
+              <strong style="color: #f5f5f7;">Layout A — "The Glanceable Dashboard"</strong><br>
+              Top: circular progress ring (daily calories/steps). Middle: sparkline chart for weekly trend. Bottom: floating action button with quick-add menu. Single scroll, minimal cognitive load.<br><br>
+              <strong style="color: #f5f5f7;">Layout B — "The Data-Rich View"</strong><br>
+              Top: horizontal stat cards (steps, calories, water). Middle: full bar chart for the week. Bottom: scrollable activity feed + FAB. Information-dense, for users who want detail.<br><br>
+              <strong style="color: #f5f5f7;">Layout C — "The Coach"</strong><br>
+              Top: motivational banner with today's goal. Middle: checklist-style daily tasks. Bottom: weekly trend as a simple line. Gamified, encouraging, for habit-building.
+            </div>
+          </div>
+          <aside class="notes">
+            SCRIPT: "Here's the prompt I used. Notice what I gave it: context about the app, who the users are, what needs to be on screen. And I asked for three different layouts.
+
+            Here's what came back. Layout A is a glanceable dashboard — progress ring up top, sparkline in the middle, floating action button at the bottom. Minimal, scannable, perfect for someone checking their phone between meetings.
+
+            Layout B is data-rich. Stat cards, full bar chart, activity feed. This is for the user who wants to see everything at a glance.
+
+            Layout C takes a coaching angle. Motivational banner, checklist-style tasks, gamified elements.
+
+            Now, did I use all three? No. But in about thirty seconds, I had three structurally different concepts to evaluate. Without AI, I would have sketched maybe one of these and spent an hour on it. Instead, I got three starting points and could immediately think about which direction best serves the user."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h3 style="margin-bottom: 0.2em;">What AI Generated</h3>
+            <p class="text-small" style="margin-bottom: 0.4em;">3 wireframe layouts for a fitness dashboard</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.6em; height: 530px;">
+
+              <!-- Layout A: The Glanceable Dashboard -->
+              <div style="border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 0.5em; display: flex; flex-direction: column;">
+                <p style="font-size: 0.32em; color: rgba(255,255,255,0.5); margin: 0 0 0.3em 0; font-family: 'Space Grotesk', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;">A: Glanceable</p>
+                <!-- Status bar -->
+                <div style="border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; height: 12px; margin-bottom: 0.3em;"></div>
+                <!-- Progress ring -->
+                <div style="display: flex; justify-content: center; align-items: center; flex: 1.2; margin-bottom: 0.3em;">
+                  <div style="width: 100px; height: 100px; border: 2px solid rgba(255,255,255,0.15); border-radius: 50%; position: relative;">
+                    <div style="position: absolute; inset: 6px; border: 3px solid rgba(255,255,255,0.5); border-radius: 50%; border-right-color: transparent; border-bottom-color: transparent; transform: rotate(45deg);"></div>
+                    <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;">
+                      <span style="font-size: 0.34em; color: rgba(255,255,255,0.5); font-family: 'Space Grotesk', sans-serif; font-weight: 600;">72%</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Sparkline area -->
+                <div style="border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 0.3em; flex: 0.6; margin-bottom: 0.3em;">
+                  <div style="font-size: 0.22em; color: rgba(255,255,255,0.35); margin-bottom: 0.3em; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.06em;">Weekly Trend</div>
+                  <svg viewBox="0 0 200 40" style="width: 100%; height: 30px;">
+                    <polyline points="0,35 30,28 60,20 90,25 120,15 150,18 180,8 200,12" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+                  </svg>
+                </div>
+                <!-- FAB -->
+                <div style="display: flex; justify-content: flex-end;">
+                  <div style="width: 28px; height: 28px; border: 2px solid rgba(255,255,255,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <span style="color: rgba(255,255,255,0.5); font-size: 0.4em; font-weight: 700;">+</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Layout B: The Data-Rich View -->
+              <div style="border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 0.5em; display: flex; flex-direction: column;">
+                <p style="font-size: 0.32em; color: rgba(255,255,255,0.5); margin: 0 0 0.3em 0; font-family: 'Space Grotesk', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;">B: Data-Rich</p>
+                <!-- Status bar -->
+                <div style="border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; height: 12px; margin-bottom: 0.3em;"></div>
+                <!-- Stat cards row -->
+                <div style="display: flex; gap: 0.2em; margin-bottom: 0.3em;">
+                  <div style="flex: 1; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 0.25em;">
+                    <div style="font-size: 0.18em; color: rgba(255,255,255,0.35); font-family: 'Space Grotesk', sans-serif; text-transform: uppercase;">Steps</div>
+                    <div style="font-size: 0.3em; color: rgba(255,255,255,0.5); font-family: 'Space Grotesk', sans-serif; font-weight: 600;">8,432</div>
+                  </div>
+                  <div style="flex: 1; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 0.25em;">
+                    <div style="font-size: 0.18em; color: rgba(255,255,255,0.35); font-family: 'Space Grotesk', sans-serif; text-transform: uppercase;">Cal</div>
+                    <div style="font-size: 0.3em; color: rgba(255,255,255,0.5); font-family: 'Space Grotesk', sans-serif; font-weight: 600;">1,847</div>
+                  </div>
+                  <div style="flex: 1; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 0.25em;">
+                    <div style="font-size: 0.18em; color: rgba(255,255,255,0.35); font-family: 'Space Grotesk', sans-serif; text-transform: uppercase;">Water</div>
+                    <div style="font-size: 0.3em; color: rgba(255,255,255,0.5); font-family: 'Space Grotesk', sans-serif; font-weight: 600;">6/8</div>
+                  </div>
+                </div>
+                <!-- Bar chart -->
+                <div style="border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 0.3em; flex: 1; margin-bottom: 0.3em;">
+                  <div style="font-size: 0.22em; color: rgba(255,255,255,0.35); margin-bottom: 0.3em; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.06em;">This Week</div>
+                  <div style="display: flex; align-items: flex-end; gap: 0.15em; height: 60%;">
+                    <div style="flex: 1; height: 50%; border: 1px solid rgba(255,255,255,0.3); border-radius: 2px 2px 0 0;"></div>
+                    <div style="flex: 1; height: 80%; border: 1px solid rgba(255,255,255,0.3); border-radius: 2px 2px 0 0;"></div>
+                    <div style="flex: 1; height: 40%; border: 1px solid rgba(255,255,255,0.3); border-radius: 2px 2px 0 0;"></div>
+                    <div style="flex: 1; height: 65%; border: 1px solid rgba(255,255,255,0.3); border-radius: 2px 2px 0 0;"></div>
+                    <div style="flex: 1; height: 90%; border: 1px solid rgba(255,255,255,0.3); border-radius: 2px 2px 0 0;"></div>
+                    <div style="flex: 1; height: 55%; border: 1px solid rgba(255,255,255,0.3); border-radius: 2px 2px 0 0;"></div>
+                    <div style="flex: 1; height: 30%; border: 1px solid rgba(255,255,255,0.3); border-radius: 2px 2px 0 0;"></div>
+                  </div>
+                </div>
+                <!-- Activity feed -->
+                <div style="display: flex; flex-direction: column; gap: 0.15em;">
+                  <div style="border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; height: 16px;"></div>
+                  <div style="border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; height: 16px;"></div>
+                  <div style="border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; height: 16px; width: 70%;"></div>
+                </div>
+              </div>
+
+              <!-- Layout C: The Coach -->
+              <div style="border: 1px solid rgba(255,255,255,0.2); border-radius: 12px; padding: 0.5em; display: flex; flex-direction: column;">
+                <p style="font-size: 0.32em; color: rgba(255,255,255,0.5); margin: 0 0 0.3em 0; font-family: 'Space Grotesk', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;">C: Coach</p>
+                <!-- Status bar -->
+                <div style="border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; height: 12px; margin-bottom: 0.3em;"></div>
+                <!-- Motivational banner -->
+                <div style="border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 0.4em; margin-bottom: 0.3em; text-align: center;">
+                  <div style="font-size: 0.22em; color: rgba(255,255,255,0.35); font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.06em;">Today's Goal</div>
+                  <div style="font-size: 0.34em; color: rgba(255,255,255,0.6); font-weight: 600; margin-top: 0.15em;">Burn 400 calories</div>
+                  <div style="border: 1px solid rgba(255,255,255,0.15); border-radius: 100px; height: 6px; margin-top: 0.3em;">
+                    <div style="background: rgba(255,255,255,0.3); border-radius: 100px; height: 100%; width: 65%;"></div>
+                  </div>
+                </div>
+                <!-- Checklist -->
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 0.2em; margin-bottom: 0.3em;">
+                  <div style="display: flex; align-items: center; gap: 0.3em; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 0.25em 0.35em;">
+                    <div style="width: 14px; height: 14px; border-radius: 3px; border: 1.5px solid rgba(255,255,255,0.4); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                      <span style="color: rgba(255,255,255,0.5); font-size: 0.22em; font-weight: 700;">&#10003;</span>
+                    </div>
+                    <span style="font-size: 0.24em; color: rgba(255,255,255,0.4); text-decoration: line-through;">Morning stretch</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 0.3em; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 0.25em 0.35em;">
+                    <div style="width: 14px; height: 14px; border-radius: 3px; border: 1.5px solid rgba(255,255,255,0.4); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                      <span style="color: rgba(255,255,255,0.5); font-size: 0.22em; font-weight: 700;">&#10003;</span>
+                    </div>
+                    <span style="font-size: 0.24em; color: rgba(255,255,255,0.4); text-decoration: line-through;">30 min run</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 0.3em; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 0.25em 0.35em;">
+                    <div style="width: 14px; height: 14px; border-radius: 3px; border: 1.5px solid rgba(255,255,255,0.15); flex-shrink: 0;"></div>
+                    <span style="font-size: 0.24em; color: rgba(255,255,255,0.5);">Log water intake</span>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 0.3em; border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 0.25em 0.35em;">
+                    <div style="width: 14px; height: 14px; border-radius: 3px; border: 1.5px solid rgba(255,255,255,0.15); flex-shrink: 0;"></div>
+                    <span style="font-size: 0.24em; color: rgba(255,255,255,0.5);">Evening workout</span>
+                  </div>
+                </div>
+                <!-- Weekly trend line -->
+                <div style="border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 0.25em;">
+                  <div style="font-size: 0.2em; color: rgba(255,255,255,0.35); margin-bottom: 0.2em; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.06em;">Weekly</div>
+                  <svg viewBox="0 0 200 30" style="width: 100%; height: 20px;">
+                    <polyline points="0,25 30,20 60,22 90,15 120,18 150,10 180,12 200,5" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+                  </svg>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <aside class="notes">
+            SCRIPT: "And here's what those three wireframe concepts look like as actual screen mockups.
+
+            Layout A — the glanceable dashboard. One big progress ring front and center, a sparkline trend below, and a floating action button for quick adds. Minimal, scannable, perfect for checking between meetings.
+
+            Layout B — data-rich. Three stat cards at the top, a full bar chart for the week, and an activity feed below. Everything at a glance for the user who wants detail.
+
+            Layout C — the coach. A motivational goal banner, a checklist of daily tasks with completion states, and a simple trend line. Gamified and encouraging.
+
+            Three structurally different approaches from a single prompt. I didn't use all three — I picked the direction that best served the user and iterated from there."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h3>Key Technique: Conversational Iteration</h3>
+            <div class="iteration-chain">
+              <span class="iter-label">1.</span>
+              <div>
+                <div class="prompt-example" style="margin: 0; padding: 0.5em 0.8em; border-radius: 12px;">
+                  <div class="label">Follow-up</div>"I like Layout A but make it mobile-first — single column, thumb-friendly."
+                </div>
+              </div>
+            </div>
+            <div class="iteration-chain">
+              <span class="iter-label">2.</span>
+              <div>
+                <div class="prompt-example" style="margin: 0; padding: 0.5em 0.8em; border-radius: 12px;">
+                  <div class="label">Follow-up</div>"Move the quick-add button to the bottom nav. Prioritize the weekly trend above daily stats."
+                </div>
+              </div>
+            </div>
+            <div class="iteration-chain">
+              <span class="iter-label">3.</span>
+              <div>
+                <div class="prompt-example" style="margin: 0; padding: 0.5em 0.8em; border-radius: 12px;">
+                  <div class="label">Follow-up</div>"Reduce cognitive load — collapse the stat cards into a single summary line."
+                </div>
+              </div>
+            </div>
+            <p class="text-body" style="margin-top: 0.5em;">
+              You're the creative director. AI generates options, you curate and decide.
+            </p>
+          </div>
+          <aside class="notes">
+            SCRIPT: "Here's where it gets powerful. I didn't stop at the first output. I iterated.
+
+            First, I told it to make Layout A mobile-first — single column, thumb-friendly targets. It restructured the layout.
+
+            Then I said move the quick-add to the bottom nav and prioritize the weekly trend. It shuffled the hierarchy.
+
+            Then I said reduce cognitive load — collapse the stat cards into a summary line. It simplified.
+
+            Each follow-up took me about five seconds to type. Each one would have taken me ten to fifteen minutes to re-draw manually.
+
+            And here's the key point: I'm making every decision. I decided Layout A was the right direction. I decided to move the quick-add button. I decided the stat cards were too busy. AI didn't make those calls — I did. AI just made executing them fast."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h3 style="margin-bottom: 0.2em;">What AI Generated</h3>
+            <p class="text-small" style="margin-bottom: 0.4em;">Layout A after 3 rounds of iteration</p>
+            <div style="display: flex; gap: 1.5em; height: 530px;">
+
+              <!-- Left: the refined mockup -->
+              <div style="width: 280px; flex-shrink: 0; border: 1px solid rgba(255,255,255,0.2); border-radius: 16px; padding: 0.5em; display: flex; flex-direction: column;">
+                <!-- Status bar -->
+                <div style="border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; height: 12px; margin-bottom: 0.4em;"></div>
+                <!-- Weekly trend (prioritized to top per iteration 2) -->
+                <div style="border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 0.35em; margin-bottom: 0.4em;">
+                  <div style="font-size: 0.2em; color: rgba(255,255,255,0.35); font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.3em;">Weekly Trend</div>
+                  <svg viewBox="0 0 200 50" style="width: 100%; height: 40px;">
+                    <polyline points="0,45 30,35 60,25 90,30 120,18 150,22 180,10 200,15" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2"/>
+                  </svg>
+                </div>
+                <!-- Progress ring -->
+                <div style="display: flex; justify-content: center; align-items: center; flex: 1; margin-bottom: 0.3em;">
+                  <div style="width: 110px; height: 110px; border: 2px solid rgba(255,255,255,0.15); border-radius: 50%; position: relative;">
+                    <div style="position: absolute; inset: 6px; border: 3px solid rgba(255,255,255,0.5); border-radius: 50%; border-right-color: transparent; border-bottom-color: transparent; transform: rotate(45deg);"></div>
+                    <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;">
+                      <span style="font-size: 0.38em; color: rgba(255,255,255,0.5); font-family: 'Space Grotesk', sans-serif; font-weight: 600;">72%</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Collapsed summary line (iteration 3) -->
+                <div style="border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; padding: 0.3em; display: flex; justify-content: space-around; margin-bottom: 0.4em;">
+                  <span style="font-size: 0.2em; color: rgba(255,255,255,0.4); font-family: 'Space Grotesk', sans-serif;">8,432 steps</span>
+                  <span style="font-size: 0.2em; color: rgba(255,255,255,0.2);">|</span>
+                  <span style="font-size: 0.2em; color: rgba(255,255,255,0.4); font-family: 'Space Grotesk', sans-serif;">1,847 cal</span>
+                  <span style="font-size: 0.2em; color: rgba(255,255,255,0.2);">|</span>
+                  <span style="font-size: 0.2em; color: rgba(255,255,255,0.4); font-family: 'Space Grotesk', sans-serif;">6/8 water</span>
+                </div>
+                <!-- Bottom nav with quick-add (iteration 2) -->
+                <div style="border-top: 1px solid rgba(255,255,255,0.15); padding-top: 0.3em; display: flex; justify-content: space-around; align-items: center;">
+                  <div style="width: 20px; height: 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px;"></div>
+                  <div style="width: 34px; height: 34px; border: 2px solid rgba(255,255,255,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <span style="color: rgba(255,255,255,0.5); font-size: 0.4em; font-weight: 700;">+</span>
+                  </div>
+                  <div style="width: 20px; height: 20px; border: 1px solid rgba(255,255,255,0.2); border-radius: 4px;"></div>
+                </div>
+              </div>
+
+              <!-- Right: annotations showing what changed -->
+              <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 1.2em;">
+                <div>
+                  <p style="font-size: 0.34em; color: rgba(255,255,255,0.5); margin: 0 0 0.15em 0; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Iteration 1</p>
+                  <p style="font-size: 0.38em; color: #f5f5f7; margin: 0;">Single column, mobile-first layout with thumb-friendly tap targets</p>
+                </div>
+                <div>
+                  <p style="font-size: 0.34em; color: rgba(255,255,255,0.5); margin: 0 0 0.15em 0; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Iteration 2</p>
+                  <p style="font-size: 0.38em; color: #f5f5f7; margin: 0;">Weekly trend moved to top. Quick-add moved to bottom nav bar.</p>
+                </div>
+                <div>
+                  <p style="font-size: 0.34em; color: rgba(255,255,255,0.5); margin: 0 0 0.15em 0; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Iteration 3</p>
+                  <p style="font-size: 0.38em; color: #f5f5f7; margin: 0;">Stat cards collapsed into a single summary line to reduce cognitive load.</p>
+                </div>
+                <p style="font-size: 0.32em; color: rgba(255,255,255,0.35); margin: 0.5em 0 0 0; font-style: italic;">3 prompts. ~15 seconds of typing. 3 structural changes.</p>
+              </div>
+
+            </div>
+          </div>
+          <aside class="notes">
+            SCRIPT: "Here's what Layout A looks like after those three rounds of iteration. It's now single-column and mobile-first. The weekly trend moved to the top because that's what users check most. The three stat cards collapsed into one summary line — less noise, same information. And the quick-add button moved from a floating action button to the bottom nav where your thumb naturally rests.
+
+            Three prompts. About fifteen seconds of typing. Three structural changes that would have each taken me ten to fifteen minutes to redraw manually. And every single change was MY decision — AI just executed it fast."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h3>The Prompt Feedback Loop</h3>
+            <div class="pipeline">
+              <span class="step">Prompt</span>
+              <span class="arrow">&rarr;</span>
+              <span class="step">Review Output</span>
+              <span class="arrow">&rarr;</span>
+              <span class="step active">Refine Prompt</span>
+              <span class="arrow">&rarr;</span>
+              <span class="step">Better Output</span>
+              <span class="arrow">&circlearrowleft;</span>
+            </div>
+            <div class="card-grid" style="margin-top: 1.2em;">
+              <div class="card">
+                <h4>1. Start Broad</h4>
+                <p>"Design a dashboard for a fitness app." Get the general direction. Don't over-specify on the first pass.</p>
+              </div>
+              <div class="card">
+                <h4>2. Evaluate &amp; React</h4>
+                <p>What's working? What's off? Name the specific thing &mdash; "the layout is right but the hierarchy is flat."</p>
+              </div>
+              <div class="card">
+                <h4>3. Add Constraints</h4>
+                <p>"Make the progress ring larger. Move quick-add to the bottom. Use our 8px grid." Each constraint sharpens the output.</p>
+              </div>
+              <div class="card selected">
+                <h4>4. Converge</h4>
+                <p>After 2&ndash;3 loops you have something worth building on. The feedback loop replaces the blank canvas.</p>
+              </div>
+            </div>
+          </div>
+          <aside class="notes">
+            SCRIPT: "This is the core mental model I want you to take away from this section. Prompting isn't a one-shot thing — it's a feedback loop.
+
+            Step one: start broad. Don't try to specify everything up front. Just describe the general direction — 'design a dashboard for a fitness app.' See what comes back.
+
+            Step two: evaluate and react. Don't just accept or reject the whole output. Be specific about what's working and what's not. 'The layout is right but the hierarchy is flat' gives the AI something actionable.
+
+            Step three: add constraints. This is where the magic happens. Each constraint you add — 'use our 8px grid,' 'make the CTA more prominent,' 'reduce to three colors' — sharpens the output. Constraints don't limit AI, they focus it.
+
+            Step four: converge. After two or three loops, you've got something worth building on. You didn't start from a blank canvas. You started from a conversation.
+
+            The key insight is that your prompting skill improves with every loop. You learn what language produces better results. You learn how to give feedback that the AI can act on. It's a skill, and like any skill, it gets better with practice."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h3>This Works Across Models</h3>
+            <ul>
+              <li>The prompting pattern is <span class="accent">model-agnostic</span></li>
+              <li>Claude, ChatGPT, Gemini &mdash; same technique, different tool</li>
+              <li>The skill is in <strong>how you prompt</strong>, not which model</li>
+            </ul>
+            <p class="text-body" style="color: var(--text-faint); margin-top: 1.5em;">
+              Context + constraints + iteration = better outputs everywhere
+            </p>
+          </div>
+          <aside class="notes">
+            SCRIPT: "Quick note — everything I just showed you? The pattern of giving context, asking for options, iterating with constraints? That works exactly the same in ChatGPT, Gemini, or any other LLM.
+
+            The formula is simple: context plus constraints plus iteration equals better outputs. That's model-agnostic. If you're already using a different tool, great — use these same techniques there.
+
+            OK, let's get more specific. We've got wireframe concepts. Now let's generate actual UI elements."
+          </aside>
+        </section>
+      </section>
+
+      <!-- ===== SECTION 4: GENERATING & ITERATING ON UI ELEMENTS ===== -->
+      <section>
+        <section>
+          <div class="slide-inner">
+            <p class="section-label">Stage 2</p>
+            <h2>Generating &amp; Iterating on UI Elements</h2>
+            <p class="text-lead">Rapid generation of <span class="accent">components, copy, and variations</span></p>
+          </div>
+          <aside class="notes">
+            SCRIPT: "This is the meatiest section. I've got three demos to show you — component variations, microcopy, and accessibility-driven design. Each one shows a different angle on how AI can speed up the detail work of UI design."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h3>Demo 1: Component Variations</h3>
+            <div class="prompt-example" style="font-size: 0.382em;">
+              <div class="label">Prompt</div>
+              Generate 4 card component designs for a recipe app.<br>
+              Each card shows: recipe photo, title, cook time, difficulty.<br>
+              Variations: horizontal, vertical, minimal, and detailed.
+            </div>
+            <div class="card-grid compact">
+              <div class="card">
+                <h4>Horizontal</h4>
+                <p>Photo left (40%), text right. Title, cook time badge, difficulty dots. Compact — fits 3+ in a list view. Good for search results.</p>
+              </div>
+              <div class="card">
+                <h4>Vertical</h4>
+                <p>Photo top (16:9), title below, cook time + difficulty as inline pills. Standard card pattern. Good for grid browsing.</p>
+              </div>
+              <div class="card">
+                <h4>Minimal</h4>
+                <p>Photo background with gradient overlay. Title + cook time in white text on the image. No difficulty shown. Instagram-style. Visually striking.</p>
+              </div>
+              <div class="card">
+                <h4>Detailed</h4>
+                <p>Photo top, title, description snippet (2 lines), cook time, difficulty, rating stars, save button. Dense — for power users who want info before clicking.</p>
+              </div>
+            </div>
+          </div>
+          <aside class="notes">
+            SCRIPT: "Four card variations from one prompt. Let me walk through them.
+
+            Horizontal card — photo on the left, text on the right. Compact, works great in a list view. You'd use this for search results.
+
+            Vertical card — photo on top, info below. The standard card pattern you see everywhere. Works well in a grid layout for browsing.
+
+            Minimal card — photo as the background with a gradient overlay and white text. Very visual, very Instagram. Striking but you lose some information.
+
+            Detailed card — everything. Photo, title, description, cook time, difficulty, rating, save button. Information-dense. For users who want to evaluate before clicking.
+
+            In the time it would take me to design ONE of these from scratch, I had four distinct options to evaluate. I'm not using all four — I'm picking the best starting point for my use case and refining from there."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h3 style="margin-bottom: 0.2em;">What AI Generated</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 0.4em; height: 570px; min-height: 0;">
+
+              <!-- Horizontal Card: photo left, text right -->
+              <div class="proto-card" style="display: flex; flex-direction: row;">
+                <img src="photos/mediterranean-quinoa-bowl-hero.jpg" alt="Mediterranean Quinoa Bowl" style="width: 45%;">
+                <div style="padding: 0.5em 0.6em; display: flex; flex-direction: column; justify-content: center; flex: 1;">
+                  <p style="font-size: 0.38em; color: #f5f5f7; font-weight: 600; margin: 0 0 0.3em 0;">Mediterranean Quinoa Bowl</p>
+                  <div style="display: flex; gap: 0.3em; align-items: center;">
+                    <span style="font-size: 0.26em; background: rgba(52,199,89,0.15); color: var(--brand-green); padding: 0.2em 0.5em; border-radius: 100px; font-family: 'Space Grotesk', sans-serif;">25 min</span>
+                    <span style="font-size: 0.26em; color: var(--text-faint);">●●○</span>
+                  </div>
+                  <p style="font-size: 0.22em; color: var(--brand-green); margin: 0.5em 0 0 0; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Horizontal</p>
+                </div>
+              </div>
+
+              <!-- Vertical Card: photo top, text below, narrower column -->
+              <div class="proto-card" style="display: flex; flex-direction: column;">
+                <img src="photos/Truffle-Mushroom-Pasta-4.jpg" alt="Truffle Mushroom Pasta" style="height: 55%; object-position: center 30%;">
+                <div style="padding: 0.4em 0.6em; flex: 1;">
+                  <p style="font-size: 0.38em; color: #f5f5f7; font-weight: 600; margin: 0 0 0.25em 0;">Truffle Mushroom Pasta</p>
+                  <div style="display: flex; gap: 0.3em; align-items: center;">
+                    <span style="font-size: 0.26em; background: rgba(52,199,89,0.15); color: var(--brand-green); padding: 0.2em 0.5em; border-radius: 100px; font-family: 'Space Grotesk', sans-serif;">35 min</span>
+                    <span style="font-size: 0.26em; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: var(--text-dim); padding: 0.2em 0.5em; border-radius: 100px; font-family: 'Space Grotesk', sans-serif;">Medium</span>
+                  </div>
+                  <p style="font-size: 0.22em; color: var(--brand-green); margin: 0.4em 0 0 0; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Vertical</p>
+                </div>
+              </div>
+
+              <!-- Minimal Card: full-bleed photo, text overlay -->
+              <div class="proto-card" style="position: relative; display: flex; align-items: flex-end; background: none;">
+                <img src="photos/thai-red-curry-with-chicken.webp" alt="Thai Red Curry" style="position: absolute; inset: 0;">
+                <div style="position: absolute; inset: 0; background: linear-gradient(transparent 20%, rgba(0,0,0,0.8));"></div>
+                <div style="position: relative; padding: 0.5em 0.6em; width: 100%; box-sizing: border-box;">
+                  <p style="font-size: 0.42em; color: #fff; font-weight: 700; margin: 0 0 0.15em 0; text-shadow: 0 2px 8px rgba(0,0,0,0.5);">Thai Red Curry</p>
+                  <span style="font-size: 0.28em; color: rgba(255,255,255,0.8); font-family: 'Space Grotesk', sans-serif; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">40 min</span>
+                  <p style="font-size: 0.22em; color: rgba(255,255,255,0.4); margin: 0.4em 0 0 0; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Minimal</p>
+                </div>
+              </div>
+
+              <!-- Detailed Card: photo top, full info below -->
+              <div class="proto-card" style="display: flex; flex-direction: column;">
+                <img src="photos/spicy-tuna-roll-32-500x500.webp" alt="Spicy Tuna Roll" style="height: 45%; object-position: center 40%;">
+                <div style="padding: 0.35em 0.6em; flex: 1;">
+                  <p style="font-size: 0.38em; color: #f5f5f7; font-weight: 600; margin: 0 0 0.1em 0;">Spicy Tuna Roll</p>
+                  <p style="font-size: 0.24em; color: var(--text-dim); margin: 0 0 0.25em 0; line-height: 1.4;">Fresh ahi tuna with sriracha mayo, cucumber, and avocado wrapped in nori.</p>
+                  <div style="display: flex; gap: 0.3em; align-items: center; flex-wrap: wrap;">
+                    <span style="font-size: 0.22em; background: rgba(52,199,89,0.15); color: var(--brand-green); padding: 0.2em 0.5em; border-radius: 100px; font-family: 'Space Grotesk', sans-serif;">45 min</span>
+                    <span style="font-size: 0.22em; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: var(--text-dim); padding: 0.2em 0.5em; border-radius: 100px; font-family: 'Space Grotesk', sans-serif;">Hard</span>
+                    <span style="font-size: 0.22em; color: #f5a623;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></span>
+                    <span style="font-size: 0.22em; color: var(--text-faint); margin-left: auto;"><i class="fa-regular fa-heart"></i> Save</span>
+                  </div>
+                  <p style="font-size: 0.22em; color: var(--brand-green); margin: 0.3em 0 0 0; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600;">Detailed</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <aside class="notes">
+            SCRIPT: "And here's what those four variations actually look like as prototypes. Same content, four completely different presentations.
+
+            Horizontal — compact, scannable, great for list views. The photo draws the eye, the text gives you what you need.
+
+            Vertical — the classic card. Photo on top, info below. This is the pattern users are most familiar with.
+
+            Minimal — the photo IS the card. Title and cook time overlaid on the image. Instagram-style. Beautiful, but you sacrifice information density.
+
+            Detailed — everything a power user wants. Photo, title, description, cook time, difficulty, rating, and a save button. Dense but complete.
+
+            One prompt. Four prototypes. Each one a legitimate starting point for a different design direction."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h3>Demo 2: Microcopy Iteration</h3>
+            <div class="prompt-example" style="font-size: 0.382em;">
+              <div class="label">Prompt</div>
+              Write 5 error messages for a failed payment.<br>
+              Tone: friendly but clear. Audience: non-technical users.<br>
+              Include: what happened + what to do next. Avoid: jargon, blame.
+            </div>
+            <div class="ai-response" style="font-size: 0.382em;">
+              <div class="label">Claude's Response</div>
+              1. "Your payment didn't go through. Try again or use a different card."<br>
+              2. "Something went wrong with the payment. No charge was made &mdash; let's try again."<br>
+              3. "We couldn't process your card. Double-check the details and give it another shot."<br>
+              4. "Payment unsuccessful. Your card wasn't charged. Please try a different payment method."<br>
+              5. "Oops, that didn't work. Check your card info or try another way to pay."
+            </div>
+            <p class="text-body" style="margin-top: 0.5em;">
+              Then iterate: <span class="accent">"Make #2 shorter"</span> &rarr; tighter copy, same meaning<br>
+              <span class="accent">"Make #5 less casual"</span> &rarr; adjusted tone, kept clarity
+            </p>
+          </div>
+          <aside class="notes">
+            SCRIPT: "Demo two — microcopy. This is one of the most tedious parts of UI design: writing error messages, onboarding text, button labels, empty states. It's not glamorous, but it matters.
+
+            I asked Claude for five payment error messages. Friendly but clear, no jargon, no blaming the user. Here are the five it gave me.
+
+            Now watch what happens when I iterate. I said 'make number two shorter' — it tightened it up. I said 'make number five less casual' — it adjusted the tone.
+
+            In sixty seconds I had five options AND refined versions. Writing microcopy used to be something I'd put off because it was tedious. Now I do it in real-time while I'm designing the screen.
+
+            But — and this is important — I still choose. I know my brand's voice. I know whether 'oops' fits our tone or not. AI generated the options. I made the call."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h3 style="margin-bottom: 0.2em;">What AI Generated</h3>
+            <p class="text-small" style="margin-bottom: 0.4em;">5 payment error toasts — friendly, clear, actionable</p>
+            <div style="display: flex; flex-direction: column; gap: 0.35em; width: 100%;">
+
+              <!-- Toast 1 -->
+              <div style="background: #1c1c2e; border-left: 3px solid #ff453a; border-radius: 8px; padding: 0.35em 0.5em; display: flex; align-items: flex-start; gap: 0.4em;">
+                <i class="fa-solid fa-triangle-exclamation" style="font-size: 0.42em; color: #ff453a; margin-top: 0.15em;"></i>
+                <div>
+                  <p style="font-size: 0.4em; color: #f5f5f7; font-weight: 600; margin: 0 0 0.05em 0;">Payment failed</p>
+                  <p style="font-size: 0.34em; color: var(--text-dim); margin: 0; line-height: 1.3;">Your payment didn't go through. Try again or use a different card.</p>
+                </div>
+                <i class="fa-solid fa-xmark" style="font-size: 0.38em; color: var(--text-faint); margin-left: auto; cursor: pointer;"></i>
+              </div>
+
+              <!-- Toast 2 -->
+              <div style="background: #1c1c2e; border-left: 3px solid #ff9f0a; border-radius: 8px; padding: 0.35em 0.5em; display: flex; align-items: flex-start; gap: 0.4em;">
+                <i class="fa-solid fa-credit-card" style="font-size: 0.42em; color: #ff9f0a; margin-top: 0.15em;"></i>
+                <div>
+                  <p style="font-size: 0.4em; color: #f5f5f7; font-weight: 600; margin: 0 0 0.05em 0;">Something went wrong</p>
+                  <p style="font-size: 0.34em; color: var(--text-dim); margin: 0; line-height: 1.3;">No charge was made — let's try again.</p>
+                </div>
+                <i class="fa-solid fa-xmark" style="font-size: 0.38em; color: var(--text-faint); margin-left: auto; cursor: pointer;"></i>
+              </div>
+
+              <!-- Toast 3 -->
+              <div style="background: #1c1c2e; border-left: 3px solid #ff453a; border-radius: 8px; padding: 0.35em 0.5em; display: flex; align-items: flex-start; gap: 0.4em;">
+                <i class="fa-solid fa-lock" style="font-size: 0.42em; color: #ff453a; margin-top: 0.15em;"></i>
+                <div>
+                  <p style="font-size: 0.4em; color: #f5f5f7; font-weight: 600; margin: 0 0 0.05em 0;">Card not accepted</p>
+                  <p style="font-size: 0.34em; color: var(--text-dim); margin: 0; line-height: 1.3;">Double-check your details and give it another shot.</p>
+                </div>
+                <i class="fa-solid fa-xmark" style="font-size: 0.38em; color: var(--text-faint); margin-left: auto; cursor: pointer;"></i>
+              </div>
+
+              <!-- Toast 4 -->
+              <div style="background: #1c1c2e; border-left: 3px solid #ff9f0a; border-radius: 8px; padding: 0.35em 0.5em; display: flex; align-items: flex-start; gap: 0.4em;">
+                <i class="fa-solid fa-rotate" style="font-size: 0.42em; color: #ff9f0a; margin-top: 0.15em;"></i>
+                <div>
+                  <p style="font-size: 0.4em; color: #f5f5f7; font-weight: 600; margin: 0 0 0.05em 0;">Payment unsuccessful</p>
+                  <p style="font-size: 0.34em; color: var(--text-dim); margin: 0; line-height: 1.3;">Your card wasn't charged. Please try a different payment method.</p>
+                </div>
+                <i class="fa-solid fa-xmark" style="font-size: 0.38em; color: var(--text-faint); margin-left: auto; cursor: pointer;"></i>
+              </div>
+
+              <!-- Toast 5 -->
+              <div style="background: #1c1c2e; border-left: 3px solid #ff453a; border-radius: 8px; padding: 0.35em 0.5em; display: flex; align-items: flex-start; gap: 0.4em;">
+                <i class="fa-solid fa-circle-info" style="font-size: 0.42em; color: #ff453a; margin-top: 0.15em;"></i>
+                <div>
+                  <p style="font-size: 0.4em; color: #f5f5f7; font-weight: 600; margin: 0 0 0.05em 0;">That didn't work</p>
+                  <p style="font-size: 0.34em; color: var(--text-dim); margin: 0; line-height: 1.3;">Please check your card info or try another way to pay.</p>
+                </div>
+                <i class="fa-solid fa-xmark" style="font-size: 0.38em; color: var(--text-faint); margin-left: auto; cursor: pointer;"></i>
+              </div>
+
+            </div>
+          </div>
+          <aside class="notes">
+            SCRIPT: "Here's what those five error messages look like as actual toast notifications in a UI. Notice they all follow the same pattern — a clear title, a brief explanation, and each one tells the user what to do next. No jargon, no blame. AI generated the copy, I chose the format and the tone."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h3>Demo 3: Accessibility-Driven Design</h3>
+            <div class="prompt-example" style="font-size: 0.382em;">
+              <div class="label">Prompt</div>
+              Suggest a color palette for a health app. Requirements:<br>
+              - WCAG AA contrast (4.5:1 for text, 3:1 for large text)<br>
+              - Distinguishable for deuteranopia (red-green color blindness)<br>
+              - Primary use: data visualization with 5 categories
+            </div>
+            <div class="ai-response" style="font-size: 0.382em;">
+              <div class="label">Suggested Palette</div>
+              <div style="display: flex; gap: 0.8em; margin: 0.5em 0; flex-wrap: wrap; align-items: center;">
+                <div><span class="color-swatch" style="background: #2563EB;"></span> <span style="font-family: 'JetBrains Mono', monospace;">#2563EB</span> <span style="color: var(--text-faint);">(7.2:1)</span></div>
+                <div><span class="color-swatch" style="background: #D97706;"></span> <span style="font-family: 'JetBrains Mono', monospace;">#D97706</span> <span style="color: var(--text-faint);">(4.8:1)</span></div>
+                <div><span class="color-swatch" style="background: #7C3AED;"></span> <span style="font-family: 'JetBrains Mono', monospace;">#7C3AED</span> <span style="color: var(--text-faint);">(6.1:1)</span></div>
+                <div><span class="color-swatch" style="background: #0891B2;"></span> <span style="font-family: 'JetBrains Mono', monospace;">#0891B2</span> <span style="color: var(--text-faint);">(4.6:1)</span></div>
+                <div><span class="color-swatch" style="background: #BE185D;"></span> <span style="font-family: 'JetBrains Mono', monospace;">#BE185D</span> <span style="color: var(--text-faint);">(5.3:1)</span></div>
+              </div>
+              All pass WCAG AA. Blue/amber/purple remain distinct under deuteranopia simulation.
+            </div>
+          </div>
+          <aside class="notes">
+            SCRIPT: "Demo three — using AI as an accessibility consultant.
+
+            I asked Claude to suggest a color palette for a health app with specific requirements: WCAG AA contrast ratios, distinguishable under red-green color blindness, and usable for data visualization with five categories.
+
+            It came back with five colors, each with its contrast ratio. Blue at 7.2 to 1, amber at 4.8, purple at 6.1, cyan at 4.6, rose at 5.3. All passing WCAG AA. And it confirmed they remain distinct under deuteranopia simulation.
+
+            This is a perfect example of the human-plus-AI partnership. AI handles the analytical work — contrast math, WCAG rules, color-blind simulation. I make the aesthetic decision — does this palette feel right for a health brand? Maybe I swap the rose for something warmer. But I'm starting from a technically correct foundation instead of guessing and checking."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h3 style="margin-bottom: 0.2em;">What AI Generated</h3>
+            <p class="text-small" style="margin-bottom: 0.2em;">WCAG AA accessible palette applied to a health dashboard</p>
+
+            <!-- Color bar strip -->
+            <div style="display: flex; border-radius: 8px; overflow: hidden; margin-bottom: 0.3em; height: 4px;">
+              <div style="flex: 1; background: #2563EB;"></div>
+              <div style="flex: 1; background: #D97706;"></div>
+              <div style="flex: 1; background: #7C3AED;"></div>
+              <div style="flex: 1; background: #0891B2;"></div>
+              <div style="flex: 1; background: #BE185D;"></div>
+            </div>
+
+            <!-- Dashboard mockup -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: auto 1fr; gap: 0.3em; height: 520px;">
+
+              <!-- Stat cards row -->
+              <div style="background: #1c1c2e; border-radius: 8px; padding: 0.3em 0.5em; border-top: 3px solid #2563EB;">
+                <p style="font-size: 0.38em; color: var(--text-faint); margin: 0; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.08em;">Heart Rate</p>
+                <p style="font-size: 0.65em; color: #2563EB; margin: 0.1em 0 0 0; font-family: 'Space Grotesk', sans-serif; font-weight: 600;">72 <span style="font-size: 0.5em; color: var(--text-faint);">bpm</span></p>
+              </div>
+
+              <div style="background: #1c1c2e; border-radius: 8px; padding: 0.3em 0.5em; border-top: 3px solid #D97706;">
+                <p style="font-size: 0.38em; color: var(--text-faint); margin: 0; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.08em;">Calories</p>
+                <p style="font-size: 0.65em; color: #D97706; margin: 0.1em 0 0 0; font-family: 'Space Grotesk', sans-serif; font-weight: 600;">1,847 <span style="font-size: 0.5em; color: var(--text-faint);">kcal</span></p>
+              </div>
+
+              <div style="background: #1c1c2e; border-radius: 8px; padding: 0.3em 0.5em; border-top: 3px solid #7C3AED;">
+                <p style="font-size: 0.38em; color: var(--text-faint); margin: 0; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.08em;">Sleep</p>
+                <p style="font-size: 0.65em; color: #7C3AED; margin: 0.1em 0 0 0; font-family: 'Space Grotesk', sans-serif; font-weight: 600;">7.2 <span style="font-size: 0.5em; color: var(--text-faint);">hrs</span></p>
+              </div>
+
+              <!-- Chart mockup spanning 2 cols -->
+              <div style="background: #1c1c2e; border-radius: 8px; padding: 0.3em 0.5em; grid-column: span 2; display: flex; flex-direction: column;">
+                <p style="font-size: 0.38em; color: var(--text-faint); margin: 0 0 0.2em 0; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.08em;">Weekly Activity</p>
+                <!-- Bar chart mockup -->
+                <div style="display: flex; align-items: flex-end; gap: 0.25em; height: 340px;">
+                  <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 0.15em;">
+                    <div style="width: 100%; height: 195px; background: #2563EB; border-radius: 3px 3px 0 0;"></div>
+                    <span style="font-size: 0.32em; color: var(--text-faint);">Mon</span>
+                  </div>
+                  <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 0.1em;">
+                    <div style="width: 100%; height: 285px; background: #2563EB; border-radius: 3px 3px 0 0;"></div>
+                    <span style="font-size: 0.32em; color: var(--text-faint);">Tue</span>
+                  </div>
+                  <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 0.1em;">
+                    <div style="width: 100%; height: 155px; background: #D97706; border-radius: 3px 3px 0 0;"></div>
+                    <span style="font-size: 0.32em; color: var(--text-faint);">Wed</span>
+                  </div>
+                  <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 0.1em;">
+                    <div style="width: 100%; height: 245px; background: #2563EB; border-radius: 3px 3px 0 0;"></div>
+                    <span style="font-size: 0.32em; color: var(--text-faint);">Thu</span>
+                  </div>
+                  <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 0.1em;">
+                    <div style="width: 100%; height: 320px; background: #7C3AED; border-radius: 3px 3px 0 0;"></div>
+                    <span style="font-size: 0.32em; color: var(--text-faint);">Fri</span>
+                  </div>
+                  <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 0.1em;">
+                    <div style="width: 100%; height: 215px; background: #0891B2; border-radius: 3px 3px 0 0;"></div>
+                    <span style="font-size: 0.32em; color: var(--text-faint);">Sat</span>
+                  </div>
+                  <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 0.1em;">
+                    <div style="width: 100%; height: 105px; background: #BE185D; border-radius: 3px 3px 0 0;"></div>
+                    <span style="font-size: 0.32em; color: var(--text-faint);">Sun</span>
+                  </div>
+                </div>
+                <!-- Legend -->
+                <div style="display: flex; gap: 0.5em; margin-top: 0.2em;">
+                  <span style="font-size: 0.32em; color: var(--text-dim); display: flex; align-items: center; gap: 0.15em;"><span style="width: 8px; height: 8px; background: #2563EB; border-radius: 2px; display: inline-block;"></span> Cardio</span>
+                  <span style="font-size: 0.32em; color: var(--text-dim); display: flex; align-items: center; gap: 0.15em;"><span style="width: 8px; height: 8px; background: #D97706; border-radius: 2px; display: inline-block;"></span> Strength</span>
+                  <span style="font-size: 0.32em; color: var(--text-dim); display: flex; align-items: center; gap: 0.15em;"><span style="width: 8px; height: 8px; background: #7C3AED; border-radius: 2px; display: inline-block;"></span> Flexibility</span>
+                  <span style="font-size: 0.32em; color: var(--text-dim); display: flex; align-items: center; gap: 0.15em;"><span style="width: 8px; height: 8px; background: #0891B2; border-radius: 2px; display: inline-block;"></span> Recovery</span>
+                  <span style="font-size: 0.32em; color: var(--text-dim); display: flex; align-items: center; gap: 0.15em;"><span style="width: 8px; height: 8px; background: #BE185D; border-radius: 2px; display: inline-block;"></span> Rest</span>
+                </div>
+              </div>
+
+              <!-- Contrast info card -->
+              <div style="background: #1c1c2e; border-radius: 8px; padding: 0.3em 0.5em;">
+                <p style="font-size: 0.38em; color: var(--text-faint); margin: 0 0 0.1em 0; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase; letter-spacing: 0.08em;">Contrast Ratios</p>
+                <div style="display: flex; flex-direction: column; gap: 0.2em;">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 0.36em; color: #2563EB;"><i class="fa-solid fa-circle" style="font-size: 0.6em;"></i> Blue</span>
+                    <span style="font-size: 0.34em; color: var(--text-dim); font-family: 'JetBrains Mono', monospace;">7.2:1 <i class="fa-solid fa-check" style="color: var(--brand-green);"></i></span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 0.36em; color: #D97706;"><i class="fa-solid fa-circle" style="font-size: 0.6em;"></i> Amber</span>
+                    <span style="font-size: 0.34em; color: var(--text-dim); font-family: 'JetBrains Mono', monospace;">4.8:1 <i class="fa-solid fa-check" style="color: var(--brand-green);"></i></span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 0.36em; color: #7C3AED;"><i class="fa-solid fa-circle" style="font-size: 0.6em;"></i> Purple</span>
+                    <span style="font-size: 0.34em; color: var(--text-dim); font-family: 'JetBrains Mono', monospace;">6.1:1 <i class="fa-solid fa-check" style="color: var(--brand-green);"></i></span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 0.36em; color: #0891B2;"><i class="fa-solid fa-circle" style="font-size: 0.6em;"></i> Cyan</span>
+                    <span style="font-size: 0.34em; color: var(--text-dim); font-family: 'JetBrains Mono', monospace;">4.6:1 <i class="fa-solid fa-check" style="color: var(--brand-green);"></i></span>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <span style="font-size: 0.36em; color: #BE185D;"><i class="fa-solid fa-circle" style="font-size: 0.6em;"></i> Rose</span>
+                    <span style="font-size: 0.34em; color: var(--text-dim); font-family: 'JetBrains Mono', monospace;">5.3:1 <i class="fa-solid fa-check" style="color: var(--brand-green);"></i></span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <aside class="notes">
+            SCRIPT: "Here's what that accessible palette looks like applied to a real health dashboard. Three stat cards at the top — each using a different color from the palette. A weekly activity bar chart using all five colors for the data categories. And a contrast ratio card confirming every color passes WCAG AA. All five colors remain distinguishable under deuteranopia simulation. AI did the math. I made the design decision to use it."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <p class="section-label">Practical Tip</p>
+            <h3>Prompt Templates</h3>
+            <div class="prompt-example">
+              <div class="label">generate-ui-component</div>
+              <span class="accent">Role:</span> Senior UI designer at Threadline (DTC fashion e-commerce).<br>
+              <span class="accent">Design system:</span> 4px grid, Satoshi font, rounded-lg corners, max 2 actions per card.<br>
+              <span class="accent">Brand voice:</span> Confident, editorial, never salesy. Avoid exclamation marks.<br>
+              <span class="accent">Platform:</span> Mobile-first responsive web.<br><br>
+              Generate a <span style="color: var(--brand-green); border-bottom: 1px dashed var(--brand-green);">[component]</span> for <span style="color: var(--brand-green); border-bottom: 1px dashed var(--brand-green);">[use case]</span>.<br>
+              Palette: #1A1A1A, #F5F0EB, #C8553D. Contrast: WCAG AA.
+            </div>
+            <p class="text-body">Name it. Save it. Share it. Your team gets consistent output without re-explaining context every time.</p>
+          </div>
+          <aside class="notes">
+            SCRIPT: "Here's a practical tip. Don't write prompts from scratch every time. Build skills.
+
+            A skill is a named, reusable prompt that encodes your team's context. This one is called generate-ui-component. It locks in the brand — Threadline, a fashion e-commerce company — the design system, the voice, the platform, and the color palette.
+
+            Now when anyone on my team needs a component, they invoke this skill and fill in two blanks: what component and what use case. Everything else is pre-loaded. A product card for new arrivals. A cart drawer for checkout. A size selector for product pages.
+
+            The key is: name it, save it, share it. When everyone uses the same skill, the AI outputs stay aligned with your brand. It's a design system for your prompts."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h3 style="margin-bottom: 0.15em;">AI Gets You a Starting Point</h3>
+            <p class="text-lead" style="margin-bottom: 0.5em;">The output is never the deliverable. It's the <span class="accent">starting point</span>.</p>
+
+            <!-- Pie chart graphic -->
+            <div style="display: flex; align-items: center; gap: 1.5em; margin-bottom: 0.4em;">
+              <!-- Pie chart using conic-gradient -->
+              <div style="width: 180px; height: 180px; border-radius: 50%; background: conic-gradient(rgba(52,199,89,0.35) 0deg 280deg, rgba(255,255,255,0.15) 280deg 360deg); border: 2px solid rgba(255,255,255,0.1); flex-shrink: 0; position: relative;">
+                <!-- Inner circle for donut effect -->
+                <div style="position: absolute; inset: 35px; border-radius: 50%; background: #0a0f1a;"></div>
+              </div>
+              <!-- Legend -->
+              <div style="display: flex; flex-direction: column; gap: 0.6em;">
+                <div style="display: flex; align-items: center; gap: 0.4em;">
+                  <div style="width: 14px; height: 14px; border-radius: 3px; background: rgba(52,199,89,0.35); border: 1px solid var(--brand-green); flex-shrink: 0;"></div>
+                  <div>
+                    <p style="font-size: 0.4em; color: var(--brand-green); margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 600;">AI</p>
+                    <p style="font-size: 0.3em; color: var(--text-dim); margin: 0;">Structure, layout, content, variations</p>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.4em;">
+                  <div style="width: 14px; height: 14px; border-radius: 3px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); flex-shrink: 0;"></div>
+                  <div>
+                    <p style="font-size: 0.4em; color: #f5f5f7; margin: 0; font-family: 'Space Grotesk', sans-serif; font-weight: 600;">You</p>
+                    <p style="font-size: 0.3em; color: var(--text-dim); margin: 0;">Brand voice, design system, craft, edge cases</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ai-response">
+              <div class="label">What I Changed From AI Output</div>
+              &bull; Spacing was 10px &mdash; adjusted to 8px grid (brand standard)<br>
+              &bull; CTA said "Submit" &mdash; changed to "Start My Plan" (brand voice)<br>
+              &bull; Card radius was 12px &mdash; reduced to 8px (design system)<br>
+              &bull; Missing empty state &mdash; added illustration + helper text
+            </div>
+          </div>
+          <aside class="notes">
+            SCRIPT: "Let's be honest. AI output is never the deliverable. It's always the starting point.
+
+            Here's what I actually changed from AI output on a recent project. The spacing was 10 pixels — I adjusted it to our 8-pixel grid. The CTA said 'Submit' — generic. I changed it to 'Start My Plan' because that's our brand voice. Card radius was 12 pixels — I brought it down to 8 to match our design system. And the AI completely missed the empty state — I had to add that myself.
+
+            None of these changes are huge. But they're the difference between something that looks generic and something that feels like YOUR product. AI handles the heavy lifting. You add the craft. That's the partnership."
+          </aside>
+        </section>
+      </section>
+
+      <!-- ===== SECTION 5: RAPID ITERATION & TESTING ===== -->
+      <section>
+        <section>
+          <div class="slide-inner">
+            <p class="section-label">Stage 3</p>
+            <h2>Rapid Iteration &amp; Testing</h2>
+            <p class="quote">"Diverge with AI, converge with judgment."</p>
+          </div>
+          <aside class="notes">
+            SCRIPT: "Here's the strategy I want you to remember: diverge with AI, converge with judgment.
+
+            In traditional design, you might explore two or three options because that's all you have time for. With AI, you can explore six, eight, ten options in the same timeframe. More options explored means better decisions made. You're not settling for the first decent idea — you're choosing the best one from a wider field.
+
+            Let me show you what this looks like in practice."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h3>AI for User Testing Prep</h3>
+            <div class="prompt-example">
+              <div class="label">Prompt</div>
+              Generate a usability test script for a food delivery app checkout flow.<br>
+              5 tasks, think-aloud protocol, for participants aged 20-35.<br>
+              Include: intro script, task descriptions, follow-up questions.
+            </div>
+            <div class="ai-response">
+              <div class="label">Generated Test Script (Excerpt)</div>
+              <strong style="color: #f5f5f7;">Intro:</strong> "Thanks for joining us today. We're testing a food delivery app. There are no wrong answers — we're testing the app, not you. Please think out loud as you go."<br><br>
+              <strong style="color: #f5f5f7;">Task 2:</strong> "You've added a burrito bowl to your cart. Now complete the checkout process using the credit card already saved in your account."<br>
+              <em style="color: var(--text-faint);">Follow-up:</em> "Was anything confusing during checkout? Where did you hesitate, if at all?"<br><br>
+              <strong style="color: #f5f5f7;">Task 4:</strong> "You realize you need to change the delivery address after placing the order. Try to update it."<br>
+              <em style="color: var(--text-faint);">Follow-up:</em> "How confident are you that the change was saved?"
+            </div>
+          </div>
+          <aside class="notes">
+            SCRIPT: "AI is also great at generating test artifacts. Here's a usability test script I generated for a food delivery checkout flow. Five tasks, think-aloud protocol, complete with intro script and follow-up questions.
+
+            Look at Task 2 — it gives a specific scenario: 'You've added a burrito bowl to your cart. Complete checkout with the saved credit card.' That's a well-structured task. Specific, achievable, testable.
+
+            Task 4 is an edge case: 'Change the delivery address after placing the order.' That's the kind of task that reveals friction in your flow.
+
+            Now, could I have written this myself? Of course. But it would have taken me twenty to thirty minutes. Claude generated it in seconds.
+
+            But here's the human part: AI can write the test script, but INTERPRETING what happens during the test — reading the participant's body language, noticing where they hesitate, understanding the gap between what they say and what they do — that's deeply human work. AI is the research assistant. You're the researcher."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h3>Iterate After Testing</h3>
+            <p class="text-body" style="margin-bottom: 0.4em;">User testing revealed 3 issues. Feed the findings back to AI:</p>
+            <div class="prompt-example" style="font-size: 0.382em;">
+              <div class="label">Prompt</div>
+              Our usability test found these issues with the checkout flow:<br>
+              1. 3/5 users missed the "Apply Coupon" field &mdash; it's below the fold<br>
+              2. Users hesitated on the address form &mdash; too many required fields<br>
+              3. No one noticed the delivery time estimate until after placing the order<br><br>
+              Suggest UI changes to fix each issue. Keep the existing layout structure.
+            </div>
+            <div class="ai-response" style="font-size: 0.486em;">
+              <div class="label">Suggested Fixes</div>
+              <strong style="color: #f5f5f7;">Issue 1:</strong> Move coupon field above the order summary. Add a collapsed "Have a code?" link that expands inline.<br>
+              <strong style="color: #f5f5f7;">Issue 2:</strong> Reduce to 3 required fields (name, street, zip). Auto-fill city/state from zip. Mark optional fields clearly.<br>
+              <strong style="color: #f5f5f7;">Issue 3:</strong> Add a delivery estimate badge next to the CTA button: "Arrives by 7:30 PM." Repeat in the order confirmation.
+            </div>
+            <p class="text-small" style="margin-top: 0.4em;">You observed the problems. AI helped generate solutions. You decide which to ship.</p>
+          </div>
+          <aside class="notes">
+            SCRIPT: "Here's where it comes full circle. You ran the user test — you watched real people struggle. Now you feed those findings back to AI.
+
+            Three issues from our checkout test: users missed the coupon field, the address form had too many fields, and nobody saw the delivery estimate until after ordering.
+
+            I gave those findings to Claude and asked for UI fixes. Move the coupon field up and make it a collapsible link. Reduce the address form to three required fields and auto-fill from zip code. Add a delivery estimate badge right next to the buy button.
+
+            Notice the loop: AI helped me write the test script, I ran the test and observed real users, then AI helped me generate fixes based on what I observed. But at every step, I'm the one interpreting behavior and deciding what to ship. AI is the accelerator. You're the driver."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h3 style="margin-bottom: 0.3em;">The Strategy</h3>
+
+            <!-- Diverge / Converge diamond diagram (SVG) -->
+            <svg viewBox="0 0 1100 420" style="width: 100%; flex: 1; min-height: 0;">
+              <!-- Left label: DIVERGE with AI -->
+              <text x="80" y="30" fill="#34c759" font-size="22" font-family="'Space Grotesk', sans-serif" font-weight="600" letter-spacing="3">DIVERGE</text>
+              <text x="215" y="30" fill="rgba(255,255,255,0.4)" font-size="16" font-family="'Space Grotesk', sans-serif">with AI</text>
+
+              <!-- Right label: CONVERGE with judgment -->
+              <text x="880" y="30" fill="#f5f5f7" font-size="22" font-family="'Space Grotesk', sans-serif" font-weight="600" letter-spacing="3" text-anchor="end">CONVERGE</text>
+              <text x="890" y="30" fill="rgba(255,255,255,0.4)" font-size="16" font-family="'Space Grotesk', sans-serif">with judgment</text>
+
+              <!-- Diverging lines (green, left half) -->
+              <line x1="80" y1="220" x2="520" y2="60" stroke="#34c759" stroke-width="2" opacity="0.6"/>
+              <line x1="80" y1="220" x2="520" y2="140" stroke="#34c759" stroke-width="2" opacity="0.45"/>
+              <line x1="80" y1="220" x2="520" y2="220" stroke="#34c759" stroke-width="2" opacity="0.35"/>
+              <line x1="80" y1="220" x2="520" y2="300" stroke="#34c759" stroke-width="2" opacity="0.45"/>
+              <line x1="80" y1="220" x2="520" y2="380" stroke="#34c759" stroke-width="2" opacity="0.6"/>
+
+              <!-- Converging lines (white, right half) -->
+              <line x1="540" y1="60" x2="1020" y2="220" stroke="#f5f5f7" stroke-width="2" opacity="0.6"/>
+              <line x1="540" y1="140" x2="1020" y2="220" stroke="#f5f5f7" stroke-width="2" opacity="0.45"/>
+              <line x1="540" y1="220" x2="1020" y2="220" stroke="#f5f5f7" stroke-width="2" opacity="0.35"/>
+              <line x1="540" y1="300" x2="1020" y2="220" stroke="#f5f5f7" stroke-width="2" opacity="0.45"/>
+              <line x1="540" y1="380" x2="1020" y2="220" stroke="#f5f5f7" stroke-width="2" opacity="0.6"/>
+
+              <!-- Option dots (center) -->
+              <circle cx="530" cy="60" r="6" fill="#34c759" opacity="0.7"/>
+              <circle cx="530" cy="140" r="6" fill="#34c759" opacity="0.7"/>
+              <circle cx="530" cy="220" r="6" fill="#34c759" opacity="0.7"/>
+              <circle cx="530" cy="300" r="6" fill="#34c759" opacity="0.7"/>
+              <circle cx="530" cy="380" r="6" fill="#34c759" opacity="0.7"/>
+
+              <!-- Option labels (left of dots) -->
+              <text x="515" y="65" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="14" font-family="'Space Grotesk', sans-serif">Option A</text>
+              <text x="515" y="145" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="14" font-family="'Space Grotesk', sans-serif">Option B</text>
+              <text x="515" y="225" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="14" font-family="'Space Grotesk', sans-serif">Option C</text>
+              <text x="515" y="305" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="14" font-family="'Space Grotesk', sans-serif">Option D</text>
+              <text x="515" y="385" text-anchor="end" fill="rgba(255,255,255,0.4)" font-size="14" font-family="'Space Grotesk', sans-serif">Option E</text>
+
+              <!-- Start dot + label -->
+              <circle cx="80" cy="220" r="9" fill="#34c759"/>
+              <text x="80" y="250" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="14" font-family="'Space Grotesk', sans-serif">Idea</text>
+
+              <!-- End dot + label -->
+              <circle cx="1020" cy="220" r="9" fill="#f5f5f7"/>
+              <text x="1020" y="250" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="14" font-family="'Space Grotesk', sans-serif">Decision</text>
+            </svg>
+
+            <p class="text-lead" style="color: var(--text-faint); margin-top: 0.3em;">
+              More options explored &rarr; better decisions made &rarr; higher-quality outcomes
+            </p>
+          </div>
+          <aside class="notes">
+            SCRIPT: "So here's the framework. Diverge with AI — use it to generate more options than you could explore manually. Then converge with your judgment — apply your expertise, your knowledge of the user, your design sensibility to pick the best path.
+
+            More options explored leads to better decisions, which leads to higher-quality outcomes. It's simple, and it works.
+
+            If you remember one framework from this talk, make it this one. Diverge with AI, converge with judgment.
+
+            OK — we've covered ideation, UI elements, and iteration. Let me give you some practical advice on actually integrating this into your workflow."
+          </aside>
+        </section>
+      </section>
+
+      <!-- ===== SECTION 6: INTEGRATING AI INTO YOUR WORKFLOW ===== -->
+      <section>
+        <section>
+          <div class="slide-inner">
+            <p class="section-label">Getting Started</p>
+            <h2>Integrating AI Into Your Workflow</h2>
+            <p class="text-lead">Start <span class="accent">small</span>. Start <span class="accent">this week</span>.</p>
+          </div>
+          <aside class="notes">
+            SCRIPT: "OK, you've seen the demos. You've seen what's possible. Now the question is: how do you actually start?
+
+            My advice is simple. Start small. Start this week. Don't try to overhaul your entire workflow. Pick one thing."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h3>Prompt Engineering Basics</h3>
+            <div class="card-grid">
+              <div class="card">
+                <h4>1. Be Specific</h4>
+                <p>Don't: "Make me a form."<br>Do: "Design a checkout form for a mobile food delivery app targeting users 20-35."</p>
+              </div>
+              <div class="card">
+                <h4>2. Provide Examples</h4>
+                <p>Show the AI what good looks like. Paste a component you like and ask for variations in that style.</p>
+              </div>
+              <div class="card">
+                <h4>3. Iterate</h4>
+                <p>It's a conversation, not a command. The first output is never perfect. Follow up 2-3 times.</p>
+              </div>
+              <div class="card">
+                <h4>4. Add Constraints</h4>
+                <p>"No more than 3 colors." "Must work at 320px width." "Follow our 8px grid." Constraints focus the output.</p>
+              </div>
+            </div>
+          </div>
+          <aside class="notes">
+            SCRIPT: "Four rules for prompting. These cover ninety percent of what you need.
+
+            One — be specific. Don't say 'make me a form.' Say 'design a checkout form for a mobile food delivery app targeting users twenty to thirty-five.' Context makes the output relevant.
+
+            Two — provide examples. If you have a component you like, paste it in and say 'give me variations in this style.' The AI works better when it has a reference.
+
+            Three — iterate. It's a conversation, not a command. The first output is never perfect. That's fine. Follow up two or three times and it gets dramatically better.
+
+            Four — add constraints. 'No more than three colors.' 'Must work at three-twenty pixel width.' 'Follow our eight-pixel grid.' Constraints don't limit the AI — they focus it. You'll get better output with more constraints, not fewer."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h3>Team Adoption</h3>
+            <ul>
+              <li>Pair AI alongside existing tools, not as a replacement</li>
+              <li>Start with one repetitive task &mdash; try it for a week</li>
+              <li>Share what works &mdash; build a prompt library</li>
+              <li>These patterns work with any AI tool</li>
+            </ul>
+          </div>
+          <aside class="notes">
+            SCRIPT: "For team adoption, keep it low pressure. Pair AI alongside your existing tools — don't replace anything. It's an addition, not a substitution.
+
+            Pick one repetitive task. Maybe it's writing error messages. Maybe it's generating placeholder content. Maybe it's coming up with layout alternatives for design reviews. Try AI on that one thing for a week.
+
+            If it helps, great — expand. If it doesn't, you've lost nothing.
+
+            And share what works. Build a prompt library as a team. When someone figures out a great prompt template for generating settings pages, share it. That institutional knowledge compounds.
+
+            Remember — everything I showed today works in Claude, ChatGPT, Gemini, or whatever comes next. You're investing in a skill, not a subscription."
+          </aside>
+        </section>
+      </section>
+
+      <!-- ===== SECTION 7: PITFALLS & LIMITATIONS ===== -->
+      <section>
+        <section>
+          <div class="slide-inner">
+            <p class="section-label">Honest Limits</p>
+            <h2>Pitfalls &amp; Honest Limitations</h2>
+            <p class="text-lead">Let's be real about what AI <span class="highlight">can't</span> do</p>
+          </div>
+          <aside class="notes">
+            SCRIPT: "OK, I've spent most of this talk showing you what AI CAN do. Now let me be honest about what it can't. Because if I only showed you the highlights, I'd be doing you a disservice."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h3>What AI Is Bad At</h3>
+            <ul>
+              <li><span class="highlight">Original creative vision</span> &mdash; AI remixes, not invents</li>
+              <li><span class="highlight">Nuanced brand identity</span> &mdash; style guides, not soul</li>
+              <li><span class="highlight">Empathy-driven design</span> &mdash; no real user understanding</li>
+              <li><span class="highlight">Context you skip</span> &mdash; garbage in, garbage out</li>
+            </ul>
+          </div>
+          <aside class="notes">
+            SCRIPT: "Four things AI is bad at. Full stop.
+
+            Original creative vision. AI is a remix engine. It's trained on existing work. It can recombine and vary, but it doesn't have original ideas. If you need a genuinely novel creative direction — something no one has done before — that comes from you.
+
+            Nuanced brand identity. AI can follow a style guide, but it doesn't understand the SOUL of your brand. It doesn't know why you chose that shade of blue or why your tone is warm but not cutesy. You can teach it some of this through prompting, but it'll never feel it the way you do.
+
+            Empathy-driven design. AI can generate empathy maps and user personas. But it has never felt frustrated by a confusing checkout flow. It has never watched a user struggle with an interface. Real empathy comes from real observation.
+
+            And context you don't provide. This one is on us. AI only knows what you tell it. If you skip context, you get generic output. Garbage in, garbage out."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h3>Common Mistakes</h3>
+            <div class="card-grid">
+              <div class="card">
+                <h4>Over-relying on Defaults</h4>
+                <p>Accepting AI output without adapting it to your specific context. Every output needs your fingerprint.</p>
+              </div>
+              <div class="card">
+                <h4>Skipping the "Why"</h4>
+                <p>If you can't explain WHY a design decision was made, you've abdicated your role as a designer.</p>
+              </div>
+              <div class="card">
+                <h4>Copy-Paste Culture</h4>
+                <p>Treating AI output as the final deliverable. It's a starting point. Always a starting point.</p>
+              </div>
+              <div class="card">
+                <h4>The "Uncanny Valley"</h4>
+                <p>Polished but generic. Looks professional, feels soulless. You've seen these websites. Don't make them.</p>
+              </div>
+            </div>
+          </div>
+          <aside class="notes">
+            SCRIPT: "Four common mistakes I see.
+
+            Over-relying on defaults — accepting whatever AI gives you without adapting it. Every output needs your fingerprint. Your grid, your spacing, your voice.
+
+            Skipping the 'why' — this is a big one. If a stakeholder asks 'why did you choose this layout?' and your answer is 'because the AI suggested it,' that's not good enough. You need to be able to articulate the design rationale. AI helps you generate, but you need to understand what you're shipping and why.
+
+            Copy-paste culture — treating AI output as the final deliverable. It's never the final deliverable. It's always a starting point.
+
+            And the uncanny valley of AI design — you've seen these websites. They look polished. Clean typography, nice spacing, professional layout. But they feel generic. Like every other AI-generated site. That soulless quality comes from not adding your own creative judgment. The fix is simple: use AI for the foundation, add your craft on top."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h3>Ethics &amp; Attribution</h3>
+            <ul>
+              <li>Be transparent with stakeholders about AI usage</li>
+              <li>Understand IP implications &mdash; AI output isn't original</li>
+              <li>AI is a starting point, not the final deliverable</li>
+            </ul>
+          </div>
+          <aside class="notes">
+            SCRIPT: "Last point on limitations — ethics. Be transparent with your stakeholders about how you're using AI. 'I used AI to generate initial concepts and then refined them.' That's honest and professional.
+
+            Understand the IP implications. AI output isn't automatically original work. The legal landscape is still evolving.
+
+            And always — use AI as a starting point, not the final product. Your judgment, your refinement, your decision-making is what turns AI output into good design.
+
+            This is an evolving area. Stay informed, be transparent. That's all you need to do right now.
+
+            OK — let me leave you with three things."
+          </aside>
+        </section>
+      </section>
+
+      <!-- ===== SECTION 8: KEY TAKEAWAYS ===== -->
+      <section>
+        <section>
+          <div class="slide-inner">
+            <p class="section-label">Takeaways</p>
+            <h2>Key Takeaways</h2>
+          </div>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h3>Three Things to Remember</h3>
+            <div class="text-lead" style="display: flex; flex-direction: column; gap: 0.8em;">
+              <p style="margin: 0; display: flex; gap: 0.3em;"><span class="takeaway-num" style="flex-shrink: 0;">1</span> <span>AI handles the busywork so you focus on creative decisions</span></p>
+              <p style="margin: 0; display: flex; gap: 0.3em;"><span class="takeaway-num" style="flex-shrink: 0;">2</span> <span>The skill is in prompting and curation, not the tool</span></p>
+              <p style="margin: 0; display: flex; gap: 0.3em;"><span class="takeaway-num" style="flex-shrink: 0;">3</span> <span>Start this week &mdash; one task, try it</span></p>
+            </div>
+          </div>
+          <aside class="notes">
+            SCRIPT: "Three takeaways. I want you to slow down here with me.
+
+            Number one. AI accelerates the low-creativity parts of prototyping. The blank canvas, the repetitive variations, the placeholder content. Let AI handle those so you can spend more time on the high-creativity decisions that actually matter — what problem to solve, which direction best serves the user, how to make it feel like YOUR product.
+
+            [PAUSE]
+
+            Number two. The skill is in prompting and curation, not the specific tool. Don't worry about which AI to use. Worry about learning how to communicate with AI effectively. Context, constraints, iteration. That skill transfers everywhere.
+
+            [PAUSE]
+
+            Number three. Start this week. Not next month. Not after you've read five articles about it. This week. Pick your most tedious prototyping task and try AI on it. Write error messages. Generate layout alternatives. Create test scripts. Pick one thing and try it.
+
+            This week. One task. Try it."
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <h2>Human + AI</h2>
+            <p class="quote">AI is the most powerful design tool we've ever had. But a tool is only as good as the person using it.</p>
+            <p class="text-lead" style="margin-top: 2em;">
+              The future isn't AI <em>replacing</em> designers.<br>
+              It's designers <span class="accent">who use AI</span> outperforming those who don't.
+            </p>
+          </div>
+          <aside class="notes">
+            SCRIPT: "AI is the most powerful design tool we've ever had.
+
+            [PAUSE]
+
+            But a tool is only as good as the person using it.
+
+            [LONG PAUSE — let the silence do the work]
+
+            The future is not AI replacing designers. The future is designers who use AI outperforming those who don't. That's not a threat. That's an invitation.
+
+            Thank you."
+
+            [PAUSE for applause, then advance to resources]
+          </aside>
+        </section>
+
+        <section>
+          <div class="slide-inner">
+            <p class="section-label">Resources</p>
+            <h2>Resources</h2>
+            <ul>
+              <li><strong style="color: var(--brand-green);">claude.ai</strong> &mdash; Design prompting</li>
+              <li><strong style="color: var(--brand-green);">anthropic.com/research</strong> &mdash; AI capabilities</li>
+              <li><strong style="color: var(--brand-green);">promptingguide.ai</strong> &mdash; Prompt engineering</li>
+              <li><strong style="color: var(--brand-green);">nngroup.com</strong> &mdash; AI + UX research</li>
+            </ul>
+            <p class="text-body" style="color: var(--text-faint); margin-top: 1.5em;">
+              Brian Pope &nbsp;|&nbsp; Director of Delivery &amp; Design &nbsp;|&nbsp; DevObsessed
+            </p>
+          </div>
+          <aside class="notes">
+            SCRIPT: "These resources are in the slides — grab a photo if you want them. Claude dot ai to try what I showed today. Anthropic's research page if you want to understand how these models work. Prompting Guide for fundamentals. And Nielsen Norman Group for how AI is changing UX research.
+
+            The slides will be available — I'll share the link after the talk. Now let's open it up for questions."
+          </aside>
+        </section>
+      </section>
+
+      <!-- ===== SECTION 9: Q&A ===== -->
+      <section>
+        <div class="slide-inner">
+          <h1>Q&amp;A</h1>
+          <p class="text-lead">What questions do you have?</p>
+        </div>
+        <aside class="notes">
+          SCRIPT: "What questions do you have? And if you've got a specific use case — something from your own workflow — I'm happy to pull up Claude and do a quick live demo right now.
+
+          [If silence] "Here's a question I get a lot: what's the biggest mistake you can make when starting with AI for design? And the answer is expecting perfection on the first prompt. It's a conversation. Iterate."
+
+          [If someone asks for a live demo] "Great question — let me actually show you. Give me the scenario and I'll prompt it live."
+        </aside>
+      </section>
+
+      <!-- ===== THANK YOU ===== -->
+      <section>
+        <div class="slide-inner">
+          <p class="section-label">Thank You</p>
+          <h1>Thank You</h1>
+          <p style="font-size: 1.4em; font-weight: 600; margin: 1em 0 0.2em 0; color: #f5f5f7;">Brian Pope</p>
+          <p class="text-lead" style="line-height: 1.6; margin: 0;">
+            Director of Delivery &amp; Design<br>
+            DevObsessed
+          </p>
+          <p class="text-body" style="color: var(--text-faint); margin-top: 2em;">
+            Nebraska.Code() 2026
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>Brian Pope &nbsp;|&nbsp; Leveraging Generative AI for Faster, Smarter Design</span>
+    <a href="https://bdpcollective.com">bdpcollective.com</a>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/notes/notes.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.6.1/plugin/highlight/highlight.min.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: 'c/t',
+      showSlideNumber: 'speaker',
+      transition: 'slide',
+      transitionSpeed: 'default',
+      controlsTutorial: false,
+      progress: true,
+      center: false,
+      width: 1280,
+      height: 720,
+      margin: 0,
+      plugins: [RevealNotes, RevealHighlight]
+    });
+  </script>
+</body>
+</html>
