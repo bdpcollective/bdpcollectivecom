@@ -21,7 +21,7 @@
     "typescript": "^7.0.2"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.3.2",
+    "@tailwindcss/vite": "^4.3.3",
     "@types/d3": "^7.4.3",
     "lighthouse": "^13.4.0",
     "nodemailer": "^8.0.7",
