@@ -8,13 +8,13 @@ describe('Omaha Lacrosse Events', () => {
         {
           name: "Blue vs Westside",
           date: "April 27, 2025",
-          image: `/images/olc/20250427-Blue-vs-Westside/OLC_BluevsWestside - 1.jpeg`,
+          image: `/images/olc/20250427-Blue-vs-Westside/OLC_BluevsWestside - 1.webp`,
           link: "/images/olc/20250427_1_BluevsWestside"
         },
         {
           name: "Blue vs Sarpy",
           date: "April 13, 2025",
-          image: `/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 1.jpeg`,
+          image: `/images/olc/20250413-Blue-vs-Sarpy/20250413_BluevsSarpy - 1.webp`,
           link: "/images/olc/20250413_1_BluevsSarpy"
         }
       ]
@@ -33,7 +33,7 @@ describe('Omaha Lacrosse Events', () => {
     expect(events[0].events[0]).toEqual({
       name: "Blue vs Westside",
       date: "April 27, 2025",
-      image: `/images/olc/20250427-Blue-vs-Westside/OLC_BluevsWestside - 1.jpeg`,
+      image: `/images/olc/20250427-Blue-vs-Westside/OLC_BluevsWestside - 1.webp`,
       link: "/images/olc/20250427_1_BluevsWestside"
     });
   });

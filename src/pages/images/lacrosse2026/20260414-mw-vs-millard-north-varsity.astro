@@ -4,10 +4,10 @@ import Lightbox from '../../../components/Lightbox.astro';
 
 // Generate image array - first image has no dash, rest are numbered 2-48 (skipping 45)
 const images = [
-  `/images/lacrosse/20260414_MWvsMN/20260412_MWvsMN.jpg`,
+  `/images/lacrosse/20260414_MWvsMN/20260412_MWvsMN.webp`,
   ...Array.from({ length: 47 }, (_, i) => i + 2)
     .filter(n => n !== 45)
-    .map(n => `/images/lacrosse/20260414_MWvsMN/20260412_MWvsMN-${n}.jpg`)
+    .map(n => `/images/lacrosse/20260414_MWvsMN/20260412_MWvsMN-${n}.webp`)
 ];
 
 const title = "Millard West vs Millard North | Varsity";

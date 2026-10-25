@@ -57,7 +57,7 @@ export function getStaticPaths() {
 ```typescript
 const images = Array.from({ length: game.imageCount }, (_, i) => ({
   id: i + 1,
-  src: `${game.imagePath}/${game.imagePrefix} - ${i + 1}.jpeg`,
+  src: `${game.imagePath}/${game.imagePrefix} - ${i + 1}.webp`,
   alt: `${game.title} - Image ${i + 1}`
 }));
 ```
@@ -135,7 +135,7 @@ import Layout from '../../../layouts/Layout.astro';
 import Lightbox from '../../../components/Lightbox.astro';
 
 // Generate sequential image array
-const images = Array.from({ length: 57 }, (_, i) => `/images/lacrosse/2025MWLAXcamp/2025MWLAXcamp - ${i + 1}.jpeg`);
+const images = Array.from({ length: 57 }, (_, i) => `/images/lacrosse/2025MWLAXcamp/2025MWLAXcamp - ${i + 1}.webp`);
 
 const title = "2025 MW Lacrosse Camp";
 const description = "Gallery of photos from the Millard West High School Lacrosse Summer Camp 2025";
@@ -188,7 +188,7 @@ const description = "Gallery of photos from the Millard West High School Lacross
 const images = [
   ...Array.from({length: 85}, (_, i) => {
     const num = String(i + 1).padStart(2, '0');
-    return `/images/category/subfolder/Image_Prefix-${num}.jpg`;
+    return `/images/category/subfolder/Image_Prefix-${num}.webp`;
   })
 ];
 ```
@@ -312,17 +312,17 @@ loading={index < 9 ? "eager" : "lazy"}
 ## File Naming Conventions
 
 ### Image Files
-- Sequential numbering: `Image_Name - 1.jpeg`, `Image_Name - 2.jpeg`
-- Zero-padded numbering: `Image_Name-01.jpg`, `Image_Name-02.jpg`
-- Consistent extensions: `.jpeg` or `.jpg`
+- Sequential numbering: `Image_Name - 1.webp`, `Image_Name - 2.webp`
+- Zero-padded numbering: `Image_Name-01.webp`, `Image_Name-02.webp`
+- All gallery images are `.webp`. Drop new `.jpg`/`.jpeg` files into `public/images/` and run `npm run optimize-images` to resize (max 1920px) and convert them before referencing them in code.
 
 ### Directory Structure
 ```
 public/images/
 ├── category/
 │   ├── event-folder/
-│   │   ├── Image_Prefix - 1.jpeg
-│   │   ├── Image_Prefix - 2.jpeg
+│   │   ├── Image_Prefix - 1.webp
+│   │   ├── Image_Prefix - 2.webp
 │   │   └── ...
 │   └── another-event/
 └── another-category/
@@ -368,7 +368,7 @@ public/images/
 
 1. **Choose the appropriate pattern** based on requirements
 2. **Create the directory structure** in `public/images/`
-3. **Upload images** with consistent naming
+3. **Upload images** with consistent naming, then run `npm run optimize-images` to convert them to `.webp`
 4. **Create the .astro file** using the appropriate pattern
 5. **Update navigation** in parent category pages
 6. **Test the lightbox functionality**
@@ -383,18 +383,14 @@ public/images/
 **Cause**: File extension mismatch between code and actual files
 
 **Solution**:
-1. Check what extension your gallery code expects:
-   - Dynamic galleries use `.jpeg` (hardcoded in `[event].astro`)
-   - Simple galleries may use `.jpg` or `.jpeg`
+1. All gallery code expects `.webp` (including `[event].astro`)
 2. Check actual file extensions in your directory:
    ```bash
    ls public/images/category/event-name/ | head -5
    ```
-3. **For Lacrosse galleries**: Must use `.jpeg` extension
+3. If you see `.jpg`/`.jpeg` files, convert them:
    ```bash
-   # Rename .jpg files to .jpeg if needed
-   cd public/images/lacrosse/your-event/
-   for file in *.jpg; do mv "$file" "${file%.jpg}.jpeg"; done
+   npm run optimize-images
    ```
 4. Update preview image paths in main gallery pages to match
 
@@ -405,7 +401,7 @@ public/images/
 **Solution**:
 1. Rename files to follow sequential pattern:
    ```bash
-   ls *.jpg | sort | awk '{print "mv \"" $0 "\" \"EventPrefix - " NR ".jpg\""}' | sh
+   ls *.webp | sort | awk '{print "mv \"" $0 "\" \"EventPrefix - " NR ".webp\""}' | sh
    ```
 2. Update `imageCount` in gallery data to match actual number of files
 3. Ensure no gaps in numbering (1, 2, 3... not 1, 3, 5)

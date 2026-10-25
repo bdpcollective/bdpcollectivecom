@@ -1,0 +1,57 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Lightbox from '../../../components/Lightbox.astro';
+
+// Two days of photos in one folder. Each day's first image has no number;
+// the rest are numbered from 2. Day 1 skips 15 and 24 (not exported).
+const folder = '/images/lacrosse/20261024_FallClassic';
+const day = (prefix: string, last: number, skip: number[] = []) => [
+  `${folder}/${prefix}.webp`,
+  ...Array.from({ length: last - 1 }, (_, i) => i + 2)
+    .filter((n) => !skip.includes(n))
+    .map((n) => `${folder}/${prefix}-${n}.webp`)
+];
+
+const images = [
+  ...day('20261024_FallClassic', 46, [15, 24]),
+  ...day('20261025_FallClassic', 23)
+];
+
+const title = "2026 Fall Classic";
+const description = "Photos from the 2026 Fall Classic lacrosse tournament, October 24-25, 2026";
+---
+
+<Layout title={title}>
+  <div class="bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="mb-8">
+        <a href="/images/lacrosse" class="text-blue-600 hover:text-blue-800">← Back to Lacrosse</a>
+      </div>
+
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
+      <p class="text-gray-600 mb-8">October 24-25, 2026</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {images.map((image, index) => (
+          <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
+            <img
+              src={image}
+              alt={`Fall Classic photo ${index + 1}`}
+              class="gallery-image w-full h-full object-cover cursor-pointer transform hover:scale-105 transition-transform duration-300"
+              loading={index < 9 ? "eager" : "lazy"}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <Lightbox images={images} />
+</Layout>
+
+<style>
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>

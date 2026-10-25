@@ -4,11 +4,19 @@ import Lightbox from '../../components/Lightbox.astro';
 
 const lacrosseGames = [
   {
+    id: "20261024-fall-classic",
+    title: "2026 Fall Classic",
+    date: "October 24-25, 2026",
+    location: "Omaha, Nebraska",
+    previewImage: `/images/lacrosse/20261024_FallClassic/20261024_FallClassic-${Math.floor(Math.random() * 13) + 2}.webp`,
+    photoCount: 67
+  },
+  {
     id: "hula-2026",
     title: "Hula Lacrosse 2026",
     date: "Summer 2026",
     location: "Hula Tournament",
-    previewImage: `/images/lacrosse/20260614_Hula_BlueOx/20260613_MWLAX_Hula_Sat-${Math.floor(Math.random() * 68) + 2}.jpg`,
+    previewImage: `/images/lacrosse/20260614_Hula_BlueOx/20260613_MWLAX_Hula_Sat-${Math.floor(Math.random() * 68) + 2}.webp`,
     photoCount: 191
   },
   {
@@ -16,7 +24,7 @@ const lacrosseGames = [
     title: "Hula 2025",
     date: "Summer 2025",
     location: "Hula Tournament",
-    previewImage: `/images/lacrosse/hula2025/blueox/Hula_BlueOx-${String(Math.floor(Math.random() * 85) + 1).padStart(2, '0')}.jpg`,
+    previewImage: `/images/lacrosse/hula2025/blueox/Hula_BlueOx-${String(Math.floor(Math.random() * 85) + 1).padStart(2, '0')}.webp`,
     photoCount: 322
   },
   {
@@ -24,7 +32,7 @@ const lacrosseGames = [
     title: "First Responder Baskets",
     date: "November 23, 2025",
     location: "Millard West High School",
-    previewImage: `/images/lacrosse/20251123_FirstResponderBaskets/20251123_FirstResponderBaskets${Math.floor(Math.random() * 18) === 0 ? '' : '-' + (Math.floor(Math.random() * 17) + 2)}.jpg`,
+    previewImage: `/images/lacrosse/20251123_FirstResponderBaskets/20251123_FirstResponderBaskets${Math.floor(Math.random() * 18) === 0 ? '' : '-' + (Math.floor(Math.random() * 17) + 2)}.webp`,
     photoCount: 18
   },
   {
@@ -32,7 +40,7 @@ const lacrosseGames = [
     title: "Halloween Scrimmage",
     date: "October 30, 2025",
     location: "Millard West High School",
-    previewImage: `/images/lacrosse/20251030_HalloweenScrimmage/20251030_MW_HalloweenScrimmage - ${Math.floor(Math.random() * 37) + 1}.jpeg`,
+    previewImage: `/images/lacrosse/20251030_HalloweenScrimmage/20251030_MW_HalloweenScrimmage - ${Math.floor(Math.random() * 37) + 1}.webp`,
     photoCount: 37
   },
   {
@@ -40,7 +48,7 @@ const lacrosseGames = [
     title: "2025 Elevate Fall Classic",
     date: "October 25-26, 2025",
     location: "Omaha, Nebraska",
-    previewImage: `/images/lacrosse/20251025_Elevate/20251025_MW_ElevateFallClassic - ${Math.floor(Math.random() * 138) + 1}.jpeg`,
+    previewImage: `/images/lacrosse/20251025_Elevate/20251025_MW_ElevateFallClassic - ${Math.floor(Math.random() * 138) + 1}.webp`,
     photoCount: 138
   },
   {
@@ -48,7 +56,7 @@ const lacrosseGames = [
     title: "MWHS Switch Stick",
     date: "October 18, 2025",
     location: "Millard West High School",
-    previewImage: `/images/lacrosse/20251018_switchstick/20251018_SwitchStick${Math.floor(Math.random() * 44) === 0 ? '' : '-' + (Math.floor(Math.random() * 43) + 2)}.jpeg`,
+    previewImage: `/images/lacrosse/20251018_switchstick/20251018_SwitchStick${Math.floor(Math.random() * 44) === 0 ? '' : '-' + (Math.floor(Math.random() * 43) + 2)}.webp`,
     photoCount: 44
   },
   {
@@ -56,7 +64,7 @@ const lacrosseGames = [
     title: "White: MWHS vs Rampage",
     date: "September 28, 2025",
     location: "Millard West High School",
-    previewImage: `/images/lacrosse/20250928_MWHS_WhitevsRampage/MWHS_vsRampage${Math.floor(Math.random() * 40) === 0 ? '' : '-' + (Math.floor(Math.random() * 39) + 2)}.jpg`,
+    previewImage: `/images/lacrosse/20250928_MWHS_WhitevsRampage/MWHS_vsRampage${Math.floor(Math.random() * 40) === 0 ? '' : '-' + (Math.floor(Math.random() * 39) + 2)}.webp`,
     photoCount: 40
   },
   {
@@ -64,7 +72,7 @@ const lacrosseGames = [
     title: "2025 MW Lacrosse Camp",
     date: "Summer 2025",
     location: "Millard West High School",
-    previewImage: `/images/lacrosse/2025MWLAXcamp/2025MWLAXcamp - ${Math.floor(Math.random() * 57) + 1}.jpeg`,
+    previewImage: `/images/lacrosse/2025MWLAXcamp/2025MWLAXcamp - ${Math.floor(Math.random() * 57) + 1}.webp`,
     photoCount: 57
   },
   {
@@ -72,7 +80,7 @@ const lacrosseGames = [
     title: "Varsity: MWHS vs Waukee",
     date: "May 23, 2025",
     location: "Millard West High School",
-    previewImage: `/images/lacrosse/20250523_MWHSvsWaukee/20250523_MWHS-vs-Waukee - ${Math.floor(Math.random() * 68) + 1}.jpeg`,
+    previewImage: `/images/lacrosse/20250523_MWHSvsWaukee/20250523_MWHS-vs-Waukee - ${Math.floor(Math.random() * 68) + 1}.webp`,
     photoCount: 68
   },
   {
@@ -80,7 +88,7 @@ const lacrosseGames = [
     title: "Varsity: MWHS vs West Des Moines",
     date: "May 18, 2025",
     location: "Millard West High School",
-    previewImage: `/images/lacrosse/20250517-varsity-mwhs-vs-westdesmoines/20250517_MWvsWestDesMoines - ${Math.floor(Math.random() * 56) + 1}.jpeg`,
+    previewImage: `/images/lacrosse/20250517-varsity-mwhs-vs-westdesmoines/20250517_MWvsWestDesMoines - ${Math.floor(Math.random() * 56) + 1}.webp`,
     photoCount: 56
   },
   {
@@ -88,7 +96,7 @@ const lacrosseGames = [
     title: "Varsity: MWHS vs Elkhorn",
     date: "May 17, 2025",
     location: "Millard West High School",
-    previewImage: `/images/lacrosse/20250517-varsity-mwhs-vs-elkhorn/20250517_MWvsElkhorn - ${Math.floor(Math.random() * 65) + 1}.jpeg`,
+    previewImage: `/images/lacrosse/20250517-varsity-mwhs-vs-elkhorn/20250517_MWvsElkhorn - ${Math.floor(Math.random() * 65) + 1}.webp`,
     photoCount: 65
   },
   {
@@ -96,7 +104,7 @@ const lacrosseGames = [
     title: "Varsity: MWHS vs Waukee",
     date: "April 19, 2025",
     location: "Millard West High School",
-    previewImage: `/images/lacrosse/20250419-varsity-mwhs-vs-waukee/20250419-Varsity-MWHSvsWaukee - ${Math.floor(Math.random() * 33) + 1}.jpeg`,
+    previewImage: `/images/lacrosse/20250419-varsity-mwhs-vs-waukee/20250419-Varsity-MWHSvsWaukee - ${Math.floor(Math.random() * 33) + 1}.webp`,
     photoCount: 33
   },
   {
@@ -104,7 +112,7 @@ const lacrosseGames = [
     title: "JV: MWHS vs Waukee",
     date: "April 19, 2025",
     location: "Millard West High School",
-    previewImage: `/images/lacrosse/20250419-jv-mwhs-vs-waukee/20250419-JV-MWHSvsWaukee - ${Math.floor(Math.random() * 14) + 1}.jpeg`,
+    previewImage: `/images/lacrosse/20250419-jv-mwhs-vs-waukee/20250419-JV-MWHSvsWaukee - ${Math.floor(Math.random() * 14) + 1}.webp`,
     photoCount: 14
   },
   {
@@ -112,7 +120,7 @@ const lacrosseGames = [
     title: "Varsity: MWHS vs Elkhorn",
     date: "April 18, 2025",
     location: "Millard West High School",
-    previewImage: `/images/lacrosse/20250418-varsity-mwhs-vs-elkhorn/20250418-Varsity-MWHSvsElkhorn - ${Math.floor(Math.random() * 85) + 1}.jpeg`,
+    previewImage: `/images/lacrosse/20250418-varsity-mwhs-vs-elkhorn/20250418-Varsity-MWHSvsElkhorn - ${Math.floor(Math.random() * 85) + 1}.webp`,
     photoCount: 85
   },
   {
@@ -120,7 +128,7 @@ const lacrosseGames = [
     title: "JV: MWHS vs Elkhorn",
     date: "April 18, 2025",
     location: "Millard West High School",
-    previewImage: `/images/lacrosse/20250418-jv-mwhs-vs-elkhorn/20250418-JV-MWHSvsElkhorn - ${Math.floor(Math.random() * 24) + 1}.jpeg`,
+    previewImage: `/images/lacrosse/20250418-jv-mwhs-vs-elkhorn/20250418-JV-MWHSvsElkhorn - ${Math.floor(Math.random() * 24) + 1}.webp`,
     photoCount: 24
   },
   {
@@ -128,7 +136,7 @@ const lacrosseGames = [
     title: "Varsity: MWHS vs Grand Cities",
     date: "April 13, 2025",
     location: "Millard West High School",
-    previewImage: `/images/lacrosse/20250413-varsity-vs-grand-cities/20250413_VarisityvsGrandCities - ${Math.floor(Math.random() * 74) + 1}.jpeg`,
+    previewImage: `/images/lacrosse/20250413-varsity-vs-grand-cities/20250413_VarisityvsGrandCities - ${Math.floor(Math.random() * 74) + 1}.webp`,
     photoCount: 74
   },
   {
@@ -136,7 +144,7 @@ const lacrosseGames = [
     title: "JV: MWHS vs Grand Cities",
     date: "April 13, 2025",
     location: "Millard West High School",
-    previewImage: `/images/lacrosse/20250413_jv-mwhs-vs-grand-cities/20250413_JVvsGrandCities - ${Math.floor(Math.random() * 29) + 1}.jpeg`,
+    previewImage: `/images/lacrosse/20250413_jv-mwhs-vs-grand-cities/20250413_JVvsGrandCities - ${Math.floor(Math.random() * 29) + 1}.webp`,
     photoCount: 29
   },
   {
@@ -144,7 +152,7 @@ const lacrosseGames = [
     title: "Varsity: MWHS vs Akeny",
     date: "March 8, 2025",
     location: "Millard West High School",
-    previewImage: "/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 1.jpeg",
+    previewImage: "/images/lacrosse/20250308-varsity-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 1.webp",
     photoCount: 53
   },
   {
@@ -152,7 +160,7 @@ const lacrosseGames = [
     title: "JV: MWHS vs Akeny",
     date: "March 8, 2025",
     location: "Millard West High School",
-    previewImage: "/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 1.jpeg",
+    previewImage: "/images/lacrosse/20250308-jv-mwhs-vs-akeny/20250309_MWHS_Lacrosse - 1.webp",
     photoCount: 19
   }
 ];
