@@ -25,12 +25,8 @@ jobs:
         run: npm run build
         env:
           NODE_OPTIONS: "--max-old-space-size=4096"
-      
-      - name: Start server
-        run: |
-          npm run preview &
-          sleep 10
-      
+
+      # LHCI starts the preview server itself (startServerCommand in .lighthouserc.json)
       - name: Run Lighthouse
         uses: treosh/lighthouse-ci-action@v12
         with:
