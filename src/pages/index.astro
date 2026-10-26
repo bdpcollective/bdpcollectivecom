@@ -3,89 +3,141 @@ import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import { baseUrl } from '../config';
 import heroImage from '../../public/hero-bg.jpg';
+
+// Ticker and index copy reuse text already on the site
+const tickerItems = [
+	"Director of Design and Delivery at DevObsessed",
+	"Based in Omaha, Nebraska",
+	"18+ years of experience",
+	"UX Portfolio · Apps · Logos · Images"
+];
+
+const sections = [
+	{ numeral: "I.", title: "UX Portfolio", description: "Recent work and projects.", href: "/ux-portfolio" },
+	{ numeral: "II.", title: "Apps", description: "Web applications and interactive tools.", href: "/apps" },
+	{ numeral: "III.", title: "Logos", description: "Logo designs and branding work.", href: "/logos" },
+	{ numeral: "IV.", title: "Images", description: "A collection of photography from various events and locations", href: "/images" }
+];
 ---
 
 <Layout title="Home">
 	<Fragment slot="head">
 		<link rel="preload" as="image" href={heroImage.src} fetchpriority="high" type="image/jpeg" />
 	</Fragment>
-	<main class="relative min-h-screen overflow-x-clip w-full max-w-full">
-		{/* Background Image */}
-		<div class="absolute inset-0 z-0">
-			<Image
-				src={heroImage}
-				alt=""
-				loading="eager"
-				fetchpriority="high"
-				quality={75}
-				format="webp"
-				widths={[640, 750, 828, 1080, 1200, 1920, 2048]}
-				sizes="(max-width: 640px) 640px, (max-width: 750px) 750px, (max-width: 828px) 828px, (max-width: 1080px) 1080px, (max-width: 1200px) 1200px, (max-width: 1920px) 1920px, 2048px"
-				class="w-full h-full object-cover brightness-75"
-			/>
-			{/* Video Background (optional - uncomment and add video file) */}
-			{/* <video 
-				class="absolute inset-0 w-full h-full object-cover brightness-75 parallax-image"
-				autoplay
-				muted
-				loop
-				playsinline
-				poster={heroImage.src}
-			>
-				<source src="/videos/hero-background.mp4" type="video/mp4" />
-				<source src="/videos/hero-background.webm" type="video/webm" />
-			</video> */}
-			{/* Gradient Overlay */}
-			<div class="gradient-overlay absolute inset-0"></div>
-		</div>
-
-		{/* Particle Background */}
-		<canvas id="particle-canvas" class="absolute inset-0 z-[1] opacity-30 pointer-events-none"></canvas>
-
-		{/* Content */}
-		<div class="relative z-10 flex items-center justify-center min-h-screen">
-			<div class="text-center px-4 py-20 md:py-32">
-				<h1 class="text-4xl md:text-6xl font-bold mb-6 text-white creative-typography">
-					<span class="gradient-text animate-reveal draggable-element" draggable="true">Hello friendos.</span>
-				</h1>
-				<p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto animate-reveal-delay">
-					I'm Brian, the Director of Design and Delivery at DevObsessed, based in Omaha, Nebraska.
-				</p>
+	<div class="w-full max-w-full overflow-x-clip">
+		{/* Ticker */}
+		<div class="bg-ink text-paper overflow-hidden" aria-hidden="true">
+			<div class="ticker flex w-max py-2 eyebrow">
+				{[0, 1].map(() => (
+					<div class="flex shrink-0">
+						{tickerItems.map((item) => (
+							<span class="flex items-center gap-3 px-6 whitespace-nowrap">
+								<span class="w-1.5 h-1.5 rounded-full bg-paper"></span>
+								{item}
+							</span>
+						))}
+					</div>
+				))}
 			</div>
 		</div>
 
-		{/* Scroll down arrow */}
-		<div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-			<button
-				id="scroll-down-button"
-				class="text-white hover:text-gray-300 transition-colors duration-300 animate-bounce"
-				aria-label="Scroll down to see more content"
-			>
-				<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-					<title>Scroll down</title>
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-				</svg>
-			</button>
-		</div>
-	</main>
+		{/* Hero */}
+		<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 md:pt-20 pb-14 md:pb-20">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-2 pb-4 border-b border-ink/15 eyebrow text-ink/60">
+				<span>Omaha, Nebraska</span>
+				<span class="md:text-center">Design &amp; Delivery — DevObsessed</span>
+				<span class="flex items-center md:justify-end gap-2">
+					<span class="w-2 h-2 rounded-full bg-marker"></span>
+					18+ years
+				</span>
+			</div>
+
+			<h1 class="display-xl mt-10 md:mt-16 animate-reveal">
+				<span class="draggable-element inline-block" draggable="true">Hello<br /><span class="accent-bar">friendos.</span></span>
+			</h1>
+
+			<div class="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-12 gap-10 animate-reveal-delay">
+				<p class="md:col-start-2 md:col-span-6 text-lg md:text-xl leading-relaxed text-ink/80">
+					I'm Brian, the Director of Design and Delivery at DevObsessed, based in Omaha, Nebraska.
+				</p>
+				<dl class="md:col-start-9 md:col-span-4 border-t border-ink pt-3 space-y-4">
+					<div>
+						<dt class="eyebrow text-ink/50">Experience</dt>
+						<dd class="mt-1 text-sm text-ink/80">18+ years delivering user-centered solutions.</dd>
+					</div>
+					<div>
+						<dt class="eyebrow text-ink/50">Industries</dt>
+						<dd class="mt-1 text-sm text-ink/80">Retail, finance, government, and healthcare.</dd>
+					</div>
+				</dl>
+			</div>
+		</section>
+
+		{/* Hero photo */}
+		<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+			<figure class="relative overflow-hidden h-[55vh] md:h-[70vh]">
+				<Image
+					src={heroImage}
+					alt=""
+					loading="eager"
+					fetchpriority="high"
+					quality={75}
+					format="webp"
+					widths={[640, 750, 828, 1080, 1200, 1920, 2048]}
+					sizes="(max-width: 1280px) 100vw, 1216px"
+					class="w-full h-full object-cover"
+				/>
+				{/* Particle Background */}
+				<canvas id="particle-canvas" class="absolute inset-0 w-full h-full opacity-30 pointer-events-none"></canvas>
+				<span class="chip absolute top-4 left-4 bg-paper text-ink">N° 01</span>
+				<span class="chip absolute bottom-4 right-4 bg-paper text-ink">Omaha, NE</span>
+			</figure>
+		</section>
+
+		{/* Index */}
+		<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+			<div class="flex items-end justify-between gap-6 pb-6 border-b border-ink">
+				<div>
+					<p class="eyebrow text-ink/60 mb-4">§ Index</p>
+					<h2 class="display-lg">Index.</h2>
+				</div>
+				<p class="eyebrow text-ink/60 text-right">04 sections</p>
+			</div>
+			<div class="grid grid-cols-1 md:grid-cols-2 md:gap-x-16">
+				{sections.map((section) => (
+					<a href={`${baseUrl}${section.href}`} class="group flex gap-6 py-8 border-b border-ink/15">
+						<span class="font-display text-lg text-ink/40 w-10 shrink-0">{section.numeral}</span>
+						<div class="flex-1">
+							<h3 class="flex items-baseline justify-between gap-4 text-3xl font-bold tracking-tight transition-colors group-hover:text-accent">
+								{section.title}
+								<span class="text-xl" aria-hidden="true">↗</span>
+							</h3>
+							<p class="mt-2 text-ink/70">{section.description}</p>
+						</div>
+					</a>
+				))}
+			</div>
+		</section>
+	</div>
 
 	<style>
-		/* Creative Typography Styles */
-		.gradient-text {
-			background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 50%, #c7d2fe 100%);
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: transparent;
-			background-clip: text;
-			background-size: 200% 200%;
-			animation: gradient-shift 3s ease infinite;
+		/* Ticker */
+		.ticker {
+			animation: ticker 40s linear infinite;
 		}
 
-		@keyframes gradient-shift {
-			0%, 100% {
-				background-position: 0% 50%;
+		@keyframes ticker {
+			from {
+				transform: translateX(0);
 			}
-			50% {
-				background-position: 100% 50%;
+			to {
+				transform: translateX(-50%);
+			}
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			.ticker {
+				animation: none;
 			}
 		}
 
@@ -108,10 +160,6 @@ import heroImage from '../../public/hero-bg.jpg';
 			}
 		}
 
-		.creative-typography {
-			letter-spacing: -0.02em;
-		}
-
 		/* Interactive Hero Elements */
 		.draggable-element {
 			cursor: grab;
@@ -119,29 +167,6 @@ import heroImage from '../../public/hero-bg.jpg';
 		}
 		.draggable-element:active {
 			cursor: grabbing;
-		}
-
-		/* Gradient Overlays */
-		.gradient-overlay {
-			background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 50%, rgba(236, 72, 153, 0.1) 100%);
-			background-size: 200% 200%;
-			background-position: 0% 0%;
-			transition: background-position 0.3s ease-out;
-		}
-
-		/* Glassmorphism */
-		.glass-effect {
-			background: rgba(255, 255, 255, 0.1);
-			backdrop-filter: blur(10px);
-			-webkit-backdrop-filter: blur(10px);
-			border: 1px solid rgba(255, 255, 255, 0.2);
-		}
-
-		/* Video Background Styles */
-		video {
-			object-fit: cover;
-			width: 100%;
-			height: 100%;
 		}
 	</style>
 
@@ -298,15 +323,6 @@ import heroImage from '../../public/hero-bg.jpg';
 			}
 		}
 
-		// Scroll down button
-		let ticking = false;
-		const btn = document.getElementById('scroll-down-button');
-		if (btn) {
-			btn.addEventListener('click', () => {
-				window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
-			}, { passive: true });
-		}
-
 		// Cleanup on page unload
 		window.addEventListener('beforeunload', () => {
 			if (particleSystem) {
@@ -329,7 +345,7 @@ import heroImage from '../../public/hero-bg.jpg';
 				initialX = e.clientX - xOffset;
 				initialY = e.clientY - yOffset;
 
-				if (e.target === draggableElement) {
+				if (draggableElement.contains(e.target as Node)) {
 					isDragging = true;
 				}
 			});
@@ -352,28 +368,6 @@ import heroImage from '../../public/hero-bg.jpg';
 			});
 		}
 
-
-		// Gradient Overlay Animation on Scroll
-		const gradientOverlay = document.querySelector('.gradient-overlay') as HTMLElement;
-		if (gradientOverlay) {
-			let ticking = false;
-			function updateGradient() {
-				const scrolled = window.pageYOffset;
-				const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-				const scrollPercent = Math.min(scrolled / maxScroll, 1);
-				const bgX = scrollPercent * 100;
-				const bgY = scrollPercent * 100;
-				gradientOverlay.style.backgroundPosition = `${bgX}% ${bgY}%`;
-				ticking = false;
-			}
-			function requestGradientTick() {
-				if (!ticking) {
-					requestAnimationFrame(updateGradient);
-					ticking = true;
-				}
-			}
-			window.addEventListener('scroll', requestGradientTick, { passive: true });
-		}
 
 		// Micro-interactions - Enhanced button/link effects
 		const buttons = document.querySelectorAll('button, a');

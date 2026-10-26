@@ -28,13 +28,10 @@ interface Props {
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link rel="preconnect" href="https://www.googletagmanager.com">
 
-		<!-- Preload critical font file for faster rendering -->
-		<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/librefranklin/v14/jizDREVItHgc8qDIbSTKq4XkRg8T88bjFuXOnduhLsSUB9rIb-JH1g.woff2" crossorigin>
-
 		<!-- Async Google Fonts with font-display: swap for non-blocking load -->
-		<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'; this.onload=null;">
+		<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'; this.onload=null;">
 		<noscript>
-			<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;700&display=swap" rel="stylesheet">
+			<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 		</noscript>
 
 		<!-- Inline Critical CSS for faster initial render -->
@@ -46,8 +43,9 @@ interface Props {
 				--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), rgb(var(--accent-light)) 30%, white 60%);
 			}
 			html {
-				font-family: "Libre Franklin", "Franklin Gothic", "ITC Franklin Gothic", "Franklin Gothic Medium", "Franklin Gothic Book", "Franklin Gothic Demi", "Franklin Gothic Heavy", system-ui, sans-serif;
-				background: #f6f6f6;
+				font-family: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+				background: #f4f4f2;
+				color: #121212;
 				background-size: 224px;
 				width: 100%;
 				max-width: 100%;
@@ -95,8 +93,7 @@ interface Props {
 			}
 			/* Critical navigation styles */
 			nav {
-				background-color: white;
-				box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+				background-color: #f4f4f2;
 			}
 			/* Critical button and link styles */
 			button {
@@ -123,25 +120,8 @@ interface Props {
 				pointer-events: none;
 				display: block;
 			}
-			.nav-link::after {
-				content: '';
-				position: absolute;
-				bottom: 0;
-				left: 50%;
-				width: 0;
-				height: 2px;
-				background: currentColor;
-				transition: all 0.3s ease-out;
-				transform: translateX(-50%);
-			}
 			.nav-link span {
 				display: block;
-			}
-			.nav-link:hover::after {
-				width: 100%;
-			}
-			.nav-link.active::after {
-				width: 100%;
 			}
 			/* Morphing Menu Icon */
 			#mobile-menu-button.active .hamburger-line:nth-child(1) {
@@ -179,7 +159,7 @@ interface Props {
 			.custom-cursor.hover {
 				width: 32px;
 				height: 32px;
-				background: rgba(59, 130, 246, 0.6);
+				background: rgba(250, 37, 0, 0.6);
 			}
 			.custom-cursor.click {
 				width: 6px;
@@ -192,10 +172,9 @@ interface Props {
 				left: 0;
 				width: 0%;
 				height: 3px;
-				background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+				background: #fa2500;
 				z-index: 10001;
 				transition: width 0.1s ease-out;
-				box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
 			}
 			/* Ensure link hover is visible */
 			a.nav-link:hover {
@@ -245,27 +224,28 @@ interface Props {
 		<slot name="head" />
 		<ClientRouter />
 	</head>
-	<body class="min-h-screen flex flex-col font-franklin custom-cursor-enabled overflow-x-hidden">
+	<body class="min-h-screen flex flex-col font-sans bg-paper text-ink custom-cursor-enabled overflow-x-hidden">
 		<div id="custom-cursor" class="custom-cursor" transition:persist></div>
 		<div id="scroll-progress" class="scroll-progress-bar"></div>
-		<nav class="bg-white/80 backdrop-blur-md shadow-sm glass-nav w-full">
+		<nav class="bg-paper border-b border-ink/15 w-full">
 			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
 				<div class="flex justify-between h-16">
 					<div class="flex">
-						<a href={`${baseUrl}/`} class="flex items-center">
-							<span class="text-xl font-bold">BRIAN POPE</span>
+						<a href={`${baseUrl}/`} class="flex items-center gap-2.5">
+							<span class="w-2.5 h-2.5 rounded-full bg-marker" aria-hidden="true"></span>
+							<span class="font-display text-lg font-bold tracking-tight">Brian Pope</span>
 						</a>
 					</div>
-					<div class="hidden md:flex items-center space-x-4 relative">
-						<a href={`${baseUrl}/`} class="nav-link text-gray-700 hover:text-black relative px-2 py-1 font-medium transition-colors" data-path="/" data-text="Home"><span>Home</span></a>
-						<a href={`${baseUrl}/ux-portfolio`} class="nav-link text-gray-700 hover:text-black relative px-2 py-1 font-medium transition-colors" data-path="/ux-portfolio" data-text="UX Portfolio"><span>UX Portfolio</span></a>
-						<a href={`${baseUrl}/apps`} class="nav-link text-gray-700 hover:text-black relative px-2 py-1 font-medium transition-colors" data-path="/apps" data-text="Apps"><span>Apps</span></a>
-						<a href={`${baseUrl}/logos`} class="nav-link text-gray-700 hover:text-black relative px-2 py-1 font-medium transition-colors" data-path="/logos" data-text="Logos"><span>Logos</span></a>
-						<a href={`${baseUrl}/images`} class="nav-link text-gray-700 hover:text-black relative px-2 py-1 font-medium transition-colors" data-path="/images" data-text="Images"><span>Images</span></a>
-						<div id="nav-underline" class="absolute bottom-0 h-0.5 bg-gray-900 transition-all duration-300 ease-out"></div>
+					<div class="hidden md:flex items-center space-x-6 relative">
+						<a href={`${baseUrl}/`} class="nav-link text-ink/75 hover:text-ink relative px-1 py-1 text-sm font-medium transition-colors" data-path="/" data-text="Home"><span>Home</span></a>
+						<a href={`${baseUrl}/ux-portfolio`} class="nav-link text-ink/75 hover:text-ink relative px-1 py-1 text-sm font-medium transition-colors" data-path="/ux-portfolio" data-text="UX Portfolio"><span>UX Portfolio</span></a>
+						<a href={`${baseUrl}/apps`} class="nav-link text-ink/75 hover:text-ink relative px-1 py-1 text-sm font-medium transition-colors" data-path="/apps" data-text="Apps"><span>Apps</span></a>
+						<a href={`${baseUrl}/logos`} class="nav-link text-ink/75 hover:text-ink relative px-1 py-1 text-sm font-medium transition-colors" data-path="/logos" data-text="Logos"><span>Logos</span></a>
+						<a href={`${baseUrl}/images`} class="nav-link text-ink/75 hover:text-ink relative px-1 py-1 text-sm font-medium transition-colors" data-path="/images" data-text="Images"><span>Images</span></a>
+						<div id="nav-underline" class="absolute bottom-0 h-0.5 bg-marker transition-all duration-300 ease-out"></div>
 					</div>
 					<div class="md:hidden flex items-center">
-						<button id="mobile-menu-button" class="text-gray-700 hover:text-black focus:outline-none relative w-6 h-6 transition-colors" aria-label="Open menu">
+						<button id="mobile-menu-button" class="text-ink hover:text-ink/70 focus:outline-none relative w-6 h-6 transition-colors" aria-label="Open menu">
 							<span class="hamburger-line absolute top-0 left-0 w-full h-0.5 bg-current transition-all duration-300"></span>
 							<span class="hamburger-line absolute top-1/2 left-0 w-full h-0.5 bg-current -translate-y-1/2 transition-all duration-300"></span>
 							<span class="hamburger-line absolute bottom-0 left-0 w-full h-0.5 bg-current transition-all duration-300"></span>
@@ -276,20 +256,21 @@ interface Props {
 		</nav>
 
 		<!-- Mobile menu - outside nav to avoid z-index issues -->
-		<div id="mobile-menu" class="hidden fixed inset-0 z-[9998] bg-white overflow-y-auto md:hidden">
-			<div class="flex justify-end p-4">
-				<button id="close-menu-button" class="text-gray-700 hover:text-black focus:outline-none transition-colors p-2" aria-label="Close menu">
+		<div id="mobile-menu" class="hidden fixed inset-0 z-[9998] bg-paper overflow-y-auto md:hidden">
+			<div class="flex items-center justify-between px-4 h-16 border-b border-ink/15">
+				<span class="eyebrow text-ink/60">§ Menu</span>
+				<button id="close-menu-button" class="text-ink hover:text-ink/70 focus:outline-none transition-colors p-2" aria-label="Close menu">
 					<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
 					</svg>
 				</button>
 			</div>
-			<div class="flex flex-col items-center space-y-6 py-8">
-				<a href={`${baseUrl}/`} class="text-xl text-gray-700 hover:text-black hover:font-bold font-medium transition-all">Home</a>
-				<a href={`${baseUrl}/ux-portfolio`} class="text-xl text-gray-700 hover:text-black hover:font-bold font-medium transition-all">UX Portfolio</a>
-				<a href={`${baseUrl}/apps`} class="text-xl text-gray-700 hover:text-black hover:font-bold font-medium transition-all">Apps</a>
-				<a href={`${baseUrl}/logos`} class="text-xl text-gray-700 hover:text-black hover:font-bold font-medium transition-all">Logos</a>
-				<a href={`${baseUrl}/images`} class="text-xl text-gray-700 hover:text-black hover:font-bold font-medium transition-all">Images</a>
+			<div class="flex flex-col px-4">
+				<a href={`${baseUrl}/`} class="flex items-baseline gap-4 py-5 border-b border-ink/15 font-display text-3xl font-bold tracking-tight text-ink"><span class="eyebrow text-ink/50">01</span>Home</a>
+				<a href={`${baseUrl}/ux-portfolio`} class="flex items-baseline gap-4 py-5 border-b border-ink/15 font-display text-3xl font-bold tracking-tight text-ink"><span class="eyebrow text-ink/50">02</span>UX Portfolio</a>
+				<a href={`${baseUrl}/apps`} class="flex items-baseline gap-4 py-5 border-b border-ink/15 font-display text-3xl font-bold tracking-tight text-ink"><span class="eyebrow text-ink/50">03</span>Apps</a>
+				<a href={`${baseUrl}/logos`} class="flex items-baseline gap-4 py-5 border-b border-ink/15 font-display text-3xl font-bold tracking-tight text-ink"><span class="eyebrow text-ink/50">04</span>Logos</a>
+				<a href={`${baseUrl}/images`} class="flex items-baseline gap-4 py-5 border-b border-ink/15 font-display text-3xl font-bold tracking-tight text-ink"><span class="eyebrow text-ink/50">05</span>Images</a>
 			</div>
 		</div>
 
@@ -365,7 +346,8 @@ interface Props {
 		function updateUnderline(link: HTMLElement) {
 			if (!navUnderline) return;
 			const rect = link.getBoundingClientRect();
-			const nav = link.closest('nav')?.querySelector('.max-w-7xl');
+			// Measure from the links container, which positions the underline
+			const nav = link.parentElement;
 			if (!nav) return;
 			const navRect = nav.getBoundingClientRect();
 
@@ -387,6 +369,16 @@ interface Props {
 			linkElement.addEventListener('mouseenter', () => {
 				updateUnderline(linkElement);
 			});
+		});
+
+		// Return the underline to the active link (or hide it) when the pointer leaves
+		navLinks[0]?.parentElement?.addEventListener('mouseleave', () => {
+			const activeLink = document.querySelector('.nav-link.active') as HTMLElement | null;
+			if (activeLink) {
+				updateUnderline(activeLink);
+			} else if (navUnderline) {
+				navUnderline.style.width = '0px';
+			}
 		});
 
 		// Custom Cursor Effects

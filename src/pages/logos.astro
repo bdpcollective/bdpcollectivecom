@@ -34,84 +34,63 @@ console.log('DevObsessed logo URL:', `${baseUrl}/images/logos/devobsessedcard.pn
 ---
 
 <Layout title="Logos">
-  <main>
-    {/* Hero Section */}
-    <section class="relative h-[50vh] bg-black">
-      {/* Hero Content */}
-      <div class="relative z-10 flex flex-col items-center h-full">
-        <div class="flex-1 flex items-center">
-          <div class="text-center px-4">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">
-              Logos
-            </h1>
-            <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">
-              Logo designs and branding work.
-            </p>
-          </div>
-        </div>
-        
-        {/* Chevron */}
-        <button
-          id="scroll-to-logos"
-          class="animate-bounce p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors mb-8"
-          aria-label="Scroll to logo categories"
-        >
-          <svg
-            class="w-8 h-8 text-white"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-          </svg>
-        </button>
+  <div class="w-full max-w-full overflow-x-hidden">
+    {/* Page header */}
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 md:pt-20 pb-12 md:pb-16">
+      <div class="flex items-center justify-between gap-4 pb-4 border-b border-ink/15 eyebrow text-ink/60">
+        <span>§ Logos</span>
+        <span class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-marker"></span>
+          {String(logoItems.length).padStart(2, '0')} identities
+        </span>
       </div>
+      <h1 class="display-xl mt-10 md:mt-14"><span class="accent-bar">Logos</span></h1>
+      <p class="mt-8 max-w-xl text-lg md:text-xl text-ink/75">
+        Logo designs and branding work.
+      </p>
     </section>
 
     {/* Logo Grid */}
-    <section id="logo-cards" class="container mx-auto px-4 py-20">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <section id="logo-cards" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-20 md:pt-12 md:pb-28">
+      <div class="flex items-end justify-between gap-6 pb-6 mb-12 border-b border-ink">
+        <div>
+          <p class="eyebrow text-ink/60 mb-4">§ Index — Identities</p>
+          <h2 class="display-lg">Branding work.</h2>
+        </div>
+        <p class="eyebrow text-ink/60 text-right">{String(logoItems.length).padStart(2, '0')} logos</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-16">
         {logoItems.map((item, index) => (
           <a
             href={`${baseUrl}/logos/${item.slug}`}
-            class="group h-full scroll-fade-in magnetic-card"
+            class="group grid grid-rows-subgrid row-span-3 gap-y-0 scroll-fade-in magnetic-card"
             data-index={index}
             style="opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;"
           >
-            <div class="relative overflow-hidden rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md h-full flex flex-col">
-              <div class="h-36 mb-4 flex items-center justify-center">
-                <img
-                  src={item.logo}
-                  alt={`${item.title} logo`}
-                  width="144"
-                  height="144"
-                  class="object-contain max-h-full transition-transform duration-300 group-hover:scale-105"
-                  loading="lazy"
-                />
-              </div>
-              <h2 class="text-xl font-semibold mb-2 text-gray-900">{item.title}</h2>
-              <p class="text-gray-700">{item.description}</p>
+            <div class="relative h-64 md:h-80 bg-white border border-ink/10 flex items-center justify-center p-12">
+              <img
+                src={item.logo}
+                alt={`${item.title} logo`}
+                width="144"
+                height="144"
+                class="object-contain max-h-full w-auto transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+              />
+              <span class="chip absolute top-4 left-4 bg-paper text-ink">N° {String(index + 1).padStart(2, '0')}</span>
             </div>
+            <div class="mt-5 flex items-end justify-between gap-4 pb-3 border-b border-ink">
+              <h2 class="text-2xl md:text-3xl font-bold tracking-tight transition-colors group-hover:text-accent">{item.title}</h2>
+              <span class="text-xl" aria-hidden="true">↗</span>
+            </div>
+            <p class="mt-3 text-ink/70 leading-relaxed">{item.description}</p>
           </a>
         ))}
       </div>
     </section>
-  </main>
+  </div>
 
   <script>
     document.addEventListener('astro:page-load', () => {
-      // Scroll to logos button
-      const scrollBtn = document.getElementById('scroll-to-logos');
-      const target = document.getElementById('logo-cards');
-      if (scrollBtn && target) {
-        scrollBtn.addEventListener('click', () => {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }, { passive: true });
-      }
-
       // Scroll-triggered animations using Intersection Observer
       const animatedCards = document.querySelectorAll('.scroll-fade-in');
 

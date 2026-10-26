@@ -61,11 +61,25 @@ const portfolioItems = [
     <link rel="preload" as="image" href={portfolioHero.src} fetchpriority="high" type="image/jpeg" />
   </Fragment>
 
-  <main class="color-transition-container overflow-x-hidden w-full max-w-full">
-    {/* Hero Section with Parallax */}
-    <section class="relative h-[50vh] overflow-hidden">
-      {/* Background Image with Parallax */}
-      <div class="absolute inset-0 z-0 parallax-bg">
+  <div class="overflow-x-hidden w-full max-w-full">
+    {/* Page header */}
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 md:pt-20 pb-12 md:pb-16">
+      <div class="flex items-center justify-between gap-4 pb-4 border-b border-ink/15 eyebrow text-ink/60">
+        <span>§ UX Portfolio</span>
+        <span class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-marker"></span>
+          {String(portfolioItems.length).padStart(2, '0')} projects
+        </span>
+      </div>
+      <h1 class="display-xl mt-10 md:mt-14 animate-reveal">UX <span class="accent-bar">Portfolio</span></h1>
+      <p class="mt-8 max-w-xl text-lg md:text-xl text-ink/75 animate-reveal-delay">
+        Recent work and projects.
+      </p>
+    </section>
+
+    {/* Hero image with parallax */}
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <figure class="relative h-[40vh] md:h-[50vh] overflow-hidden parallax-bg">
         <Image
           src={portfolioHero}
           alt="UX Portfolio hero background"
@@ -74,74 +88,50 @@ const portfolioItems = [
           quality={75}
           format="webp"
           widths={[640, 750, 828, 1080, 1200, 1920, 2048]}
-          sizes="(max-width: 640px) 640px, (max-width: 750px) 750px, (max-width: 828px) 828px, (max-width: 1080px) 1080px, (max-width: 1200px) 1200px, (max-width: 1920px) 1920px, 2048px"
-          class="w-full h-full object-cover brightness-50 parallax-image"
+          sizes="(max-width: 1280px) 100vw, 1216px"
+          class="absolute inset-x-0 -top-[15%] w-full h-[130%] object-cover parallax-image"
         />
-      </div>
-
-      {/* Hero Content with Parallax */}
-      <div class="relative z-10 flex flex-col items-center h-full parallax-content">
-        <div class="flex-1 flex items-center">
-          <div class="text-center px-4">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white creative-typography">
-              <span class="gradient-text animate-reveal">UX Portfolio</span>
-            </h1>
-            <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto animate-reveal-delay">
-              Recent work and projects.
-            </p>
-          </div>
-        </div>
-        
-        {/* Chevron */}
-        <button
-          id="scroll-to-portfolio"
-          class="animate-bounce p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors mb-8"
-          aria-label="Scroll to portfolio categories"
-        >
-          <svg
-            class="w-8 h-8 text-white"
-            fill="none"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-          </svg>
-        </button>
-      </div>
+      </figure>
     </section>
 
     {/* Portfolio Grid */}
-    <section id="portfolio-cards" class="container mx-auto px-4 py-20">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <section id="portfolio-cards" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+      <div class="flex items-end justify-between gap-6 pb-6 mb-12 border-b border-ink">
+        <div>
+          <p class="eyebrow text-ink/60 mb-4">§ Index — Selected Work</p>
+          <h2 class="display-lg">Recent work.</h2>
+        </div>
+        <p class="eyebrow text-ink/60 text-right">{String(portfolioItems.length).padStart(2, '0')} case studies</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-16">
         {portfolioItems.map((item, index) => (
           <a
             href={`${baseUrl}/portfolio/${item.slug}`}
-            class="group h-full scroll-fade-in magnetic-card"
+            class="group grid grid-rows-subgrid row-span-3 gap-y-0 scroll-fade-in magnetic-card"
             data-index={index}
             style="opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;"
           >
-            <div class="relative overflow-hidden rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md h-full flex flex-col">
-              <div class="h-36 mb-4 flex items-center justify-center">
-                <img
-                  src={item.logo}
-                  alt={`${item.title} logo`}
-                  width="144"
-                  height="144"
-                  loading="lazy"
-                  class="object-contain max-h-full transition-transform duration-300 group-hover:scale-105"
-                />
-              </div>
-              <h3 class="mb-2 text-xl font-semibold text-gray-900">{item.title}</h3>
-              <p class="text-gray-700">{item.description}</p>
+            <div class="relative h-64 md:h-72 bg-white border border-ink/10 flex items-center justify-center p-12">
+              <img
+                src={item.logo}
+                alt={`${item.title} logo`}
+                width="144"
+                height="144"
+                loading="lazy"
+                class="object-contain max-h-full transition-transform duration-300 group-hover:scale-105"
+              />
+              <span class="chip absolute top-4 left-4 bg-paper text-ink">N° {String(index + 1).padStart(2, '0')}</span>
             </div>
+            <div class="mt-5 flex items-end justify-between gap-4 pb-3 border-b border-ink">
+              <h3 class="text-2xl md:text-3xl font-bold tracking-tight transition-colors group-hover:text-accent">{item.title}</h3>
+              <span class="text-xl" aria-hidden="true">↗</span>
+            </div>
+            <p class="mt-3 text-ink/70 leading-relaxed">{item.description}</p>
           </a>
         ))}
       </div>
     </section>
-  </main>
+  </div>
 
   <style>
     .parallax-bg {
@@ -150,28 +140,6 @@ const portfolioItems = [
     .parallax-image {
       transform: translateY(0);
       will-change: transform;
-    }
-    .parallax-content {
-      will-change: transform;
-    }
-
-    /* Creative Typography Styles */
-    .gradient-text {
-      background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 50%, #c7d2fe 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      background-size: 200% 200%;
-      animation: gradient-shift 3s ease infinite;
-    }
-
-    @keyframes gradient-shift {
-      0%, 100% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
     }
 
     .animate-reveal {
@@ -192,20 +160,6 @@ const portfolioItems = [
         transform: translateY(0);
       }
     }
-
-    .creative-typography {
-      letter-spacing: -0.02em;
-    }
-
-    /* Color Transitions on Scroll */
-    .color-transition-container {
-      background: linear-gradient(180deg, #f6f6f6 0%, #ffffff 50%, #f0f9ff 100%);
-      background-size: 100% 300%;
-      background-position: 0% 0%;
-      transition: background-position 0.1s ease-out;
-      min-height: 100vh;
-    }
-
   </style>
 
   <script>
@@ -213,23 +167,15 @@ const portfolioItems = [
       // Parallax scrolling effect - optimized with requestAnimationFrame
       let ticking = false;
       const parallaxBg = document.querySelector('.parallax-image') as HTMLElement;
-      const parallaxContent = document.querySelector('.parallax-content') as HTMLElement;
 
       function updateParallax() {
         const scrolled = window.pageYOffset;
         const heroHeight = window.innerHeight * 0.5; // 50vh
 
-        // Only apply parallax within hero section
-        if (scrolled < heroHeight) {
-          // Background moves slower (0.5x speed)
-          if (parallaxBg) {
-            parallaxBg.style.transform = `translateY(${scrolled * 0.5}px)`;
-          }
-          // Content moves faster (0.3x speed) for depth effect
-          if (parallaxContent) {
-            parallaxContent.style.transform = `translateY(${scrolled * 0.3}px)`;
-            parallaxContent.style.opacity = `${1 - scrolled / heroHeight * 0.3}`;
-          }
+        // Only apply parallax within hero section; the image is 130% of its
+        // frame, so 0.15x keeps it from sliding past the frame edge
+        if (scrolled < heroHeight && parallaxBg) {
+          parallaxBg.style.transform = `translateY(${scrolled * 0.15}px)`;
         }
 
         ticking = false;
@@ -244,15 +190,6 @@ const portfolioItems = [
 
       // Use passive listener for better performance
       window.addEventListener('scroll', requestTick, { passive: true });
-
-      // Scroll to portfolio button - optimized
-      const scrollBtn = document.getElementById('scroll-to-portfolio');
-      const target = document.getElementById('portfolio-cards');
-      if (scrollBtn && target) {
-        scrollBtn.addEventListener('click', () => {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }, { passive: true });
-      }
 
       // Scroll-triggered animations using Intersection Observer
       const animatedCards = document.querySelectorAll('.scroll-fade-in');
@@ -340,33 +277,6 @@ const portfolioItems = [
           }
         });
       });
-
-      // Color transitions on scroll
-      const colorContainer = document.querySelector('.color-transition-container') as HTMLElement;
-      if (colorContainer) {
-        let colorTicking = false;
-
-        function updateColorTransition() {
-          const scrolled = window.pageYOffset;
-          const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
-          const scrollPercent = Math.min(scrolled / maxScroll, 1);
-
-          const bgPosition = scrollPercent * 200;
-          colorContainer.style.backgroundPosition = `0% ${bgPosition}%`;
-
-          colorTicking = false;
-        }
-
-        function requestColorTick() {
-          if (!colorTicking) {
-            requestAnimationFrame(updateColorTransition);
-            colorTicking = true;
-          }
-        }
-
-        window.addEventListener('scroll', requestColorTick, { passive: true });
-        updateColorTransition();
-      }
     });
   </script>
 </Layout> 

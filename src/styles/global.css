@@ -12,5 +12,68 @@
   --color-primary-800: #075985;
   --color-primary-900: #0c4a6e;
 
-  --font-franklin: "Libre Franklin", "Franklin Gothic", "ITC Franklin Gothic", "Franklin Gothic Medium", "Franklin Gothic Book", "Franklin Gothic Demi", "Franklin Gothic Heavy", system-ui, sans-serif;
+  /* Editorial palette: warm paper, near-black ink, one red-orange accent */
+  --color-paper: #f4f4f2;
+  --color-ink: #121212;
+  --color-accent: #fa2500;
+  /* Green marks: headline marker bars, nav underline, status dots */
+  --color-marker: #009900;
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Monaco, monospace;
+}
+
+@layer base {
+  h1, h2, h3 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  /* Small uppercase monospace label, e.g. "§ UX PORTFOLIO" */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    line-height: 1rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* Bordered tag, e.g. "N° 01" */
+  .chip {
+    display: inline-block;
+    border: 1px solid currentColor;
+    padding: 0.125rem 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    line-height: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Oversized, tightly tracked headline */
+  .display-xl {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(3.25rem, 10vw, 7rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+  }
+
+  .display-lg {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 0.98;
+    letter-spacing: -0.035em;
+  }
+
+  /* Marker bar behind the lower part of a word */
+  .accent-bar {
+    background-image: linear-gradient(var(--color-marker), var(--color-marker));
+    background-repeat: no-repeat;
+    background-size: 100% 0.22em;
+    background-position: 0 80%;
+  }
 }
