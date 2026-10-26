@@ -167,10 +167,21 @@ const categoryImages = {
     '/images/lacrosse/20260614_Hula_BlueOx/20260614_MWLAX_Hula_Sun-2.webp',
     '/images/lacrosse/20260614_Hula_BlueOx/20260614_MWLAX_Hula_Sun-3.webp',
     '/images/lacrosse/20260614_Hula_BlueOx/20260614_MWLAX_Hula_Sun-4.webp'
+  ],
+  "2027 Lacrosse": [
+    '/images/lacrosse/20261024_FallClassic/20261024_FallClassic-2.webp',
+    '/images/lacrosse/20261024_FallClassic/20261024_FallClassic-3.webp',
+    '/images/lacrosse/20261024_FallClassic/20261024_FallClassic-4.webp',
+    '/images/lacrosse/20261024_FallClassic/20261025_FallClassic-2.webp',
+    '/images/lacrosse/20261024_FallClassic/20261025_FallClassic-3.webp'
   ]
 };
 
+// Cards shown with a "Coming soon" overlay and no link
+const comingSoonCategories = new Set(["2027 Lacrosse"]);
+
 const categoryTitles: Record<string, string> = {
+  "2027 Lacrosse": "2027 Millard West Lacrosse",
   "Hula Lacrosse 2026": "Hula Lacrosse 2026",
   "2026 Lacrosse": "2026 Millard West Lacrosse",
   "Box Lacrosse": "2025 Box Lacrosse",
@@ -193,6 +204,7 @@ type ImageCard = {
   alt: string;
   title: string;
   category: string;
+  comingSoon: boolean;
 };
 
 // Hula gallery images
@@ -209,8 +221,9 @@ const allCategoryImages: Record<string, string[]> = {
 
 // Ordered from newest updated to oldest
 const categoryOrder = [
-  "Hula Lacrosse 2026",
+  "2027 Lacrosse",
   "2026 Lacrosse",
+  "Hula Lacrosse 2026",
   "Box Lacrosse",
   "Landscape",
   "Hula",
@@ -225,7 +238,8 @@ const images: ImageCard[] = categoryOrder.map((category) => ({
   src: getRandomImage(allCategoryImages[category]),
   alt: category,
   title: categoryTitles[category] || category,
-  category: category
+  category: category,
+  comingSoon: comingSoonCategories.has(category)
 }));
 ---
 
@@ -282,6 +296,7 @@ const images: ImageCard[] = categoryOrder.map((category) => ({
         {images.map((image, index) => (
           <a
             href={
+              image.comingSoon ? undefined :
               image.category === "Events" ? '/images/events' :
               image.category === "Lacrosse" ? '/images/lacrosse' :
               image.category === "Zoo" ? '/images/zoo' :
@@ -294,17 +309,22 @@ const images: ImageCard[] = categoryOrder.map((category) => ({
               image.category === "2026 Lacrosse" ? '/images/lacrosse2026' :
               "#"
             }
-            class="group h-full scroll-fade-in magnetic-card"
+            class:list={["group h-full scroll-fade-in", !image.comingSoon && "magnetic-card"]}
             data-index={index}
             style="opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;"
           >
-            <div class="relative overflow-hidden rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md h-full flex flex-col">
-              <div class="h-64 mb-4 overflow-hidden rounded-lg">
+            <div class:list={["relative overflow-hidden rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all h-full flex flex-col", !image.comingSoon && "hover:shadow-md"]}>
+              <div class="relative h-64 mb-4 overflow-hidden rounded-lg">
                 <img
                   src={image.src}
                   alt={image.alt}
-                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  class:list={["w-full h-full object-cover", image.comingSoon ? "grayscale brightness-50" : "transition-transform duration-300 group-hover:scale-105"]}
                 />
+                {image.comingSoon && (
+                  <div class="absolute inset-0 flex items-center justify-center">
+                    <span class="rounded-full bg-white/90 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-gray-900">Coming soon</span>
+                  </div>
+                )}
               </div>
               <h2 class="mb-2 text-xl font-semibold text-gray-900">{image.title}</h2>
             </div>
