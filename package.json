@@ -12,12 +12,12 @@
     "update-image-refs": "node scripts/update-image-refs.mjs"
   },
   "dependencies": {
-    "@types/node": "^26.2.0",
+    "@types/node": "^26.6.5",
     "@types/nodemailer": "^8.0.0",
     "@types/topojson-client": "^3.1.5",
-    "astro": "~7.2.10",
+    "astro": "~7.3.3",
     "d3": "^7.9.0",
-    "resend": "^6.18.1",
+    "resend": "^6.34.1",
     "sharp": "^0.35.5",
     "topojson-client": "^3.1.0",
     "typescript": "^7.0.2"
@@ -27,7 +27,7 @@
     "@types/d3": "^7.4.3",
     "esbuild": "^0.28.2",
     "lighthouse": "^13.4.0",
-    "nodemailer": "^9.0.5",
+    "nodemailer": "^10.2.1",
     "postcss": "^8.5.16",
     "tailwindcss": "^4.3.3",
     "vitest": "^4.1.10"
