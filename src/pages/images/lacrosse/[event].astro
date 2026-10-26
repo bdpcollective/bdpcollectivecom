@@ -70,7 +70,7 @@ const { game } = Astro.props;
 
 // Generate array of image paths
 const images = Array.from({ length: game.imageCount }, (_, i) =>
-  `${game.imagePath}/${game.imagePrefix} - ${i + 1}.jpeg`
+  `${game.imagePath}/${game.imagePrefix} - ${i + 1}.webp`
 );
 ---
 

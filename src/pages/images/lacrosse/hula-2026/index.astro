@@ -4,22 +4,25 @@ import Lightbox from '../../../../components/Lightbox.astro';
 
 const blueOxBasePath = `/images/lacrosse/20260614_Hula_BlueOx`;
 const blueOxImages = [
-  `${blueOxBasePath}/20260613_MWLAX_Hula_Sat.jpg`,
-  ...Array.from({ length: 68 }, (_, i) => `${blueOxBasePath}/20260613_MWLAX_Hula_Sat-${i + 2}.jpg`),
-  `${blueOxBasePath}/20260614_MWLAX_Hula_Sun.jpg`,
-  ...Array.from({ length: 11 }, (_, i) => `${blueOxBasePath}/20260614_MWLAX_Hula_Sun-${i + 2}.jpg`),
+  `${blueOxBasePath}/20260613_MWLAX_Hula_Sat.webp`,
+  ...Array.from({ length: 68 }, (_, i) => `${blueOxBasePath}/20260613_MWLAX_Hula_Sat-${i + 2}.webp`),
+  `${blueOxBasePath}/20260614_MWLAX_Hula_Sun.webp`,
+  ...Array.from({ length: 11 }, (_, i) => `${blueOxBasePath}/20260614_MWLAX_Hula_Sun-${i + 2}.webp`),
 ];
 
 const bbqBlueBasePath = `/images/lacrosse/20260620_Hula_BBQ_Blue`;
 const bbqBlueImages = [
-  `${bbqBlueBasePath}/20260620_Hula_BBQTown_Blue.jpg`,
-  ...Array.from({ length: 64 }, (_, i) => `${bbqBlueBasePath}/20260620_Hula_BBQTown_Blue-${i + 2}.jpg`),
+  `${bbqBlueBasePath}/20260620_Hula_BBQTown_Blue.webp`,
+  ...Array.from({ length: 64 }, (_, i) => `${bbqBlueBasePath}/20260620_Hula_BBQTown_Blue-${i + 2}.webp`),
 ];
 
 const bbqWhiteBasePath = `/images/lacrosse/20260620_Hula_BBQ_White`;
 const bbqWhiteImages = [
-  `${bbqWhiteBasePath}/20260620_Hula_BBQTown_White.jpg`,
-  ...Array.from({ length: 44 }, (_, i) => `${bbqWhiteBasePath}/20260620_Hula_BBQTown_White-${i + 2}.jpg`),
+  `${bbqWhiteBasePath}/20260620_Hula_BBQTown_White.webp`,
+  // Folder runs -2 through -46 with no -19
+  ...Array.from({ length: 45 }, (_, i) => i + 2)
+    .filter((n) => n !== 19)
+    .map((n) => `${bbqWhiteBasePath}/20260620_Hula_BBQTown_White-${n}.webp`),
 ];
 
 const tournaments = [

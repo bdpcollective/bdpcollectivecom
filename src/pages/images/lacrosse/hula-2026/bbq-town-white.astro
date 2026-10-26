@@ -5,8 +5,11 @@ import Lightbox from '../../../../components/Lightbox.astro';
 const basePath = `/images/lacrosse/20260620_Hula_BBQ_White`;
 
 const images = [
-  `${basePath}/20260620_Hula_BBQTown_White.jpg`,
-  ...Array.from({ length: 44 }, (_, i) => `${basePath}/20260620_Hula_BBQTown_White-${i + 2}.jpg`),
+  `${basePath}/20260620_Hula_BBQTown_White.webp`,
+  // Folder runs -2 through -46 with no -19
+  ...Array.from({ length: 45 }, (_, i) => i + 2)
+    .filter((n) => n !== 19)
+    .map((n) => `${basePath}/20260620_Hula_BBQTown_White-${n}.webp`),
 ];
 
 const title = "BBQ Town | White";

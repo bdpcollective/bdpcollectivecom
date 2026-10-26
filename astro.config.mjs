@@ -6,6 +6,10 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://bdpcollective.com',
   base: '/',
+  redirects: {
+    // Fall Classic was first published under the 2025 lacrosse section
+    '/images/lacrosse/20261024-fall-classic': '/images/lacrosse2026/20261024-fall-classic',
+  },
   build: {
     // Automatically inline small stylesheets to reduce critical request chains
     inlineStylesheets: 'auto',

@@ -7,7 +7,7 @@ import path from 'node:path';
 // Dynamically read slide images from the folder
 const imageDir = path.join(process.cwd(), 'public/images/codemash2026');
 const files = fs.readdirSync(imageDir)
-  .filter(f => f.endsWith('.jpeg'))
+  .filter(f => f.endsWith('.webp'))
   .sort();
 
 const images = files.map(f => `/images/codemash2026/${f}`);
