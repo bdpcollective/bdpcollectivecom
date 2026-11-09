@@ -1,76 +1,168 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import Lightbox from '../../components/Lightbox.astro';
+import { landscapeCollections, imagePaths, randomPreview } from '../../data/landscape';
 
-// List all images from landscape folder
-const images = [
-  '/images/landscape/20250103_Bahamas-2.webp',
-  '/images/landscape/20250103_Bahamas-3.webp',
-  '/images/landscape/20250103_Bahamas-4.webp',
-  '/images/landscape/20250103_Bahamas-6.webp',
-  '/images/landscape/20250103_Bahamas-7.webp',
-  '/images/landscape/20250103_Bahamas-9.webp',
-  '/images/landscape/20250103_Bahamas-10.webp',
-  '/images/landscape/20250103_Bahamas-11.webp',
-  '/images/landscape/20250103_Bahamas-12.webp',
-  '/images/landscape/20250103_Bahamas-13.webp',
-  '/images/landscape/20250103_Bahamas-14.webp',
-  '/images/landscape/20250103_Bahamas-15.webp',
-  '/images/landscape/20250103_Bahamas-16.webp',
-  '/images/landscape/20250103_Bahamas-17.webp',
-  '/images/landscape/20250103_Bahamas-18.webp',
-  '/images/landscape/20250103_Bahamas-21.webp',
-  '/images/landscape/20251012_Colorado.webp',
-  '/images/landscape/20251012_Colorado-2.webp',
-  '/images/landscape/20251012_Colorado-3.webp',
-  '/images/landscape/20251012_Colorado-4.webp',
-  '/images/landscape/20251012_Colorado-5.webp',
-  '/images/landscape/20251012_Colorado-6.webp',
-  '/images/landscape/20251012_Colorado-7.webp',
-  '/images/landscape/20251012_Colorado-8.webp',
-  '/images/landscape/20251012_Colorado-9.webp',
-  '/images/landscape/20251012_Colorado-10.webp',
-  '/images/landscape/20251012_Colorado-11.webp',
-  '/images/landscape/BobKerryBridge.webp',
-  '/images/landscape/SouthwestSpirit.webp'
-];
-
-const title = "Landscape";
-const description = "Gallery of landscape photos";
+const collections = landscapeCollections.map((collection) => ({
+  ...collection,
+  previewImage: randomPreview(collection),
+  photoCount: imagePaths(collection).length
+}));
 ---
 
-<Layout title={title}>
-  <div class="bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div class="mb-8">
-        <a href="/images" class="text-blue-600 hover:text-blue-800">← Back to Images</a>
+<Layout title="Landscapes">
+  <main class="min-h-screen bg-white">
+    <section class="bg-black text-white py-16">
+      <div class="container mx-auto px-4">
+        <h1 class="text-4xl font-bold mb-4">Landscapes</h1>
+        <p class="text-lg text-gray-300 max-w-3xl">
+          Places worth standing still for, gathered by trip
+        </p>
       </div>
+    </section>
 
-      <h1 class="text-4xl font-bold text-gray-900 mb-4">{title}</h1>
-      <p class="text-gray-600 mb-8">Landscape photography collection</p>
+    {/* Collection Grid */}
+    <section class="container mx-auto px-4 py-12">
+      <a
+        href="/images"
+        class="inline-flex items-center text-gray-600 hover:text-gray-900 transition-colors mb-8"
+      >
+        <svg
+          class="w-5 h-5 mr-2"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M10 19l-7-7m0 0l7-7m-7 7h18"
+          />
+        </svg>
+        Back to All Images
+      </a>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {images.map((image, index) => (
-          <div class="aspect-w-3 aspect-h-2 overflow-hidden rounded-lg">
-            <img
-              src={image}
-              alt={`Landscape photo ${index + 1}`}
-              class="gallery-image w-full h-full object-cover cursor-pointer transform hover:scale-105 transition-transform duration-300"
-              loading={index < 9 ? "eager" : "lazy"}
-            />
-          </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {collections.map((collection, index) => (
+          <a
+            href={`/images/landscape/${collection.id}`}
+            class="group relative scroll-fade-in magnetic-card"
+            data-index={index}
+            style="opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;"
+          >
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <div class="relative h-64">
+                <img
+                  src={collection.previewImage}
+                  alt={collection.title}
+                  class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
+                  loading={index < 3 ? "eager" : "lazy"}
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent">
+                  <div class="absolute bottom-0 left-0 right-0 p-4">
+                    <h2 class="text-white text-xl font-semibold mb-2">{collection.title}</h2>
+                    <div class="flex justify-between text-sm text-gray-300">
+                      <span>{collection.date}</span>
+                      <span>{collection.photoCount} photos</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </a>
         ))}
       </div>
-    </div>
-  </div>
-
-  <Lightbox images={images} />
+    </section>
+  </main>
 </Layout>
 
-<style>
-  /* Remove the fixed aspect ratio style */
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-</style>
+<script>
+  document.addEventListener('astro:page-load', () => {
+    // Scroll-triggered animations using Intersection Observer
+    const animatedCards = document.querySelectorAll('.scroll-fade-in');
+
+    if (animatedCards.length > 0 && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const element = entry.target as HTMLElement;
+            const index = parseInt(element.dataset.index || '0');
+            setTimeout(() => {
+              element.style.opacity = '1';
+              element.style.transform = 'translateY(0)';
+            }, index * 100);
+            observer.unobserve(element);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      animatedCards.forEach((card) => {
+        observer.observe(card);
+      });
+    } else {
+      animatedCards.forEach((card) => {
+        (card as HTMLElement).style.opacity = '1';
+        (card as HTMLElement).style.transform = 'translateY(0)';
+      });
+    }
+
+    // Magnetic hover effects
+    const magneticCards = document.querySelectorAll('.magnetic-card');
+    const magneticStrength = 0.15;
+
+    magneticCards.forEach((card) => {
+      const cardElement = card as HTMLElement;
+      let currentX = 0;
+      let currentY = 0;
+      let targetX = 0;
+      let targetY = 0;
+      let rafId: number | null = null;
+
+      function animate() {
+        currentX += (targetX - currentX) * 0.1;
+        currentY += (targetY - currentY) * 0.1;
+
+        cardElement.style.transform = `translate(${currentX}px, ${currentY}px)`;
+
+        if (Math.abs(targetX - currentX) > 0.1 || Math.abs(targetY - currentY) > 0.1) {
+          rafId = requestAnimationFrame(animate);
+        } else {
+          rafId = null;
+        }
+      }
+
+      cardElement.addEventListener('mouseenter', () => {
+        cardElement.style.transition = 'none';
+      });
+
+      cardElement.addEventListener('mouseleave', () => {
+        targetX = 0;
+        targetY = 0;
+        cardElement.style.transition = 'transform 0.3s ease-out';
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+        }
+        animate();
+      });
+
+      cardElement.addEventListener('mousemove', (e) => {
+        const rect = cardElement.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        const deltaX = (e.clientX - centerX) * magneticStrength;
+        const deltaY = (e.clientY - centerY) * magneticStrength;
+
+        targetX = deltaX;
+        targetY = deltaY;
+
+        if (!rafId) {
+          rafId = requestAnimationFrame(animate);
+        }
+      });
+    });
+  });
+</script>
